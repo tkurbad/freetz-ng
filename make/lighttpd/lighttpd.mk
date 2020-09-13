@@ -1,26 +1,23 @@
-$(call PKG_INIT_BIN, 1.4.55)
-$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_SOURCE_SHA256:=6a0b50e9c9d5cc3d9e48592315c25a2d645858f863e1ccd120507a30ce21e927
-$(PKG)_SITE:=http://download.lighttpd.net/lighttpd/releases-1.4.x
+$(call PKG_INIT_BIN, 1.5.0)
+$(PKG)_SOURCE:=lighttpd-$($(PKG)_VERSION)-r2698.tar.bz2
+$(PKG)_SOURCE_MD5:=710f57045b0e61e49a1e073613c08d95
+$(PKG)_SITE:=http://download.lighttpd.net/lighttpd/snapshots-1.5
 
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/src/lighttpd
 $(PKG)_BINARY_TARGET_DIR := $($(PKG)_DEST_DIR)/usr/bin/lighttpd
 
 $(PKG)_MODULES_DIR := /usr/lib/lighttpd
 $(PKG)_MODULES_ALL := \
-	accesslog access alias \
-	auth authn_file authn_gssapi authn_ldap authn_mysql \
-	cgi cml compress \
+	accesslog access alias auth \
+	chunked cgi compress \
 	deflate dirlisting \
-	evasive evhost expire extforward \
-	fastcgi flv_streaming \
-	geoip \
+	evasive evhost expire \
+	flv_streaming \
 	indexfile \
-	magnet maxminddb mysql_vhost \
-	openssl \
-	proxy \
+	magnet mysql_vhost \
+	postgresql_vhost proxy_core proxy_backend_ajp13 proxy_backend_fastcgi proxy_backend_http proxy_backend_scgi \
 	redirect rewrite rrdtool \
-	scgi secdownload setenv simple_vhost ssi staticfile status \
+	secdownload setenv simple_vhost sql_vhost_core ssi staticfile status \
 	trigger_b4_dl \
 	uploadprogress userdir usertrack \
 	webdav
@@ -33,7 +30,6 @@ $(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)$($(PKG)_MODULES_DIR)/mod_%.so
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_WITH_SSL
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_WITH_LUA
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_DEFLATE
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_PROPS
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_LOCKS
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
@@ -41,14 +37,14 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 $(PKG)_DEPENDS_ON += pcre
 
 ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_WITH_SSL)),y)
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
-$(PKG)_DEPENDS_ON += openssl
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl-libs="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
+$(PKG)_DEPENDS_ON += openssl
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl-includes="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include"
 endif
 
-ifeq ($(or $(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS)),$(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_DEFLATE))),y)
+ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS)),y)
 $(PKG)_DEPENDS_ON += zlib
 $(PKG)_CONFIGURE_OPTIONS += --with-zlib
 else
@@ -75,12 +71,9 @@ $(PKG)_CONFIGURE_OPTIONS += --without-attr
 $(PKG)_CONFIGURE_OPTIONS += --without-bzip2
 $(PKG)_CONFIGURE_OPTIONS += --without-fam
 $(PKG)_CONFIGURE_OPTIONS += --without-gdbm
-$(PKG)_CONFIGURE_OPTIONS += --without-geoip
-$(PKG)_CONFIGURE_OPTIONS += --without-krb5
 $(PKG)_CONFIGURE_OPTIONS += --without-ldap
 $(PKG)_CONFIGURE_OPTIONS += --without-libev
-$(PKG)_CONFIGURE_OPTIONS += --without-maxminddb
-$(PKG)_CONFIGURE_OPTIONS += --without-memcached
+$(PKG)_CONFIGURE_OPTIONS += --without-memcache
 $(PKG)_CONFIGURE_OPTIONS += --with-pcre="yes"
 $(PKG)_CONFIGURE_OPTIONS += --without-valgrind
 $(PKG)_CONFIGURE_OPTIONS += --without-mysql
