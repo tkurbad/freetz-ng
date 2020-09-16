@@ -400,6 +400,7 @@ config FREETZ_MODULE_sunrpc
 	depends on FREETZ_MODULE_lockd
 	default n
 
+
 config FREETZ_MODULE_nfs
 	bool "nfs.ko"
 	depends on FREETZ_NFS_SUPPORT_AVAILABLE_AS_MODULE
@@ -408,13 +409,14 @@ config FREETZ_MODULE_nfs
 
 config FREETZ_MODULE_nfsv2
 	bool "nfsv2.ko"
-	depends on FREETZ_MODULE_nfs && FREETZ_KERNEL_VERSION_4_MIN
+	depends on FREETZ_MODULE_nfs && FREETZ_KERNEL_VERSION_3_MIN
 	default y
 
 config FREETZ_MODULE_nfsv3
 	bool "nfsv3.ko"
-	depends on FREETZ_MODULE_nfs && FREETZ_KERNEL_VERSION_4_MIN
+	depends on FREETZ_MODULE_nfs && FREETZ_KERNEL_VERSION_3_MIN
 	default y
+
 
 config FREETZ_MODULE_nfsd
 	bool "nfsd.ko"
@@ -430,10 +432,13 @@ config FREETZ_MODULE_exportfs
 
 endmenu
 
+menu "network"
+
 config FREETZ_MODULE_autofs4
 	bool "autofs4.ko"
 	depends on !FREETZ_AVM_HAS_AUTOFS4_BUILTIN
 	default n
+
 
 config FREETZ_MODULE_cifs
 	bool "cifs.ko"
@@ -446,9 +451,18 @@ config FREETZ_MODULE_md4
 	depends on FREETZ_MODULE_cifs && !FREETZ_AVM_HAS_MD4_BUILTIN
 	default y
 
+
 config FREETZ_MODULE_coda
 	bool "coda.ko"
+	depends on FREETZ_KERNEL_VERSION_2_MAX
 	default n
+
+config FREETZ_MODULE_fuse
+	bool "fuse.ko"
+	depends on !FREETZ_AVM_HAS_FUSE_BUILTIN
+	default n
+
+endmenu
 
 
 config FREETZ_MODULE_ext2
@@ -456,6 +470,7 @@ config FREETZ_MODULE_ext2
 	depends on ! FREETZ_AVM_HAS_EXT2_BUILTIN # && any kernel version
 	select FREETZ_MODULE_mbcache
 	default n
+
 
 config FREETZ_MODULE_ext3
 	bool "ext3.ko"
@@ -469,6 +484,7 @@ config FREETZ_MODULE_jbd
 	depends on FREETZ_MODULE_ext3
 	depends on FREETZ_KERNEL_VERSION_2_6_19_MAX
 	default n
+
 
 config FREETZ_MODULE_ext4
 	bool "ext4.ko"
@@ -498,10 +514,11 @@ config FREETZ_MODULE_fat
 	bool "fat.ko"
 	default n
 
-config FREETZ_MODULE_fuse
-	bool "fuse.ko"
-	depends on !FREETZ_AVM_HAS_FUSE_BUILTIN
-	default n
+config FREETZ_MODULE_vfat
+	bool "vfat.ko"
+	depends on FREETZ_MODULE_fat
+	default y
+
 
 config FREETZ_MODULE_hfs
 	bool "hfs.ko"
@@ -568,11 +585,6 @@ config FREETZ_MODULE_udf
 
 config FREETZ_MODULE_unionfs
 	bool "unionfs.ko"
-	default n
-
-config FREETZ_MODULE_vfat
-	bool "vfat.ko"
-	select FREETZ_MODULE_fat
 	default n
 
 endmenu

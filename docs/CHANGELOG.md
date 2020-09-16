@@ -189,6 +189,7 @@ Latest changes
     * apache 2.4.46
     * apr 1.7.0
     * apr-util 1.6.1
+    * autofs 5.0.5/5.1.6
     * bash 3.2.57
     * BIND 9.11.13
     * Bip 0.8.9/0.9.0-rc4
@@ -197,7 +198,7 @@ Latest changes
     * cifs-utils 6.10
     * cryptsetup 1.7.5
     * curl 7.72.0
-    * davfs2 1.5.2
+    * davfs2 1.5.2/1.6.0
     * dbus 1.8.20
     * DigiTemp 3.7.2
     * dnsmasq 2.80/2.82
@@ -235,7 +236,7 @@ Latest changes
     * libgd 2.3.0
     * libgpg-error 1.37
     * liblzo 2.10
-    * libneon 0.30.2
+    * libneon 0.31.2
     * libogg 1.3.2
     * libopus 1.1.4
     * libpng 1.2.59

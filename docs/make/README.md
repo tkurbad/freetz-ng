@@ -23,8 +23,8 @@
   * **<u>atop 2.2.3 (binary only)</u><a id='atop'></a>**<br>
     The program atop is an interactive monitor to view the load on a Linux system. It shows the occupation of the most critical hardware resources (from a performance point of view) on system level, i.e. cpu, memory, disk and network.
 
-  * **[autofs 5.0.5](autofs.md)<a id='autofs'></a>**<br>
-    autofs is a kernel-based automounter for Linux.  It performs a job similar to amd(8) but relies on a small stub of kernel code instead of pretending to be an NFS server.  The result is simpler code, better reliability, and much faster operation in the common case (everything already mounted.)
+  * **[autofs 5.0.5/5.1.6](autofs.md)<a id='autofs'></a>**<br>
+    Autofs is a kernel-based automounter for Linux. It performs a job similar to amd(8) but relies on a small stub of kernel code instead of pretending to be an NFS server. The result is simpler code, better reliability, and much faster operation in the common case (everything already mounted).
 
   * **<u>autossh 1.4g (binary only)</u><a id='autossh'></a>**<br>
     autossh is a program to start a copy of ssh and monitor it, restarting it as necessary should it die or stop passing traffic.
@@ -103,13 +103,13 @@
   * **[Curl 7.72.0 (binary only)](curl.md)<a id='curl'></a>**<br>
     Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 
-  * **<u>CurlFtpFS 0.9.2 (binary only)</u><a id='curlftpfs'></a>**<br>
+  * **<u>CurlFtpFS 0.9.2</u><a id='curlftpfs'></a>**<br>
     CurlFtpFS is a filesystem for accessing FTP hosts based on FUSE and libcurl. Website: http://curlftpfs.sourceforge.net/ Features: - SSLv3 and TLSv1 support - connecting through tunneling HTTP proxies - automatically reconnection if the server times out - transform absolute symlinks to point back into the ftp file system
 
   * **<u>dante 1.2.2 (binary only)</u><a id='dante'></a>**<br>
     socks proxy daemon
 
-  * **[davfs2: davfs 1.5.2](davfs2.md)<a id='davfs2'></a>**<br>
+  * **[davfs2: davfs 1.5.2/1.6.0](davfs2.md)<a id='davfs2'></a>**<br>
     davfs is a Linux file system driver that allows you to mount a WebDAV server as a disk drive. WebDAV is an extension to HTTP/1.1 that allows remote collaborative authoring of Web resources, defined in RFC 4918.
 
   * **<u>dbus: D-Bus 1.8.20</u><a id='dbus'></a>**<br>

@@ -1,0 +1,22 @@
+--- Makefile.rules
++++ Makefile.rules
+@@ -26,6 +26,11 @@
+ DEBUG=1
+ endif
+ 
++ifdef FREETZ
++CFLAGS    = $(AUTOFS_CFLAGS)
++LDFLAGS   =
++STRIP     = :
++else
+ ifdef DEBUG
+ CFLAGS    ?= -g -Wall -DDEBUG
+ LDFLAGS   ?= -g
+@@ -39,6 +44,7 @@
+ else
+ STRIP     ?= strip --strip-debug
+ endif
++endif
+ 
+ CC        ?= gcc
+ CXX       ?= g++

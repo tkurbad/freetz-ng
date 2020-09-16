@@ -10,15 +10,17 @@ config() {
 	#autofs
 	mkdir -p $(dirname $PID_FILE)
 	mkdir -p /var/media/autofs
-	modprobe autofs4
-	modprobe fuse 2>/dev/null
+	modprobe autofs4 2>/dev/null
 
 	#davfs2
 	[ -r /etc/options.cfg ] && . /etc/options.cfg
 	if [ "$FREETZ_PACKAGE_DAVFS2" == "y" -a "$AUTOFS_DAVFS2_CONF" == "yes" ]; then
 		modlib_add_user_and_group davfs2
 		mkdir -p /var/davfs2
-		touch /var/davfs2/davfs2.conf /var/davfs2/secrets
+		ln -sf /tmp/flash/autofs/davfs2.conf    /var/davfs2/davfs2.conf
+		ln -sf /tmp/flash/autofs/davfs2.secrets /var/davfs2/secrets
+		[ ! -e /var/davfs2/davfs2.conf    ] && echo '# ask_auth 0'               > /var/davfs2/davfs2.conf
+		[ ! -e /var/davfs2/secrets        ] && echo '# https://SERVER USER PASS' > /var/davfs2/secrets
 		chmod 600 /var/davfs2/secrets
 		mkdir -p /var/cache
 		rm /var/cache/davfs2 2>/dev/null
@@ -26,9 +28,16 @@ config() {
 		ln -s $AUTOFS_DAVFS2_TEMP /var/cache/davfs2
 	fi
 
+	#cifs
+	for x in md4 md5 hmac arc4 ecb des_generic sha256_generic cifs; do
+		modprobe $x 2>/dev/null
+	done
+	#nfs
+	for x in grace sunrpc lockd nfsv3 nfsv2 nfs; do
+		modprobe $x 2>/dev/null
+	done
 	#other
-	modprobe cifs 2>/dev/null
-	modprobe nfs 2>/dev/null
+	modprobe fuse 2>/dev/null
 }
 
 start() {
@@ -53,11 +62,11 @@ stop() {
 
 case $1 in
 	""|load)
-		[ ! -d "/tmp/flash/$DAEMON" ] && mkdir -p /tmp/flash/$DAEMON
+		modlib_defaults auto.conf
 		[ ! -d /var/media/autofs ] && mkdir -p /var/media/autofs
 
 		modreg file $DAEMON conf 'auto.conf' 1 "auto_conf"
-		modreg cgi $DAEMON autofs
+		modreg cgi $DAEMON $DAEMON_LONG_NAME
 		modreg daemon $DAEMON
 
 		modlib_start $AUTOFS_ENABLED
