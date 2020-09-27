@@ -27,7 +27,7 @@
   * **<u>atop 2.2.3 (binary only)</u><a id='atop'></a>**<br>
     The program atop is an interactive monitor to view the load on a Linux system. It shows the occupation of the most critical hardware resources (from a performance point of view) on system level, i.e. cpu, memory, disk and network.
 
-  * **[autofs 5.0.5/5.1.6](../docs/make/autofs.md)<a id='autofs'></a>**<br>
+  * **[AutoFS 5.0.5/5.1.6](../docs/make/autofs.md)<a id='autofs'></a>**<br>
     Autofs is a kernel-based automounter for Linux. It performs a job similar to amd(8) but relies on a small stub of kernel code instead of pretending to be an NFS server. The result is simpler code, better reliability, and much faster operation in the common case (everything already mounted).
      - [Optionale Aufrufparameter](../docs/make/autofs.md#optionale-aufrufparameter)
      - [Beispielkonfigurationen der auto.conf](../docs/make/autofs.md#beispielkonfigurationen-der-autoconf)
@@ -57,7 +57,7 @@
   * **<u>bfusb: AVM BlueFRITZ! USB stick support (binary only)</u><a id='bfusb'></a>**<br>
     This package adds support for the AVM BlueFRITZ! USB stick.
 
-  * **[BIND 9.11.13](../docs/make/bind.md)<a id='bind'></a>**<br>
+  * **[BIND 9.11.22](../docs/make/bind.md)<a id='bind'></a>**<br>
     BIND is an implementation of the Domain Name System (DNS) protocols. The name BIND stands for "Berkeley Internet Name Daemon". You have to provide the config and needed zone files yourself.
      - [named.conf](../docs/make/bind.md#namedconf)
 
@@ -867,7 +867,7 @@
   * **<u>tmux 2.5 (binary only)</u><a id='tmux'></a>**<br>
     tmux, a BSD-licensed alternative to GNU screen. Uses ncurses.
 
-  * **[Tor 0.4.3.6](../docs/make/tor.md)<a id='tor'></a>**<br>
+  * **[Tor 0.4.4.5](../docs/make/tor.md)<a id='tor'></a>**<br>
     The Onion Router Anonymous Internet communication system.
      - [Tor als Proxy benutzen](../docs/make/tor.md#tor-als-proxy-benutzen)
      - [Tor und Privoxy](../docs/make/tor.md#tor-und-privoxy)
