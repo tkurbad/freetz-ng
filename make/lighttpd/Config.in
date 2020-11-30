@@ -1,8 +1,6 @@
 config FREETZ_PACKAGE_LIGHTTPD
-	bool "lighttpd 1.5.0"
-	select FREETZ_LIB_libglib_2
-	select FREETZ_LIB_libgthread_2
-	select FREETZ_LIB_libpthread
+	bool "lighttpd 1.4.55"
+	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libpcre
 	select FREETZ_PACKAGE_LIGHTTPD_MOD_ACCESS
 	select FREETZ_PACKAGE_LIGHTTPD_MOD_INDEXFILE
@@ -25,11 +23,26 @@ config FREETZ_PACKAGE_LIGHTTPD
 config FREETZ_PACKAGE_LIGHTTPD_WITH_SSL
 	bool "build with SSL support"
 	depends on FREETZ_PACKAGE_LIGHTTPD
-	select FREETZ_LIB_libcrypto
-	select FREETZ_LIB_libssl
+	select FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL
 	default n
 	help
 		This option enables SSL support for lighttpd.
+
+config FREETZ_PACKAGE_LIGHTTPD_ACME
+	bool "Select ACME.sh (letsencrypt)"
+	depends on FREETZ_PACKAGE_LIGHTTPD_WITH_SSL
+	select FREETZ_PACKAGE_ACME
+	default n
+	help
+		This selects ACME.sh package for Let's Encrypt certificates.
+
+config FREETZ_PACKAGE_LIGHTTPD_DEHYDRATED
+	bool "Select dehydrated (letsencrypt)"
+	depends on FREETZ_PACKAGE_LIGHTTPD_WITH_SSL
+	select FREETZ_PACKAGE_DEHYDRATED
+	default n
+	help
+		This selects dehydrated package for Let's Encrypt certificates.
 
 config FREETZ_PACKAGE_LIGHTTPD_LDD
 	bool "Include LDD support"
@@ -123,6 +136,29 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_AUTH
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModAuth
 		for more information on this module.
 
+config FREETZ_PACKAGE_LIGHTTPD_MOD_AUTHN_FILE
+	bool "include mod_authn_file (adds about 13kb)"
+	depends on FREETZ_PACKAGE_LIGHTTPD
+	default y
+
+#requires GSS-API/Kerberos not (yet) available in freetz
+#config FREETZ_PACKAGE_LIGHTTPD_MOD_AUTHN_GSSAPI
+#	bool "include mod_authn_gssapi"
+#	depends on FREETZ_PACKAGE_LIGHTTPD
+#	default n
+
+#requires LDAP not (yet) available in freetz
+#config FREETZ_PACKAGE_LIGHTTPD_MOD_AUTHN_LDAP
+#	bool "include mod_authn_ldap"
+#	depends on FREETZ_PACKAGE_LIGHTTPD
+#	default n
+
+#requires mysql not (yet) available in freetz
+#config FREETZ_PACKAGE_LIGHTTPD_MOD_AUTHN_MYSQL
+#	bool "include mod_authn_mysql"
+#	depends on FREETZ_PACKAGE_LIGHTTPD
+#	default n
+
 config FREETZ_PACKAGE_LIGHTTPD_MOD_CGI
 	bool "include mod_cgi (adds about 25kb)"
 	depends on FREETZ_PACKAGE_LIGHTTPD
@@ -132,14 +168,14 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_CGI
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModCGI
 		for more information on this module.
 
-#config FREETZ_PACKAGE_LIGHTTPD_MOD_CML
-#	bool "include mod_cml (adds about 58kb)"
-#	depends on FREETZ_PACKAGE_LIGHTTPD_WITH_LUA
-#	default y
-#	help
-#		This option adds mod_cml.so to the image.
-#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModCML
-#		for more information on this module.
+config FREETZ_PACKAGE_LIGHTTPD_MOD_CML
+	bool "include mod_cml (adds about 58kb)"
+	depends on FREETZ_PACKAGE_LIGHTTPD_WITH_LUA
+	default y
+	help
+		This option adds mod_cml.so to the image.
+		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModCML
+		for more information on this module.
 
 config FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS
 	bool "include mod_compress (adds about 10kb)"
@@ -151,20 +187,11 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModCompress
 		for more information on this module.
 
-config FREETZ_PACKAGE_LIGHTTPD_MOD_CHUNKED
-	bool "include mod_chunked (adds about ??kb)"
-	depends on FREETZ_PACKAGE_LIGHTTPD
-	default y
-	help
-		This option adds mod_chunked.so to the image.
-		Please see http://redmine.lighttpd.net/wiki/1/Docs
-		for more information on this module.
-
 config FREETZ_PACKAGE_LIGHTTPD_MOD_DEFLATE
-	bool "include mod_deflate (adds about ??kb)"
+	bool "include mod_deflate (adds about 13kb)"
 	depends on FREETZ_PACKAGE_LIGHTTPD
 	select FREETZ_LIB_libz
-	default y
+	default n
 	help
 		This option adds mod_deflate.so to the image.
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModDeflate
@@ -197,23 +224,23 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_EXPIRE
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModExpire
 		for more information on this module.
 
-#config FREETZ_PACKAGE_LIGHTTPD_MOD_EXTFORWARD
-#	bool "include mod_extforward (adds about 11kb)"
-#	depends on FREETZ_PACKAGE_LIGHTTPD
-#	default y
-#	help
-#		This option adds mod_extforward.so to the image.
-#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModExtForward
-#		for more information on this module.
+config FREETZ_PACKAGE_LIGHTTPD_MOD_EXTFORWARD
+	bool "include mod_extforward (adds about 11kb)"
+	depends on FREETZ_PACKAGE_LIGHTTPD
+	default y
+	help
+		This option adds mod_extforward.so to the image.
+		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModExtForward
+		for more information on this module.
 
-#config FREETZ_PACKAGE_LIGHTTPD_MOD_FASTCGI
-#	bool "include mod_fastcgi (adds about 55kb)"
-#	depends on FREETZ_PACKAGE_LIGHTTPD
-#	default y
-#	help
-#		This option adds mod_fastcgi.so to the image.
-#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModFastCGI
-#		for more information on this module.
+config FREETZ_PACKAGE_LIGHTTPD_MOD_FASTCGI
+	bool "include mod_fastcgi (adds about 55kb)"
+	depends on FREETZ_PACKAGE_LIGHTTPD
+	default y
+	help
+		This option adds mod_fastcgi.so to the image.
+		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModFastCGI
+		for more information on this module.
 
 config FREETZ_PACKAGE_LIGHTTPD_MOD_FLV_STREAMING
 	bool "include mod_flv_streaming (adds about 10kb)"
@@ -224,6 +251,18 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_FLV_STREAMING
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModFLVStreaming
 		for more information on this module.
 
+#requires libGeoIP not (yet) available in freetz
+#config FREETZ_PACKAGE_LIGHTTPD_MOD_GEOIP
+#	bool "include mod_geoip"
+#	depends on FREETZ_PACKAGE_LIGHTTPD
+#	default n
+
+#requires libmaxminddb not (yet) available in freetz
+#config FREETZ_PACKAGE_LIGHTTPD_MOD_MAXMINDDB
+#	bool "include mod_maxminddb"
+#	depends on FREETZ_PACKAGE_LIGHTTPD
+#	default n
+
 config FREETZ_PACKAGE_LIGHTTPD_MOD_MAGNET
 	bool "include mod_magnet (adds about 58kb)"
 	depends on FREETZ_PACKAGE_LIGHTTPD_WITH_LUA
@@ -233,61 +272,35 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_MAGNET
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModMagnet
 		for more information on this module.
 
-#config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY
-#	bool "include mod_proxy (adds about 24kb)"
+#requires mysql not (yet) available in freetz
+#config FREETZ_PACKAGE_LIGHTTPD_MOD_MYSQL_VHOST
+#	bool "include mod_mysql_vhost (adds about 5kb)"
 #	depends on FREETZ_PACKAGE_LIGHTTPD
 #	default y
 #	help
-#		This option adds mod_proxy.so to the image.
-#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModProxy
+#		This option adds mod_mysql_vhost.so to the image.
+#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModMySQLVhost
 #		for more information on this module.
 
-config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_CORE
-	bool "include mod_proxy_core (adds about ??kb)"
+config FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL
+	bool "include mod_openssl (adds about 43kb)"
+	depends on FREETZ_PACKAGE_LIGHTTPD && FREETZ_PACKAGE_LIGHTTPD_WITH_SSL
+	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libssl
+	default n
+	help
+		This option adds mod_openssl.so to the image.
+		Please see http://redmine.lighttpd.net/wiki/1/Docs:SSL
+		for more information on this module.
+
+config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY
+	bool "include mod_proxy (adds about 24kb)"
 	depends on FREETZ_PACKAGE_LIGHTTPD
 	default y
 	help
-		This option adds mod_proxy_core.so to the image.
-		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModProxyCore
+		This option adds mod_proxy.so to the image.
+		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModProxy
 		for more information on this module.
-
-config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_BACKEND_AJP13
-	bool "include mod_proxy_backend_ajp13 (adds about ??kb)"
-	depends on FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_CORE
-	default y
-	help
-		This option adds mod_proxy_backend_ajp13.so to the image.
-		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModProxyCore
-		for more information on this module.
-
-config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_BACKEND_FASTCGI
-	bool "include mod_proxy_backend_fastcgi (adds about ??kb)"
-	depends on FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_CORE
-	default y
-	help
-		This option adds mod_proxy_backend_fastcgi.so to the image.
-		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModProxyCore
-		for more information on this module.
-
-config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_BACKEND_HTTP
-	bool "include mod_proxy_backend_http (adds about ??kb)"
-	depends on FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_CORE
-	default y
-	help
-		This option adds mod_proxy_backend_http.so to the image.
-		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModProxyCore
-		for more information on this module.
-
-
-config FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_BACKEND_SCGI
-	bool "include mod_proxy_backend_scgi (adds about ??kb)"
-	depends on FREETZ_PACKAGE_LIGHTTPD_MOD_PROXY_CORE
-	default y
-	help
-		This option adds mod_proxy_backend_scgi.so to the image.
-		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModProxyCore
-		for more information on this module.
-
 
 config FREETZ_PACKAGE_LIGHTTPD_MOD_REDIRECT
 	bool "include mod_redirect (adds about 8kb)"
@@ -353,35 +366,6 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_SIMPLE_VHOST
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModSimpleVhost
 		for more information on this module.
 
-#config FREETZ_PACKAGE_LIGHTTPD_MOD_SQL_VHOST_CORE
-#	bool "include mod_sql_vhost_core (adds about ??kb)"
-#	depends on FREETZ_PACKAGE_LIGHTTPD
-#	default y
-#	help
-#		This option adds mod_sql_vhost_core.so to the image.
-#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModSqlVhostCore
-#		for more information on this module.
-#
-#requires mysql not (yet) available in freetz
-#config FREETZ_PACKAGE_LIGHTTPD_MOD_MYSQL_VHOST
-#	bool "include mod_mysql_vhost (adds about 5kb)"
-#	depends on FREETZ_PACKAGE_LIGHTTPD_SQL_VHOST_CORE
-#	default y
-#	help
-#		This option adds mod_mysql_vhost.so to the image.
-#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModMySQLVhost
-#		for more information on this module.
-#
-#requires postgresql not (yet) available in freetz
-#config FREETZ_PACKAGE_LIGHTTPD_MOD_POSTGRESQL_VHOST
-#	bool "include mod_mysql_vhost (adds about ??kb)"
-#	depends on FREETZ_PACKAGE_LIGHTTPD_SQL_VHOST_CORE
-#	default y
-#	help
-#		This option adds mod_postgresql_vhost.so to the image.
-#		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModPostgreSQLVhost
-#		for more information on this module.
-
 config FREETZ_PACKAGE_LIGHTTPD_MOD_SSI
 	bool "include mod_ssi (adds about 23kb)"
 	depends on FREETZ_PACKAGE_LIGHTTPD
@@ -400,13 +384,23 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_STATUS
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModStatus
 		for more information on this module.
 
-config FREETZ_PACKAGE_LIGHTTPD_MOD_TRIGGER_B4_DL
-	bool "include mod_trigger_b4_dl (adds about 8kb)"
+#requires libgdbm or libmemcached, both not (yet) available in freetz
+#config FREETZ_PACKAGE_LIGHTTPD_MOD_TRIGGER_B4_DL
+#	bool "include mod_trigger_b4_dl (adds about 8kb)"
+#	depends on FREETZ_PACKAGE_LIGHTTPD
+#	default y
+#	help
+#		This option adds mod_trigger_b4_dl.so to the image.
+#		Please see http://redmine.lighttpd.net/projects/1/wiki/
+#		for more information on this module.
+
+config FREETZ_PACKAGE_LIGHTTPD_MOD_UPLOADPROGRESS
+	bool "include mod_uploadprogress (adds about 8kb)"
 	depends on FREETZ_PACKAGE_LIGHTTPD
-	default y
+	default n
 	help
-		This option adds mod_trigger_b4_dl.so to the image.
-		Please see http://redmine.lighttpd.net/projects/1/wiki/
+		This option adds mod_userdir.so to the image.
+		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModUploadprogress
 		for more information on this module.
 
 config FREETZ_PACKAGE_LIGHTTPD_MOD_USERDIR
@@ -416,15 +410,6 @@ config FREETZ_PACKAGE_LIGHTTPD_MOD_USERDIR
 	help
 		This option adds mod_userdir.so to the image.
 		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModUserDir
-		for more information on this module.
-
-config FREETZ_PACKAGE_LIGHTTPD_MOD_UPLOADPROGRESS
-	bool "include mod_uploadprogress (adds about ??kb)"
-	depends on FREETZ_PACKAGE_LIGHTTPD
-	default y
-	help
-		This option adds mod_uploadprogress.so to the image.
-		Please see http://redmine.lighttpd.net/wiki/1/Docs:ModUploadProgress
 		for more information on this module.
 
 config FREETZ_PACKAGE_LIGHTTPD_MOD_USERTRACK
