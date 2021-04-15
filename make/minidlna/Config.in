@@ -1,27 +1,27 @@
 config FREETZ_PACKAGE_MINIDLNA
-	bool "minidlna 1.2.1"
-	select FREETZ_LIB_libpthread if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libavcodec if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libavformat if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libavutil if ! FREETZ_PACKAGE_MINIDLNA_STATIC
+	bool "minidlna 1.3.0"
+	select FREETZ_LIB_libpthread  if !FREETZ_PACKAGE_MINIDLNA_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libavcodec  if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libavformat if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libavutil   if !FREETZ_PACKAGE_MINIDLNA_STATIC
 	select FREETZ_PACKAGE_FFMPEG
 	select FREETZ_PACKAGE_FFMPEG_PATENTED
 	select FREETZ_PACKAGE_FFMPEG_LIBDLNA_SUPPORT
-	select FREETZ_LIB_libexif if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libFLAC if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libid3tag if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libjpeg if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libogg if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libsqlite3 if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libvorbis if ! FREETZ_PACKAGE_MINIDLNA_STATIC
-	select FREETZ_LIB_libiconv if FREETZ_TARGET_UCLIBC_0_9_28 && ! FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libexif     if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libFLAC     if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libid3tag   if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libjpeg     if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libogg      if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libsqlite3  if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libvorbis   if !FREETZ_PACKAGE_MINIDLNA_STATIC
+	select FREETZ_LIB_libiconv    if !FREETZ_PACKAGE_MINIDLNA_STATIC && FREETZ_TARGET_UCLIBC_0_9_28
 	default n
 	help
 		The MiniDLNA daemon is an UPnP-A/V and DLNA service which
 		serves multimedia content to compatible clients on the network.
 
 choice
-depends on FREETZ_PACKAGE_MINIDLNA
+	depends on FREETZ_PACKAGE_MINIDLNA
 	prompt "language"
 	default FREETZ_PACKAGE_MINIDLNA_LANG_DE if FREETZ_LANG_DE
 	default FREETZ_PACKAGE_MINIDLNA_LANG_EN
@@ -33,12 +33,6 @@ depends on FREETZ_PACKAGE_MINIDLNA
 		bool "German"
 endchoice
 
-config FREETZ_PACKAGE_MINIDLNA_LANG
-	depends on FREETZ_PACKAGE_MINIDLNA
-	string
-	default "en" if FREETZ_PACKAGE_MINIDLNA_LANG_EN
-	default "de" if FREETZ_PACKAGE_MINIDLNA_LANG_DE
-
 config FREETZ_PACKAGE_MINIDLNA_STATIC
 	bool "Link statically"
 	depends on FREETZ_PACKAGE_MINIDLNA
@@ -46,3 +40,4 @@ config FREETZ_PACKAGE_MINIDLNA_STATIC
 	help
 		Activating this switch causes all libraries
 		minidlna depends on to be linked in statically.
+

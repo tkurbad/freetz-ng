@@ -2,12 +2,13 @@
 Currently supported devices and firmwares
 
  * [Not supported devices](#not-supported-devices)
+ * [Newer firmware versions](#newer-firmware-versions)
  * [Fritz!Box (2xxx)](#fritzbox-2xxx)
  * [Fritz!Box WLAN (3xxx)](#fritzbox-wlan-3xxx)
  * [Fritz!Box WAN (4xxx)](#fritzbox-wan-4xxx)
  * [Fritz!Box Fon (50xx/51xx)](#fritzbox-fon-50xx51xx)
- * [Fritz!Box Fiber (54xx)](#fritzbox-fiber-54xx)
- * [Fritz!Box Cable (64xx/65xx)](#fritzbox-cable-64xx65xx)
+ * [Fritz!Box Fiber (54xx/55xx)](#fritzbox-fiber-54xx55xx)
+ * [Fritz!Box Cable (64xx/65xx/66xx)](#fritzbox-cable-64xx65xx66xx)
  * [Fritz!Box LTE (68xx)](#fritzbox-lte-68xx)
  * [Fritz!Box Fon WLAN (70xx)](#fritzbox-fon-wlan-70xx)
  * [Fritz!Box Fon WLAN (71xx)](#fritzbox-fon-wlan-71xx)
@@ -24,7 +25,11 @@ Currently supported devices and firmwares
 
 ### Not supported devices
 
-  * Repeater 310, 600 & 1160: No LAN ports, so a recovery is not possible.
+  * Repeater N/G, 310, 600 v1+v2 & 1160: No LAN ports, so a recovery is not possible.
+
+### Newer firmware versions
+
+  * Select `Detect the latest firmware version` to use untested firmware versions.
 
 ### Fritz!Box (2xxx)
 
@@ -52,6 +57,7 @@ Currently supported devices and firmwares
   - 96.05.54 rev27373 {GER}
   - 96.05.52 rev27362 {INT}
   - 125.05.52 rev27361 {ITA}
+  - Alien 7270 v3 {GER+INT}
 * __Fritz!Box Fon WLAN 3272__
   - 126.06.30 rev30889 {GER}
   - 126.06.50 rev33089 {GER}
@@ -65,11 +71,13 @@ Currently supported devices and firmwares
   - 103.06.55 rev38670 {GER}
   - 103.06.30 rev31156 {INT}
   - 103.06.52 rev34161 {INT}
+  - Alien 3490 {GER+INT} (No wlan, no usb!)
 * __Fritz!Box WLAN 3390__
   - 121.06.30 rev30889 {GER}
   - 121.06.55 rev38670 {GER}
   - 121.06.30 rev31156 {INT}
   - 121.06.52 rev33299 {INT}
+  - Alien 3490 {GER+INT} (No wlan, no usb!)
 
 * __Fritz!Box WLAN 3490__
   - 140.06.31 rev31064 {GER}
@@ -91,6 +99,7 @@ Currently supported devices and firmwares
 * __Fritz!Box 4040__
   - 155.07.01 rev61489 {ALL}
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
+  - 155.07.24 rev85886 {ALL} [PSQ19 Phase 2] (Labor)
 
 ### Fritz!Box Fon (50xx/51xx)
 
@@ -109,17 +118,23 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon 5140__
   - 43.04.67 rev13928 {GER}
 
-### Fritz!Box Fiber (54xx)
+### Fritz!Box Fiber (54xx/55xx)
 
 * __Fritz!Box 5490 Fiber__
   - 151.07.01 rev63544 {ALL}
   - 151.07.12 rev72271 {ALL} [MESH18 NL2]
+  - Alien 7490 {GER+INT} (No fiber!)
 
 * __Fritz!Box 5491 Fiber__
   - 171.07.01 rev64362 {ALL}
   - 171.07.12 rev71193 {ALL} [MESH18 NL2]
+  - Alien 7490 {GER+INT} (No fiber!)
 
-### Fritz!Box Cable (64xx/65xx)
+* __Fritz!Box 5530 Fiber (UNTESTED)__
+  - 257.07.21 rev83233 {GER} [AXKFW2]
+  - 257.07.25 rev87041 {ALL} [PSQ19 Phase 2]
+
+### Fritz!Box Cable (64xx/65xx/66xx)
 
 * __Fritz!Box 6430 Cable (UNTESTED)__
   - 159.07.12 rev72224 {GER} [MESH18 NL2]
@@ -128,24 +143,40 @@ Currently supported devices and firmwares
   - 141.07.02 rev65390 {GER}
   - 141.07.12 rev71697 {GER} [MESH18 NL2]
   - 141.07.20 rev81091 {GER} [PSQ19]
+  - 141.07.25 rev87195 {GER} [PSQ19 Phase 2]
 
 * __Fritz!Box 6590 Cable__
   - 148.06.87 rev48411 {GER}
   - 148.07.02 rev65392 {GER}
   - 148.07.12 rev72225 {GER} [MESH18 NL2]
   - 148.07.20 rev81094 {GER} [PSQ19]
-* __Fritz!Box 6591 Cable (UNTESTED)__
+  - 148.07.25 rev87194 {GER} [PSQ19 Phase 2]
+* __Fritz!Box 6591 Cable__
   - 161.07.13 rev75441 {GER} [MESH18 NL3]
-  - 161.07.21 rev81684 {GER} [PSQ19]
+  - 161.07.22 rev84582 {GER} [PSQ19]
+  - 161.07.24 rev87307 {GER} [PSQ19 Phase 2] (Labor)
 * __Fritz!Box 6660 Cable__
   - 252.07.15 rev78740 {GER} [6660 FCS]
-  - 252.07.21 rev81270 {GER} [PSQ19]
+  - 252.07.24 rev85910 {GER} [PSQ19]
+  - 252.07.24 rev87309 {GER} [PSQ19 Phase 2] (Labor)
 
 ### Fritz!Box LTE (68xx)
 
 * __Fritz!Box 6810 LTE (UNTESTED)__
   - 108.06.34 rev36874 {GER}
   - 108.06.34 rev36875 {INT}
+
+* __Fritz!Box 6820 v1 LTE__
+  - 142.06.83 rev43648 {ALL}
+  - 142.07.01 rev63482 {GER}
+  - 142.07.13 rev73673 {GER} [MESH18 NL3]
+  - 142.07.24 rev86509 {GER} [PSQ19 Phase 2] (Labor)
+* __Fritz!Box 6820 v2 LTE__
+  - 142.07.13 rev73674 {INT} [MESH18 NL3]
+  - 142.07.24 rev86510 {INT} [PSQ19 Phase 2] (Labor)
+* __Fritz!Box 6820 v3 LTE (UNTESTED)__
+  - 254.07.24 rev86511 {GER} [PSQ19 Phase 2] (Labor)
+
 * __Fritz!Box 6840 LTE__
   - 105.06.30 rev31187 {GER}
   - 105.06.50 rev33168 {GER}
@@ -156,18 +187,18 @@ Currently supported devices and firmwares
 * __Fritz!Box 6842 LTE (UNTESTED)__
   - 123.06.34 rev36874 {GER}
 
-* __Fritz!Box 6820 v1 LTE__
-  - 142.06.83 rev43648 {ALL}
-  - 142.07.01 rev63482 {GER}
-  - 142.07.13 rev73673 {GER} [MESH18 NL3]
-* __Fritz!Box 6820 v2 LTE__
-  - 142.06.83 rev43648 {ALL}
-  - 142.07.13 rev73674 {INT} [MESH18 NL3]
+* __Fritz!Box 6850 LTE (UNTESTED)__
+  - 262.07.21 rev82687 {ALL} [PSQ19]
+  - 262.07.24 rev84969 {ALL} [PSQ19 Phase 2] (Labor)
+* __Fritz!Box 6850 5G (UNTESTED)__
+  - 258.07.19 rev82499 {ALL} [PSQ19] (Inhaus)
+
 * __Fritz!Box 6890 LTE__
   - 162.06.87 rev59283 {ALL}
   - 162.07.03 rev68723 {ALL}
   - 162.07.13 rev73668 {ALL} [MESH18 NL3]
-  - 162.07.19 rev00000 {ALL} (Labor)
+  - 162.07.21 rev82271 {ALL} [PSQ19]
+  - 162.07.24 rev84953 {ALL} [PSQ19 Phase 2] (Labor)
 
 ### Fritz!Box Fon WLAN (70xx)
 
@@ -187,7 +218,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7113__
   - 60.04.68 rev17260 {GER}
   - 90.04.86 rev27557 {INT} (Annex A)
-  - Alien 7170
+  - Alien 7170 {GER+INT}
 * __Fritz!Box Fon WLAN 7140__
   - 30.04.33 rev7321 {GER}
   - Alien 7170 {GER}
@@ -237,11 +268,12 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7312__
   - 117.06.30 rev30889 {GER}
   - 117.06.55 rev38630 {GER}
+  - Alien 7330 {GER}
+  - Alien 7330 SL {GER}
 * __Fritz!Box Fon WLAN 7320__
   - 100.06.34 rev38646 {GER}
-  - Alien 7330 06.30 {GER+INT}
-  - Alien 7330 06.55 {GER}
-  - Alien 7330 SL 06.30 {GER}
+  - Alien 7330 {GER}
+  - Alien 7330 SL {GER}
 * __Fritz!Box Fon WLAN 7330__
   - 107.06.30 rev30889 {GER}
   - 107.06.55 rev38630 {GER}
@@ -321,6 +353,7 @@ Currently supported devices and firmwares
   - 113.07.01 rev61484 {INT}
   - 113.07.12 rev70401 {INT} [MESH18 NL2]
   - 113.07.21 rev81779 {ALL} [PSQ19]
+  - 113.07.24 rev85337 {ALL} [PSQ19 Phase 2] (Labor)
 
 ### Fritz!Box Fon WLAN (75xx)
 
@@ -330,14 +363,19 @@ Currently supported devices and firmwares
 
 * __Fritz!Box Fon WLAN 7520__
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
-  - 175.07.20 rev80404 {ALL} [PSQ19]
+  - 175.07.21 rev82822 {ALL} [PSQ19]
+  - 175.07.25 rev86865 {ALL} [PSQ19 Phase 2]
   - Alien 7530 {GER}
 * __Fritz!Box Fon WLAN 7530__
   - 164.07.02 rev62311 {GER}
   - 164.07.14 rev73183 {GER} [MESH18 NL4]
   - 164.07.02 rev62314 {INT}
   - 164.07.13 rev75481 {INT} [MESH18 NL3]
-  - 164.07.20 rev80405 {ALL} [PSQ19]
+  - 164.07.21 rev82823 {ALL} [PSQ19]
+  - 164.07.25 rev86866 {ALL} [PSQ19 Phase 2]
+* __Fritz!Box Fon WLAN 7530 AX (UNTESTED)__
+  - 256.07.22 rev85878 {ALL} [PSQ19]
+  - 256.07.24 rev86287 {ALL} [PSQ19 Phase 2] (Labor)
 * __Fritz!Box Fon WLAN 7560__
   - 149.06.53 rev41227 {GER}
   - 149.06.83 rev43670 {GER}
@@ -347,22 +385,25 @@ Currently supported devices and firmwares
   - 149.06.83 rev44010 {INT}
   - 149.07.01 rev61988 {INT}
   - 149.07.12 rev71227 {INT} [MESH18 NL2]
+  - 149.07.24 rev86459 {ALL} [PSQ19 Phase 2] (Labor)
 * __Fritz!Box Fon WLAN 7580__
   - 153.06.54 rev41655 {GER}
   - 153.06.83 rev44004 {GER}
   - 153.06.92 rev47571 {GER}
   - 153.07.01 rev61517 {GER}
   - 153.07.12 rev70352 {GER} [MESH18 NL2]
-  - 153.07.19 rev00000 {GER} (Labor)
+  - 153.07.21 rev82454 {GER} [PSQ19]
+  - 153.07.25 rev87388 {GER} [PSQ19 Phase 2]
 * __Fritz!Box Fon WLAN 7581 (UNTESTED)__
-  - 152.07.13 rev76288 {ALL} [MESH18 NL2]
+  - 152.07.14 rev87288 {ALL} [MESH18 NL3]
 * __Fritz!Box Fon WLAN 7582 (UNTESTED)__
-  - 156.07.13 rev76289 {ALL} [MESH18 NL2]
+  - 156.07.14 rev87287 {ALL} [MESH18 NL3]
 * __Fritz!Box Fon WLAN 7583__
   - 167.07.12 rev70707 {GER} [MESH18 NL2]
   - 167.07.15 rev75887 {INT} [MESH18 NL2]
+  - 167.07.21 rev82361 {ALL} [PSQ19]
 * __Fritz!Box Fon WLAN 7583 VDSL (UNTESTED)__
-  - 260.07.19 rev79748 {ALL} [PSQ19] (Inhaus)
+  - 260.07.19 rev82246 {ALL} [PSQ19] (Inhaus)
 
 * __Fritz!Box Fon WLAN 7590__
   - 154.06.86 rev45533 {GER}
@@ -372,9 +413,10 @@ Currently supported devices and firmwares
   - 154.06.84 rev57902 {INT}
   - 154.07.01 rev61989 {INT}
   - 154.07.13 rev74390 {INT} [MESH18 NL3]
-  - 154.07.20 rev80072 {ALL} [PSQ19]
+  - 154.07.21 rev82154 {ALL} [PSQ19]
+  - 154.07.25 rev86535 {ALL} [PSQ19 Phase 2]
 * __Fritz!Box Fon WLAN 7590 AX (UNTESTED)__
-  - 259.07.19 rev80575 {ALL} [PSQ19] (Inhaus)
+  - 259.07.24 rev85188 {ALL} [PSQ19 Phase 2] (Inhaus)
 
 ### Fritz!Powerline
 
@@ -383,33 +425,33 @@ Currently supported devices and firmwares
   - 129.06.50 rev33971 {ALL}
   - 129.06.92 rev47358 {ALL}
   - 129.07.01 rev65030 {ALL}
-  - 129.07.12 rev70667 {ALL} [MESH18 NL2]
+  - 129.07.13 rev86607 {ALL} [MESH18 NL3]
 * __Fritz!Powerline 546E__
   - 118.06.32 rev31507 {GER}
   - 118.06.50 rev33971 {ALL}
   - 118.06.92 rev47429 {ALL}
   - 118.07.01 rev65031 {ALL}
-  - 118.07.12 rev70668 {ALL} [MESH18 NL2]
+  - 118.07.13 rev84269 {ALL} [MESH18 NL3]
 
 * __Fritz!Powerline 1240E (UNTESTED)__
   - 150.06.92 rev47432 {ALL}
   - 150.07.01 rev63180 {ALL}
-  - 150.07.12 rev70669 {ALL} [MESH18 NL2]
+  - 150.07.13 rev84270 {ALL} [MESH18 NL3]
 * __Fritz!Powerline 1260E__
   - 157.07.01 rev63181 {ALL}
   - 157.07.12 rev70670 {ALL} [MESH18 NL2]
-  - 157.07.20 rev80579 {ALL} [PSQ19]
+  - 157.07.21 rev84898 {ALL} [PSQ19]
 
 ### Fritz!Repeater
 
 * __Fritz!WLAN Repeater 300E (UNTESTED)__
   - 101.06.33 rev38569 {GER}
-  - 101.06.32 rev31613 {INT}
+  - 101.06.33 rev38569 {INT}
 * __Fritz!WLAN Repeater 450E (UNTESTED)__
   - 128.06.51 rev34135 {ALL}
   - 128.06.92 rev47360 {ALL}
   - 128.07.01 rev63068 {ALL}
-  - 128.07.12 rev70774 {ALL} [MESH18 NL2]
+  - 128.07.13 rev84190 {ALL} [MESH18 NL3]
 * __Fritz!WLAN Repeater DVB-C__
   - 133.06.32 rev31507 {ALL}
   - 133.06.50 rev33858 {ALL}
@@ -421,20 +463,24 @@ Currently supported devices and firmwares
   - 134.06.50 rev33858 {ALL}
   - 134.07.01 rev63070 {ALL}
   - 134.07.12 rev70775 {ALL} [MESH18 NL2]
-  - 134.07.20 rev81186 {ALL} [PSQ19]
+  - 134.07.21 rev83664 {ALL} [PSQ19]
+  - 134.07.24 rev85465 {ALL} [PSQ19 Phase 2] (Labor)
 
 * __Fritz!Repeater 1200__
   - 172.07.14 rev73941 {ALL} [MESH18 NL4]
-  - 172.07.20 rev80704 {ALL} [PSQ19]
+  - 172.07.21 rev83014 {ALL} [PSQ19]
+  - 172.07.24 rev86803 {ALL} [PSQ19 Phase 2] (Labor)
 * __Fritz!Repeater 2400 (UNTESTED)__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
-  - 169.07.20 rev80534 {ALL} [PSQ19]
+  - 169.07.21 rev83013 {ALL} [PSQ19]
+  - 169.07.24 rev85466 {ALL} [PSQ19 Phase 2] (Labor)
 * __Fritz!Repeater 3000__
   - 174.07.04 rev66458 {ALL}
   - 174.07.14 rev73940 {ALL} [MESH18 NL4]
-  - 174.07.20 rev81203 {ALL} [PSQ19]
+  - 174.07.21 rev83015 {ALL} [PSQ19]
+  - 174.07.24 rev85468 {ALL} [PSQ19 Phase 2] (Labor)
 * __Fritz!Repeater 6000 (UNTESTED)__
-  - 253.07.19 rev80524 {ALL} [PSQ19] (Inhaus)
+  - 253.07.19 rev85252 {ALL} [PSQ19] (Inhaus)
 
 ### T-Com derivatives
 

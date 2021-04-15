@@ -1,5 +1,33 @@
 menu "Web Interface"
 
+	config FREETZ_BACKUP_ENCRYPTION
+		bool "Settings backup encryption"
+		select FREETZ_PACKAGE_OPENSSL
+		default n
+		help
+			Encrypted backups - are encrypted. And contain additional
+			data to be be decoded and restored on another device.
+			For encryption OpenSSL is selected and used.
+
+	config FREETZ_BACKUP_DECODING
+		bool "Settings backup decoding"
+		select FREETZ_BACKUP_ENCRYPTION
+		select FREETZ_PACKAGE_DECRYPT_FRITZOS_CFG
+		default n
+		help
+			Decoding allows to restore a backups on another device with Freetz.
+			Use the AVM webif if AVM still allows you restoring on your device!
+			For encryption decoder aka decrypt_fritzos_cfg is selected and used.
+
+	config FREETZ_BACKUP_EXPORT
+		bool "Settings backup export"
+		default n
+		help
+			Includes an AVM settings export in a freetz backup.
+			This is usefull to restore to another device by AVM webif.
+			It uses tr069fwupdate which can not be removed anymore.
+
+
 	choice
 		prompt "Freetz language"
 		default FREETZ_LANG_DE if FREETZ_TYPE_LANG_DE || FREETZ_TYPE_LANG_A_CH
@@ -11,12 +39,23 @@ menu "Web Interface"
 		config FREETZ_LANG_EN
 			bool "en - english"
 
+		config FREETZ_LANG_XX
+			bool "xx - DEVELOPER"
+			depends on FREETZ_SHOW_DEVELOPER
+			help
+				The current language could be switched by webinterface.
+				WARNING:
+				 - Every string on the webinterface opens a subshell on
+				   every page load! This could be very slow.
+				 - For some strings a reboot is required.
+
 	endchoice # "Freetz language" #
 
 	config FREETZ_LANG_STRING
 		string
 		default "de"            if FREETZ_LANG_DE
 		default "en"            if FREETZ_LANG_EN
+		default "xx"            if FREETZ_LANG_XX
 
 
 	config FREETZ_SECURITY_LEVEL
@@ -39,7 +78,6 @@ menu "Web Interface"
 		config FREETZ_STYLE_COLORED
 			bool "green status-bars"
 			depends on !FREETZ_SKIN_cuma
-			depends on !FREETZ_SKIN_prisrak
 
 		config FREETZ_STYLE_GREY
 			bool "grey status-bars"
@@ -58,8 +96,7 @@ menu "Web Interface"
 		!FREETZ_SKIN_cuma && \
 		!FREETZ_SKIN_legacy && \
 		!FREETZ_SKIN_newfreetz && \
-		!FREETZ_SKIN_phoenix && \
-		!FREETZ_SKIN_prisrak
+		!FREETZ_SKIN_phoenix
 
 	config FREETZ_SKIN_cuma
 		bool "cuma"
@@ -88,13 +125,6 @@ menu "Web Interface"
 		help
 			Main color red, menu at top.
 			Size: about 15 kB (uncompressed)
-
-	config FREETZ_SKIN_prisrak
-		bool "prisrak"
-		default n
-		help
-			Main theme violet, menu at right.
-			Size: about 12 kB (uncompressed)
 
 	endmenu # "Freetz skins" #
 
@@ -153,18 +183,19 @@ menu "Web Interface"
 		config FREETZ_TAGGING_PIMPED
 			bool "Pimped"
 
-#		config FREETZ_TAGGING_PRISRAK
-#			bool "prisrak"
-
 	endchoice # "AVM tagging" #
+
+	config FREETZ_TAGGING_ENABLED
+		bool
+		depends on !FREETZ_TAGGING_NONE
+		default y
 
 	config FREETZ_TAGGING_STRING
 		string
-		default "none"          if FREETZ_TAGGING_NONE
+		depends on !FREETZ_TAGGING_NONE
 		default "cuma"          if FREETZ_TAGGING_CUMA
 		default "freetz-ng"     if FREETZ_TAGGING_NG
 		default "pimped"        if FREETZ_TAGGING_PIMPED
-		default "prisrak"       if FREETZ_TAGGING_PRISRAK
 
 	config FREETZ_WEBIF_LINK
 		bool "AVM menu link"
@@ -177,6 +208,17 @@ endmenu # "Webif customization" #
 
 menu "Additional informations"
 	visible if FREETZ_SHOW_ADVANCED
+
+	config FREETZ_ADD_JUIS_CHECK
+		bool "Add juis_check"
+		depends on FREETZ_AVM_HAS_JUIS_SUPPORT
+		select FREETZ_BUSYBOX_BASE64
+		select FREETZ_BUSYBOX_HEXDUMP
+		select FREETZ_PACKAGE_JUIS_CHECK
+		default y if FREETZ_AVM_VERSION_07_0X_MIN
+		default n
+		help
+			Adds update check to webif, category 'system'.
 
 	# TODO: invert logic
 	config FREETZ_REMOVE_BOX_INFO
@@ -318,7 +360,7 @@ menu "Additional informations"
 	endif # FREETZ_IMAGE_NAME_CUSTOM
 
 	config FREETZ_CREATE_SEPARATE_OPTIONS_CFG
-		bool "Create options.cfg as a separate file" if FREETZ_SHOW_ADVANCED
+		bool "Create options.cfg as a separate file"
 		default y
 		help
 			When unchecked causes options.cfg to be created as a symbolic link to .config
@@ -328,7 +370,7 @@ menu "Additional informations"
 			size by about 160 bytes but reduces memory footprint at run-time.
 
 	choice
-		prompt "Include .config file in image" if FREETZ_SHOW_ADVANCED
+		prompt "Include .config file in image"
 		default FREETZ_DOT_CONFIG_STRIPPED
 		help
 			By default, a stripped version of the FREETZ configuration

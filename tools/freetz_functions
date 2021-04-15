@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# removes dependencies for (deleted) supervisor service "$1.service"
+supervisor_remove_dependency() {
+	local service="${1%.service}.service"
+	for file in $(grep -lP "(=| )${service}( |$)" ${FILESYSTEM_MOD_DIR}/lib/systemd/system/* 2>/dev/null); do
+		modsed -r "s/([= ])${service}( |$)/\1/g" "$file"
+	done
+}
+
+# deletes file of supervisor service "$1.service" & dependencies
+supervisor_delete_service() {
+	local service="${1%.service}.service"
+	rm_files "${FILESYSTEM_MOD_DIR}/lib/systemd/system/${service}"
+	supervisor_remove_dependency "${service}"
+}
+
+
 #linkbox_remove <menu-name>
 #removes links within a box on the left
 linkbox_remove() {
@@ -341,16 +357,29 @@ modunsqfs()
 	fi
 }
 
+moduncpio()
+{
+	mkdir -p "$1"
+	cat "$2" | gunzip | cpio -mid --quiet -D "$1" 2>&1
+	
+	if [ $? -gt 0 ]; then
+		error 1 "moduncpio: Error in $2"
+	fi
+}
+
 modunpack_autodetect_fs()
 {
 	if $BLKID -O 256 "$2" 2>/dev/null | grep -q 'TYPE="ext2"'; then
 		modunext2 "$@"
 	elif $BLKID -O 0 "$2" 2>/dev/null | grep -q 'TYPE="squashfs"'; then
 		modunsqfs "$@"
+	elif cat "$2" | gunzip 2>/dev/null | file - | grep -q 'cpio archive'; then
+		moduncpio "$@"
 	else
 		error 1 "modunpack_autodetect_fs: failed to detect file system type of '$2'"
 	fi
 }
+
 
 modlangsubst()
 {
@@ -358,7 +387,7 @@ modlangsubst()
 	#   Substitutes all $(lang de:"Deutscher Text" en:"English text" ...) occurrences
 	#   in <file> with <text> of the corresponding <lang>:"<text>" section.
 
-	s='[\t\r\n ]'
+	s='[\t\r\n\\ ]'
 	val='\(\([^"\\]*\(\\.\)*\)*\)'
 	entry="\w\+:\"${val}\""
 
@@ -387,6 +416,9 @@ modlangconf()
 modlang()
 {
 	# modlang <conffile> <dir>
+
+	[ "$FREETZ_LANG_STRING" == "xx" ] && return
+
 	case $1 in
 		/*) conffile=$1 ;;
 		*)  conffile="$PWD/$1" ;;
@@ -414,7 +446,7 @@ modlang()
 
 	(
 		if ! cd "${2}"; then
-		    	warn "modlang: $2 does not exist"
+			warn "modlang: $2 does not exist"
 			return
 		fi
 		local dot_exclude="$(echo $FREETZ_BASE_DIR/$1 | sed 's/language$/exclude/')"
@@ -433,6 +465,7 @@ modlang()
 		done
 	)
 }
+
 
 # list of static packages, sorted by start level
 static_packages()
@@ -628,7 +661,7 @@ function symlinks-abs2rel() {
 			continue
 		fi
 
-		TARGET_CANONICAL=$(readlink --canonicalize-missing --no-newline "$LINK")
+		TARGET_CANONICAL="$(realpath ${TARGET_FS_ROOT}${TARGET} | sed "s,^${TARGET_FS_ROOT},,")"
 		if [ $? -ne 0 ]; then
 			warn0 "${FUNCNAME}: failed to determine canonical name of '${LINK#${TARGET_FS_ROOT}}' -> '$TARGET'"
 			continue

@@ -1,11 +1,11 @@
 [ "$FREETZ_REMOVE_AHA" == "y" ] || return 0
 echo1 "removing aha files"
+
 for files in \
   usr/bin/aha \
   usr/bin/ahamailer \
   lib/libaha.so* \
   usr/share/aha/ \
-  lib/systemd/system/aha.service \
   etc/init.d/S78-aha \
   usr/www/all/lua/ha_func_lib.lua \
   usr/www/all/net/home_auto_*.lua \
@@ -18,6 +18,7 @@ for files in \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$files"
 done
+supervisor_delete_service "aha"
 
 # 3272 doesn't have tr_smart_home
 if ! isFreetzType 3272; then
@@ -58,9 +59,9 @@ if [ "$FREETZ_AVM_VERSION_07_1X_MAX" == "y" ]; then
 	modsed -r 's,(function show_smarthome_broadcast.*),\1\nreturn false\nend,' $sedfile
 fi
 
-
 sedfile="${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
 echo1 "patching ${sedfile##*/}"
 modsed "s/CONFIG_HOME_AUTO=.*$/CONFIG_HOME_AUTO=\"n\"/g" $sedfile
 modsed "s/CONFIG_HOME_AUTO_NET=.*$/CONFIG_HOME_AUTO_NET=\"n\"/g" $sedfile
 modsed "s/CONFIG_DECT_HOME=.*$/CONFIG_DECT_HOME=\"n\"/g" $sedfile
+

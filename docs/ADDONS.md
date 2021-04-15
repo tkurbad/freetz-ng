@@ -1,7 +1,7 @@
 # Addons der "Digitalen Elite" werden hier nicht supported!
 
 Diese Addons wurden augenscheinlich von Personen programmiert die wenig bis gar keine Ahnung von Freetz haben.<br>
-Deshalb sind die dadurch verursachten Fehler vielfältig. Es ist sogar mölglich dass die Freetz-Konfiguration<br>
+Deshalb sind die dadurch verursachten Fehler vielfältig. Es ist sogar möglich dass die Freetz-Konfiguration<br>
 so nachhaltig beschädigt wird, dass selbst mit einem später geflashten Image ohne Addons die Fritzbox nicht<br>
 mehr richtig funktioniert. Ein Blick in die Foren zeigt:
  - Das Freetz-Webinterface funktioniert überhaupt nicht mehr
@@ -12,7 +12,11 @@ mehr richtig funktioniert. Ein Blick in die Foren zeigt:
  - Es werden fehlerhafte Binaries gestartet die Crashes verursachen
  - Manche Einstellungen werden doppelt gespeichert
  - Andere Einstellungen dagegen werden gar nicht mehr gespeichert
+ - Es ist nicht mehr möglich ein Einstellungsbackup wiederherzustellen
  - Benutzer werden gelöscht
+ - Planloses setzen von Systemvariablen verursachen Segfaults von AVM Binaries
+ - Überflüssiges ständiges Speichern ins Flash lässt den Speicher schneller altern
+ - Die rc.custom wird verändert und durch Flashen eines sauberen Images nicht bereinigt
  - ...
 
 Falls aus versehen ein Image mit Addon geflasht wurds, empfiehlt sich ein Recovery um alle Einstellungen zu<br>

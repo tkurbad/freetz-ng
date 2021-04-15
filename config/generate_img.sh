@@ -86,6 +86,7 @@ fwlist() {
 	  | sed 's/ || FREETZ_TYPE_[0-9][0-9][0-9][0-9]_[0-9][0-9][0-9][0-9]_[^ ][^ ] *//g' \
 	  | sed 's/ *|| FREETZ_TYPE_[0-9][0-9][0-9][0-9]_[0-9][0-9][0-9][0-9] *//g' \
 	  | sed 's/ || FREETZ_TYPE_[0-9][0-9][0-9][0-9]_V[0-9]_V[0-9] *//g' \
+	  | sed 's/ || FREETZ_TYPE_[0-9][0-9][0-9][0-9]_V[0-9]_[0-9][0-9][0-9][0-9]_V[0-9] *//g' \
 	  | sed 's/ && ! FREETZ_TYPE_[^ )]*//g' \
 	  | sed 's/(\(FREETZ_TYPE_[^ ]*\))/\1/g' \
 	  | sed 's/(\(FREETZ_TYPE_[^ ]*\))/\1/g' \
@@ -162,15 +163,45 @@ determine_() {
 	[ ! -d "$unpacked" ] && echo "Directory missing: $dirname" && return 1
 
 
-#	#NAME
-#	if [ -e "$unpacked/etc/init.d/rc.init" ]; then
-#		X="$(grep 'OEM=all' $unpacked/etc/init.d/rc.init | grep ' _PRODUKT_NAME=' | sed 's/.* _PRODUKT_NAME=//;s/#/ /g' | tail -n1)"
-#	else
-#		X="$(sed -rn 's/^export CONFIG_PRODUKT_NAME=\"?([^\"]*)\"?$/\1/p' $unpacked/etc/init.d/rc.conf | head -n1)"
-#	fi
-#	in_s FREETZ_AVM_PROP_NAME "$X"
-#	[ -z "$X" ] && echo "ERROR-01" 1>&2 && X=ERROR
-#	[ $DOSHOW -ge 2 ] && outp "name" "$X"
+	#NAME
+	if [ -e "$unpacked/etc/init.d/rc.init" ]; then
+		X="$(grep ' _PRODUKT_NAME=' $unpacked/etc/init.d/rc.init | sed -rn 's/^HW=[^a][^ ]* OEM=all _PRODUKT_NAME=//p' | sed 's/\#/ /g')"
+	else
+		X="$(sed -rn 's/^export CONFIG_PRODUKT_NAME=\"?([^\"]*)\"?$/\1/p' $unpacked/etc/init.d/rc.conf | head -n1)"
+	fi
+	in_s FREETZ_AVM_PROP_NAME "${X// /$(printf '\342\200\212')}"
+	[ -z "$X" ] && echo "ERROR-01" 1>&2 && X=ERROR
+	[ $DOSHOW -ge 2 ] && outp "name" "$X"
+
+	#MAJOR
+	if [ -e "$unpacked/etc/init.d/rc.init" ]; then
+		X="$(grep '^HW=[^a]' $unpacked/etc/init.d/rc.init | sed -rn 's/.* VERSION_MAJOR=//p')"
+	else
+		X="$(sed -rn 's/^export CONFIG_VERSION_MAJOR=\"?([^\"]*)\"?$/\1/p' $unpacked/etc/init.d/rc.conf | tail -n1)"
+	fi
+	in_s FREETZ_AVM_PROP_MAJOR "$X"
+	[ -z "$X" ] && echo "ERROR-22" 1>&2 && X=ERROR
+	[ $DOSHOW -ge 2 ] && outp " major" "$X"
+	Y="$X"
+	#HWREV
+	if [ -e "$unpacked/etc/init.d/rc.init" ]; then
+		X="$(grep '^HW=[^a]' $unpacked/etc/init.d/rc.init | tail -n1 | sed -rn 's/^HW=([^ ]*) .*/\1/p')"
+	else
+		X="$(sed -rn 's/^export CONFIG_PRODUKT=.*_HW([^\"x]*)x?\"?$/\1/p' $unpacked/etc/init.d/rc.conf | tail -n1)"
+	fi
+	if [ -z "$X" ]; then
+		if   [ "${Y##0}" -le  30 ]; then X="$(( ${Y##0} + 65 ))"
+		elif [ "${Y##0}" -le  54 ]; then X="$(( ${Y##0} + 68 ))"
+		elif [ "${Y##0}" -le  60 ]; then X="$(( ${Y##0} + 69 ))"
+		elif [ "${Y##0}" -le  67 ]; then X="$(( ${Y##0} + 70 ))"
+		elif [ "${Y##0}" -le  75 ]; then X="$(( ${Y##0} + 71 ))"
+		elif [ "${Y##0}" -le 150 ]; then X="$(( ${Y##0} + 72 ))"
+		else                                 X="${Y##0}"
+		fi
+	fi
+	in_s FREETZ_AVM_PROP_HWREV "$X"
+	[ -z "$X" ] && echo "ERROR-23" 1>&2 && X=ERROR
+	[ $DOSHOW -ge 2 ] && outp " hwrev" "$X"
 
 
 	#SIGNED
@@ -276,11 +307,12 @@ determine_() {
 
 
 	#TTY
-	X="$(sed -rn 's/^([^#]*)::.*/\1/p' "$unpacked/etc/inittab" | sort -u)"
+	X="$(sed -rn 's/^([^#]+)::.*/\1/p' "$unpacked/etc/inittab" | sort -u)"
 	case "$X" in
+		/dev/ttyAMA0)	X="$X"		Y="ARM" ;;
 		/dev/ttyS1)	X="$X"		Y="AR9" ;;
-		/dev/ttyLTQ0)	X="$X"		Y="GRX5" ;;
-		/dev/ttyMSM0)	X="$X"		Y="IPQ40xx" ;;
+		/dev/ttyLTQ0)	X="$X"		Y="MIPS" ;; # GRX5
+		/dev/ttyMSM0)	X="$X"		Y="ARM" ;; # IPQ40xx
 		
 		/dev/ttyS0)	X="/dev/ttyS0"; Y="default" ;;
 		/dev/console)	X="/dev/ttyS0"; Y="console" ;;
@@ -295,21 +327,23 @@ determine_() {
 	#HW
 	X="$(sed -rn "s/^export CONFIG_INSTALL_TYPE=\"?([^\"]*)\"?.*$/\1/p" "$unpacked/etc/init.d/rc.conf" | tail -n1)"
 	[ -z "$X" ] && X="$(sed -rn 's/^HW=.* INSTALL_TYPE=([^ ]*) ?.*$/\1/p' "$unpacked/etc/init.d/rc.init" | tail -n1)"
+	[ $DOSHOW -ge 1 ] && outp "install" "$X"
 	CPU=""
 	case "$X" in
-		*_ar10_*)			CPU="MIPS_34Kc"		&& X="AR10" ;;
+		*_ar10_*)			CPU="MIPS_34Kc"			&& X="AR10" ;;
 		*_grx5_*)			CPU="MIPS_interAptiv"		&& X="GRX5" ;;
 		*_2GB_*_kabel_*)		CPU="X86_ATOM"			&& X="PUMA6_X86" ;;
 		*_4GB_*_kabel_*)		CPU="X86_ATOM"			&& X="PUMA7_X86" ;;
 		*_cortexa9_*)			CPU="ARM_cortex_a9"		&& X="IPQ40xx" ;;
-		brcm_*)			CPU="ARM_cortex_a9"		&& X="BCM63138" ;;
-		ur8_*)				CPU="MIPS_4KEc"		&& X="UR8" ;;
+		brcm_*)				CPU="ARM_cortex_a9"		&& X="BCM63138" ;;
+		*_qcaarmv8_*)			CPU="ARM_cortex_a53"		&& X="QCAARMv8" ;;
+		ur8_*)				CPU="MIPS_4KEc"			&& X="UR8" ;;
 		ar7_*)				CPU="MIPS_4KEc"
 				[ -d "$unpacked/lib/modules/2.6.13.1-ohio" ]	&& X="AR7_OHIO"
 				[ -d "$unpacked/lib/modules/2.6.13.1-ar7" ]	&& X="AR7_SANGAM"
 				;;
 		iks_16MB_*)			CPU="MIPS_24KEc"		&& X="IKS_VX180" ;;
-		iks_128MB_*)			CPU="MIPS_34Kc"		&& X="IKS_VX185" ;;
+		iks_128MB_*)			CPU="MIPS_34Kc"			&& X="IKS_VX185" ;;
 		mips24_*)			CPU="MIPS_24Kc"
 #										&& X="???"
 #outp ">mips24" "$X"
@@ -327,7 +361,7 @@ determine_() {
 		*) echo "ERROR-09" 1>&2 &&	CPU="ERROR $X"			&& X="ERROR: $X" ;;
 	esac
 #	[ "$X" != "%" ] && in_b "FREETZ_AVM_HAS_..."
-	[ $DOSHOW -ge 1 ] && outp "type" "$X"
+	[ $DOSHOW -ge 1 ] && outp " type" "$X"
 	[ $DOSHOW -ge 1 ] && outp " cpu" "$CPU"
 
 
@@ -519,6 +553,22 @@ determine_() {
 	[ $DOSHOW -ge 2 ] && outp "tr069fwu" "$X"
 
 
+	#LEDPAGE
+	X="%"
+	[ -e $unpacked/usr/www/avm/system/led_display.lua ] && X="available" && in_b "FREETZ_AVM_HAS_LEDPAGE"
+	[ $DOSHOW -ge 2 ] && outp "ledpage" "$X"
+
+	#DDNSD
+	X="%"
+	[ -e "$unpacked/sbin/ddnsd" ] && X="available" && in_b "FREETZ_AVM_HAS_DDNSD"
+	[ $DOSHOW -ge 2 ] && outp "ddnsd" "$X"
+
+	#KMOD
+	X="%"
+	[ -e "$unpacked/usr/bin/kmod" ] && X="available" && in_b "FREETZ_AVM_HAS_KMOD"
+	[ $DOSHOW -ge 2 ] && outp "kmod" "$X"
+
+
 	#MINID
 	X="%"
 	[ -e "$unpacked/bin/minid" -o -L "$unpacked/bin/minid" ] && X="available" && in_b "FREETZ_AVM_HAS_MINID"
@@ -617,6 +667,11 @@ determine_() {
 	[ -e "$unpacked/bin/avmnexusd" ] && X="available" && in_b "FREETZ_AVM_HAS_NEXUS"
 	[ $DOSHOW -ge 2 ] && outp "nexus" "$X"
 
+	#UNTRUSTEDD
+	X="%"
+	[ -e "$unpacked/usr/bin/untrustedd" ] && X="available" && in_b "FREETZ_AVM_HAS_UNTRUSTEDD"
+	[ $DOSHOW -ge 2 ] && outp "untrustedd" "$X"
+
 	#PLCD
 	X="%"
 	[ -e "$unpacked/usr/sbin/plcd" -o -e "$unpacked/sbin/plcd" ] && X="available" && in_b "FREETZ_AVM_HAS_PLCD"
@@ -712,6 +767,15 @@ determine_() {
 	#[ $DOSHOW -ge 1 ] && outp "cycle" "$X"
 
 
+	#CPIO
+	if grep -q 'no squashfs' "$unpacked.nfo"; then
+		X="$(sed -rn 's/^(INNER-).*/\1/p' "$unpacked.nfo")"
+		X="$(sed -rn "s/^${X}Filesystem on .* is ([^ ]* [^ ]*).*/\1/p" "$unpacked.nfo")"
+		[ -z "$X" ] && echo "ERROR-21" 1>&2 && X=ERROR
+		[ "$X" != "${X% archived}" ] && X="${X% *}" && in_b "FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_${X^^}"
+		[ $DOSHOW -ge 1 ] && outp "Archive" "${X^^}"
+	else
+
 	#SQVER
 	X="$(sed -rn 's/^(INNER-).*/\1/p' "$unpacked.nfo")"
 	X="$(sed -rn "s/^${X}Filesystem on .* is .* compressed \(([:0-9]*)\)$/\1/p" "$unpacked.nfo")"
@@ -725,6 +789,8 @@ determine_() {
 	[ -z "$X" ] && echo "ERROR-13" 1>&2 && X=ERROR
 	in_b "FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_${X^^}"
 	[ $DOSHOW -ge 1 ] && outp "SquashC" "${X/:/.}"
+
+	fi
 
 
 	#NMI

@@ -1,11 +1,12 @@
-SFK_HOST_VERSION:=1.9.5
+SFK_HOST_VERSION:=1.9.7
 SFK_HOST_SOURCE:=sfk-$(SFK_HOST_VERSION).tar.gz
-SFK_HOST_SOURCE_MD5:=08ac5fcfc6ba0965bb9390d2a048e324
+SFK_HOST_SOURCE_MD5:=99225c1ab3fe87af6c275724ab635ae0
 SFK_HOST_SITE:=@SF/swissfileknife
 
 SFK_HOST_MAKE_DIR:=$(TOOLS_DIR)/make/sfk-host
 SFK_HOST_DIR:=$(TOOLS_SOURCE_DIR)/sfk-$(SFK_HOST_VERSION)
 SFK_HOST_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)
+
 
 sfk-host-source: $(DL_DIR)/$(SFK_HOST_SOURCE)
 $(DL_DIR)/$(SFK_HOST_SOURCE): | $(DL_DIR)
@@ -19,6 +20,10 @@ $(SFK_HOST_DIR)/.unpacked: $(DL_DIR)/$(SFK_HOST_SOURCE) | $(TOOLS_SOURCE_DIR) $(
 
 $(SFK_HOST_DIR)/.configured: $(SFK_HOST_DIR)/.unpacked
 	(cd $(SFK_HOST_DIR); $(RM) config.cache; \
+		CC="$(TOOLS_CC)" \
+		CXX="$(TOOLS_CXX)" \
+		CFLAGS="$(TOOLS_CFLAGS)" \
+		LDFLAGS="$(TOOLS_LDFLAGS)" \
 		./configure \
 		--prefix=$(SFK_HOST_DESTDIR) \
 		$(DISABLE_NLS) \
@@ -30,9 +35,9 @@ $(SFK_HOST_DIR)/sfk: $(SFK_HOST_DIR)/.configured
 
 $(TOOLS_DIR)/sfk: $(SFK_HOST_DIR)/sfk
 	$(INSTALL_FILE)
-	strip $@
 
-sfk-host: $(TOOLS_DIR)/sfk
+sfk-host-precompiled: $(TOOLS_DIR)/sfk
+
 
 sfk-host-clean:
 	-$(MAKE) -C $(SFK_HOST_DIR) clean
@@ -42,3 +47,4 @@ sfk-host-dirclean:
 
 sfk-host-distclean: sfk-host-dirclean
 	$(RM) $(TOOLS_DIR)/sfk
+

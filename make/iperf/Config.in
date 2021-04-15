@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_IPERF
-	bool "iperf 3.7 (binary only)"
+	bool "iperf 3.9 (binary only)"
 	default n
 	help
 		iPerf3 is a tool for active measurements of the maximum achievable
@@ -11,7 +11,6 @@ config FREETZ_PACKAGE_IPERF
 config FREETZ_PACKAGE_IPERF_WITH_OPENSSL
 	bool "build with SSL support"
 	depends on FREETZ_PACKAGE_IPERF
-	select FREETZ_OPENSSL_VERSION_PROMPT
 	select FREETZ_LIB_libcrypto if !FREETZ_PACKAGE_IPERF_STATIC
 	default n
 	help
@@ -20,3 +19,4 @@ config FREETZ_PACKAGE_IPERF_WITH_OPENSSL
 config FREETZ_PACKAGE_IPERF_STATIC
 	bool "Link statically"
 	depends on FREETZ_PACKAGE_IPERF_WITH_OPENSSL
+

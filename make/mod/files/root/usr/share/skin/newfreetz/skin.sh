@@ -18,6 +18,12 @@ EOF
 	let _cgi_border_width=_cgi_content_width-20
 	let _cgi_total_width=_cgi_content_width+20
 	[ -z "$id" ] || let _cgi_total_width+=180
+	let _cgi_title_box_width=_cgi_total_width+11
+	let _cgi_title_box_mid_width=_cgi_total_width-49
+	let _cgi_title_box_version_width=_cgi_total_width-255
+
+	# If there is no menu, we can use the space between menu and content.
+	[ -z "$id" ] && let _cgi_content_width+=20 && let _cgi_border_width+=20
 
 	export _cgi_content_width
 }
@@ -26,17 +32,17 @@ skin_body_begin() {
 	local title=$1 id=$2
 	local help=""
 	if [ -n "$_CGI_HELP" ]; then
-		help="&nbsp;<span class='help'>(<a href='$(html "$_CGI_HELP")' target='_blank'>Hilfe</a>)</span>"
+		help="&nbsp;<span class='help'>(<a href='$(html "$_CGI_HELP")' target='_blank'>$(lang de:"Hilfe" en:"Help")</a>)</span>"
 	fi
 	cat << EOF
-	<div id="wrapper">
-	<div id="title-box">
+	<div id="wrapper" style="width:${_cgi_total_width}px">
+	<div id="title-box" style="width:${_cgi_title_box_width}px">
 		<div id="title-box-left"></div>
-		<div id="title-box-mid"></div>
+		<div id="title-box-mid" style="width:${_cgi_title_box_mid_width}px"></div>
 		<div id="title-box-right"></div>
 		<div id="title-box-logo"><a href="https://freetz-ng.github.io" target="_blank" class="logo"><img src="/images/newfreetz/freetz_logo.gif"></a></div>
 		<div id="title-box-fun">the fun has just begun ...</div>
-		<div id="title-box-version">$(html < /etc/.freetz-version)</div>
+		<div id="title-box-version" style="width:${_cgi_title_box_version_width}px">$(html < /etc/.freetz-version)</div>
 	</div>
 	<div id="contentwrapper" style="width:${_cgi_total_width}px">
 EOF
@@ -90,9 +96,9 @@ skin_body_end() {
 	</div>
 
 	<div id="footer">
-		<span class="datetime" title="Systemzeit des Routers">$(date +'%d.%m.%Y %H:%M')</span>&nbsp;&ndash;
+		<span class="datetime" title="$(lang de:"Systemzeit des Routers" en:"Router's system time")">$(date +"$(lang de:"%d.%m.%Y" en:"%m/%d/%Y") %H:%M")</span>&nbsp;&ndash;
 		<span class="uptime" title="Uptime">$(uptime | sed -r 's/.*(up.*), *load.*/\1/')</span>&nbsp;&ndash;
-		<span class="opt">optimiert f&uuml;r Mozilla Firefox</span>
+		<span class="opt">$(lang de:"optimiert f&uuml;r" en:"optimized for") Mozilla Firefox</span>
 	</div>
 </div>
 </div>

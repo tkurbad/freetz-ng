@@ -1,0 +1,89 @@
+#!/bin/bash
+
+VERSION="rLOCAL"
+rm -f out.{raw,kernel,target}
+make tools/config/conf &>/dev/null
+
+evalconfig() {
+	echo -n .
+	(
+		for i in $* FREETZ_SERIES_ALL_CHOICE FREETZ_USER_LEVEL_DEVELOPER FREETZ_BUILD_TOOLCHAIN_ADDITIONAL FREETZ_BUILD_TOOLCHAIN FREETZ_TOOLCHAIN_32BIT; do echo "$i=y"; done > .config
+		tools/config/conf --olddefconfig config/Config.in >/dev/null
+		for i in $*; do grep "^$i=y" .config -q || return; done
+		echo -e "\n# $*"
+		. ./.config
+		[ "${FREETZ_KERNEL_VERSION:0:1}" != "2" ] && kernel="_kernel-$FREETZ_KERNEL_VERSION_MAJOR"
+		echo ${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}_gcc-${FREETZ_KERNEL_GCC_VERSION}_uClibc-${FREETZ_TARGET_UCLIBC_VERSION}${FREETZ_AVM_UCLIBC_NPTL_ENABLED/y/-nptl}$kernel
+	) >> out.raw
+}
+
+#r
+#sed -nr 's/^#? *dltc "(.*)".*/\1/p' $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
+sed -nr 's/^ *dltc "(.*)".*/\1/p' $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
+#FRITZBOX="$(cat config/ui/firmware.in | grep -A9999 '^### Hardware type' | grep -B9999 '^endchoice # "Hardware type"' | sed -rn 's/\t*config (FREETZ_TYPE_)/\1/p')"
+#FIRMWARE="$(sed -rn 's/^\tconfig (FREETZ_TYPE_FIRMWARE_[X_0-9]{5}).*/\1/p' config/ui/firmware.in)"
+#MUECLIBC="$(sed -rn 's/.* FREETZ_TARGET_UCLIBC_([0-1]_[0-9]_[0-9][0-9]*).*/FREETZ_TARGET_UCLIBC_\1/p' config/ui/toolchain.in | sort -u)"
+#for box in $FRITZBOX; do
+#for fos in $FIRMWARE; do
+#for mue in $MUECLIBC; do
+#evalconfig "$box $fos $mue"
+#done
+#done
+#done
+echo
+
+#w
+grep -v '^#' out.raw | sort -u | grep uClibc | while read l; do grep "^$l$" -m1 -B2 out.raw; done | while read line; do
+[ "${line:0:1}" == "#" -o "${line:0:1}" == "" ] && echo $line | tee -a out.kernel >> out.target && continue
+echo $line | grep 'uClibc-0.9.28' -q && line="$(echo $line | sed 's/gcc-3\..\../gcc-4.6.4/')"
+
+FK="dl/${line%_uCli*}-freetz-${VERSION}-shared-glibc.tar.lzma"
+FT="dl/$line-freetz-${VERSION}-shared-glibc.tar.lzma"
+echo $FK >> out.kernel
+echo $FT >> out.target
+SK="$(md5sum $FK 2>/dev/null || echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')"
+ST="$(md5sum $FT 2>/dev/null || echo 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')"
+echo -n "default \"${SK%% *}\"    " >> out.kernel
+echo -n "default \"${ST%% *}\"    " >> out.target
+
+case "${line%%_*}" in
+	mipsel)  ARCH="MIPS" ;;
+	mips)    ARCH="MIPS" ;;
+	arm)     ARCH="ARM " ;;
+	i686)    ARCH="X86 " ;;
+esac
+echo -n "if FREETZ_TARGET_ARCH_$ARCH" | tee -a out.kernel >> out.target
+
+case "${line%%_*}" in
+	mipsel)  ENDI="&& FREETZ_TARGET_ARCH_LE" ;;
+	mips)    ENDI="&& FREETZ_TARGET_ARCH_BE" ;;
+	*)       ENDI="                        " ;;
+esac
+echo -n " $ENDI" | tee -a out.kernel >> out.target
+
+case "${line#*gcc-}" in
+	3*|4*)  GCC="$(echo $line | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
+	5*|8*)  GCC="$(echo $line | sed -nr 's/.*gcc-(.).*/\1  /p')" ;;
+esac
+echo -n " && FREETZ_KERNEL_GCC_$GCC" >> out.kernel
+echo -n " && FREETZ_TARGET_GCC_$GCC" >> out.target
+
+UCLI="$(echo $line | sed -nr 's/.*uClibc-(.).(.).(..).*/\1_\2_\3/p')"
+echo -n " && FREETZ_TARGET_UCLIBC_$UCLI" >> out.target
+
+KERN="$(echo $line | sed -n 's/.*kernel-//p')"
+[ -z "$KERN" ] && KERN=2
+echo -n " && FREETZ_KERNEL_VERSION_${KERN//./_}" >> out.target
+
+echo | tee -a out.kernel >> out.target
+done
+
+#a
+cat out.kernel | grep -v '^#' | sort -u
+cat out.target | grep -v '^#' | grep -iv gcc.3 | sort -u
+rm -f out.{raw,kernel,target}
+#grep -v '^#' out.raw | sort -u 
+#grep -v '^#' out.raw | sort -u | grep uClibc | while read l; do grep "^$l$" -m1 -B1 out.raw | head -n1; done | sort
+#grep -v '^#' out.raw | sort -u | grep uClibc | while read l; do grep "^$l$" -m1 -B1 out.raw           ; done
+#grep -v '^#' out.raw | sort -u | grep uClibc | while read l; do grep "^$l$" -m1 -B2 out.raw           ; done
+

@@ -1,10 +1,12 @@
-PATCHELF_HOST_VERSION:=0.9
+PATCHELF_HOST_VERSION:=0.12
+PATCHELF_HOST_VERSION_LONG:=0.12.20200827.8d3a16e
 PATCHELF_HOST_SOURCE:=patchelf-$(PATCHELF_HOST_VERSION).tar.bz2
-PATCHELF_HOST_SOURCE_MD5:=d02687629c7e1698a486a93a0d607947
-PATCHELF_HOST_SITE:=https://nixos.org/releases/patchelf/patchelf-$(PATCHELF_HOST_VERSION)
+PATCHELF_HOST_SOURCE_MD5:=4fed3f12040da79f59ecf337d5e99fbc
+PATCHELF_HOST_SITE:=https://github.com/NixOS/patchelf/releases/download/$(PATCHELF_HOST_VERSION),https://releases.nixos.org/patchelf/patchelf-$(PATCHELF_HOST_VERSION)
 
 PATCHELF_HOST_MAKE_DIR:=$(TOOLS_DIR)/make/patchelf-host
-PATCHELF_HOST_DIR:=$(TOOLS_SOURCE_DIR)/patchelf-$(PATCHELF_HOST_VERSION)
+PATCHELF_HOST_DIR:=$(TOOLS_SOURCE_DIR)/patchelf-$(PATCHELF_HOST_VERSION_LONG)
+
 
 patchelf-host-source: $(DL_DIR)/$(PATCHELF_HOST_SOURCE)
 $(DL_DIR)/$(PATCHELF_HOST_SOURCE): | $(DL_DIR)
@@ -18,10 +20,13 @@ $(PATCHELF_HOST_DIR)/.unpacked: $(DL_DIR)/$(PATCHELF_HOST_SOURCE) | $(TOOLS_SOUR
 
 $(PATCHELF_HOST_DIR)/.configured: $(PATCHELF_HOST_DIR)/.unpacked
 	(cd $(PATCHELF_HOST_DIR); $(RM) config.cache; \
-		CFLAGS="-Wall -O2" \
 		CC="$(TOOLS_CC)" \
+		CXX="$(TOOLS_CXX)" \
+		CFLAGS="$(TOOLS_CFLAGS)" \
+		LDFLAGS="$(TOOLS_LDFLAGS)" \
 		./configure \
 		--prefix=/usr \
+		$(QUIET) \
 	);
 	touch $@
 
@@ -31,9 +36,9 @@ $(PATCHELF_HOST_DIR)/src/patchelf: $(PATCHELF_HOST_DIR)/.configured
 
 $(TOOLS_DIR)/patchelf: $(PATCHELF_HOST_DIR)/src/patchelf
 	$(INSTALL_FILE)
-	strip $@
 
-patchelf-host: $(TOOLS_DIR)/patchelf
+patchelf-host-precompiled: $(TOOLS_DIR)/patchelf
+
 
 patchelf-host-clean:
 	-$(MAKE) -C $(PATCHELF_HOST_DIR) clean
@@ -43,3 +48,4 @@ patchelf-host-dirclean:
 
 patchelf-host-distclean: patchelf-host-dirclean
 	$(RM) $(TOOLS_DIR)/patchelf
+

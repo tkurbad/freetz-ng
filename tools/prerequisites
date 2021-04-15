@@ -1,0 +1,78 @@
+#!/bin/bash
+SCRIPT="$(readlink -f $0)"
+PARENT="$(dirname ${SCRIPT%/*})"
+
+check_requisite() {
+	case "$2" in
+		pkgconf)
+			[ -n "$(find /usr/lib*/pkgconfig/ /usr/local/lib*/pkgconfig/ /usr/lib/*/pkgconfig/ -name "$1" 2>/dev/null)" ]
+			;;
+		pkgconf32)
+			[ -n "$(find /usr/lib/pkgconfig/  /usr/local/lib/pkgconfig/  /usr/lib/*/pkgconfig/ -name "$1" 2>/dev/null | grep -v 'x86_64')" ]
+			;;
+		program)
+			[ -x "$(which $1 2>/dev/null)" ]
+			;;
+		lib)
+			ldconfig -p | grep -Eq "^[[:space:]]*$1(\.[01])* "
+			;;
+		lib32)
+			ldconfig -p | grep -v 'x86-64' | grep -Eq "^[[:space:]]*$1(\.[01])* "
+			;;
+		header)
+			[ -n "$(find /usr/include/ /usr/local/include/ -path "*/$1" 2>/dev/null)" ]
+			;;
+		*)
+			false
+			;;
+	esac
+}
+
+failed_requisite() {
+	case "$2" in
+		pkgconf)
+			echo "ERROR: The pkgconf '$1' was not found in /usr/(local/)lib*/(*/)pkgconfig/"
+			;;
+		pkgconf32)
+			echo "ERROR: The pkgconf '$1' (32-bit) was not found in /usr/(local/)lib/(*/)pkgconfig/"
+			;;
+		program)
+			echo "ERROR: The program '$1' was not found in path"
+			;;
+		lib)
+			echo "ERROR: The library '$1' was not found in /etc/ld.so.cache"
+			;;
+		lib32)
+			echo "ERROR: The library '$1' (32-bit) was not found in /etc/ld.so.cache"
+			;;
+		header)
+			echo "ERROR: The header file '$1' was not found in /usr/(local/)include"
+			;;
+		*)
+			echo "Unknown requisite type '$2' for '$1'."
+			;;
+	esac
+}
+
+retval=0
+while read parser file depends; do
+	[ -z "$file" ] && continue
+	# check dependencies
+	[ "${depends%% *}" == 'and' ] && \
+	  MODE="and" && \
+	  depends="${depends#and }"
+	depends="${depends#or }"
+	[ "${#depends}" == '0' ] && mandatory='y' || mandatory='n'
+	ands='y'
+	for x in $depends; do
+		grep -q "^$x=y$" "$PARENT/.config" 2>/dev/null && mandatory='y' || ands='n'
+	done
+	[ "$MODE" == "and" -a "$ands" != "y" ] && mandatory='n'
+	[ "$mandatory" != 'y' ] && continue
+	# check installed
+	check_requisite "$file" "$parser" && continue
+	failed_requisite "$file" "$parser"
+	retval=1
+done < <(sed 's/#.*//g;/^[ \t]*$/d' "$PARENT/.prerequisites" 2>/dev/null)
+exit $retval
+

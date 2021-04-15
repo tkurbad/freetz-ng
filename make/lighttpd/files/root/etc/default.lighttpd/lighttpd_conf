@@ -100,6 +100,8 @@ EOF
 
 [ "$LIGHTTPD_IPV6_SUPPORT" == "yes" ] && echo 'server.use-ipv6 = "enable"'
 
+[ "$LIGHTTPD_HTTP2_ENABLED" == "yes" ] && echo 'server.feature-flags += ("server.h2proto" => "enable", "server.h2c" => "enable")'
+
 out="connection.kbytes-per-second = $LIGHTTPD_LIMITCONN\nserver.kbytes-per-second = $LIGHTTPD_LIMITSRV"
 virthost_conf "$LIGHTTPD_LIMITVIRT" "$out"
 
@@ -121,8 +123,6 @@ enable_ssl() {
 cat << EOF
 ssl.engine = "$LIGHTTPD_SSLENABLE"
 ssl.pemfile = "/tmp/flash/lighttpd/crt.pem"
-ssl.use-sslv2 = "disable"
-ssl.use-sslv3 = "disable"
 #ssl.use-compression = "disable"
 EOF
 if [ -n "$LIGHTTPD_SSLCIPHER" ]; then
@@ -144,7 +144,7 @@ EOF
 fi
 }
 
-if [ "$FREETZ_PACKAGE_LIGHTTPD_WITH_SSL" = "y" ]; then
+if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL" = "y" ]; then
 if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
 	[ "$LIGHTTPD_SSLENABLE" == "enable" ] && echo 'server.modules += ( "mod_openssl" )'
 	if [ "$LIGHTTPD_SSLADDITIONAL" = "yes" ]; then
@@ -224,13 +224,13 @@ EOF
 	virthost_conf "$LIGHTTPD_MODCGIVIRT" "$out"
 fi
 
-if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS" = "y" -a "$LIGHTTPD_MODCOMPRESS" = "yes" ]; then
+if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_DEFLATE" = "y" -a "$LIGHTTPD_MODDEFLATE" = "yes" ]; then
 cat << EOF
-server.modules += ( "mod_compress" )
+server.modules += ( "mod_deflate" )
 EOF
-	gendir "$LIGHTTPD_MODCOMPRESSDIR"
-	out="compress.cache-dir = \"$LIGHTTPD_MODCOMPRESSDIR\"\ncompress.filetype  = (\"text/plain\", \"text/html\")"
-	virthost_conf "$LIGHTTPD_MODCOMPRESSVIRT" "$out"
+	gendir "$LIGHTTPD_MODDEFLATEDIR"
+	out="deflate.cache-dir = \"$LIGHTTPD_MODDEFLATEDIR\"\ndeflate.mimetypes = (\"text/\")\ndeflate.allowed-encodings = ( \"gzip\", \"deflate\" )"
+	virthost_conf "$LIGHTTPD_MODDEFLATEVIRT" "$out"
 fi
 
 if [ "$LIGHTTPD_ERROR" = "yes" ]; then

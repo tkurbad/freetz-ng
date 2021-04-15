@@ -5,3 +5,11 @@ config EXTERNAL_FREETZ_PACKAGE_NZBGET
 	help
 		externals the following file(s):
 		 /usr/bin/nzbget
+
+config EXTERNAL_FREETZ_PACKAGE_NZBGET_WEBUI
+	depends on EXTERNAL_FREETZ_PACKAGE_NZBGET && EXTERNAL_SUBDIRS
+	bool "WEBUI"
+	default y
+	help
+		externals all files under
+		 /usr/share/nzbget

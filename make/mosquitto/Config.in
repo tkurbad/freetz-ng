@@ -12,9 +12,9 @@ config FREETZ_PACKAGE_MOSQUITTO
 config FREETZ_PACKAGE_MOSQUITTO_BROKER
 	bool "include broker"
 	depends on FREETZ_PACKAGE_MOSQUITTO
-	select FREETZ_LIB_libdl
-	select FREETZ_LIB_libm
-	select FREETZ_LIB_librt
+	select FREETZ_LIB_libdl  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libm   if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_librt  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default y
 	help
 		Adds the mosquitto broker to the image
@@ -23,8 +23,8 @@ config FREETZ_PACKAGE_MOSQUITTO_CLIENTS
 	bool "include clients"
 	depends on FREETZ_PACKAGE_MOSQUITTO
 	# libmosquitto dependencies
-	select FREETZ_LIB_librt
-	select FREETZ_LIB_libpthread
+	select FREETZ_LIB_librt       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
 
 config FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB
@@ -49,14 +49,17 @@ config FREETZ_PACKAGE_MOSQUITTO_WITH_UUID
 	help
 		Build using libuuid for clientid generation.
 
+comment "SSL not available, needs OpenSSL 1.0 or newer"
+	depends on !FREETZ_OPENSSL_VERSION_1_MIN
+
 config FREETZ_PACKAGE_MOSQUITTO_WITH_SSL
 	bool "build with SSL support"
 	depends on FREETZ_PACKAGE_MOSQUITTO
-		select FREETZ_OPENSSL_VERSION_PROMPT
-		select FREETZ_OPENSSL_VERSION_1_REQUIRED
-		select FREETZ_LIB_libcrypto
-		select FREETZ_LIB_libcrypto_WITH_EC
-		select FREETZ_LIB_libssl
+	depends on FREETZ_OPENSSL_VERSION_1_MIN
+	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libcrypto_WITH_EC
+	select FREETZ_LIB_libssl
 	default n
 	help
 		This option enables SSL support for mosquitto.
+

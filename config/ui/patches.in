@@ -23,6 +23,32 @@ config FREETZ_SELECT_HARDENING
 
 comment "Removal patches ------------------------------------------"
 
+config FREETZ_REMOVE_LEFTOVER
+	bool "Remove leftover"
+	default y
+	help
+		This enables the scripts in patches/cond/300-remove-leftover/
+		which remove some unused leftovers of avm, currently
+		 111-disable_crashreport.sh
+		 170-remove_dect_related_files_on_nondect_box.sh
+		 510-remove_usbmon.sh
+		 565-remove_more.sh
+		 565-remove_ncurses.sh
+		 570-remove-trustedd.sh
+		 800-remove_oemcheck.sh
+		 800-remove_ptest.sh
+
+config FREETZ_REMOVE_MODULE_BINS
+	bool "Remove module bins"
+	depends on FREETZ_AVM_VERSION_07_1X_MAX
+	default y
+	help
+		Removes these (unused) kernel files:
+		 modules.alias.bin
+		 modules.builtin.bin
+		 modules.dep.bin
+		 modules.symbols.bin
+
 config FREETZ_REMOVE_MICROVOIP_DSL
 	bool "Remove microvoip-dsl.bin"
 	depends on \
@@ -236,6 +262,15 @@ config FREETZ_REMOVE_ASSISTANT_SIP
 		the web menu. With this patch you can't create new phones, but change and
 		use existing ones.
 
+config FREETZ_REMOVE_UNTRUSTEDD
+	bool "Remove UNTRUSTEDD - DEVELOPER"
+	depends on FREETZ_SHOW_DEVELOPER
+	depends on FREETZ_AVM_HAS_UNTRUSTEDD
+	default n
+	help
+		This removes the untrustedd daemon (10kB uncompressed) and related
+		service script. Known so far: Nothing.
+
 config FREETZ_REMOVE_PLCD
 	bool "Remove PLCD (powerline)"
 	default n
@@ -322,7 +357,7 @@ config FREETZ_REMOVE_MYFRITZ
 config FREETZ_REMOVE_DDNSD
 	bool "Remove DDNSD"
 	default n
-	depends on FREETZ_AVM_HAS_MYFRITZ
+	depends on FREETZ_AVM_HAS_DDNSD
 	help
 		Removes the Dynamic DNS daemon (saves about 70 KB in compressed image)
 
@@ -419,64 +454,103 @@ config FREETZ_REMOVE_BRANDING
 
 		echo $(cat /proc/sys/urlader/firmware_version)
 
-config FREETZ_REMOVE_BRANDING_1und1
-	bool "1und1"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_1und1
-	default y if FREETZ_AVM_PROP_ALL_REGIONS && FREETZ_TYPE_LANG_EN
-	default n
-	help
-		1&1 branding
+if FREETZ_REMOVE_BRANDING
 
-config FREETZ_REMOVE_BRANDING_aol
-	bool "aol"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_aol
-	default n
-	help
-		AOL branding
+	config FREETZ_REMOVE_BRANDING_1und1
+		bool "1und1"
+		depends on FREETZ_AVM_HAS_BRANDING_1und1
+		default y if FREETZ_AVM_PROP_ALL_REGIONS && FREETZ_TYPE_LANG_EN
+		default n
+		help
+			1&1 branding
 
-config FREETZ_REMOVE_BRANDING_avm
-	bool "avm"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_avm
-	default y if FREETZ_AVM_PROP_ALL_REGIONS && FREETZ_TYPE_LANG_EN
-	default n
-	help
-		AVM (german) branding
+	config FREETZ_REMOVE_BRANDING_aol
+		bool "aol"
+		depends on FREETZ_AVM_HAS_BRANDING_aol
+		default n
+		help
+			AOL branding
 
-config FREETZ_REMOVE_BRANDING_avme
-	bool "avme"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_avme
-	default y if FREETZ_AVM_PROP_ALL_REGIONS && FREETZ_TYPE_LANG_DE
-	default n
-	help
-		AVME (international) branding
+	config FREETZ_REMOVE_BRANDING_avm
+		bool "avm"
+		depends on FREETZ_AVM_HAS_BRANDING_avm
+		default y if FREETZ_AVM_PROP_ALL_REGIONS && FREETZ_TYPE_LANG_EN
+		default n
+		help
+			AVM (german) branding
 
-config FREETZ_REMOVE_BRANDING_ewetel
-	bool "ewetel"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_ewetel
-	default n
-	help
-		EWE TEL branding
+	config FREETZ_REMOVE_BRANDING_avme
+		bool "avme"
+		depends on FREETZ_AVM_HAS_BRANDING_avme
+		default y if FREETZ_AVM_PROP_ALL_REGIONS && FREETZ_TYPE_LANG_DE
+		default n
+		help
+			AVME (international) branding
 
-config FREETZ_REMOVE_BRANDING_freenet
-	bool "freenet"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_freenet
-	default n
-	help
-		Freenet branding
+	config FREETZ_REMOVE_BRANDING_ewetel
+		bool "ewetel"
+		depends on FREETZ_AVM_HAS_BRANDING_ewetel
+		default n
+		help
+			EWE TEL branding
 
-config FREETZ_REMOVE_BRANDING_otwo
-	bool "otwo"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_otwo
-	default n
-	help
-		O2 branding
+	config FREETZ_REMOVE_BRANDING_freenet
+		bool "freenet"
+		depends on FREETZ_AVM_HAS_BRANDING_freenet
+		default n
+		help
+			Freenet branding
 
-config FREETZ_REMOVE_BRANDING_versatel
-	bool "versatel"
-	depends on FREETZ_REMOVE_BRANDING && FREETZ_AVM_HAS_BRANDING_versatel
-	default n
-	help
-		Versatel branding
+	config FREETZ_REMOVE_BRANDING_kabelbw
+		bool "kabelbw"
+		depends on FREETZ_AVM_HAS_BRANDING_kabelbw
+		default n
+		help
+			Kabel Baden-Württemberg branding
+
+	config FREETZ_REMOVE_BRANDING_kdg
+		bool "kdg"
+		depends on FREETZ_AVM_HAS_BRANDING_kdg
+		default n
+		help
+			Kabel Deutschland GmbH branding
+
+	config FREETZ_REMOVE_BRANDING_lgi
+		bool "lgi"
+		depends on FREETZ_AVM_HAS_BRANDING_lgi
+		default n
+		help
+			Liberty Global Incorporated branding
+
+	config FREETZ_REMOVE_BRANDING_otwo
+		bool "otwo"
+		depends on FREETZ_AVM_HAS_BRANDING_otwo
+		default n
+		help
+			O2 branding
+
+	config FREETZ_REMOVE_BRANDING_tcom
+		bool "tcom"
+		depends on FREETZ_AVM_HAS_BRANDING_tcom
+		default n
+		help
+			Deutsche Telekom AG branding
+
+	config FREETZ_REMOVE_BRANDING_unity
+		bool "unity"
+		depends on FREETZ_AVM_HAS_BRANDING_unity
+		default n
+		help
+			Unitymedia GmbH branding
+
+	config FREETZ_REMOVE_BRANDING_versatel
+		bool "versatel"
+		depends on FREETZ_AVM_HAS_BRANDING_versatel
+		default n
+		help
+			Versatel branding
+
+endif # FREETZ_REMOVE_BRANDING
 
 
 config FREETZ_REMOVE_CAPIOVERTCP
@@ -771,11 +845,13 @@ config FREETZ_REMOVE_TR064
 
 config FREETZ_REMOVE_TR069_FWUPDATE
 	bool "Remove fwupdate"
+	depends on !FREETZ_BACKUP_EXPORT
 	depends on FREETZ_REMOVE_TR069 && FREETZ_AVM_HAS_TR069_FWUPDATE
+	depends on !FREETZ_AVM_HAS_PLUGINS_UPDATE || FREETZ_AVMPLUGINS_INTEGRATE
 	default n
 	help
 		Removes the file /usr/bin/tr069fwupdate, needed for
-		updating the firmware in MT-D devices.
+		updating the firmware of dect devices.
 
 config FREETZ_REMOVE_TR069_HTTPSDL
 	bool "Remove httpsdl"
@@ -785,6 +861,7 @@ config FREETZ_REMOVE_TR069_HTTPSDL
 		Removes the file /usr/bin/httpsdl, used by:
 		* tr069/fwupdate, you have removed it
 		* firmware updater, with Freetz you don't want it
+		* live-pictures from door clock (TFE)
 		* some more ?
 		This saves 15-45 KB of uncompressed data size.
 
@@ -928,7 +1005,7 @@ config FREETZ_REMOVE_TELEPHONY
 
 config FREETZ_REMOVE_WLAN
 	bool "Remove WLAN"
-	depends on FREETZ_AVM_HAS_WLAN && FREETZ_AVM_VERSION_06_9X_MAX && FREETZ_SHOW_ADVANCED
+	depends on FREETZ_AVM_HAS_WLAN && (FREETZ_AVM_VERSION_06_9X_MAX || FREETZ_TYPE_3390_3490) && FREETZ_SHOW_ADVANCED
 	default n
 	help
 		Radically remove a lot of wlan-related files. This patch saves about
@@ -1120,6 +1197,19 @@ config FREETZ_PATCH_VOL_COUNTER
 		Adds volume counter support removed by AVM
 		for some (probably marketing) reasons.
 
+config FREETZ_PATCH_WEBIF_FEATURES
+	bool "Patch webif features"
+	depends on FREETZ_AVM_VERSION_07_1X_MAX
+	default y
+	help
+		This enables the scripts in patches/cond/800-webif_features/
+		which patch some webif features, currently
+		 210-patch_hostname.sh
+		 811-show_tr069_config.sh
+		 812-show_update_config.sh
+		 821-show_network_repeater.sh
+		 822-show_dvb_services.sh
+
 config FREETZ_PATCH_SIGNED
 	bool "Patch web menu signed message"
 	default n
@@ -1164,7 +1254,7 @@ config FREETZ_MODIFY_DSL_SPECTRUM
 
 config FREETZ_MODIFY_DSL_SETTINGS
 	bool "Extend DSL settings"
-	depends on FREETZ_TYPE_DSL && FREETZ_AVM_VERSION_06_5X_MIN && !FREETZ_REMOVE_DSLD && !FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME && !FREETZ_TYPE_FIRMWARE_LABOR_TEST
+	depends on FREETZ_TYPE_DSL && FREETZ_AVM_VERSION_06_5X_MIN && !FREETZ_REMOVE_DSLD && !FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
 	default n
 	help
 		Extends the DSL settings page with "speed" settings.
@@ -1178,7 +1268,8 @@ config FREETZ_MODIFY_COUNTER
 
 config FREETZ_ENABLE_LED_DEACTIVATION
 	bool "Enable LED deactivation page"
-	depends on FREETZ_AVM_VERSION_06_0X_MIN && FREETZ_AVM_VERSION_07_0X_MAX
+	depends on FREETZ_AVM_HAS_LEDPAGE
+	depends on FREETZ_AVM_VERSION_07_0X_MAX
 	default n
 	help
 		Re-enables access to the LED deactivation page in expert mode.
@@ -1492,12 +1583,13 @@ config FREETZ_KEEP_AVM_UCLIBC
 
 comment "Replace OpenSSL libraries (not available, requires openssl-0.9.8)"
 	depends on FREETZ_SHOW_ADVANCED && \
-		FREETZ_AVM_HAS_OPENSSL_VERSION_0 && FREETZ_LIB_libcrypto && !FREETZ_OPENSSL_VERSION_0
+		FREETZ_AVM_HAS_OPENSSL_VERSION_0 && !FREETZ_OPENSSL_VERSION_0
 
 config FREETZ_REPLACE_OPENSSL
 	bool "Replace OpenSSL libraries"
 	depends on FREETZ_SHOW_ADVANCED && \
-		FREETZ_AVM_HAS_OPENSSL_VERSION_0 && FREETZ_LIB_libcrypto &&  FREETZ_OPENSSL_VERSION_0
+		FREETZ_AVM_HAS_OPENSSL_VERSION_0 &&  FREETZ_OPENSSL_VERSION_0
+	select FREETZ_LIB_libcrypto
 	select FREETZ_LIB_libssl
 	default n
 	help
@@ -1571,7 +1663,7 @@ config FREETZ_ADD_TELNETD
 
 config FREETZ_ADD_SWAPOPTIONS
 	bool "Add swap options"
-	depends on FREETZ_REPLACE_KERNEL || !FREETZ_SYSTEM_TYPE_IPQ40xx
+	depends on FREETZ_AVM_HAS_SWAP_BUILTIN || FREETZ_REPLACE_KERNEL
 	default n
 	select FREETZ_PACKAGE_MOD_SWAPOPTIONS
 	help
@@ -1584,6 +1676,14 @@ config FREETZ_ADD_ETCSERVICES
 	help
 		Adds /etc/services file.
 		Used eg by netstat to display names of IP-ports.
+
+config FREETZ_ADD_ETCNETCONFIG
+	bool "Add /etc/netconfig"
+	default n
+	select FREETZ_PACKAGE_MOD_ETCNETCONFIG
+	help
+		Adds /etc/netconfig file.
+		Used eg by libtirpc and rpcbind.
 
 config FREETZ_ADD_ANNEX_A_FIRMWARE
 	bool "Add Annex A firmware file"
@@ -1670,12 +1770,13 @@ config FREETZ_DISABLE_SERIAL_CONSOLE
 		e.g. minicom.
 
 config FREETZ_PATCH_DISABLE_AVM_WATCHDOG
-	bool "Disable AVM watchdog"
+	bool "Disable AVM watchdog - DEVELOPER"
+	depends on FREETZ_SHOW_DEVELOPER
 	default n
 	help
 		This disables the AVM watchdog on system start.
 		The AVM watchdog reboots the device if
-		 - system start takes longer than 2-5 minutes
+		 - system start takes longer than 2, 4 or 8 minutes
 		 - some defined AVM daemon crashes
 
 config FREETZ_RESTORE_DEBUG_CFG_SUPPORT
@@ -1710,10 +1811,11 @@ config FREETZ_ASYNCHRONOUS_DEBUG_CFG
 
 		Requires AVM's /sbin/delay binary in order to work.
 
-config FREETZ_RUN_TELEFON_IN_INHOUSE_MODE
+config FREETZ_RUN_TELEFON_IN_INHAUS_MODE
 	bool "Run telefon daemon in inhaus mode"
 	depends on FREETZ_AVM_HAS_PHONE
 	depends on !FREETZ_AVM_HAS_TELNETD
+	default y if FREETZ_ADD_TELNETD
 	default n
 	help
 		Running telefon daemon in "inhaus mode" restores:
@@ -1723,11 +1825,20 @@ config FREETZ_RUN_TELEFON_IN_INHOUSE_MODE
 		 - Processing of /var/flash/fx_conf attributes responsible
 		   for automatic start of telnetd.
 
+config FREETZ_REPLACE_AR7LOGIN
+	bool "Replace ar7login"
+	depends on (FREETZ_AVM_HAS_TELNETD && !FREETZ_REMOVE_TELNETD) || FREETZ_ADD_TELNETD
+	default y
+	help
+		If wrapper was started by telnetd AND root password
+		is defined, proceed with regular user/password login.
+		Otherwise fall back to web password (and user, if set) login.
+
 config FREETZ_PATCH_START_WLAN_IF_ON_BOOT
 	bool "Start wlan interface on boot"
-	depends on FREETZ_AVM_VERSION_07_1X_MAX
 	depends on FREETZ_AVM_HAS_WLAN && !FREETZ_REMOVE_WLAN
-	depends on FREETZ_SYSTEM_TYPE_VR9 && FREETZ_AVM_VERSION_06_8X_MIN
+	depends on FREETZ_SYSTEM_TYPE_VR9
+	depends on FREETZ_AVM_VERSION_06_8X_MIN && FREETZ_AVM_VERSION_07_1X_MAX
 	default y if FREETZ_AVM_VERSION_06_9X_MIN
 	default n
 	help

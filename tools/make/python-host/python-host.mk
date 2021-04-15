@@ -1,11 +1,12 @@
-PYTHON_HOST_VERSION:=2.7.16
+PYTHON_HOST_VERSION:=2.7.18
 PYTHON_HOST_SOURCE:=Python-$(PYTHON_HOST_VERSION).tar.xz
-PYTHON_HOST_MD5:=30157d85a2c0479c09ea2cbe61f2aaf5
+PYTHON_HOST_MD5:=fd6cc8ec0a78c44036f825e739f36e5a
 PYTHON_HOST_SITE:=http://www.python.org/ftp/python/$(PYTHON_HOST_VERSION)
 
 PYTHON_HOST_DIR:=$(TOOLS_SOURCE_DIR)/Python-$(PYTHON_HOST_VERSION)
 PYTHON_HOST_BINARY:=$(PYTHON_HOST_DIR)/python
 PYTHON_HOST_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python2.7
+
 
 python-host-source: $(DL_DIR)/$(PYTHON_HOST_SOURCE)
 $(DL_DIR)/$(PYTHON_HOST_SOURCE): | $(DL_DIR)
@@ -21,8 +22,10 @@ $(PYTHON_HOST_DIR)/.unpacked: $(DL_DIR)/$(PYTHON_HOST_SOURCE) | $(TOOLS_SOURCE_D
 python-host-configured: $(PYTHON_HOST_DIR)/.configured
 $(PYTHON_HOST_DIR)/.configured: $(PYTHON_HOST_DIR)/.unpacked
 	(cd $(PYTHON_HOST_DIR); $(RM) config.cache; \
-		CC=$(TOOLS_CC) \
-		CFLAGS="-Os" \
+		CC="$(TOOLS_CC)" \
+		CXX="$(TOOLS_CXX)" \
+		CFLAGS="$(TOOLS_CFLAGS)" \
+		LDFLAGS="$(TOOLS_LDFLAGS)" \
 		OPT="-fno-inline" \
 		./configure \
 		--build=$(GNU_HOST_NAME) \
@@ -46,7 +49,8 @@ $(PYTHON_HOST_TARGET_BINARY): $(PYTHON_HOST_BINARY) | $(HOST_TOOLS_DIR)
 	cp -a $(PYTHON_HOST_BINARY) $(PYTHON_HOST_DIR)/Parser/pgen \
 		$(HOST_TOOLS_DIR)/usr/bin
 
-python-host: $(PYTHON_HOST_TARGET_BINARY)
+python-host-precompiled: $(PYTHON_HOST_TARGET_BINARY)
+
 
 python-host-clean:
 	-$(MAKE) -C $(PYTHON_HOST_DIR) clean
@@ -71,4 +75,3 @@ python-host-distclean: python-host-dirclean
 		$(HOST_TOOLS_DIR)/usr/share/python2.7 \
 		$(HOST_TOOLS_DIR)/usr/share/man/man1/python*
 
-.PHONY: python-host-source python-host-unpacked python-host-configured python-host python-host-clean python-host-dirclean python-host-distclean

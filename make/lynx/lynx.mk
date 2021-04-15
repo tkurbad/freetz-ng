@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.8.8rel.2)
+$(call PKG_INIT_BIN, 2.8.9rel.1)
 $(PKG)_SOURCE:=$(pkg)$($(PKG)_VERSION).tar.bz2
-$(PKG)_SOURCE_MD5:=b231c2aa34dfe7ca25681ef4e55ee7e8
+$(PKG)_SOURCE_SHA256:=387f193d7792f9cfada14c60b0e5c0bff18f227d9257a39483e14fa1aaf79595
 $(PKG)_SITE:=http://invisible-mirror.net/archives/lynx/tarballs,ftp://invisible-island.net/pub/lynx/tarballs
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
@@ -9,6 +9,9 @@ $(PKG)_CFG:=$($(PKG)_DIR)/$(pkg).cfg
 $(PKG)_TARGET_CFG:=$($(PKG)_DEST_DIR)/etc/$(pkg).cfg
 $(PKG)_LSS:=$($(PKG)_DIR)/samples/$(pkg).lss
 $(PKG)_TARGET_LSS:=$($(PKG)_DEST_DIR)/etc/$(pkg).lss
+
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LYNX_WITH_SSL $(if $(FREETZ_PACKAGE_LYNX_WITH_SSL),FREETZ_OPENSSL_SHLIB_VERSION)
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LYNX_WITH_ZLIB
 
 $(PKG)_CONFIGURE_OPTIONS += \
 	--enable-warnings \
@@ -28,7 +31,12 @@ $(PKG)_CONFIGURE_OPTIONS += \
 	--disable-source-cache \
 	--disable-trace
 
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_LYNX_WITH_SSL),--with-ssl="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr",--without-ssl)
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_LYNX_WITH_ZLIB),--with-zlib="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr",--without-zlib)
+
 $(PKG)_DEPENDS_ON += ncurses
+$(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_LYNX_WITH_SSL),openssl)
+$(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_LYNX_WITH_ZLIB),zlib)
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)

@@ -3,11 +3,12 @@
 
 # AVM scripts should not kill Freetz Samba
 if [ "$FREETZ_AVM_HAS_USB_HOST" == "y" -a "$FREETZ_PACKAGE_SAMBA_SMBD" == "y" ]; then
+	echo1 "prevent stopping smbd"
 	sed -i -e "/killall smbd*$/d" -e "s/pidof smbd/pidof/g" "${FILESYSTEM_MOD_DIR}/etc/hotplug/storage"
 fi
 
 # remove AVM's specific samba files
-if [ "$FREETZ_PACKAGE_SAMBA_SMBD" == "y" -o "$FREETZ_REMOVE_SAMBA" == "y" ]; then
+if [ "$FREETZ_REMOVE_SAMBA" == "y" -o "$FREETZ_PACKAGE_SAMBA_SMBD" == "y" ]; then
 	echo1 "remove AVM samba/nqcs config"
 	rm_files \
 	  "${FILESYSTEM_MOD_DIR}/sbin/samba_config_gen"
@@ -22,9 +23,8 @@ if [ "$FREETZ_PACKAGE_SAMBA_SMBD" == "y" -o "$FREETZ_REMOVE_SAMBA" == "y" ]; the
 
 	if [ -n "$SYSTEMD_CORE_MOD_DIR" ]; then
 		echo1 "remove AVM systemd files"
-		rm_files \
-		  "${FILESYSTEM_MOD_DIR}/lib/systemd/system/smb2.service" \
-		  "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.smb2"
+		rm_files "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.smb2"
+		supervisor_delete_service "smb2"
 	fi
 
 	echo1 "patching rc.net: renaming sambastart()"

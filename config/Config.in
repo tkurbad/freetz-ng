@@ -3,15 +3,10 @@ mainmenu "Freetz Configuration"
 config FREETZ_HAVE_DOT_CONFIG
 	bool
 	default y
-	select FREETZ_REAL_DEVELOPER_ONLY_TLOB if FREETZ_REAL_DEVELOPER_ONLY
-
-config FREETZ_REAL_DEVELOPER_ONLY_TLOB
-	bool
-	depends on BRAIN
 
 comment "Freetz revision  -----------------------------------------"
 	depends on FREETZ_MENUCONFIG_REVISION
-comment " $(shell,tools/freetz-revision 2>&1)"
+comment " $(shell,tools/freetz_revision 2>&1)"
 	depends on FREETZ_MENUCONFIG_REVISION
 
 comment "User competence ------------------------------------------"
@@ -65,6 +60,7 @@ source "config/avm/compiler-traits.in"
 source "config/avm/kernel.in"
 source "config/avm/uclibc.in"
 source "config/avm/source.in"
+source "config/mod/juis.in"
 source "config/mod/kernel.in"
 source "config/mod/prefix.in"
 source "config/mod/mandatory.in"

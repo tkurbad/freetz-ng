@@ -1,7 +1,11 @@
-$(call PKG_INIT_LIB, 2.7.17)
+$(call PKG_INIT_LIB, $(if $(FREETZ_AVM_GCC_4_MAX),2.7.19,2.26.0))
 $(PKG)_SOURCE:=mbedtls-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_SHA1:=2f252362d768409ee75bdfbe6b756011baa0c254
+$(PKG)_SOURCE_SHA1_ABANDON:=fbeffb7cb5a2e8cb881024b2f99a794a704f37ae
+$(PKG)_SOURCE_SHA1_CURRENT:=1cb65fb2fb37a1c6e4216205cc10bee60300c35e
+$(PKG)_SOURCE_SHA1:=$(MBEDTLS_SOURCE_SHA1_$(if $(FREETZ_AVM_GCC_4_MAX),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_AVM_GCC_4_MAX),abandon,current)
 
 $(PKG)_LIBNAMES_SHORT      := crypto tls x509
 
@@ -16,6 +20,7 @@ $(PKG)_LIBS_A_STAGING_DIR  := $($(PKG)_LIBNAMES_A:%=$(TARGET_TOOLCHAIN_STAGING_D
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libmbedcrypto_WITH_BLOWFISH
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libmbedcrypto_WITH_GENRSA
+$(PKG)_REBUILD_SUBOPTS += FREETZ_AVM_GCC_4_MAX
 
 # disable some features to reduce library size
 $(PKG)_FEATURES_TO_DISABLE += MBEDTLS_SELF_TEST

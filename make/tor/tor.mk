@@ -1,7 +1,11 @@
-$(call PKG_INIT_BIN, 0.4.4.5)
+$(call PKG_INIT_BIN, 0.4.5.7)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_SHA256:=a45ca00afe765e3baa839767c9dd6ac9a46dd01720a3a8ff4d86558c12359926
+$(PKG)_SOURCE_SHA256:=447fcaaa133e2ef22427e98098a60a9c495edf9ff3e0dd13f484b9ad0185f074
 $(PKG)_SITE:=https://www.torproject.org/dist
+### WEBSITE:=https://www.torproject.org/download/tor/
+### MANPAGE:=https://trac.torproject.org/projects/tor/wiki/
+### CHANGES:=https://gitweb.torproject.org/tor.git/tree/ChangeLog
+### CVSREPO:=https://gitweb.torproject.org/tor.git/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/app/tor
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/tor
@@ -44,7 +48,7 @@ $(PKG)_PATCH_POST_CMDS += touch -t 200001010000.00 ./configure.ac;
 # add EXTRA_(C|LD)FLAGS
 $(PKG)_PATCH_POST_CMDS += $(call PKG_ADD_EXTRA_FLAGS,(C|LD)FLAGS)
 
-$(PKG)_EXTRA_CFLAGS  += -ffunction-sections -fdata-sections
+$(PKG)_EXTRA_CFLAGS  += -ffunction-sections -fdata-sections -DDISABLE_ENGINES
 $(PKG)_EXTRA_LDFLAGS += -Wl,--gc-sections
 
 ifeq ($(strip $(FREETZ_PACKAGE_TOR_STATIC)),y)
