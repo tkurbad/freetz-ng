@@ -189,9 +189,9 @@ Latest changes
     * apache 2.4.46
     * apr 1.7.0
     * apr-util 1.6.1
-    * autofs 5.0.5/5.1.6
+    * AutoFS 5.0.5/5.1.6
     * bash 3.2.57
-    * BIND 9.11.13
+    * BIND 9.11.22
     * Bip 0.8.9/0.9.0-rc4
     * bird 1.6.4
     * CCID driver 1.4.33
@@ -297,7 +297,7 @@ Latest changes
     * tinc 1.0.36/1.1pre17
     * tinyproxy 1.8.4
     * tmux 2.5
-    * tor 0.4.3.6
+    * tor 0.4.4.5
     * transmission 3.00
     * tree 1.8.0
     * uClibc++ 0.2.5-git

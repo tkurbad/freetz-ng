@@ -1,4 +1,4 @@
-# autofs 5.0.5/5.1.6
+# AutoFS 5.0.5/5.1.6
 
 Mit diesem Paket können verschiedene Dateisysteme nach /var/media/autofs
 gemountet werden.
@@ -83,9 +83,3 @@ oder id_dsa muss der private Schlüssel hinterlegt sein. Diese Dateien
 können mit dem SSH/[authorized_keys](authorized-keys.md)
 Package bearbeitet werden
 
-### HTTP(s), FTP(s), LDAP
-
-Momentan nicht möglich, da
-[CurlFtpFS](http://sourceforge.net/projects/curlftpfs/)
-momentan nicht in Freetz verfügbar ist. Siehe auch [archLinux
-Wiki](https://wiki.archlinux.org/index.php/Autofs).
