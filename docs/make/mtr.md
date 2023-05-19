@@ -1,4 +1,9 @@
-# mtr 0.80/0.94 (binary only)
+# MTR 0.80/0.95 (binary only)
+ - Homepage: [https://www.bitwizard.nl/mtr/](https://www.bitwizard.nl/mtr/)
+ - Manpage: [https://linux.die.net/man/8/mtr](https://linux.die.net/man/8/mtr)
+ - Changelog: [https://github.com/traviscross/mtr/blob/master/NEWS](https://github.com/traviscross/mtr/blob/master/NEWS)
+ - Repository: [https://github.com/traviscross/mtr](https://github.com/traviscross/mtr)
+ - Package: [master/make/pkgs/mtr/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/mtr/)
 
 **[mtr](http://www.bitwizard.nl/mtr/)** (**M**y
 **TR**aceroute) kombiniert die Funktionalität von
@@ -12,9 +17,5 @@ regelmäßig, gewöhnlich einmal pro Sekunde.
 
 ### Weiterführende Links
 
--   [Wikipedia
-    Artikel](http://en.wikipedia.org/wiki/Mtr_(My_traceroute))
-    (Englisch)
--   [BitWizard's MTR
-    page](http://www.bitwizard.nl/mtr/)
+-   [Wikipedia Artikel](http://en.wikipedia.org/wiki/Mtr_(My_traceroute)) (Englisch)
 

@@ -3,6 +3,7 @@
  - Manpage: [https://github.com/transmission/transmission/wiki](https://github.com/transmission/transmission/wiki)
  - Changelog: [https://github.com/transmission/transmission/releases](https://github.com/transmission/transmission/releases)
  - Repository: [https://github.com/transmission/transmission](https://github.com/transmission/transmission)
+ - Package: [master/make/pkgs/transmission/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/transmission/)
 
 ### Blocklist
 
@@ -53,7 +54,7 @@ Huge, relatively.
 You will probably need a swap file and you may want to increase
 [swappiness](http://lwn.net/Articles/83588/) to 80
 or something (in Freetz WebIF since
-[[6886]](https://trac.boxmatrix.info/freetz-ng/changeset/6886)).
+(Changeset r6886).
 
 ```
   ------------------------- ------------ -----------
@@ -65,7 +66,7 @@ or something (in Freetz WebIF since
 ```
 
 You can monitor these values easily with the patch from ticket
-[#1308](https://trac.boxmatrix.info/freetz-ng/ticket/1308)
+Ticket #1308
 
 ### Limit memory usage
 

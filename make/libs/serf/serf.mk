@@ -1,7 +1,7 @@
 $(call PKG_INIT_LIB, 1.3.9)
 $(PKG)_LIB_VERSION:=1.3.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_SOURCE_SHA1:=26015c63e3bbb108c1689bf2090e4c26351db674
+$(PKG)_HASH:=549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc
 $(PKG)_SITE:=@APACHE/serf
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/libserf-1.so.$($(PKG)_LIB_VERSION)
@@ -12,8 +12,8 @@ $(PKG)_DEPENDS_ON += apr apr-util openssl zlib
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
 
-$(PKG)_SCONS_OPTIONS += CC="$(FREETZ_LD_RUN_PATH) $(TARGET_CC)"
-$(PKG)_SCONS_OPTIONS += CFLAGS="$(TARGET_CFLAGS)"
+$(PKG)_SCONS_OPTIONS += CC="PATH=$(TARGET_PATH) $(FREETZ_LD_RUN_PATH) $(TARGET_CC)"
+$(PKG)_SCONS_OPTIONS += CFLAGS="$(TARGET_CFLAGS) -fPIC"
 $(PKG)_SCONS_OPTIONS += AR="$(TARGET_AR)"
 $(PKG)_SCONS_OPTIONS += RANLIB="$(TARGET_RANLIB)"
 $(PKG)_SCONS_OPTIONS += PREFIX="/usr"
@@ -27,11 +27,11 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured | scons-host
-	$(SCONS_HOST) -C $(SERF_DIR) $(SERF_SCONS_OPTIONS)
+	$(SCONS_HOST_TARGET_BINARY) -C $(SERF_DIR) $(SERF_SCONS_OPTIONS)
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 	$(SUBMAKE) serf-clean-staging
-	$(SCONS_HOST) -C $(SERF_DIR) \
+	$(SCONS_HOST_TARGET_BINARY) -C $(SERF_DIR) \
 		--install-sandbox="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(call PKG_FIX_LIBTOOL_LA,prefix libdir) \
@@ -46,7 +46,7 @@ $(pkg): $($(PKG)_STAGING_BINARY)
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 $(pkg)-clean: $(pkg)-clean-staging
-	-$(SCONS_HOST) -C $(SERF_DIR) -c
+	-$(SCONS_HOST_TARGET_BINARY) -C $(SERF_DIR) -c
 
 $(pkg)-clean-staging:
 	$(RM) -r \

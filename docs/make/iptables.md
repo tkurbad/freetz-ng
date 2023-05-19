@@ -1,4 +1,8 @@
 # Iptables 1.4.11.1/1.4.21/1.6.2 (binary only)
+ - Homepage: [https://netfilter.org/projects/iptables/index.html](https://netfilter.org/projects/iptables/index.html)
+ - Changelog: [https://netfilter.org/projects/iptables/downloads.html](https://netfilter.org/projects/iptables/downloads.html)
+ - Repository: [https://git.netfilter.org/iptables/](https://git.netfilter.org/iptables/)
+ - Package: [master/make/pkgs/iptables/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/iptables/)
 
 ### Current state (largely broken)
 
@@ -278,7 +282,7 @@ To revert the settings to AVM printk and re-enable DECT type:
 
 The log appears then again on console 0 and is no longer in the syslog.
 
-You can also try a patch from [this ticket](https://trac.boxmatrix.info/freetz-ng/ticket/254), but first read
+You can also try a patch from Ticket #254, but first read
 the comments carefully.
 
 ### What is the difference of INPUT, OUTPUT and FORWARD chains

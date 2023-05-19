@@ -1,5 +1,7 @@
-/config
 /build
+/fit
+/kconfig
+/yf
 
 /ash
 /avm_kernel_config.bin2asm
@@ -10,24 +12,29 @@
 /bunzip2
 /busybox
 /bzimage2eva
-/cksum
+/cmake
+/crc32
 /debugfs
 /e2fsck
 /eva2bzimage
 /eva2lzma
+/execstack
+/fastjar
 /find-squashfs
-/fitimg
 /genext2fs
+/gperf
 /gunzip
 /lunzip
 /lzma
 /lzma2eva
 /makedevs
 /md5sum
+/meson
 /mksquashfs2-lzma
 /mksquashfs3-multi
 /mksquashfs4-avm-be
 /mksquashfs4-avm-le
+/ninja
 /patchelf
 /sed
 /sfk
@@ -51,5 +58,4 @@
 /xargs
 /xdelta3
 /xz
-/yf
 

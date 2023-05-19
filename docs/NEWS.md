@@ -1,5 +1,211 @@
 # NEWS
 
+ * __[2023-03-19](#2023-03-19)__<a id='2023-03-19'></a><br>
+   Es gibt ab sofort keine Issues-Sektion mehr, die Diskussionen inklusive beliebter Wishlist bleiben geöffnet.<br>
+   Offenbar besteht der Anspruch dass irgend jemand Probleme für andere behebt sobald ein Issue erstellt wurde.<br>
+   So eine Person existiert bei Freetz-NG nicht! Damit niemand traurig sein muss wurden die Issues deaktiviert<br>
+   bis sich jemand findet der dies übernehmen möchte.<br>
+   Daher ist das neue Vorgehen ab jetzt:<br>
+    - Jemand findet ein schlimmes Problem<br>
+    - Dieser sucht die Ursache dafür<br>
+    - Und behebt das Problem<br>
+    - Ein Pull-Request wird erstellt<br>
+   
+   Wem dies nicht gefällt darf das Problem gern für sich behalten.<br>
+
+ * __[2023-03-18](#2023-03-18)__<a id='2023-03-18'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23030` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng23030](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng23030)<br>
+
+ * __[2023-01-31](#2023-01-31)__<a id='2023-01-31'></a><br>
+   Im `menuconfig` gibt es jetzt die neue Option `FREETZ_ANCIENT_SYSTEM` für die Liebhaber antiker Linuxsystme<br>
+   wie Ubuntu 14. Durch diese Option werden Dinge deaktivert die mit Sicherheit nicht funktionieren werden. Es<br>
+   gibt dennoch keine Funktionsgarantie füe diese veralteten Systeme.<br>
+   Siehe [d5e0121d](https://github.com/Freetz-NG/freetz-ng/commit/d5e0121d94c7835e44fb9c83f8f1dc291f6a6bb7)<br>
+
+ * __[2023-01-14](#2023-01-14)__<a id='2023-01-14'></a><br>
+   Mit `tools/prerequisites` können alle nötigen Packages für das laufende Linux angezeigt und installiert werden.<br>
+   Es werden die Packages verwendet die auch unter [PREREQUISITES](https://freetz-ng.github.io/freetz-ng/PREREQUISITES) zu sehen sind<br>
+   Siehe [182abe40](https://github.com/Freetz-NG/freetz-ng/commit/182abe4084a7e4ca511596702740726f147f20e1)<br>
+
+ * __[2023-01-06](#2023-01-06)__<a id='2023-01-06'></a><br>
+   Der Hauptmirror läuft aktuell nicht. Wenn er nochmal rennt wird es wieder gehen.<br>
+   UPDATE: Vorübergehend eine Alternative gefunden.<br>
+
+ * __[2022-12-14](#2022-12-14)__<a id='2022-12-14'></a><br>
+   Frohe Weihnachten und guten Rutsch.<br>
+
+ * __[2022-12-11](#2022-12-11)__<a id='2022-12-11'></a><br>
+   AVM hat wie gewohnt Fritzos optimiert und den multid noch viel mehr verbessert. Eines seiner neuen Features<br>
+   ist ein Crash wenn Port 53/udp belegt ist. So kann durch die Sicherheitsoptimierungen kein anderer DNS-Server<br>
+   mehr auf dem Standardport betrieben werden.<br>
+   Falls man darauf nicht verzichten möchte bietet sich eine Alternative wie Openwrt an.<br>
+   UPDATE: libmultid funktioniert nun auch mit separate-uclibc.<br>
+
+ * __[2022-11-01](#2022-11-01)__<a id='2022-11-01'></a><br>
+   Die precompiled Hosttool werden nun nicht mehr mit Ubuntu 18 x64 sondern sondern mit Ubuntu 20 x64 erstellt.<br>
+   Daher werden diese auf sehr alten Systemen nicht mehr funktionieren.<br>
+   Alternativen:<br>
+    - Die Tools selbst bauen<br>
+    - Ein Docker Image verwenden<br>
+    - Das Betriebsystem aktualisieren<br>
+   
+   Siehe [061da8a1](https://github.com/Freetz-NG/freetz-ng/commit/061da8a11a4ae593a98dd48d53fc2a3f0108b17a)<br>
+
+ * __[2022-10-16](#2022-10-16)__<a id='2022-10-16'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng22100` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng22100](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng22100)<br>
+
+ * __[2022-08-24](#2022-08-24)__<a id='2022-08-24'></a><br>
+   Es gibt keine vorcompilierte Toolchains mehr. Ich bin das ständige herumgemäkel der vielen Profis leid.<br>
+   Dadurch verlängert sich der Buildvorgang je nach Prozessor um rund 30 Minuten.<br>
+   Siehe [3dd4b81f](https://github.com/Freetz-NG/freetz-ng/commit/3dd4b81f82c8d2936f2367884b1d950edc0702cc)
+   und [90315913](https://github.com/Freetz-NG/freetz-ng/commit/9031591369efd5d63d3dc3c2dd47d72d7ea2423c)<br>
+
+ * __[2022-07-08](#2022-07-08)__<a id='2022-07-08'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng22070` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng22070](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng22070)<br>
+
+ * __[2022-07-03](#2022-07-03)__<a id='2022-07-03'></a><br>
+   Der SVN-Server auf Boxmatrix kann nicht mehr aktualisiert und sollte daher nicht mehr verwendet werden.<br>
+   Zurückzuführen ist diese Deaktivierung auf Patches über die sich Hippi ärgerte, ohne die `fitimg` in Freetz<br>
+   allerdings nicht nutzbar gewesen wäre. Auf seinen Wunsch wurde sein Perl-Script aus Freetz entfernt und<br>
+   mit Standard-Tools aus [Device Tree Compiler](https://git.kernel.org/pub/scm/utils/dtc/dtc.git) und [U-Boot](https://github.com/u-boot/u-boot) sowie PeterPawns [fit_tools](https://github.com/PeterPawn/YourFritz/tree/main/fit_tools) und [fitdump](https://github.com/PeterPawn/dtc/tree/fitdump) ersetzt.<br>
+   Vorteile diese Umstellung sind unter anderem dass nicht mehr jedes einzelne neue Gerät aufwändig in das<br>
+   Script hineingebastelt werden muss und die Tools auch auf der Fritzbox selbst zur schnellen Anzeige der<br>
+   inaktiven Partition nutzbar sind.<br>
+   Siehe
+   [extrem schlimmer Patch](https://github.com/Freetz-NG/freetz-ng/blob/b1d2002905bdf5641651de0e245b80b2d48f74e7/tools/make/fitimg-host/patches/100-show_help_no_args.patch) /
+   [noch schlimmerer Patch](https://github.com/Freetz-NG/freetz-ng/blob/b1d2002905bdf5641651de0e245b80b2d48f74e7/tools/make/fitimg-host/patches/200-fix_unlzma_path.patch)
+   <br>
+
+ * __[2022-06-02](#2022-06-02)__<a id='2022-06-02'></a><br>
+   Zum Auschecken und wärend des Buildvorgangs ist keine `umask 0022` mehr notwendig, die Berechtigungen<br>
+   werden angepasst falls es notwendig ist. Dies wird nach jedem `update`/`pull` des Checkouts geprüft.<br>
+   Siehe [6b8dc635](https://github.com/Freetz-NG/freetz-ng/commit/6b8dc6359781248dc73b65757f22d6083401ceec)<br>
+
+ * __[2022-05-28](#2022-05-28)__<a id='2022-05-28'></a><br>
+   Der Kernel wird nun nicht mehr direkt aus den AVM-Sourcen gebaut sondern mit einem Download von<br>
+   kernel.org und anschliessend gepatcht. Dies erspart das ständige Warten auf AVM bis Sourcen verfügbar<br>
+   sind, ausserdem werden für Laborversionen nur sporadisch Sourcen veröffentlich, für Inhaus überhaupt<br>
+   nicht. Für eine solche Firmware stehen keine Kernelmodule zur Verfügung.<br>
+   Dies kann mit den Inhaus 7.39 dieser Geräte getestet werden:<br>
+    - 4.4.271  - 3000 + 7530 + 6850-4G + 6850-5G<br>
+    - 4.4.271  - 2400<br>
+    - 4.9.218  - 7590(ac) + 7590ax<br>
+    - 4.19.183 - 7530ax<br>
+   
+   Siehe [4d29c10d](https://github.com/Freetz-NG/freetz-ng/commit/4d29c10d54154be99b61cf7dc95acf751d3b4303)<br>
+
+ * __[2022-05-27](#2022-05-27)__<a id='2022-05-27'></a><br>
+   Die precompiled dl-Tooolchains und dl-Hosttool werden nun nicht mehr mit Ubuntu 14 x64 erstellt sondern<br>
+   sondern mit Ubuntu 18 x64. Der Aufwand für die Wartung dieses 8 Jahre alten Linuxes ist zu gross. Daher<br>
+   werden diese auf sehr alten Systemen nicht mehr funktionieren da dort zB die glibc zu alt ist. Von Debian 9<br>
+   wurde dies bereits gemeldet.<br>
+   Alternativen:<br>
+    - Die Toolchains selbst bauen, dazu im menuconfig keinen "APTguru" sondern höchstens "Experte" auswählen<br>
+    - Ein Docker Image verwenden, auf [Docker-Hub](https://hub.docker.com/search?q=freetz) gibt es eine recht grosse Auswahl<br>
+    - Endlich mal das Betriebsystem aktualisieren<br>
+   
+   Siehe [8e6c52a3](https://github.com/Freetz-NG/freetz-ng/commit/8e6c52a39c8e61a869b73d0d8ad20f1a1ef3e623)<br>
+
+ * __[2022-05-24](#2022-05-24)__<a id='2022-05-24'></a><br>
+   Da es für MD5 und SHA1 günstige Kollisionsangriffe gib gelten diese als unsicher und Freetz nutzt deshalb<br>
+   jetzt für alle Downloads SHA256-Hashes. Wem fehlende oder alte Hashes auffallen möge diese korrigieren.<br>
+   Siehe [2b11ebd6](https://github.com/Freetz-NG/freetz-ng/commit/2b11ebd6abf8720d3097406347e7c7e46f18f377)<br>
+
+ * __[2022-04-17](#2022-04-17)__<a id='2022-04-17'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng22040` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng22040](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng22040)<br>
+
+ * __[2021-12-10](#2021-12-10)__<a id='2021-12-10'></a><br>
+   Mal wieder fehlerhafter Sourcecode von AVM<br>
+   Beim von AVM neu veröffentlichten Quellcodepaket der [5530-07.29](http://osp.avm.de/fritzbox/fritzbox-5530-fiber/source-files-FRITZ.Box_5530-prxI-07.29.tar.gz) passt wieder der Quellcode des Kernels<br>
+   nicht zur .config des Kernels. Falls jemand Lust hat bei AVM nachzufragen: [fritzbox_info@avm.de](fritzbox_info@avm.de).<br>
+   Es gibt im Quellcode die Symbole `CONFIG_AVM_PA_SCH_TACK` und `CONFIG_PHY_ID0_JZ_66791_PANIC`, in<br>
+   der .config dagegen nicht. Wie diese korrekt gesetzt werden muss gewürfelt werden. Für "SCH_TACK" könnte<br>
+   `m` die korrekte Option sein, vielleicht. "JZ-66791"? Nach dem Lesen von [FritzBox 7590 hängt im BootLoop](https://www.ip-phone-forum.de/threads/311499/)<br>
+   lasse ich die Option lieber auf `n` da sie wohl die Fritzbox unbrauchbar machen könnte.<br>
+   Zum "Glück" können Kernel der (bei AVM) neuesten Kernelversion 4 eh nicht ersetzt, sondern nur Module<br>
+   hinzugefügt oder ersetzt werden. Weitere bedauerliche Einzelfälle bei denen auch "SCH_TACK" unklar ist:
+    - 1200_07.27
+    - 7530_07.25
+    - 1750_07.27
+    - 5491_07.27
+    - 7490_07.27
+   
+   Siehe [94930632](https://github.com/Freetz-NG/freetz-ng/commit/9493063213ca68c42126b78347a8fab23e5cd4a2)
+   und [2688d20d6](https://github.com/Freetz-NG/freetz-ng/commit/2688d20d65be847eef80fb98b593902b69ef8334)<br>
+
+ * __[2021-12-02](#2021-12-02)__<a id='2021-12-02'></a><br>
+   Die aktuelle Updaterunde bei AVM ist ~~vermutlich~~ **offenbar noch nicht** abgeschlossen.<br>
+   Ob es sich bei den `PSQ19P2NL4` Updates wirklich um Sicherheitsupdates handelt werden wir spätestens in<br>
+   ein paar Jahren erfahren, vielleicht auch gar nicht. ~~Auf Kompatibilitätsupdates deutet hin dass die 6850 und<br>
+   6890 noch bei `PSQ19P2NL3` stecken, aber kürzlich heimliche Updates ohne Versionsänderung erhielten.~~ Zu<br>
+   den Updates gibt es diesbezüglich keine Stellungsnahme von AVM sondern nur diesen nebulösen Textblock<br>
+   ```Mit jedem neuen FRITZ!OS-Update aktualisiert AVM auch die Sicherheitsfunktionen```<br>
+   ```und empfiehlt daher grundsätzlich für alle Geräte, das Update durchzuführen.```<br>
+   Wer lieber Offenheit bei Updates hat könnte (falls kompatibel) zu OpenWrt wechseln.<br>
+   Siehe
+   [AVM: Sicherheitsinfos zu Updates](https://avm.de/service/sicherheitsinfos-zu-updates/),
+   [AVM: info_de.txt](https://ftp.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/info_de.txt),
+   [IPPF: Sicherheitslücke bei AVM ?!](https://www.ip-phone-forum.de/threads/311646/),
+   [OpenWrt: AVM](https://openwrt.org/toh/hwdata/avm/start),
+   [Discussion: Stammzertifikatsupdate](https://github.com/Freetz-NG/freetz-ng/discussions/424)
+
+ * __[2021-11-29](#2021-11-29)__<a id='2021-11-29'></a><br>
+   AVM bastelt am Format der GPL Sourcen herum.<br>
+   Bis Fritzos 07.27 der 7490 befanden sich die Kernelsourcen noch in einer eigenen `GPL/GPL-kernel.tar.gz`<br>
+   Datei. Bei 07.29 sind direkt alle Datein in der bereitgestellten `.tar`. Das bedeutet für deren Nutzung wieder<br>
+   unnötigen Mehraufwand. Noch nicht einmal das Namensschema der Sourcedateien ist bei AVM konsistent.<br>
+   Ein Diff zu den unmodifizierten Kernelquellen gibt es nach wie vor nicht bei AVM.<br>
+   Siehe [osp.avm.de/fritzbox/fritzbox-7490/](https://osp.avm.de/fritzbox/fritzbox-7490/)<br>
+
+ * __[2021-10-15](#2021-10-15)__<a id='2021-10-15'></a><br>
+   AVM hat neue uralte Sicherheitsverbesserungen veröffentlicht:
+    - FRITZ!OS 7.25: von AVM angegebenes Veröffentlichungsdatum 25.02.2021
+    - FRITZ!OS 7.27: von AVM angegebenes Veröffentlichungsdatum 11.05.2021
+    - FRITZ!OS 7.01: von AVM angegebenes Veröffentlichungsdatum 12.09.2018
+    - FRITZ!OS 7.00: vom 22.11.2018 auf den 24.07.2018 umdatiert
+   
+   Auf die heimlichen Aktualisierung ohne Versionsveränderung von
+   [6820v3](https://github.com/Freetz-NG/freetz-ng/commit/9f4927aed8359f77b4cf9560c6dbafb521ee6573),
+   [6850](https://github.com/Freetz-NG/freetz-ng/commit/112dbe190fc2ceff9f160d2b4e9e0595b95ad842) und
+   [6890](https://github.com/Freetz-NG/freetz-ng/commit/cc5370ea83bee479a0f820b3365cf43d2ee0580f)
+   wird nicht eingegangen.<br>
+   Siehe
+   [AVM Sicherheitsinfos zu Updates](https://avm.de/service/sicherheitsinfos-zu-updates/),
+   [WayBack Machine 21.03.2021](http://web.archive.org/web/20210321215134/https://avm.de/service/sicherheitsinfos-zu-updates/) &
+   [WayBack Machine 14.10.2021](http://web.archive.org/web/20211014172420/https://avm.de/service/sicherheitsinfos-zu-updates/)<br>
+
+ * __[2021-09-22](#2021-09-22)__<a id='2021-09-22'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng21090` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng21090](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng21090)<br>
+
+ * __[2021-05-05](#2021-05-05)__<a id='2021-05-05'></a><br>
+   Die libc und `SEPARATE_AVM_UCLIBC`<br>
+   Bis zu Fritzos 7.0x hat AVM uClibc-ng 1.0.14 oder ältere uClibc verwendet. Beginnend mit 7.1x wurden dann<br>
+   neuere und teilweise verschiedene Versionen von uClibc-ng, musl oder glibc genutzt. Freetz nutzt weiterhin<br>
+   ausschliesslich eine neuere Version von uClibc-ng. Diese wird von den AVM-Binaries nicht gefunden und bei<br>
+   den Freetz-Binaries wird der Pfad nach `/usr/lib/freetz/` fest vorgegeben.<br>
+   Falls man nur mit Freetz erstellte Binaries nutzen möchte, muss die libc Library auch kopiert werden! Der<br>
+   Pfad kann gegebenenfalls mit `FREETZ_RPATH` angepasst werden.<br>
+
  * __[2021-04-10](#2021-04-10)__<a id='2021-04-10'></a><br>
    Neue Linux-Benutzer werden jetzt mit IDs ab 900 angelegt. Dadurch werden sie nicht mehr von AVM gelöscht.<br>
    Siehe [8d2700ef](https://github.com/Freetz-NG/freetz-ng/commit/8d2700ef40fc5ccee7a1dd03c55b11430b13b0c4)<br>
@@ -72,7 +278,7 @@
    Siehe [ng21010](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng21010)<br>
 
  * __[2021-01-01](#2021-01-01)__<a id='2021-01-01'></a><br>
-   Auf Github gibt es einen neuen [Discussions](https://github.com/Freetz-NG/freetz-ng/discussions)-Bereich für
+   Auf GitHub gibt es einen neuen [Discussions](https://github.com/Freetz-NG/freetz-ng/discussions)-Bereich für
    jedes Projekt. Im Gegensatz zu den [Issues](https://github.com/Freetz-NG/freetz-ng/issues) stellt dies keinen<br>
    Bugtrack sondern mehr etwas in Richtung eines Forums dar. Wohin es sich entwickelt wird sich mit der Zeit zeigen.<br>
    Hoffentlich wird es mehr als 1 Person geben die dort Fragen beantwortet!<br>
@@ -213,27 +419,23 @@
    In diesem Fall lädt ```modusers load``` die Freetz-Konfiguration wieder.<br>
    Es gibt 4 neue Geräte: 6591 6660 7581 7582<br>
    Und 10 Laborversionen: 1200 1750 2400 3000 6490 6590 6591 7490 7530 7590<br>
-   Siehe [r16706](https://trac.boxmatrix.info/freetz-ng/changeset/16706/freetz-ng)
-   / [6607e747](https://github.com/Freetz-NG/freetz-ng/commit/6607e747bf9214db24a417aafd8a962f360d8ffc)<br>
+   Siehe [6607e747](https://github.com/Freetz-NG/freetz-ng/commit/6607e747bf9214db24a417aafd8a962f360d8ffc)<br>
 
  * __[2020-05-04](#2020-05-04)__<a id='2020-05-04'></a><br>
    BusyBox 1.31 ist nun die Standardversion.<br>
    Diese Version ist für Firmware mit Kernel 2.6 nicht verfügbar.<br>
-   Siehe [r16708](https://trac.boxmatrix.info/freetz-ng/changeset/16708/freetz-ng)
-   / [8ebedc0c](https://github.com/Freetz-NG/freetz-ng/commit/8ebedc0c292f23889b487cbcedc074c791253944)<br>
+   Siehe [8ebedc0c](https://github.com/Freetz-NG/freetz-ng/commit/8ebedc0c292f23889b487cbcedc074c791253944)<br>
 
  * __[2020-04-17](#2020-04-17)__<a id='2020-04-17'></a><br>
    Patch [multiple fax pages](patches/README.md#patch-faxpages) hinzugefügt.<br>
    Mit diesem Patch können mehrere Seiten in einem Fax verschickt werden.<br>
-   Siehe [r16674](https://trac.boxmatrix.info/freetz-ng/changeset/16674/freetz-ng)
-   / [44ab5583](https://github.com/Freetz-NG/freetz-ng/commit/44ab55837827ac991284708ed34fafa2b8e84783)<br>
+   Siehe [44ab5583](https://github.com/Freetz-NG/freetz-ng/commit/44ab55837827ac991284708ed34fafa2b8e84783)<br>
 
  * __[2020-03-09](#2020-03-09)__<a id='2020-03-09'></a><br>
    Auf der Hauptseite des Webinterfaces werden nun zusätzlich der ```Temporäre```<br>
    ```Speicher``` und die ```Konfigurationspartition``` (falls verfügbar) angezeigt.<br>
    Dies kann im Webinterface unter ```Freetz > Weboberfläche``` konfiguriert werden.<br>
-   Siehe [r16637](https://trac.boxmatrix.info/freetz-ng/changeset/16637/freetz-ng)
-   / [76b57af6](https://github.com/Freetz-NG/freetz-ng/commit/76b57af63447928e84b5fe11adc0e1e5c854bad8)<br>
+   Siehe [76b57af6](https://github.com/Freetz-NG/freetz-ng/commit/76b57af63447928e84b5fe11adc0e1e5c854bad8)<br>
 
  * __[2020-03-05](#2020-03-05)__<a id='2020-03-05'></a><br>
    Neuer Branch [libctest](https://github.com/Freetz-NG/freetz-ng/tree/libctest).<br>
@@ -246,48 +448,40 @@
    Patch [web menu secure message](patches/README.md#patch-secure) hinzugefügt.<br>
    Der Patch entfernt dein Hinweis auf der Hauptseite bei unsicheren Einstellungen.<br>
    Dies betrifft aktuell ```IP-Phone von Aussen``` und ```2-Faktor deaktiviert```.<br>
-   Siehe [r16610](https://trac.boxmatrix.info/freetz-ng/changeset/16610/freetz-ng)
-   / [a7a60102](https://github.com/Freetz-NG/freetz-ng/commit/a7a60102d4a6fbb2739f9c5d09d9ab87bb1615c6)<br>
+   Siehe [a7a60102](https://github.com/Freetz-NG/freetz-ng/commit/a7a60102d4a6fbb2739f9c5d09d9ab87bb1615c6)<br>
 
  * __[2020-02-02](#2020-02-02)__<a id='2020-02-02'></a><br>
    Der neue Link ```/ftp``` zeigt immer auf das Verzeichnis ```/var/media/ftp/```.<br>
-   Siehe [r16542](https://trac.boxmatrix.info/freetz-ng/changeset/16542/freetz-ng)
-   / [dfeeec6d](https://github.com/Freetz-NG/freetz-ng/commit/dfeeec6d00066b5877c71a8d7ecabc9b3586e863)<br>
+   Siehe [dfeeec6d](https://github.com/Freetz-NG/freetz-ng/commit/dfeeec6d00066b5877c71a8d7ecabc9b3586e863)<br>
 
  * __[2020-01-31](#2020-01-31)__<a id='2020-01-31'></a><br>
    Standard GID der ```users``` zu ```80``` geändert.<br>
    Dies sollte keine Auswirkungen auf bestehende Konfigurationen haben.<br>
    Die vorherige GID ```1``` wird von AVM für ```watchdog``` verwendet.<br>
-   Siehe [r16534](https://trac.boxmatrix.info/freetz-ng/changeset/16534/freetz-ng)
-   / [78a39a9d](https://github.com/Freetz-NG/freetz-ng/commit/78a39a9d9067ccf79c19e44c54a9b7a890d155cd)<br>
+   Siehe [78a39a9d](https://github.com/Freetz-NG/freetz-ng/commit/78a39a9d9067ccf79c19e44c54a9b7a890d155cd)<br>
 
  * __[2020-01-30](#2020-01-30)__<a id='2020-01-30'></a><br>
    Freetz-NG hat Geburtstag!<br>
    Ein erfolgreiches Jahr unter dem Motto: Mehr Features - weniger Bugs.<br>
-   Siehe [r15015](https://trac.boxmatrix.info/freetz-ng/changeset/15015/freetz-ng)
-   / [eaf06dbb](https://github.com/Freetz-NG/freetz-ng/commit/eaf06dbb153d8ee2eabeedb827f1c8d80e409744)<br>
+   Siehe [eaf06dbb](https://github.com/Freetz-NG/freetz-ng/commit/eaf06dbb153d8ee2eabeedb827f1c8d80e409744)<br>
 
  * __[2020-01-19](#2020-01-19)__<a id='2020-01-19'></a><br>
    Compilierfehler beim Kernel für 7490 etc.<br>
    Dies kann durch einen nicht angewendeten Patch auftreten.<br>
    Zum beheben reicht ```make kernel-dirclean``` aus.<br>
-   Siehe [r16472](https://trac.boxmatrix.info/freetz-ng/changeset/16472/freetz-ng)
-   / [4421b48d](https://github.com/Freetz-NG/freetz-ng/commit/4421b48d92022fa9e15d50edd3384dbe6089111b)<br>
-   Siehe [r16464](https://trac.boxmatrix.info/freetz-ng/changeset/16464/freetz-ng)
-   / [66c33a0a](https://github.com/Freetz-NG/freetz-ng/commit/66c33a0a9e2c945a9ff70a7f527819402b6073e7)<br>
-   Siehe [r16459](https://trac.boxmatrix.info/freetz-ng/changeset/16459/freetz-ng)
-   / [fcf48be8](https://github.com/Freetz-NG/freetz-ng/commit/fcf48be8ff4385f5bfb264b96ee61c3d903d28ef)<br>
+   Siehe [4421b48d](https://github.com/Freetz-NG/freetz-ng/commit/4421b48d92022fa9e15d50edd3384dbe6089111b)<br>
+   Siehe [66c33a0a](https://github.com/Freetz-NG/freetz-ng/commit/66c33a0a9e2c945a9ff70a7f527819402b6073e7)<br>
+   Siehe [fcf48be8](https://github.com/Freetz-NG/freetz-ng/commit/fcf48be8ff4385f5bfb264b96ee61c3d903d28ef)<br>
 
  * __[2019-12-11](#2019-12-11)__<a id='2019-12-11'></a><br>
    FRITZ!Box 6591 Cable Support.<br>
    Images für dieses Gerät können nun gebaut werden, sind aber noch nicht lauffähig.<br>
    Den aktuellen Status kann man [FIRMWARES](FIRMWARES.md#not-supported-devices) entnehmen.<br>
-   Siehe [r16424](https://trac.boxmatrix.info/freetz-ng/changeset/16424/freetz-ng)
-   / [2c56b535](https://github.com/Freetz-NG/freetz-ng/commit/2c56b5354f0e2aa06d87ab7c6aedd70b639be08e)<br>
+   Siehe [2c56b535](https://github.com/Freetz-NG/freetz-ng/commit/2c56b5354f0e2aa06d87ab7c6aedd70b639be08e)<br>
 
  * __[2019-11-06](#2019-11-06)__<a id='2019-11-06'></a><br>
    Das Trac auf boxmatrix funktioniert aktuell nicht richtig.<br>
-   Bitte stattdessen [Github](https://github.com/Freetz-NG/freetz-ng/issues) verwenden.<br>
+   Bitte stattdessen [GitHub](https://github.com/Freetz-NG/freetz-ng/issues) verwenden.<br>
 
  * __[2019-11-03](#2019-11-03)__<a id='2019-11-03'></a><br>
    In [./docs](./) liegt nun die gesammte Dokumentation und das alte Wiki.<br>
@@ -299,121 +493,100 @@
    Damit können Ports auf die Fritzbox selbst freigegeben werden.<br>
    Falls vorher [AVM-rules (deprecated)](make/avm-rules.md) verwendet wurde, sollten in diesem zuerst die Freigaben gelöscht werden!<br>
    Ein Port kann nur mit einem Package freigegeben werden.<br>
-   Siehe [r16331](https://trac.boxmatrix.info/freetz-ng/changeset/16331/freetz-ng)
-   / [e1b77975](https://github.com/Freetz-NG/freetz-ng/commit/e1b77975a25a939ca935ce324b3d90f27d3013ba)<br>
+   Siehe [e1b77975](https://github.com/Freetz-NG/freetz-ng/commit/e1b77975a25a939ca935ce324b3d90f27d3013ba)<br>
 
  * __[2019-10-27](#2019-10-27)__<a id='2019-10-27'></a><br>
    BusyBox auf Version 1.31.1 aktualisiert.<br>
    Falls diese genutzt werden soll, muss sie ausgewählt werden - auch wenn vorher bereits die 1.30.0 genutzt wurde!<br>
-   Siehe [r16311](https://trac.boxmatrix.info/freetz-ng/changeset/16311/freetz-ng)
-   / [6f93fa14](https://github.com/Freetz-NG/freetz-ng/commit/6f93fa14d35e709c09467b4fd450575094beeeb2)<br>
+   Siehe [6f93fa14](https://github.com/Freetz-NG/freetz-ng/commit/6f93fa14d35e709c09467b4fd450575094beeeb2)<br>
 
  * __[2019-10-06](#2019-10-06)__<a id='2019-10-06'></a><br>
    Patch [udevmount](patches/README.md#patch-udevmount) hinzugefügt.<br>
    Dies ist der Nachfolger von [FREETZMOUNT](patches/README.md#patch-freetzmount) und unterstützt udev.<br>
-   Siehe [r16207](https://trac.boxmatrix.info/freetz-ng/changeset/16207/freetz-ng)
-   / [0b6eefe0](https://github.com/Freetz-NG/freetz-ng/commit/0b6eefe0091040bf0bf51245bc08446656f21a12)<br>
+   Siehe [0b6eefe0](https://github.com/Freetz-NG/freetz-ng/commit/0b6eefe0091040bf0bf51245bc08446656f21a12)<br>
 
  * __[2019-09-20](#2019-09-20)__<a id='2019-09-20'></a><br>
    Busybox Version 1.31.0 hinzugefügt.<br>
    Falls diese verwendet werden soll, muss sie im ```menuconfig``` ausgewählt werden.<br>
    Nicht verfügbar für Geräte mit altem 2.6 Kernel.<br>
-   Siehe [r16118](https://trac.boxmatrix.info/freetz-ng/changeset/16118/freetz-ng)
-   / [27b492b7](https://github.com/Freetz-NG/freetz-ng/commit/27b492b7c2471de6e8013fe5bed35508076e37d7)<br>
+   Siehe [27b492b7](https://github.com/Freetz-NG/freetz-ng/commit/27b492b7c2471de6e8013fe5bed35508076e37d7)<br>
 
  * __[2019-09-17](#2019-09-17)__<a id='2019-09-17'></a><br>
    Package [Dehydrated](make/dehydrated.md) (ursprünglich LetsEncrypt) hinzugefügt.<br>
    Dieses kann zusammen mit Lightpd HTTPS-Zertifikate generieren und verwenden.<br>
-   Siehe [r16103](https://trac.boxmatrix.info/freetz-ng/changeset/16103/freetz-ng)
-   / [084f67df](https://github.com/Freetz-NG/freetz-ng/commit/084f67df21b53a34cfddb9a12ccd84cf850e61b9)<br>
-   Siehe [r15110](https://trac.boxmatrix.info/freetz-ng/changeset/15110/freetz-ng)
-   / [1386ec4b](https://github.com/Freetz-NG/freetz-ng/commit/1386ec4bdf9d3ace1d92410218e2a949c73aa85d)<br>
+   Siehe [084f67df](https://github.com/Freetz-NG/freetz-ng/commit/084f67df21b53a34cfddb9a12ccd84cf850e61b9)<br>
+   Siehe [1386ec4b](https://github.com/Freetz-NG/freetz-ng/commit/1386ec4bdf9d3ace1d92410218e2a949c73aa85d)<br>
 
  * __[2019-09-16](#2019-09-16)__<a id='2019-09-16'></a><br>
    Package [minisatip](make/minisatip.md) hinzugefügt.<br>
    Dies kann die DVB-c Tuner von AVM Geräten als normales SAT>IP bereitstellen.<br>
-   Siehe [r16090](https://trac.boxmatrix.info/freetz-ng/changeset/16090/freetz-ng)
-   / [8f8a081e](https://github.com/Freetz-NG/freetz-ng/commit/8f8a081e32a2e8c936558ea0247eaf7b99312c8b)<br>
+   Siehe [8f8a081e](https://github.com/Freetz-NG/freetz-ng/commit/8f8a081e32a2e8c936558ea0247eaf7b99312c8b)<br>
 
  * __[2019-09-12](#2019-09-12)__<a id='2019-09-12'></a><br>
    Package [Addhole](make/addhole.md) hinzugefügt.<br>
    Dieses lädt Hostlisten herunter und blockiert sie mit Dnsmasq.<br>
-   Siehe [r16055](https://trac.boxmatrix.info/freetz-ng/changeset/16055/freetz-ng)
-   / [d1b88097](https://github.com/Freetz-NG/freetz-ng/commit/d1b8809796f3dfecae95c3c76f3fdf921a72cd32)<br>
+   Siehe [d1b88097](https://github.com/Freetz-NG/freetz-ng/commit/d1b8809796f3dfecae95c3c76f3fdf921a72cd32)<br>
 
  * __[2019-09-06](#2019-09-06)__<a id='2019-09-06'></a><br>
    Patch [start-wlan-if-on-boot](patches/README.md#patch-start-wlan-if-on-boot) hinzugefügt.<br>
    Workaround für Probleme mit Wlan und DHCP auf VR9 Geräten wie 7490.<br>
-   Siehe [r16031](https://trac.boxmatrix.info/freetz-ng/changeset/16031/freetz-ng)
-   / [9f1eec67](https://github.com/Freetz-NG/freetz-ng/commit/9f1eec67f7cad2824fb4306020964aed9e8c00fe)<br>
+   Siehe [9f1eec67](https://github.com/Freetz-NG/freetz-ng/commit/9f1eec67f7cad2824fb4306020964aed9e8c00fe)<br>
 
  * __[2019-08-25](#2019-08-25)__<a id='2019-08-25'></a><br>
    ```tools/push_firmware```: Alle Parameters sind nun optional.<br>
-   Siehe [r15987](https://trac.boxmatrix.info/freetz-ng/changeset/15987/freetz-ng)
-   / [f5433ffc](https://github.com/Freetz-NG/freetz-ng/commit/f5433ffc7ad3ab453382ba377c0206ef350d4a26)<br>
+   Siehe [f5433ffc](https://github.com/Freetz-NG/freetz-ng/commit/f5433ffc7ad3ab453382ba377c0206ef350d4a26)<br>
 
  * __[2019-08-13](#2019-08-13)__<a id='2019-08-13'></a><br>
    Patch [add-telnetd](patches/README.md#add-telnetd) hinzugefügt.<br>
    Dies betrifft nur neuere Geräte und ist standardmässig deaktiviert.<br>
-   Siehe [r15937](https://trac.boxmatrix.info/freetz-ng/changeset/15937/freetz-ng)
-   / [3a818412](https://github.com/Freetz-NG/freetz-ng/commit/3a8184127e24c266d28413eb4633a25ddd079252)<br>
+   Siehe [3a818412](https://github.com/Freetz-NG/freetz-ng/commit/3a8184127e24c266d28413eb4633a25ddd079252)<br>
 
  * __[2019-08-13](#2019-08-13)__<a id='2019-08-13'></a><br>
    Patch [remove-telnetd](patches/README.md#remove-telnetd) hinzugefügt.<br>
    Dies betrifft nur ältere Geräte und ist standardmässig aktiviert.<br>
-   Siehe [r15931](https://trac.boxmatrix.info/freetz-ng/changeset/15931/freetz-ng)
-   / [4e05ae21](https://github.com/Freetz-NG/freetz-ng/commit/4e05ae21279a6cff2a914c60904290a8674ecfff)<br>
+   Siehe [4e05ae21](https://github.com/Freetz-NG/freetz-ng/commit/4e05ae21279a6cff2a914c60904290a8674ecfff)<br>
 
  * __[2019-08-03](#2019-08-03)__<a id='2019-08-03'></a><br>
    Freetz-Webui: Das Sicherheitslevel ist nun standardmässig '0', kann im menuconfig geändert werden.<br>
-   Siehe [r15874](https://trac.boxmatrix.info/freetz-ng/changeset/15874/freetz-ng)
-   / [a2f55ca4](https://github.com/Freetz-NG/freetz-ng/commit/a2f55ca4bb5ef2e1f66e2800fb1cd08a05c19004)<br>
+   Siehe [a2f55ca4](https://github.com/Freetz-NG/freetz-ng/commit/a2f55ca4bb5ef2e1f66e2800fb1cd08a05c19004)<br>
 
  * __[2019-07-31](#2019-07-31)__<a id='2019-07-31'></a><br>
    Addons: Es können nun ```./addon/*.pkg``` zum aktivieren von Addons verwendet werden.<br>
-   Siehe [r15856](https://trac.boxmatrix.info/freetz-ng/changeset/15856/freetz-ng)
-   / [3dda6456](https://github.com/Freetz-NG/freetz-ng/commit/3dda64565e9f58f35c310455fbc2e61a4b095ddc)<br>
+   Siehe [3dda6456](https://github.com/Freetz-NG/freetz-ng/commit/3dda64565e9f58f35c310455fbc2e61a4b095ddc)<br>
 
  * __[2019-06-22](#2019-06-22)__<a id='2019-06-22'></a><br>
    Package [LCD4linux](make/lcd4linux.md) hinzugefügt.<br>
    Damit kann ein USB-Display angesteuert werden.<br>
-   Siehe [r15768](https://trac.boxmatrix.info/freetz-ng/changeset/15768/freetz-ng)
-   / [a59ff246](https://github.com/Freetz-NG/freetz-ng/commit/a59ff246fc55a1c438723a404bf73afda8a6e7a1)<br>
+   Siehe [a59ff246](https://github.com/Freetz-NG/freetz-ng/commit/a59ff246fc55a1c438723a404bf73afda8a6e7a1)<br>
 
  * __[2019-06-12](#2019-06-12)__<a id='2019-06-12'></a><br>
    Patch [add-swapoptions](patches/README.md#add-swapoptions) hinzugefügt.<br>
    Die Swap-Optionen sind nun optional und standardmässig deaktiviert.<br>
-   Siehe [r15727](https://trac.boxmatrix.info/freetz-ng/changeset/15727/freetz-ng)
-   / [fcca7109](https://github.com/Freetz-NG/freetz-ng/commit/fcca7109eaae438d88e519bd63232d8e203b3d64)<br>
+   Siehe [fcca7109](https://github.com/Freetz-NG/freetz-ng/commit/fcca7109eaae438d88e519bd63232d8e203b3d64)<br>
 
  * __[2019-05-09](#2019-05-09)__<a id='2019-05-09'></a><br>
    Patch [drop-noexec](patches/README.md#drop-noexec-external) hinzugefügt.<br>
    Wenn auf dem USB Speicher Dateien ausgeführt werden sollen (external), muss dieser ausgewählt werden.<br>
-   Siehe [r15530](https://trac.boxmatrix.info/freetz-ng/changeset/15530/freetz-ng)
-   / [dcbd4885](https://github.com/Freetz-NG/freetz-ng/commit/dcbd4885dea3ee8ef7a15a54ecd852ce913a0492)<br>
-   Siehe [r15505](https://trac.boxmatrix.info/freetz-ng/changeset/15505/freetz-ng)
-   / [8f331457](https://github.com/Freetz-NG/freetz-ng/commit/8f3314576395b855356a7515ce86e4ceb13414a9)<br>
+   Siehe [dcbd4885](https://github.com/Freetz-NG/freetz-ng/commit/dcbd4885dea3ee8ef7a15a54ecd852ce913a0492)<br>
+   Siehe [8f331457](https://github.com/Freetz-NG/freetz-ng/commit/8f3314576395b855356a7515ce86e4ceb13414a9)<br>
 
  * __[2019-04-15](#2019-04-15)__<a id='2019-04-15'></a><br>
    Das Downloadverzeichnis ```./dl``` ist nun ein Link.<br>
    Dieser verweiset auf ```~/.freetz-dl``` wodurch mehrere Checkouts sich das gleiche Verzeichis teilen.<br>
    Wem dies nicht gefällt kann den Link durch ein Verzeichnis ersetzen.<br>
-   Siehe [r15411](https://trac.boxmatrix.info/freetz-ng/changeset/15411/freetz-ng)
-   / [0c7fafc8](https://github.com/Freetz-NG/freetz-ng/commit/0c7fafc8ee4b980c89aece585a196b38cff579c6)<br>
+   Siehe [0c7fafc8](https://github.com/Freetz-NG/freetz-ng/commit/0c7fafc8ee4b980c89aece585a196b38cff579c6)<br>
 
  * __[2019-04-02](#2019-04-02)__<a id='2019-04-02'></a><br>
    Package [ProxyChains-NG](make/proxychains-ng.md) hinzugefügt.<br>
    Damit kann jedes Programm einen Proxy verwenden.<br>
-   Siehe [r15112](https://trac.boxmatrix.info/freetz-ng/changeset/15112/freetz-ng)
-   / [d8f65059](https://github.com/Freetz-NG/freetz-ng/commit/d8f65059f28ff8f22332efb73059e6ae7d21f04c)<br>
+   Siehe [d8f65059](https://github.com/Freetz-NG/freetz-ng/commit/d8f65059f28ff8f22332efb73059e6ae7d21f04c)<br>
 
  * __[2019-03-12](#2019-03-12)__<a id='2019-03-12'></a><br>
    Änderung bei der Signierung von Images.<br>
    Der private Schlüssel wird in ```./.signature``` abgelegt. Dies ist ein Link auf ```~/.freetz-signature```.<br>
    Damit nutzt jeder Checkout den gleichen Schlüssel und benötigt das gleiche Passwort.<br>
    Wem dies nicht gefällt kann den Link durch ein Verzeichnis ersetzen.<br>
-   Siehe [r15300](https://trac.boxmatrix.info/freetz-ng/changeset/15300/freetz-ng)
-   / [c3437a4e](https://github.com/Freetz-NG/freetz-ng/commit/c3437a4eb47bcefa209aefa67d77b9de606c4676)<br>
+   Siehe [c3437a4e](https://github.com/Freetz-NG/freetz-ng/commit/c3437a4eb47bcefa209aefa67d77b9de606c4676)<br>
 
  * __[2019-03-08](#2019-03-08)__<a id='2019-03-08'></a><br>
    Signaturprüfung von AVM-Images beim _Entpacken_.<br>
@@ -421,48 +594,38 @@
    Dies hatte den Nachteil dass eine Dateien die manuell nach dl/fw/ kopiert wurden nicht geprüft wurden.<br>
    Man kann die Signatur auch manuell mit ```fwmod -v $key $img``` prüfen.<br>
    Hinweis: Die allerersten AVM Geräte nutzten noch keine Signatur und werden weiterhin via MD5 geprüft.<br>
-   Siehe [r15284](https://trac.boxmatrix.info/freetz-ng/changeset/15284/freetz-ng)
-   / [be2994f7](https://github.com/Freetz-NG/freetz-ng/commit/be2994f7e61c3168617905e665462569d9110b71)<br>
+   Siehe [be2994f7](https://github.com/Freetz-NG/freetz-ng/commit/be2994f7e61c3168617905e665462569d9110b71)<br>
 
  * __[2019-02-04](#2019-02-04)__<a id='2019-02-04'></a><br>
    Package [CA-bundle](make/ca-bundle.md) (ursprünglich CAbundle) hinzugefügt.<br>
    Damit können wget, curl usw HTTPS-Zertifikate prüfen.<br>
-   Siehe [r15109](https://trac.boxmatrix.info/freetz-ng/changeset/15109/freetz-ng)
-   / [3b38f82c](https://github.com/Freetz-NG/freetz-ng/commit/3b38f82c7b5beebe35696c7c3de9aad1d8296e8d)<br>
+   Siehe [3b38f82c](https://github.com/Freetz-NG/freetz-ng/commit/3b38f82c7b5beebe35696c7c3de9aad1d8296e8d)<br>
 
  * __[2019-02-19](#2019-02-19)__<a id='2019-02-19'></a><br>
    Freetz-Webui: Option "Downgrade" des Firmware-Updates repariert.<br>
    Nach einem Downgrade sollte man die Einstellungen zurücksetzen oder ein Backup einspielen.<br>
-   Siehe [r15190](https://trac.boxmatrix.info/freetz-ng/changeset/15190/freetz-ng)
-   / [f300b9a7](https://github.com/Freetz-NG/freetz-ng/commit/f300b9a71754d98a56e6794770269cb63142fc60)<br>
+   Siehe [f300b9a7](https://github.com/Freetz-NG/freetz-ng/commit/f300b9a71754d98a56e6794770269cb63142fc60)<br>
 
  * __[2019-02-04](#2019-02-04)__<a id='2019-02-04'></a><br>
    Patch [modify-dsl-dettings](patches/MODIFY_DSL_SETTINGS.md) hinzugefügt.<br>
    Mit diesem Patch wird die DSL Störsicherheit um 4 Performance-Stufen erweitert.<br>
-   Siehe [r15100](https://trac.boxmatrix.info/freetz-ng/changeset/15100/freetz-ng)
-   / [09aae63e](https://github.com/Freetz-NG/freetz-ng/commit/09aae63ee888ea4d3cbe38d0ef9990a73e04bf31)<br>
-   Siehe [r15119](https://trac.boxmatrix.info/freetz-ng/changeset/15119/freetz-ng)
-   / [262d8a9e](https://github.com/Freetz-NG/freetz-ng/commit/262d8a9ee9dc8c05dda60974b93ce531c91194f2)<br>
+   Siehe [09aae63e](https://github.com/Freetz-NG/freetz-ng/commit/09aae63ee888ea4d3cbe38d0ef9990a73e04bf31)<br>
+   Siehe [262d8a9e](https://github.com/Freetz-NG/freetz-ng/commit/262d8a9ee9dc8c05dda60974b93ce531c91194f2)<br>
 
  * __[2019-02-04](#2019-02-04)__<a id='2019-02-04'></a><br>
    Patch [modify-counter](patches/MODIFY_COUNTER.md) hinzugefügt.<br>
    Mit diesem Patch wird der Online-Zähler von AVM verändert, es werden Gigabyte und Tage angezeigt.<br>
-   Siehe [r15099](https://trac.boxmatrix.info/freetz-ng/changeset/15099/freetz-ng)
-   / [e6d16b75](https://github.com/Freetz-NG/freetz-ng/commit/e6d16b75436fdb8322434b5e380ae5e05d9ec604)<br>
-   Siehe [r15119](https://trac.boxmatrix.info/freetz-ng/changeset/15119/freetz-ng)
-   / [262d8a9e](https://github.com/Freetz-NG/freetz-ng/commit/262d8a9ee9dc8c05dda60974b93ce531c91194f2)<br>
+   Siehe [e6d16b75](https://github.com/Freetz-NG/freetz-ng/commit/e6d16b75436fdb8322434b5e380ae5e05d9ec604)<br>
+   Siehe [262d8a9e](https://github.com/Freetz-NG/freetz-ng/commit/262d8a9ee9dc8c05dda60974b93ce531c91194f2)<br>
 
  * __[2019-02-01](#2019-02-01)__<a id='2019-02-01'></a><br>
    Freetz-Webui: Hostname im Seitentitel.<br>
    Es wird der Hostname ohne Domain angezeigt, falls er verändert wurde.<br>
    Diesen kann man in der ar7.cfg mit Domain oder im AVM-Webui unter "Fritz!Box-Name" setzen.<br>
-   Siehe [r15073](https://trac.boxmatrix.info/freetz-ng/changeset/15073/freetz-ng)
-   / [f97f6679](https://github.com/Freetz-NG/freetz-ng/commit/f97f66795b1a4de2e67ec8f92d646c820674ff1b)<br>
-   Siehe [r15743](https://trac.boxmatrix.info/freetz-ng/changeset/15743/freetz-ng)
-   / [9bf028d7](https://github.com/Freetz-NG/freetz-ng/commit/9bf028d7425c18fabe689b3ae27658718169c892)<br>
+   Siehe [f97f6679](https://github.com/Freetz-NG/freetz-ng/commit/f97f66795b1a4de2e67ec8f92d646c820674ff1b)<br>
+   Siehe [9bf028d7](https://github.com/Freetz-NG/freetz-ng/commit/9bf028d7425c18fabe689b3ae27658718169c892)<br>
 
  * __[2019-02-01](#2019-02-01)__<a id='2019-02-01'></a><br>
    Skin [cuma](themes/skin.md#cuma) (dark) hinzugefügt.<br>
-   Siehe [r15071](https://trac.boxmatrix.info/freetz-ng/changeset/15071/freetz-ng)
-   / [bebcd72a](https://github.com/Freetz-NG/freetz-ng/commit/bebcd72a13140e137d56374035081b18de2a9567)<br>
+   Siehe [bebcd72a](https://github.com/Freetz-NG/freetz-ng/commit/bebcd72a13140e137d56374035081b18de2a9567)<br>
 

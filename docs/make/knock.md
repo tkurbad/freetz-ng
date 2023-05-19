@@ -1,4 +1,9 @@
-# Knockd 0.7
+# Knock 0.8
+ - Homepage: [https://www.zeroflux.org/projects.html](https://www.zeroflux.org/projects.html)
+ - Manpage: [https://linux.die.net/man/1/knockd](https://linux.die.net/man/1/knockd)
+ - Changelog: [https://github.com/jvinet/knock/blob/master/ChangeLog](https://github.com/jvinet/knock/blob/master/ChangeLog)
+ - Repository: [https://github.com/jvinet/knock](https://github.com/jvinet/knock)
+ - Package: [master/make/pkgs/knock/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/knock/)
 
 *"Wer klopfet, dem wird aufgetan"* - so könnte man dieses Paket
 überschreiben. *knockd* bietet eine gute Möglichkeit, Dienste von Remote
@@ -18,5 +23,5 @@ braucht - der Portscan eines Hackers läuft also damit meist ins Leere.
 -   [Artikel zu
     "Portknocking"](http://blog.roothell.org/archives/146-Portknocking-Tools-Teil-1-knockd.html)
 -   [Knockd Demo auf
-    Youtube](http://www.youtube.com/watch?v=EbzrLPf6D7Y)
+    YouTube](http://www.youtube.com/watch?v=EbzrLPf6D7Y)
 

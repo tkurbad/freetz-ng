@@ -32,7 +32,7 @@ comment "Mod customizations ---------------------------------------"
 source "config/ui/freetz.in"
 
 comment "Build system ---------------------------------------------"
-	depends on FREETZ_SHOW_ADVANCED
+	depends on FREETZ_SHOW_EXPERT
 source "config/ui/toolchain.in"
 source "config/ui/build-system.in"
 source "config/ui/fwmod.in"
@@ -50,6 +50,7 @@ source "config/avm/signature.in"
 source "config/avm/mtd.in"
 
 source "config/.img/Config.in"
+
 source "config/.kos/Config.in"
 
 source "config/avm/version.in"
@@ -61,7 +62,8 @@ source "config/avm/kernel.in"
 source "config/avm/uclibc.in"
 source "config/avm/source.in"
 source "config/mod/juis.in"
-source "config/mod/kernel.in"
+source "config/mod/source.in"
 source "config/mod/prefix.in"
+source "config/mod/meson.in"
 source "config/mod/mandatory.in"
 

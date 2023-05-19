@@ -93,14 +93,14 @@ if EXTERNAL_ENABLED
 	config EXTERNAL_OWN_FILES
 		string "own files"
 		default ""
-		depends on FREETZ_SHOW_ADVANCED
+		depends on FREETZ_SHOW_EXPERT
 		help
 			Put your own files/directories here (space separated)
 
-	source "make/external.in.generated"
+	source "make/pkgs/external.in.generated"
 	source "make/libs/external.in"
-	source "make/linux/external.in"
-	source "make/ndas/external.in.modules"
+	source "make/kernel/external.in"
+	source "make/pkgs/ndas/external.in.modules"
 
 endif # EXTERNAL_ENABLED
 

@@ -1,8 +1,11 @@
-$(call PKG_INIT_LIB, 1.37)
-$(PKG)_LIB_VERSION:=0.28.0
+$(call PKG_INIT_LIB, 1.46)
+$(PKG)_LIB_VERSION:=0.33.1
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_SOURCE_MD5:=729f22d917494fdc4b54fce5aa6547c7
-$(PKG)_SITE:=ftp://ftp.gnupg.org/gcrypt/libgpg-error
+$(PKG)_HASH:=b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d
+$(PKG)_SITE:=https://gnupg.org/ftp/gcrypt/libgpg-error,ftp://ftp.gnupg.org/gcrypt/libgpg-error
+### WEBSITE:=https://gnupg.org/software/libgpg-error/
+### CHANGES:=https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=blob;f=NEWS
+### CVSREPO:=https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$(pkg).so.$($(PKG)_LIB_VERSION)
@@ -13,6 +16,8 @@ $(PKG)_PATCH_POST_CMDS += $(if $(TARGET_TRIPLET_GNU_ABI),(cd src/syscfg; ln -s l
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
+$(PKG)_CONFIGURE_OPTIONS += --enable-install-gpg-error-config
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -36,6 +41,7 @@ $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
+
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBGPG_ERROR_DIR) clean
 	$(RM) -r \
@@ -49,3 +55,4 @@ $(pkg)-uninstall:
 	$(RM) $(LIBGPG_ERROR_TARGET_DIR)/libgpg-error*.so*
 
 $(PKG_FINISH)
+

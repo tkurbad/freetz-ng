@@ -1,4 +1,5 @@
-# Sundtek DVB-C/T/T2 driver 130210.134617/170310.204343
+# Sundtek DVB driver 130210.134617/170310.204343/210803.071224
+ - Package: [master/make/pkgs/sundtek/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sundtek/)
 
 [![Sundtek DVB driver](../screenshots/256_md.jpg)](../screenshots/256.jpg)
 
@@ -10,7 +11,7 @@ sollte mindestens USB 2.0 haben, 11 MBit/s reichen nicht aus.
  * Mit Kernel
 2.6.19.2 (Fritzbox 7270v1 und 7570) gibt es momentan ein Memoryleak,
 siehe
-[#472](https://trac.boxmatrix.info/freetz-ng/ticket/472)
+Ticket #472
 
 ### Parameter für 'mediaclient'
 

@@ -1,4 +1,5 @@
 # fstyp 0.1 (binary only)
+ - Package: [master/make/pkgs/fstyp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fstyp/)
 
 **fstyp** erlaubt es einem Anwender, den Dateisystem-Typ eines
 eingebundenen oder auch nicht eingebundenen Dateisystems zu ermitteln.

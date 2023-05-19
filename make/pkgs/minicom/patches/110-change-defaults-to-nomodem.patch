@@ -1,0 +1,20 @@
+--- src/rwconf.c
++++ src/rwconf.c
+@@ -120,7 +120,7 @@
+   { "BUSY",		0,   "mnocon2" },
+   { "NO DIALTONE",	0,   "mnocon3" },
+   { "VOICE",		0,   "mnocon4" },
+-  { "~~+++~~ATH^M",	0,   "mhangup" },
++  { "",			0,   "mhangup" },
+   { "^M",		0,   "mdialcan" },
+   { "45",		0,   "mdialtime" },
+   { "2",		0,   "mrdelay" },
+@@ -135,7 +135,7 @@
+   { "BS",		0,   "backspace" },
+   { N_("enabled"),	0,   "statusline" },
+   { N_("Yes"),		0,   "hasdcd" },
+-  { N_("Yes"),		0,   "rtscts" },
++  { N_("No"),		0,   "rtscts" },
+   { N_("No"),		0,   "xonxoff" },
+   { "D",		0,   "zauto" },
+ 

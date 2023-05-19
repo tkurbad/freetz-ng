@@ -1,4 +1,8 @@
-# vsftpd 3.0.3
+# vsftpd 3.0.5
+ - Homepage: [http://vsftpd.beasts.org/](http://vsftpd.beasts.org/)
+ - Manpage: [https://security.appspot.com/vsftpd/vsftpd_conf.html](https://security.appspot.com/vsftpd/vsftpd_conf.html)
+ - Changelog: [https://security.appspot.com/vsftpd/Changelog.txt](https://security.appspot.com/vsftpd/Changelog.txt)
+ - Package: [master/make/pkgs/vsftpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vsftpd/)
 
 **vsFTP** steht für **v**ery **s**ecure **F**ile **T**ransfer
 **P**rotocol. Der
@@ -13,6 +17,14 @@ folgende Features:
     throttling](http://en.wikipedia.org/wiki/Bandwidth_throttling))
 -   IPv6
 -   SSL Verschlüsselung
+
+### Bekannte Probleme
+
+Mit 7520/7530 07.25 crasht die Box bei Verbindungsaufbau zum FTP-Server.
+Dies ist keine allgemeines ARM Problem da ARM-Repeater nicht crashen.
+Sondern vermutlich ein Bug oder Fehlkonfiguration im Kernel (AVM-PA etc).
+Als Workaround im Webif bei vsftpd unter `Zusätzliche Konfigurationsoptionen
+(für Experten)` dies eintragen: `isolate_network=NO`. Siehe [https://github.com/Freetz-NG/freetz-ng/issues/236](https://github.com/Freetz-NG/freetz-ng/issues/236)
 
 ### Package ins Image einbinden
 

@@ -1,0 +1,11 @@
+--- src/algo_xxhash.h
++++ src/algo_xxhash.h
+@@ -1561,7 +1561,7 @@
+ 
+ /* note: use after variable declarations */
+ #ifndef XXH_STATIC_ASSERT
+-#  if defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)    /* C11 */
++#  if defined(__STDC_disabled_VERSION__) && (__STDC_VERSION__ >= 201112L)    /* C11 */
+ #    include <assert.h>
+ #    ifndef static_assert /* uClibc does not define static_assert */
+ #      define static_assert _Static_assert

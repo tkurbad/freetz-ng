@@ -1,4 +1,5 @@
 # usbutils 007 (binary only)
+ - Package: [master/make/pkgs/usbutils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/usbutils/)
 
 Das Paket **usbutils** enthält, was man zur Anzeige von USB
 Geräteinformationen benötigt: `lsusb-freetz` listet diese Informationen

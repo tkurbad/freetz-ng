@@ -1,8 +1,12 @@
-$(call PKG_INIT_LIB, 2.3.0)
-$(PKG)_LIB_VERSION:=1.7.0
+$(call PKG_INIT_LIB, 2.5.0)
+$(PKG)_LIB_VERSION:=1.8.10
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_SOURCE_SHA256:=caa34f99b6e3bcea8502507eb6549a0a84510b244a748dfb287271b2d47467a9
+$(PKG)_HASH:=ef2420f0232c087801abf705e89ae65f6257df6b7931d37846a193ef2e8cdcbe
 $(PKG)_SITE:=@SF/expat,https://github.com/libexpat/libexpat/releases/download/R_$(subst .,_,$($(PKG)_VERSION))
+### WEBSITE:=https://libexpat.github.io/
+### MANPAGE:=https://libexpat.github.io/doc/
+### CHANGES:=https://github.com/libexpat/libexpat/blob/master/expat/Changes
+### CVSREPO:=https://github.com/libexpat/libexpat
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/lib/.libs/libexpat.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libexpat.so.$($(PKG)_LIB_VERSION)
@@ -13,6 +17,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --without-xmlwf
 $(PKG)_CONFIGURE_OPTIONS += --without-examples
 $(PKG)_CONFIGURE_OPTIONS += --without-tests
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -35,6 +40,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(EXPAT_DIR) clean

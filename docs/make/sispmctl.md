@@ -1,4 +1,5 @@
 # sispmctl 3.1
+ - Package: [master/make/pkgs/sispmctl/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sispmctl/)
 
 **[sispmctl](http://sispmctl.sourceforge.net/)**
 ermöglicht das Schalten von 230V-Steckdosen über den USB-Anschluss der
@@ -80,7 +81,7 @@ werden mehrere Instanzen von sispmctl als Listener auf unterschiedlichen
 Ports gestartet. Diese Ports können über die Einstellungsseite separat
 für jede Steckdosenleiste konfiguriert werden.
 
-Seit Trunkversion [r6789](https://trac.boxmatrix.info/freetz-ng/changeset/6789) ist sispmctl 3.0 samt cgi-Version 1.1 ein
+Seit Trunkversion Changeset r6789 ist sispmctl 3.0 samt cgi-Version 1.1 ein
 Bestandteil von FREETZ und kann über menuconfig unter "Testing"
 ausgewählt werden. CGI-Version und rc-Skript kann in menuconfig separat
 abgewählt oder ins Image "mitgenommen" werden. Werden cgi- und
@@ -170,8 +171,8 @@ intgrierten Web-Interfaces ist nach einem solchen Absturz möglich.
     IPPF](http://www.ip-phone-forum.de/showthread.php?t=232493&p=1690967&viewfull=1#post1690967)
 -   [Version 1.1 von sispmctl-cgi auf
     IPPF](http://www.ip-phone-forum.de/showthread.php?t=232493&p=1695596&viewfull=1#post1695596)
--   [Ticket #1264 im trac](https://trac.boxmatrix.info/freetz-ng/ticket/1264)
--   [Ticket #1677 im trac](https://trac.boxmatrix.info/freetz-ng/ticket/1677)
+-   Ticket #1264
+-   Ticket #1677
 
 ### Weitere Screenshots
 

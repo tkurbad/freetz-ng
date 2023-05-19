@@ -1,6 +1,11 @@
-# Vim 8.2.0769 (binary only)
+# Vim 9.0.0049 (binary only)
+ - Homepage: [https://www.vim.org/](https://www.vim.org/)
+ - Manpage: [https://www.vim.org/docs.php](https://www.vim.org/docs.php)
+ - Changelog: [https://www.arp242.net/vimlog/](https://www.arp242.net/vimlog/)
+ - Repository: [https://github.com/vim/vim](https://github.com/vim/vim)
+ - Package: [master/make/pkgs/vim/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vim/)
 
-**[vim](http://www.vim.org/)** (**vi i**mproved)
+**vim** (**vi i**mproved)
 ist eine Variante des bekannten Unix-Editors *vi*. Wie sein "Parent",
 läuft er in der Konsole, und wird ausschließlich über die Tastatur
 bedient, weshalb er sich auch hervorragend für die Benutzung auf der
@@ -22,19 +27,9 @@ sind für *vim* eine Selbstverständlichkeit.
 
 ### Weiterführende Links
 
--   [vim Homepage](http://www.vim.org/)
--   [Wikipedia
-    Artikel](http://de.wikipedia.org/wiki/Vim)
--   [vi
-    Befehlsreferenz](http://de.wikibooks.org/wiki/Vi_Befehlsreferenz:_%C3%9Cbersicht)
-    bei Wiki-Books
--   [vim
-    Schnellübersicht](http://tnerual.eriogerg.free.fr/vimqrc-ge.pdf)
--   [vim
-    Kurzanleitung](http://lug.fh-swf.de/vim/vim-kurzanleitung.pdf)
--   [Sieben Angewohnheiten für das effektive
-    Editieren](http://www.moolenaar.net/habits_de.pdf)
--   [vim
-    Videotutorials](http://www.learn2use.de/tag/Vim)
+-   [Wikipedia Artikel](http://de.wikipedia.org/wiki/Vim)
+-   [vi Befehlsreferenz bei Wiki-Books](http://de.wikibooks.org/wiki/Vi_Befehlsreferenz:_%C3%9Cbersicht)
+-   [vim Schnellübersicht](http://tnerual.eriogerg.free.fr/vimqrc-ge.pdf)
+-   [Sieben Angewohnheiten für das effektive Editieren](http://www.moolenaar.net/habits_de.pdf)
 
 

@@ -10,7 +10,9 @@
  - 190-add_freetz_webmenu.sh        - !FREETZ_AVM_HAS_ONLY_LUA
  - 222-drop_noexec.sh               - FREETZ_AVM_HAS_NOEXEC
  - 250-remove_avm_inetd.sh          - FREETZ_AVM_HAS_INETD
- - 700-set_lang_to_utf8.sh          - FREETZ_BUSYBOX_UNICODE_SUPPORT
+ - 700-set_lang.sh                  - all
+ - 840-remove_smd_httpd.sh          - FREETZ_CPU_MODEL_ARM_cortex_a9
+ - 850-patch_fiber_fit-image.sh     - FREETZ_TYPE_FIBER
 
 ### wrapper
  - 105-wrapper_ctlmgr.sh            - FREETZ_LIB_libctlmgr
@@ -19,12 +21,16 @@
 ### fixes
  - 090-var_install_fixes.sh         - all
  - 196-storage_fixes.sh             - all
+ - 219-fix_busybox_syntax_7539.sh   - 7539 FREETZ_AVM_VERSION_07_2X_MAX
+ - 220-fix_chronyd_7570.sh          - 7570
+ - 261-update_avm-rootca.sh         - non updated from FOS 5.2x - <07.29
  - 521-fix_dect_update.sh           - FREETZ_TARGET_ARCH_X86
 
 ### other
  - 080-start_plugin.sh              - FREETZ_AVM_HAS_PLUGINS_UPDATE
  - 105-S06-logging.sh               - FREETZ_AVM_VERSION_05_2X_MIN
  - 108-patch_multid-wait.sh         - FREETZ_AVM_VERSION_06_5X_MAX
+ - 360-enable_rpcbind.sh            - FREETZ_AVM_HAS_RPCBIND && FREETZ_PACKAGE_NFSD_CGI
  - 391-symlink_blkid.sh             - !FREETZ_BUSYBOX__KEEP_BINARIES || FREETZ_PACKAGE_E2FSPROGS_BLKID
  - 401-remove_ftpd_banner.sh        - FREETZ_AVM_HAS_NAS
  - 620-symlink_wget.sh              - FREETZ_BUSYBOX_WGET || FREETZ_PACKAGE_WGET

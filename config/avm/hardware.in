@@ -1,4 +1,5 @@
 # system type (the same variable name as in /proc/cpuinfo)
+# and also: readelf -A usr/bin/ctlmgr
 
 config FREETZ_SYSTEM_TYPE_AR7_SANGAM
 	bool
@@ -114,11 +115,8 @@ config FREETZ_SYSTEM_TYPE_IPQ40xx
 		FREETZ_TYPE_4040 || \
 		FREETZ_TYPE_6850 || \
 		FREETZ_TYPE_7520 || \
+		FREETZ_TYPE_7521 || \
 		FREETZ_TYPE_7530
-
-# not supported (yet?)
-#config FREETZ_SYSTEM_TYPE_PUMA6_ARM
-#	bool
 
 config FREETZ_SYSTEM_TYPE_PUMA6_X86
 	bool
@@ -132,24 +130,20 @@ config FREETZ_SYSTEM_TYPE_PUMA6
 	bool
 	default y
 	depends on \
-		FREETZ_SYSTEM_TYPE_PUMA6_ARM || \
 		FREETZ_SYSTEM_TYPE_PUMA6_X86
-
-#config FREETZ_SYSTEM_TYPE_PUMA7_ARM
-#	bool
 
 config FREETZ_SYSTEM_TYPE_PUMA7_X86
 	bool
 	default y
 	depends on \
 		FREETZ_TYPE_6591 || \
-		FREETZ_TYPE_6660
+		FREETZ_TYPE_6660 || \
+		FREETZ_TYPE_6690
 
 config FREETZ_SYSTEM_TYPE_PUMA7
 	bool
 	default y
 	depends on \
-		FREETZ_SYSTEM_TYPE_PUMA7_ARM || \
 		FREETZ_SYSTEM_TYPE_PUMA7_X86
 
 config FREETZ_SYSTEM_TYPE_QCA955x
@@ -171,7 +165,13 @@ config FREETZ_SYSTEM_TYPE_QCAARMv8
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_6000
+		FREETZ_TYPE_1209 || \
+		FREETZ_TYPE_3009 || \
+		FREETZ_TYPE_4060 || \
+		FREETZ_TYPE_5590 || \
+		FREETZ_TYPE_7510 || \
+		FREETZ_TYPE_6000 || \
+		FREETZ_TYPE_GATE
 
 config FREETZ_SYSTEM_TYPE_UR8
 	bool

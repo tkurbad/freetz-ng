@@ -1,6 +1,8 @@
 # SUPPORT
 Wie kann ich Freetz-NG unterstützen?
 
+ * __[Sponsor](#sponsor)__<a id='sponsor'></a><br>
+    - [![](https://img.shields.io/static/v1?label=GitHub&message=fda77&logo=GitHub&color=%230e8e86)](https://github.com/sponsors/fda77)
  * __[UNTESTED](#untested)__<a id='untested'></a><br>
    Im ```menuconfig``` und in [FIRMWARES](FIRMWARES.md) sind verschieden Geräte als ```UNTESTED``` markiert.<br>
    Mangels Hardware konnte auf diesen nicht ausprobiert werden ob Freetz-NG funktioniert.<br>
@@ -31,22 +33,18 @@ Wie kann ich Freetz-NG unterstützen?
     - Die Patchdatei erstellen: `git format-patch origin/HEAD`
     - Alle lokalen Veränderungen wieder löschen `git reset --hard  origin/HEAD`
  * __[Package bump](#package-bump)__<a id='package-bump'></a><br>
-   Minimale Schritte um die Version eines Packages zu aktualisieren:
+   Minimale Schritte um die Version eines Packages/Library zu aktualisieren:
     - Changelog lesen, es kann sich etwas geändert haben das beachtet werden muss.
-    - Hinweis: Libraries befinden sich nicht in ```make/$PKG/``` sondern: ```make/libs/$PKG/```
+    - Hinweis: Libraries befinden sich nicht in ```make/pkgs/$PKG/``` sondern: ```make/libs/$PKG/```
     - Die Datei ```docs/CHANGELOG.md``` anpassen.
-    - Die Version in ```make/$PKG/Config.in``` anpassen.
-    - Das Wiki aktualisieren durch ausführen von: ```docs/generate.sh```
-    - Die Version in ```make/$PKG/$PKG.mk``` anpassen.
-    - Die Prüfsumme in ```make/$PKG/$PKG.mk``` anpassen.
-    - Falls der Dateiname die Version enthält, ```make/$PKG/external.*``` anpassen.
-    - Vorhandene Patches in ```make/$PKG/patches/``` aktualisieren durch<br>
-      ausführen von: ```make $PKG-autofix```
-    - Compilieren testen mit: ```make $PKG-precompiled FREETZ_VERBOSITY_LEVEL=2```
+    - Die Version in ```make/pkgs/$PKG/Config.in``` anpassen.
+    - Die Version in ```make/pkgs/$PKG/$PKG.mk``` anpassen.
+    - Die Prüfsumme in ```make/pkgs/$PKG/$PKG.mk``` anpassen.
+    - Falls der Dateiname die Version enthält, ```make/pkgs/$PKG/external.*``` anpassen.
+    - Vorhandene Patches in ```make/pkgs/$PKG/patches/``` aktualisieren durch ausführen von: ```make $PKG-autofix```
+    - Compilieren testen mit: ```make $PKG-recompile```
     - Am besten noch auf eine Fritzbox flashen und testen.
  * __[Wiki](#wiki)__<a id='wiki'></a><br>
     Viele Teile des unter [freetz-ng.github.io/](https://freetz-ng.github.io/) zu erreichenden Wikis sind veraltet und bedürfen einer<br>
     Überarbeitung. Alle Datein des Wikis sind im Checkout unter ```docs/wiki/``` zu finden.<br>
-    Wichtig: Nach Änderungen unter ```docs/``` oder von ```Config.in```-Dateien ```docs/generate.sh``` zum<br>
-    Aktualisieren des Indexes ausführen.<br>
 

@@ -1,4 +1,5 @@
 # RRDstats for RRDtool
+ - Package: [master/make/pkgs/rrdstats/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/rrdstats/)
 
 [![RRDstats screenshot](../screenshots/229_md.jpg)](../screenshots/229.jpg)
 
@@ -210,9 +211,159 @@ Es wird ein Passwort für die AVM-Weboberfläche (API) benötigt, dies kann auch
    [![RRDstats SmartHome](../screenshots/000-PKG_rrdstats-Leistungsfaktor_md.png)](../screenshots/000-PKG_rrdstats-Leistungsfaktor.png)
 
 
+### Script aha.sh
+
+Die Steuerung der SmartHome-Geräte geschieht mit aha.sh. Man kann z. B. per cron mit aha.sh entsprechende Schaltzeitpunkte einstellen.
+Derzeit unterstützt aha.sh nur Heizkörperregler wie Comet DECT, FRITZ!DECT 300+301+302 und ein/aus-Aktoren wie die Steckdosen FRITZ!DECT 200, FRITZ!DECT 210 oder FRITZ!Powerline 546E.
+
+Parameter für den Aufruf von `aha.sh`
+
+**a** oder **alias**
+sha-alias (Liste aller Smarthome-Geräte) aktualisieren (dasselbe wie „Smarthome aktualisieren“ im Webinterface)
+
+**f** oder **fancy**
+Ausgabe der grundlegenden Informationen aller SmartHome-Geräte
+ ```
+            manufacturer = AVM
+             productname = Comet DECT
+               fwversion = 03.68
+         functionbitmask = 320
+                           --- ---- ---1 -1-- ----
+                           SRQ PONM LKJI HGFE DCBA
+              identifier = 11111 0112314
+                      id = 20
+                    name = Heizung A
+                 present = 1
+                    lock = 0
+              devicelock = 0
+                 celsius = 270
+                  offset = 0
+                    tist = 54
+                   tsoll = 253
+                  absenk = 32
+                 komfort = 44
+         windowopenactiv = 0
+                 battery = 80
+              batterylow = 0
+
+...
+
+                           SRQ PONM LKJI HGFE DCBA
+                           ||| |||| |||| |||| ||||
+                           ||| |||| |||| |||| |||+- Bit  0/A: HANFUN Gerät
+                           ||| |||| |||| |||| ||+-- Bit  1/B: ?Unused
+                           ||| |||| |||| |||| |+--- Bit  2/C: Lampe
+                           ||| |||| |||| |||| +---- Bit  3/D: ?Action
+                           ||| |||| |||| ||||
+                           ||| |||| |||| |||+------ Bit  4/E: Alarmsensor
+                           ||| |||| |||| ||+------- Bit  5/F: Taster
+                           ||| |||| |||| |+-------- Bit  6/G: Heizkörperregler
+                           ||| |||| |||| +--------- Bit  7/H: Energiemessgerät
+                           ||| |||| ||||
+                           ||| |||| |||+----------- Bit  8/I: Temperatursensor
+                           ||| |||| ||+------------ Bit  9/J: Schaltsteckdose
+                           ||| |||| |+------------- Bit 10/K: DECT-Repeater
+                           ||| |||| +-------------- Bit 11/L: Mikrofon
+                           ||| ||||
+                           ||| |||+---------------- Bit 12/M: ?Bundle
+                           ||| ||+----------------- Bit 13/N: HANFUN Unit
+                           ||| |+------------------ Bit 14/O: ?Template
+                           ||| +------------------- Bit 15/P: Schaltbar
+                           |||
+                           ||+--------------------- Bit 16/Q: Potentiometer
+                           |+---------------------- Bit 17/R: Farbtemperatur
+                           +----------------------- Bit 18/S: Rollladensteuerung
+```
+**s** oder **small**
+Ausgabe von ain, Name, aktuelle Leistung, aktuelle Spannung, absoluter Verbrauch seit Zurücksetzen der Energiestatistik, Temperatur, Temperaturabweichung (Offset), Current, Factor
+```
+111110112314|Heizung A||||270|0||
+111110222314|Heizung B||||275|0||
+111300022222|Steckdose|45910|230676|31986|280|0|2820|706
+```
+
+**b** oder **battery**
+Ausgabe von ain, Name, Batterieladezustand in Prozent, Batterieladezustand niedrig (=1), voll = 100
+```
+111110112314|Heizung A|80|0
+111110222314|Heizung B|80|0
+```
+
+**m** oder **modus**
+Ausgabe von ain, Name, Schaltzustand, Lock
+```
+111110112314|Heizung A||0
+111110222314|Heizung B||0
+111300022222|Steckdose|1|0
+grp7D7D7D-1C991C990|Heizungen||0
+```
+
+**g** oder **gradc**
+Ausgabe von ain, Name, Schaltzustand, Lock, Isttemperatur in 1/10 °C, Solltemperatur in internen Temperatureinheiten (8°C=16, 28°C=56, aus=253, ein=254)
+```
+111110112314|Heizung A||0|270|32
+111110222314|Heizung B||0|270|32
+111300022222|Steckdose|1|0|275|
+grp7D7D7D-1C991C990|Heizungen||0||253
+```
+
+**t** oder **translate**
+ain <-> Name zuordnen oder umgekehrt
+```
+aha.sh t 111300022222
+Steckdose
+```
+
+```
+aha.sh t Steckdose
+111300022222
+```
+
+**d** oder **docmd**
+SmartHome-Geräte schalten
+
+Zusätzlich erforderliche Parameter: Device Command oder Wert
+Device kann als Name oder ain angegeben werden.
+
+Command kann für ein/aus-Aktoren wie folgt lauten:
+- off (aus)
+- on (ein)
+- toggle (umschalten)
+
+Bereich für Wert bei ein/aus-Aktoren:
+- 0 (aus)
+- 1 (ein)
+- -1 (umschalten)
+
+Bereich für Wert bei Heizkörperreglern:
+- 16…56 (interne Temperatureinheiten)
+- 8.0…28.0 (°C)
+- 8,0…28,0 (°C)
+- 253 (aus)
+- 254 (ein)
+
+`aha.sh d Steckdose off`
+Steckdose aus
+
+`aha.sh d Steckdose 1`
+Steckdose ein
+
+`aha.sh d Steckdose toggle`
+Umschalten der Steckdose ein/aus
+
+`aha.sh d "Heizung A" 17`
+Heizung A auf 17 internen Einheiten schalten (8,5°C)
+
+`aha.sh d 111110112314 8,5`
+Heizung mit ain 111110112314 auf 8,5°C schalten
+
+`aha.sh d Heizungen 253`
+Gruppe Heizungen ausschalten
+
+
 ### Datenbanken
 
-Bis zu [r11010](https://trac.boxmatrix.info/freetz-ng/changeset/11010)
+Bis zu Changeset r11010
 konnte mit einem Intervall von 60 Sekunden 146 Tage aufgezeichnet
 werden, mit 150 Sekunden 1 Jahr. Ab dieser Revision werden die
 Datenbanken von DigiTemp und RRDstats-Kabelsegment mit 2 Jahren bei 60

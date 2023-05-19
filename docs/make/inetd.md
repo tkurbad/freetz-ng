@@ -1,4 +1,5 @@
-# Inetd 0.2
+# Inetd 1.0
+ - Package: [master/make/pkgs/inetd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inetd/)
 
 [![Inetd Webinterface](../screenshots/206_md.png)](../screenshots/206.png)
 
@@ -80,5 +81,5 @@ generiert wurde. Sie kann hier nicht geändert werden.
     [oidentd](/browser/trunk/make/oidentd/files){.source}
 -   Erweiterung eines Paketes mit 2 Diensten, wobei der Webserver
     inetd-fähig wird (vnstat-cgi):
-    [r4926](https://trac.boxmatrix.info/freetz-ng/changeset/4926)
+    Changeset r4926
 

@@ -1,9 +1,14 @@
-$(call PKG_INIT_LIB, 2.9.9)
-$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_SHA256:=94fb70890143e3c6549f265cee93ec064c80a84c42ad0f23e85ee1fd6540a871
-$(PKG)_SITE:=ftp://xmlsoft.org/$(pkg)
+$(call PKG_INIT_LIB, 2.10.4)
+$(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
+$(PKG)_HASH:=ed0c91c5845008f1936739e4eee2035531c1c94742c6541f44ee66d885948d45
+$(PKG)_SITE:=https://download.gnome.org/sources/libxml2/2.10
+### WEBSITE:=http://www.xmlsoft.org
+### MANPAGE:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#html-documentation
+### CHANGES:=https://gitlab.gnome.org/GNOME/libxml2/-/releases
+### CVSREPO:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 
-$(PKG)_LIBNAME:=$(pkg).so.$($(PKG)_VERSION)
+$(PKG)_LIBNAME:=$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_BINARY:=$($(PKG)_DIR)/.libs/$($(PKG)_LIBNAME)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME)
@@ -55,6 +60,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-xpath=yes		#XPATH support
 $(PKG)_CONFIGURE_OPTIONS += --with-xptr=yes		#XPointer support
 $(PKG)_CONFIGURE_OPTIONS += --with-modules=no		#dynamic modules support, note: this requires libdl
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -78,6 +84,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBXML2_DIR) clean

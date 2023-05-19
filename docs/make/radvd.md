@@ -1,4 +1,9 @@
-# radvd 1.9.3
+# radvd 1.9.3/2.19
+ - Homepage: [https://radvd.litech.org/](https://radvd.litech.org/)
+ - Manpage: [https://linux.die.net/man/5/radvd.conf](https://linux.die.net/man/5/radvd.conf)
+ - Changelog: [https://github.com/radvd-project/radvd/blob/master/CHANGES](https://github.com/radvd-project/radvd/blob/master/CHANGES)
+ - Repository: [https://github.com/radvd-project/radvd](https://github.com/radvd-project/radvd)
+ - Package: [master/make/pkgs/radvd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/radvd/)
 
 The router advertisement daemon (RADVD) allows to both Linux and
 Windonws clients to obtain an IPv6 IP address, without any changes on
@@ -53,7 +58,7 @@ Advanced options  --->   BusyBox options  --->    IPv6 Options  --->   [*] trace
 Due to an application that is not supported on later versions, I prever
 to stay on Freetz-1.2.
 But due to issues with other IPv6 enabled devices, I would like to
-include enhancement [#1921](https://trac.boxmatrix.info/freetz-ng/ticket/1921) also in Freetz-1.2.
+include enhancement Ticket #1921 also in Freetz-1.2.
 
 With the following commands executed before make you can have this
 enhancement included also:
@@ -76,7 +81,7 @@ you received from SixXS. E.g. you can pick the first possilbe /64 range
 Network range - 2001:aaaa:bbbb:0000:0000:0000:0000:0000 -
 2001:aaaa:bbbb:0000:ffff:ffff:ffff:ffff
 
-**Note** In below screenshot enhancement [1921](https://trac.boxmatrix.info/freetz-ng/ticket/1921) is
+**Note** In below screenshot enhancement Ticket #1921 is
 included.
 
 [![Howto setup radvd](../screenshots/236_md.jpg)](../screenshots/236.jpg)

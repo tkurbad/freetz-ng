@@ -1,4 +1,5 @@
 # bash 3.2.57 (binary only)
+ - Package: [master/make/pkgs/bash/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bash/)
 
 Bei der **B**ourne **A**gain **Sh**ell handelt es sich um eine
 [Unix
@@ -26,8 +27,8 @@ gehören dazu. Und hiermit natürlich auch die Freetz Box
 :-?
 
 Hinweis: Die im Folgenden beschriebene manuelle Anpassung des Prompts
-ist seit [Changeset
-5803](https://trac.boxmatrix.info/freetz-ng/changeset/5803) (freetz-devel)
+ist seit
+Changeset r5803 (freetz-devel)
 nicht mehr nötig, da es dort bereits eingebaut ist.
 
 Man kann den sog. Prompt anpassen, also das, was jeweils vor dem Cursor

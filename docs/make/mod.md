@@ -1,4 +1,5 @@
 # Freetz(-MOD)
+ - Package: [master/make/pkgs/mod/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/mod/)
 
 "mod" ist das sogenannte Base-Package. Es wird immer automatisch
 installiert.
@@ -12,7 +13,7 @@ Als Faustregel sollte man die Größe des RAMs als Größe der Swapdatei
 nehmen.
 
 Über den Parameter *swappiness* (seit
-[r6882](https://trac.boxmatrix.info/freetz-ng/changeset/6882)) kann das Swapverhalten beeinflusst
+Changeset r6882) kann das Swapverhalten beeinflusst
 werden. Je höher der eingetragene Wert ist desto früher fängt die Box an
 den Auslagerungsspeicher zu nutzen
 ([Weiterlesen](http://lwn.net/Articles/83588/)).

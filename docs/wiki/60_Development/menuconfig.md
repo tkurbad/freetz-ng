@@ -19,7 +19,7 @@ wichtiger Qualitäts-Baustein unseres Projektes.
 ### Einstieg
 
 Pflichtlektüre jedes Entwicklers, bevor er zum ersten Mal die MK anpaßt,
-sollte die tools/config/kconfig-language.txt
+sollte die tools/kconfig/kconfig-language.txt
 sein. Dort werden Syntax-Features und deren Gebrauch grundlegend
 erklärt. Die Beschreibung entstammt der Dokumentation des
 [Linux-Kernels](http://kernel.org), welchem wir
@@ -46,18 +46,18 @@ Folgenden zu tun haben werden, sind
     -   ist eines der primären Debugging-Werkzeuge, wenn Benutzer Fehler
         mit einer bestimmten Konfiguration melden
     -   kann, sollte aber nicht manuell editiert werden
--   *tools/config/mconf*
+-   *tools/kconfig/mconf*
     -   ist das Binary, welches von `make menuconfig` aufgerufen wird,
         um die MK anzuzeigen und zu speichern
-    -   wird mittels `make tools` bzw. `make kconfig` automatisch
+    -   wird mittels `make tools` bzw. `make kconfig-host` automatisch
         gebaut, sobald es benötigt wird
     -   hat auch ein *Make*-Target `menuconfig-single`, welches die KM
         als Baumstruktur ohne Unterseiten darstellt (manchmal nett, wenn
         man die Gesamtstruktur sehen bzw. bearbeiten möchte)
--   *tools/config/conf*
+-   *tools/kconfig/conf*
     -   ist die Kommandozeilenversion von *mconf*
     -   hat mehr Features
-    -   wird ebenfalls mittels `make tools` bzw. `make kconfig`
+    -   wird ebenfalls mittels `make tools` bzw. `make kconfig-host`
         automatisch gebaut, sobald es benötigt wird
     -   wird von den *Make*-Targets `config`, `oldconfig`,
         `oldnoconfig`, `defconfig`, `allnoconfig`, `allyesconfig`,
@@ -68,7 +68,7 @@ Folgenden zu tun haben werden, sind
         also frühestens ab *Freetz 1.2*):
 
         ```
-			Usage: tools/config/conf [option] <kconfig-file>
+			Usage: tools/kconfig/conf [option] <kconfig-file>
 			[option] is _one_ of the following:
 			  --listnewconfig         List new options
 			  --oldaskconfig          Start a new configuration using a line-oriented program
@@ -85,10 +85,10 @@ Folgenden zu tun haben werden, sind
         ```
 
 Siehe vorerst
-[#1532](https://trac.boxmatrix.info/freetz-ng/ticket/1532 "enhancement: Warnings im Zusammenhang mit neuem Kconfig (menuconfig) (closed: fixed)")
+Ticket #1532 "enhancement: Warnings im Zusammenhang mit neuem Kconfig (menuconfig) (closed: fixed)"
 , insbes. Kommentare Nr.
 
--   **[10](https://trac.boxmatrix.info/freetz-ng/ticket/1532#comment:10 "Kommentar 10 für Ticket #1532"):
+-   **Ticket #1532 "Kommentar 10 für Ticket #1532":
     Erklärung einer Warnung mit Vorschlägen zur Problembehebung**
 
     > Diese *unmet dependencies* behebt am besten jeder so, wie der
@@ -116,10 +116,10 @@ Siehe vorerst
 
 <!-- -->
 
--   **[24](https://trac.boxmatrix.info/freetz-ng/ticket/1532#comment:24 "Kommentar 24 für Ticket #1532"):
+-   **Ticket #1532 "Kommentar 24 für Ticket #1532":
     Liste aktueller Warnungen mit Erläuterungen zu Ursachen und
     möglichen Lösungen**
--   **[31](https://trac.boxmatrix.info/freetz-ng/ticket/1532#comment:31 "Kommentar 31 für Ticket #1532"):
+-   **Ticket #1532 "Kommentar 31 für Ticket #1532":
     konkretes Beispiel einer von Alexander Kriegisch eingecheckten
     Problembehebung**
 
@@ -149,7 +149,7 @@ Siehe vorerst
 
 <!-- -->
 
--   **[54](https://trac.boxmatrix.info/freetz-ng/ticket/1532#comment:54 "Kommentar 54 für Ticket #1532"):
+-   **Ticket #1532 "Kommentar 54 für Ticket #1532":
     verallgemeintertes "Kochrezept" zur Problembehebung bei
     Remove-Patches**
 
@@ -179,7 +179,7 @@ Siehe vorerst
 
 <!-- -->
 
--   **[55](https://trac.boxmatrix.info/freetz-ng/ticket/1532#comment:55 "Kommentar 55 für Ticket #1532"):
+-   **Ticket #1532 "Kommentar 55 für Ticket #1532":
     weitere Erläuterungen zur Umsetzung des Kochrezepts**
 
     > Replying to oliver:
@@ -233,7 +233,7 @@ Wir sehen einen Fehler wie diesen:
 ```
 
 Gemäß Beschreibung in
-[r8466](https://trac.boxmatrix.info/freetz-ng/changeset/8466)
+Changeset r8466
 gibt es zwei Wege, bei einem von `make menuconfig` angezeigten
 Syntax-Fehler schnell die fehlerhafte Stelle zu finden:
 

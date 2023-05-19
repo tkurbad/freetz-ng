@@ -1,4 +1,9 @@
-# Apache HTTP Server 2.4.46 (binary only)
+# Apache2 2.4.57 (binary only)
+ - Homepage: [https://httpd.apache.org/](https://httpd.apache.org/)
+ - Manpage: [https://httpd.apache.org/docs/2.4/](https://httpd.apache.org/docs/2.4/)
+ - Changelog: [https://downloads.apache.org/httpd/CHANGES_2.4](https://downloads.apache.org/httpd/CHANGES_2.4)
+ - Repository: [https://github.com/apache/httpd](https://github.com/apache/httpd)
+ - Package: [master/make/pkgs/apache2/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/apache2/)
 
 *Mit diesem Paket ist es möglich, den Apache Webserver entweder allein
 oder mit zusätzlichem PHP CGI Binary zu erstellen.*
@@ -193,6 +198,21 @@ ServerName freetz.meinedomain.at
 
 Das Location Element bewirkt, dass der Benutzer sich vor dem
 Seitenaufbau anmelden muss.
+
+### Geoblocking
+Bestimmte Länder können über eine `.htaccess`-Datei blockiert werden, `XX` entsprechend ersetzen:
+```
+<IfModule mod_geoip.c>
+    GeoIPEnable On
+#   SetEnvIf GEOIP_COUNTRY_CODE XX AllowCountry
+#   Require env AllowCountry
+    SetEnvIf GEOIP_COUNTRY_CODE XX BlockCountry
+    <RequireAll>
+        Require all granted
+        Require not env BlockCountry
+    </RequireAll>
+</IfModule>
+```
 
 ### Sonstiges
 

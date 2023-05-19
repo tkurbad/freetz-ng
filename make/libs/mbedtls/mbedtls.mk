@@ -1,9 +1,14 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_AVM_GCC_4_MAX),2.7.19,2.26.0))
+$(call PKG_INIT_LIB, $(if $(FREETZ_AVM_GCC_4_MAX),2.7.19,2.28.3))
 $(PKG)_SOURCE:=mbedtls-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_SHA1_ABANDON:=fbeffb7cb5a2e8cb881024b2f99a794a704f37ae
-$(PKG)_SOURCE_SHA1_CURRENT:=1cb65fb2fb37a1c6e4216205cc10bee60300c35e
-$(PKG)_SOURCE_SHA1:=$(MBEDTLS_SOURCE_SHA1_$(if $(FREETZ_AVM_GCC_4_MAX),ABANDON,CURRENT))
+$(PKG)_HASH_ABANDON:=3da12b1cebe1a25da8365d5349f67db514aefcaa75e26082d7cb2fa3ce9608aa
+$(PKG)_HASH_CURRENT:=1a21008fc93e7bdce2cb40a8f2d7c7b4034d9160035382c29cf91af8f96f2cd9
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_AVM_GCC_4_MAX),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
+### VERSION:=2.7.19/2.28.3
+### WEBSITE:=https://www.trustedfirmware.org/projects/mbed-tls/
+### MANPAGE:=https://mbed-tls.readthedocs.io/en/latest/
+### CHANGES:=https://github.com/Mbed-TLS/mbedtls/releases
+### CVSREPO:=https://github.com/Mbed-TLS/mbedtls
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_AVM_GCC_4_MAX),abandon,current)
 
@@ -35,6 +40,7 @@ $(PKG)_FEATURES_TO_DISABLE += $(if $(FREETZ_LIB_libmbedcrypto_WITH_GENRSA),,MBED
 # Don't use -D/-U to define/undefine required symbols, patch config.h instead. The installed headers must contain properly defined symbols.
 $(PKG)_PATCH_POST_CMDS += $(SED) -ri $(foreach f,$(MBEDTLS_FEATURES_TO_DISABLE),-e 's|^([ \t]*$(_hash)define[ \t]+$(f)[ \t]*)$$$$|/* \1 */|') include/mbedtls/config.h;
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
@@ -65,6 +71,7 @@ $($(PKG)_LIBS_SO_TARGET_DIR): $($(PKG)_TARGET_DIR)/%: $(TARGET_TOOLCHAIN_STAGING
 $(pkg): $($(PKG)_LIBS_SO_STAGING_DIR) $($(PKG)_LIBS_A_STAGING_DIR) $($(PKG)_DIR)/.headers
 
 $(pkg)-precompiled: $($(PKG)_LIBS_SO_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(MBEDTLS_DIR)/library clean

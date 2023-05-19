@@ -1,4 +1,5 @@
 # iodine 0.7.0
+ - Package: [master/make/pkgs/iodine/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/iodine/)
 
 **[iodine](http://code.kryo.se/iodine/)** erlaubt
 es, IPv4 Daten über DNS zu tunneln. Eine hilfreiche Sache, wenn man z.B.
@@ -30,7 +31,7 @@ iodined -c -P <password> -u nobody -t /tmp/iodine 10.0.0.1 -p 10053 dns2tcp.stra
 (assuming user *nobody* exists)
 
 The trunk version of Freetz has an iodine WebIF now
-([r6657](https://trac.boxmatrix.info/freetz-ng/changeset/6657); thanks oliver!)
+(Changeset r6657; thanks oliver!)
 
 Create a tunnel from the client like this:
 

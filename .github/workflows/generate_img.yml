@@ -1,0 +1,79 @@
+name: generate_img
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/generate_img.yml'
+      - 'config/.img/generate.sh'
+      - 'docs/FIRMWARES.md'
+  workflow_dispatch:
+
+jobs:
+  build:
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/dl-packs
+      image: ghcr.io/freetz-ng/dl-packs
+    runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng'
+
+    steps:
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           locales bash \
+#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           perl libstring-crc32-perl ruby ruby1.9 gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev \
+#           gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl \
+#           uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler openssl build-essential libelf-dev
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+
+      - name: tools
+        run: |
+          echo 'FREETZ_USER_LEVEL_EXPERT=y\nFREETZ_HOSTTOOLS_DOWNLOAD=y\nFREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"' > .config
+          mkdir -p dl/ 2>/dev/null || true
+          useradd freetz -s $(which bash) -d $(pwd) -M && chown freetz . -R
+          su freetz -c "umask 0022 && make olddefconfig && make tools"
+
+      - name: generate
+        env:
+          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          ACTIONS_FWDLURL: ${{ secrets.ACTIONS_FWDLURL }}
+        run: |
+          export LANG=en_US.utf8
+          mkdir -p ~/.freetz-props/ 2>/dev/null || true
+          mkdir -p ~/.freetz-dl/fw/ 2>/dev/null || true
+          FREETZ_ENABLEG=true config/.img/generate.sh
+          rm -f ".wget-hsts" || true
+
+      - name: commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git pull
+          git add .
+          git status
+          git config --local user.name github-actions
+          git config --local user.email github-actions@github.com
+          git diff --cached --quiet && exit 0 || git commit -m "img: automatic update"
+          git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
+          git push origin $GITHUB_REF_NAME
+
+

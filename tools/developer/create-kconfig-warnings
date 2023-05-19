@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # If $1 is an integer >= 0, assign it to <rounds>, otherwise default to 50
 # Trick: use 0 to just print a report of previously existing logs again
@@ -10,9 +10,10 @@ warn_dir=kconfig-warnings
 conf_file=.config
 warn_file=conf-warnings.log
 
+make kconfig-host-conf &>/dev/null
 # Create output directory and refresh config cache
 mkdir -p $warn_dir
-make config-cache > /dev/null
+make config-cache-refresh > /dev/null
 
 # Create <rounds> random configurations + warning logs and move them
 # to separate subdirectories (keep existing ones!)
@@ -20,7 +21,7 @@ while ((r++ < rounds)); do
 
 	# Capture stderr (=warnings) in buffer
 	IFS=$'\n'
-	warn_buf=($(tools/config/conf --randconfig config/.cache.in 2>&1 > /dev/null))
+	warn_buf=($(make randconfig 2>&1 > /dev/null))
 	unset IFS
 
 	# On error in 'conf --randconfig' skip this round

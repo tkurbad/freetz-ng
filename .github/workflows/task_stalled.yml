@@ -1,0 +1,36 @@
+name: task_stalled
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/task_stalled.yml'
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng'
+
+    steps:
+
+      - name: stalled
+        uses: actions/stale@v8
+        with:
+          stale-issue-message: 'stalled'
+          stale-pr-message: 'stalled'
+          close-issue-message: 'stalled'
+          close-pr-message: 'stalled'
+          stale-issue-label: 'stalled'
+          stale-pr-label: 'stalled'
+          labels-to-remove-when-unstale: 'stalled'
+          exempt-issue-labels: 'task'
+          days-before-stale: 7
+          remove-stale-when-updated: true
+          enable-statistics: true
+

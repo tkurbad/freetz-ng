@@ -9,12 +9,10 @@
 #
 
 /.config*
-/.dynamic
 /.fakeroot-cache
 /.fwmod_custom
 /.packages
 /.signature
-/.static
 /.tmpcache.*
 /*.log
 /build
@@ -23,4 +21,8 @@
 /kernel
 /packages
 /source
+/toolchain
+
+# ignore eclipse project files
+/.project
 

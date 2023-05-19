@@ -1,8 +1,9 @@
-# Tor 0.4.5.7
+# Tor 0.4.7.13
  - Homepage: [https://www.torproject.org/download/tor/](https://www.torproject.org/download/tor/)
  - Manpage: [https://trac.torproject.org/projects/tor/wiki/](https://trac.torproject.org/projects/tor/wiki/)
  - Changelog: [https://gitweb.torproject.org/tor.git/tree/ChangeLog](https://gitweb.torproject.org/tor.git/tree/ChangeLog)
  - Repository: [https://gitweb.torproject.org/tor.git/](https://gitweb.torproject.org/tor.git/)
+ - Package: [master/make/pkgs/tor/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/tor/)
 
 Tor ist ein **anonymes Kommunikationssystem** für das Internet, mit dem
 man **verschlüsselt** und **sicher surfen** kann. Die Installation eines
@@ -159,7 +160,7 @@ Vidalia configuration:
 ### obfsproxy
 
 -   [Information](https://www.torproject.org/projects/obfsproxy)
--   Patch in ticket [#1712](https://trac.boxmatrix.info/freetz-ng/ticket/1712)
+-   Patch in Ticket #1712
 
 ### Memory Usage
 

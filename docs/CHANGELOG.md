@@ -1,8 +1,14 @@
+[//]: # ( Do not edit any section except DEVEL. )
 # CHANGELOG
 Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23030](#ng23030)
+  * [ng22100](#ng22100)
+  * [ng22070](#ng22070)
+  * [ng22040](#ng22040)
+  * [ng21090](#ng21090)
   * [ng21030](#ng21030)
   * [ng21010](#ng21010)
   * [ng20120](#ng20120)
@@ -37,41 +43,475 @@ Latest changes
 
 ### devel
 
+ - Build system:
+   * Ccache 4.8
+   * uClibc-ng 1.0.43
+
+ - Host tools:
+   * busybox 1.36.1
+   * kconfig 6.3
+   * precompiled host-tools 2023-05-19
+   * precompiled toolchains r21480
+   * python 3.11.3
+   * xz 5.4.2
+
+ - AVM sources:
+   * 5530 7.50 - 4.9.276
+   * 5590 7.50 - 4.4.271
+
+ - Patches:
+   * patch VLAN: re-enables vlan config of voip in ata-mode
+
+ - Packages:
+   * BusyBox 1.36.1
+   * CCID 1.5.2
+   * Curl 8.1.0
+   * HAProxy 2.6.10
+   * iPerf3 3.3/3.13
+   * Lighttpd 1.4.70
+   * OpenVPN 2.4.12/2.5.9/2.6.4
+   * strace 4.9/5.0/6.3
+   * tcpdump 4.1.1/4.99.4
+   * XZ Utils 5.4.2
+
+ - Libraries:
+   * FreeType 2.13.0
+   * glib2 2.32.4/2.76.1
+   * harfbuzz 7.3.0
+   * libcap 2.49/2.68
+   * libpcap 1.1.1/1.10.4
+   * libuv 1.45.0
+   * libxml2 2.10.4
+   * pango 1.50.14
+   * SQLite 3.41.2
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23030
+
+ - Known problems:
+   * Loading build kernel modules may work or do not. You'll notice.
+
+ - Build system:
+   * Ccache 4.7.4
+   * Cmake support
+   * Meson support
+
+ - Host tools:
+   * busybox 1.36.0
+   * cmake 3.25.2
+   * fakeroot 1.31
+   * fastjar 0.98
+   * genext2fs 1.5.0-3b99f4a4
+   * gperf 3.1
+   * kconfig 6.2
+   * meson 1.0.0
+   * mklibs 0.1.45
+   * ncurses 6.4
+   * ninja 1.11.1
+   * patchelf 0.14.5/0.15.0
+   * precompiled host-tools 2023-02-20
+   * prelink 20130503
+   * pseudo 1.9.0 oe-core c9670c2
+   * python 3.11.2
+   * sed 4.9
+   * sfk 1.9.8.2
+   * u-boot 2023.01
+   * xz 5.4.1
+
+ - Patches:
+   * remove AVMCOUNTERD: collects some data for you
+   * remove AVM-WireGuard: VPN even with IPv6 support!!1
+   * Various Fritzos 7.5 related changes
+
+ - Packages:
+   * ACME.sh 3.0.5 (letsencrypt)
+   * Apache2 2.4.57
+   * BIND 9.11.37/9.16.38
+   * BIRD 1.6.8
+   * BusyBox 1.36.0
+   * CA-bundle 2023-01-10
+   * CCID 1.5.1
+   * classpath 0.99
+   * Curl 7.88.1
+   * dehydrated 0.7.1 (letsencrypt)
+   * DejaVu Fonts TTF 2.37
+   * Dnsmasq 2.80/2.89
+   * Dropbear 2022.83
+   * Fontconfig 2.14.2
+   * getdns 1.7.3
+   * Git 2.40.0
+   * HAProxy 2.6.9
+   * htop 1.0.3/2.3.2
+   * htpdate 1.3.7
+   * IGMPproxy 0.4
+   * ImageMagick 7.1.0-57
+   * jamvm 2.0.0
+   * Knock 0.8
+   * libffi 3.4.4
+   * libpcap 1.1.1/1.10.3
+   * Lighttpd 1.4.69
+   * Lua 5.1.5/5.4.4
+   * Nano 7.2
+   * ncurses 6.4
+   * ncursesw 6.4
+   * OpenSSH 9.3p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1t/3.0.8
+   * OpenVPN 2.4.12/2.5.9/2.6.1
+   * PCSC-lite 1.9.9
+   * RPCBind 1.2.6
+   * RRDtool 1.2.30/1.8.0
+   * Swiss File Knife 1.9.8.2
+   * strace 4.9/5.0/6.2
+   * SQLite 3.41.1
+   * Stunnel 5.69
+   * Sudo 1.9.13p3
+   * tcpdump 4.1.1/4.99.3
+   * Tor 0.4.7.13
+   * Unbound 1.17.1
+   * UnRAR 6.1.7/6.2.6
+   * xsltproc 1.1.37
+   * XZ Utils 5.4.1
+
+ - Libraries:
+   * cairo 1.17.8
+   * expat 2.5.0
+   * fribidi 1.0.12
+   * glib2 2.32.4/2.75.3
+   * harfbuzz 7.0.0
+   * libcap-ng 0.8.3
+   * libctlmgr 1.0
+   * libev 4.33
+   * libidn 1.41
+   * libgpg-error 1.46
+   * libmultid 1.0
+   * libpng 1.6.39
+   * libusb-compat 0.1.8
+   * libxml2 2.10.3
+   * mbedTLS 2.7.19/2.28.3
+   * neon 0.30.2/0.32.4
+   * openjp2 2.5.0
+   * pango 1.50.12
+   * pcre2 10.42
+   * pixman 0.42.2
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23030/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+
+### ng22100
+
+ - Known problems:
+   * Loading build kernel modules may work or do not. You'll notice.
+
+ - Build system:
+   * ccache 4.6.3
+
+ - Host tools:
+   * kconfig 6.0
+   * precompiled host-tools 2022-10-12
+   * xz 5.2.7
+
+ - Packages & libs:
+   * BIND 9.11.37/9.16.33
+   * CA-bundle 2022-10-11
+   * Cifsmount 7.0
+   * Curl 7.85.0
+   * Dnsmasq 2.80/2.87
+   * expat 2.4.9
+   * FFmpeg 5.1.2
+   * FreeType 2.12.1
+   * FUSE 2.9.9
+   * gettext 0.21.1
+   * Git 2.38.0
+   * GnuTLS 3.7.8
+   * HAProxy 2.6.6
+   * htpdate 1.3.6
+   * iPerf3 3.12
+   * jpeg 9e
+   * libattr 2.5.1
+   * libcap 2.49/2.66
+   * liblz4 1.9.4
+   * libmaxminddb 1.7.1
+   * libnettle 3.8.1
+   * libpopt 1.19
+   * libtasn1 4.19.0
+   * libtirpc 1.3.3
+   * libuv 1.44.2
+   * Lighttpd 1.4.67
+   * mbed TLS 2.7.19/2.28.1
+   * minidlna 1.3.2
+   * Nano 6.4
+   * Net-SNMP 5.9.3
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1q/3.0.5
+   * rsync 3.2.6
+   * Screen 4.9.0
+   * SQLite 3.39.4
+   * strace 4.9/5.0/5.19
+   * Stunnel 5.68
+   * Tor 0.4.7.9
+   * uClibc-ng 1.0.42
+   * Unbound 1.16.6
+   * UNFS3 0.9.23
+   * usb.ids a5edeafb60
+   * Vim 9.0.0049
+   * XZ Utils 5.2.7
+   * zlib 1.2.13
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng22100/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+
+### ng22070
+
  - Known problems:
    * Replace kernel does not work for most latest firmware versions.
    * Loading build kernel modules may work or do not. You'll notice.
 
  - Build system:
-   * ccache 4.2.1
-   * kernel-/target-toolchains:
-      + precompiled toolchains updated to x86_64 (only)
+   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.38.x
+   * ccache 4.6.1
+   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/9.3.0
+   * precompiled host-tools 2022-06-27
+   * precompiled toolchains r19900
 
- - New tools and hooks:
-   * precompiled host-tools updated to x86_64 (only)
+ - Host tools:
+   * fakeroot 1.29
+   * Haserl 0.9.36
+   * kconfig 5.18
+   * patchelf 0.14.5
+   * U-Boot 2022.04
+   * yf-bootmanager 0.8.6 87ee8c3
+   * yf-fit_tools 0.2 24011d3
+
+ - Packages & libs:
+   * ACME.sh 3.0.4 (letsencrypt)
+   * Apache 2.4.54
+   * atop 2.7.1
+   * BIND 9.11.37/9.16.29
+   * CA-bundle 2022-04-26
+   * Curl 7.84.0
+   * Dante 1.4.3
+   * dtc 1.6.1
+   * Git 2.37.0
+   * HAProxy 2.6.1
+   * htpdate 1.3.4
+   * htop 1.0.3/2.3.1
+   * juis_check 1.2
+   * libcap 2.49/2.64
+   * libgcrypt 1.10.1
+   * libgpg-error 1.45
+   * libneon 0.30.2/0.32.2
+   * libpcap 1.1.1/1.10.1
+   * libxml 2.9.14
+   * LCD4linux 9d4e4b7-git
+   * lighttpd 1.4.65
+   * ltrace 0.7.3checkpoint1-git
+   * mc (Midnight Commander) 4.8.29
+   * mini-snmpd 1.6
+   * MTR 0.80/0.95
+   * Nano 6.3
+   * Net-SNMP 5.9.1
+   * NZBGet 21.1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1q/3.0.5
+   * OpenVPN 2.4.12/2.5.7
+   * PCSC-lite 1.9.8
+   * pcre2 10.40
+   * Privoxy 3.0.34
+   * radvd 1.9.3/2.19
+   * ser2net 3.5.4
+   * Smartmontools 7.3
+   * strace 4.9/5.0/5.18
+   * Stunnel 5.64
+   * Sudo 1.9.13
+   * SQLite 3.39.0
+   * tcpdump 4.1.1/4.99.1
+   * tmux 3.3a
+   * Tinyproxy 1.11.0
+   * Tor 0.4.7.8
+   * uClibc-ng 1.0.41
+   * Unbound 1.16.0
+   * UnRAR 6.1.7
+   * Vim 8.2.5052
+   * Wget GNU 1.21.3
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng22070/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+
+### ng22040
+
+ - Known problems:
+   * Replace kernel does not work for most latest firmware versions.
+   * Loading build kernel modules may work or do not. You'll notice.
+
+ - Build system:
+   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.37.x
+   * ccache 4.6
+   * precompiled host-tools 2022-04-17
+   * precompiled toolchains r18095/r18877/r18922
+
+ - Host tools:
+   * BusyBox 1.34.1
+   * fakeroot 1.28-1
+   * fitimg 0.7.2
+   * kconfig 5.17
+   * ncurses 6.3
+   * patchelf 0.13.1
+   * pseudo 1.9.0 oe-core 0cda3ba
+   * yf-bootmanager 0.8.5 dd1e066
+   * yf-juis 0.5 049839b
+   * yf-signimage 1.0.1 78a5689
+   * yourfritz 5e33421
+
+ - Patches:
+   * remove smd-httpd: http server on port 81 without config (broadcom devices)
+   * yf-bootmanager 0.8.3
+
+ - Packages & libs:
+   * ACME.sh 3.0.2 (letsencrypt)
+   * Apache 2.4.53
+   * AutoFS 5.0.5/5.1.8
+   * BIND 9.16.27
+   * Bip 0.9.2
+   * BusyBox 1.34.1
+   * BusyBox 1.35.0
+   * CA-bundle 2022-03-29
+   * CCID 1.5.0
+   * cifs-utils 6.15
+   * Curl 7.82.0
+   * davfs2 1.5.2/1.6.1
+   * dropbear 2022.82
+   * expat 2.4.8
+   * git 2.35.3
+   * HAProxy 2.5.5
+   * iksemel 3.1.1
+   * libcap 2.63
+   * libexif 0.6.24
+   * libgsasl 1.10.0
+   * libgcrypt 1.9.4
+   * libgpg-error 1.43
+   * libidn 1.38
+   * libmaxminddb 1.6.0
+   * libneon 0.32.1
+   * libnfsidmap 0.27
+   * libudns 0.4
+   * libusb1 1.0.23/1.0.26
+   * libuv 1.44.1
+   * lighttpd 1.4.64
+   * LCD4linux e2cfdc5-git
+   * mbed TLS 2.7.19/2.28.0
+   * minicom 2.8
+   * Nano 6.0
+   * ncurses 6.3
+   * ncursesw 6.3
+   * OpenSSH 9.0p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1n/3.0.2
+   * OpenVPN 2.4.12/2.5.6
+   * pcre 8.45
+   * pcre2 10.39
+   * PCSC-lite 1.9.5
+   * socat 1.7.4.2
+   * SQLite 3.38.2
+   * sslh 1.22c
+   * strace 4.9/5.0/5.17
+   * Stunnel 5.60
+   * Subversion 1.9.12/1.14.2
+   * Sundtek DVB driver 130210.134617/170310.204343/210803.071224
+   * tinc 1.0.36/1.1pre18
+   * tinyproxy 1.11.0
+   * Tor 0.4.6.10
+   * uClibc-ng 1.0.40
+   * Unbound 1.15.0
+   * UnRAR 6.1.4
+   * utf8proc 2.7.0
+   * Wget GNU 1.21.2
+   * wireguard-linux-compat 1.0.20220627
+   * wireguard-tools 1.0.20210914
+   * zlib 1.2.12
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng22040/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+
+### ng21090
+
+ - Known problems:
+   * Replace kernel does not work for most latest firmware versions.
+   * Loading build kernel modules may work or do not. You'll notice.
+
+ - Build system:
+   * binutils:
+      + add support for binutils-2.24.x/2.25.x/2.26.x/2.31.x/2.36.x
+   * ccache 4.4.1
+   * precompiled host-tools 2021-09-21
+   * precompiled kernel-/target-toolchains:
+      + toolchains updated to x86_64 (only)
+
+ - New packages and libs:
+   * libldns 1.7.1
+   * Unbound 1.13.2
+
+ - Updated tools and hooks:
+   * busybox 1.33.1
+   * dtc 1.6.1
+   * fakeroot 1.26
+   * fitimg 0.6
+   * kconfig 5.14
+   * patchelf 0.13
+   * pseudo 1.9.0 oe-core b988b0a
+   * tar 1.34
+
+ - BusyBox package:
+   * Version 1.32.1 removed
+   * Version 1.33.1 updated
+   * Version 1.34.0 added
 
  - Updated packages and libs:
-   * ca-bundle 2021-04-13
-   * curl 7.76.0
-   * dnsmasq 2.80/2.85
-   * expat 2.3.0
-   * haproxy 2.2.13
+   * ACME.sh 3.0.0 (letsencrypt)
+   * apache 2.4.48
+   * AutoFS 5.0.5/5.1.7
+   * BIND 9.11.32
+   * ca-bundle 2021-07-05
+   * curl 7.79.1
+   * dbus 1.13.18
+   * dnsmasq 2.80/2.86
+   * expat 2.4.1
+   * git 2.33.0
+   * gnutls 3.6.16
+   * haproxy 2.4.4
    * iperf 3.9
-   * libgd 2.3.2
-   * mbed TLS 2.7.19/2.26.0
+   * libgcrypt 1.9.3
+   * libgd 2.3.3
+   * libgpg-error 1.42
+   * libtirpc 1.3.2
+   * mbed TLS 2.7.19/2.27.0
+   * mc (Midnight Commander) 4.8.27
    * minidlna 1.3.0
-   * OpenSSH 8.5p1
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1k/3.0.0-alpha13
+   * Mosquitto 1.6.15
+   * OpenSSH 8.7p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1l/3.0.0
+   * OpenVPN 2.4.11/2.5.3
    * Perl 5.32.1
-   * stunnel 5.58
-   * Tor 0.4.5.7
+   * stunnel 5.59
+   * Tor 0.4.5.8
+   * uMurmur 0.2.20
+   * unrar 6.0.6
+   * vsftpd 3.0.5
+   * wireguard-linux-compat 1.0.20210606
+   * wireguard-tools 1.0.20210424
 
  - Web interface:
    * Settings backup:
       + Check for identic device, AVM passwords are device specific encoded
       + Support of encrypted setting backup files (openssl is required)
+   * Dnsmasq GUI:
+      + Add page to display DHCP leases
+      + Add page to configure DHCP-Hosts - works in addition to freetz hosts file
+   * Mod-Info:
+      + Display package versions
+   * Package CGIs (index page):
+      + Show package version in header
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng21090/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng21030
 
@@ -113,37 +553,40 @@ Latest changes
    * lzma2 5.2.5
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng21030/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng21010
 
 - Known problems:
-  * Replace kernel does not work for most latest firmware versions.
-  * Loading build kernel modules may work or do not. You'll notice.
+   * Replace kernel does not work for most latest firmware versions.
+   * Loading build kernel modules may work or do not. You'll notice.
 
 - Build system:
-  * kconfig 5.10
+   * kconfig 5.10
 
 - New packages, libs, modules:
-    * RPCBind 1.2.5
+   * RPCBind 1.2.5
 
 - Updated packages and libs:
-    * CA-bundle 2021-01-19
-    * dnsmasq 2.80/2.84
-    * jpeg 9d
-    * lighttpd 1.4.58
-    * shellinabox 2.21
-    * smartmontools 7.2
-    * socat 1.7.4.1
-    * Wget 1.21.1
+   * CA-bundle 2021-01-19
+   * dnsmasq 2.80/2.84
+   * jpeg 9d
+   * lighttpd 1.4.58
+   * shellinabox 2.21
+   * smartmontools 7.2
+   * socat 1.7.4.1
+   * Wget 1.21.1
 
 - BusyBox:
-    * Removed version 1.31.1
-    * Updated version 1.32.1
-    * Added version 1.33.0
+   * Removed version 1.31.1
+   * Updated version 1.32.1
+   * Added version 1.33.0
 
 - New tools and hooks:
-  * fitimg: tool to pack/unpack FIT firmware files
+   * fitimg: tool to pack/unpack FIT firmware files
+
+- Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng21010/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng20120
 
@@ -244,7 +687,7 @@ Latest changes
     * liblz4 1.9.3
     * libonig 6.7.1
     * libsrtp-1.4.4+20100615
-    * libssh2 1.9.0
+    * libssh2 1.10.0
     * libtirpc 1.2.6
     * libusb-compat 0.1.5
     * lzma1 4.65
@@ -274,8 +717,8 @@ Latest changes
     * Most files are move to docs/ directory.
     * Just point your brwoser to: https://freetz-ng.github.io/
     * Could also be opened by the [README.md](../README.md) in the main directory
-       + on Gitlab: https://gitlab.com/Freetz-NG/freetz-ng/blob/master/README.md
-       + on Github: https://github.com/Freetz-NG/freetz-ng/blob/master/README.md
+       + on GitLab: https://gitlab.com/Freetz-NG/freetz-ng/blob/master/README.md
+       + on GitHub: https://github.com/Freetz-NG/freetz-ng/blob/master/README.md
     * This works also offline with a checkout. You need a markdown (.md) viewer or browser with markdown-addon
     * Now the documentation is always in sync with the source code, for releases and tags
 
@@ -332,7 +775,6 @@ Latest changes
     * gnu-make 4.2.1
     * gnutls 3.6.15
     * haproxy 1.8.27
-    * haserl 0.9.35
     * hplip 3.14.6
     * htop 1.0.3
     * httpry 0.1.8
@@ -449,7 +891,7 @@ Latest changes
     * wxWidgets
 
 - Firmware updates:
-    * Please see FIRMWARES for the list of currently supported boxes and firmwares.
+    * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng20120/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 - BusyBox:
     * Updated to version 1.27.2/1.31.1/1.32.0
@@ -471,8 +913,7 @@ Latest changes
     * menuconfig push-firmware: flashes the latest build image ./images/latest.image Use ./tools/push_firmware for more options
     * sorting: The packages in menuconfig are sorted now alphabetical. For a faster navigation just type the character, or
       space for pre-assigned.
-    * labor detection: Labor firmware URL is not hardcoded anymore in Freetz, the current URL is detected by using
-      boxmatrix.info, see https://boxmatrix.info/wiki/Labor-Files for currently availabele labor firmwares.
+    * labor detection: Labor firmware URL is not hardcoded anymore in Freetz, the current URL is detected by using boxmatrix.
       The labor option is enabled for all devices without current FritzOS, but having previous FritzOS version.
 
 - Other stuff:

@@ -1,0 +1,107 @@
+name: dl-toolchains_old
+
+on:
+# push:
+#   branches: [ master ]
+#   paths:
+#     - '.github/workflows/dl-toolchains_*.yml'
+#     - 'tools/dl-toolchains_make'
+#     - 'make/toolchain/'
+  workflow_dispatch:
+
+jobs:
+  build:
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/dl-packs
+      image: ghcr.io/freetz-ng/dl-packs
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: split
+        id: split
+        run: |
+          export SPLIT="${GITHUB_WORKFLOW#*_}"
+          echo "split=$SPLIT" >> $GITHUB_OUTPUT
+          echo "################################################################" && bash -c "echo SPLIT=$SPLIT"
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           locales bash \
+#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           perl libstring-crc32-perl ruby ruby1.9 gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev \
+#           gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl \
+#           uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler openssl build-essential libelf-dev
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+
+      - name: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            dl/*
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: ${{ github.workflow }}
+
+      - name: version
+        id: version
+        run: |
+          export VERSION="r$(tools/freetz_revision short)"
+          [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo VERSION=$VERSION"
+
+      - name: generate
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p dl/ 2>/dev/null || true
+          useradd freetz -s $(which bash) -d $(pwd) -M && chown freetz . -R
+          su freetz -c "umask 0022 && tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.split.outputs.split }}"
+
+      - name: result
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          echo "################################################################"
+          su freetz -c "umask 0022 && tools/dl-toolchains_eval $ACTIONS_VERSION ${{ steps.split.outputs.split }}"
+
+#     - name: cleanup
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+#       run: |
+#         git config --global --add safe.directory $GITHUB_WORKSPACE
+#         git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
+#         for x in $(git tag | grep -v "_$ACTIONS_VERSION$" | grep 'dl-toolchains_'); do git tag -d $x && git push --delete origin $x || true; done
+
+      - name: release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: dl-toolchains_${{ steps.version.outputs.version }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}
+          body: These files are internally used!
+          prerelease: true
+          allowUpdates: true
+          removeArtifacts: false
+          artifacts: "dl/*-freetz-${{ steps.version.outputs.version }}-shared-glibc.tar.lzma"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: true
+          artifactErrorsFailBuild: true
+          draft: true
+
+

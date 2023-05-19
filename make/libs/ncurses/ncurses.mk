@@ -1,8 +1,12 @@
-$(call PKG_INIT_LIB, 6.2)
+$(call PKG_INIT_LIB, 6.4)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_SHA256:=30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d
+$(PKG)_HASH:=6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
 $(PKG)_SITE:=@GNU/$(pkg)
+# run make/libs/ncurses/generate.sh after bump
+### WEBSITE:=https://invisible-island.net/ncurses/
+### MANPAGE:=https://invisible-island.net/ncurses/announce.html
+### CHANGES:=https://invisible-island.net/ncurses/NEWS.html
 
 $(PKG)_HOST_DEPENDS_ON += ncurses-host
 
@@ -61,6 +65,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-pkg-config-libdir="$($(PKG)_PKGCONFIG_DIR)"
 
 
 
+
 ifneq ($(strip $(DL_DIR)/$(NCURSES_SOURCE)), $(strip $(DL_DIR)/$(NCURSES_HOST_SOURCE)))
 $(PKG_SOURCE_DOWNLOAD)
 endif
@@ -107,6 +112,7 @@ $(pkg)-terminfo-precompiled: $(pkg)-terminfo
 
 $(pkg): $($(PKG)_LIBS_STAGING_DIR)
 $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR) $(pkg)-terminfo-precompiled
+
 
 $(pkg)-terminfo-clean:
 	$(RM) -r $(NCURSES_TABSET_STAGING_DIR) $(NCURSES_TERMINFO_STAGING_DIR)

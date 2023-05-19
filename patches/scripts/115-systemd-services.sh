@@ -12,13 +12,19 @@ After=tffs.service environment.service
 WantedBy=environment.target
 EOF
 
-echo2 "adding rcmod.service"
-cat << 'EOF' > "${FILESYSTEM_MOD_DIR}/lib/systemd/system/rcmod.service"
+after=''
+for unit in multid.service rextd.service network.target net_basic.service net.service; do
+[ -e "${FILESYSTEM_MOD_DIR}/lib/systemd/system/${unit}" ] && after="${unit} ${after}"  # && break
+done
+[ -z "${after}" ] && warn "Could not find any usable unit file!"
+
+echo2 "adding zzz-rcmod.service"
+cat << EOF > "${FILESYSTEM_MOD_DIR}/lib/systemd/system/zzz-rcmod.service"
 [Unit]
 ExecStart=/etc/boot.d/core/99-zzz-rcmod
 Type=oneshot
 DefaultDependencies=no
-After=net.service modload.service
+After=${after}modload.service
 [Install]
 WantedBy=multi-user.target
 EOF

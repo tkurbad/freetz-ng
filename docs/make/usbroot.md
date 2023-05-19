@@ -1,4 +1,5 @@
 # USB root 0.2
+ - Package: [master/make/pkgs/usbroot/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/usbroot/)
 
 Mit **USB-Root** lässt sich das Root-Verzeichnis (`/`) auf ein an die
 Fritz!Box angeschlossenes USB-Gerät auslagern - was zusätzlichen Platz
@@ -73,7 +74,7 @@ tar -xzf rootfs.tar.gz
 ```
 
 **Neu in der Entwicklerversion seit
-[r8566](https://trac.boxmatrix.info/freetz-ng/changeset/8566):**
+Changeset r8566:**
 Man kann direkt in *Menuconfig* einstellen, daß beim Build zusätzlich
 zum oder anstelle des Firmware-Images das Dateisystem direkt in ein
 Archiv gepackt wird ("USB Root Mode", ersetzt Schritt 1 oben).

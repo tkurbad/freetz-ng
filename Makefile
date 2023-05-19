@@ -11,13 +11,54 @@
 # Just run 'make menuconfig', configure stuff, then run 'make'.
 # You shouldn't need to mess with anything beyond this point...
 #--------------------------------------------------------------
+
+include make/include/100-suffixes.mk
+MAKEFLAGS+=--no-print-directory
+
+# Envira: Custom environment and arguments
+ENVIRA_MARK:=ENVIRA
+ifneq ($($(ENVIRA_MARK)),y)
+ENVIRA_UMASK:=0022
+ENVIRA_MODE_EXEC:=0755
+ENVIRA_MODE_FILE:=0644
+ENVIRA_CVS_DIRS:=.github addon config docs graphics include make patches tools
+ENVIRA_LAST_REV:=.envira.log
+ENVIRA_REV_TOOL:=tools/freetz_revision
+ENVIRA_PATH_REL:=tools/path
+ENVIRA_PATH_ABS:=$(shell realpath $(ENVIRA_PATH_REL))
+ENVIRA_MAKE_VARS:=$(ENVIRA_MARK)=y
+
+envira:
+ifneq ($(shell umask),$(ENVIRA_UMASK))
+ifneq ($(shell grep -q "$$($(ENVIRA_REV_TOOL))" $(ENVIRA_LAST_REV) 2>/dev/null && echo y),y)
+	@echo -n "Fixing checkout permissions " && \
+	echo -n "." && find .     -maxdepth  0 -type d               | xargs chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find .     -maxdepth  1 -type f   -executable | xargs chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find .     -maxdepth  1 -type f ! -executable | xargs chmod $(ENVIRA_MODE_FILE) && \
+	echo -n "." && find $(ENVIRA_CVS_DIRS) -type d               | xargs chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find $(ENVIRA_CVS_DIRS) -type f   -executable | xargs chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find $(ENVIRA_CVS_DIRS) -type f ! -executable | xargs chmod $(ENVIRA_MODE_FILE) && \
+	echo " done." && \
+	$(ENVIRA_REV_TOOL) > $(ENVIRA_LAST_REV)
+endif
+endif
+	@$(ENVIRA_REV_TOOL) make
+	@umask $(ENVIRA_UMASK) && PATH="$(ENVIRA_PATH_ABS):$(PATH):/usr/sbin" $(MAKE) $(MAKECMDGOALS) $(ENVIRA_MAKE_VARS) || kill $$$$
+.PHONY: envira
+
+$(MAKECMDGOALS): envira
+	@:
+.PHONY: $(MAKECMDGOALS)
+
+else # Envira
+
 TOPDIR=.
 CONFIG_IN=config/Config.in
 CONFIG_IN_CACHE=config/.cache.in
 CONFIG_IN_CUSTOM=config/custom.in
-CONFIG=tools/config
+CONFIG=tools/kconfig
 
-SHELL:=/bin/bash
+SHELL:=bash
 IMAGE:=
 LOCALIP:=
 RECOVER:=
@@ -40,29 +81,40 @@ MIRROR_DIR:=$(DL_DIR)/mirror
 TOOLCHAIN_BUILD_DIR:=$(TOOLCHAIN_DIR)/$(BUILD_DIR)
 TOOLS_BUILD_DIR:=$(TOOLS_DIR)/$(BUILD_DIR)
 
-SED:=sed
-TAR:=$(TOOLS_DIR)/tar-gnu
+include $(MAKE_DIR)/include/200-aliases.mk
+include $(MAKE_DIR)/include/300-helper.mk
 
-# Don't go parallel
-.NOTPARALLEL:
-# We don't use suffixes in the main make, don't waste time searching for files
-.SUFFIXES:
-
-MAKE1=make
-MAKE=make -j$(FREETZ_JLEVEL)
+# load user configuration file
+-include $(TOPDIR)/.config
 
 DL_TOOL:=$(TOOLS_DIR)/freetz_download
 PATCH_TOOL:=$(TOOLS_DIR)/freetz_patch
 PARSE_CONFIG_TOOL:=$(TOOLS_DIR)/parse-config
 CHECK_PREREQ_TOOL:=$(TOOLS_DIR)/prerequisites
 GENERATE_IN_TOOL:=$(TOOLS_DIR)/genin
+TAR:=$(TOOLS_DIR)/tar-gnu
+SED:=sed
+PATCHELF:=patchelf
+PYTHON3=python3
+MESON=meson
+CMAKE=cmake
+NINJA1=ninja
+MAKE1=make
+ifeq ($(FREETZ_JLEVEL),0)
+NINJA=ninja -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
+MAKE=make -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
+else
+NINJA=ninja -j$(FREETZ_JLEVEL)
+MAKE=make -j$(FREETZ_JLEVEL)
+endif
 
-# do not use sorted-wildcard here, it's first defined in files included here
-include $(sort $(wildcard include/make/*.mk))
+# Don't go parallel
+.NOTPARALLEL:
+# We don't use suffixes in the main make, don't waste time searching for files
+.SUFFIXES:
 
 # Use echo -e "$(_Y)message$(_N)" if you want to print a yellow message
 IS_TTY=$(shell tty -s && echo 1 || echo 0)
-
 ifeq ($(IS_TTY),1)
 _Y:=\\033[33m
 __Y:=\033[33m
@@ -76,14 +128,13 @@ define MESSAGE
 printf "%s\n" "$(1)" $(SILENT)
 endef
 
-define nMESSAGE
-printf "\n%s" "$(1)" $(SILENT)
-endef
-
 # Print yellow error message and exit
 define ERROR
+[ "$(FREETZ_VERBOSITY_LEVEL)" = "0" ] && echo && cat .build.log 2>/dev/null; \
+kill $$$$ 2>/dev/null || kill $$$$$$$$ 2>/dev/null; \
 printf "\n$(_Y)%s$(_N)\n" "ERROR: $(2)";  exit $(1);
 endef
+
 
 # check for very old linux with kernel v3 or less
 ifeq ($(shell uname -r | sed 's/\..*//;s/^[1-3]//'),)
@@ -101,7 +152,7 @@ $(error Running makefile as root is prohibited! Please build Freetz as normal us
 endif
 
 # Mod archive unpacked incorrectly (heuristics)? -> Error
-ifeq ($(shell MWW=make/mod/files/root/usr/mww; \
+ifeq ($(shell MWW=make/pkgs/mod/files/root/usr/mww; \
 	[ ! -L $$MWW/cgi-bin/index.cgi -o ! -x $$MWW/cgi-bin/status.cgi -o -x $$MWW/index.html ] \
 	&& echo y\
 ),y)
@@ -109,7 +160,7 @@ $(error File permissions or links are wrong! Please unpack Freetz on a filesyste
 endif
 
 # Folder root/ needs 755 permissions
-ifneq ($(shell stat -c %a make/mod/files/root),755)
+ifneq ($(shell stat -c %a make/pkgs/mod/files/root),755)
 $(error Wrong build directory permissions. Please set umask to 0022 and then unpack/checkout again in a directory having no uid-/gid-bits set)
 endif
 
@@ -124,15 +175,16 @@ $(error Cygwin is not supported! Please use a real Linux environment)
 endif
 
 # git-svn removes empty directories, check for one of them
-ifneq (OK,$(shell [ -d make/mod/files/root/sys ] && echo OK))
+ifneq (OK,$(shell [ -d make/pkgs/mod/files/root/sys ] && echo OK))
 $(error The empty directory root/sys is missing! Please do a clean checkout)
 endif
 
 # Simple checking of build prerequisites
+# kconfig checks them in its .mk-file to be able to disable items always
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 ifneq ($(NO_PREREQ_CHECK),y)
-ifneq (OK,$(shell $(CHECK_PREREQ_TOOL) >&2 && echo OK))
-$(error Some build prerequisites are missing! Please install the missing packages before trying again. See https://freetz-ng.github.io/freetz-ng/PREREQUISITES for installation hints)
+ifneq (OK,$(shell $(CHECK_PREREQ_TOOL) check >&2 && echo OK))
+$(error Some prerequisites are missing! Install the missing packages with 'tools/prerequisites install' or check https://freetz-ng.github.io/freetz-ng/PREREQUISITES for hints. See '.prerequisites' for why)
 endif
 endif
 endif
@@ -142,10 +194,11 @@ ifeq ($(shell gcc --version | grep -q "gcc (SUSE Linux) 4.5.0 20100604" && echo 
 $(error gcc (SUSE Linux) 4.5.0 has known bugs. Please install and use a different version)
 endif
 
+
 # genin: (re)generate .in files if necessary
 ifneq ($(findstring clean,$(MAKECMDGOALS)),clean)
 # Note: the list of the packages to be treated specially (the 3rd argument of get-subdirs-containing) should match that used in genin
-ifneq ($(call genin-get-considered-packages,make/Config.in.generated),$(call get-subdirs-containing,make,Config.in,libs busybox asterisk[-].* python[-].* iptables-cgi ruby-fcgi nhipt sg3_utils))
+ifneq ($(call genin-get-considered-packages,make/pkgs/Config.in.generated),$(call get-subdirs-containing,make/pkgs,Config.in,asterisk[-].* iptables-cgi nhipt python[-].* ruby-fcgi sg3_utils))
 ifneq ($(shell $(GENERATE_IN_TOOL) $(if $(findstring legacy,$(MAKECMDGOALS)),legacy) >&2 && echo OK),OK)
 $(error genin failed)
 endif
@@ -153,30 +206,61 @@ endif
 endif
 
 all: step
-world: check-dot-config-uptodateness $(DL_DIR) $(BUILD_DIR) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT) $(TOOLCHAIN_BUILD_DIR)
+world: check-dot-config-uptodateness clear-echo-temporary $(DL_DIR) $(BUILD_DIR) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT) $(TOOLCHAIN_BUILD_DIR)
 
-KCONFIG_TARGETS:=menuconfig menuconfig-single config oldconfig olddefconfig allnoconfig allyesconfig randconfig listnewconfig config-compress
-
-# load user configuration file
--include $(TOPDIR)/.config
+KCONFIG_TARGETS:=config menuconfig menuconfig-single nconfig nconfig-single gconfig xconfig oldconfig olddefconfig allnoconfig allyesconfig randconfig listnewconfig config-compress
 
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 # check cpu for x86_64
 ifneq ($(shell uname -m),x86_64)
 ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
-DLCHG:=$(shell echo 'y' ; sed 's/^# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
-DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
+DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
 $(info You have no x86_64 CPU, precompiled (download) toolchains automatically disabled.)
 endif
 ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
-DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/\# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
 $(info You have no x86_64 CPU, precompiled (download) host-tools automatically disabled.)
 endif
 endif
-# change LAST_SYSTEM_ID: 999 -> 899
-ifeq ($(shell sed -n 's/^FREETZ_BUSYBOX___V..._LAST_SYSTEM_ID=//p' $(TOPDIR)/.config),999)
+# check cpu for AVX2
+ifneq ($(shell grep -q ' avx2 ' /proc/cpuinfo && echo y),y)
+ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
+$(info You have no CPU with AVX2 support, precompiled (download) toolchains automatically disabled.)
+endif
+ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/\# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
+$(info You have no CPU with AVX2 support, precompiled (download) host-tools automatically disabled.)
+endif
+endif
+# check debian for <11
+ifeq ($([ "$(sed 's/\..*//' /etc/debian_version 2>/dev/null)" -lt 11 ] 2>/dev/null && echo n),n)
+ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
+$(info Debian version before 11-bullseye are too old, precompiled (download) toolchains automatically disabled.)
+endif
+ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/\# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
+$(info Debian version before 11-bullseye are too old, precompiled (download) host-tools automatically disabled.)
+endif
+endif
+# compat 2020/08: change FEATURE_CROND_DIR: /var/spool/cron -> /mod/var/spool/cron
+ifeq ($(shell sed -n 's/^FREETZ_BUSYBOX___V..._FEATURE_CROND_DIR=//p' $(TOPDIR)/.config 2>/dev/null),"/var/spool/cron")
+DLCHG:=$(shell echo 'y' ; sed 's/^\(FREETZ_BUSYBOX___V..._FEATURE_CROND_DIR\)=.*/\1=\"\/mod\/var\/spool\/cron\"/' -i $(TOPDIR)/.config)
+$(info BusyBox FEATURE_CROND_DIR automatically changed.)
+endif
+# compat 2021/04: change LAST_SYSTEM_ID: 999 -> 899
+ifeq ($(shell sed -n 's/^FREETZ_BUSYBOX___V..._LAST_SYSTEM_ID=//p' $(TOPDIR)/.config 2>/dev/null),999)
 DLCHG:=$(shell echo 'y' ; sed 's/^\(FREETZ_BUSYBOX___V..._LAST_SYSTEM_ID\)=.*/\1=899/' -i $(TOPDIR)/.config)
 $(info BusyBox LAST_SYSTEM_ID automatically changed.)
+endif
+# compat 2022/04: remove orphan yourfritz link in tools
+ifeq ($(shell test -L $(TOPDIR)/tools/yf && echo y),y)
+DLCHG:=$(shell echo 'y' ; rm -f $(TOPDIR)/tools/yf $(TOPDIR)/source/host-tools/yf-*/.installed)
+$(info Orphan link automatically removed.)
 endif
 #
 $(if $(DLCHG),$(error Please re-run))
@@ -192,7 +276,8 @@ ifeq ($(strip $(FREETZ_VERBOSITY_LEVEL)),0)
 # Don't be silent when a menuconfig target is called
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 #SILENT:= >>build.log 2>&1
-SILENT:= > /dev/null 2>&1
+SILENT:= > .build.log 2>&1
+#SILENT:= > /dev/null 2>&1
 endif
 endif
 
@@ -206,8 +291,12 @@ endif
 export FREETZ_VERBOSITY_LEVEL
 export VERBOSE
 
-include $(TOOLS_DIR)/make/Makefile.in
-include $(call sorted-wildcard,$(TOOLS_DIR)/make/*/*.mk)
+include $(MAKE_DIR)/include/400-host.mk
+include $(MAKE_DIR)/include/500-echo.mk
+include $(MAKE_DIR)/include/600-macros.mk
+
+include $(MAKE_DIR)/host-tools/Makefile.in
+include $(call sorted-wildcard,$(MAKE_DIR)/host-tools/*/*.mk)
 
 TOOLS_CACHECLEAN:=$(patsubst %,%-cacheclean,$(TOOLS))
 TOOLS_CLEAN:=$(patsubst %,%-clean,$(TOOLS))
@@ -215,6 +304,8 @@ TOOLS_DIRCLEAN:=$(patsubst %,%-dirclean,$(TOOLS))
 TOOLS_DISTCLEAN:=$(patsubst %,%-distclean,$(TOOLS))
 TOOLS_SOURCE:=$(patsubst %,%-source,$(TOOLS))
 TOOLS_PRECOMPILED:=$(patsubst %,%-precompiled,$(TOOLS))
+TOOLS_RECOMPILE:=$(patsubst %,%-recompile,$(TOOLS))
+TOOLS_AUTOFIX:=$(patsubst %,%-autofix,$(TOOLS))
 
 $(DL_DIR):
 	@ \
@@ -247,16 +338,20 @@ step: image world tools firmware
 
 -include .config.cmd
 
-include $(TOOLCHAIN_DIR)/make/Makefile.in
-include $(MAKE_DIR)/Makefile.image.in
-include $(MAKE_DIR)/Makefile.in
+include $(MAKE_DIR)/toolchain/Makefile.in
+include $(MAKE_DIR)/include/700-image.mk
+include $(MAKE_DIR)/pkgs/Makefile.in
 include $(call sorted-wildcard,$(MAKE_DIR)/libs/*/Makefile.in)
-include $(call sorted-wildcard,$(MAKE_DIR)/*/Makefile.in)
+include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/Makefile.in)
+include $(call sorted-wildcard,$(MAKE_DIR)/busybox/Makefile.in)
+include $(call sorted-wildcard,$(MAKE_DIR)/kernel/Makefile.in)
 
 ALL_PACKAGES:=
 NON_LOCALSOURCE_PACKAGES:=
 include $(call sorted-wildcard,$(MAKE_DIR)/libs/*/*.mk)
-include $(call sorted-wildcard,$(MAKE_DIR)/*/*.mk)
+include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/*.mk)
+include $(call sorted-wildcard,$(MAKE_DIR)/busybox/busybox.mk)
+include $(call sorted-wildcard,$(MAKE_DIR)/kernel/kernel.mk)
 PACKAGES_CHECK_DOWNLOADS:=$(patsubst %,%-check-download,$(NON_LOCALSOURCE_PACKAGES))
 PACKAGES_MIRROR:=$(patsubst %,%-download-mirror,$(NON_LOCALSOURCE_PACKAGES))
 
@@ -283,22 +378,17 @@ TOOLCHAIN_DISTCLEAN:=$(patsubst %,%-distclean,$(TOOLCHAIN))
 TOOLCHAIN_SOURCE:=$(patsubst %,%-source,$(TOOLCHAIN))
 
 ifeq ($(strip $(FREETZ_BUILD_TOOLCHAIN)),y)
-include $(TOOLCHAIN_DIR)/make/kernel-toolchain.mk
-include $(TOOLCHAIN_DIR)/make/target-toolchain.mk
+include $(MAKE_DIR)/toolchain/kernel-toolchain.mk
+include $(MAKE_DIR)/toolchain/target-toolchain.mk
 else
-include $(TOOLCHAIN_DIR)/make/download-toolchain.mk
+include $(MAKE_DIR)/toolchain/download-toolchain.mk
 endif
 
 package-list: package-list-clean $(PACKAGES_LIST)
-	@touch .static
-	@( echo "# Automatically generated - DO NOT EDIT!"; cat .static ) > .static.tmp
-	@mv .static.tmp .static
-	@touch .dynamic
-	@( echo "# Automatically generated - DO NOT EDIT!"; cat .dynamic ) > .dynamic.tmp
-	@mv .dynamic.tmp .dynamic
+	@touch .packages
 
 package-list-clean:
-	@$(RM) .static .dynamic
+	@$(RM) .packages
 
 firmware-nocompile: tools $(DL_IMAGE)
 ifneq ($(strip $(FREETZ_FWMOD_SKIP_ALL)),y)
@@ -331,7 +421,9 @@ test: $(BUILD_DIR)/modified
 toolchain-depend: | $(TOOLCHAIN)
 # Use KTV and TTV variables to provide new toolchain versions, i.e.
 #   make KTV=freetz-0.4 TTV=freetz-0.5 toolchain
-toolchain: $(DL_DIR) $(SOURCE_DIR_ROOT) $(TOOLCHAIN) tools
+toolchain: $(DL_DIR) $(SOURCE_DIR_ROOT) $(TOOLCHAIN) tools lzma1-host
+	@echo
+	@echo "################################################################"
 	@echo
 	@echo "Creating toolchain tarballs ... "
 	@$(call TOOLCHAIN_CREATE_TARBALL,$(KERNEL_TOOLCHAIN_STAGING_DIR),$(KTV))
@@ -368,11 +460,18 @@ endif # FREETZ_HAVE_DOT_CONFIG!=y
 $(filter-out $(TOOLS_BUILD_LOCAL),$(TOOLS)): % : $(if $(FREETZ_HOSTTOOLS_DOWNLOAD),tools-host,%-precompiled)
 $(filter $(TOOLS_BUILD_LOCAL),$(TOOLS)): % : %-precompiled
 
+$(patsubst %,%-autofix,$(TOOLS)): %-autofix : %-dirclean
+	$(MAKE) AUTO_FIX_PATCHES=y $*-unpacked
+$(patsubst %,%-recompile,$(TOOLS)): %-recompile : %-dirclean %-precompiled
+
 tools: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_CONDITIONAL),$(TOOLS))
+tools-all: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_TARXZBUNDLE),$(TOOLS))
+tools-allexcept-local: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_BUILD_LOCAL),$(TOOLS))
+tools-distclean-local: $(patsubst %,%-distclean,$(filter-out $(TOOLS_TARXZBUNDLE),$(TOOLS_BUILD_LOCAL)))
 tools-dirclean: $(TOOLS_DIRCLEAN)
 tools-distclean: $(TOOLS_DISTCLEAN)
 
-push-firmware:
+push_firmware push-firmware:
 	@if [ ! -e "images/latest.image" ]; then \
 		echo "Please run 'make' first."; exit 1; \
 	else \
@@ -413,29 +512,41 @@ recover:
 		done; \
 	fi
 
-menuconfig: config-cache $(CONFIG)/mconf
+xconfig: config-cache kconfig-host-qconf
+	@$(CONFIG)/qconf $(CONFIG_IN_CACHE)
+
+gconfig: config-cache kconfig-host-gconf
+	@$(CONFIG)/gconf $(CONFIG_IN_CACHE)
+
+nconfig: config-cache kconfig-host-nconf
+	@$(CONFIG)/nconf $(CONFIG_IN_CACHE)
+
+nconfig-single: config-cache kconfig-host-nconf
+	@MENUCONFIG_MODE="single_menu" $(CONFIG)/nconf $(CONFIG_IN_CACHE)
+
+menuconfig: config-cache kconfig-host-mconf
 	@$(CONFIG)/mconf $(CONFIG_IN_CACHE)
 
-menuconfig-single: config-cache $(CONFIG)/mconf
+menuconfig-single: config-cache kconfig-host-mconf
 	@MENUCONFIG_MODE="single_menu" $(CONFIG)/mconf $(CONFIG_IN_CACHE)
 
-menuconfig-nocache: $(CONFIG_IN_CUSTOM) $(CONFIG)/mconf
+menuconfig-nocache: $(CONFIG_IN_CUSTOM) kconfig-host-mconf
 	@$(CONFIG)/mconf $(CONFIG_IN)
 
-config: config-cache $(CONFIG)/conf
+config: config-cache kconfig-host-conf
 	@$(CONFIG)/conf $(CONFIG_IN_CACHE)
 
 config-compress: .config.compressed
-.config.compressed: .config config-cache $(CONFIG)/conf
+.config.compressed: .config config-cache kconfig-host-conf
 	@$(CONFIG)/conf --savedefconfig $@ $(CONFIG_IN_CACHE)
 	@sed -e "/^FREETZ_FWMOD_SIGN_PASSWORD=/d" -i $@ 2>/dev/null
 #	@echo "Compressed configuration written to $@."; \
 #	echo  "It is equivalent to .config, but contains only non-default user selections and no signing key password."
 
-listnewconfig: config-cache $(CONFIG)/conf
+listnewconfig: config-cache kconfig-host-conf
 	@$(CONFIG)/conf --listnewconfig $(CONFIG_IN_CACHE)
 
-oldconfig olddefconfig allnoconfig allyesconfig randconfig: config-cache $(CONFIG)/conf
+oldconfig olddefconfig allnoconfig allyesconfig randconfig: config-cache kconfig-host-conf
 	@$(CONFIG)/conf --$@ $(CONFIG_IN_CACHE) && touch .config
 
 reuseconfig: .config
@@ -443,11 +554,16 @@ reuseconfig: .config
 
 config-cache: $(CONFIG_IN_CACHE)
 
-ifneq ($(findstring clean,$(MAKECMDGOALS)),clean)
--include include/config/cache.conf.cmd
+config-cache-clean:
+	@$(RM) $(CONFIG_IN_CACHE)
 
-$(CONFIG_IN_CACHE) include/config/cache.conf.cmd: $(CONFIG_IN_CUSTOM) $(PARSE_CONFIG_TOOL) $(deps_config_cache)
-	@mkdir -p include/config
+config-cache-refresh: config-cache-clean config-cache
+
+ifneq ($(findstring clean,$(MAKECMDGOALS)),clean)
+-include $(INCLUDE_DIR)/config/cache.conf.cmd
+
+$(CONFIG_IN_CACHE) $(INCLUDE_DIR)/config/cache.conf.cmd: $(CONFIG_IN_CUSTOM) $(PARSE_CONFIG_TOOL) $(deps_config_cache)
+	@mkdir -p $(INCLUDE_DIR)/config
 	@$(PARSE_CONFIG_TOOL) $(CONFIG_IN) > $(CONFIG_IN_CACHE)
 endif
 
@@ -494,9 +610,9 @@ $(eval $(call CONFIG_CLEAN_DEPS,config-clean-deps-keep-busybox,kernel modules$(_
 common-cacheclean:
 	[ ! -x .fwmod_custom ] || ./.fwmod_custom clean
 	./fwmod_custom clean
-	$(RM) make/Config.in.generated make/external.in.generated
+	$(RM) make/pkgs/Config.in.generated make/pkgs/external.in.generated
 	$(RM) .config.compressed .config.old  .config.*.tmp
-	$(RM) .static .dynamic .packages .exclude-release-tmp $(CONFIG_IN_CACHE)
+	$(RM) .packages .exclude-release-tmp $(CONFIG_IN_CACHE)
 	$(RM) $(DL_FW_DIR)/*.detected.image $(DL_FW_DIR)/*.detected.image.url
 	$(RM) -r $(BUILD_DIR)
 	$(RM) -r $(FAKEROOT_CACHE_DIR)
@@ -508,13 +624,12 @@ common-dirclean: common-clean $(if $(FREETZ_HAVE_DOT_CONFIG),kernel-dirclean)
 
 common-distclean: common-dirclean
 	$(RM)    .config.cmd .tmpconfig.h *.log
-	$(RM) -r include/config
+	$(RM) -r $(INCLUDE_DIR)/config
 	$(RM) -r $(FW_IMAGES_DIR)
 	$(RM) -r $(KERNEL_TARGET_DIR)
 	$(RM) -r $(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT)
-	$(RM) -r $(TOOLCHAIN_BUILD_DIR)
+	$(RM) -r $(TOOLCHAIN_DIR)
 	$(RM) -r $(TOOLS_BUILD_DIR)
-	$(RM)    $(DL_DIR)
 	@echo "The files ./.config ./config/custom.in ./.fwmod_custom and the directories ~/.freetz-dl/ ~/.freetz-signature/ were not removed."
 
 release: distclean
@@ -539,6 +654,9 @@ release: distclean
 	)
 	$(RM) .exclude-release-tmp
 
+clear-echo-temporary:
+	@$(RM) $(ECHO_ITEM_1ST) $(ECHO_ITEM_TMP) $(ECHO_ITEM_NEW) $(ECHO_ITEM_END)
+
 # Check .config is up-to-date. Any change to any of the menuconfig configuration files (either manual or one caused by 'svn up') require .config to be updated.
 check-dot-config-uptodateness: $(CONFIG_IN_CACHE)
 	@if [ -e .config -a $(CONFIG_IN_CACHE) -nt .config ]; then \
@@ -554,9 +672,11 @@ check-dot-config-uptodateness: $(CONFIG_IN_CACHE)
 help:
 	@sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.en.md
 
-.PHONY: all world step $(KCONFIG_TARGETS) config-cache tools recover \
+.PHONY: all world step $(KCONFIG_TARGETS) config-cache config-cache-clean config-cache-refresh tools recover \
 	config-clean-deps-modules config-clean-deps-libs config-clean-deps-busybox config-clean-deps-terminfo config-clean-deps config-clean-deps-keep-busybox \
 	cacheclean clean dirclean distclean common-cacheclean common-clean common-dirclean common-distclean release \
-	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) \
-	check-dot-config-uptodateness
+	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) $(TOOLS_RECOMPILE) $(TOOLS_AUTOFIX) \
+	clear-echo-temporary check-dot-config-uptodateness
+
+endif # Envira
 

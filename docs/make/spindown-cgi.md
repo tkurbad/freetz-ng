@@ -1,4 +1,5 @@
-# spindown-cgi 0.2
+# spindown-cgi
+ - Package: [master/make/pkgs/spindown-cgi/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/spindown-cgi/)
 
 Mit **Spindown** können kompatible *"mechanische"* Festplatten in den
 Schlafmodus versetzt werden.

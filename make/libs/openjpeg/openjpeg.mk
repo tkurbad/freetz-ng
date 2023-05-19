@@ -1,8 +1,12 @@
 $(call PKG_INIT_LIB, 1.5.2)
 $(PKG)_LIB_VERSION:=1.5.2
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_MD5:=c41772c30fb1c272358b3707233134a1
+$(PKG)_HASH:=15df7b194a5d8dba0052cd21c17a4dc761149a770a907d73fffb972078c28a87
 $(PKG)_SITE:=http://openjpeg.googlecode.com/files,@SF/openjpeg.mirror
+### WEBSITE:=https://www.openjpeg.org/
+### MANPAGE:=https://github.com/uclouvain/openjpeg/wiki
+### CHANGES:=https://github.com/uclouvain/openjpeg/blob/master/NEWS.md
+### CVSREPO:=https://github.com/uclouvain/openjpeg
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/libopenjpeg/.libs/libopenjpeg.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libopenjpeg.so.$($(PKG)_LIB_VERSION)
@@ -20,6 +24,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-lcms1=no
 $(PKG)_CONFIGURE_OPTIONS += --enable-lcms2=no
 $(PKG)_CONFIGURE_OPTIONS += --enable-png=no
 $(PKG)_CONFIGURE_OPTIONS += --enable-tiff=no
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -42,6 +47,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(OPENJPEG_DIR) clean

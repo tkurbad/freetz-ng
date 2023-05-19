@@ -16,7 +16,7 @@ config FREETZ_BUSYBOX___V127_HAVE_DOT_CONFIG
 menu "Busybox Settings"
 
 config FREETZ_BUSYBOX___V127_DESKTOP
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on !FREETZ_PATCH_FREETZMOUNT && !FREETZ_PACKAGE_OPENVPN_CGI && !FREETZ_PACKAGE_GW6
 	bool "Enable options for full-blown desktop systems"
 	default n
 	help
@@ -1293,7 +1293,6 @@ config FREETZ_BUSYBOX___V127_XZCAT
 	  Alias to "unxz -c".
 
 config FREETZ_BUSYBOX___V127_XZ
-	depends on !FREETZ_PACKAGE_XZ
 	bool "xz -d"
 	default n
 	help
@@ -3472,6 +3471,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_SHADOWPASSWDS
 	  publicly readable.
 
 config FREETZ_BUSYBOX___V127_USE_BB_PWD_GRP
+	depends on FREETZ_AVM_HAS_NSSWITCH
 	bool "Use internal password and group functions rather than system functions"
 	default n
 	help
@@ -3497,6 +3497,7 @@ config FREETZ_BUSYBOX___V127_USE_BB_PWD_GRP
 	  If you enable this option, it will add about 1.5k.
 
 config FREETZ_BUSYBOX___V127_USE_BB_SHADOW
+	depends on FREETZ_AVM_HAS_NSSWITCH
 	bool "Use internal shadow password functions"
 	default n
 	depends on FREETZ_BUSYBOX___V127_USE_BB_PWD_GRP && FREETZ_BUSYBOX___V127_FEATURE_SHADOWPASSWDS
@@ -5820,7 +5821,7 @@ config FREETZ_BUSYBOX___V127_NANDWRITE
 	  Write to the specified MTD device, with bad blocks awareness
 
 config FREETZ_BUSYBOX___V127_NANDDUMP
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "nanddump"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -5912,14 +5913,14 @@ config FREETZ_BUSYBOX___V127_TTYSIZE
 	  error, but returns default 80x24.
 	  Usage in shell scripts: width=`ttysize w`.
 config FREETZ_BUSYBOX___V127_UBIRENAME
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "ubirename"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
 	help
 	  Utility to rename UBI volumes
 config FREETZ_BUSYBOX___V127_UBIATTACH
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "ubiattach"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -5927,7 +5928,7 @@ config FREETZ_BUSYBOX___V127_UBIATTACH
 	  Attach MTD device to an UBI device.
 
 config FREETZ_BUSYBOX___V127_UBIDETACH
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "ubidetach"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -5935,7 +5936,7 @@ config FREETZ_BUSYBOX___V127_UBIDETACH
 	  Detach MTD device from an UBI device.
 
 config FREETZ_BUSYBOX___V127_UBIMKVOL
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "ubimkvol"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -5943,7 +5944,7 @@ config FREETZ_BUSYBOX___V127_UBIMKVOL
 	  Create a UBI volume.
 
 config FREETZ_BUSYBOX___V127_UBIRMVOL
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "ubirmvol"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -5951,7 +5952,7 @@ config FREETZ_BUSYBOX___V127_UBIRMVOL
 	  Delete a UBI volume.
 
 config FREETZ_BUSYBOX___V127_UBIRSVOL
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "ubirsvol"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -5959,7 +5960,7 @@ config FREETZ_BUSYBOX___V127_UBIRSVOL
 	  Resize a UBI volume.
 
 config FREETZ_BUSYBOX___V127_UBIUPDATEVOL
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_SHOW_DEVELOPER
 	bool "ubiupdatevol"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -7460,7 +7461,6 @@ config FREETZ_BUSYBOX___V127_KILLALL5
 	  in its own session, so it won't kill the shell that is running
 	  the script it was called from.
 config FREETZ_BUSYBOX___V127_LSOF
-	depends on !FREETZ_PACKAGE_LSOF
 	bool "lsof"
 	default n
 	help
@@ -7535,7 +7535,7 @@ config FREETZ_BUSYBOX___V127_PS
 
 config FREETZ_BUSYBOX___V127_FEATURE_PS_WIDE
 	bool "Enable wide output option (-w)"
-	default n
+	default y
 	depends on FREETZ_BUSYBOX___V127_PS && !FREETZ_BUSYBOX___V127_DESKTOP
 	help
 	  Support argument 'w' for wide output.
@@ -7544,7 +7544,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_PS_WIDE
 
 config FREETZ_BUSYBOX___V127_FEATURE_PS_LONG
 	bool "Enable long output option (-l)"
-	default n
+	default y
 	depends on FREETZ_BUSYBOX___V127_PS && !FREETZ_BUSYBOX___V127_DESKTOP
 	help
 	  Support argument 'l' for long output.

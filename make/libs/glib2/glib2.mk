@@ -1,23 +1,29 @@
-$(call PKG_INIT_LIB, 2.32.4)
-$(PKG)_LIB_VERSION:=0.3200.4
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),2.32.4,2.76.1))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),0.3200.4,0.7600.1)
 $(PKG)_MAJOR_VERSION:=2.0
 $(PKG)_SOURCE:=glib-$($(PKG)_VERSION).tar.xz
-$(PKG)_SOURCE_MD5:=bf84fefd9c1a5b5a7a38736f4ddd674a
-$(PKG)_SITE:=ftp://ftp.gnome.org/pub/gnome/sources/glib/2.32
+$(PKG)_HASH_ABANDON:=a5d742a4fda22fb6975a8c0cfcd2499dd1c809b8afd4ef709bda4d11b167fae2
+$(PKG)_HASH_CURRENT:=43dc0f6a126958f5b454136c4398eab420249c16171a769784486e25f2fda19f
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),ABANDON,CURRENT))
+$(PKG)_SITE:=https://download.gnome.org/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://ftp.gnome.org/pub/gnome/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+### VERSION:=2.32.4/2.76.1
+### WEBSITE:=https://www.gnu.org/software/libc/
+### MANPAGE:=https://docs.gtk.org/glib/
+### CHANGES:=https://gitlab.gnome.org/GNOME/glib/blob/main/NEWS
+### CVSREPO:=https://gitlab.gnome.org/GNOME/glib
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),abandon,current)
 
 $(PKG)_LIBNAMES_SHORT := glib gobject gmodule gthread gio
 $(PKG)_LIBNAMES_LONG := $($(PKG)_LIBNAMES_SHORT:%=lib%-$($(PKG)_MAJOR_VERSION).so.$($(PKG)_LIB_VERSION))
-$(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/%/.libs/),$($(PKG)_LIBNAMES_LONG))
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
 $(PKG)_LIBS_TARGET_DIR := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_TARGET_DIR)/%)
-
 $(PKG)_PKGCONFIGS_SHORT := $($(PKG)_LIBNAMES_SHORT) gmodule-no-export gmodule-export gio-unix
-
-$(PKG)_BUILD_PREREQ += glib-genmarshal
-$(PKG)_BUILD_PREREQ_HINT := Hint: on Debian-like systems this binary is provided by the libglib2.0-dev package
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 
+ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
+$(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/%/.libs/),$($(PKG)_LIBNAMES_LONG))
 $(PKG)_DEPENDS_ON += pcre libffi zlib
 
 # NB: glib2 does require iconv-functions, see glib/gconvert.c
@@ -62,21 +68,62 @@ $(PKG)_CONFIGURE_OPTIONS += --with-pcre=system
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
+else
+$(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/builddir/%/),$($(PKG)_LIBNAMES_LONG))
+$(PKG)_HOST_DEPENDS_ON += meson-host
+$(PKG)_DEPENDS_ON += pcre2 libffi gettext zlib
+
+#$(PKG)_CONFIGURE_OPTIONS += -D iconv=libc
+$(PKG)_CONFIGURE_OPTIONS += -D selinux=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D xattr=false
+$(PKG)_CONFIGURE_OPTIONS += -D libmount=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D man=false
+$(PKG)_CONFIGURE_OPTIONS += -D dtrace=false
+$(PKG)_CONFIGURE_OPTIONS += -D systemtap=false
+$(PKG)_CONFIGURE_OPTIONS += -D sysprof=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D gtk_doc=false
+$(PKG)_CONFIGURE_OPTIONS += -D bsymbolic_functions=false
+$(PKG)_CONFIGURE_OPTIONS += -D tests=false
+$(PKG)_CONFIGURE_OPTIONS += -D installed_tests=false
+$(PKG)_CONFIGURE_OPTIONS += -D nls=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D oss_fuzz=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D glib_debug=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D glib_assert=false
+$(PKG)_CONFIGURE_OPTIONS += -D glib_checks=false
+$(PKG)_CONFIGURE_OPTIONS += -D libelf=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D multiarch=false
+#$(PKG)_CONFIGURE_OPTIONS += -D force_posix_threads=true
+endif
+
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
-$(PKG_CONFIGURED_CONFIGURE)
+$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),$(PKG_CONFIGURED_CONFIGURE),$(PKG_CONFIGURED_MESON))
 
 $($(PKG)_LIBS_BUILD_DIR): $($(PKG)_DIR)/.configured
+ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
 	$(SUBMAKE) -C $(GLIB2_DIR) \
 		all
+else
+	$(SUBMESON) compile \
+		-C $(GLIB2_DIR)/builddir/
+endif
 
 $($(PKG)_LIBS_STAGING_DIR): $($(PKG)_LIBS_BUILD_DIR)
+ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
 	$(SUBMAKE) -C $(GLIB2_DIR) \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
 		$(GLIB2_LIBNAMES_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib%-$(GLIB2_MAJOR_VERSION).la) \
 		$(GLIB2_PKGCONFIGS_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/%-$(GLIB2_MAJOR_VERSION).pc)
+else
+	$(SUBMESON) install \
+		--destdir "$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		-C $(GLIB2_DIR)/builddir/
+	$(PKG_FIX_LIBTOOL_LA) \
+		$(GLIB2_PKGCONFIGS_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/%-$(GLIB2_MAJOR_VERSION).pc)
+endif
 
 $($(PKG)_LIBS_TARGET_DIR): $($(PKG)_TARGET_DIR)/%: $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%
 	$(INSTALL_LIBRARY_STRIP)
@@ -84,6 +131,7 @@ $($(PKG)_LIBS_TARGET_DIR): $($(PKG)_TARGET_DIR)/%: $(TARGET_TOOLCHAIN_STAGING_DI
 $(pkg): $($(PKG)_LIBS_STAGING_DIR)
 
 $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(GLIB2_DIR) clean

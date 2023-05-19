@@ -1,25 +1,47 @@
-$(call PKG_INIT_LIB, 1.1.1)
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libpcap_VERSION_ABANDON),1.1.1,1.10.4))
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_MD5:=1bca27d206970badae248cfa471bbb47
-$(PKG)_SITE:=http://www.tcpdump.org/release/
+$(PKG)_HASH_ABANDON:=508cca15547e55d1318498b838456a21770c450beb2dc7d7d4a96d90816e5a85
+$(PKG)_HASH_CURRENT:=ed19a0383fad72e3ad435fd239d7cd80d64916b87269550159d20e47160ebe5f
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libpcap_VERSION_ABANDON),ABANDON,CURRENT))
+$(PKG)_SITE:=https://www.tcpdump.org/release/
+### VERSION:=1.1.1/1.10.4
+### WEBSITE:=https://www.tcpdump.org
+### MANPAGE:=https://www.tcpdump.org/manpages/pcap-filter.7.html
+### CHANGES:=https://git.tcpdump.org/libpcap/blob/HEAD:/CHANGES
+### CVSREPO:=https://github.com/the-tcpdump-group/libpcap
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$(pkg).so.$($(PKG)_LIB_VERSION)
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libpcap_VERSION_ABANDON),abandon,current)
+
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libpcap_VERSION_ABANDON
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libpcap_VERSION_CURRENT
 
 $(PKG)_CONFIGURE_OPTIONS += --with-pcap=linux
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --disable-bluetooth
+ifeq ($(FREETZ_LIB_libpcap_VERSION_ABANDON),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-can
 $(PKG)_CONFIGURE_OPTIONS += --disable-yydebug
 $(PKG)_CONFIGURE_OPTIONS += --with-build-cc="$(HOSTCC)"
-$(PKG)_CONFIGURE_OPTIONS += --without-septel
+else
+$(PKG)_CONFIGURE_OPTIONS += --disable-usb
+$(PKG)_CONFIGURE_OPTIONS += --disable-netmap
+$(PKG)_CONFIGURE_OPTIONS += --disable-dbus
+$(PKG)_CONFIGURE_OPTIONS += --disable-rdma
+$(PKG)_CONFIGURE_OPTIONS += --without-snf
+$(PKG)_CONFIGURE_OPTIONS += --without-turbocap
+$(PKG)_CONFIGURE_OPTIONS += --without-dpdk
+endif
 $(PKG)_CONFIGURE_OPTIONS += --without-dag
+$(PKG)_CONFIGURE_OPTIONS += --without-septel
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -42,6 +64,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBPCAP_DIR) clean

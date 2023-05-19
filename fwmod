@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Freetz script to modify AVM FRITZ!Box and OEM firmware images
 #
@@ -54,7 +54,7 @@ SELF="$(basename "$0")"
 [ $# -eq 0 ] && usage && exit 0
 
 # Backup command line parameters [$0..$n] to save them from getopts eating them
-# away, because we need them again later for the recursive fakerooted call.
+# away, because we need them again later for the recursive fakeroot/pseudo call.
 for ((i=0; i<=$#; i++)); do
 	CMDLINE_ORIG[i]="${!i}"
 done
@@ -100,10 +100,6 @@ BASE_DIR="$(dirname "$0")"
 ABS_BASE_DIR="$(readlink -f "$BASE_DIR")"
 TOOLS_DIR="${ABS_BASE_DIR}/tools"
 
-# Prepend PATH with own directory (containing links)
-PATH_DIR="${TOOLS_DIR}/path"
-PATH="${PATH_DIR}:${PATH}"
-
 # Include common helper functions (isFreetzType, echo*, error, modunsqfs* etc.)
 source "${TOOLS_DIR}/freetz_functions" ||
 	(echo "cannot find script freetz_functions" >&2; exit 1)
@@ -114,7 +110,7 @@ source "${TOOLS_DIR}/freetz_functions" ||
 [ "$DO_SIGN" -gt 0 -a $(($DO_PACK + $DO_ZIP)) -eq 0 ] && \
 	error 1 "Firmware signing without packing is not supported. Please use PeterPawn's sign_image tool to sign an already existing .image file."
 
-[ $(($DO_SIGN + $DO_VALIDATE + $DO_VALIDATE2 + $DO_VALIDATE3 )) -gt 0 -a ! -x "$(which openssl 2>/dev/null)" ] && \
+[ $(($DO_SIGN + $DO_VALIDATE + $DO_VALIDATE2 + $DO_VALIDATE3 )) -gt 0 -a ! -x "$(command -v openssl)" ] && \
 	error 1 "OpenSSL is required to verify and create image signature. Please install it or disable the option(s) in menuconfig."
 
 # Initialise firmware image names
@@ -149,6 +145,7 @@ FIRMWARE_EXTENSION="${FIRMWARE_EXTENSION,,}"
 # Relative subdirectories
 SOURCE_SUBDIR="source"
 FIRMWARE_SUBDIR="firmware"
+FITIMAGE_SUBDIR="fit-image"
 FILESYSTEM_SUBDIR="filesystem"
 FILESYSTEM_OUTER_SUBDIR="filesystem.outer"
 AVMPLUGINS_SUBDIR="plugins.image"
@@ -175,8 +172,12 @@ MAKEDEVS_TOOL="makedevs"
 DEBUGFS_TOOL="debugfs"
 EXTERNAL_TOOL="external"
 TAR_TOOL="tar"
+TAR_GNU_TOOL="tar-gnu"
 MD5SUM_TOOL="md5sum"
 BUSYBOX_TOOL="busybox"
+
+# Optional tools
+PV="$(command -v pv >/dev/null && echo 'pv -rcb')"
 
 # Absolute tools paths
 EXTERNAL="${TOOLS_DIR}/${EXTERNAL_TOOL}"
@@ -184,8 +185,9 @@ DEBUGFS="${TOOLS_DIR}/${DEBUGFS_TOOL}"
 FINDSQUASHFS="${TOOLS_DIR}/${FINDSQUASHFS_TOOL}"
 TICHKSUM="${TOOLS_DIR}/${TICHKSUM_TOOL}"
 MAKEDEVS="${TOOLS_DIR}/${MAKEDEVS_TOOL}"
-MAKEDEVS_FILE="${TOOLS_DIR}/device_table.txt"
+MAKEDEVS_FILE="${TOOLS_DIR}/device.table"
 TAR="${TOOLS_DIR}/${TAR_TOOL}"
+TAR_GNU="${TOOLS_DIR}/${TAR_GNU_TOOL}"
 MD5SUM="${TOOLS_DIR}/${MD5SUM_TOOL}"
 BUSYBOX="${TOOLS_DIR}/${BUSYBOX_TOOL}"
 BLKID="${TOOLS_DIR}/blkid"
@@ -206,7 +208,7 @@ FAVICON_DIR="${GRAPHICS_DIR}/favicon"
 TAGGING_DIR="${GRAPHICS_DIR}/tagging"
 
 # Package files
-STATIC_PACKAGES_FILE="${BASE_DIR}/.static"
+PACKAGES_LIST_FILE="${BASE_DIR}/.packages"
 STATIC_ADDON_FILES="${ADDON_DIR}/*.pkg"
 
 # Alien variables
@@ -235,6 +237,7 @@ rm "$DOT_CONFIG.fwmod"
 # Set default verbosity level, just in case none was defined in the (possibly
 # user-defined and minimal) config file
 : ${FREETZ_VERBOSITY_LEVEL:=0}
+[ "$FREETZ_VERBOSITY_LEVEL" -lt 2 ] && PV=''
 
 # Kernel/SquashFS images contained in firmware
 KERNEL_IMAGE="${FREETZ_AVM_IMAGES_SUBDIR}/kernel.image"
@@ -285,38 +288,47 @@ validate_signature() {
 	local MOD="${3#*x}"
 	local EXP="${3%x*}"
 	[ "$EXP" == "$MOD" ] && EXP='010001'
-	# img
-	cat "$2" > "$TMP/img"
-	# fix
-	local FIX="$(mktemp -p $TMP)"
-	tar-gnu  -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --append  ${FIX##*/}
-	# sig
-	tar-gnu  -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --extract ./var/signature --transform='s!.*!sig!'
-	tar-gnu  -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu             --delete  ./var/signature ${FIX##*/}
-	# key
-	{
-		echo -n 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ==' | base64 -d
-		echo -n "$MOD" | while read -n2 x; do echo -ne "\x$x"; done
-		echo -ne "\x2"
-		echo -ne "\x$((${#EXP}/2))"
-		echo -n "$EXP" | while read -n2 x; do echo -ne "\x$x"; done
-	} > "$TMP/key"
-	# chk
-	VAL="$(openssl md5 -verify "$TMP/key" -keyform der -signature "$TMP/sig" "$TMP/img" 2>&1)"
-	RET="$?"
-	# clr
-	rm -rf "$TMP"
-	# act
-	[ "$RET" != "0" ] && echo -e "\033[0;31mfailed\033[0m\nOpenSSL: $VAL" && error 1 "image could not be verified with public key"
+	if [ "$FREETZ_FWMOD_VALIDATE_METHOD_SI" == "y" ]; then
+		echo -e "$MOD\n$EXP" > "$TMP/sig"
+		${TOOLS_DIR}/yf/signimage/yf_check_signature "$2" -a "$TMP/sig" 2> "$TMP/out"
+		RET=$?
+		[ $RET -ne 0 ] && echo -e "\033[0;31mfailed\033[0m" && cat "$TMP/out"
+		rm -rf "$TMP"
+		[ $RET -ne 0 ] && error $RET "image could not be verified with public key"
+	else
+		# img
+		cat "$2" > "$TMP/img"
+		# fix
+		local FIX="$(mktemp -p $TMP)"
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --append  ${FIX##*/}
+		# sig
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --extract ./var/signature --transform='s!.*!sig!'
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu             --delete  ./var/signature ${FIX##*/}
+		# key
+		{
+			echo -n 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ==' | base64 -d
+			echo -n "$MOD" | while read -n2 x; do echo -ne "\x$x"; done
+			echo -ne "\x2"
+			echo -ne "\x$((${#EXP}/2))"
+			echo -n "$EXP" | while read -n2 x; do echo -ne "\x$x"; done
+		} > "$TMP/key"
+		# chk
+		VAL="$(openssl md5 -verify "$TMP/key" -keyform der -signature "$TMP/sig" "$TMP/img" 2>&1)"
+		RET="$?"
+		# clr
+		rm -rf "$TMP"
+		# act
+		[ "$RET" != "0" ] && echo -e "\033[0;31mfailed\033[0m\nOpenSSL: $VAL" && error 1 "image could not be verified with public key"
+	fi
 	echo -e "\033[0;32mvalid\033[0m"
 }
 # validate_signature only
 [ $DO_VALIDATE -eq 1 -a $(($DO_UNPACK + $DO_MOD + $DO_PACK + $DO_ZIP)) -eq 0 ] && validate_signature "$DO_VALIDATE" "$FIRMWARE" "$FIRMWARE_PUB" && exit 0
 
 
-#######################################
-## Initialise fakeroot incl. caching ##
-#######################################
+##############################################
+## Initialise fakeroot/pseudo incl. caching ##
+##############################################
 
 # Create id string based on MD5 hashes of firmware images
 FIRMWARE_MD5="$("$MD5SUM" "$FIRMWARE" | cut -d ' ' -f 1)"
@@ -326,12 +338,12 @@ FIRMWARE_MD5="$("$MD5SUM" "$FIRMWARE" | cut -d ' ' -f 1)"
 FAKEROOT_CACHE_DIR="$ABS_BASE_DIR/.fakeroot-cache"
 [ "$FREETZ_ROOTEMU_FAKEROOT" != 'y' ] && FAKEROOT_CACHE_DB="$FAKEROOT_CACHE_DIR/files.db" || FAKEROOT_CACHE_DB="$FAKEROOT_CACHE_DIR/fakeroot.cvs"
 
-# Are we in a fakeroot context?
+# Are we in a fakeroot/pseudo context?
 if [ -n "$FWMOD_RECURSIVE" ] && [ $UID -eq 0 ]; then
-	# Yes -> fakeroot is active
-	# Make sure fakeroot call came from ourselves so we can assume the cache settings to be correct
-	if [ $((FWMOD_RECURSIVE)) -eq 0 ] || [ "$SELF" != "$(sed -nr 's/^Name:[[:blank:]]+(.*)/\1/p' /proc/$FWMOD_RECURSIVE/status)" ]; then
-		error 1 "$SELF must not run in a fakeroot environment"
+	# Yes -> fakeroot/pseudo is active
+	# Make sure fakeroot/pseudo call came from ourselves so we can assume the cache settings to be correct
+	if [ $((FWMOD_RECURSIVE)) -eq 0 ] || [ "./$SELF" != "$(cat /proc/$FWMOD_RECURSIVE/cmdline | tr '\0' '\n' | sed -n 2p)" ]; then
+		error 1 "$SELF must not run in a fakeroot/pseudo environment"
 	fi
 	# Has current combination of firmware already been unpacked?
 	if [ "$(cat "$UNPACKED_FILE" 2>/dev/null)" == "$FIRMWARE_MD5" ]; then
@@ -344,7 +356,7 @@ if [ -n "$FWMOD_RECURSIVE" ] && [ $UID -eq 0 ]; then
 		DO_UNPACK=1
 	fi
 else
-	# No -> fakeroot is inactive
+	# No -> fakeroot/pseudo is inactive
 	if [ "$(cat "$UNPACKED_FILE" 2>/dev/null)" != "$FIRMWARE_MD5" ]; then
 		# Dont keep old databases on a new unpack
 		mkdir -p "$FAKEROOT_CACHE_DIR"
@@ -371,7 +383,7 @@ else
 	# -- Copy file system to target folder (NFS root, maybe USB root) --
 	# ------------------------------------------------------------------
 
-	# This cannot be done in the pack/zip section (needs real sudo, not fakeroot)
+	# This cannot be done in the pack/zip section (needs real sudo, not fakeroot/pseudo)
 	if [ "$COPY_FS_DIR" ]; then
 		echo0 "copying root file system to directory $COPY_FS_DIR"
 		rootfs_archive="$(cat "${DIR}/.rootfs_archive")" ||
@@ -397,6 +409,7 @@ fi
 
 ORG_DIR="${DIR}/original"
 FIRMWARE_DIR="${ORG_DIR}/${FIRMWARE_SUBDIR}"
+FITIMAGE_DIR="${ORG_DIR}/${FITIMAGE_SUBDIR}"
 FILESYSTEM_DIR="${ORG_DIR}/${FILESYSTEM_SUBDIR}"
 FILESYSTEM_OUTER_DIR="${ORG_DIR}/${FILESYSTEM_OUTER_SUBDIR}"
 KERNEL_DIR="${ORG_DIR}/${KERNEL_SUBDIR}"
@@ -424,7 +437,7 @@ VARTAR="${FILESYSTEM_DIR}/${VARTAR_FILE}"
 function image_details() {
 	local AVM_FW_PRODUCT
 	local AVM_FW_LANGUAGE
-	local AVM_FW_MAJOR
+	#AVM_FW_MAJOR
 	#AVM_FW_VERSION
 	local AVM_FW_LABOR
 	#AVM_FW_REVISION
@@ -440,7 +453,7 @@ function image_details() {
 		[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/^HW=[0-9]* OEM=all _PRODUKT_NAME=(FRITZ!Box|Speedport|Sinus|Eumex)#//p' ${FILESYSTEM_DIR}/etc/init.d/rc.init | head -n1 | sed 's/#//g;s/Annex.//;s/WLAN/-&/g;s/^$/FritzBox/g')" # symbolic name in /etc/init.d/rc.init
 		[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/^HW=[0-9]* OEM=all _PRODUKT_NAME=([0-9A-Z\#]{4,6}).*/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.init)" # 4-digits in /etc/init.d/rc.init
 	fi
-	[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/export CONFIG_PRODUKT_NAME=.*(Repeater|Powerline) (.*)"/\2/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # Repeater like 'DVB-C'
+	[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/export CONFIG_PRODUKT_NAME=.*(Repeater|Powerline|Smart) (.*)"/\2/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # Repeater like 'DVB-C'
 	[ -z "${AVM_FW_PRODUCT}" ] && warn "Failed to determine AVM_FW_PRODUCT, even though this is a cosmetic bug only please report it to the Freetz developers and provide your .config"
 	AVM_FW_PRODUCT="${AVM_FW_PRODUCT%% Edition*}"
 	AVM_FW_PRODUCT="${AVM_FW_PRODUCT% }"
@@ -509,15 +522,15 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		fi
 		# Unpack standard *.image file in tar format
 		tail -c $(( $image_size - ${image_grbg:-0x0} )) "$FIRMWARE" | \
-		  tar-gnu -x -C "$FIRMWARE_DIR" || untar_failed=1
+		  "$TAR_GNU" -x -C "$FIRMWARE_DIR" || untar_failed=1
 	elif [ "$FIRMWARE_EXTENSION" != "exe" ]; then
 		# Unpack standard *.image file in tar format
-		tar-gnu -xif "$FIRMWARE" -C "$FIRMWARE_DIR" || untar_failed=1
+		"$TAR_GNU" -xif "$FIRMWARE" -C "$FIRMWARE_DIR" || untar_failed=1
 	fi
 	if [ "$FIRMWARE_EXTENSION" == "exe" ] || [ "$untar_failed" ]; then
 		# Unpack Windows recover.exe file or mtdblock dump
 		exe_images=($("${TOOLS_DIR}/extract-images" "$ABS_BASE_DIR" "$FIRMWARE" | sed -nr 's/^ *(.*\.image) - .*/\1/p'))
-		[ "$exe_images" ] || exit 1
+		[ "$exe_images" ] || error 1 "unpacking failed"
 		mkdir -p "$FIRMWARE_DIR/${FREETZ_AVM_IMAGES_SUBDIR}"
 		mkdir "$KERNEL_DIR"
 		unset exe_hr_mode
@@ -551,14 +564,16 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		rm -r "$(dirname "$exe_image")"
 	fi
 	if [ -e "$FIRMWARE_DIR/var/firmware-update.uimg" ]; then
+		echo0 "unpacking uimg file"
 		"${TOOLS_DIR}/uimg" -u "$FIRMWARE_DIR/var/firmware-update.uimg" >/dev/null
 		chmod +w $FIRMWARE_DIR/var/*.bin
 		mkdir -p "$FIRMWARE_DIR/var/remote/var/tmp/x86"
 		ln $FIRMWARE_DIR/var/*_ATOM_ROOTFS.bin "$FIRMWARE_DIR/var/remote/var/tmp/x86/filesystem.image"
 		ln $FIRMWARE_DIR/var/*_ATOM_KERNEL.bin "$FIRMWARE_DIR/var/remote/var/tmp/x86/kernel.image"
 	elif [ -e "$FIRMWARE_DIR/var/tmp/fit-image" ]; then
-		"${TOOLS_DIR}/fitimg" -x $FIRMWARE_DIR/var/tmp/fit-image -d $FIRMWARE_DIR/var/tmp/ -n -f -q
-		rm -f $FIRMWARE_DIR/var/tmp/*2.image
+		echo0 "unpacking fitimg file"
+		$TOOLS_DIR/fit.sh unpack "$FIRMWARE_DIR/var/tmp/fit-image" "$FITIMAGE_DIR" || error 1 "unpacking failed"
+		for x in kernel filesystem; do ln $FITIMAGE_DIR/$x.image $FIRMWARE_DIR/var/tmp/; done
 	fi
 
 	# Do the images exist ?
@@ -626,7 +641,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 	if [ -r "$AVMPLUGINS" ]; then
 		echo0 "unpacking AVM plugins"
 		mkdir -p "$AVMPLUGINS_DIR"
-		tar-gnu -xif "$AVMPLUGINS" -C "$AVMPLUGINS_DIR" || exit 1
+		"$TAR_GNU" -xif "$AVMPLUGINS" -C "$AVMPLUGINS_DIR" || error 1 "tar failed"
 
 		for i in "${AVMPLUGINS_DIR}/var/"*.image; do
 			AVMPLUGIN="${i##*/plugin-}"
@@ -647,7 +662,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 
 	echo "unpacking var.tar"
 	mkdir "$VARTAR_DIR"
-	tar-gnu -xipf "$VARTAR" -C "$VARTAR_DIR" || exit 1
+	"$TAR_GNU" -xipf "$VARTAR" -C "$VARTAR_DIR" || error 1 "tar failed"
 
 	image_details
 	echo2 -lc "detected firmware version: ${SOURCE_IMAGE_DETAILS}"
@@ -661,7 +676,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		[ $DO_VALIDATE2 -eq 1 ] && UNPACK_VALIDATE2="-v $FIRMWARE2_PUB"
 		( set -o pipefail; "$0" -u $UNPACK_VALIDATE2 -d "${DIR}/.tk" "$FIRMWARE2" |
 			sed "s/STEP 1: UNPACK/STEP 1B: UNPACK 2ND${FORCE_UNPACK}/" )
-		[ $? -ne 0 ] && exit 1
+		[ $? -ne 0 ] && error 1 "unpacking failed"
 	fi
 
 	# Unpack auxiliary firmware image
@@ -671,7 +686,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		[ $DO_VALIDATE3 -eq 1 ] && UNPACK_VALIDATE3="-v $FIRMWARE3_PUB"
 		( set -o pipefail; "$0" -u $UNPACK_VALIDATE3 -d "${DIR}/.aux" "$FIRMWARE3" |
 			sed "s/STEP 1: UNPACK/STEP 1C: UNPACK 3RD${FORCE_UNPACK}/" )
-		[ $? -ne 0 ] && exit 1
+		[ $? -ne 0 ] && error 1 "unpacking failed"
 	fi
 
 	# Create "unpacked" marker, recording exactly *what* was unpacked (MD5)
@@ -689,6 +704,7 @@ FREETZ_LIBRARY_DIR=$(stripTrailingSlash "${FREETZ_RPATH%%:*}")
 
 MOD_DIR="${DIR}/modified"
 FIRMWARE_MOD_DIR="${MOD_DIR}/${FIRMWARE_SUBDIR}"
+FITIMAGE_MOD_DIR="${MOD_DIR}/${FITIMAGE_SUBDIR}"
 FILESYSTEM_MOD_DIR="${MOD_DIR}/${FILESYSTEM_SUBDIR}"
 FILESYSTEM_OUTER_MOD_DIR="${MOD_DIR}/${FILESYSTEM_OUTER_SUBDIR}"
 EXTERNAL_MOD_DIR="${MOD_DIR}/${EXTERNAL_SUBDIR}"
@@ -715,9 +731,10 @@ fi
 
 VARTAR_MOD="${FILESYSTEM_MOD_DIR}/${VARTAR_FILE}"
 
+[ "${FREETZ_SYSTEM_TYPE_BCM63138}" == "y" ] && TARGET_TOOLCHAIN_ID__GCC_SUFFIX="-bcm"
 [ "${FREETZ_AVM_UCLIBC_NPTL_ENABLED}" == "y" ] && TARGET_TOOLCHAIN_ID__UCLIBC_SUFFIX="-nptl"
 [ "${FREETZ_KERNEL_VERSION_3_10_MIN}" == "y" ] && TARGET_TOOLCHAIN_ID__KERNEL_SUFFIX="_kernel-${FREETZ_KERNEL_VERSION_MAJOR}"
-TARGET_TOOLCHAIN_ID="${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}_gcc-${FREETZ_TARGET_GCC_VERSION}_uClibc-${FREETZ_TARGET_UCLIBC_VERSION}${TARGET_TOOLCHAIN_ID__UCLIBC_SUFFIX}${TARGET_TOOLCHAIN_ID__KERNEL_SUFFIX}"
+TARGET_TOOLCHAIN_ID="${FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT}_gcc-${FREETZ_TARGET_GCC_VERSION}${TARGET_TOOLCHAIN_ID__GCC_SUFFIX}_uClibc-${FREETZ_TARGET_UCLIBC_VERSION}${TARGET_TOOLCHAIN_ID__UCLIBC_SUFFIX}${TARGET_TOOLCHAIN_ID__KERNEL_SUFFIX}"
 PACKAGES_DIR="${PACKAGES_DIR_ROOT}/target-${TARGET_TOOLCHAIN_ID}"
 TARGET_SPECIFIC_ROOT_DIR="${PACKAGES_DIR}/root"
 
@@ -822,9 +839,10 @@ if [ "$DO_MOD" -gt 0 ]; then
 	rm -f "${DIR}/.modified"
 
 	# Copy the unpacked directory
+	[ -n "$PV" ] && echo0 "preparing directory build/modified/"
 	mkdir -p "$MOD_DIR"
 	[ "$FREETZ_AVM_HAS_UDEV" == y ] || exclude_dev="--exclude=./filesystem/dev"
-	"$TAR" -c -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | "$TAR" -x -C "$MOD_DIR" || exit 1
+	"$TAR_GNU" -c -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR" -x -C "$MOD_DIR" || error 1 "tar failed"
 
 	# Fix some permissions
 	chmod -R u+w "$FILESYSTEM_MOD_DIR"
@@ -838,7 +856,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	all_known_oems="1und1 aol avm avme ewetel freenet otwo tcom versatel"
 	iterate_over_oems_pattern='for[ ]+i[ ]+in[ ]+('"${all_known_oems// /|}"')[^;]*;[ ]*do'
 	oems=$(sed -n -r -e '/'"${iterate_over_oems_pattern}"'/ { s/^.*for[ ]+i[ ]+in[ ]+([^;]+);[ ]+do.*$/\1/p; q }' "${FIRMWARE_MOD_DIR}/var/install")
-	[ -z "$oems" ] && for oem in "${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_*/*"; do oems="$oems ${oem##*/}"; done
+	[ -z "$oems" ] && for oem in ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_*/*; do oems="$oems ${oem##*/}"; done
 	[ -z "$oems" ] && error 1 "failed to determine OEMs supported by the original firmware"
 
 	echo0 -n "applying symlinks, deleting additional webinterfaces"
@@ -996,12 +1014,6 @@ if [ "$DO_MOD" -gt 0 ]; then
 	echo "${FREETZ_VERSION}" > "${FILESYSTEM_MOD_DIR}/etc/.freetz-version"
 	ln -f "${FILESYSTEM_MOD_DIR}/etc/.freetz-version" "${FILESYSTEM_MOD_DIR}/etc/.freetz-ng-version"
 
-	PACKAGES_LIST_FILE="${BASE_DIR}/.packages"
-	rm -f "${PACKAGES_LIST_FILE}"
-	for pkg in $(static_packages) $(static_addons); do
-		echo "$pkg" >> "${PACKAGES_LIST_FILE}"
-	done
-
 	# Execute general patch scripts
 	for i in "${PATCHES_SCRIPTS_DIR}/"*.sh; do
 		[ -r "$i" ] || continue
@@ -1134,6 +1146,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			found=0
 			conf=${i%%=*}
 			[ "$conf" != "${conf%%_WITH_*}" ] && continue # skip suboptions
+			[ "$conf" != "${conf%%_VERSION_*}" ] && continue # skip version
 
 			bn=${conf#FREETZ_LIB_}
 
@@ -1191,7 +1204,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 		DETECTED_OPENSSL_VER_AVM="$(find ${FILESYSTEM_DIR}/lib/libcrypto.so.* -type f  -exec strings {} \; 2>/dev/null | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
 		echo2 "... used by AVM ...... ${DETECTED_OPENSSL_VER_AVM:-none}"
 		if [ "$FREETZ_LIB_libcrypto" == "y" ]; then
-			DETECTED_OPENSSL_VER_MOD="$(find ${FILESYSTEM_MOD_DIR}/usr/lib/freetz/libcrypto.so.* -type f  -exec strings {} \; | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
+			DETECTED_OPENSSL_VER_MOD="$(find ${FILESYSTEM_MOD_DIR}${FREETZ_LIBRARY_DIR}/libcrypto.so.* -type f  -exec strings {} \; | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
 			echo2 "... used by Freetz ... ${DETECTED_OPENSSL_VER_MOD:-none}"
 		#	[ "$DETECTED_OPENSSL_VER_MOD" != "$DETECTED_OPENSSL_VER_AVM" ] & warn2 "Freetz and AVM OpenSSL versions do not match"
 		fi
@@ -1236,38 +1249,51 @@ if [ "$DO_MOD" -gt 0 ]; then
 		[ "$FREETZ_REPLACE_BUSYBOX" != "y" ] && error 1 "installation of busybox replacement is mandatory"
 
 		echo0 "installing busybox"
+		[ "$FREETZ_BUSYBOX__ADDITIONAL" == "y" ] && BBBIN='busybox-freetz' || BBBIN='busybox'
 
 		DIRS_BUSYBOX_TO_REPLACE_WITHIN="${FILESYSTEM_MOD_DIR}"
 		[ "${FREETZ_AVM_HAS_INNER_OUTER_FILESYSTEM}" == "y" -a "$FREETZ_REPLACE_OUTER_UCLIBC_AND_BUSYBOX" == "y" ] && DIRS_BUSYBOX_TO_REPLACE_WITHIN+=" ${FILESYSTEM_OUTER_MOD_DIR}"
 
 		echo1 "replacing busybox"
 		[ ! -r "${PACKAGES_DIR}/busybox/busybox" ] && error 1 "cannot find busybox replacement"
-		for d in ${DIRS_BUSYBOX_TO_REPLACE_WITHIN}; do cp -pf "${PACKAGES_DIR}/busybox/busybox" "${d}/bin/busybox"; done
+		for d in ${DIRS_BUSYBOX_TO_REPLACE_WITHIN}; do cp -pf "${PACKAGES_DIR}/busybox/busybox" "${d}/bin/$BBBIN"; done
 
 		echo1 "installing symlinks"
 		[ ! -r "${PACKAGES_DIR}/busybox/busybox.links" ] && error 1 "cannot find busybox links"
 
-		# Remove old busybox links
-		# be compatible: do not use -delete (not found in older versions of find)
-		find ${DIRS_BUSYBOX_TO_REPLACE_WITHIN} \( -lname "busybox" -or -lname "*/busybox" \) -print0 | xargs -0 rm
+		# check avm's busybox links to warn about missing freetz applets
+		# this does not detect applets without links, like netcat, tcpsvd & timeout
+		MISSING_APPLETS="n"
+		find ${DIRS_BUSYBOX_TO_REPLACE_WITHIN} \( -lname "busybox" -or -lname "*/busybox" \) -exec basename {} ';' | sort -u | \
+		  while read -r LINK_NAME; do
+			grep -q "/${LINK_NAME//[/\\[}$" "${PACKAGES_DIR}/busybox/busybox.links" && continue
+			echo2 -bc "missing applet detected: $LINK_NAME"
+			MISSING_APPLETS="y"
+		done
+		[ "$MISSING_APPLETS" != "n" ] && error 1 "busybox failed"
 
-		# Install new busybox links
-		for link in $(cat "${PACKAGES_DIR}/busybox/busybox.links"); do
+#		### Disabled as in case of non default location and hardcoded path by avm
+#		# Remove old busybox links
+#		# be compatible: do not use -delete (not found in older versions of find)
+#		find ${DIRS_BUSYBOX_TO_REPLACE_WITHIN} \( -lname "$BBBIN" -or -lname "*/$BBBIN" \) -print0 | xargs -0r rm
+
+		# Install new busybox links - sorted by applet name
+		for link in $(cat "${PACKAGES_DIR}/busybox/busybox.links" | sed -nr 's,(.*)/(.*)$,\2 \1,p'|sort|sed -nr 's,(.*) (.*),\2/\1,p'); do
 			LINK_DIR="$(dirname "$link")"
 			LINK_NAME="$(basename "$link")"
 
 			case "$LINK_DIR" in
 				/)
-					BUSYBOX_PATH="bin/busybox"
+					BUSYBOX_PATH="bin/$BBBIN"
 					;;
 				/bin)
-					BUSYBOX_PATH="busybox"
+					BUSYBOX_PATH="$BBBIN"
 					;;
 				/sbin)
-					BUSYBOX_PATH="../bin/busybox"
+					BUSYBOX_PATH="../bin/$BBBIN"
 					;;
 				/usr/bin|/usr/sbin)
-					BUSYBOX_PATH="../../bin/busybox"
+					BUSYBOX_PATH="../../bin/$BBBIN"
 					;;
 				*)
 					error 1 "unknown installation directory: $link"
@@ -1276,21 +1302,26 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 			for d in ${DIRS_BUSYBOX_TO_REPLACE_WITHIN}; do
 				mkdir -p "${d}${LINK_DIR}"
-				if [ -f "${d}${LINK_DIR}/$LINK_NAME" ]; then
+				if [ -L "${d}${LINK_DIR}/$LINK_NAME" ]; then
+					if [ "$FREETZ_BUSYBOX__ADDITIONAL" == "y" ]; then
+						echo2 "additional -freetz link: $LINK_NAME"
+						LINK_NAME="${LINK_NAME}-freetz"
+					fi
+				elif [ -f "${d}${LINK_DIR}/$LINK_NAME" ]; then
 					if [ "$FREETZ_BUSYBOX__KEEP_BINARIES" != "y" ]; then
-						echo2 "overwriting file ${d}${LINK_DIR}/$LINK_NAME"
+						echo2 "overwriting binary file: $LINK_NAME"
 					else
-						echo2 "renaming applet ${d}${LINK_DIR}/$LINK_NAME"
+						echo2 "renamed -busybox applet: $LINK_NAME"
 						LINK_NAME="${LINK_NAME}-busybox"
 					fi
 				fi
 				ln -sf "$BUSYBOX_PATH" "${d}${LINK_DIR}/$LINK_NAME" || error 1 "could not create link for $link"
 			done
-		done || exit 1
+		done || error 1 "busybox failed"
 
 		echo1 "checking BusyBox version"
-		echo2 "... used by AVM ...... $(strings ${FILESYSTEM_DIR}/bin/busybox | sed -n 's/^BusyBox v//p')"
-		echo2 "... used by Freetz ... $(strings ${FILESYSTEM_MOD_DIR}/bin/busybox | sed -n 's/^BusyBox v//p')"
+		echo2 "... used by AVM ...... $(strings ${FILESYSTEM_DIR}/bin/busybox | sed 's/ ()//g' | grep -v 'multi-call' | sed -n 's/^BusyBox v//p')"
+		echo2 "... used by Freetz ... $(strings ${FILESYSTEM_MOD_DIR}/bin/$BBBIN | sed -n 's/^BusyBox v//p')"
 	fi
 
 	echo0 "installing packages"
@@ -1298,16 +1329,12 @@ if [ "$DO_MOD" -gt 0 ]; then
 		sizeinfo "$pkg"
 		pkg_name=$(pkg_name "$pkg")
 
-		"$TAR"  $(find "${PACKAGES_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
-			-c -C "${PACKAGES_DIR}/${pkg}/root" \
-			. | \
-		"$TAR" -x -C "$FILESYSTEM_MOD_DIR" || exit 1
+		"$TAR_GNU" $(find "${PACKAGES_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
+		  -c -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
-		[ -d "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" ] && \
-			$(
-				"$TAR" -c -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | \
-				"$TAR" -x -C ${VARTAR_MOD_DIR} || exit 1
-			)
+		if [ -d "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
+			"$TAR_GNU" -c -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+		fi
 
 		[ -r "${PACKAGES_DIR}/${pkg}/.language" ] && \
 			modlang "${PACKAGES_DIR}/${pkg}/.language" "${FILESYSTEM_MOD_DIR}"
@@ -1319,6 +1346,10 @@ if [ "$DO_MOD" -gt 0 ]; then
 		pkgfiles=$(collect_pkg_files "${pkg}" | sed -e "s,^,${PACKAGES_DIR}/${pkg}/root,")
 		sizeinfo pkg "${PACKAGES_DIR}/${pkg}" $pkgfiles
 	done
+	# order pkg-short package version symbol
+	sort "$PACKAGES_LIST_FILE" | while read sxx pkg ver xxx; do
+		echo "$sxx $(pkg_name $pkg-$ver) $pkg ${ver:0:12} $xxx"
+	done > "${VARTAR_MOD_DIR}/var/mod/etc/packages.lst"
 
 	[ -n "$(static_addons)" ] && echo0 "installing addons"
 	for pkg in $(static_addons); do
@@ -1328,18 +1359,16 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 		if [ -e "${ADDON_DIR}/${pkg}/etc/init.d/rc.${pkg_name}" ]; then
 			echo "NOTICE: addon '$pkg' is in old-style format (no language support)." 1>&2
-			"$TAR" -c -C "${ADDON_DIR}/${pkg}" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || exit 1
+			"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 		elif [ "$(echo ${pkg^^}-corrupt | sed -r 's/([^.-_-]*).*/\LfLawed-\1-Addon/' | md5sum | sed 's/ .*//')" != "80d00cf16e1a48ec11801feed60a2be7" ]; then
 			"$TAR"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
 				-c -C "${ADDON_DIR}/${pkg}/root" \
 				. | \
-			"$TAR" -x -C "$FILESYSTEM_MOD_DIR" || exit 1
+			"$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
-			[ -d "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" ] && \
-				$(
-					"$TAR" -c -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | \
-					"$TAR" -x -C ${VARTAR_MOD_DIR} || exit 1
-				)
+			if [ -d "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
+				"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+			fi
 
 			[ -r "${ADDON_DIR}/${pkg}/.language" ] && \
 				modlang "${ADDON_DIR}/${pkg}/.language" "${FILESYSTEM_MOD_DIR}"
@@ -1348,6 +1377,9 @@ if [ "$DO_MOD" -gt 0 ]; then
 		if ! grep -q "^$pkg_name$" "${VARTAR_MOD_DIR}/var/mod/etc/static.pkg" >/dev/null 2>&1; then
 			echo "$pkg_name" >> "${VARTAR_MOD_DIR}/var/mod/etc/static.pkg"
 		fi
+		rpn="$(real_pkg_name $pkg)"
+		cfs="FREETZ_ADDON_${rpn//-/_}"
+		echo "SXX $(pkg_name $pkg) $rpn ${pkg#$rpn-} ${cfs^^}" >> "${VARTAR_MOD_DIR}/var/mod/etc/packages.lst"
 		sizeinfo dir "${ADDON_DIR}/${pkg}"
 	done
 
@@ -1381,10 +1413,11 @@ if [ "$DO_MOD" -gt 0 ]; then
 	echo2 "... used by AVM ...... ${MODULES_SUBDIR##*/}"
 	echo2 "... used by Freetz ... ${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}"
 	if [ "lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}" != "$MODULES_SUBDIR" ]; then
+		gplnag="\nAre GPL sources for YOUR device and firware version released at http://osp.avm.de/ yet?\nHave YOU asked fritzbox_info@avm.de for sources?"
 		if [ "$FREETZ_REPLACE_MODULE_AVAILABLE" == "y" ]; then
-			error 1 "Freetz and AVM kernel versions do not match. Wrong kernel version configuration in Freetz?"
+			error 1 "Freetz and AVM kernel versions do not match. Wrong kernel version configuration in Freetz?$gplnag"
 		else
-			warn2 "Freetz and AVM kernel versions do not match. Wrong kernel version\nconfiguration in Freetz or no sources matching firmware version provided by AVM?"
+			warn2 "Freetz and AVM kernel versions do not match. Wrong kernel version\nconfiguration in Freetz or no sources matching firmware version provided by AVM?$gplnag"
 		fi
 	fi
 
@@ -1423,6 +1456,10 @@ if [ "$DO_MOD" -gt 0 ]; then
 		echo1 "generating modules.dep"
 		DEPMOD_TEMP="$(mktemp)"
 		if [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ]; then
+			touch \
+			  "$MODULES_DIR/modules.builtin" \
+			  "$MODULES_DIR/modules.builtin.modinfo" \
+			  "$MODULES_DIR/modules.order"
 			LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
 			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
 			  $FREETZ_KERNEL_VERSION \
@@ -1571,7 +1608,12 @@ if [ "$DO_MOD" -gt 0 ]; then
 	if [ "$FREETZ_STRIP_LIBRARIES" == "y" ]; then
 		echo0 "shrinking shared libs"
 		source ${TOOLS_DIR}/freetz_mklibs
-		mklibs || error 1 "mklibs returned an error. Please see build/modified/mklibs.log"
+		freetz_mklibs
+		x=$?
+		if [ "$x" != "0" ]; then
+			tail $MOD_DIR/mklibs.log 2>/dev/null
+			error 1 "mklibs returned error $x. Please see build/modified/mklibs.log"
+		fi
 	fi
 	if  [ "$FREETZ_STRIP_MODULES_ALL" == "y" ]; then
 		echo0 "stripping all kernel modules"
@@ -1769,7 +1811,7 @@ if [ "$action_names" ]; then
 		fi
 		#LANGUAGES
 		if [ "$FREETZ_IMAGE_NAME_LANGUAGES" == "y" ]; then
-			for x in $((sed -n 's/^language //p' $FILESYSTEM_DIR/etc/*.language && \
+			for x in $( (sed -n 's/^language //p' $FILESYSTEM_DIR/etc/*.language && \
 			  ls $FILESYSTEM_DIR/etc/htmltext_??.db 2>/dev/null | sed -rn 's/.*_(..)\.db/\1/p') | sort -u); do
 				[ "$(eval "echo \"\$FREETZ_REMOVE_LANGUAGE_$x\"")" != "y" ] && languages+="-$x"
 			done
@@ -1784,6 +1826,10 @@ if [ "$action_names" ]; then
 		if [ "$FREETZ_IMAGE_NAME_TIMESTAMP" == "y" ] \
 		  || [ -z "$FREETZ_IMAGE_NAME_CUSTOM" ]; then
 			modstring+="_${modmakedate}"
+		fi
+		#EXTRA
+		if [ -n "${FREETZ_IMAGE_NAME_EXTRA}" ]; then
+			modstring+="-${FREETZ_IMAGE_NAME_EXTRA}"
 		fi
 		#done
 		echo -n "$modstring"
@@ -1816,8 +1862,11 @@ if [ "$action_names" ]; then
 		error 1 "packing of var.tar failed"
 	fi
 
-	[ "$FREETZ_AVM_HAS_UDEV" == "y" ] || \
+	if [ "$FREETZ_AVM_HAS_UDEV" != "y" ]; then
+		[ -s "$MAKEDEVS_FILE" ] || error 1 "file $MAKEDEVS_FILE not found or empty"
 		$MAKEDEVS -d $MAKEDEVS_FILE $FILESYSTEM_MOD_DIR > $MOD_DIR/filesystem.log 2>&1
+		[ $? -ne 0 ] && cat $MOD_DIR/filesystem.log && error 1 "makedevs failed"
+	fi
 fi
 
 # -------------------------------------------
@@ -1933,11 +1982,14 @@ if [ "$DO_PACK" -gt 0 ]; then
 	# Check size of kernel image (multiple of 64 kB blocks)
 	if [ -n "$FREETZ_KERNEL_CUSTOM_MTD_SIZE" ]; then
 		let KERNEL_LIMIT="$FREETZ_KERNEL_CUSTOM_MTD_SIZE*64*1024"
+	elif [ -e "$FIRMWARE_MOD_DIR/var/firmware-update.uimg" ]; then
+		KERNEL_LIMIT=
+		# kernel_size seems to be for ARM and not ATOM, so ignore it as real size is not known - and RK not available
 	else
 		KERNEL_LIMIT="$(sed -nr 's/^kernel_size=(.*)/\1/p' ${FIRMWARE_DIR}/var/install)"
 	#	[ -z "$KERNEL_LIMIT" ] && error 1 "Can't find kernel_size in var/install"
 	fi
-	[ -e "$FIRMWARE_MOD_DIR/var/firmware-update.uimg" ] && KERNEL_SIZE="$(gzip "$KERNEL_MOD" -c | wc -c)" || KERNEL_SIZE="$(wc -c < "$KERNEL_MOD")"
+	KERNEL_SIZE="$(wc -c < "$KERNEL_MOD")"
 
 	[ "$KERNEL_SIZE" -eq 0 ] && error 1 "kernel image is empty"
 	if [ -z "$KERNEL_LIMIT" ]; then
@@ -1970,7 +2022,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 		if [ "${FREETZ_AVM_HAS_INNER_OUTER_FILESYSTEM}" == "y" ]; then
 			if [ "${FREETZ_AVM_OUTER_FILESYSTEM_TYPE}" == "Ext2FS" ]; then
 				echo0 "creating outer-filesystem image (Ext2FS)"
-				PATH="$TOOLS_DIR:$PATH" $TOOLS_DIR/mke2img -G 2 -R 0 -d "${FILESYSTEM_OUTER_MOD_DIR}" -o "$ABS_BASE_DIR/$RAW_FILESYSTEM_MOD.ext2" >> $MOD_DIR/filesystem.log 2>&1
+				$TOOLS_DIR/mke2img -G 2 -R 0 -d "${FILESYSTEM_OUTER_MOD_DIR}" -o "$ABS_BASE_DIR/$RAW_FILESYSTEM_MOD.ext2" >> $MOD_DIR/filesystem.log 2>&1
 				[ $? -ne 0 -o ! -s "$RAW_FILESYSTEM_MOD.ext2" ] && error 1 "creation of ext2 image failed"
 
 				{
@@ -2026,7 +2078,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 	if [ "$FREETZ_VERBOSITY_LEVEL" -ge 1 -a -n "$KERNEL_LIMIT" ]; then
 		if [ "$FREETZ_AVM_HAS_TAM" = "y" -a "${FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE}" != "y" ]; then
 			# Calculate aproximately free space in seconds for the answering machine
-			# 5*64kB sectors needed, see https://trac.boxmatrix.info/freetz-ng/ticket/1680#comment:4
+			# 5*64kB sectors needed, see Ticket #1680
 			FREE_BYTE_JFFS2=$((($KERNEL_LIMIT - $KERNEL_SIZE - 327680)))
 			FREE_MINUTES=$((($FREE_BYTE_JFFS2 / 2017 / 60)))
 			if [ "$FREE_BYTE_JFFS2" -gt 0 ]; then
@@ -2062,26 +2114,48 @@ if [ "$DO_PACK" -gt 0 ]; then
 		# Last, but not least, include .config and .packages into firmware
 		# image for further reference, e.g. user support
 		[ -r "$DOT_CONFIG" ] && { cat "$DOT_CONFIG" | grep -v "FREETZ_FWMOD_SIGN_PASSWORD" > "$FIRMWARE_MOD_DIR/var/.config"; }
-		[ -r "$PACKAGES_LIST_FILE" ] && cp "$PACKAGES_LIST_FILE" "$FIRMWARE_MOD_DIR/var"
+		[ -r "$PACKAGES_LIST_FILE" ] && cut "$PACKAGES_LIST_FILE" -d ' ' -f 2,3 > "$FIRMWARE_MOD_DIR/var/.packages"
 	fi
 
 	# Set img_name for pack, sign & link
 	img_name="${FW_IMAGES_DIR:-$DIR}/${modstring}.image"
 
 	# Pack firmware image
-	echo0 "packing ${img_name}"
 	if [ -e "$FIRMWARE_MOD_DIR/var/firmware-update.uimg" ]; then
+		echo0 "packing uimg file"
 		mv "$FIRMWARE_MOD_DIR/var/remote/var/tmp/x86/filesystem.image" $FIRMWARE_MOD_DIR/var/*_ATOM_ROOTFS.bin
 		mv "$FIRMWARE_MOD_DIR/var/remote/var/tmp/x86/kernel.image" $FIRMWARE_MOD_DIR/var/*_ATOM_KERNEL.bin
 		rm "$FIRMWARE_MOD_DIR/var/remote" "$FIRMWARE_MOD_DIR/var/firmware-update.uimg" -r
 		"${TOOLS_DIR}/uimg" -p "$FIRMWARE_MOD_DIR/var/firmware-update.uimg" >/dev/null
 		rm $FIRMWARE_MOD_DIR/var/firmware-update_*.bin
+		# size info
+		UIMG_SIZE="$(wc -c < "$FIRMWARE_MOD_DIR/var/firmware-update.uimg")"
+		echo1 "uimg file size: $(byte_to_mb $((UIMG_SIZE))) ($((UIMG_SIZE)) bytes)"
 	elif [ -e "$FIRMWARE_MOD_DIR/var/tmp/fit-image" ]; then
-		"${TOOLS_DIR}/fitimg" -r $FIRMWARE_MOD_DIR/var/tmp/fit-image -o $FIRMWARE_MOD_DIR/var/tmp/fit-image.tmp -d $FIRMWARE_MOD_DIR/var/tmp/ -f -q
-		mv $FIRMWARE_MOD_DIR/var/tmp/fit-image.tmp $FIRMWARE_MOD_DIR/var/tmp/fit-image
-		rm -f $FIRMWARE_MOD_DIR/var/tmp/kernel.image $FIRMWARE_MOD_DIR/var/tmp/filesystem.image
+		echo0 "packing fitimg file"
+		OLD_SIZE="$(stat -L -c %s $FITIMAGE_MOD_DIR/filesystem.image)"
+		for x in kernel filesystem; do mv "$FIRMWARE_MOD_DIR/var/tmp/$x.image" "$FITIMAGE_MOD_DIR/$x.image"; done
+		NEW_SIZE="$(stat -L -c %s $FITIMAGE_MOD_DIR/filesystem.image)"
+		# padding @1MB for "filesystems"
+		XXX_LOAD="$(sed -rn "s/.*mtdram=(ram-filesystem|rootfs_ram),([^,]*),.*/\2/p" "$FITIMAGE_MOD_DIR/args.txt")"
+		if [ -n "$XXX_LOAD" ]; then
+			OLD_ADDR="$(printf '%.8x' $(( $XXX_LOAD + $OLD_SIZE + (1024*1024) - $OLD_SIZE % (1024*1024) )) )"
+			NEW_ADDR="$(printf '%.8x' $(( $XXX_LOAD + $NEW_SIZE + (1024*1024) - $NEW_SIZE % (1024*1024) )) )"
+			OLD_ARGS="$(cat "$FITIMAGE_MOD_DIR/args.txt")"
+			NEW_ARGS="$(cat "$FITIMAGE_MOD_DIR/args.txt" | sed "s/$OLD_SIZE/$NEW_SIZE/;s/$OLD_ADDR/$NEW_ADDR/")"
+			sed -i "s/$OLD_ARGS/$NEW_ARGS/" "$FITIMAGE_MOD_DIR/image.its"
+		fi
+		# make fit image with avm-magic
+		SOURCE_DATE_EPOCH="$(cat "$FITIMAGE_MOD_DIR/date.txt")" $TOOLS_DIR/fit/mkimage -f "$FITIMAGE_MOD_DIR/image.its" "$FITIMAGE_MOD_DIR/image.itb" >/dev/null || error 1 "packing failed"
+		$TOOLS_DIR/yf/fit_tools/fit-add-avm-header.sh -k "$FIRMWARE_DIR/var/tmp/fit-image" "$FITIMAGE_MOD_DIR/image.itb" > "$FIRMWARE_MOD_DIR/var/tmp/fit-image" || error 1 "packing failed"
+		# size info
+		FITIMAGE_LIMIT="$(( $FREETZ_AVM_HAS_FIT_SIZE *1024*1024 ))"
+		FITIMAGE_SIZE="$(wc -c < "$FIRMWARE_MOD_DIR/var/tmp/fit-image")"
+		let FITIMAGE_DIFF="FITIMAGE_SIZE-FITIMAGE_LIMIT"
+		echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
 	fi
-	tar-gnu  -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --create ./var
+	echo0 "packing ${img_name}"
+	"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --create ./var
 	if [ $? -ne 0 ] || ! is_valid_tarball "${img_name}"; then
 		mv "${img_name}" "${img_name}.packed.corrupted" 2>/dev/null
 		error 1 "packing of firmware image failed"
@@ -2091,12 +2165,23 @@ if [ "$DO_PACK" -gt 0 ]; then
 	# Sign firmware image
 	if [ "$DO_SIGN" -eq 1 ]; then
 		echo1 -l "signing packed .image file"
-		openssl md5 -sign "${SIGNATURE_SUBDIR}/prv" -passin "pass:$FREETZ_FWMOD_SIGN_PASSWORD" -out "${FIRMWARE_MOD_DIR}/var/signature" "${img_name}" || \
-			error 1 "could not create signature file for firmware image"
-		tar-gnu  -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --append ./var/signature
-		if [ $? -ne 0 ] || ! is_valid_tarball "${img_name}"; then
+		if [ "$FREETZ_FWMOD_SIGN_METHOD_SI" == "y" ]; then
+			ln -fs "${SIGNATURE_SUBDIR}/prv" "sign-image.key"
+			FREETZ_IMAGE_SIGNING_PREFIX="sign-image" ${TOOLS_DIR}/yf/signimage/yf_sign \
+			  "${img_name}" "$FREETZ_FWMOD_SIGN_PASSWORD" > "${img_name}.signed-temp" 2> "${img_name}.signed.debug-out"
+			RET=$?
+			[ $RET -ne 0 ] && cat "${img_name}.signed.debug-out"
+			rm -f "sign-image.key" "${img_name}.signed.debug-out"
+			mv -f "${img_name}.signed-temp" "${img_name}"
+		else
+			openssl md5 -sign "${SIGNATURE_SUBDIR}/prv" -passin "pass:$FREETZ_FWMOD_SIGN_PASSWORD" -out "${FIRMWARE_MOD_DIR}/var/signature" "${img_name}" || \
+				error 1 "could not create signature file for firmware image"
+			"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --append ./var/signature
+			RET=$?
+		fi
+		if [ $RET -ne 0 ] || ! is_valid_tarball "${img_name}"; then
 			mv "${img_name}" "${img_name}.signed.corrupted" 2>/dev/null
-			error 1 "adding signature to firmware image failed"
+			error $RET "adding signature to firmware image failed"
 		fi
 		echo1 "signed image file size: $(byte_to_mb $(wc -c < "${img_name}")) ($(wc -c < "${img_name}") bytes)"
 	fi

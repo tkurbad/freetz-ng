@@ -1,10 +1,11 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # removes dependencies for (deleted) supervisor service "$1.service"
 supervisor_remove_dependency() {
 	local service="${1%.service}.service"
 	for file in $(grep -lP "(=| )${service}( |$)" ${FILESYSTEM_MOD_DIR}/lib/systemd/system/* 2>/dev/null); do
 		modsed -r "s/([= ])${service}( |$)/\1/g" "$file"
+		modsed '/^[Bb]efore= *$/d;/^[Aa]fter= *$/d' "$file"
 	done
 }
 
@@ -104,14 +105,20 @@ enable_page() {
 	  "${HTML_LANG_MOD_DIR}/menus/menu_show.lua"
 }
 
-#decrip_file <file>
+#decrip_file [-force] <file>
 #decripples css/html/lua text file
 decrip_file() {
+	local force='n'
+	[ "$1" == '-force' ] && force='y' && shift
 	[ -e "$1" ] || return 1
-	local l="$(wc -l "$1" | sed 's/ .*//')"
-	[ "$l" -gt 1 ] && return 1
+	local lines="$(wc -l "$1" | sed 's/ .*//')"
+	[ "$force" != 'y' ] && [ "$lines" -gt 1 ] && return 1
 	echo2 "decrippling file $1"
-	modsed 's/></>\n</g;s/{/ {\n/g;s/}/\n}\n/g;s/;/;\n/g' "$1"
+	if [ "$force" == 'y' ]; then
+		modsed 's/></>\n</g;s/,/,\n/g;s/;/;\n/g' "$1"
+	else
+		modsed 's/></>\n</g;s/{/ {\n/g;s/}/\n}\n/g;s/;/;\n/g' "$1"
+	fi
 }
 
 # -------------------------------------------------------------------
@@ -186,7 +193,7 @@ modsed() {
 
 	if [ "$c" == "0" ]; then
 		if [ $# -lt 3 ]; then
-			warn2 "$2 not found, skipping."
+			warn3 "$2 not found, skipping."
 		else
 			error 1 "$2 not found, aborting."
 		fi
@@ -313,12 +320,14 @@ L3="$L2$L1"
 echo0() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 0 ] && echoX -i "$L0" "$@"; }
 echo1() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 1 ] && echoX -i "$L1" "$@"; }
 echo2() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 2 ] && echoX -i "$L2" "$@"; }
+echo3() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 3 ] && echoX -i "$L3" "$@"; }
 
 # Warning message
 warn() { echoX -c -p "WARNING: " "$@" >&2; }
 warn0() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 0 ] && warn "$@"; }
 warn1() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 1 ] && warn "$@"; }
 warn2() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 2 ] && warn "$@"; }
+warn3() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 3 ] && warn "$@"; }
 
 
 # Error message + exit with specified error code
@@ -470,9 +479,7 @@ modlang()
 # list of static packages, sorted by start level
 static_packages()
 {
-	sort $STATIC_PACKAGES_FILE 2>/dev/null \
-	  | sed -e 's/^[\ \t]*//' -e 's/[\ \t]*$//' -e 's/^S[0-9]*//' \
-	  | grep -v '^#' | grep -v '^$'
+	sort $PACKAGES_LIST_FILE | cut -d ' ' -f 2,3 | sed 's/ /-/'
 }
 
 static_addons()
@@ -694,7 +701,6 @@ function symlinks-abs2rel() {
 join() {
 	(IFS="$1"; shift; echo -n "$*")
 }
-
 # $1 - file to wrap
 # $2 $3 ... - libraries to preload
 function create_LD_PRELOAD_wrapper() {
@@ -743,3 +749,14 @@ function supported_brandings() {
 	brandings=$(find "${etc_default_PRODUKT_path}" -maxdepth 1 -type d | sed -n -e "s|${etc_default_PRODUKT_path}[/]*||p" | sed -e "/^$/d" | sort -u)
 	echo $brandings
 }
+function firmware_version() {
+	local varname oem supported_brandings="$@"
+	for oem in ${supported_brandings}; do
+		varname="FREETZ_ENFORCE_BRANDING_$oem"
+		[ "${!varname}" != "y" ] && continue
+		echo "$oem"
+		return 0
+	done
+	return 1
+}
+

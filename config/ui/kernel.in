@@ -1,13 +1,13 @@
-if FREETZ_SHOW_ADVANCED
+if FREETZ_SHOW_EXPERT
 
-comment " Replace kernel (not available, needs AVM sources)"
-	depends on ! FREETZ_REPLACE_KERNEL_AVAILABLE
+comment " Replace kernel (not available, ask fritzbox_info@avm.de)"
+	depends on !FREETZ_REPLACE_KERNEL_AVAILABLE && FREETZ_KERNEL_VERSION_3_MAX
 
 config FREETZ_REPLACE_KERNEL
 	bool "Replace kernel"
 	depends on FREETZ_REPLACE_KERNEL_AVAILABLE
 
-	# until https://trac.boxmatrix.info/freetz-ng/ticket/1716 is fixed:
+	# until Ticket #1716 is fixed:
 	select FREETZ_REMOVE_KIDS if \
 		( FREETZ_TYPE_2170 || FREETZ_TYPE_3170 )
 
@@ -16,7 +16,8 @@ config FREETZ_REPLACE_KERNEL
 
 	select FREETZ_MODULE_msdos if ! FREETZ_REMOVE_FAT && \
 		( FREETZ_AVM_SOURCE_7270_05_21 || FREETZ_AVM_SOURCE_7270_05_51 || FREETZ_AVM_SOURCE_7270_06_05 )
-
+	select FREETZ_MODULE_fat if ! FREETZ_REMOVE_FAT && \
+		( FREETZ_AVM_SOURCE_7270_05_21 || FREETZ_AVM_SOURCE_7270_05_51 || FREETZ_AVM_SOURCE_7270_06_05 )
 	select FREETZ_MODULE_vfat if ! FREETZ_REMOVE_FAT && \
 		( FREETZ_AVM_SOURCE_7270_05_21 || FREETZ_AVM_SOURCE_7270_05_51 || FREETZ_AVM_SOURCE_7270_06_05 )
 
@@ -31,5 +32,5 @@ config FREETZ_REPLACE_KERNEL
 		This option is always experimental as the
 		kernel is never exactly like by avm!
 
-endif # FREETZ_SHOW_ADVANCED #
+endif # FREETZ_SHOW_EXPERT #
 

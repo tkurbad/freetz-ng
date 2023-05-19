@@ -1,4 +1,8 @@
-# Lynx 2.8.9 web browser
+# Lynx 2.8.9 (binary only)
+ - Homepage: [https://lynx.invisible-island.net/](https://lynx.invisible-island.net/)
+ - Manpage: [https://lynx.invisible-island.net/lynx_help/lynx_help_main.html](https://lynx.invisible-island.net/lynx_help/lynx_help_main.html)
+ - Changelog: [https://lynx.invisible-island.net/current/CHANGES.html](https://lynx.invisible-island.net/current/CHANGES.html)
+ - Package: [master/make/pkgs/lynx/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lynx/)
 
 **[Lynx](http://lynx.isc.org/)** ist ein
 Web-Browser, der ohne grafische Oberfläche daherkommt - also von der
@@ -13,16 +17,12 @@ und
 werden ebenfalls unterstützt - Tabellen hingegen nur eingeschränkt,
 [Java](http://de.wikipedia.org/wiki/Java_(Programmiersprache))
 sowie
-[JavaScript](http://de.wikipedia.org/wiki/Javascript)
+[JavaScript](http://de.wikipedia.org/wiki/JavaScript)
 überhaupt nicht.
 
 ### Weiterführende Links
 
--   [Lynx Homepage](http://lynx.isc.org/)
--   [The History of
-    Lynx](http://people.cc.ku.edu/~grobe/early-lynx.html)
--   [Tips on using
-    Lynx](http://brainstormsandraves.com/articles/browsers/lynx/)
--   [Liste von
-    Web-Browsern](http://de.wikipedia.org/wiki/Liste_von_Webbrowsern)
+-   [The History of Lynx](http://people.cc.ku.edu/~grobe/early-lynx.html)
+-   [Tips on using Lynx](http://brainstormsandraves.com/articles/browsers/lynx/)
+-   [Liste von Web-Browsern](http://de.wikipedia.org/wiki/Liste_von_Webbrowsern)
 

@@ -12,7 +12,7 @@ modsed "/.*javascript:doNetPage('upnp').*/d" "${HTML_SPEC_MOD_DIR}/home/clients.
 # html: Netzwerkeinstellungen
 modsed "/.*javascript:DoTabsUpnp().*/d" "${HTML_SPEC_MOD_DIR}/system/net.html"
 # patcht Heimetz > Netzwerk > Programme (lua)
-menulua_remove upnp
+[ "$FREETZ_AVM_VERSION_07_2X_MAX" == "y" ] && menulua_remove upnp
 # patcht Internet > Freigaben > Portfreigaben > Änderungen der Sicherheitseinstellungen über UPnP gestatten
 sedfile="${HTML_LANG_MOD_DIR}/internet/port_fw.lua"
 if [ -e $sedfile ]; then
@@ -48,6 +48,8 @@ for _upnp_name in upnpdevdstart upnpdstart _upnp_name; do
 	echo1 "patching rc.net: renaming $_upnp_name()"
 	modsed "s/^\($_upnp_name *()\)/\1\n{ return; }\n_\1/" "$_upnp_file" "_$_upnp_name"
 done
+
+supervisor_delete_service "upnpd"
 
 echo1 "patching rc.conf"
 modsed "s/CONFIG_UPNP=.*$/CONFIG_UPNP=\"n\"/g" "$FILESYSTEM_MOD_DIR/etc/init.d/rc.conf"

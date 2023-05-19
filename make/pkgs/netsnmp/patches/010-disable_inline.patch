@@ -1,0 +1,22 @@
+--- configure
++++ configure
+@@ -8640,6 +8640,7 @@
+ 
+ fi
+ 
++if false; then
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for inline" >&5
+ $as_echo_n "checking for inline... " >&6; }
+ if ${ac_cv_c_inline+:} false; then :
+@@ -8681,6 +8682,11 @@
+ _ACEOF
+     ;;
+ esac
++else
++cat >>confdefs.h <<\_ACEOF
++#define inline
++_ACEOF
++fi
+ 
+ 
+ #       libtool stuff for shared/static libraries.

@@ -150,7 +150,7 @@
 
 > Hier gibt es einmal die Möglichkeit dem Entwicklerteam eine Geldspende
 > zukommen zu lassen. Dazu ist in der rechten untern Ecke ein
-> Paypal-Spendenbutton angebracht. Weiterhin kann eine Box natürlich
+> PayPal-Spendenbutton angebracht. Weiterhin kann eine Box natürlich
 > besser unterstützt werden, wenn das Entwicklerteam "Testboxen"
 > besitzt. Im
 > [IPPF](http://www.ip-phone-forum.de/showpost.php?p=959253&postcount=1)
@@ -193,7 +193,7 @@
 > Da AVM den Quellcode des PacketAccelerator veröffentlicht hat, könnte
 > das Problem von jemandem mit viel Zeit und Wissen behoben werden.
 > Das Thema wird in Ticket
-> [#1605](https://trac.boxmatrix.info/freetz-ng/ticket/1605 "defect: iptables/nat/conntrack & kernel 2.6.28/2.6.32 (new)")
+> Ticket #1605 "defect: iptables/nat/conntrack & kernel 2.6.28/2.6.32 (new)"
 > behandelt, und so lange das Ticket noch nicht geschlossen ist
 > besteht das Problem.
 
@@ -498,7 +498,7 @@ Thread](http://www.ip-phone-forum.de/showthread.php?p=1185868)).
 > werden sollte. Mehr dazu im
 > [IPPF-Thread](http://www.ip-phone-forum.de/showthread.php?t=186208).
 > In FREETZ seit Revision
-> [r3049](https://trac.boxmatrix.info/freetz-ng/changeset/3049).
+> Changeset r3049.
 
 ### Beim Erstellen tritt immer noch ein Fehler auf...
 
@@ -945,7 +945,7 @@ anzufangen).
 > ```
 
 > **Ab Freetz-1.2.x und SVN-trunk
-> ≥[r3318](https://trac.boxmatrix.info/freetz-ng/changeset/3318):**
+> ≥Changeset r3318:**
 >
 > ```
 >	 echo 1 > /tmp/flash/mod/security <--- Bsp. #2: Setzen von Stufe "1" (Konfigurationsdateien editierbar)
@@ -1065,7 +1065,7 @@ anzufangen).
 >	 modsave flash
 > ```
 
- * Seit [r5706](https://trac.boxmatrix.info/freetz-ng/changeset/5706) wird das Setzen des Limits nicht mehr unterstützt.
+ * Seit Changeset r5706 wird das Setzen des Limits nicht mehr unterstützt.
 
 ### Kein FTP-Zugriff nach Freetz möglich
 

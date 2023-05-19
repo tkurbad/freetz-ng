@@ -3,5 +3,6 @@ config EXTERNAL_FREETZ_LIB_libcap
 	bool "libcap"
 	default n
 	help
-		externals these file(s):
-		 ${FREETZ_LIBRARY_DIR}/libcap.so.2.24
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libcap.so.2.x
+

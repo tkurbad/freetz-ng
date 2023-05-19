@@ -1,77 +1,4626 @@
-source "config/.kos/config-ar10-3272_06.86.in"
-source "config/.kos/config-ar10-7272_06.20.in"
-source "config/.kos/config-ar10-7272_06.87.in"
-source "config/.kos/config-ar7-04.30.in"
-source "config/.kos/config-ar7-04.33.in"
-source "config/.kos/config-ar7-04.40.in"
-source "config/.kos/config-ar7-04.49.in"
-source "config/.kos/config-ar934x-0546_07.12.in"
-source "config/.kos/config-ar934x-6810_06.21.in"
-source "config/.kos/config-ar9-7320_06.30.in"
-source "config/.kos/config-ar9-7330_06.50.in"
-source "config/.kos/config-brcma9-7539_07.22.in"
-source "config/.kos/config-grx5-5530_07.21.in"
-source "config/.kos/config-grx5-7580_06.53.in"
-source "config/.kos/config-grx5-7580_06.81.in"
-source "config/.kos/config-grx5-7583_07.10.in"
-source "config/.kos/config-grx5-7590_06.92.in"
-source "config/.kos/config-grx5-7590_07.01.in"
-source "config/.kos/config-grx5-7590_07.20.in"
-source "config/.kos/config-grx5-7590_07.25.in"
-source "config/.kos/config-iks-7340_06.06.in"
-source "config/.kos/config-iks-7369_06.33.in"
-source "config/.kos/config-iks-7390_05.21.in"
-source "config/.kos/config-iks-7390_06.01.in"
-source "config/.kos/config-iks-7390_06.30.in"
-source "config/.kos/config-iks-7390_06.51.in"
-source "config/.kos/config-iks-7390_06.80.in"
-source "config/.kos/config-ipq40xx-1200_07.14.in"
-source "config/.kos/config-ipq40xx-1200_07.20.in"
-source "config/.kos/config-ipq40xx-4040_07.01.in"
-source "config/.kos/config-ipq40xx-4040_07.14.in"
-source "config/.kos/config-ipq40xx-7530_07.02.in"
-source "config/.kos/config-ipq40xx-7530_07.20.in"
-source "config/.kos/config-ipq40xx-7530_07.25.in"
-source "config/.kos/config-ohio-04.33.in"
-source "config/.kos/config-ohio-04.57.in"
-source "config/.kos/config-ohio-04.67.in"
-source "config/.kos/config-ohio-04.70.in"
-source "config/.kos/config-ohio-04.76.in"
-source "config/.kos/config-ohio-04.80.in"
-source "config/.kos/config-ohio-04.87.in"
-source "config/.kos/config-ohio-5140_04.67.in"
-source "config/.kos/config-ohio-7140_04.33.in"
-source "config/.kos/config-ohio-r7203.in"
-source "config/.kos/config-puma6.x86-6490_06.87.in"
-source "config/.kos/config-puma6.x86-6490_07.02.in"
-source "config/.kos/config-puma6.x86-6490_07.10.in"
-source "config/.kos/config-puma6.x86-6590_06.87.in"
-source "config/.kos/config-puma6.x86-6590_07.02.in"
-source "config/.kos/config-puma6.x86-6590_07.20.in"
-source "config/.kos/config-puma6.x86-6590_07.25.in"
-source "config/.kos/config-puma7.x86-6591_07.04.in"
-source "config/.kos/config-puma7.x86-6591_07.13.in"
-source "config/.kos/config-puma7.x86-6660_07.14.in"
-source "config/.kos/config-puma7.x86-6660_07.20.in"
-source "config/.kos/config-qca955x-1750_07.01.in"
-source "config/.kos/config-qca955x-1750_07.12.in"
-source "config/.kos/config-qca955x-1750_07.20.in"
-source "config/.kos/config-qca955x-1759_06.30.in"
-source "config/.kos/config-qca956x-4020_06.50.in"
-source "config/.kos/config-qca956x-4020_07.01.in"
-source "config/.kos/config-ur8-7270_04.86.in"
-source "config/.kos/config-ur8-7270_05.21.in"
-source "config/.kos/config-ur8-7270_05.51.in"
-source "config/.kos/config-ur8-7270_06.05.in"
-source "config/.kos/config-vr9-3390_06.51.in"
-source "config/.kos/config-vr9-3490_06.31.in"
-source "config/.kos/config-vr9-5491_07.01.in"
-source "config/.kos/config-vr9-7360_06.20.in"
-source "config/.kos/config-vr9-7490_06.30.in"
-source "config/.kos/config-vr9-7490_06.51.in"
-source "config/.kos/config-vr9-7490_06.60.in"
-source "config/.kos/config-vr9-7490_06.83.in"
-source "config/.kos/config-vr9-7490_06.93.in"
-source "config/.kos/config-vr9-7490_07.01.in"
-source "config/.kos/config-vr9-7490_07.11.in"
-source "config/.kos/config-vr9-7490_07.21.in"
+if FREETZ_AVM_SOURCE_3272_06_86
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7272_06_20
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7272_06_87
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_30
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_33 && !FREETZ_TYPE_7140 && FREETZ_SYSTEM_TYPE_AR7_SANGAM
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_40
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_49
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_0546_07_12
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6810_06_21
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7320_06_30
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7330_06_50
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7539_07_29
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_5530_07_29
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_5530_07_50
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7580_06_53
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_DEFLATE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_MPPE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7580_06_81
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_DEFLATE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_MPPE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7583_07_10
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_DEFLATE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_MPPE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7590_06_92
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_DEFLATE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_MPPE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7590_07_01
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_DEFLATE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_MPPE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7590_07_25
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7590_07_50
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_CBQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7340_06_06
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_ASYNC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7369_06_33
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_ASYNC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7390_05_21
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_ASYNC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7390_06_01
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_ASYNC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7390_06_30
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_ASYNC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7390_06_51
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_ASYNC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7390_06_80
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_ASYNC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_1200_07_14
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_1200_07_27
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_4040_07_01
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_4040_07_14
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_4040_07_29
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7530_07_02
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7530_07_25
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7530_07_50
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_33 && !FREETZ_TYPE_7140 && FREETZ_SYSTEM_TYPE_AR7_OHIO
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_57
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_67 && !FREETZ_TYPE_5140
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_70
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_76
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_80
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_87
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_67 && FREETZ_TYPE_5140
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_04_33 && FREETZ_TYPE_7140
+config FREETZ_AVM_HAS_BT_HCIUSB_SCO_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MON_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_r7203
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6490_06_87
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6490_07_02
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6490_07_10
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6590_06_87
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6590_07_02
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6590_07_25
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_HTB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_SFQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_TBF_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6591_07_04
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_DUMMY_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_ISO9660_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_UDF_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6591_07_13
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_DUMMY_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_ISO9660_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_UDF_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6591_07_50
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_DUMMY_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_ISO9660_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_UDF_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6660_07_14
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_DUMMY_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_ISO9660_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_UDF_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6660_07_26
+config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC_CCITT_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_DUMMY_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_ISO9660_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_SCH_LLQ_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_UDF_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_1750_07_01
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_1750_07_12
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_1750_07_27
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_1759_06_30
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_4020_06_50
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_4020_06_83
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_4020_07_01
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_5590_07_29
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOL2TP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_5590_07_50
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOL2TP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_6000_07_27
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AEAD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_BLKCIPHER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_CBC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_MANAGER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_RNG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_WORKQUEUE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JFFS2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_PPPOL2TP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SLHC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7270_04_86
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7270_05_21
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MUSB_HDRC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7270_05_51
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXPORTFS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LOCKD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFSD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NFS_V3_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SUNRPC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MUSB_HDRC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7270_06_05
+config FREETZ_AVM_HAS_BLK_DEV_SD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CHR_DEV_SG_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_CODEPAGE_437_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_15_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_ISO8859_1_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_MUSB_HDRC_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_3390_06_51
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_3490_06_31
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_5491_07_01
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_5491_07_27
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7360_06_20
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_06_30
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_06_51
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_06_60
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_06_83
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_06_93
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_07_01
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_07_11
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif
+if FREETZ_AVM_SOURCE_7490_07_27
+config FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_BLK_DEV_NBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRC16_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_AES_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_CRYPTO_HASH_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_EXT4_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FUSE_FS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_FW_LOADER_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD2_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_JBD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_COMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_LZO_DECOMPRESS_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_MTD_NAND_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NET_CLS_U32_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_NLS_UTF8_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_SWAP_BUILTIN
+	def_bool y
+config FREETZ_AVM_HAS_TUN_BUILTIN
+	def_bool y
+endif

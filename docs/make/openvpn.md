@@ -1,7 +1,9 @@
-# OpenVPN 2.4.10/2.5.1
+# OpenVPN 2.4.12/2.5.9/2.6.4
  - Homepage: [https://openvpn.net/community-downloads/](https://openvpn.net/community-downloads/)
- - Changelog: [https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25](https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25)
+ - Manpage: [https://community.openvpn.net/openvpn/wiki](https://community.openvpn.net/openvpn/wiki)
+ - Changelog: [https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst](https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst)
  - Repository: [https://github.com/OpenVPN/openvpn](https://github.com/OpenVPN/openvpn)
+ - Package: [master/make/pkgs/openvpn/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openvpn/)
 
 OpenVPN ist ein Programm zur Herstellung eines Virtuellen Privaten
 Netzwerkes (VPN) über eine verschlüsselte TLS-Verbindung.
@@ -348,7 +350,7 @@ CRL
 CRL steht für "certificate revocation list" und bietet eine
 Möglichkeit, ausgestellte Zertifikate zurückzuziehen und damit ungültig
 zu machen. Aktuell gibt es einen BUG in Freetz
-([#1578](https://trac.boxmatrix.info/freetz-ng/ticket/1578)) so dass eine CRL nur mit etwas Handarbeit
+(Ticket #1578) so dass eine CRL nur mit etwas Handarbeit
 über die Telnet Konsole bzw. Rudishell zum Laufen gebracht werden kann.
 Wer sich das manuelle Erstellen einer CRL nicht zutraut findet mit
 Kleopatra (Windows /

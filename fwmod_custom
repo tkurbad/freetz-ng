@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Custom firmware modifications
 
@@ -42,8 +42,8 @@ all_no_freetz() {
 	# - automatic telnetd start
 	source "${patches_scripts}/114-run_telefon_in_inhaus_mode.sh"
 
-	# hardcode branding in rc.conf (an alternative to the enforce-urlader-settings patch above)
-	source "${patches_scripts}/101-enforce_branding_via_rc.conf.sh"
+	# hardcode branding in rc.conf (an alternative to the enforce-urlader-settings patch below)
+	source "${patches_scripts}/101-enforce_branding.sh"
 
 	# enforce urlader settings, useful on boxes with bootloader version >=1.3179 (7490) resp. >=1.3229 (7580)
 	source "${patches_scripts}/101-enforce_urlader-settings.sh"
@@ -51,14 +51,20 @@ all_no_freetz() {
 	# restore debug.cfg support
 	source "${patches_scripts}/114-debug_cfg_support.sh"
 
+	# patch away / hide "Nicht empfohlene Einstellungen"
+	source "${patches_scripts}/194-patch_webmenu_secure.sh"
+
 	# patch away / hide "vom Hersteller nicht unterstützte Änderungen"
 	source "${patches_scripts}/195-patch_webmenu_signed.sh"
 
 	# restore volume counter support, 7412 only
 	source "${patches_scripts}/241-restore_vol_counter.sh"
 
-	# add modfs boot-manager
-	source "${patches_scripts}/800-modfs_boot_manager.sh"
+	# enable multiple fax pages
+	source "${patches_scripts}/383-enable-faxpages.sh"
+
+	# add yf-bootmanager
+	source "${patches_scripts}/800-yf_bootmanager.sh"
 
 	# unhide Annex selection in Fritz!OS web-if
 	source "${patches_scripts}/801-modfs_annex_selection.sh"

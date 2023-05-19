@@ -1,9 +1,9 @@
-comment " Kernel modules (not available, needs AVM sources)"
+comment " Kernel modules (not available, ask fritzbox_info@avm.de)"
 	depends on ! FREETZ_REPLACE_MODULE_AVAILABLE
 
 
 menu "Kernel modules"
-	visible if FREETZ_SHOW_ADVANCED
+	visible if FREETZ_SHOW_EXPERT
 	depends on FREETZ_REPLACE_MODULE_AVAILABLE
 
 config FREETZ_MODULES_OWN
@@ -26,7 +26,8 @@ config FREETZ_MODULES_ALL
 menu "block"
 depends on \
 	(!FREETZ_AVM_HAS_MTD_BLOCK2MTD_BUILTIN) || \
-	(FREETZ_KERNEL_VERSION_2_6_19 && FREETZ_REPLACE_KERNEL)
+	(FREETZ_KERNEL_VERSION_2_6_19 && FREETZ_REPLACE_KERNEL) || \
+	FREETZ_PACKAGE_NDAS
 
 config FREETZ_MODULE_block2mtd
 	bool "block2mtd.ko"
@@ -48,7 +49,7 @@ config FREETZ_MODULE_xvmalloc
 	help
 		available as module only in 2.6.19, part of ramzswap since 2.6.2X
 
-source "make/ndas/Config.in.modules"
+source "make/pkgs/ndas/Config.in.modules"
 
 endmenu # block
 
@@ -292,15 +293,16 @@ config FREETZ_MODULE_sr_mod
 	select FREETZ_MODULE_cdrom if !FREETZ_AVM_HAS_CDROM_PKTCDVD_BUILTIN
 	default n
 
-config FREETZ_MODULE_usblp
-	bool "usblp.ko"
-	depends on !FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
-	default n
-
 config FREETZ_MODULE_usb_storage
 	bool "usb-storage.ko"
 	depends on !FREETZ_AVM_HAS_USB_STORAGE_BUILTIN
 	select FREETZ_MODULE_scsi_mod if !FREETZ_AVM_HAS_SCSI_MOD_BUILTIN
+	default n
+
+config FREETZ_MODULE_usbcore
+	bool "usbcore.ko"
+	depends on !FREETZ_AVM_HAS_USB_BUILTIN
+	select FREETZ_MODULE_musb_hdrc if FREETZ_SYSTEM_TYPE_UR8 && FREETZ_AVM_SOURCE_7270_04_86
 	default n
 
 config FREETZ_MODULE_usbip
@@ -314,6 +316,11 @@ config FREETZ_MODULE_usbip_common_mod
 	bool "usbip_common_mod.ko"
 	depends on !FREETZ_AVM_HAS_USB_IP_COMMON_BUILTIN
 	depends on FREETZ_MODULE_usbip
+	default n
+
+config FREETZ_MODULE_usblp
+	bool "usblp.ko"
+	depends on !FREETZ_AVM_HAS_USB_PRINTER_BUILTIN
 	default n
 
 config FREETZ_MODULE_usbmon
@@ -347,9 +354,19 @@ config FREETZ_MODULE_ppp_generic
 	select FREETZ_MODULE_slhc if !FREETZ_AVM_HAS_SLHC_BUILTIN && !FREETZ_KERNEL_VERSION_2_6_28
 	default n
 
+config FREETZ_MODULE_ppp_mppe
+	bool "ppp_mppe.ko"
+	depends on !FREETZ_AVM_HAS_PPP_MPPE_BUILTIN
+	depends on FREETZ_KERNEL_VERSION_2_6_39_MIN
+	select FREETZ_MODULE_ppp_generic  if !FREETZ_AVM_HAS_PPP_BUILTIN
+	select FREETZ_MODULE_arc4         if !FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	select FREETZ_MODULE_sha1_generic if !FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN
+	default n
+
 config FREETZ_MODULE_ppp_mppe_mppc
 	bool "ppp_mppe_mppc.ko"
 	depends on !FREETZ_AVM_HAS_PPP_MPPE_MPPC_BUILTIN
+	depends on !FREETZ_KERNEL_VERSION_2_6_39_MIN
 	select FREETZ_MODULE_ppp_generic  if !FREETZ_AVM_HAS_PPP_BUILTIN         && !FREETZ_KERNEL_VERSION_2_6_28
 	select FREETZ_MODULE_arc4         if !FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
 	select FREETZ_MODULE_sha1         if !FREETZ_AVM_HAS_CRYPTO_SHA1_BUILTIN &&  FREETZ_KERNEL_VERSION_2_6_19_MAX
@@ -475,13 +492,15 @@ config FREETZ_MODULE_mbcache
 
 config FREETZ_MODULE_fat
 	bool "fat.ko"
-	depends on !FREETZ_AVM_HAS_FAT_FS_BUILTIN
+	depends on !FREETZ_AVM_HAS_FAT_FS_BUILTIN || \
+		(FREETZ_REPLACE_KERNEL && ( FREETZ_AVM_SOURCE_7270_05_21 || FREETZ_AVM_SOURCE_7270_05_51 || FREETZ_AVM_SOURCE_7270_06_05 ))
 	default n
 
 config FREETZ_MODULE_vfat
 	bool "vfat.ko"
 	depends on FREETZ_MODULE_fat
-	depends on !FREETZ_AVM_HAS_VFAT_FS_BUILTIN
+	depends on !FREETZ_AVM_HAS_VFAT_FS_BUILTIN || \
+		(FREETZ_REPLACE_KERNEL && ( FREETZ_AVM_SOURCE_7270_05_21 || FREETZ_AVM_SOURCE_7270_05_51 || FREETZ_AVM_SOURCE_7270_06_05 ))
 	default y
 
 config FREETZ_MODULE_hfs
@@ -517,7 +536,8 @@ config FREETZ_MODULE_minix
 
 config FREETZ_MODULE_msdos
 	bool "msdos.ko"
-	depends on !FREETZ_AVM_HAS_MSDOS_FS_BUILTIN
+	depends on !FREETZ_AVM_HAS_MSDOS_FS_BUILTIN || \
+		(FREETZ_REPLACE_KERNEL && ( FREETZ_AVM_SOURCE_7270_05_21 || FREETZ_AVM_SOURCE_7270_05_51 || FREETZ_AVM_SOURCE_7270_06_05 ))
 	default n
 
 config FREETZ_MODULE_reiserfs
@@ -549,7 +569,7 @@ config FREETZ_MODULE_cifs
 	depends on !FREETZ_AVM_HAS_CIFS_BUILTIN
 	select FREETZ_MODULE_crypto_algapi    if !FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN    && FREETZ_KERNEL_VERSION_2_6_19_MIN
 	select FREETZ_MODULE_arc4             if !FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
-	select FREETZ_MODULE_cmac             if !FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN      && !FREETZ_KERNEL_VERSION_2_6_39
+	select FREETZ_MODULE_cmac             if !FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN      && !FREETZ_KERNEL_VERSION_2
 	select FREETZ_MODULE_des_generic      if !FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
 	select FREETZ_MODULE_ecb              if !FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
 	select FREETZ_MODULE_hmac             if !FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
@@ -560,7 +580,7 @@ config FREETZ_MODULE_cifs
 
 config FREETZ_MODULE_cmac
 	bool "cmac.ko"
-	depends on FREETZ_MODULE_cifs && !FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN && !FREETZ_KERNEL_VERSION_2_6_39
+	depends on FREETZ_MODULE_cifs && !FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN && !FREETZ_KERNEL_VERSION_2
 	default y
 
 config FREETZ_MODULE_des_generic
@@ -646,7 +666,7 @@ config FREETZ_MODULE_nfsv3
 config FREETZ_MODULE_nfsd
 	bool "nfsd.ko"
 	depends on !FREETZ_AVM_HAS_NFSD_BUILTIN
-	select FREETZ_MODULE_lockd
+	select FREETZ_MODULE_lockd if ! FREETZ_AVM_HAS_LOCKD_BUILTIN
 	select FREETZ_MODULE_exportfs if !FREETZ_AVM_HAS_EXPORTFS_BUILTIN
 	default n
 

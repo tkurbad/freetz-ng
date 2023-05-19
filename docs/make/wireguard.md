@@ -1,8 +1,9 @@
-# wireguard-tools 1.0.20200827
+# wireguard-tools 1.0.20210914
  - Homepage: [https://www.wireguard.com/](https://www.wireguard.com/)
  - Manpage: [https://www.wireguard.com/quickstart/](https://www.wireguard.com/quickstart/)
  - Changelog: [https://git.zx2c4.com/wireguard-tools/log/](https://git.zx2c4.com/wireguard-tools/log/)
  - Repository: [https://git.zx2c4.com/wireguard-tools/](https://git.zx2c4.com/wireguard-tools/)
+ - Package: [master/make/pkgs/wireguard/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/wireguard/)
 
 Mit Wireguard kann ein VPN aufgebaut werden. Es ist schneller als [OpenVPN](openvpn.md) und einfach zu konfugurieren als IPsec.<br>
 <br>
@@ -14,7 +15,7 @@ Mit Wireguard kann ein VPN aufgebaut werden. Es ist schneller als [OpenVPN](open
 
  - Ein Wireguard-Client auf der Fritzbox kann nicht als Default-Gateway verwendet werden, siehe [ip-phone-forum.de/threads/304914/](https://www.ip-phone-forum.de/threads/304914/).
  - Falls der Wireguard-Server nicht der Router ist muss auf dem Router eine Route zum IP-Bereich von Wireguard eingerichtet werden.
-
+ - Um AVM-VoIP über Wireguard nutzen zu können muss der Interfacename in "tun0" geändert werden.
 
 ### Datendurchsatz
 Erfahrungswerte mit verschiedener Hardware.
@@ -38,18 +39,24 @@ Bei Ubuntu heisst der Paketmanager `apt-get`.
 sudo dnf install wireguard-tools qrencode
 ```
 
+##### MTU
+Die MTU sollte für Server und Clients gleich gesetzt werden. Die Zeilen sind optional.
+Möglich Werte liegen von 1280 bis 1420 Bytes. 1280 ist eine "sichere" Wahl, höhere Werte
+sind besser können aber abhängig vom Netzwerk und Internetanschluss Probleme verursachen.
+
 ##### Variablendefinition
-Diese Variabelen werden weiter unten genutzt und sollten angepasst werden.
+Diese Variablen werden weiter unten genutzt und sollten angepasst werden.
 ```
 NUMCLIENTS="9"
 HOSTNAME="mein.dyndns.host"
 UDPPORT="51820"
 IPBEREICH="10.0.0.1/24"
 DNSSERVER="192.168.178.1"
+MTUBYTES="1280"
 
 ```
 
-##### Schlüssel-Dateien erstellen
+##### Schlüsseldateien erstellen
 Es werden die Schlüsseldateien `*.prv`, `*.psk` und `*.pub` generiert. Mit diesen werden die Konfigurationsdateien erstellt.
 ```
 for x in SRV $(seq -f "CL%g" $NUMCLIENTS); do
@@ -64,18 +71,19 @@ done
 
 
 ##### Serverkonfiguration erstellen
-Es wird die Serverkonfiguration in `SRV.cfg` erstellt die auf der Fritzbox eingefügt werden kann.
+Es wird die Serverkonfiguration in `SRV.conf` erstellt die auf der Fritzbox eingefügt werden kann.
 ```
-touch      SRV.cfg
-chmod 640  SRV.cfg
-cat >  SRV.cfg << EOX
+touch      SRV.conf
+chmod 640  SRV.conf
+cat >  SRV.conf << EOX
 [Interface]
 ListenPort   = $UDPPORT
 PrivateKey   = $(cat SRV.prv)
+MTU          = $MTUBYTES
 
 EOX
 for x in $(seq -f "CL%g" $NUMCLIENTS); do
-cat >> SRV.cfg << EOX
+cat >> SRV.conf << EOX
 [Peer]
 PublicKey    = $(cat $x.pub)
 PresharedKey = $(cat $x.psk)
@@ -87,15 +95,16 @@ done
 ```
 
 ##### Clientkonfigurationen erstellen
-Die Clientkonfigurationen werden in `CL*.cfg` erstellt.
-Die QR-Codes zum scannen mit einer App befinden sich in `CL*.txt`.
+Die Clientkonfigurationen werden in `CL*.conf` erstellt.
+Die QR-Codes zum scannen mit einer App befinden sich in `CL*.txt` und `CL*.png`.
 ```
 for x in $(seq -f "CL%g" $NUMCLIENTS); do
-cat > $x.cfg << EOX
+cat > $x.conf << EOX
 [Interface]
 Address             = ${IPBEREICH%.*}.1${x#CL}/32
 DNS                 = $DNSSERVER
 PrivateKey          = $(cat $x.prv)
+MTU                 = $MTUBYTES
 
 [Peer]
 Endpoint            = $HOSTNAME:$UDPPORT
@@ -105,7 +114,8 @@ AllowedIPs          = 0.0.0.0/0
 PersistentKeepalive = 90
 
 EOX
-cat $x.cfg | qrencode -t ansiutf8 > $x.txt
+cat $x.conf | qrencode -t ansiutf8 > $x.txt
+cat $x.conf | qrencode -t png     -o $x.png
 done
 
 ```

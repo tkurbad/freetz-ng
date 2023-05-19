@@ -1,4 +1,5 @@
 # bluez-utils 2.25 (binary only, incl. Pin-Change and NAP)
+ - Package: [master/make/pkgs/bluez-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bluez-utils/)
 
 Official Linux Bluetooth protocol stack
 
@@ -147,5 +148,5 @@ dbus-send --system --type=method_call --dest=org.bluez --print-reply /org/bluez/
 ### Weiterführende Links
 
 -   [BlueZ](http://www.bluez.org/)
--   Bluez 4.98 patch: [#602](https://trac.boxmatrix.info/freetz-ng/ticket/602)
+-   Bluez 4.98 patch: Ticket #602
 

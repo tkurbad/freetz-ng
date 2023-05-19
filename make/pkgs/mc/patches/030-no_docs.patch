@@ -1,0 +1,100 @@
+--- doc/hlp/Makefile.am
++++ doc/hlp/Makefile.am
+@@ -1,4 +1,7 @@
+-DIST_SUBDIRS = es hu it pl ru sr
++DIST_SUBDIRS =
++if USE_NLS
++DIST_SUBDIRS += es hu it pl ru sr
++endif
+ if USE_NLS
+ SUBDIRS = $(DOC_LINGUAS)
+ endif
+--- doc/hlp/Makefile.in
++++ doc/hlp/Makefile.in
+@@ -466,7 +466,8 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-DIST_SUBDIRS = es hu it pl ru sr
++DIST_SUBDIRS =
++@USE_NLS_TRUE@DIST_SUBDIRS += es hu it pl ru sr
+ @USE_NLS_TRUE@SUBDIRS = $(DOC_LINGUAS)
+ hlpdir = $(pkgdatadir)/help
+ hlp_DATA = mc.hlp
+--- doc/man/Makefile.am
++++ doc/man/Makefile.am
+@@ -1,4 +1,7 @@
+-DIST_SUBDIRS = es hu it pl ru sr
++DIST_SUBDIRS =
++if USE_NLS
++DIST_SUBDIRS += es hu it pl ru sr
++endif
+ if USE_NLS
+ SUBDIRS = $(DOC_LINGUAS)
+ endif
+--- doc/man/Makefile.in
++++ doc/man/Makefile.in
+@@ -468,7 +468,8 @@
+ top_build_prefix = @top_build_prefix@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+-DIST_SUBDIRS = es hu it pl ru sr
++DIST_SUBDIRS =
++@USE_NLS_TRUE@DIST_SUBDIRS += es hu it pl ru sr
+ @USE_NLS_TRUE@SUBDIRS = $(DOC_LINGUAS)
+ man_MANS = mc.1 mcedit.1 mcview.1
+ CLEANFILES = $(man_MANS)
+@@ -740,7 +741,8 @@
+ 	for dir in "$(DESTDIR)$(man1dir)"; do \
+ 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+ 	done
+-install: install-recursive
++install:
++#install: install-recursive
+ install-exec: install-exec-recursive
+ install-data: install-data-recursive
+ uninstall: uninstall-recursive
+--- src/vfs/extfs/helpers/Makefile.am
++++ src/vfs/extfs/helpers/Makefile.am
+@@ -1,7 +1,7 @@
+ extfsdir = $(libexecdir)/@PACKAGE@/extfs.d
+ 
+ # Files to install and distribute other than extfs scripts
+-EXTFS_MISC  = README README.extfs
++EXTFS_MISC  =
+ 
+ # Scripts hat don't need adaptation to the local system
+ EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z uc1541
+--- src/vfs/extfs/helpers/Makefile.in
++++ src/vfs/extfs/helpers/Makefile.in
+@@ -425,7 +425,7 @@
+ extfsdir = $(libexecdir)/@PACKAGE@/extfs.d
+ 
+ # Files to install and distribute other than extfs scripts
+-EXTFS_MISC = README README.extfs
++EXTFS_MISC =
+ 
+ # Scripts hat don't need adaptation to the local system
+ EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z uc1541
+--- src/vfs/fish/helpers/Makefile.am
++++ src/vfs/fish/helpers/Makefile.am
+@@ -1,7 +1,7 @@
+ fishdir = $(libexecdir)/@PACKAGE@/fish
+ 
+ # Files to install and distribute other than fish scripts
+-FISH_MISC  = README.fish
++FISH_MISC  =
+ 
+ # Install and distribute FISH helper scripts w/o shebang & executable bit as data
+ fish_DATA = $(FISH_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime
+--- src/vfs/fish/helpers/Makefile.in
++++ src/vfs/fish/helpers/Makefile.in
+@@ -412,7 +412,7 @@
+ fishdir = $(libexecdir)/@PACKAGE@/fish
+ 
+ # Files to install and distribute other than fish scripts
+-FISH_MISC = README.fish
++FISH_MISC =
+ 
+ # Install and distribute FISH helper scripts w/o shebang & executable bit as data
+ fish_DATA = $(FISH_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime

@@ -1,8 +1,0 @@
-config FREETZ_PACKAGE_RADVD
-	bool "radvd 1.9.3"
-	depends on FREETZ_TARGET_IPV6_SUPPORT
-	select FREETZ_BUSYBOX_IP
-	select FREETZ_LIB_libdaemon
-	default n
-	help
-		The "router advertisement daemon" (radvd) is used for host autoconfiguration in ipv6 networks.

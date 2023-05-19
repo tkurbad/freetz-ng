@@ -2,13 +2,15 @@ menu "Removal patches"
 
 config FREETZ_SELECT_HARDENING
 	bool "Select hardening"
-	depends on FREETZ_SHOW_ADVANCED
+	depends on FREETZ_SHOW_EXPERT
 	depends on \
 		FREETZ_AVM_HAS_TR069 || \
+		FREETZ_AVM_HAS_KIDS || \
 		FREETZ_AVM_HAS_MYFRITZ || \
 		FREETZ_AVM_HAS_SIGNATURE
 	default n
 	select FREETZ_REMOVE_TR069 if FREETZ_AVM_HAS_TR069
+	select FREETZ_REMOVE_KIDS if FREETZ_AVM_HAS_KIDS
 	select FREETZ_REMOVE_MYFRITZ if FREETZ_AVM_HAS_MYFRITZ
 	select FREETZ_REMOVE_PUBKEY if FREETZ_AVM_HAS_SIGNATURE
 	select FREETZ_REMOVE_PUBKEY_INHAUS if FREETZ_AVM_HAS_SIGNATURE && FREETZ_TYPE_FIRMWARE_INHAUS
@@ -16,6 +18,10 @@ config FREETZ_SELECT_HARDENING
 		This selects some patches to remove unsecure files/services:
 		 - TR069: Your provider is able to create user accounts
 		   and could then login to your device remotely.
+		 - KIDS: BPjM lists used by contfiltd get updates by download.
+		   Juis provides these unsecure http:// urls. The lists
+		   itself contain only a crc32 which could be calulated
+		   easily and any site could be blocked by attacker.
 		 - MYFRITZ: AVM has wildcard certificates for *.myfritz.net
 		   and can attack your HTTPS sessions as man-in-the-middle.
 		 - PUBKEY: Removing the public key of AVM prevents unwanted
@@ -63,7 +69,7 @@ config FREETZ_REMOVE_MICROVOIP_DSL
 config FREETZ_REMOVE_ANNEX_B_FIRMWARE
 	bool "Remove Annex B firmware"
 	depends on \
-		FREETZ_SHOW_ADVANCED && \
+		FREETZ_SHOW_EXPERT && \
 		FREETZ_TYPE_7270_V1
 	default n
 	help
@@ -83,7 +89,7 @@ config FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_DIFFS
 
 config FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
 	bool "Remove 1st Annex firmware"
-	depends on FREETZ_SHOW_ADVANCED && \
+	depends on FREETZ_SHOW_EXPERT && \
 		FREETZ_AVM_HAS_MULTI_ANNEX && \
 		FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_DIFFS
 	default n
@@ -114,20 +120,14 @@ config FREETZ_REMOVE_DSLD
 	default n
 	depends on FREETZ_AVM_HAS_DSLD
 	select FREETZ_REMOVE_UPNP
-	select FREETZ_REMOVE_KIDS if ! \
-		( \
-		FREETZ_TYPE_5140 || \
-		FREETZ_TYPE_7112 || \
-		FREETZ_TYPE_7113 || \
-		FREETZ_TYPE_W501V \
-		)
+	select FREETZ_REMOVE_KIDS if FREETZ_AVM_HAS_KIDS
 	help
 		Remove DSL daemon (dsld), if you are planning to use your box as a simple
 		IP client ("Internet mitbenuten") without routing.
 		ATA ("via Lan1") and DSL mode will not work anymore.
 
 		ATTENTION: You won't be able to use your box as a modem nor a router anymore.
-		As well do *not* use this option if your ATA mode box uses PPoE passthrough,
+		As well do *not* use this option if your ATA mode box uses PPPoE passthrough,
 		because in this case dsld is still needed! Furthermore, selecting this patch
 		also selects the UPnP patch, because UPnP must be deactivated anyway for
 		IP clients, otherwise dsld will be used again.
@@ -266,13 +266,25 @@ config FREETZ_REMOVE_UNTRUSTEDD
 	bool "Remove UNTRUSTEDD - DEVELOPER"
 	depends on FREETZ_SHOW_DEVELOPER
 	depends on FREETZ_AVM_HAS_UNTRUSTEDD
+	default y if FREETZ_TYPE_5530
 	default n
 	help
 		This removes the untrustedd daemon (10kB uncompressed) and related
 		service script. Known so far: Nothing.
 
+config FREETZ_REMOVE_PCPD
+	bool "Remove PCPD (Port Control Protocol)"
+	default n
+	depends on FREETZ_AVM_HAS_PCPD
+	help
+		Removes "pcpd" service and related files like
+		the daemon and some of the tools.
+		PCP is used for dynamic port-forwardings and
+		does not work without MESHD (don't ask).
+		There are NO changes of the avm-webif!
+
 config FREETZ_REMOVE_PLCD
-	bool "Remove PLCD (powerline)"
+	bool "Remove PLCD (AVM Powerline)"
 	default n
 	depends on FREETZ_AVM_HAS_PLCD
 	help
@@ -280,13 +292,30 @@ config FREETZ_REMOVE_PLCD
 		start script. Known so far: It is used to scan the network for
 		PLC devices and show them on the webinterface in mesh/network.
 
-config FREETZ_REMOVE_NEXUS
-	bool "Remove NEXUS (AVM mesh)"
+config FREETZ_REMOVE_MESHD
+	bool "Remove MESHD (Settings Synchronize)"
 	default n
-	depends on FREETZ_AVM_HAS_NEXUS && FREETZ_AVM_VERSION_06_9X
+	select FREETZ_REMOVE_PCPD if FREETZ_AVM_HAS_PCPD
+	depends on FREETZ_AVM_HAS_MESHD
 	help
-		Removes "mesh" related files like
-		the nexus daemon and some scripts.
+		Removes "meshd" and "meshd_config" services and
+		related files like the daemon and some scripts.
+		This prevents log-spam when PLCD is removed too.
+		Even AVM calles it "mesh" it is used to synchronize
+		telephone and wlan settings from the master device
+		to its authenticated slaves.
+		There are NO changes of the avm-webif!
+
+config FREETZ_REMOVE_NEXUS
+	bool "Remove NEXUS - EXPERIMENTAL"
+	default n
+	depends on FREETZ_AVM_HAS_NEXUS
+	help
+		Removes "nexus" related files like
+		the daemon, service and some scripts.
+		AVM's begin of the "mesh" promotion campaign
+		to share AHA data with all network devices.
+		There are NO changes of the avm-webif!
 
 config FREETZ_REMOVE_AHA
 	bool "Remove AHA (AVM Home Automation)"
@@ -377,6 +406,23 @@ config FREETZ_REMOVE_AVM_VPN
 		Remove AVM's vpn and some other related files
 		This patch removes the files and related Web UI entrys, but not the
 		vpn settings. This will save about 120kB compressed size.
+
+config FREETZ_REMOVE_AVM_WIREGUARD
+	bool "Remove WireGuard"
+	default n
+	depends on FREETZ_AVM_HAS_WIREGUARD
+	select FREETZ_REMOVE_AVM_VPN if FREETZ_AVM_HAS_VPN
+	help
+		Remove AVM's WireGuard executables, library and kernel module.
+		This will save about 275kB compressed size.
+
+config FREETZ_REMOVE_AVMCOUNTERD
+	bool "Remove AVMCOUNTERD"
+	default n
+	depends on FREETZ_AVM_HAS_AVMCOUNTERD
+	help
+		Remove AVM's AVMCOUNTERD executable and libraries.
+		This will save about 68kB compressed size.
 
 config FREETZ_REMOVE_WEBSRV
 	bool "Remove websrv"
@@ -796,7 +842,7 @@ config FREETZ_REMOVE_SUPPORT_EVENTSDUMP
 		Seem to be use only by AVM's support-files.
 
 config FREETZ_REMOVE_PUBKEY
-	bool "Remove public firmware key" if FREETZ_SHOW_ADVANCED
+	bool "Remove public firmware key" if FREETZ_SHOW_EXPERT
 	depends on FREETZ_AVM_HAS_SIGNATURE
 	default n
 	help
@@ -827,7 +873,7 @@ config FREETZ_REMOVE_PUBKEY_INHAUS
 		*key4 for router and *key3 for powerline & repeater devices.
 
 config FREETZ_REMOVE_TR069
-	bool "Remove tr069" if FREETZ_SHOW_ADVANCED
+	bool "Remove tr069" if FREETZ_SHOW_EXPERT
 	depends on FREETZ_AVM_HAS_TR069
 	select FREETZ_AVMDAEMON_DISABLE_TR069
 	default n
@@ -835,12 +881,12 @@ config FREETZ_REMOVE_TR069
 		Removes libtr069 to save space.
 
 config FREETZ_REMOVE_TR064
-	bool "Remove tr064" if FREETZ_SHOW_ADVANCED
+	bool "Remove tr064" if FREETZ_SHOW_EXPERT
 	depends on FREETZ_REMOVE_TR069
+	depends on FREETZ_AVM_HAS_TR064
 	default n
 	help
 		Removes libtr064 to save space.
-
 		WARNING: Access by some AVM apps is no longer possible!
 
 config FREETZ_REMOVE_TR069_FWUPDATE
@@ -989,7 +1035,7 @@ config FREETZ_REMOVE_TELEPHONY
 	depends on FREETZ_AVM_HAS_PHONE && !FREETZ_AVM_VERSION_06_5X_MIN
 	select FREETZ_REMOVE_DECT if FREETZ_AVM_HAS_DECT
 	select FREETZ_REMOVE_VOIPD
-	select FREETZ_REMOVE_DTRACE
+	select FREETZ_REMOVE_DTRACE if FREETZ_AVM_HAS_DTRACE
 	select FREETZ_REMOVE_CAPIOVERTCP
 	select FREETZ_REMOVE_MINID if FREETZ_AVM_HAS_MINID
 	default n
@@ -1005,7 +1051,7 @@ config FREETZ_REMOVE_TELEPHONY
 
 config FREETZ_REMOVE_WLAN
 	bool "Remove WLAN"
-	depends on FREETZ_AVM_HAS_WLAN && (FREETZ_AVM_VERSION_06_9X_MAX || FREETZ_TYPE_3390_3490) && FREETZ_SHOW_ADVANCED
+	depends on FREETZ_AVM_HAS_WLAN && (FREETZ_AVM_VERSION_06_9X_MAX || FREETZ_TYPE_3390_3490) && FREETZ_SHOW_EXPERT
 	default n
 	help
 		Radically remove a lot of wlan-related files. This patch saves about
@@ -1060,6 +1106,14 @@ config FREETZ_PATCH_ATA
 
 		ATA will not work with some 7170/7140 due to limited hardware,
 		see http://wiki.ip-phone-forum.de/gateways:avm:fbf:kabel
+
+config FREETZ_ENABLE_VLAN
+	bool "Enable VLAN"
+	depends on FREETZ_TYPE_CABLE || FREETZ_TYPE_LTE
+	depends on FREETZ_AVM_VERSION_07_2X_MIN
+	default n
+	help
+		Re-enables the VLAN configuration pages of voip in ata-mode.
 
 config FREETZ_PATCH_GUEST
 	bool "Patch GUEST"
@@ -1241,6 +1295,7 @@ config FREETZ_PATCH_SECURE_sip
 config FREETZ_MODIFY_DSL_WARNING
 	bool "Patch DSL modified message"
 	depends on FREETZ_TYPE_DSL && FREETZ_AVM_VERSION_06_5X_MIN && !FREETZ_REMOVE_DSLD && !FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
+	depends on !FREETZ_TYPE_7581 && !FREETZ_TYPE_7582
 	default n
 	help
 		Hides the "modified" message from the DSL page.
@@ -1255,6 +1310,7 @@ config FREETZ_MODIFY_DSL_SPECTRUM
 config FREETZ_MODIFY_DSL_SETTINGS
 	bool "Extend DSL settings"
 	depends on FREETZ_TYPE_DSL && FREETZ_AVM_VERSION_06_5X_MIN && !FREETZ_REMOVE_DSLD && !FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
+	depends on !FREETZ_TYPE_7581 && !FREETZ_TYPE_7582
 	default n
 	help
 		Extends the DSL settings page with "speed" settings.
@@ -1284,13 +1340,46 @@ config FREETZ_PATCH_MODFS_ANNEX_SELECTION
 	help
 		Unhides Annex selection in Fritz!OS web interface.
 
-config FREETZ_PATCH_MODFS_BOOT_MANAGER
-	bool "Add boot manager"
+menuconfig FREETZ_PATCH_MODFS_BOOT_MANAGER
+	bool "Add yf-bootmanager"
+	depends on !FREETZ_ADD_INACTIVE_SYSTEM || (FREETZ_ADD_INACTIVE_SYSTEM && FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO)
 	depends on FREETZ_AVM_VERSION_06_5X_MIN
-	depends on FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE
+	depends on ( FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE && !FREETZ_AVM_HAS_FWLAYOUT_6 ) || \
+		                   ( FREETZ_AVM_HAS_FWLAYOUT_6 && (FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE) )
+	select FREETZ_MODULE_loop if FREETZ_AVM_HAS_FWLAYOUT_6 && !FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN && FREETZ_REPLACE_MODULE_AVAILABLE
 	default n
 	help
 		Extends the "reboot" page of FRITZ!OS to select system version and branding.
+
+	if FREETZ_PATCH_MODFS_BOOT_MANAGER
+
+		comment "To view other versions, disable precompiled host-tools"
+			depends on FREETZ_HOSTTOOLS_DOWNLOAD
+
+		choice
+			prompt "Version"
+				default FREETZ_PATCH_MODFS_BOOT_MANAGER_latest
+
+			config FREETZ_PATCH_MODFS_BOOT_MANAGER_tested
+				bool "tested"
+
+			config FREETZ_PATCH_MODFS_BOOT_MANAGER_latest
+				bool "latest"
+				depends on FREETZ_HOSTTOOLS_BUILD
+				help
+					This uses the stable Github-Tag: freetz-ng-version
+					https://github.com/PeterPawn/YourFritz/commits/freetz-ng-version
+
+			config FREETZ_PATCH_MODFS_BOOT_MANAGER_labor
+				bool "labor - EXPERIMENTAL"
+				depends on FREETZ_HOSTTOOLS_BUILD
+				help
+					This uses the experimental Github-Tag: freetz-ng-test
+					https://github.com/PeterPawn/YourFritz/commits/freetz-ng-test
+
+		endchoice
+
+	endif # FREETZ_PATCH_MODFS_BOOT_MANAGER
 
 if FREETZ_AVM_HAS_USB_HOST
 comment "USB patches ----------------------------------------------"
@@ -1325,16 +1414,17 @@ if FREETZ_PATCH_UDEVMOUNT
 		bool "Select Fat"
 		depends on !FREETZ_AVM_HAS_FAT_MODULE || FREETZ_REMOVE_FAT
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
-		select FREETZ_MODULE_fat
+		select FREETZ_MODULE_fat if !FREETZ_AVM_HAS_FAT_FS_BUILTIN || \
+			(FREETZ_REPLACE_KERNEL && ( FREETZ_AVM_SOURCE_7270_05_21 || FREETZ_AVM_SOURCE_7270_05_51 || FREETZ_AVM_SOURCE_7270_06_05 ))
 		default n
 		help
 			This adds fat module to your firmware.
 
 	comment "Intern Ext2"
-		depends on FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+		depends on FREETZ_AVM_HAS_EXT2_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	config FREETZ_UDEVMOUNT_EXT2
 		bool "Select Ext2"
-		depends on !FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+		depends on !FREETZ_AVM_HAS_EXT2_FS_BUILTIN && !(FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_ext2
 		default n
@@ -1342,10 +1432,10 @@ if FREETZ_PATCH_UDEVMOUNT
 			This adds ext2 module to your firmware.
 
 	comment "Intern Ext3"
-		depends on FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+		depends on FREETZ_AVM_HAS_EXT3_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	config FREETZ_UDEVMOUNT_EXT3
 		bool "Select Ext3"
-		depends on !FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+		depends on !FREETZ_AVM_HAS_EXT3_FS_BUILTIN && !(FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_ext3
 		default y
@@ -1363,24 +1453,33 @@ if FREETZ_PATCH_UDEVMOUNT
 		help
 			This adds ext4 module to your firmware.
 
+	comment "Intern HFS"
+		depends on FREETZ_AVM_HAS_HFS_FS_BUILTIN
 	config FREETZ_UDEVMOUNT_HFS
 		bool "Select HFS"
+		depends on !FREETZ_AVM_HAS_HFS_FS_BUILTIN
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_hfs
 		default n
 		help
 			This adds hfs module to your firmware.
 
+	comment "Intern HFS+"
+		depends on FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
 	config FREETZ_UDEVMOUNT_HFS_PLUS
 		bool "Select HFS+"
+		depends on !FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_hfsplus
 		default n
 		help
 			This adds hfs+ module to your firmware.
 
+	comment "Intern ReiserFS"
+		depends on FREETZ_AVM_HAS_REISERFS_FS_BUILTIN
 	config FREETZ_UDEVMOUNT_REISER_FS
 		bool "Select ReiserFS"
+		depends on !FREETZ_AVM_HAS_REISERFS_FS_BUILTIN
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_reiserfs
 		default n
@@ -1397,6 +1496,7 @@ config FREETZ_PATCH_FREETZMOUNT
 	select FREETZ_BUSYBOX_BLKID
 	select FREETZ_BUSYBOX_FEATURE_BLKID_TYPE
 	select FREETZ_BUSYBOX_VOLUMEID
+	select FREETZ_BUSYBOX_FEATURE_PS_LONG
 	default y
 	help
 		1. Replaces and deselects usb-storage patch.
@@ -1426,19 +1526,19 @@ config FREETZ_USBSTORAGE_AUTOMOUNT
 if FREETZ_USBSTORAGE_AUTOMOUNT
 config FREETZ_AUTOMOUNT_EXT2
 	bool "ext2"
-	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT2_FS_BUILTIN) # && any kernel version
+	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT2_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)) # && any kernel version
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_EXT
-	select FREETZ_MODULE_ext2 if ! FREETZ_AVM_HAS_EXT2_FS_BUILTIN
+	select FREETZ_MODULE_ext2 if ! FREETZ_AVM_HAS_EXT2_FS_BUILTIN && ! (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	default n
 	help
 		This adds support for ext2 filesystem to your firmware.
 
 config FREETZ_AUTOMOUNT_EXT3
 	bool "ext3"
-	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT3_FS_BUILTIN) # && any kernel version
+	depends on (FREETZ_REPLACE_MODULE_AVAILABLE || FREETZ_AVM_HAS_EXT3_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)) # && any kernel version
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_EXT
-	select FREETZ_MODULE_ext3 if ! FREETZ_AVM_HAS_EXT3_FS_BUILTIN
-	default y if FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	select FREETZ_MODULE_ext3 if ! FREETZ_AVM_HAS_EXT3_FS_BUILTIN && ! (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
+	default y if FREETZ_AVM_HAS_EXT3_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	default n
 	help
 		This adds support for ext3 filesystem to your firmware.
@@ -1464,7 +1564,7 @@ config FREETZ_AUTOMOUNT_HFS
 	bool "HFS"
 	depends on FREETZ_REPLACE_MODULE_AVAILABLE
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_HFS
-	select FREETZ_MODULE_hfs
+	select FREETZ_MODULE_hfs if !FREETZ_AVM_HAS_HFS_FS_BUILTIN
 	default n
 	help
 		This adds hfs module to your firmware.
@@ -1473,7 +1573,7 @@ config FREETZ_AUTOMOUNT_HFS_PLUS
 	bool "HFS+"
 	depends on FREETZ_REPLACE_MODULE_AVAILABLE
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_HFS
-	select FREETZ_MODULE_hfsplus
+	select FREETZ_MODULE_hfsplus if !FREETZ_AVM_HAS_HFSPLUS_FS_BUILTIN
 	default n
 	help
 		This adds hfs+ module to your firmware.
@@ -1499,7 +1599,7 @@ config FREETZ_AUTOMOUNT_REISER_FS
 	bool "ReiserFS"
 	depends on FREETZ_REPLACE_MODULE_AVAILABLE
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_REISERFS
-	select FREETZ_MODULE_reiserfs
+	select FREETZ_MODULE_reiserfs if !FREETZ_AVM_HAS_REISERFS_FS_BUILTIN
 	default n
 	help
 		This adds reiserfs module to your firmware.
@@ -1582,12 +1682,12 @@ config FREETZ_KEEP_AVM_UCLIBC
 	default n
 
 comment "Replace OpenSSL libraries (not available, requires openssl-0.9.8)"
-	depends on FREETZ_SHOW_ADVANCED && \
+	depends on FREETZ_SHOW_EXPERT && \
 		FREETZ_AVM_HAS_OPENSSL_VERSION_0 && !FREETZ_OPENSSL_VERSION_0
 
 config FREETZ_REPLACE_OPENSSL
 	bool "Replace OpenSSL libraries"
-	depends on FREETZ_SHOW_ADVANCED && \
+	depends on FREETZ_SHOW_EXPERT && \
 		FREETZ_AVM_HAS_OPENSSL_VERSION_0 &&  FREETZ_OPENSSL_VERSION_0
 	select FREETZ_LIB_libcrypto
 	select FREETZ_LIB_libssl
@@ -1622,7 +1722,7 @@ config FREETZ_REPLACE_DTRACE
 
 config FREETZ_REPLACE_ONLINECHANGED
 	bool "Replace onlinechanged - EXPERIMENTAL"
-	depends on FREETZ_SHOW_ADVANCED
+	depends on FREETZ_SHOW_EXPERT
 	default n
 	help
 		AVM's built-in onlinechanged is not reliably called on some DSL boxes for
@@ -1671,16 +1771,24 @@ config FREETZ_ADD_SWAPOPTIONS
 
 config FREETZ_ADD_ETCSERVICES
 	bool "Add /etc/services"
+	depends on !FREETZ_AVM_HAS_ETCSERVICES
 	default y
-	select FREETZ_PACKAGE_MOD_ETCSERVICES
 	help
-		Adds /etc/services file.
+		Adds /etc/services file. Used eg by nfsd and rpcinfo.
+		This patch is only availably for firmware not yet
+		containing the file, typically before FOS 7.1x.
+
+config FREETZ_CUSTOM_ETCSERVICES
+	bool "Custom /etc/services"
+	select FREETZ_ADD_ETCSERVICES if !FREETZ_AVM_HAS_ETCSERVICES
+	default y
+	help
+		Adds freetz-specific services to /etc/services.
 		Used eg by netstat to display names of IP-ports.
 
 config FREETZ_ADD_ETCNETCONFIG
 	bool "Add /etc/netconfig"
 	default n
-	select FREETZ_PACKAGE_MOD_ETCNETCONFIG
 	help
 		Adds /etc/netconfig file.
 		Used eg by libtirpc and rpcbind.
@@ -1696,7 +1804,7 @@ config FREETZ_ADD_ANNEX_A_FIRMWARE
 
 config FREETZ_ENFORCE_URLADER_SETTINGS
 	bool "Enforce urlader environment"
-	depends on FREETZ_SHOW_ADVANCED
+	depends on FREETZ_SHOW_EXPERT
 	default n
 	help
 		Enforce some urlader (Adam2/EVA) environment variables.
@@ -1731,24 +1839,118 @@ config FREETZ_ENFORCE_URLADER_SETTING_MY_IPADDRESS
 		This is the AVM default, enforce to also to reseller boxes, eg. from T-Com
 		If this is empty the urlader setting won't be touched.
 
-config FREETZ_ENFORCE_FIRMWARE_VERSION_VIA_RCCONF
-	depends on FREETZ_AVM_VERSION_06_5X_MIN
-	string "Enforce firmware_version via rc.conf"
-	default ""
-	help
-		This option enforces branding by hardcoding it in /etc/init.d/rc.conf
+choice
+	prompt "Enforce branding"
+		depends on FREETZ_AVM_VERSION_06_5X_MIN
+		default FREETZ_ENFORCE_BRANDING_none
+		help
+			This option enforces the branding by hardcoding it in /etc/init.d/rc.conf
 
-		This method is useful on some recently produced boxes (since 2017), which
-		do not allow to change the value of the urlader variable 'firmware_version'
-		in a non-volatile way.
+			This method is useful on some recently produced boxes (since 2017), which
+			do not allow to change the value of the urlader variable 'firmware_version'
+			in a non-volatile way.
 
-		Affected boxes (known so far): all boxes with the following bootloaderVersion
-		 - 1.3179
-		 - 1.3229
-		use "cat /proc/sys/urlader/environment | grep bootloaderVersion" or EVA
-		to check the value
+			Affected boxes has bootloaderVersion 1.3179 or 1.3229 and newer.
+			Use "grep bootloaderVersion /proc/sys/urlader/environment", EVA or
+			AVM-Info page in Freetz to check the value.
 
-		Choose the value wisely. Your image must support it.
+	config FREETZ_ENFORCE_BRANDING_none
+		bool "none"
+		help
+			Don't touch it
+
+	config FREETZ_ENFORCE_BRANDING_1und1
+		bool "1und1"
+		depends on !FREETZ_REMOVE_BRANDING_1und1
+		depends on FREETZ_AVM_HAS_BRANDING_1und1
+		help
+			1&1 branding
+
+	config FREETZ_ENFORCE_BRANDING_aol
+		bool "aol"
+		depends on !FREETZ_REMOVE_BRANDING_aol
+		depends on FREETZ_AVM_HAS_BRANDING_aol
+		help
+			AOL branding
+
+	config FREETZ_ENFORCE_BRANDING_avm
+		bool "avm"
+		depends on !FREETZ_REMOVE_BRANDING_avm
+		depends on FREETZ_AVM_HAS_BRANDING_avm
+		help
+			AVM (german) branding
+
+	config FREETZ_ENFORCE_BRANDING_avme
+		bool "avme"
+		depends on !FREETZ_REMOVE_BRANDING_avme
+		depends on FREETZ_AVM_HAS_BRANDING_avme
+		help
+			AVME (international) branding
+
+	config FREETZ_ENFORCE_BRANDING_ewetel
+		bool "ewetel"
+		depends on !FREETZ_REMOVE_BRANDING_ewetel
+		depends on FREETZ_AVM_HAS_BRANDING_ewetel
+		help
+			EWE TEL branding
+
+	config FREETZ_ENFORCE_BRANDING_freenet
+		bool "freenet"
+		depends on !FREETZ_REMOVE_BRANDING_freenet
+		depends on FREETZ_AVM_HAS_BRANDING_freenet
+		help
+			Freenet branding
+
+	config FREETZ_ENFORCE_BRANDING_kabelbw
+		bool "kabelbw"
+		depends on !FREETZ_REMOVE_BRANDING_kabelbw
+		depends on FREETZ_AVM_HAS_BRANDING_kabelbw
+		help
+			Kabel Baden-Württemberg branding
+
+	config FREETZ_ENFORCE_BRANDING_kdg
+		bool "kdg"
+		depends on !FREETZ_REMOVE_BRANDING_kdg
+		depends on FREETZ_AVM_HAS_BRANDING_kdg
+		help
+			Kabel Deutschland GmbH branding
+
+	config FREETZ_ENFORCE_BRANDING_lgi
+		bool "lgi"
+		depends on !FREETZ_REMOVE_BRANDING_lgi
+		depends on FREETZ_AVM_HAS_BRANDING_lgi
+		help
+			Liberty Global Incorporated branding
+
+	config FREETZ_ENFORCE_BRANDING_otwo
+		bool "otwo"
+		depends on !FREETZ_REMOVE_BRANDING_otwo
+		depends on FREETZ_AVM_HAS_BRANDING_otwo
+		help
+			O2 branding
+
+	config FREETZ_ENFORCE_BRANDING_tcom
+		bool "tcom"
+		depends on !FREETZ_REMOVE_BRANDING_tcom
+		depends on FREETZ_AVM_HAS_BRANDING_tcom
+		help
+			Deutsche Telekom AG branding
+
+	config FREETZ_ENFORCE_BRANDING_unity
+		bool "unity"
+		depends on !FREETZ_REMOVE_BRANDING_unity
+		depends on FREETZ_AVM_HAS_BRANDING_unity
+		help
+			Unitymedia GmbH branding
+
+	config FREETZ_ENFORCE_BRANDING_versatel
+		bool "versatel"
+		depends on !FREETZ_REMOVE_BRANDING_versatel
+		depends on FREETZ_AVM_HAS_BRANDING_versatel
+		help
+			Versatel branding
+
+endchoice
 
 comment "Misc patches ---------------------------------------------"
 
@@ -1877,40 +2079,41 @@ config FREETZ_AVMDAEMON_DISABLE_TR069
 
 config FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
 	bool "Disable services by preload"
-	depends on FREETZ_AVM_HAS_AVMDAEMON_PRELOAD
+	depends on FREETZ_AVM_HAS_AVMMULTID_PRELOAD
 	select FREETZ_LIB_libmultid
 	default n
 	help
 		This disables some ports bindings of multid
 		by remapping them to higher ones.
 
-config FREETZ_AVMDAEMON_DISABLE_DNS
-	bool "Disable DNS"
-	depends on FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
-	select FREETZ_LIB_libmultid_WITH_DNS
-	default n
-	help
-		Remaps multid's binding of the DNS ports, so another
-		dns-server could be used, avm's dynamic-dns updater
-		and timesync works correct.
+if FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
 
-config FREETZ_AVMDAEMON_DISABLE_DHCP
-	bool "Disable DHCP"
-	depends on FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
-	select FREETZ_LIB_libmultid_WITH_DHCP
-	default n
-	help
-		Remaps multid's binding of the DHCP port. Don't
-		forget to set up a server for the guest-wlan too.
+	config FREETZ_AVMDAEMON_DISABLE_DNS
+		bool "Disable DNS"
+		select FREETZ_LIB_libmultid_WITH_DNS
+		default n
+		help
+			Remaps multid's binding of the DNS ports, so another
+			dns-server could be used, avm's dynamic-dns updater
+			and timesync works correct.
 
-config FREETZ_AVMDAEMON_DISABLE_LLMNR
-	bool "Disable LLMNR"
-	depends on FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
-	select FREETZ_LIB_libmultid_WITH_LLMNR
-	default n
-	help
-		Remaps multid's binding of both LLMNR ("Link-
-		local Multicast Name Resolution) ports.
+	config FREETZ_AVMDAEMON_DISABLE_DHCP
+		bool "Disable DHCP"
+		select FREETZ_LIB_libmultid_WITH_DHCP
+		default n
+		help
+			Remaps multid's binding of the DHCP port. Don't
+			forget to set up a server for the guest-wlan too.
+
+	config FREETZ_AVMDAEMON_DISABLE_LLMNR
+		bool "Disable LLMNR"
+		select FREETZ_LIB_libmultid_WITH_LLMNR
+		default n
+		help
+			Remaps multid's binding of both LLMNR ("Link-
+			local Multicast Name Resolution) ports.
+
+endif # FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS
 
 endmenu # "Other patches" #
 

@@ -1,4 +1,9 @@
-# Lua 5.1.5 (binary only)
+# Lua 5.1.5/5.4.4 (binary only)
+ - Homepage: [https://www.lua.org](https://www.lua.org)
+ - Manpage: [https://www.lua.org/docs.html](https://www.lua.org/docs.html)
+ - Changelog: [https://www.lua.org/versions.html](https://www.lua.org/versions.html)
+ - Repository: [https://github.com/lua/lua](https://github.com/lua/lua)
+ - Package: [master/make/pkgs/lua/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lua/)
 
 **[Lua](http://www.lua.org/)** ist eine
 [Skriptsprache](http://de.wikipedia.org/wiki/Skriptsprache)
@@ -16,7 +21,7 @@ geringe Größe des kompilierten Skript-Interpreters.
     Links](http://www.dmoz.org/World/Deutsch/Computer/Programmieren/Sprachen/Lua/)
 -   [Libraries And
     Bindings](http://lua-users.org/wiki/LibrariesAndBindings)
--   [Ticket with patch for common libraries](https://trac.boxmatrix.info/freetz-ng/ticket/1325)
--   [LUA for Haserl](https://trac.boxmatrix.info/freetz-ng/ticket/1326)
+-   Ticket #1325 "Ticket with patch for common libraries"
+-   Ticket #1326 "LUA for Haserl"
 
 

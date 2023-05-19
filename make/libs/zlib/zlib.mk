@@ -1,8 +1,12 @@
-$(call PKG_INIT_LIB, 1.2.11)
+$(call PKG_INIT_LIB, 1.2.13)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_SOURCE_SHA256:=4ff941449631ace0d4d203e3483be9dbc9da454084111f97ea0a2114e19bf066
-$(PKG)_SITE:=http://zlib.net
+$(PKG)_HASH:=d14c38e313afc35a9a8760dadf26042f51ea0f5d154b0630a31da0540107fb98
+$(PKG)_SITE:=https://www.zlib.net
+### WEBSITE:=https://www.zlib.net/
+### MANPAGE:=https://www.zlib.net/manual.html
+### CHANGES:=https://www.zlib.net/
+### CVSREPO:=https://github.com/madler/zlib
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/libz.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libz.so.$($(PKG)_LIB_VERSION)
@@ -16,6 +20,7 @@ $(PKG)_CONFIGURE_ENV += RANLIB="$(TARGET_RANLIB)"
 $(PKG)_CONFIGURE_ENV += NM="$(TARGET_NM)"
 $(PKG)_CONFIGURE_ENV += CROSS_PREFIX="$(TARGET_CROSS)"
 $(PKG)_CONFIGURE_ENV += prefix=/usr
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -38,6 +43,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(ZLIB_DIR) clean
