@@ -9,6 +9,9 @@ config FREETZ_AVM_HAS_AURA_USB
 config FREETZ_AVM_HAS_CHRONYD
 	def_bool y
 
+config FREETZ_AVM_HAS_DDNSD
+	def_bool y
+
 config FREETZ_AVM_HAS_DSL_CONTROL
 	def_bool y
 
@@ -102,8 +105,20 @@ config FREETZ_AVM_PROP_ARCH_BE
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
 
+config FREETZ_AVM_PROP_HWREV
+	string
+	default "212"
+
 config FREETZ_AVM_PROP_INNER_OUTER_FILESYSTEM
 	def_bool y
+
+config FREETZ_AVM_PROP_MAJOR
+	string
+	default "140"
+
+config FREETZ_AVM_PROP_NAME
+	string
+	default "FRITZ!Box 3490"
 
 config FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE
 	def_bool y

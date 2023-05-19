@@ -13,12 +13,22 @@ Freetz-NG is a fork of Freetz.
 More features - less bugs!
 
 ### Requirements:
- * You need an up to date Linux System with some [prerequisites](docs/wiki/10_Beginner/install.de.md#installation-der-ben%C3%B6tigten-pakete-ubuntu).
+ * You need an up to date Linux System with some [prerequisites](docs/PREREQUISITES.md).
  * Or download a ready-to-use VM like Gismotro's [Freetz-Linux](https://freetz.digital-eliteboard.com/?dir=Teamserver/Freetz/Freetz-VM/VirtualBox/).
+ * Your linux user needs to have set `umask 0022` before checkout and during make.
 
-### Quickstart:
+### Clone the main branch:
 ```
   git clone https://github.com/Freetz-NG/freetz-ng ~/freetz-ng
+```
+
+### Or clone a single [tag](../../tags):
+```
+  git clone https://github.com/Freetz-NG/freetz-ng ~/freetz-ng --single-branch --branch TAGNAME
+```
+
+### Build firmware:
+```
   cd ~/freetz-ng
   make menuconfig
   make
@@ -31,11 +41,6 @@ More features - less bugs!
   tools/push_firmware -h
 ```
 
-### Update GIT:
-```
-  git pull
-```
-
 ### Show GIT states:
 ```
   git status
@@ -45,18 +50,28 @@ More features - less bugs!
 
 ### Delete local changes:
 ```
-  git fetch --all --prune ; git reset --hard origin/HEAD ; git clean -fd
+  git checkout master ; git fetch --all --prune ; git reset --hard origin/HEAD ; git clean -fd
+```
+
+### Update GIT:
+```
+  git pull
+```
+
+### Checkout old revision:
+```
+  git checkout HASH-OF-COMMIT # -b NEW-BRANCH
+```
+### Checkout another branch:
+```
+  git checkout EXISTING-BRANCH
 ```
 
 ### Mirrors:
 ```
   git clone https://gitlab.com/Freetz-NG/freetz-ng ~/freetz-ng
   git clone https://bitbucket.org/Freetz-NG/freetz-ng ~/freetz-ng
-```
-
-### Not recommended:
-```
-  svn co https://github.com/Freetz-NG/freetz-ng/trunk ~/freetz-ng
+  svn co https://svn.boxmatrix.info/freetz-ng/trunk ~/freetz-ng
 ```
 
 ### Documentation:

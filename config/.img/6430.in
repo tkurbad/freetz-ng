@@ -1,5 +1,17 @@
 if FREETZ_TYPE_6430
 
+config FREETZ_AVM_PROP_NAME
+	string
+	default "FRITZ!Box 6430 Cable"
+
+config FREETZ_AVM_PROP_MAJOR
+	string
+	default "159"
+
+config FREETZ_AVM_PROP_HWREV
+	string
+	default "231"
+
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
 
@@ -83,6 +95,12 @@ config FREETZ_AVM_HAS_TR069
 	def_bool y
 
 config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+
+config FREETZ_AVM_HAS_LEDPAGE
+	def_bool y
+
+config FREETZ_AVM_HAS_DDNSD
 	def_bool y
 
 config FREETZ_AVM_HAS_UMTS

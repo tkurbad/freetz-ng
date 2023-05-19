@@ -20,12 +20,13 @@ CHECKSUM_ALGOS[128]="sha512"
 FREETZ_BASE_DIR_FOUND="${FREETZ_BASE_DIR:-.}"
 DOT_CONFIG="$FREETZ_BASE_DIR_FOUND/.config"
 FREETZ_DL_SITE_0="https://freetz-ng.dropfiles.net"
-FREETZ_DL_SITE_1="https://freetz.magenbrot.net"
-FREETZ_DL_SITE_2="http://freetz.3dfxatwork.de"
+FREETZ_DL_SITE_1="https://boxmatrix.info/hosted/freetz-dl"
+FREETZ_DL_SITE_2="https://freetz.magenbrot.net"
+#FREETZ_DL_SITE_x="http://freetz.3dfxatwork.de"
 FREETZ_DL_SITE_3="https://freetz.wirsind.info"
-FREETZ_DL_SITE_4="https://media.githubusercontent.com/media/freetz-ng/dl-mirror/master"
+FREETZ_DL_SITE_4="https://github.com/Freetz-NG/dl-mirror/raw/master"
 FREETZ_DL_SITES_COUNT=5
-FREETZ_DL_SITES_NORND_FIRST=1
+FREETZ_DL_SITES_NORND_FIRST=2
 FREETZ_DL_SITES_NORND_LAST=1
 
 helpmsg()
@@ -59,8 +60,8 @@ do_download()
 	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"$outFile\""; rm "$outFile" 2>/dev/null; exit 1' TERM INT
 	echo
 	[ "$DEBUG" == "1" ] && echo \
-	"wget -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp -P \"${1%%/}/\" \"${fullURL}\" ${opt_out_file:+--output-document=$outFile}"
-	 wget -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp -P  "${1%%/}/"   "${fullURL}"  ${opt_out_file:+--output-document=$outFile}
+	"wget -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp \"${fullURL}\" -O \"${outFile}\""
+	 wget -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp  "${fullURL}"  -O  "${outFile}"
 	wget_result=$?
 	[ "$opt_trap_delete" == y ] && trap - TERM INT
 	if [ "$wget_result" != "0" ]; then
@@ -307,6 +308,7 @@ if [ -n "$URLs" ]; then
 				sites[(( num_sites++ ))]=http://archive.apache.org/dist/$subpath
 			elif [ ${url:0:6} == "@SAMBA" ]; then
 				subpath=${url/@SAMBA\//}
+				sites[(( num_sites++ ))]=https://download.samba.org/pub/$subpath
 				sites[(( num_sites++ ))]=https://www.samba.org/ftp/$subpath
 				sites[(( num_sites++ ))]=https://ftp.samba.org/pub/$subpath
 			else
@@ -371,7 +373,9 @@ for i in ${sites[@]}; do
 				[ ! -x "$CHECKSUM_PROG" ] && CHECKSUM_PROG="$(which ${CHECKSUM_ALGO}sum)"
 			else
 				calculate_full_checksum
-				echo -e "\033[1;35mERROR: Unknown checksum algorithm for a hash length of ${#CHECKSUM}$FULL_CHECKSUM\033[0m"
+				[ "${CHECKSUM^^}" == "X" ] \
+				  && echo -e "\033[1;35mERROR: No valid checksum to verify found, downloaded file has$FULL_CHECKSUM\033[0m" \
+				  || echo -e "\033[1;35mERROR: Unknown checksum algorithm for a hash length of ${#CHECKSUM}$FULL_CHECKSUM\033[0m"
 				rm -f "$DL_DNF"
 				break
 			fi
@@ -418,7 +422,7 @@ download_by_vcs() {
 
 	SUBDIR=$(echo "$DL_FILE" | sed -r -e 's,(.*)[.]tar[.](gz|bz2|xz)$,\1,')
 	FILEPART="${URLs##*/}"
-	VERSION=$(echo "${SUBDIR/${FILEPART%.git}/}" | sed -r -e 's,[^-]*-(.+),\1,')
+	VERSION=$(echo "${SUBDIR/${FILEPART%.git}/}" | sed -e 's,.*-,,')
 	[ -n "$VERSION" ] || { echo "Failed to detect version from $DL_FILE"; exit 1; }
 
 	TMP_DIR=$(mktemp -d -t freetzXXX) || { echo "Error creating temporary dir."; exit 1; }

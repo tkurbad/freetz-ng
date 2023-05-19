@@ -188,6 +188,8 @@ Installation](http://wiki.ip-phone-forum.de/skript:freetz_und_speed-to-fritz)
 
 ### Notwendige Pakete
 
+* Siehe: [PREREQUISITES](../../PREREQUISITES.md)
+
 Für das Erstellen der Firmware kann auch Knoppix verwendet werden, wozu
 keine Linux-Installation erforderlich ist. Wichtig ist, dass zum
 Kompilieren des Mods unter Linux keine FAT oder NTFS Partition verwendet
@@ -291,55 +293,15 @@ Hier wird zusätzlich folgendes benötigt:
 
 ### Installation der benötigten Pakete (Ubuntu)
 
-Eine einfache Möglichkeit die benötigten Pakete zu installieren besteht
-darin, diesen Code per Copy and Paste auf der Konsole auszuführen.
-
-(Falls du eine US-Tastaturbelegung hast → "sudo locale-gen de_DE" und
-"sudo dpkg-reconfigure console-data" ausführen.
-[Details](https://help.ubuntu.com/community/LocaleConf)
-)
-
-```
-    sudo apt-get -y update
-    sudo apt-get -y upgrade
-    sudo apt-get -y dist-upgrade
-
-    # Angepasst z.B. auf Ubuntu 9.04 (kein automake 1.8, "ecj" statt "ecj-bootstrap"):
-    sudo apt-get -y install imagemagick subversion gcc g++ binutils autoconf automake automake1.9 libtool make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config jikes ecj fastjar realpath perl libstring-crc32-perl ruby ruby1.8 gawk python libusb-dev unzip intltool libglib2.0-dev xz-utils git-core libacl1-dev libattr1-dev libcap-dev
-
-    # Ubuntu 9.10, 10.xx, 11.xx und 12.04
-    sudo apt-get -y install imagemagick subversion gcc g++ bzip2 binutils automake patch autoconf libtool pkg-config make libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar realpath perl libstring-crc32-perl ruby ruby1.8 gawk python libusb-dev unzip intltool libglib2.0-dev xz-utils git-core libacl1-dev libattr1-dev libcap-dev
-
-    #Ubuntu 13.04 und 14.04
-    sudo apt-get -y install graphicsmagick subversion gcc g++ binutils autoconf automake automake1.9 libtool make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar realpath perl libstring-crc32-perl ruby ruby1.8 gawk python libusb-dev unzip intltool libacl1-dev libcap-dev
-
-    # Seit Debian Jessie bzw. Ubuntu 15.04 (vivid) wird zusätzlich das Paket libtool-bin benötigt:
-    sudo apt-get -y install libtool-bin
-
-    # Auf 64-Bit Systemen sind zusätzlich folgende Pakete zu installieren:
-    sudo apt-get -y install libc6-dev-i386 lib32ncurses5-dev gcc-multilib lib32stdc++6
-
-    # Ubuntu 15.10 x64:
-    sudo apt-get -y install imagemagick subversion git gcc g++ binutils autoconf automake autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj fastjar realpath perl libstring-crc32-perl ruby ruby1.8 gawk python libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev gcc-multilib lib32stdc++6 libglib2.0-dev
-```
-
-Wer vergessen hat welche Ubuntu Version er installierte kann dies mit
-folgenden Befehlen prüfen:
-
-```
-	# Ubuntu Version: ergibt z.B. "Ubuntu 12.04.1 LTS \n \l"
-	cat /etc/issue
-	# Maschinen Typ: ergibt z.B. "i686" bei 32-bit Ubuntu und "x86_64" bei 64-Bit Ubuntu
-	uname -m
-```
+* Verschoben: [PREREQUISITES](../../PREREQUISITES.md#ubuntu)
 
 ### Installation der benötigten Pakete (Fedora)
 
-```
-	sudo yum -y install ImageMagick subversion gcc gcc-c++ binutils autoconf automake libtool make bzip2 ncurses-devel zlib-devel flex bison patch texinfo gettext pkgconfig ecj perl perl-String-CRC32 wget glib2-devel git libacl-devel libattr-devel libcap-devel
-	# Auf 64-Bit Systemen sind zusätzlich folgende Pakete zu installieren:
-	sudo yum -y install ncurses-devel.i686 glibc-devel.i686 libgcc.i686
-```
+* Verschoben: [PREREQUISITES](../../PREREQUISITES.md#fedora)
+
+### Installierte Distribution ermitteln
+
+* Verschoben: [PREREQUISITES](../../PREREQUISITES.md#distribution-ermitteln)
 
 ### Erstellung & Installation
 

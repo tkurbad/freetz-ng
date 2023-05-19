@@ -5,7 +5,7 @@
 
 choice
 	prompt "Hardware series"
-		depends on !FREETZ_USER_LEVEL_BEGINNER
+		depends on FREETZ_SHOW_ADVANCED
 		default FREETZ_SERIES_4N5 if FREETZ_REAL_DEVELOPER_ONLY__SERIES
 		default FREETZ_SERIES_ALL_CHOICE
 		help
@@ -28,6 +28,11 @@ choice
 		help
 			Flagships: 7490 and 7590
 
+	config FREETZ_SERIES_EXT
+		bool "P&R"
+		help
+			Extender: Powerline & Repeater
+
 	config FREETZ_SERIES_ALL_CHOICE
 		bool "all" if FREETZ_SHOW_ADVANCED
 		help
@@ -38,7 +43,7 @@ endchoice # "Hardware series" #
 config FREETZ_SERIES_ALL_CONFIG
 	bool
 	default y
-	depends on FREETZ_USER_LEVEL_BEGINNER
+	depends on !FREETZ_SHOW_ADVANCED
 
 config FREETZ_SERIES_ALL
 	bool
@@ -52,6 +57,7 @@ config FREETZ_SERIES_ALL
 choice
 	prompt "Hardware type"
 		default FREETZ_TYPE_7590
+		default FREETZ_TYPE_1200 if FREETZ_SERIES_EXT
 		default FREETZ_TYPE_7390 if FREETZ_SERIES_2N3
 		default FREETZ_TYPE_7170 if FREETZ_SERIES_0N1
 		help
@@ -191,6 +197,12 @@ choice
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_VR9
 		bool "5491"
 
+	config FREETZ_TYPE_5530
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SHOW_DEVELOPER
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
+		bool "5530 - UNTESTED"
+
 	comment "Cable"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 
@@ -212,7 +224,7 @@ choice
 	config FREETZ_TYPE_6591
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_PUMA7
-		bool "6591 (atom core) - UNTESTED"
+		bool "6591 (atom core)"
 
 	config FREETZ_TYPE_6660
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
@@ -237,6 +249,11 @@ choice
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCA955x
 		bool "6820 v2"
 
+	config FREETZ_TYPE_6820_V3
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCA955x
+		bool "6820 v3 - UNTESTED"
+
 	config FREETZ_TYPE_6840
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_2N3
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_VR9
@@ -246,6 +263,17 @@ choice
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_2N3
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR934x
 		bool "6842 - UNTESTED"
+
+	config FREETZ_TYPE_6850_4G
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
+		bool "6850 4G - UNTESTED"
+
+	config FREETZ_TYPE_6850_5G
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
+		bool "6850 5G - UNTESTED"
+		depends on FREETZ_SHOW_DEVELOPER
 
 	config FREETZ_TYPE_6890
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
@@ -407,6 +435,12 @@ choice
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
 		bool "7530"
 
+	config FREETZ_TYPE_7539
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SHOW_DEVELOPER
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_BRCMA9
+		bool "7530 AX - UNTESTED"
+
 	config FREETZ_TYPE_7560
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
@@ -445,78 +479,79 @@ choice
 	config FREETZ_TYPE_7590
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
-		select FREETZ_PATCH_DISABLE_AVM_WATCHDOG if FREETZ_TYPE_FIRMWARE_07_2X
 		bool "7590"
 
 	config FREETZ_TYPE_7599
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
 		bool "7590 AX - UNTESTED"
+		depends on FREETZ_SHOW_DEVELOPER
 
 	comment "Powerline"
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 
 	config FREETZ_TYPE_0540
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR934x
 		bool "540e"
 
 	config FREETZ_TYPE_0546
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR934x
 		bool "546e"
 
 	config FREETZ_TYPE_1240
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR934x
 		bool "1240e - UNTESTED"
 
 	config FREETZ_TYPE_1260
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
 		bool "1260e"
 
 	comment "Repeater"
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 
 	config FREETZ_TYPE_1759
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCA955x
 		bool "DVB-c"
 
 	config FREETZ_TYPE_0300
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR934x
 		bool "300e - UNTESTED"
 
 	config FREETZ_TYPE_0450
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR934x
 		bool "450e - UNTESTED"
 
 	config FREETZ_TYPE_1200
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
 		bool "1200"
 
 	config FREETZ_TYPE_1750
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCA955x
 		bool "1750e"
 
 	config FREETZ_TYPE_2400
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCA956x
 		bool "2400 - UNTESTED"
 
 	config FREETZ_TYPE_3000
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
 		bool "3000"
 
 	config FREETZ_TYPE_6000
-		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
-		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
+		depends on FREETZ_SHOW_DEVELOPER
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCAARMv8
 		bool "6000 - UNTESTED"
 
 endchoice # "Hardware type" #
@@ -561,6 +596,7 @@ config FREETZ_TYPE_LANGUAGE
 
 choice
 	prompt "Firmware version"
+	default FREETZ_TYPE_FIRMWARE_07_25
 	default FREETZ_TYPE_FIRMWARE_07_2X
 	default FREETZ_TYPE_FIRMWARE_07_1X
 	default FREETZ_TYPE_FIRMWARE_07_0X
@@ -574,54 +610,50 @@ choice
 	default FREETZ_TYPE_FIRMWARE_04_XX
 
 	config FREETZ_TYPE_FIRMWARE_04_XX
-		bool "FRITZ!OS 04.xx"
+		bool "FRITZ!OS 04.00+"
 		select FREETZ_AVM_VERSION_04_XX
 		depends on FREETZ_AVM_HAS_FIRMWARE_04_XX
 
 	config FREETZ_TYPE_FIRMWARE_05_2X
-		bool "FRITZ!OS 05.2x"
+		bool "FRITZ!OS 05.20+"
 		select FREETZ_AVM_VERSION_05_2X
 		depends on FREETZ_AVM_HAS_FIRMWARE_05_2X
 
 	config FREETZ_TYPE_FIRMWARE_05_5X
-		bool "FRITZ!OS 05.5x"
+		bool "FRITZ!OS 05.50+"
 		select FREETZ_AVM_VERSION_05_5X
 		depends on FREETZ_AVM_HAS_FIRMWARE_05_5X
 
 	config FREETZ_TYPE_FIRMWARE_06_0X
-		bool "FRITZ!OS 06.0x"
+		bool "FRITZ!OS 06.00+"
 		select FREETZ_AVM_VERSION_06_0X
 		depends on FREETZ_AVM_HAS_FIRMWARE_06_0X
 
 	config FREETZ_TYPE_FIRMWARE_06_2X
-		bool "FRITZ!OS 06.2x/06.3x"
+		bool "FRITZ!OS 06.20+"
 		select FREETZ_AVM_VERSION_06_2X
 		depends on FREETZ_AVM_HAS_FIRMWARE_06_2X
 
 	config FREETZ_TYPE_FIRMWARE_06_5X
-		bool "FRITZ!OS 06.5x/06.6x"
+		bool "FRITZ!OS 06.50+"
 		select FREETZ_AVM_VERSION_06_5X
 		depends on FREETZ_AVM_HAS_FIRMWARE_06_5X
 
 	config FREETZ_TYPE_FIRMWARE_06_8X
-		bool "FRITZ!OS 06.8x"
+		bool "FRITZ!OS 06.80+"
 		select FREETZ_AVM_VERSION_06_8X
 		depends on FREETZ_AVM_HAS_FIRMWARE_06_8X
 
 	config FREETZ_TYPE_FIRMWARE_06_9X
-		bool "FRITZ!OS 06.9x"
+		bool "FRITZ!OS 06.90+"
 		select FREETZ_AVM_VERSION_06_9X
 		depends on FREETZ_AVM_HAS_FIRMWARE_06_9X
 
 	config FREETZ_TYPE_FIRMWARE_07_0X
-		bool "FRITZ!OS 07.0x"
+		bool "FRITZ!OS 07.00+"
 		select FREETZ_AVM_VERSION_07_0X
 		depends on FREETZ_AVM_HAS_FIRMWARE_07_0X
 
-	config FREETZ_TYPE_FIRMWARE_07_1X
-		bool "FRITZ!OS 07.1x"
-		select FREETZ_AVM_VERSION_07_1X
-		depends on FREETZ_AVM_HAS_FIRMWARE_07_1X
 
 	config FREETZ_TYPE_FIRMWARE_07_1X_INHAUS
 		bool "FRITZ!OS 07.08 Inhaus"
@@ -630,41 +662,88 @@ choice
 		help
 			Enable this to use an AVM Inhaus firmware as base for modding.
 
+	config FREETZ_TYPE_FIRMWARE_07_1X
+		bool "FRITZ!OS 07.10+"
+		select FREETZ_AVM_VERSION_07_1X
+		depends on FREETZ_AVM_HAS_FIRMWARE_07_1X
+
+
 	config FREETZ_TYPE_FIRMWARE_07_2X_INHAUS
-		bool "FRITZ!OS 07.19 Inhaus"
+		bool "FRITZ!OS 07.19 Inhaus - DEVELOPER"
 		select FREETZ_AVM_VERSION_07_2X
 		depends on FREETZ_AVM_HAS_FIRMWARE_07_2X_INHAUS && FREETZ_SHOW_ADVANCED
+		depends on FREETZ_SHOW_DEVELOPER
 		help
 			Enable this to use an AVM Inhaus firmware as base for modding.
 
-	config FREETZ_TYPE_FIRMWARE_07_2X_LABOR
-		bool "FRITZ!OS 07.19 Labor"
+	config FREETZ_TYPE_FIRMWARE_07_2X
+		bool "FRITZ!OS 07.20+"
 		select FREETZ_AVM_VERSION_07_2X
-		depends on FREETZ_AVM_HAS_FIRMWARE_07_2X_LABOR && FREETZ_SHOW_ADVANCED
+		depends on FREETZ_AVM_HAS_FIRMWARE_07_2X
+
+
+	config FREETZ_TYPE_FIRMWARE_07_25_INHAUS
+		bool "FRITZ!OS 07.24 Inhaus - DEVELOPER"
+		select FREETZ_AVM_VERSION_07_25
+		depends on FREETZ_AVM_HAS_FIRMWARE_07_25_INHAUS && FREETZ_SHOW_ADVANCED
+		depends on FREETZ_SHOW_DEVELOPER
+		help
+			Enable this to use an AVM Inhaus firmware as base for modding.
+
+	config FREETZ_TYPE_FIRMWARE_07_25_LABOR
+		bool "FRITZ!OS 07.24 Labor"
+		select FREETZ_AVM_VERSION_07_25
+		select FREETZ_DL_DETECT_IMAGE_NAME
+		depends on FREETZ_AVM_HAS_FIRMWARE_07_25_LABOR && FREETZ_SHOW_ADVANCED
 		help
 			Enable this to use an AVM Labor firmware as base for modding.
 			For more details see <http://www.avm.de/Labor/>.
 
-	config FREETZ_TYPE_FIRMWARE_07_2X
-		bool "FRITZ!OS 07.2x"
-		select FREETZ_AVM_VERSION_07_2X
-		depends on FREETZ_AVM_HAS_FIRMWARE_07_2X
+	config FREETZ_TYPE_FIRMWARE_07_25
+		bool "FRITZ!OS 07.25+"
+		select FREETZ_AVM_VERSION_07_25
+		depends on FREETZ_AVM_HAS_FIRMWARE_07_25
+
 
 endchoice # "Firmware version" #
 
 comment " >> This firmware fits on AVM and AVME devices"
 	depends on FREETZ_AVM_PROP_ALL_REGIONS && !( ( (!FREETZ_AVM_HAS_BRANDING_1und1 || FREETZ_REMOVE_BRANDING_1und1) && FREETZ_REMOVE_BRANDING_avm) || FREETZ_REMOVE_BRANDING_avme)
 
-config FREETZ_TYPE_FIRMWARE_LABOR_LATEST
+config FREETZ_AVM_VERSION_LATEST_MAJOR
+	bool
+	default y
+	depends on \
+		( FREETZ_TYPE_FIRMWARE_04_XX && !FREETZ_AVM_HAS_FIRMWARE_05_2X) || \
+		( FREETZ_TYPE_FIRMWARE_05_2X && !FREETZ_AVM_HAS_FIRMWARE_05_5X) || \
+		( FREETZ_TYPE_FIRMWARE_05_5X && !FREETZ_AVM_HAS_FIRMWARE_06_0X) || \
+		( FREETZ_TYPE_FIRMWARE_06_0X && !FREETZ_AVM_HAS_FIRMWARE_06_2X) || \
+		( FREETZ_TYPE_FIRMWARE_06_2X && !FREETZ_AVM_HAS_FIRMWARE_06_5X) || \
+		( FREETZ_TYPE_FIRMWARE_06_5X && !FREETZ_AVM_HAS_FIRMWARE_06_8X) || \
+		( FREETZ_TYPE_FIRMWARE_06_8X && !FREETZ_AVM_HAS_FIRMWARE_06_9X) || \
+		( FREETZ_TYPE_FIRMWARE_06_9X && !FREETZ_AVM_HAS_FIRMWARE_07_0X) || \
+		( FREETZ_TYPE_FIRMWARE_07_0X && !FREETZ_AVM_HAS_FIRMWARE_07_1X) || \
+		( FREETZ_TYPE_FIRMWARE_07_1X && !FREETZ_AVM_HAS_FIRMWARE_07_2X) || \
+		( FREETZ_TYPE_FIRMWARE_07_2X && !FREETZ_AVM_HAS_FIRMWARE_07_25) || \
+		( FREETZ_TYPE_FIRMWARE_07_25)
+
+config FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	bool "Detect the latest firmware version"
-	default n
+	depends on FREETZ_SHOW_EXPERT
+	depends on FREETZ_AVM_HAS_JUIS_SUPPORT
+	depends on !FREETZ_TYPE_ALIEN_HARDWARE
+	depends on !FREETZ_TYPE_FIRMWARE_FINAL || FREETZ_AVM_VERSION_LATEST_MAJOR
 	select FREETZ_DL_DETECT_IMAGE_NAME
-	depends on FREETZ_SHOW_ADVANCED && FREETZ_TYPE_FIRMWARE_LABOR
+	default y if !FREETZ_TYPE_FIRMWARE_FINAL && FREETZ_SHOW_DEVELOPER
+	default n
 	help
-		Automatically detect the latest labor firmware
-		version by using https://www.boxmatrix.info
-		It will be refreshed every 6 hours.
-		See https://boxmatrix.info/wiki/Labor-Files
+		Automatically detect the latest firmware version by using AVM's juis.
+		A posive result will be cached for 1 hour.
+		WARNING:
+		Changes by AVM are not recognized!
+		This is okay for small ones (7.20 -> 7.21), but will cause
+		problems for bigger changes (7.1x -> 7.2x).
+		For Labor/Inhaus this could happen for every version bump!
 
 ###
 ### Release aliases
@@ -682,32 +761,32 @@ config FREETZ_TYPE_FIRMWARE_INHAUS
 	default y
 	depends on \
 		FREETZ_TYPE_FIRMWARE_07_1X_INHAUS || \
-		FREETZ_TYPE_FIRMWARE_07_2X_INHAUS
+		FREETZ_TYPE_FIRMWARE_07_2X_INHAUS || \
+		FREETZ_TYPE_FIRMWARE_07_25_INHAUS
 
 config FREETZ_TYPE_FIRMWARE_LABOR
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_FIRMWARE_07_2X_LABOR
+		FREETZ_TYPE_FIRMWARE_07_25_LABOR
 
 ###
 ### Warning messages
 ###
 
-if FREETZ_AVM_VERSION_06_5X_MIN && !FREETZ_REAL_DEVELOPER_ONLY__KCONF
+if !FREETZ_REAL_DEVELOPER_ONLY__KCONF && \
+	( FREETZ_TYPE_FIRMWARE_UNTESTED || !FREETZ_TYPE_FIRMWARE_FINAL || FREETZ_SYSTEM_TYPE_GRX5 || FREETZ_REPLACE_KERNEL )
+
 	comment "WARNINGS -------------------------------------------------"
-if FREETZ_TYPE_FIRMWARE_LABOR || FREETZ_TYPE_FIRMWARE_INHAUS
+if FREETZ_TYPE_FIRMWARE_UNTESTED
+	comment " - this device was never ever tested due to lack"
+	comment "   of hardware, please report if it works for you"
+endif
+if !FREETZ_TYPE_FIRMWARE_FINAL
 	comment " - the box may fail to boot and you need to recover it"
 	comment " - there is a higher probability to face stability issues"
 	comment " - some remove/AVM-web-interface patches are not working"
 	comment "   even if selectable in menuconfig"
-endif
-if FREETZ_KERNEL_VERSION_3_MIN
-	comment " - some kernel-modules are not built/available"
-	comment "   even if selectable in menuconfig"
-	comment " - some packages depending on the kernel version"
-	comment "   are not available/selectable in menuconfig"
-	comment "   e.g. iptables, usbip, nfs, ndas, etc."
 endif
 if FREETZ_SYSTEM_TYPE_GRX5
 	comment " - replace-kernel is not (yet) available"
@@ -720,6 +799,32 @@ endif
 endif
 
 ###
+### Untested devices
+###
+
+config FREETZ_TYPE_FIRMWARE_UNTESTED
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_5530 || \
+		FREETZ_TYPE_6430 || \
+		FREETZ_TYPE_6810 || \
+		FREETZ_TYPE_6842 || \
+		FREETZ_TYPE_6820_V3 || \
+		FREETZ_TYPE_6850_4G || \
+		FREETZ_TYPE_6850_5G || \
+		FREETZ_TYPE_7539 || \
+		FREETZ_TYPE_7581 || \
+		FREETZ_TYPE_7582 || \
+		FREETZ_TYPE_7583 || \
+		FREETZ_TYPE_7599 || \
+		FREETZ_TYPE_1240 || \
+		FREETZ_TYPE_0300 || \
+		FREETZ_TYPE_0450 || \
+		FREETZ_TYPE_2400 || \
+		FREETZ_TYPE_6000
+
+###
 ### Alien firmware
 ###
 
@@ -728,12 +833,13 @@ config FREETZ_TYPE_ALIEN_HARDWARE
 	depends on FREETZ_SHOW_ADVANCED && \
 		( \
 		FREETZ_TYPE_1750 || \
+		FREETZ_TYPE_3490 || \
 		(FREETZ_TYPE_7170 && !FREETZ_TYPE_LANG_A_CH) || \
 		FREETZ_TYPE_7270 || \
-		(FREETZ_TYPE_7330_XL && FREETZ_TYPE_LANG_DE &&                             FREETZ_TYPE_FIRMWARE_06_5X ) || \
-		(FREETZ_TYPE_7330 &&                                                      (FREETZ_TYPE_FIRMWARE_06_2X)) || \
-		(FREETZ_TYPE_7390 && FREETZ_TYPE_LANG_EN && (FREETZ_TYPE_FIRMWARE_05_2X || FREETZ_TYPE_FIRMWARE_06_0X)) || \
+		(FREETZ_TYPE_7330 && FREETZ_TYPE_LANG_DE) || \
+		(FREETZ_TYPE_7390 && FREETZ_TYPE_LANG_EN && FREETZ_AVM_VERSION_06_0X_MAX) || \
 		(FREETZ_TYPE_7430 && FREETZ_TYPE_LANG_DE && FREETZ_AVM_VERSION_06_8X_MIN) || \
+		(FREETZ_TYPE_7490 && FREETZ_SHOW_DEVELOPER) || \
 		FREETZ_TYPE_7530 || \
 		FREETZ_TYPE_7570 \
 		)
@@ -843,6 +949,18 @@ choice
 			Enable this to compile a mod image for FritzFON 7150 based
 			on a 7170 image.
 
+	config FREETZ_TYPE_3270_V3_7270_V3
+		bool "3270 v3"
+		depends on FREETZ_TYPE_7270_V3
+		select FREETZ_REMOVE_DECT
+		select FREETZ_REMOVE_VOIPD
+		select FREETZ_REMOVE_TELEPHONY
+		select FREETZ_REMOVE_CAPIOVERTCP
+		select FREETZ_REMOVE_AHA if FREETZ_AVM_HAS_AHA
+		help
+			Enable this to compile an alien image for FritzBox WLAN 3270 v3 based
+			on a 7270 v3 image.
+
 	config FREETZ_TYPE_7240_7270
 		bool "7240"
 		depends on FREETZ_TYPE_7270_V3
@@ -875,6 +993,42 @@ choice
 			Enable this to compile an alien image for FritzBox FON WLAN 7570 based
 			on a 7270 image.
 
+	config FREETZ_TYPE_7312_7330_XL
+		bool "7312"
+		depends on FREETZ_TYPE_7330_XL
+		select FREETZ_REMOVE_USBHOST if FREETZ_AVM_HAS_USB_HOST
+		select FREETZ_REMOVE_UMTSD if FREETZ_AVM_HAS_UMTS
+		select FREETZ_REMOVE_AVM_E2FSPROGS if FREETZ_AVM_HAS_E2FSPROGS && !FREETZ_PATCH_UDEVMOUNT
+		select FREETZ_REMOVE_AURA_USB if FREETZ_AVM_HAS_AURA_USB
+		select FREETZ_REMOVE_MEDIASRV if FREETZ_AVM_HAS_MEDIASRV
+		select FREETZ_REMOVE_NAS if FREETZ_AVM_HAS_NAS
+		select FREETZ_REMOVE_WEBDAV if FREETZ_AVM_HAS_WEBDAV
+		select FREETZ_REMOVE_PRINTSERV if FREETZ_AVM_HAS_PRINTSERV
+		select FREETZ_REMOVE_PRINTSERV_MODULE if FREETZ_AVM_HAS_PRINTSERV && !FREETZ_MODULE_usblp
+		select FREETZ_REMOVE_NTFS if FREETZ_AVM_HAS_NTFS
+		select FREETZ_REMOVE_SAMBA if (FREETZ_AVM_HAS_SAMBA_NQCS || FREETZ_AVM_HAS_SAMBA_SMBD) && !FREETZ_PACKAGE_SAMBA_SMBD
+		select FREETZ_REMOVE_FTPD if FREETZ_AVM_HAS_USB_HOST
+		help
+			Enable this to compile an alien image for FritzBox 7312 based on a 7330 (XL) image.
+
+	config FREETZ_TYPE_7312_7330_SL
+		bool "7312"
+		depends on FREETZ_TYPE_7330_SL
+		select FREETZ_REMOVE_USBHOST if FREETZ_AVM_HAS_USB_HOST
+		select FREETZ_REMOVE_UMTSD if FREETZ_AVM_HAS_UMTS
+		select FREETZ_REMOVE_AVM_E2FSPROGS if FREETZ_AVM_HAS_E2FSPROGS && !FREETZ_PATCH_UDEVMOUNT
+		select FREETZ_REMOVE_AURA_USB if FREETZ_AVM_HAS_AURA_USB
+		select FREETZ_REMOVE_MEDIASRV if FREETZ_AVM_HAS_MEDIASRV
+		select FREETZ_REMOVE_NAS if FREETZ_AVM_HAS_NAS
+		select FREETZ_REMOVE_WEBDAV if FREETZ_AVM_HAS_WEBDAV
+		select FREETZ_REMOVE_PRINTSERV if FREETZ_AVM_HAS_PRINTSERV
+		select FREETZ_REMOVE_PRINTSERV_MODULE if FREETZ_AVM_HAS_PRINTSERV && !FREETZ_MODULE_usblp
+		select FREETZ_REMOVE_NTFS if FREETZ_AVM_HAS_NTFS
+		select FREETZ_REMOVE_SAMBA if (FREETZ_AVM_HAS_SAMBA_NQCS || FREETZ_AVM_HAS_SAMBA_SMBD) && !FREETZ_PACKAGE_SAMBA_SMBD
+		select FREETZ_REMOVE_FTPD if FREETZ_AVM_HAS_USB_HOST
+		help
+			Enable this to compile an alien image for FritzBox 7312 based on a 7330 SL image.
+
 	config FREETZ_TYPE_7320_7330_XL
 		bool "7320"
 		depends on FREETZ_TYPE_7330_XL
@@ -895,6 +1049,19 @@ choice
 		help
 			Enable this to compile an alien image for Repeater DVB-c based on a 1750E image.
 
+	config FREETZ_TYPE_3370_3490
+			bool "3370 - No wlan, no usb!"
+			depends on FREETZ_TYPE_3490
+			help
+				Enable this to compile an alien image for FritzBox 3370 based on a 3490 image.
+
+	config FREETZ_TYPE_3390_3490
+		bool "3390 - No wlan, no usb!"
+		depends on FREETZ_TYPE_3490
+		select FREETZ_REMOVE_WLAN
+		help
+			Enable this to compile an alien image for FritzBox 3390 based on a 3490 image.
+
 	config FREETZ_TYPE_7412_7430
 		bool "7412 - No wlan!"
 		depends on FREETZ_TYPE_7430
@@ -912,6 +1079,24 @@ choice
 		select FREETZ_REMOVE_FTPD if FREETZ_AVM_HAS_USB_HOST
 		help
 			Enable this to compile an alien image for FritzBox 7412 based on a 7430 image.
+
+	config FREETZ_TYPE_5490_7490
+		bool "5490"
+		depends on FREETZ_TYPE_7490
+		select FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_DIFFS
+		select FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
+		select FREETZ_REMOVE_DSL_CONTROL
+		help
+			Enable this to compile an alien image for FritzBox 5490 based on a 7490 image.
+
+	config FREETZ_TYPE_5491_7490
+		bool "5491 - UNTESTED"
+		depends on FREETZ_TYPE_7490
+		select FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_DIFFS
+		select FREETZ_REMOVE_MULTI_ANNEX_FIRMWARE_PRIME
+		select FREETZ_REMOVE_DSL_CONTROL
+		help
+			Enable this to compile an alien image for FritzBox 5491 based on a 7490 image.
 
 	config FREETZ_TYPE_7520_7530
 		bool "7520"
@@ -982,7 +1167,12 @@ config FREETZ_TYPE_3270
 
 config FREETZ_TYPE_6820
 	bool
-	depends on FREETZ_TYPE_6820_V1 || FREETZ_TYPE_6820_V2
+	depends on FREETZ_TYPE_6820_V1 || FREETZ_TYPE_6820_V2 || FREETZ_TYPE_6820_V3
+	default y
+
+config FREETZ_TYPE_6850
+	bool
+	depends on FREETZ_TYPE_6850_4G || FREETZ_TYPE_6850_5G
 	default y
 
 config FREETZ_TYPE_7270
@@ -1012,6 +1202,11 @@ config FREETZ_TYPE_7360
 config FREETZ_TYPE_7320_7330
 	bool
 	depends on FREETZ_TYPE_7320_7330_XL || FREETZ_TYPE_7320_7330_SL
+	default y
+
+config FREETZ_TYPE_7312_7330
+	bool
+	depends on FREETZ_TYPE_7312_7330_XL || FREETZ_TYPE_7312_7330_SL
 	default y
 
 config FREETZ_TYPE_7570_7270

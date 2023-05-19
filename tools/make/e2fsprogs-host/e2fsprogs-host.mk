@@ -10,6 +10,7 @@ E2FSPROGS_HOST_E2FSCK_BINARY:=$(E2FSPROGS_HOST_DIR)/e2fsck/e2fsck
 E2FSPROGS_HOST_DEBUGFS_BINARY:=$(E2FSPROGS_HOST_DIR)/debugfs/debugfs
 E2FSPROGS_HOST_TUNE2FS_BINARY:=$(E2FSPROGS_HOST_DIR)/misc/tune2fs
 
+
 e2fsprogs-host-source: $(DL_DIR)/$(E2FSPROGS_HOST_SOURCE)
 $(DL_DIR)/$(E2FSPROGS_HOST_SOURCE): | $(DL_DIR)
 	$(DL_TOOL) $(DL_DIR) $(E2FSPROGS_HOST_SOURCE) $(E2FSPROGS_HOST_SITE) $(E2FSPROGS_HOST_SOURCE_MD5)
@@ -22,6 +23,10 @@ $(E2FSPROGS_HOST_DIR)/.unpacked: $(DL_DIR)/$(E2FSPROGS_HOST_SOURCE) | $(TOOLS_SO
 
 $(E2FSPROGS_HOST_DIR)/.configured: $(E2FSPROGS_HOST_DIR)/.unpacked
 	(cd $(E2FSPROGS_HOST_DIR); $(RM) config.cache; \
+		CC="$(TOOLS_CC)" \
+		CXX="$(TOOLS_CXX)" \
+		CFLAGS="$(TOOLS_CFLAGS)" \
+		LDFLAGS="$(TOOLS_LDFLAGS)" \
 		./configure \
 		--prefix=/ \
 		--disable-bsd-shlibs \
@@ -48,6 +53,7 @@ $(E2FSPROGS_HOST_DIR)/.configured: $(E2FSPROGS_HOST_DIR)/.unpacked
 		--disable-threads \
 		--disable-tls \
 		$(DISABLE_NLS) \
+		$(QUIET) \
 	);
 	touch $@
 
@@ -59,15 +65,12 @@ $(E2FSPROGS_HOST_E2FSCK_BINARY) $(E2FSPROGS_HOST_DEBUGFS_BINARY) $(E2FSPROGS_HOS
 
 $(TOOLS_DIR)/e2fsck: $(E2FSPROGS_HOST_E2FSCK_BINARY)
 	$(INSTALL_FILE)
-	strip $@
 
 $(TOOLS_DIR)/debugfs: $(E2FSPROGS_HOST_DEBUGFS_BINARY)
 	$(INSTALL_FILE)
-	strip $@
 
 $(TOOLS_DIR)/tune2fs: $(E2FSPROGS_HOST_TUNE2FS_BINARY)
 	$(INSTALL_FILE)
-	strip $@
 
 E2FSPROGS_HOST_DEVEL_ROOT:=$(abspath $(E2FSPROGS_HOST_DIR)/_devel)
 e2fsprogs-host-devel: $(E2FSPROGS_HOST_DIR)/.devel
@@ -80,7 +83,8 @@ $(E2FSPROGS_HOST_DIR)/.devel: $(E2FSPROGS_HOST_DIR)/.compiled
 	$(SED) -i -r -e 's,^(prefix=).*,\1$(E2FSPROGS_HOST_DEVEL_ROOT),' $(E2FSPROGS_HOST_DEVEL_ROOT)/lib/pkgconfig/*.pc && \
 	touch $@
 
-e2fsprogs-host: $(TOOLS_DIR)/e2fsck $(TOOLS_DIR)/debugfs $(TOOLS_DIR)/tune2fs
+e2fsprogs-host-precompiled: $(TOOLS_DIR)/e2fsck $(TOOLS_DIR)/debugfs $(TOOLS_DIR)/tune2fs
+
 
 e2fsprogs-host-clean:
 	-$(MAKE) -C $(E2FSPROGS_HOST_DIR) clean
@@ -91,3 +95,4 @@ e2fsprogs-host-dirclean:
 
 e2fsprogs-host-distclean: e2fsprogs-host-dirclean
 	$(RM) $(TOOLS_DIR)/e2fsck $(TOOLS_DIR)/debugfs $(TOOLS_DIR)/tune2fs
+

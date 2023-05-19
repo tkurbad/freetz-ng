@@ -1,0 +1,13 @@
+--- scripts/kconfig/Makefile
++++ scripts/kconfig/Makefile
+@@ -26,10 +26,8 @@
+ 	$(Q)$< $(silent) $(Kconfig)
+ 
+ menuconfig: $(obj)/mconf
+-	$(Q)$< $(silent) $(Kconfig)
+ 
+ config: $(obj)/conf
+-	$(Q)$< $(silent) --oldaskconfig $(Kconfig)
+ 
+ nconfig: $(obj)/nconf
+ 	$(Q)$< $(silent) $(Kconfig)

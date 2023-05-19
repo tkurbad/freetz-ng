@@ -1,6 +1,6 @@
 config FREETZ_PACKAGE_SHELLINABOX
-	bool "shellinabox 2.14"
-	select FREETZ_LIB_libutil if !FREETZ_PACKAGE_SHELLINABOX_STATIC && !FREETZ_PACKAGE_SHELLINABOX_NONFREETZ
+	bool "shellinabox 2.21"
+	select FREETZ_LIB_libutil if !FREETZ_PACKAGE_SHELLINABOX_STATIC && !FREETZ_PACKAGE_SHELLINABOX_NONFREETZ && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
 	help
 		Shell In A Box implements a web server that can export arbitrary
@@ -11,9 +11,8 @@ config FREETZ_PACKAGE_SHELLINABOX
 config FREETZ_PACKAGE_SHELLINABOX_SSL
 	depends on FREETZ_PACKAGE_SHELLINABOX
 	bool "build with SSL support"
-	select FREETZ_LIB_libcrypto if ! FREETZ_PACKAGE_SHELLINABOX_STATIC
-	select FREETZ_LIB_libssl if ! FREETZ_PACKAGE_SHELLINABOX_STATIC
-	select FREETZ_OPENSSL_VERSION_PROMPT if FREETZ_PACKAGE_SHELLINABOX_STATIC
+	select FREETZ_LIB_libcrypto  if ! FREETZ_PACKAGE_SHELLINABOX_STATIC
+	select FREETZ_LIB_libssl     if ! FREETZ_PACKAGE_SHELLINABOX_STATIC
 	default y
 	help
 		Building "Shell In A Box" w/o SSL will lead to a
@@ -40,3 +39,4 @@ config FREETZ_PACKAGE_SHELLINABOX_STATIC
 	default n
 	help
 		Build "Shell In A Box" as a static binary.
+

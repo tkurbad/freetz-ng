@@ -1,25 +1,26 @@
 comment "Tinc (not available, needs kernel modules)"
-	depends on \
-		!( FREETZ_REPLACE_MODULE_AVAILABLE || !FREETZ_AVM_HAS_BUGON_IN_NET_CORE )
+	depends on !(FREETZ_REPLACE_MODULE_AVAILABLE || !FREETZ_AVM_HAS_BUGON_IN_NET_CORE)
+
+comment "Tinc (not available, needs OpenSSL 1.0 or newer)"
+	depends on  (FREETZ_REPLACE_MODULE_AVAILABLE || !FREETZ_AVM_HAS_BUGON_IN_NET_CORE) && !FREETZ_OPENSSL_VERSION_1_MIN
 
 config FREETZ_PACKAGE_TINC
 	bool "Tinc 1.0.36/1.1pre17"
 	default n
-	depends on FREETZ_REPLACE_MODULE_AVAILABLE || !FREETZ_AVM_HAS_BUGON_IN_NET_CORE
+	depends on  (FREETZ_REPLACE_MODULE_AVAILABLE || !FREETZ_AVM_HAS_BUGON_IN_NET_CORE) &&  FREETZ_OPENSSL_VERSION_1_MIN
 	select FREETZ_LIB_libm      if !FREETZ_PACKAGE_TINC_STATIC && FREETZ_PACKAGE_TINC_VERSION_1_1
 	select FREETZ_LIB_liblzo2   if !FREETZ_PACKAGE_TINC_STATIC
 	select FREETZ_LIB_libz      if !FREETZ_PACKAGE_TINC_STATIC
 	select FREETZ_LIB_libcrypto if !FREETZ_PACKAGE_TINC_STATIC
 	select FREETZ_MODULE_yf_patchkernel if FREETZ_AVM_HAS_BUGON_IN_NET_CORE
-	select FREETZ_OPENSSL_VERSION_PROMPT
-	select FREETZ_OPENSSL_VERSION_1_REQUIRED
 	help
 		Tinc is a Virtual Private Network (VPN) daemon that uses tunneling
 		and encryption to create a secure private network between hosts on
 		the Internet.
 
+if FREETZ_PACKAGE_TINC
+
 choice
-	depends on FREETZ_PACKAGE_TINC
 	prompt "Version"
 	default FREETZ_PACKAGE_TINC_VERSION_1_0
 
@@ -32,7 +33,6 @@ endchoice
 
 config FREETZ_PACKAGE_TINC_tinc
 	bool "Include tinc control utility"
-	depends on FREETZ_PACKAGE_TINC
 	depends on FREETZ_PACKAGE_TINC_VERSION_1_1
 	default n
 	select FREETZ_LIB_libreadline if !FREETZ_PACKAGE_TINC_STATIC
@@ -40,7 +40,6 @@ config FREETZ_PACKAGE_TINC_tinc
 
 config FREETZ_PACKAGE_TINC_STATIC
 	bool "Link statically"
-	depends on FREETZ_PACKAGE_TINC
 	default n
 	help
 		Tinc needs the following shared libraries which can be linked in statically
@@ -48,3 +47,6 @@ config FREETZ_PACKAGE_TINC_STATIC
 		- liblzo2.so
 		- libcrypto.so
 		- libz.so
+
+endif # FREETZ_PACKAGE_TINC
+

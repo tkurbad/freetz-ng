@@ -1,8 +1,13 @@
 # CHANGELOG
 Latest changes
 
-- Freetz
+- Freetz-NG
   * [devel](#devel)
+  * [ng21030](#ng21030)
+  * [ng21010](#ng21010)
+  * [ng20120](#ng20120)
+
+- Freetz
   * [Freetz-2.0](#freetz-20)
   * [Freetz-1.2](#freetz-12)
   * [Freetz-1.1](#freetz-11)
@@ -32,27 +37,137 @@ Latest changes
 
 ### devel
 
+ - Known problems:
+   * Replace kernel does not work for most latest firmware versions.
+   * Loading build kernel modules may work or do not. You'll notice.
+
+ - Build system:
+   * ccache 4.2.1
+   * kernel-/target-toolchains:
+      + precompiled toolchains updated to x86_64 (only)
+
+ - New tools and hooks:
+   * precompiled host-tools updated to x86_64 (only)
+
+ - Updated packages and libs:
+   * ca-bundle 2021-04-13
+   * curl 7.76.0
+   * dnsmasq 2.80/2.85
+   * expat 2.3.0
+   * haproxy 2.2.13
+   * iperf 3.9
+   * libgd 2.3.2
+   * mbed TLS 2.7.19/2.26.0
+   * minidlna 1.3.0
+   * OpenSSH 8.5p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1k/3.0.0-alpha13
+   * Perl 5.32.1
+   * stunnel 5.58
+   * Tor 0.4.5.7
+
+ - Web interface:
+   * Settings backup:
+      + Check for identic device, AVM passwords are device specific encoded
+      + Support of encrypted setting backup files (openssl is required)
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng21030
+
+ - Known problems:
+   * Replace kernel does not work for most latest firmware versions.
+   * Loading build kernel modules may work or do not. You'll notice.
+
+ - Build system:
+   * ccache 4.2
+   * kernel-/target-toolchain:
+      + uClibc-ng 1.0.37
+
+ - New packages, libs, modules:
+   * juis_check 0.5
+
+ - New tools and hooks:
+   * pseudo 1.9.0 oe-core
+   * yourfritz-decoder 0.4-git
+
+ - Updated tools and hooks:
+   * fakeroot 1.25.3
+   * fitimg 0.5
+   * kconfig 5.11
+   * patchelf 0.12
+   * xz 5.2.5
+
+ - Updated packages and libs:
+   * cifs-utils 6.12
+   * curl 7.75.0
+   * haproxy 2.2.9
+   * libgd 2.3.1
+   * lighttpd 1.4.59
+   * mtr 0.80/0.94
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1j/3.0.0-alpha12
+   * OpenVPN 2.4.10/2.5.1
+   * pcre 8.44
+   * rsync 3.2.3
+   * wireguard-linux-compat 1.0.20210124
+   * lzma2 5.2.5
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng21010
+
 - Known problems:
   * Replace kernel does not work for most latest firmware versions.
   * Loading build kernel modules may work or do not. You'll notice.
-  * No download toolchains for firmware versions since FritzOS 7.0.
+
+- Build system:
+  * kconfig 5.10
+
+- New packages, libs, modules:
+    * RPCBind 1.2.5
+
+- Updated packages and libs:
+    * CA-bundle 2021-01-19
+    * dnsmasq 2.80/2.84
+    * jpeg 9d
+    * lighttpd 1.4.58
+    * shellinabox 2.21
+    * smartmontools 7.2
+    * socat 1.7.4.1
+    * Wget 1.21.1
+
+- BusyBox:
+    * Removed version 1.31.1
+    * Updated version 1.32.1
+    * Added version 1.33.0
+
+- New tools and hooks:
+  * fitimg: tool to pack/unpack FIT firmware files
+
+### ng20120
+
+- Known problems:
+  * Replace kernel does not work for most latest firmware versions.
+  * Loading build kernel modules may work or do not. You'll notice.
 
 - Build system:
   * addons: additional to addon/static.pkg, addon/*.pkg could be used to enable addons, since r15856/3dda64565e
   * binutils:
     + add support for binutils-2.24.x/2.25.x/2.26.x/2.31.x
-  * ccache 3.7.11
-  * kconfig 5.8
+  * ccache 3.7.12
+  * kconfig 5.9
     + added olddefconfig target
     + removed oldnoconfig target
   * kernel-/target-toolchain:
     + update gcc-4.7.x version to 4.7.4
     + add support for gcc-4.8.x/4.9.x/5.x/8.x
     + add support for x86 target
+    + add uClibc-1.0.36 support
   * support for a 3rd (auxiliary) firmware
   * fakeroot: bump version to 1.23
   * lzma SDK: bump lzma SDK version to 4.65
-  * sfk: bump version to 1.9.5.0
+  * sfk: bump version to 1.9.7.2
   * squashfs* tools:
     + unify all host- and target-patches (i.e. use the same set of patches for both the host and the target packages)
     + switch to using a C only version of liblzma instead of the C++ version used so far
@@ -72,6 +187,7 @@ Latest changes
   * bzimage2eva / eva2bzimage: conversion tools for PUMA6 kernels
   * patchelf: small utility to modify the dynamic linker and RPATH of ELF executables
   * uimg: tool to pack/unpack PUMA7 .uimg files (Intel Unified Image v3)
+  * image2inmemory: creates an in-memory image for nand/ram-boot devices, uses latest.image by default
 
 - New patches (read online help for more info):
     * udevmount: extends storage mounting of udev
@@ -90,7 +206,7 @@ Latest changes
       traffic MB in GB.
 
 - New packages, libs, modules:
-    * ACME.sh 2.87 (letsencrypt)
+    * ACME.sh 2.88 (letsencrypt)
     * Addhole (for dnsmasq) 1.0
     * asterisk 11.25.3
     * asterisk-chan-capi post-1.1.6 with asterisk11 adjustments by Mihai Moldovan
@@ -104,11 +220,11 @@ Latest changes
     * AVM-rules 0.9 (deprecated)
     * axTLS wrapper 1.4.9
     * bvi 1.4.0
-    * CA-bundle 2020-07-22
+    * CA-bundle 2020-12-08
     * cntlm 0.93beta5
     * CurlFtpFS 0.9.2
     * decrypt FRITZ!OS configs v0.2 (renamed version of PeterPawn's script decode_passwords)
-    * dehydrated 0.6.5 (letsencrypt)
+    * dehydrated 0.7.0 (letsencrypt)
     * ISC dhcp 4.3.6-P1
     * E-MailRelay 1.9
     * getdns 1.5.2
@@ -124,14 +240,15 @@ Latest changes
     * libdvbcsa 1.1.0
     * libgsm-1.0.13
     * libmnl 1.0.4
-    * libnettle 3.4.1
-    * liblz4 1.9.2
+    * libnettle 3.6
+    * liblz4 1.9.3
     * libonig 6.7.1
     * libsrtp-1.4.4+20100615
     * libssh2 1.9.0
+    * libtirpc 1.2.6
     * libusb-compat 0.1.5
     * lzma1 4.65
-    * mbed TLS 2.7.17
+    * mbed TLS 2.7.18/2.25.0
     * minisatip 1.0.4
     * Mosquitto 1.6.8
     * MySQL 6.0.11-alpha
@@ -149,8 +266,8 @@ Latest changes
     * squashfs-tools 3.4
     * squashfs-tools 4.3 (modified to support AVM-BE format)
     * vermagic 1ac45e08d4-git
-    * wireguard-tools 1.0.20200820
-    * wireguard-linux-compat 1.0.20200729
+    * wireguard-tools 1.0.20200827
+    * wireguard-linux-compat 1.0.20201112
     * xz 5.2.4
 
 - Documentation/Wiki:
@@ -177,9 +294,8 @@ Latest changes
     * The link ./images/latest.image points always to the latest successfully created firmware.
 
 - Updated tools and hooks:
-    * push_firmware: updated for ram-boot and dual-boot devices. Use it by execute "make push-firmware"
-      to flash the latest compiled image or use "./tools/push_firmware" for more options. The inmemory-image
-      format is deprecated and no longer needed, but still selectable.
+    * push_firmware: updated for uimg, ram-boot (nand) and dual-boot (docsis) devices. Use it by execute
+     "make push-firmware" to flash the latest compiled image or use "./tools/push_firmware" for more options.
 
 - Updated patches:
     * All selectable patches are expected to work. If a patch fails, report it! Disable the
@@ -197,16 +313,16 @@ Latest changes
     * CCID driver 1.4.33
     * cifs-utils 6.10
     * cryptsetup 1.7.5
-    * curl 7.72.0
+    * curl 7.74.0
     * davfs2 1.5.2/1.6.0
     * dbus 1.8.20
     * DigiTemp 3.7.2
     * dnsmasq 2.80/2.82
     * dosfstools 3.0.28
-    * dropbear 2020.80
+    * dropbear 2020.81
     * e2fsprogs 1.42.13
     * espeak 1.48.04
-    * expat 2.2.9
+    * expat 2.2.10
     * ffmpeg 1.2.12
     * freetype 2.10.1
     * fuse 2.9.7
@@ -214,8 +330,8 @@ Latest changes
     * git 2.26.2
     * gmp 6.1.2
     * gnu-make 4.2.1
-    * gnutls 3.5.19
-    * haproxy 1.8.26
+    * gnutls 3.6.15
+    * haproxy 1.8.27
     * haserl 0.9.35
     * hplip 3.14.6
     * htop 1.0.3
@@ -223,6 +339,7 @@ Latest changes
     * ImageMagick 7.0.10-10
     * inadyn-mt 02.28.10
     * iodine 0.7.0
+    * iptables 1.4.11.1/1.4.21/1.6.2
     * jpeg 9c
     * knock 0.7
     * lftp 4.8.4
@@ -243,29 +360,31 @@ Latest changes
     * libpopt 1.16
     * libtasn1 4.13
     * libtiff 4.0.7
-    * libusb1 1.0.23
+    * libusb1 1.0.23/1.0.24
     * libvorbis 1.3.5
     * libxml 2.9.9
     * libxslt/xsltproc 1.1.33
-    * lighttpd 1.4.55
+    * lighttpd 1.4.57
     * lsof 4.89
     * ltrace 0.7.91-git
-    * lynx 2.8.8
+    * lynx 2.8.9
     * mc (Midnight Commander) 4.8.25
     * minidlna 1.2.1
     * mpc 1.1.0
     * mpfr 3.1.6
-    * nano 2.4.3
+    * nano 5.3
     * ncftp-3.2.6
+    * ncurses 6.2
+    * ncursesw 6.2
     * netatalk 2.2.5
     * ngircd 22
     * noip 2.1.9-1
     * ntfs-3g 2017.3.23
     * obexftp 0.23
     * openconnect 7.04
-    * OpenSSH 8.3p1
-    * openssl 0.9.8zh/1.0.2u
-    * OpenVPN 2.4.9
+    * OpenSSH 8.4p1
+    * OpenSSL 0.9.8zh/1.0.2u/1.1.1i/3.0.0-alpha9
+    * OpenVPN 2.4.10/2.5.0
     * pcre 8.43
     * PCSC-lite (pcscd) 1.9.0
     * php 5.6.40
@@ -292,19 +411,19 @@ Latest changes
     * sqlite 3.31.1
     * sslh 1.19c
     * strace 4.9 (kernel-2.6.13) / 5.0 (all other kernel versions)
-    * stunnel 5.56
+    * stunnel 5.57
     * subversion 1.8.19/1.9.12
     * tinc 1.0.36/1.1pre17
     * tinyproxy 1.8.4
     * tmux 2.5
-    * tor 0.4.4.5
+    * tor 0.4.4.6
     * transmission 3.00
     * tree 1.8.0
     * uClibc++ 0.2.5-git
     * udpxy 1.0.23-9
     * usbutils 007
     * umurmur 0.2.17
-    * unrar 5.5.8 (=rar 5.50)
+    * unrar 6.0.1
     * usbip 0.1.8
     * util-linux-ng 2.27.1
     * Vim 8.2.0769
@@ -484,7 +603,7 @@ Latest changes
     * samba 3.6.13 (as an alternative to the 3.0.37, 3.0.37 is still the default one)
     * shellinabox 2.14
     * smartmontools 5.43
-    * smstools3 3.1.14
+    * smstools3 3.1.21
     * smusbutil 1.1
     * sslh 1.14
     * Sundtek DVB driver 130210.134617

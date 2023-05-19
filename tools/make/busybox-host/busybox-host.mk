@@ -1,6 +1,6 @@
-BUSYBOX_HOST_VERSION:=1.31.1
+BUSYBOX_HOST_VERSION:=1.32.1
 BUSYBOX_HOST_SOURCE:=busybox-$(BUSYBOX_HOST_VERSION).tar.bz2
-BUSYBOX_HOST_SOURCE_MD5:=70913edaf2263a157393af07565c17f0
+BUSYBOX_HOST_SOURCE_MD5:=6273c550ab6a32e8ff545e00e831efc5
 BUSYBOX_HOST_SITE:=http://www.busybox.net/downloads
 
 BUSYBOX_HOST_MAKE_DIR:=$(TOOLS_DIR)/make/busybox-host
@@ -9,6 +9,7 @@ BUSYBOX_HOST_BINARY:=$(BUSYBOX_HOST_DIR)/busybox
 BUSYBOX_HOST_CONFIG_FILE:=$(BUSYBOX_HOST_MAKE_DIR)/Config.busybox
 BUSYBOX_HOST_TARGET_DIR:=$(TOOLS_DIR)
 BUSYBOX_HOST_TARGET_BINARY:=$(TOOLS_DIR)/busybox
+
 
 busybox-host-source: $(DL_DIR)/$(BUSYBOX_HOST_SOURCE)
 $(DL_DIR)/$(BUSYBOX_HOST_SOURCE): | $(DL_DIR)
@@ -26,7 +27,7 @@ $(BUSYBOX_HOST_DIR)/.configured: $(BUSYBOX_HOST_DIR)/.unpacked $(BUSYBOX_HOST_CO
 	touch $@
 
 $(BUSYBOX_HOST_BINARY): $(BUSYBOX_HOST_DIR)/.configured
-	$(MAKE) -C $(BUSYBOX_HOST_DIR)
+	$(MAKE) CC="$(TOOLS_CC)" CXX="$(TOOLS_CXX)" CFLAGS="$(TOOLS_CFLAGS)" LDFLAGS="$(TOOLS_LDFLAGS)" -C $(BUSYBOX_HOST_DIR)
 
 $(BUSYBOX_HOST_TARGET_BINARY): $(BUSYBOX_HOST_BINARY)
 	$(INSTALL_FILE)
@@ -35,7 +36,8 @@ $(BUSYBOX_HOST_TARGET_BINARY): $(BUSYBOX_HOST_BINARY)
 		ln -fs busybox $(BUSYBOX_HOST_TARGET_DIR)/$$i; \
 	done
 
-busybox-host: $(BUSYBOX_HOST_TARGET_BINARY)
+busybox-host-precompiled: $(BUSYBOX_HOST_TARGET_BINARY)
+
 
 busybox-host-clean:
 	-$(MAKE) -C $(BUSYBOX_HOST_DIR) clean
@@ -45,3 +47,4 @@ busybox-host-dirclean:
 
 busybox-host-distclean: busybox-host-dirclean
 	find $(BUSYBOX_HOST_TARGET_DIR) \( -lname busybox -o -name busybox \) -delete
+

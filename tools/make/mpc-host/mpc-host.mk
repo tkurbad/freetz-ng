@@ -9,6 +9,7 @@ MPC_HOST_DESTDIR:=$(HOST_TOOLS_DIR)
 MPC_HOST_BINARY:=$(MPC_HOST_DESTDIR)/lib/libmpc.a
 MPC_HOST_BINARY_DEPS:=gmp-host mpfr-host
 
+
 mpc-host-source: $(DL_DIR)/$(MPC_HOST_SOURCE)
 $(DL_DIR)/$(MPC_HOST_SOURCE): | $(DL_DIR)
 	$(DL_TOOL) $(DL_DIR) $(MPC_HOST_SOURCE) $(MPC_HOST_SITE) $(MPC_HOST_SOURCE_SHA1)
@@ -38,7 +39,8 @@ $(MPC_HOST_DIR)/.configured: $(MPC_HOST_DIR)/.unpacked $(MPC_HOST_BINARY_DEPS:%-
 $(MPC_HOST_BINARY): $(MPC_HOST_DIR)/.configured | $(HOST_TOOLS_DIR)
 	$(MAKE) -C $(MPC_HOST_DIR) install
 
-mpc-host: $(MPC_HOST_BINARY)
+mpc-host-precompiled: $(MPC_HOST_BINARY)
+
 
 mpc-host-clean:
 	-$(MAKE) -C $(MPC_HOST_DIR) clean
@@ -48,3 +50,4 @@ mpc-host-dirclean:
 
 mpc-host-distclean: mpc-host-dirclean
 	$(RM) $(MPC_HOST_DESTDIR)/lib/libmpc* $(MPC_HOST_DESTDIR)/include/*mpc*.h
+

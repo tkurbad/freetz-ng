@@ -1,14 +1,6 @@
-if [ "$FREETZ_REMOVE_UMTSD" == "y" -o "$FREETZ_REMOVE_ASSISTANT" == "y" ]; then
-	[ -e "${HTML_LANG_MOD_DIR}/html/logincheck.html" ] && modsed \
-	  's/\(^var umts = \).*/\10;/g' \
-	  "${HTML_LANG_MOD_DIR}/html/logincheck.html"
-	modsed \
-	  's/\(^local start_umts.*\) =.*/\1 = false/g' \
-	  "${LUA_MOD_DIR}/first.lua"
-fi
-
 [ "$FREETZ_REMOVE_UMTSD" == "y" ] || return 0
 echo1 "remove umtsd files"
+
 rm_files \
   "${MODULES_DIR}/kernel/drivers/usb/serial/option.ko" \
   "${FILESYSTEM_MOD_DIR}/etc/hotplug/udev-gsm-tty" \
@@ -28,6 +20,7 @@ if [ "$FREETZ_AVM_VERSION_07_0X_MIN" == "y" ]; then
 	if [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ]; then
 		# configd execs mobiled
 		echo -e '#!/bin/sh\nexit 0' > "${FILESYSTEM_MOD_DIR}/bin/mobiled"
+		supervisor_delete_service "mobiled"
 	else
 		rm_files \
 		  "${FILESYSTEM_MOD_DIR}/bin/mobiled" \

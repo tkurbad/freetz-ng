@@ -1,9 +1,7 @@
-[ "$FREETZ_REMOVE_RUNCLOCK" = "y" ] || return 0;
-
+[ "$FREETZ_REMOVE_RUNCLOCK" == "y" ] || return 0
 echo1 "removing run_clock"
 
-rm_files \
-  "${FILESYSTEM_MOD_DIR}/lib/systemd/system/run_clock.service"
+supervisor_delete_service "run_clock"
 
 cat > "${FILESYSTEM_MOD_DIR}/bin/run_clock" << EOF
 #!/bin/sh

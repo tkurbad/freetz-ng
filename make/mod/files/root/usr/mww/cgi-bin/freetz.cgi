@@ -6,49 +6,62 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 cgi --id=freetz
 
-
-cgi_begin '$(lang de:"&Uuml;ber" en:"About")'
+# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'hermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sort -u | sed 's/ //g' | grep -vE '^(root|administrator|fda77|oliver|sfritz)$'
+cgi_begin "$(lang de:"&Uuml;ber" en:"About")"
 cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <center>
 
-<h1>Developers</h1>
-You!
-</p>
-
 <p>
 <h1>Supporters</h1>
-hippie2000
-magenbrot
-</p>
-
-<p>
-<h1>Decision supervision</h1>
-derheimi
-kriegaex
-olistudent
-</p>
-
-<p>
-<h1>Retired</h1>
-abraxXl
+abraXxl
 aholler
+berndy2001
 buehmann
+BugReporter-ilKY
+cawidtu
 cinereous
+cm8
 cuma
+derheimi
 er13
+f-666
+feedzapper
+fidelio-dev
+flosch-dev
+forenuser
 hermann72pb
+hippie2000
+horle
+id1508
+idealist1508
+JasperMichalke
+JBBgameich
 johnbock
+kriegaex
 M66B
+magenbrot
 markuschen
+martinkoehler
+Maurits
 MaxMuster
 maz
 McNetic
 mickey
 mike
+mrtnmtth
+Oliver
+PeterPawn
 ralf
 reiffert
+RolfLeggewie
 sf3978
+sfritz2
+smischke
+stblassitude
+telsch
+thiloms
 Whoopie
+WileC
 </p>
 
 </center>

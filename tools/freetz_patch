@@ -12,6 +12,7 @@
 # The additional auto-fix feature for self-healing patches was developed by
 # Alexander Kriegisch (kriegaex), 2007-06-25.
 # MD5 extension added by cuma, 2011
+# patch-level detection added by cuma, 2020
 
 
 helpmsg()
@@ -22,7 +23,7 @@ $freetz_patch_name - Freetz patch tool with optional auto-fix feature
 
 Usage: $freetz_patch_name <target-dir> <patch-file|md5-dir> [md5-source]
     target-dir   - target directory to apply patch to
-    patch-file   - patch file name (unified context diff, patch level -p0)
+    patch-file   - patch file name (unified context diff, patch level -p0 - -p9)
     md5-dir      - directory with patch files, named "*<MD5>*.patch"
     md5-source   - from which file md5 is computed (optional)
                    if this is not set, the first file in .patch is used
@@ -51,6 +52,20 @@ _findTool()
 		# fallback to that found by which otherwise
 		which $tool 2>/dev/null || error 1 "$freetz_patch_name: required tool $tool missing, please install"
 	fi
+}
+
+# Strip $2 directory level(s) from one patch file, without argument: 1
+#
+# The $1 parameter is the name of the patch file to be stripped in place -
+# no backup! The patch file must be a unidiff, and no care is taken of spaces,
+# tabs or slashes within path names.
+strip_patch_level()
+{
+	local p=${2:-1}
+	while [ $p -gt 0 ]; do
+		sed -i -r 's/^(---|\+\+\+) [^/]+\//\1 /' "$1"
+		p=$(( $p - 1 ))
+	done
 }
 
 modpatch()
@@ -132,6 +147,11 @@ modpatch()
 	local _auto_fix_patches
 	[ "$_auto_fix_supported" == "y" ] && _auto_fix_patches="$AUTO_FIX_PATCHES"
 
+	# detect patch-level
+	for p in 0 1 2 3 4 5 6 7 8 9; do
+		$read_patch_cmd "$patch_file" | patch -f -p$p -d "$target_dir" --dry-run &>/dev/null && break || p=0
+	done
+
 	local backup
 	local do_fix
 	if [ "$_auto_fix_patches" == "y" ]; then
@@ -140,7 +160,7 @@ modpatch()
 			which $tool > /dev/null || error 1 "$freetz_patch_name: tool $tool needed for auto-fix mode, please install"
 		done
 
-		local output=$(patch --dry-run -d "$target_dir" -p0 < "$patch_file" 2> /dev/null)
+		local output=$(patch --dry-run -d "$target_dir" -p$p < "$patch_file" 2> /dev/null)
 		if [ $? -eq 0 ] && echo "$output" | grep -sqE '^Hunk '; then
 			# Is any target file patched more than once per patch? -> skip auto-fix
 			local multi_patch_files="$(lsdiff "$patch_file" | sort | uniq -cd)"
@@ -161,12 +181,11 @@ modpatch()
 	local READ_PATCH_STATUS
 	local APPLY_PATCH_STATUS
 	if [ "$is_verbose" ]; then
-		echo2 "applying patch file $patch_file"
-		$read_patch_cmd "$patch_file" | patch --force ${backup}-d "$target_dir" -p0 --no-backup-if-mismatch 2>&1 | sed -e "s/^/${L2}/g"
+		echo2 "applying patch${p#0} file $patch_file"
+		$read_patch_cmd "$patch_file" | patch --force ${backup}-d "$target_dir" -p$p --no-backup-if-mismatch 2>&1 | sed -e "s/^/${L2}/g"
 		READ_PATCH_STATUS=${PIPESTATUS[0]} APPLY_PATCH_STATUS=${PIPESTATUS[1]}
-		echo2 -- "----------------------------------------------------------------------"
 	else
-		$read_patch_cmd "$patch_file" | patch --force ${backup}-d "$target_dir" -p0 --no-backup-if-mismatch >/dev/null
+		$read_patch_cmd "$patch_file" | patch --force ${backup}-d "$target_dir" -p$p --no-backup-if-mismatch >/dev/null
 		READ_PATCH_STATUS=${PIPESTATUS[0]} APPLY_PATCH_STATUS=${PIPESTATUS[1]}
 	fi
 	if [ $READ_PATCH_STATUS -gt 0 ]; then
@@ -174,6 +193,8 @@ modpatch()
 	elif [ $APPLY_PATCH_STATUS -gt 0 ]; then
 		error 2 "modpatch: Error in patch-file $patch_file"
 	elif [ "$_auto_fix_patches" == "y" ] && [ "$do_fix" == "y" ]; then
+		# Alter patch to patch-level 0
+		strip_patch_level "$patch_file" $p
 		# Create (temporary) clean patch file copy without any comments in between change sets
 		filtered_file="$(mktemp _filtered_patch.XXXXXXXX)" || exit 1
 		filterdiff "$patch_file" > "$filtered_file"
@@ -187,6 +208,7 @@ modpatch()
 		# Number of files to be patched should be the same in original and clean patch file
 		local file_count=${#files[@]}
 		test $file_count = ${#patch_lines[@]} -a $file_count = ${#filtered_lines[@]} || exit 1
+		echo2
 		echo2 "auto-fixing fuzzy patch file $patch_file"
 		#echo2 "    file_count     = $file_count"
 		#echo2 "    files          = ${files[*]}"
@@ -222,8 +244,9 @@ modpatch()
 		done
 		cd - > /dev/null
 		rm "$patch_file.orig"
-		echo2 -- "----------------------------------------------------------------------"
 	fi
+	[ "$is_verbose" == "y" -o "$do_fix" == "y" ] && echo2 -- "----------------------------------------------------------------------"
+	return 0
 }
 
 if [ "$(basename "$0")" == "freetz_patch" ]; then
@@ -252,19 +275,3 @@ else
 	freetz_patch_name="modpatch"
 fi
 
-
-# Strip one directory level from one patch file
-#
-# The only parameter is the name of the patch file to be stripped in place -
-# no backup! The patch file must be a unidiff, and no care is taken of spaces,
-# tabs or slashes within path names.
-#
-# Note: This is just an inofficial little add-on and not part of the official
-# Freetz patch procedure, use at own risk. The function might come in handy if
-# you wish to canonise a set of patch files so they can be applied with patch
-# level zero (-p0).
-strip_patch_level()
-{
-	echo "Stripping one directory level from $1"
-	sed -i -r 's/^(---|\+\+\+) [^/]+\//\1 /' "$1"
-}

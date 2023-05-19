@@ -1,6 +1,6 @@
 [ "$FREETZ_REMOVE_VOIPD" == "y" ] || return 0
-
 echo1 "removing VoIP files"
+
 for files in \
   bin/showvoipdstat \
   bin/voipd \
@@ -9,11 +9,11 @@ for files in \
   lib/libsiplib.so* \
   usr/www/all/html/de/first/sip* \
   usr/www/all/html/de/fon/sip* \
-  lib/systemd/system/voip.service \
   etc/init.d/rc.voip \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$files"
 done
+supervisor_delete_service "voip"
 if \
   [ ! -e "${FILESYSTEM_MOD_DIR}/usr/share/telefon/libtam.so" -o "$FREETZ_REMOVE_TELEPHONY" == "y" ] \
   && \
@@ -35,3 +35,4 @@ modsed "s/CONFIG_FONQUALITY=.*$/CONFIG_FONQUALITY=\"n\"/g" "${FILESYSTEM_MOD_DIR
 
 touch "${FILESYSTEM_MOD_DIR}/bin/voipd"
 chmod +x "${FILESYSTEM_MOD_DIR}/bin/voipd"
+

@@ -323,7 +323,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_PREFER_APPLETS
 
 config FREETZ_BUSYBOX___V127_BUSYBOX_EXEC_PATH
 	string "Path to BusyBox executable"
-	default "/bin/busybox"
+	default "/proc/self/exe"
 	help
 	  When Busybox applets need to run other busybox applets, BusyBox
 	  sometimes needs to exec() itself. When the /proc filesystem is
@@ -386,6 +386,7 @@ config FREETZ_BUSYBOX___V127_PIE
 	  Most people will leave this set to 'N'.
 
 config FREETZ_BUSYBOX___V127_NOMMU
+	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
 	bool "Force NOMMU build"
 	default n
 	help
@@ -1067,7 +1068,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_USE_SENDFILE
 config FREETZ_BUSYBOX___V127_FEATURE_COPYBUF_KB
 	int "Copy buffer size, in kilobytes"
 	range 1 1024
-	default 64
+	default 4
 	help
 	  Size of buffer used by cp, mv, install, wget etc.
 	  Buffers which are 4 kb or less will be allocated on stack.
@@ -2858,7 +2859,7 @@ config FREETZ_BUSYBOX___V127_VI
 config FREETZ_BUSYBOX___V127_FEATURE_VI_MAX_LEN
 	int "Maximum screen width"
 	range 256 16384
-	default 1024
+	default 4096
 	depends on FREETZ_BUSYBOX___V127_VI
 	help
 	  Contrary to what you may think, this is not eating much.
@@ -3620,7 +3621,7 @@ config FREETZ_BUSYBOX___V127_LAST_SYSTEM_ID
 	int "Last valid system uid or gid for adduser and addgroup"
 	depends on FREETZ_BUSYBOX___V127_ADDUSER || FREETZ_BUSYBOX___V127_ADDGROUP
 	range FREETZ_BUSYBOX___V127_FIRST_SYSTEM_ID FREETZ_BUSYBOX___V127_LAST_ID
-	default 999
+	default 899
 	help
 	  Last valid system uid or gid for adduser and addgroup
 config FREETZ_BUSYBOX___V127_CHPASSWD
@@ -3632,7 +3633,8 @@ config FREETZ_BUSYBOX___V127_CHPASSWD
 
 config FREETZ_BUSYBOX___V127_FEATURE_DEFAULT_PASSWD_ALGO
 	string "Default encryption method (passwd -a, cryptpw -m, chpasswd -c ALG)"
-	default "des"
+	default "md5" if FREETZ_TARGET_UCLIBC_0
+	default "sha512"
 	depends on FREETZ_BUSYBOX___V127_PASSWD || FREETZ_BUSYBOX___V127_CRYPTPW || FREETZ_BUSYBOX___V127_CHPASSWD
 	help
 	  Possible choices are "d[es]", "m[d5]", "s[ha256]" or "sha512".
@@ -3717,6 +3719,7 @@ config FREETZ_BUSYBOX___V127_LOGIN_SCRIPTS
 	  just prior to switching from root to logged-in user.
 
 config FREETZ_BUSYBOX___V127_FEATURE_NOLOGIN
+	depends on !FREETZ_REPLACE_AR7LOGIN
 	bool "Support /etc/nologin"
 	default n
 	depends on FREETZ_BUSYBOX___V127_LOGIN
@@ -3725,6 +3728,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_NOLOGIN
 	  If it exists, non-root logins are prohibited.
 
 config FREETZ_BUSYBOX___V127_FEATURE_SECURETTY
+	depends on !FREETZ_REPLACE_AR7LOGIN
 	bool "Support /etc/securetty"
 	default n
 	depends on FREETZ_BUSYBOX___V127_LOGIN
@@ -3914,14 +3918,14 @@ config FREETZ_BUSYBOX___V127_DEPMOD
 	  and modules.symbols) that contain dependency information
 	  for modprobe.
 config FREETZ_BUSYBOX___V127_INSMOD
-	depends on !FREETZ_PACKAGE_MODULE_INIT_TOOLS_insmod
+	depends on !FREETZ_AVM_HAS_KMOD && !FREETZ_PACKAGE_MODULE_INIT_TOOLS_insmod
 	bool "insmod"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
 	help
 	  insmod is used to load specified modules in the running kernel.
 config FREETZ_BUSYBOX___V127_LSMOD
-	depends on !FREETZ_PACKAGE_MODULE_INIT_TOOLS_lsmod
+	depends on !FREETZ_AVM_HAS_KMOD && !FREETZ_PACKAGE_MODULE_INIT_TOOLS_lsmod
 	bool "lsmod"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -3944,7 +3948,7 @@ config FREETZ_BUSYBOX___V127_MODINFO
 	help
 	  Show information about a Linux Kernel module
 config FREETZ_BUSYBOX___V127_MODPROBE
-	depends on !FREETZ_PACKAGE_MODULE_INIT_TOOLS_modprobe
+	depends on !FREETZ_AVM_HAS_KMOD && !FREETZ_PACKAGE_MODULE_INIT_TOOLS_modprobe
 	bool "modprobe"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -3963,7 +3967,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_MODPROBE_BLACKLIST
 	  hardware autodetection scripts to load modules like evdev, frame
 	  buffer drivers etc.
 config FREETZ_BUSYBOX___V127_RMMOD
-	depends on !FREETZ_PACKAGE_MODULE_INIT_TOOLS_rmmod
+	depends on !FREETZ_AVM_HAS_KMOD && !FREETZ_PACKAGE_MODULE_INIT_TOOLS_rmmod
 	bool "rmmod"
 	default n
 	select FREETZ_BUSYBOX___V127_PLATFORM_LINUX
@@ -4758,6 +4762,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_MOUNT_LABEL
 	  This also enables label or uuid support for swapon.
 
 config FREETZ_BUSYBOX___V127_FEATURE_MOUNT_NFS
+	depends on FREETZ_KERNEL_VERSION_2_6_19_MAX
 	bool "Support mounting NFS file systems on Linux < 2.6.23"
 	default n
 	depends on FREETZ_BUSYBOX___V127_MOUNT
@@ -6440,6 +6445,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_INETD_SUPPORT_BUILTIN_CHARGEN
 	  Familiar character generator internal inetd service
 
 config FREETZ_BUSYBOX___V127_FEATURE_INETD_RPC
+	depends on FREETZ_TARGET_UCLIBC_SUPPORTS_rpc
 	bool "Support RPC services"
 	default n  # very rarely used, and needs Sun RPC support in libc
 	depends on FREETZ_BUSYBOX___V127_INETD
@@ -6496,6 +6502,7 @@ config FREETZ_BUSYBOX___V127_IPRULE
 	  Support short form of ip rule: iprule
 
 config FREETZ_BUSYBOX___V127_IPNEIGH
+	depends on FREETZ_KERNEL_VERSION_2_6_19_MIN
 	bool "ipneigh"
 	default n
 	select FREETZ_BUSYBOX___V127_FEATURE_IP_NEIGH
@@ -6546,6 +6553,7 @@ config FREETZ_BUSYBOX___V127_FEATURE_IP_RULE
 	  Add support for rule commands to "ip".
 
 config FREETZ_BUSYBOX___V127_FEATURE_IP_NEIGH
+	depends on FREETZ_KERNEL_VERSION_2_6_19_MIN
 	bool "ip neighbor"
 	default n
 	depends on FREETZ_BUSYBOX___V127_IP || FREETZ_BUSYBOX___V127_IPNEIGH

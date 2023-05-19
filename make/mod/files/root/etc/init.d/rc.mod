@@ -2,27 +2,36 @@
 
 ## Store 'clean' environment for later use
 # overwrite AVM's version
-[ -z "$1" ] && env - /bin/sh -c 'VERBOSE_RC_CONF=n; . /etc/init.d/rc.conf; unset PWD; env' | sed -re 's/^([^=]+)=(.*)$/export \1='"'\2'"/ > /var/env.cache
+if [ -z "$1" ]; then
+	[ -e /tmp/.mod.started ] && echo "Freetz is yet started!" && exit 1
+	env - /bin/sh -c 'VERBOSE_RC_CONF=n; . /etc/init.d/rc.conf; unset PWD; env' | sed -re 's/^([^=]+)=(.*)$/export \1='"'\2'"/ > /var/env.cache
+	(
+		echo "export PATH='/mod/sbin:/mod/bin:/mod/usr/sbin:/mod/usr/bin:/mod/etc/init.d:/sbin:/bin:/usr/sbin:/usr/bin'"
+		echo "export LD_LIBRARY_PATH='/mod/lib:/mod/usr/lib'"
+		grep "^export LANG=" /var/env.cache
+	) > /var/env.daemon
+fi
 
 DAEMON=mod
 . /etc/init.d/modlibrc
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
 log() {
-	[ "$*" == "" ] && return
-	IFS='\n' echo "$*" | while read -r line; do
-		echo "$line"
-		logger -t FREETZMOD "$line"
+	while read -r line; do
+		[ -z "$line" ] && continue
+		loglib_system "RCMOD" "$line"
+		[ -n "$LOG2FILE" ] && echo "$line" >> /var/log/mod.log
 	done
 }
+
 
 vulcheck() {
 	[ "$FREETZ_AVM_HAS_CVE_2014_9727" != "y" ] && return
 	# 04.55 is the version of the first firmware with support for remote access (according to AVM)
 	# 27349 is the revision of the first firmware remote access vulnerability has been fixed in
-	log "Firmware with remote access vulnerability detected."
+	echo "Firmware with remote access vulnerability detected."
 	if [ ! -e /tmp/flash/mod/dont_touch_https ]; then
-		log "Remote access via https will be disabled. Create /tmp/flash/mod/dont_touch_https if you don't want this behavior."
+		echo "Remote access via https will be disabled. Create /tmp/flash/mod/dont_touch_https if you don't want this behavior."
 		ctlmgr_ctl w remoteman settings/enabled 0 >/dev/null 2>&1
 	fi
 }
@@ -65,7 +74,7 @@ motd() {
 }
 
 start() {
-	log "Freetz version $(sed 's/^freetz-//' /etc/.freetz-version)"
+	echo "Freetz version $(sed 's/^freetz-//' /etc/.freetz-version)"
 
 	# Basic Packages: links
 	for pkg in crond telnetd webcfg dsld ftpd rextd multid swap external websrv smbd; do
@@ -101,7 +110,7 @@ start() {
 	# Basic Packages: load
 	for pkg in crond telnetd webcfg dsld ftpd rextd multid swap external websrv; do
 		local rc="/etc/init.d/rc.$pkg"
-		[ -x "$rc" ] && log "$($rc)"
+		[ -x "$rc" ] && "$rc"
 	done
 
 	# Static Packages
@@ -115,9 +124,9 @@ start() {
 		if [ -x "$rc" ]; then
 			if echo "$EXTERNAL_SERVICES" | grep -q " $pkg "; then
 				local long="$(sed -n "s/^DAEMON_LONG_NAME=[\"' ]*\([^\""\$"' ]*\).*/\1/p" "$rc")"
-				log "${long:-$pkg} will be started by external."
+				echo "${long:-$pkg} will be started by external."
 			else
-				log "$($rc)"
+				"$rc"
 			fi
 		fi
 	done
@@ -139,36 +148,35 @@ start() {
 	wlan_up
 	motd
 
-	if [ -r /tmp/flash/mod/rc.custom ]; then
+	if [ -s /tmp/flash/mod/rc.custom ]; then
 		echo -n "Starting rc.custom ... "
-		sh /tmp/flash/mod/rc.custom 0</dev/null 1>/var/log/rc_custom.log 2>&1
-		echo "done."
+		nohup sh /tmp/flash/mod/rc.custom 0</dev/null 1>/var/log/rc_custom.log 2>&1 &
+		echo "asynchronous."
 	fi
-
-	touch /tmp/.modstarted
 
 	# 7390: external hook for nand flash, if NAND exists it is mounted under /var/media/ftp
 	if [ "$CONFIG_NAND" = 'y' -a -f "$MOD_EXTERNAL_DIRECTORY"/.external ] &&
-		df -P "$MOD_EXTERNAL_DIRECTORY" | tail -n1 | grep -q " /var/media/ftp$"; then
-		log "external detected on nand."
-		/mod/etc/init.d/rc.external start
-	 fi
+	  df -P "$MOD_EXTERNAL_DIRECTORY" | tail -n1 | grep -q " /var/media/ftp$"; then
+		echo "external detected on nand."
+		nohup /mod/etc/init.d/rc.external start 0</dev/null 1>/dev/null 2>&1 &
+	fi
 
 	/usr/lib/mod/menu-update
-
-	log "Startup finished."
+	echo "Startup finished."
+	touch /tmp/.mod.started
 }
+
 
 stop_helper() {
 	for pkg in $*; do
 		[ "$pkg" = mod ] && continue
 		local rc="/etc/init.d/rc.$pkg"
-		[ -x "$rc" ] && log "$($rc stop | sed "s,^,$pkg: ,g")"
+		[ -x "$rc" ] && "$rc" stop | sed "s,^,$pkg: ,g"
 	done
 }
 
 stop() {
-	log "Stopping all packages:"
+	echo "Stopping all packages:"
 
 	[ -n "$MOD_SHUTDOWN_FIRST" ] && stop_helper $MOD_SHUTDOWN_FIRST
 
@@ -182,8 +190,9 @@ stop() {
 
 	[ -n "$MOD_SHUTDOWN_LAST" ] && stop_helper $MOD_SHUTDOWN_LAST
 
-	log "Stopping all packages finished."
+	echo "Stopping all packages finished."
 }
+
 
 modreg_file() {
 	local file=$1 sec_level=$2
@@ -210,16 +219,21 @@ register() {
 	/usr/lib/mod/reg-status start
 }
 
+
 case $1 in
 	"")
 		register
-		start
+		LOG2FILE="y"
+		start 2>&1 | log
 		;;
 	start)
 		start
 		;;
 	stop)
 		stop
+		;;
+	halt)
+		stop 2>&1 | log
 		;;
 	config)
 		utmp_wtmp

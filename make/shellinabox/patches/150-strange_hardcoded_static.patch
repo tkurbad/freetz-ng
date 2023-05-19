@@ -6,12 +6,12 @@
                         libhttp.la
 -shellinaboxd_LDFLAGS = -static
 +shellinaboxd_LDFLAGS =
+ ## Added this for compatibility with older versions of autoconf/automake
+ docdir               = ${datadir}/doc/${PACKAGE}
  
- symbolname           =                                                        \
-   sed -e 's/.*\/\([^.]*\)[.].*/\1/'                                           \
 --- Makefile.in
 +++ Makefile.in
-@@ -382,7 +382,7 @@
+@@ -523,7 +523,7 @@
  shellinaboxd_LDADD = liblogging.la                                          \
                         libhttp.la
  

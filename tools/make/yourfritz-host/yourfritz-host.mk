@@ -1,12 +1,15 @@
-YOURFRITZ_HOST_VERSION:=727312fc3aea13beb3f0cbde65d11dd865a7d9b4
+YOURFRITZ_HOST_VERSION:=049839bdf5811ed0c7d9b3036249c12a294ecffe
 YOURFRITZ_HOST_SOURCE:=yourfritz-$(YOURFRITZ_HOST_VERSION).tar.xz
-YOURFRITZ_HOST_SOURCE_SHA256:=X
+YOURFRITZ_HOST_SOURCE_SHA256:=80ea1826a6da986b2f9f4f6b8cfd7c71cc4da1c0fa3dde657cad945f5e542aae
 YOURFRITZ_HOST_SITE:=git_no_submodules@https://github.com/PeterPawn/YourFritz.git
 
 YOURFRITZ_HOST_BASH_AS_SHEBANG += signimage/avm_pubkey_to_pkcs8
 YOURFRITZ_HOST_BASH_AS_SHEBANG += signimage/check_signed_image
 YOURFRITZ_HOST_BASH_AS_SHEBANG += signimage/generate_signing_key
 YOURFRITZ_HOST_BASH_AS_SHEBANG += signimage/sign_image
+
+YOURFRITZ_HOST_BASH_AS_SHEBANG += bootmanager/add_change_oem.sh
+YOURFRITZ_HOST_BASH_AS_SHEBANG += bootmanager/add_to_system_reboot.sh
 
 YOURFRITZ_HOST_BASH_AS_SHEBANG += eva_tools/eva_discover
 YOURFRITZ_HOST_BASH_AS_SHEBANG += eva_tools/eva_get_environment
@@ -21,6 +24,7 @@ YOURFRITZ_HOST_STRIP_TRAILING_WHITESPACES += bootmanager/gui_bootmanager
 
 YOURFRITZ_HOST_MAKE_DIR:=$(TOOLS_DIR)/make/yourfritz-host
 YOURFRITZ_HOST_DIR:=$(TOOLS_SOURCE_DIR)/yourfritz-$(YOURFRITZ_HOST_VERSION)
+
 
 yourfritz-host-source: $(DL_DIR)/$(YOURFRITZ_HOST_SOURCE)
 $(DL_DIR)/$(YOURFRITZ_HOST_SOURCE): | $(DL_DIR)
@@ -38,7 +42,8 @@ $(YOURFRITZ_HOST_DIR)/.symlinked: | $(YOURFRITZ_HOST_DIR)/.unpacked
 	@ln -Tsf ../$(YOURFRITZ_HOST_DIR:$(FREETZ_BASE_DIR)/%=%) $(TOOLS_DIR)/yf
 	touch $@
 
-yourfritz-host: $(YOURFRITZ_HOST_DIR)/.symlinked
+yourfritz-host-precompiled: $(YOURFRITZ_HOST_DIR)/.symlinked
+
 
 yourfritz-host-clean:
 
@@ -47,3 +52,4 @@ yourfritz-host-dirclean:
 
 yourfritz-host-distclean: yourfritz-host-dirclean
 	$(RM) $(TOOLS_DIR)/yf
+

@@ -17,6 +17,7 @@ for i in 0 1 2 3 4; do
 		tunnelbroker.net:tunnelbroker$i \
 		dns.he.net:dnshenet$i \
 		changeip.com:changeip$i \
+		spdyn.de:spdyn$i \
 		userdefined:userdef$i
 done
 
@@ -24,13 +25,13 @@ for i in 0 1 2 3 4 5; do
 	select "$INADYN_MT_VERBOSE" "$i":verbose${i}
 done
 
-sec_begin '$(lang de:"Starttyp" en:"Start type")'
+sec_begin "$(lang de:"Starttyp" en:"Start type")"
 
 cgi_print_radiogroup_service_starttype "enabled" "$INADYN_MT_ENABLED" "" "" 0
 
 sec_end
 
-sec_begin '$(lang de:"Inadyn-Daemon" en:"Inadyn-Daemon")'
+sec_begin "$(lang de:"Inadyn-Daemon" en:"Inadyn-Daemon")"
 
 cat << EOF
 <p>$(lang de:"Log-Level" en:"Verbosity level") :
@@ -93,6 +94,7 @@ document.write("<div id='Account0' style='display:block'>" +
       "<OPTION VALUE='tunnelbroker.net' $tunnelbroker0_sel>tunnelbroker.net</OPTION>" +
       "<OPTION VALUE='dns.he.net' $dnshenet0_sel>dns.he.net</OPTION>" +
       "<OPTION VALUE='changeip.com' $changeip0_sel>changeip.com</OPTION>" +
+      "<OPTION VALUE='spdyn.de' $spdyn0_sel>spdyn.de</OPTION>" +
       "<OPTION VALUE='userdefined' $userdef0_sel>$(lang de:"Benutzerdefiniert" en:"User defined")</OPTION>" +
     "</SELECT></td>" +
   "</tr><tr>" +
@@ -129,6 +131,7 @@ document.write("<div id='Account1' style='display:none'>" +
       "<OPTION VALUE='tunnelbroker.net' $tunnelbroker1_sel>tunnelbroker.net</OPTION>" +
       "<OPTION VALUE='dns.he.net' $dnshenet1_sel>dns.he.net</OPTION>" +
       "<OPTION VALUE='changeip.com' $changeip1_sel>changeip.com</OPTION>" +
+      "<OPTION VALUE='spdyn.de' $spdyn1_sel>spdyn.de</OPTION>" +
       "<OPTION VALUE='userdefined' $userdef1_sel>$(lang de:"Benutzerdefiniert" en:"User defined")</OPTION>" +
     "</SELECT></td>" +
   "</tr><tr>" +
@@ -165,6 +168,7 @@ document.write("<div id='Account2' style='display:none'>" +
       "<OPTION VALUE='tunnelbroker.net' $tunnelbroker2_sel>tunnelbroker.net</OPTION>" +
       "<OPTION VALUE='dns.he.net' $dnshenet2_sel>dns.he.net</OPTION>" +
       "<OPTION VALUE='changeip.com' $changeip2_sel>changeip.com</OPTION>" +
+      "<OPTION VALUE='spdyn.de' $spdyn2_sel>spdyn.de</OPTION>" +
       "<OPTION VALUE='userdefined' $userdef2_sel>$(lang de:"Benutzerdefiniert" en:"User defined")</OPTION>" +
     "</SELECT></td>" +
   "</tr><tr>" +
@@ -202,6 +206,7 @@ document.write("<div id='Account3' style='display:none'>" +
       "<OPTION VALUE='tunnelbroker.net' $tunnelbroker3_sel>tunnelbroker.net</OPTION>" +
       "<OPTION VALUE='dns.he.net' $dnshenet3_sel>dns.he.net</OPTION>" +
       "<OPTION VALUE='changeip.com' $changeip3_sel>changeip.com</OPTION>" +
+      "<OPTION VALUE='spdyn.de' $spdyn3_sel>spdyn.de</OPTION>" +
       "<OPTION VALUE='userdefined' $userdef3_sel>$(lang de:"Benutzerdefiniert" en:"User defined")</OPTION>" +
     "</SELECT></td>" +
   "</tr><tr>" +
@@ -239,6 +244,7 @@ document.write("<div id='Account4' style='display:none'>" +
       "<OPTION VALUE='tunnelbroker.net' $tunnelbroker4_sel>tunnelbroker.net</OPTION>" +
       "<OPTION VALUE='dns.he.net' $dnshenet4_sel>dns.he.net</OPTION>" +
       "<OPTION VALUE='changeip.com' $changeip4_sel>changeip.com</OPTION>" +
+      "<OPTION VALUE='spdyn.de' $spdyn4_sel>spdyn.de</OPTION>" +
       "<OPTION VALUE='userdefined' $userdef4_sel>$(lang de:"Benutzerdefiniert" en:"User defined")</OPTION>" +
     "</SELECT></td>" +
   "</tr><tr>" +

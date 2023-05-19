@@ -60,17 +60,19 @@ menu "Firmware packaging (fwmod) options"
 		depends on FREETZ_FWMOD_SIGN
 		default "freetz"
 		help
-			A password has to be set and needs at least 6 characters.
+			A password with at least 6 characters is required. It could
+			be set here or will be read from command line during make.
 			If you have forgotten the password, you could delete the
-			~/.freetz-signature/ directory to create a new key file set.
+			 ~/.freetz-signature/ directory to create a new key file set.
 
 			As ~/.freetz-signature/ is used by all you Freetz checkouts,
 			you need to use for all the same password! Or you link/create
-			./signature directory by yourself
+			./.signature/ directory by yourself.
 
 	config FREETZ_FWMOD_FORCE_PACK
 		bool "Force pack even if image is too big (SDK stick mode)"
 		depends on ! FREETZ_FWMOD_SKIP_PACK
+		depends on FREETZ_TYPE_7270_16
 		default n
 		help
 			Choose this option if you intend to use the packed image on an SDK
@@ -81,6 +83,7 @@ menu "Firmware packaging (fwmod) options"
 
 	config FREETZ_FWMOD_USBROOT
 		bool "Pack file system into archive (USB root mode)"
+		depends on FREETZ_KERNEL_VERSION_2
 		default n
 		help
 			Choose this option if you intend to use the modified file system as a
@@ -94,6 +97,7 @@ menu "Firmware packaging (fwmod) options"
 	config FREETZ_FWMOD_NFSROOT
 		bool "Copy file system to target folder (NFS root mode)"
 		default n
+		depends on FREETZ_KERNEL_VERSION_2
 		select FREETZ_FWMOD_USBROOT
 		help
 			Choose this option if you intend to use the modified file system as
@@ -124,5 +128,5 @@ menu "Firmware packaging (fwmod) options"
 			relative to the Freetz build system's base directory (where e.g.
 			fwmod is located).
 
-endmenu # Firmware packaging (fwmod) special options
+endmenu # Firmware packaging (fwmod) options
 

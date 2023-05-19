@@ -12,6 +12,9 @@ config FREETZ_AVM_HAS_BRANDING_avme
 config FREETZ_AVM_HAS_CHRONYD
 	def_bool y
 
+config FREETZ_AVM_HAS_DDNSD
+	def_bool y
+
 config FREETZ_AVM_HAS_DSLD
 	def_bool y
 
@@ -46,6 +49,9 @@ config FREETZ_AVM_HAS_LANGUAGE_it
 	def_bool y
 
 config FREETZ_AVM_HAS_LANGUAGE_pl
+	def_bool y
+
+config FREETZ_AVM_HAS_LEDPAGE
 	def_bool y
 
 config FREETZ_AVM_HAS_MEDIASRV
@@ -91,9 +97,6 @@ config FREETZ_AVM_HAS_PRINTSERV
 	def_bool y
 
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
-	def_bool y
-
-config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
@@ -144,19 +147,25 @@ config FREETZ_AVM_PROP_ARCH_LE
 config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 
+config FREETZ_AVM_PROP_HWREV
+	string
+	default "227"
+
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
+
+config FREETZ_AVM_PROP_MAJOR
+	string
+	default "155"
+
+config FREETZ_AVM_PROP_NAME
+	string
+	default "FRITZ!Box 4040"
 
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
 	def_bool y
 
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
-	def_bool y
-
-config FREETZ_AVM_PROP_UCLIBC_1_0_14
-	def_bool y
-
-config FREETZ_AVM_PROP_UCLIBC_XLOCALE
 	def_bool y
 
 config FREETZ_AVM_SERIAL_CONSOLE_DEVICE

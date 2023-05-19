@@ -54,7 +54,7 @@ MAKE=make -j$(FREETZ_JLEVEL)
 DL_TOOL:=$(TOOLS_DIR)/freetz_download
 PATCH_TOOL:=$(TOOLS_DIR)/freetz_patch
 PARSE_CONFIG_TOOL:=$(TOOLS_DIR)/parse-config
-CHECK_PREREQ_TOOL:=$(TOOLS_DIR)/check_prerequisites
+CHECK_PREREQ_TOOL:=$(TOOLS_DIR)/prerequisites
 GENERATE_IN_TOOL:=$(TOOLS_DIR)/genin
 
 # do not use sorted-wildcard here, it's first defined in files included here
@@ -87,12 +87,12 @@ endef
 
 # check for very old linux with kernel v3 or less
 ifeq ($(shell uname -r | sed 's/\..*//;s/^[1-3]//'),)
-$(error Your Linux System is too old. Please upgrade it or use Freetz-Linux: https://github.com/Freetz-NG/freetz-ng/blob/master/README.md ..)
+$(info Your Linux System is very old. Please upgrade it or use Freetz-Linux: https://github.com/Freetz-NG/freetz-ng/blob/master/README.md)
 endif
 
 # check for proper make version
-ifneq ($(filter 3.7% 3.80,$(MAKE_VERSION)),)
-$(error Your make ($(MAKE_VERSION)) is too old. Go get at least 3.81)
+ifneq ($(filter 3.7% 3.80 3.81,$(MAKE_VERSION)),)
+$(error Your make ($(MAKE_VERSION)) is too old. Go get at least 3.82)
 endif
 
 # Current user == root? -> Error
@@ -129,9 +129,11 @@ $(error The empty directory root/sys is missing! Please do a clean checkout)
 endif
 
 # Simple checking of build prerequisites
+ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 ifneq ($(NO_PREREQ_CHECK),y)
-ifneq (OK,$(shell $(CHECK_PREREQ_TOOL) $$(cat .build-prerequisites) >&2 && echo OK))
-$(error Some build prerequisites are missing! Please install the missing packages before trying again. See https://freetz-ng.github.io/freetz-ng/wiki/10_Beginner/install.de.html#notwendige-pakete for installation hints)
+ifneq (OK,$(shell $(CHECK_PREREQ_TOOL) >&2 && echo OK))
+$(error Some build prerequisites are missing! Please install the missing packages before trying again. See https://freetz-ng.github.io/freetz-ng/PREREQUISITES for installation hints)
+endif
 endif
 endif
 
@@ -155,11 +157,35 @@ world: check-dot-config-uptodateness $(DL_DIR) $(BUILD_DIR) $(KERNEL_TARGET_DIR)
 
 KCONFIG_TARGETS:=menuconfig menuconfig-single config oldconfig olddefconfig allnoconfig allyesconfig randconfig listnewconfig config-compress
 
+# load user configuration file
 -include $(TOPDIR)/.config
+
+ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
+# check cpu for x86_64
+ifneq ($(shell uname -m),x86_64)
+ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
+$(info You have no x86_64 CPU, precompiled (download) toolchains automatically disabled.)
+endif
+ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
+$(info You have no x86_64 CPU, precompiled (download) host-tools automatically disabled.)
+endif
+endif
+# change LAST_SYSTEM_ID: 999 -> 899
+ifeq ($(shell sed -n 's/^FREETZ_BUSYBOX___V..._LAST_SYSTEM_ID=//p' $(TOPDIR)/.config),999)
+DLCHG:=$(shell echo 'y' ; sed 's/^\(FREETZ_BUSYBOX___V..._LAST_SYSTEM_ID\)=.*/\1=899/' -i $(TOPDIR)/.config)
+$(info BusyBox LAST_SYSTEM_ID automatically changed.)
+endif
+#
+$(if $(DLCHG),$(error Please re-run))
+endif
 
 VERBOSE:=
 QUIET:=--quiet
 QUIETSHORT:=-q
+QUIETCMAKE:=-DCMAKE_MESSAGE_LOG_LEVEL=error
 
 ifeq ($(strip $(FREETZ_VERBOSITY_LEVEL)),0)
 .SILENT:
@@ -174,6 +200,7 @@ ifeq ($(strip $(FREETZ_VERBOSITY_LEVEL)),2)
 #VERBOSE:=-v # Show files on untar
 QUIET:=
 QUIETSHORT:=
+QUIETCMAKE:=-DCMAKE_MESSAGE_LOG_LEVEL=status
 endif
 
 export FREETZ_VERBOSITY_LEVEL
@@ -182,10 +209,12 @@ export VERBOSE
 include $(TOOLS_DIR)/make/Makefile.in
 include $(call sorted-wildcard,$(TOOLS_DIR)/make/*/*.mk)
 
+TOOLS_CACHECLEAN:=$(patsubst %,%-cacheclean,$(TOOLS))
 TOOLS_CLEAN:=$(patsubst %,%-clean,$(TOOLS))
 TOOLS_DIRCLEAN:=$(patsubst %,%-dirclean,$(TOOLS))
 TOOLS_DISTCLEAN:=$(patsubst %,%-distclean,$(TOOLS))
 TOOLS_SOURCE:=$(patsubst %,%-source,$(TOOLS))
+TOOLS_PRECOMPILED:=$(patsubst %,%-precompiled,$(TOOLS))
 
 $(DL_DIR):
 	@ \
@@ -207,6 +236,7 @@ $(FW_IMAGES_DIR):
 ifneq ($(strip $(FREETZ_HAVE_DOT_CONFIG)),y)
 
 step: menuconfig
+cacheclean: $(TOOLS_CACHECLEAN) common-cacheclean
 clean: $(TOOLS_CLEAN) common-clean
 dirclean: $(TOOLS_DIRCLEAN) common-dirclean
 distclean: $(TOOLS_DISTCLEAN) common-distclean
@@ -321,6 +351,7 @@ check-downloads: $(PACKAGES_CHECK_DOWNLOADS)
 
 mirror: $(MIRROR_DIR) $(PACKAGES_MIRROR)
 
+cacheclean: $(TOOLS_CACHECLEAN) common-cacheclean
 clean: $(TARGETS_CLEAN) $(PACKAGES_CLEAN) $(LIBS_CLEAN) $(TOOLCHAIN_CLEAN) $(TOOLS_CLEAN) common-clean
 dirclean: $(TOOLCHAIN_DIRCLEAN) $(TOOLS_DISTCLEAN) common-dirclean
 distclean: $(TOOLCHAIN_DISTCLEAN) $(TOOLS_DISTCLEAN) common-distclean
@@ -332,6 +363,10 @@ distclean: $(TOOLCHAIN_DISTCLEAN) $(TOOLS_DISTCLEAN) common-distclean
 	$(TOOLCHAIN) $(TOOLCHAIN_CLEAN) $(TOOLCHAIN_DIRCLEAN) $(TOOLCHAIN_DISTCLEAN) $(TOOLCHAIN_SOURCE)
 
 endif # FREETZ_HAVE_DOT_CONFIG!=y
+
+#wrapper: $TOOL-host -> $TOOL-host-precompiled
+$(filter-out $(TOOLS_BUILD_LOCAL),$(TOOLS)): % : $(if $(FREETZ_HOSTTOOLS_DOWNLOAD),tools-host,%-precompiled)
+$(filter $(TOOLS_BUILD_LOCAL),$(TOOLS)): % : %-precompiled
 
 tools: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_CONDITIONAL),$(TOOLS))
 tools-dirclean: $(TOOLS_DIRCLEAN)
@@ -403,6 +438,9 @@ listnewconfig: config-cache $(CONFIG)/conf
 oldconfig olddefconfig allnoconfig allyesconfig randconfig: config-cache $(CONFIG)/conf
 	@$(CONFIG)/conf --$@ $(CONFIG_IN_CACHE) && touch .config
 
+reuseconfig: .config
+	@tools/reuseconfig
+
 config-cache: $(CONFIG_IN_CACHE)
 
 ifneq ($(findstring clean,$(MAKECMDGOALS)),clean)
@@ -453,19 +491,23 @@ $(eval $(call CONFIG_CLEAN_DEPS,config-clean-deps,kernel modules$(_comma) shared
 # Deactivate all optional stuff except for Busybox applets
 $(eval $(call CONFIG_CLEAN_DEPS,config-clean-deps-keep-busybox,kernel modules$(_comma) shared libraries and terminfos,MODULE|LIB|SHARE_terminfo))
 
-common-clean:
+common-cacheclean:
 	[ ! -x .fwmod_custom ] || ./.fwmod_custom clean
 	./fwmod_custom clean
 	$(RM) make/Config.in.generated make/external.in.generated
+	$(RM) .config.compressed .config.old  .config.*.tmp
 	$(RM) .static .dynamic .packages .exclude-release-tmp $(CONFIG_IN_CACHE)
+	$(RM) $(DL_FW_DIR)/*.detected.image $(DL_FW_DIR)/*.detected.image.url
 	$(RM) -r $(BUILD_DIR)
 	$(RM) -r $(FAKEROOT_CACHE_DIR)
+
+common-clean: common-cacheclean
 
 common-dirclean: common-clean $(if $(FREETZ_HAVE_DOT_CONFIG),kernel-dirclean)
 	$(RM) -r $(if $(FREETZ_HAVE_DOT_CONFIG),$(PACKAGES_DIR) $(SOURCE_DIR) $(TARGET_TOOLCHAIN_DIR),$(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT))
 
 common-distclean: common-dirclean
-	$(RM)    .config.compressed .config.old .config.cmd .tmpconfig.h *.log
+	$(RM)    .config.cmd .tmpconfig.h *.log
 	$(RM) -r include/config
 	$(RM) -r $(FW_IMAGES_DIR)
 	$(RM) -r $(KERNEL_TARGET_DIR)
@@ -473,7 +515,7 @@ common-distclean: common-dirclean
 	$(RM) -r $(TOOLCHAIN_BUILD_DIR)
 	$(RM) -r $(TOOLS_BUILD_DIR)
 	$(RM)    $(DL_DIR)
-	@echo "The files ./.config ./config/custom.in ./.fwmod_custom and the directories ~/.freetz-ccache/ ~/.freetz-dl/ ~/.freetz-signature/ were not removed."
+	@echo "The files ./.config ./config/custom.in ./.fwmod_custom and the directories ~/.freetz-dl/ ~/.freetz-signature/ were not removed."
 
 release: distclean
 	version="$$(cat .version)"; \
@@ -514,6 +556,7 @@ help:
 
 .PHONY: all world step $(KCONFIG_TARGETS) config-cache tools recover \
 	config-clean-deps-modules config-clean-deps-libs config-clean-deps-busybox config-clean-deps-terminfo config-clean-deps config-clean-deps-keep-busybox \
-	clean dirclean distclean common-clean common-dirclean common-distclean release \
-	$(TOOLS) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) \
+	cacheclean clean dirclean distclean common-cacheclean common-clean common-dirclean common-distclean release \
+	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) \
 	check-dot-config-uptodateness
+

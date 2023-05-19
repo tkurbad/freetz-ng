@@ -1,50 +1,70 @@
-$(call PKG_INIT_BIN, 1.5.0)
-$(PKG)_SOURCE:=lighttpd-$($(PKG)_VERSION)-r2698.tar.bz2
-$(PKG)_SOURCE_MD5:=710f57045b0e61e49a1e073613c08d95
-$(PKG)_SITE:=http://download.lighttpd.net/lighttpd/snapshots-1.5
+$(call PKG_INIT_BIN, 1.4.59)
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
+$(PKG)_SOURCE_SHA256:=fb953db273daef08edb6e202556cae8a3d07eed6081c96bd9903db957d1084d5
+$(PKG)_SITE:=http://download.lighttpd.net/lighttpd/releases-1.4.x
+### WEBSITE:=http://www.lighttpd.net/
+### CHANGES:=http://blog.lighttpd.net/
+### CVSREPO:=https://git.lighttpd.net/lighttpd/lighttpd1.4.git
 
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/src/lighttpd
 $(PKG)_BINARY_TARGET_DIR := $($(PKG)_DEST_DIR)/usr/bin/lighttpd
 
 $(PKG)_MODULES_DIR := /usr/lib/lighttpd
 $(PKG)_MODULES_ALL := \
-	accesslog access alias auth \
-	chunked cgi compress \
+	access accesslog ajp13 alias \
+	auth authn_dbi authn_file authn_gssapi authn_ldap authn_mysql authn_pam \
+	cgi cml \
 	deflate dirlisting \
-	evasive evhost expire \
-	flv_streaming \
+	evasive evhost expire extforward \
+	fastcgi flv_streaming \
+	geoip gnutls \
 	indexfile \
-	magnet mysql_vhost \
-	postgresql_vhost proxy_core proxy_backend_ajp13 proxy_backend_fastcgi proxy_backend_http proxy_backend_scgi \
+	magnet maxminddb mbedtls mysql_vhost \
+	nss \
+	openssl \
+	proxy \
 	redirect rewrite rrdtool \
-	secdownload setenv simple_vhost sql_vhost_core ssi staticfile status \
+	scgi secdownload setenv simple_vhost sockproxy ssi staticfile status \
 	trigger_b4_dl \
 	uploadprogress userdir usertrack \
-	webdav
+	vhostdb vhostdb_dbi vhostdb_ldap vhostdb_mysql vhostdb_pgsql \
+	webdav wolfssl wstunnel
 $(PKG)_MODULES := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_MODULES_ALL),MOD)
 $(PKG)_MODULES_BUILD_DIR := $($(PKG)_MODULES:%=$($(PKG)_DIR)/src/.libs/mod_%.so)
 $(PKG)_MODULES_TARGET_DIR := $($(PKG)_MODULES:%=$($(PKG)_DEST_DIR)$($(PKG)_MODULES_DIR)/mod_%.so)
 
 $(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)$($(PKG)_MODULES_DIR)/mod_%.so,$(filter-out $($(PKG)_MODULES),$($(PKG)_MODULES_ALL)))
 
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_WITH_SSL
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_MBEDTLS
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_GNUTLS
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_WITH_LUA
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_DEFLATE
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_PROPS
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_LOCKS
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 
 $(PKG)_DEPENDS_ON += pcre
 
-ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_WITH_SSL)),y)
-$(PKG)_CONFIGURE_OPTIONS += --with-openssl=yes
-$(PKG)_CONFIGURE_OPTIONS += --with-openssl-libs="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
+ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL)),y)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
 $(PKG)_DEPENDS_ON += openssl
+$(PKG)_CONFIGURE_OPTIONS += --with-openssl
+$(PKG)_CONFIGURE_OPTIONS += --with-openssl-libs="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl-includes="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include"
 endif
 
-ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_COMPRESS)),y)
+ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_MBEDTLS)),y)
+$(PKG)_DEPENDS_ON += mbedtls
+$(PKG)_CONFIGURE_OPTIONS += --with-mbedtls
+endif
+
+ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_GNUTLS)),y)
+$(PKG)_DEPENDS_ON += gnutls
+$(PKG)_CONFIGURE_OPTIONS += --with-gnutls
+endif
+
+ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_DEFLATE)),y)
 $(PKG)_DEPENDS_ON += zlib
 $(PKG)_CONFIGURE_OPTIONS += --with-zlib
 else
@@ -68,12 +88,16 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),,--disable-ipv6)
 $(PKG)_CONFIGURE_OPTIONS += --without-attr
+$(PKG)_CONFIGURE_OPTIONS += --without-brotli
 $(PKG)_CONFIGURE_OPTIONS += --without-bzip2
 $(PKG)_CONFIGURE_OPTIONS += --without-fam
 $(PKG)_CONFIGURE_OPTIONS += --without-gdbm
+$(PKG)_CONFIGURE_OPTIONS += --without-geoip
+$(PKG)_CONFIGURE_OPTIONS += --without-krb5
 $(PKG)_CONFIGURE_OPTIONS += --without-ldap
 $(PKG)_CONFIGURE_OPTIONS += --without-libev
-$(PKG)_CONFIGURE_OPTIONS += --without-memcache
+$(PKG)_CONFIGURE_OPTIONS += --without-maxminddb
+$(PKG)_CONFIGURE_OPTIONS += --without-memcached
 $(PKG)_CONFIGURE_OPTIONS += --with-pcre="yes"
 $(PKG)_CONFIGURE_OPTIONS += --without-valgrind
 $(PKG)_CONFIGURE_OPTIONS += --without-mysql

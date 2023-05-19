@@ -15,8 +15,9 @@ check "$DNSMASQ_WRAPPER" yes:wrapper
 check "$DNSMASQ_MULTID_RESTART" yes:multid_restart
 check "$DNSMASQ_LOG_QUERIES" yes:log_queries
 check "$DNSMASQ_DNSSEC" yes:dnssec
+check "$DNSMASQ_DHCPHOSTFILE" yes:dhcphostfile
 
-sec_begin '$(lang de:"Starttyp" en:"Start type")'
+sec_begin "$(lang de:"Starttyp" en:"Start type")"
 cgi_print_radiogroup_service_starttype "enabled" "$DNSMASQ_ENABLED" "" "" 0
 
 cat << EOF
@@ -35,7 +36,7 @@ EOF
 fi
 sec_end
 
-sec_begin '$(lang de:"Anzeigen" en:"Show")'
+sec_begin "$(lang de:"Anzeigen" en:"Show")"
 cat << EOF
 <ul>
 <li><a href="$(href file mod hosts)">$(lang de:"'hosts'-Datei bearbeiten" en:"edit 'hosts' file")</a></li>
@@ -43,7 +44,7 @@ cat << EOF
 EOF
 sec_end
 
-sec_begin '$(lang de:"Allgemeine Optionen" en:"Global options")'
+sec_begin "$(lang de:"Allgemeine Optionen" en:"Global options")"
 cat << EOF
 <p>$(lang de:"Maximale Anzahl gepufferter Zeilen beim Loggen" en:"Maximum count of buffered lines on logging") (0-100): <input type="text" name="log_async" size="5" maxlength="3" value="$(html "$DNSMASQ_LOG_ASYNC")"></p>
 <h2>$(lang de:"Zus&auml;tzliche Kommandozeilen-Optionen (f&uuml;r Experten)" en:"Additional command-line options (for experts)"):</h2>
@@ -51,7 +52,7 @@ cat << EOF
 EOF
 sec_end
 
-sec_begin '$(lang de:"DNS Server" en:"DNS server")'
+sec_begin "$(lang de:"DNS Server" en:"DNS server")"
 cat << EOF
 <h2>$(lang de:"Der DNS Server ist gebunden an" en:"The DNS server is listening on"):</h2>
 <p>Port: <input type="text" name="dns_port" size="5" maxlength="5" value="$(html "$DNSMASQ_DNS_PORT")"></p>
@@ -96,7 +97,7 @@ cat << EOF
 EOF
 sec_end
 
-sec_begin '$(lang de:"DHCP Server" en:"DHCP server")'
+sec_begin "$(lang de:"DHCP Server" en:"DHCP server")"
 cat << EOF
 <p>
 <input id="dhcp1" type="radio" name="dhcp" value="yes"$dhcp_yes_chk><label for="dhcp1"> $(lang de:"Aktiviert" en:"Enabled")</label>
@@ -110,13 +111,18 @@ cat << EOF
 <span style="font-size:10px;">($(lang de:"nur Eintr&auml;ge, die eine g&uuml;ltige IP und MAC aufweisen" en:"items with valid IP and MAC addresses only"))</span>
 </p>
 <p>
+<input type="hidden" name="dhcphostfile" value="no">
+<input id="dhcphostfile1" type="checkbox" name="dhcphostfile" value="yes"$dhcphostfile_chk><label for="dhcphostfile1"> $(lang de:"Lese DHCP host Informationen aus einer Datei." en:"Read DHCP host information from the specified file.")</label><br>
+<span style="font-size:10px;">($(lang de:"Bitte nach dem Aktivieren Webseite <a href=''>neuladen.</a>" en:"Please <a href=''>reload</a> webpage after activation."))</span>
+</p>
+<p>
 <input type="hidden" name="wpadfix" value="no">
-<input id="wpad1" type="checkbox" name="wpadfix" value="ves"$wpadfix_chk><label for="wpad1"> $(lang de:"Ignoriere DHCP-Clients die sich als <i>wpad</i> ausgeben" en:"Ignore DHCP clients naming itself <i>wpad</i>") (Cert <a href=https://www.kb.cert.org/vuls/id/598349 target=_blank>VU#598349</a>).</label><br>
+<input id="wpad1" type="checkbox" name="wpadfix" value="yes"$wpadfix_chk><label for="wpad1"> $(lang de:"Ignoriere DHCP-Clients die sich als <i>wpad</i> ausgeben" en:"Ignore DHCP clients naming itself <i>wpad</i>") (Cert <a href=https://www.kb.cert.org/vuls/id/598349 target=_blank>VU#598349</a>).</label><br>
 </p>
 EOF
 sec_end
 
-sec_begin '$(lang de:"DHCP Boot" en:"DHCP Boot")'
+sec_begin "$(lang de:"DHCP Boot" en:"DHCP Boot")"
 cat <<EOF
 <p>
 <input id="dhcpboot1" type="radio" name="dhcp_boot" value="yes"$dhcp_boot_yes_chk><label for="dhcpboot1"> $(lang de:"Aktiviert" en:"Enabled")</label>
@@ -126,7 +132,7 @@ cat <<EOF
 EOF
 sec_end
 
-sec_begin '$(lang de:"TFTP Server" en:"TFTP server")'
+sec_begin "$(lang de:"TFTP Server" en:"TFTP server")"
 cat <<EOF
 <p>
 <input id="tftp1" type="radio" name="tftp" value="yes"$tftp_yes_chk><label for="tftp1"> $(lang de:"Aktiviert" en:"Enabled")</label>
@@ -135,3 +141,4 @@ cat <<EOF
 <p>$(lang de:"tftp root" en:"tftp root"): <input type="text" name="tftp_tftproot" size="40" maxlength="255" value="$(html "$DNSMASQ_TFTP_TFTPROOT")"></p>
 EOF
 sec_end
+

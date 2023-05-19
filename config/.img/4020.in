@@ -9,6 +9,9 @@ config FREETZ_AVM_HAS_BRANDING_avm
 config FREETZ_AVM_HAS_CHRONYD
 	def_bool y
 
+config FREETZ_AVM_HAS_DDNSD
+	def_bool y
+
 config FREETZ_AVM_HAS_DSLD
 	def_bool y
 
@@ -37,6 +40,9 @@ config FREETZ_AVM_HAS_LANGUAGE_it
 	def_bool y
 
 config FREETZ_AVM_HAS_LANGUAGE_pl
+	def_bool y
+
+config FREETZ_AVM_HAS_LEDPAGE
 	def_bool y
 
 config FREETZ_AVM_HAS_MEDIASRV
@@ -113,6 +119,18 @@ config FREETZ_AVM_PROP_ARCH_BE
 
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
+
+config FREETZ_AVM_PROP_HWREV
+	string
+	default "219"
+
+config FREETZ_AVM_PROP_MAJOR
+	string
+	default "147"
+
+config FREETZ_AVM_PROP_NAME
+	string
+	default "FRITZ!Box 4020"
 
 config FREETZ_AVM_PROP_NMI_V3
 	def_bool y
