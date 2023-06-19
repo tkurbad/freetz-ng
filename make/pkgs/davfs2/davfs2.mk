@@ -1,9 +1,13 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON),1.5.2,1.6.1))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON),1.5.2,1.7.0))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=be34a19ab57a6ea77ecb82083e9e4c1882e12b2de64257de567ad5ee7a17b358
-$(PKG)_HASH_CURRENT:=ce3eb948ece582a51c934ccb0cc70e659839172717caff173f69a5e2af90c5c0
+$(PKG)_HASH_CURRENT:=251db75a27380cca1330b1b971700c5e5dcc0c90e5a47622285f0140edfe3a2f
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://download.savannah.gnu.org/releases/davfs2
+### WEBSITE:=https://savannah.nongnu.org/projects/davfs2
+### MANPAGE:=https://linux.die.net/man/5/davfs2.conf
+### CHANGES:=https://git.savannah.nongnu.org/cgit/davfs2.git/refs/
+### CVSREPO:=https://git.savannah.nongnu.org/cgit/davfs2.git/
 
 $(PKG)_STARTLEVEL=50
 
@@ -31,6 +35,11 @@ endif
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_DAVFS2_WITH_ZLIB
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON
 
+ifneq ($(FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON),y)
+$(PKG)_CONFIGURE_ENV += ac_cv_header_libintl_h=no
+endif
+
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -48,6 +57,7 @@ $($(PKG)_UMOUNT_TARGET_BINARY): $($(PKG)_UMOUNT_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_MOUNT_TARGET_BINARY) $($(PKG)_UMOUNT_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(DAVFS2_DIR) clean

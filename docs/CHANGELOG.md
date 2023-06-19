@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23050](#ng23050)
   * [ng23030](#ng23030)
   * [ng22100](#ng22100)
   * [ng22070](#ng22070)
@@ -44,16 +45,60 @@ Latest changes
 ### devel
 
  - Build system:
-   * Ccache 4.8
+   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.40.x
+   * Ccache 4.8.2
+   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/9.3.0/13.1.0
+
+ - Host tools:
+   * python 3.11.4
+
+ - AVM sources:
+   * 1200 7.50 - 4.4.271
+   * 2400 7.27 - 4.4.60
+   * 2400 7.50 - 4.4.271
+   * 6591 7.56 - 4.9.279 (delta 6591 7.50)
+   * 6690 7.29 - 4.9.250
+   * 6690 7.56 - 4.9.279
+   * 7530 7.56 - 4.4.271
+   * 7590 7.56 - 4.9.325
+
+ - Packages:
+   * ACME.sh 3.0.6 (letsencrypt)
+   * BIND 9.11.37/9.16.41
+   * CA-bundle 2023-05-30
+   * Curl 8.1.2
+   * Git 2.41.0
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1u/3.0.9
+   * OpenVPN 2.4.12/2.5.9/2.6.5
+   * SQLite 3.42.0
+   * UnRAR 6.1.7/6.2.8
+   * vnstat 1.18
+   * Wget GNU 1.21.4
+   * xsltproc 1.1.38
+
+ - Libraries:
+   * libnettle 3.9.1
+   * libssh2 1.11.0
+   * libuv 1.44.2/1.45.0
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23050
+
+ - Build system:
+   * Ccache 4.8.1
    * uClibc-ng 1.0.43
 
  - Host tools:
    * busybox 1.36.1
+   * cmake 3.26.4
    * kconfig 6.3
-   * precompiled host-tools 2023-05-19
+   * meson 1.1.1
+   * precompiled host-tools 2023-05-28
    * precompiled toolchains r21480
    * python 3.11.3
-   * xz 5.4.2
+   * xz 5.4.3
 
  - AVM sources:
    * 5530 7.50 - 4.9.276
@@ -65,28 +110,32 @@ Latest changes
  - Packages:
    * BusyBox 1.36.1
    * CCID 1.5.2
-   * Curl 8.1.0
+   * Curl 8.1.1
+   * davfs2 1.5.2/1.7.0
    * HAProxy 2.6.10
    * iPerf3 3.3/3.13
-   * Lighttpd 1.4.70
+   * Lighttpd 1.4.71
    * OpenVPN 2.4.12/2.5.9/2.6.4
    * strace 4.9/5.0/6.3
    * tcpdump 4.1.1/4.99.4
-   * XZ Utils 5.4.2
+   * XZ Utils 5.4.3
 
  - Libraries:
    * FreeType 2.13.0
-   * glib2 2.32.4/2.76.1
+   * glib2 2.32.4/2.76.2
    * harfbuzz 7.3.0
-   * libcap 2.49/2.68
+   * libcap 2.49/2.69
+   * libgcrypt 1.10.2
+   * libgpg-error 1.47
+   * libnettle 3.9
    * libpcap 1.1.1/1.10.4
    * libuv 1.45.0
-   * libxml2 2.10.4
+   * libxml2 2.11.4
    * pango 1.50.14
    * SQLite 3.41.2
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23050/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23030
 

@@ -25,7 +25,6 @@ TOOLS_TARXZBUNDLE:=tools-host
 # tools not built by default
 TOOLS_CONDITIONAL:=$(TOOLS_TARXZBUNDLE)
 TOOLS_CONDITIONAL+=avm-rle-host
-TOOLS_CONDITIONAL+=cmake-host
 TOOLS_CONDITIONAL+=fastjar-host
 TOOLS_CONDITIONAL+=libdtc-host
 TOOLS_CONDITIONAL+=gmp-host
@@ -40,6 +39,7 @@ TOOLS_CONDITIONAL+=python2-host
 TOOLS_CONDITIONAL+=python3-host
 TOOLS_CONDITIONAL+=scons-host
 TOOLS_CONDITIONAL+=xdelta-host
+TOOLS_CONDITIONAL+=$(if $(FREETZ_TOOLCHAIN_CCACHE),,cmake-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_STRIP_LIBRARIES),,mklibs-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_SHARE_terminfo),,ncurses-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_ROOTEMU_FAKEROOT),,fakeroot-host)
@@ -62,9 +62,6 @@ TOOLS_BUILD_LOCAL+=kconfig-host
 TOOLS_BUILD_LOCAL+=mpc-host
 TOOLS_BUILD_LOCAL+=mpfr-host
 
-# to much libs and no $CMAKE_ROOT
-TOOLS_BUILD_LOCAL+=cmake-host
-
 # until next host-tools update
 #TOOLS_BUILD_LOCAL+=...
 
@@ -73,7 +70,7 @@ TOOLS_SUBPYTHON3=cmd() { $(PYTHON3) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_
 TOOLS_SUBCMAKE=cmd() { $(CMAKE) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
 TOOLS_SUBNINJA=cmd() { $(NINJA) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
 TOOLS_SUBMAKE=cmd() { $(MAKE) $(QUIET) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
-CONFIGURE=conf_cmd() { ./configure $(QUIET) "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
+CONFIGURE=conf_cmd() { ./configure "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
 AUTORECONF=autoreconf -f -i $(SILENT) || { $(call ERROR,1,autoreconf failed) };
 
 # If CONFIG_SITE is exported, it is used from the build host for tools

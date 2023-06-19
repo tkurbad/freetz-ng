@@ -1,5 +1,42 @@
 # NEWS
 
+ * __[2023-06-09](#2023-06-09)__<a id='2023-06-09'></a><br>
+   Diese Woche hat AVM für die ersten Geräte Fritzos 7.56 freigegeben, nachdem aufgefallen ist dass lediglich 1<br>
+   der 2 neuen Features nutzbar war. Die neuen 7.56 Sourcecodekonglomerate gibt es auch schon und für 7590 ac<br>
+   und 7590 ax welche die gloreiche Tradition des 7.55 Konglomerates fortsetzen und wiederum eine falsche<br>
+   Kernelkonfiguration für eine alte Kernelversion enthalten. Die 3 Verzeichnise der Kernelsourcen sind zu 100%<br>
+   identisch und nach wie vor unbrauchbar.<br>
+   Immerhin gibt es bei der 7530 keine unauflösbare Symbole mehr.<br>
+
+ * __[2023-06-04](#2023-06-04)__<a id='2023-06-04'></a><br>
+   Diese Woche hat AVM für die ersten beiden Geräte Fritzos 7.55 freigegeben und nur je 1 Tag später die<br>
+   dazugehörigen Sourcecodekonglomerate veröffentlicht. Die schier unglaubliche Geschwindigkeit die AVM<br>
+   hier erreichte hat natürlich einen hohen Preis, beide Konglomerate gehören qualitativ zu den schlechtesten.<br>
+   "Normalerweise" passt nur die Kernelkonfiguration nicht zum Kernelsourcecode, hier allerdings:<br>
+    - `source-files-FRITZ.Box_7590-grx5-07.55.tar.gz`: Mit Fritzos 7.55 wird eine neuere Kernelversion<br>
+      als in 7.50 verwendet, im Konglomerat ist aber noch die Konfiguration für die alte Version enthalten.<br>
+    - `source-files-FRITZ.Box_7530-cortexa9-07.55.tar.gz`: Immerhin passt die Kernelversion, vermutlich<br>
+      weil sich diese nicht geändert hat. Allerdings gibt es nicht auflösbare Symbole, die Quellen passen also<br>
+      nicht zur Firmware. Die alten 7.50 Quellen passen mutmasslich besser.<br>
+   
+   Oder kurz: Unbrauchbarer Mist.<br>
+   Wenn es genügend Beschwerden an fritzbox_info@avm.de gibt, wird es vielleicht ein Updategeben. Allerdings<br>
+   nur wenn es bis dahin keine "Labor" gibt, bei diesen missachtet AVM bis auf wenige Ausnahmen die GPL.<br>
+
+ * __[2023-06-01](#2023-06-01)__<a id='2023-06-01'></a><br>
+   Für neuere Fritzos Versionen bei denen keine Libraries mehr ersetzt werden, wird nun ausschliesslich gcc 13<br>
+   verwendet. Auf meinem 1 Testgerät mit den Packages und Libraries die ich verwende gab es hierbei keine<br>
+   Probleme. Es ist aber zu erwarten dass das eine oder andere noch angepasst werden muss. Optimalerweise<br>
+   macht dies jeder für die eigenen Software selbst. Ansonste ist der letzte [Tag](https://github.com/Freetz-NG/freetz-ng/tags) anzuraten.<br>
+   Siehe [0973c182](https://github.com/Freetz-NG/freetz-ng/commit/0973c1821106adb3d182513851fdb2b74fb05c7f)<br>
+
+ * __[2023-05-28](#2023-05-28)__<a id='2023-05-28'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23050` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng23050](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng23050)<br>
+
  * __[2023-03-19](#2023-03-19)__<a id='2023-03-19'></a><br>
    Es gibt ab sofort keine Issues-Sektion mehr, die Diskussionen inklusive beliebter Wishlist bleiben geöffnet.<br>
    Offenbar besteht der Anspruch dass irgend jemand Probleme für andere behebt sobald ein Issue erstellt wurde.<br>

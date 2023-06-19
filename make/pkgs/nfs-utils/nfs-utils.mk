@@ -2,6 +2,10 @@ $(call PKG_INIT_BIN,1.3.4)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH:=c529c82a82320daae811f3d3a143f83d2714d7e7a43beadd42fcd6022c17d590
 $(PKG)_SITE:=@SF/nfs
+### WEBSITE:=https://sourceforge.net/projects/nfs/
+### MANPAGE:=https://www.linux-nfs.org/
+### CHANGES:=https://sourceforge.net/projects/nfs/files/nfs-utils/
+### CVSREPO:=http://git.linux-nfs.org/?p=steved/nfs-utils.git
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(or $(FREETZ_TARGET_UCLIBC_0_9_28),$(FREETZ_TARGET_UCLIBC_0_9_29)),uclibc-0.9.28)
 
@@ -33,9 +37,12 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-mount
 $(PKG)_CONFIGURE_OPTIONS += --disable-gss
 $(PKG)_CONFIGURE_OPTIONS += --disable-uuid
 
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
 ifneq ($(strip $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc)),y)
 $(PKG)_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/tirpc
 endif
+$(PKG)_CFLAGS += -fcommon
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -43,13 +50,14 @@ $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(NFS_UTILS_DIR) \
-		CFLAGS="$(TARGET_CFLAGS) $(NFS_UTILS_CFLAGS)"
+		CFLAGS="$(NFS_UTILS_CFLAGS)"
 
 $(foreach binary,$($(PKG)_BINARIES_BUILD_DIR),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/sbin)))
 
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(NFS_UTILS_DIR) clean

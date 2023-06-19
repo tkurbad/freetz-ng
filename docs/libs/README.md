@@ -52,7 +52,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[gettext (libintl.so) 0.21.1](gettext.md)<a id='gettext'></a>**<br>
     GNU Internationalization library
 
-  * **[GLib2 libglib (libglib-2.0.so) 2.32.4/2.76.1](glib2.md)<a id='glib2'></a>**<br>
+  * **[GLib2 libglib (libglib-2.0.so) 2.32.4/2.76.2](glib2.md)<a id='glib2'></a>**<br>
     GLib is a library containing many useful C routines for things such as trees, hashes, and lists.
 
   * **[gmp: GNU MP Bignum Library (libgmp.so) 6.1.2](gmp.md)<a id='gmp'></a>**<br>
@@ -98,7 +98,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libavmhmac (libavmhmac.so) - EXPERIMENTAL 0.2](libavmhmac.md)<a id='libavmhmac'></a>**<br>
     Replaces AVM's libavmhmac. Our libavmhmac only forwards functions to openssl's libcrypto where AVM wrote their own implementations. We have no clue why they did this.
 
-  * **[libcap (libcap.so) 2.49/2.68](libcap.md)<a id='libcap'></a>**<br>
+  * **[libcap (libcap.so) 2.49/2.69](libcap.md)<a id='libcap'></a>**<br>
     A library for getting and setting POSIX.1e (formerly POSIX 6) draft 15 capabilities.
 
   * **[libcapi: CAPI 2.0 (libcapi20.so) avm-7390.05.50](libcapi.md)<a id='libcapi'></a>**<br>
@@ -143,13 +143,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libgcc_s (libgcc_s.so) 1](libgcc_s.md)<a id='libgcc-s'></a>**<br>
     GCC low-level runtime library GCC provides a low-level runtime library, `libgcc.a' or `libgcc_s.so.1' on some platforms. GCC generates calls to routines in this library automatically, whenever it needs to perform some operation that is too complicated to emit inline code for. Most of the routines in libgcc handle arithmetic operations that the target processor cannot perform directly. This includes integer multiply and divide on some machines, and all floating-point operations on other machines. libgcc also includes routines for exception handling, and a handful of miscellaneous operations.
 
-  * **[libgcrypt: GnuPG crypto library (libgcrypt.so) 1.10.1](libgcrypt.md)<a id='libgcrypt'></a>**<br>
+  * **[libgcrypt: GnuPG crypto library (libgcrypt.so) 1.10.2](libgcrypt.md)<a id='libgcrypt'></a>**<br>
     Libgcrypt is a general-purpose cryptographic library based on the code from GnuPG. It provides functions for all cryptographic building blocks: symmetric ciphers (AES, DES, Blowfish, CAST5, Twofish, and Arcfour), hash algorithms (MD4, MD5, RIPE-MD160, SHA-1, and TIGER-192), MACs (HMAC for all hash algorithms), public key algorithms (RSA, ElGamal, and DSA), large integer functions, random numbers, and a lot of supporting functions.
 
   * **[libgd (libgd.so) 2.3.3](libgd.md)<a id='libgd'></a>**<br>
     GD is an open source code library for the dynamic creation of images by programmers. GD creates PNG, JPEG and GIF images, among other formats. GD is commonly used to generate charts, graphics, thumbnails, and most anything else, on the fly.
 
-  * **[libgpg-error: GnuPG error library (libgpg-error.so) 1.46](libgpg-error.md)<a id='libgpg-error'></a>**<br>
+  * **[libgpg-error: GnuPG error library (libgpg-error.so) 1.47](libgpg-error.md)<a id='libgpg-error'></a>**<br>
     Libgpg-error is a small library that defines common error values for all GnuPG components. Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt, Libksba, DirMngr, Pinentry, SmartCard Daemon and possibly more in the future.
 
   * **[libgsm (libgsm.so) 1.0.13](libgsm.md)<a id='libgsm'></a>**<br>
@@ -197,10 +197,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libpng: PNG library (libpng.so) 1.6.39](libpng.md)<a id='libpng'></a>**<br>
     libpng is the official PNG reference library. It supports almost all PNG features, is extensible, and has been extensively tested for over 12 years. The home site for development versions (i.e., may be buggy or subject to change or include experimental features) is http://libpng.sourceforge.net/, and the place to go for questions about the library is the png-mng-implement mailing list.
 
-  * **[libssh2 (libssh2.so) 1.10.0](libssh2.md)<a id='libssh2'></a>**<br>
+  * **[libssh2 (libssh2.so) 1.11.0](libssh2.md)<a id='libssh2'></a>**<br>
     libssh2 is a client-side C library implementing the SSH2 protocol.
 
-  * **[libstdcxx: libstdc++ (libstdc++-6.0.x.so) 6.0.16/6.0.17/6.0.19/6.0.20/6.0.21/6.0.25/6.0.28](libstdcxx.md)<a id='libstdcxx'></a>**<br>
+  * **[libstdcxx: libstdc++ (libstdc++-6.0.x.so) 6.0.16/6.0.17/6.0.19/6.0.20/6.0.21/6.0.25/6.0.28/6.0.31](libstdcxx.md)<a id='libstdcxx'></a>**<br>
     GNU implementation of the Standard C++ Library.
 
   * **[libsynce (libsynce.so) 0.10.0](libsynce.md)<a id='libsynce'></a>**<br>
@@ -221,13 +221,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libusb1: libusb-1.0 (libusb-1.0.so) 1.0.23/1.0.26](libusb1.md)<a id='libusb1'></a>**<br>
     A library for accessing Linux USB devices (current API).
 
-  * **[libuv (libuv.so) 1.45.0](libuv.md)<a id='libuv'></a>**<br>
+  * **[libuv (libuv.so) 1.44.2/1.45.0](libuv.md)<a id='libuv'></a>**<br>
     libuv is a async IO library for various programs
 
   * **[libvorbis (libvorbis.so) 1.3.5](libvorbis.md)<a id='libvorbis'></a>**<br>
     Vorbis is the name of a specific audio compression scheme that's designed to be contained in Ogg. libvorbis is a BSD-style license software implementation of the Vorbis specification by the Xiph.Org Foundation.
 
-  * **[libxml2 (libxml2.so) 2.10.4](libxml2.md)<a id='libxml2'></a>**<br>
+  * **[libxml2 (libxml2.so) 2.11.4](libxml2.md)<a id='libxml2'></a>**<br>
     XML toolkit from the GNOME project
 
   * **[linux-atm (libatm.so) 2.5.2](linux-atm.md)<a id='linux-atm'></a>**<br>
@@ -263,7 +263,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[neon: libneon (libneon.so) 0.30.2/0.32.4](neon.md)<a id='neon'></a>**<br>
     neon is an HTTP and WebDAV client library, with a C language API.
 
-  * **[nettle: libnettle (libnettle.so) 3.8.1](nettle.md)<a id='nettle'></a>**<br>
+  * **[nettle: libnettle (libnettle.so) 3.9.1](nettle.md)<a id='nettle'></a>**<br>
     A low level cryptographic library (symmetric and one-way cryptos)
 
 ### O
