@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 5.1.2)
+$(call PKG_INIT_BIN, 5.1.3)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
+$(PKG)_HASH:=1b113593ff907293be7aed95acdda5e785dd73616d7d4ec90a0f6adbc5a0312e
 $(PKG)_SITE:=https://www.ffmpeg.org/releases
 ### WEBSITE:=https://www.ffmpeg.org/
 ### MANPAGE:=https://www.ffmpeg.org/documentation.html
@@ -54,6 +54,14 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-mips32r2
 $(PKG)_CONFIGURE_OPTIONS += --disable-mipsdsp
 $(PKG)_CONFIGURE_OPTIONS += --disable-mipsdspr2
 $(PKG)_CONFIGURE_OPTIONS += --disable-mipsfpu
+
+ifeq ($(strip $(FREETZ_TARGET_ARCH_MIPS)),y)
+#$(PKG)_CONFIGURE_OPTIONS += --disable-asm
+$(PKG)_CONFIGURE_OPTIONS += --disable-inline-asm
+# {standard input}:31: Error: opcode not supported on this processor: mips32r2 (mips32r2) `dmult $2,$3'
+# {standard input}:33: Error: opcode not supported on this processor: mips32r2 (mips32r2) `dsrl $2,$2,32'
+endif
+
 $(PKG)_CONFIGURE_OPTIONS += --target-os=linux
 $(PKG)_CONFIGURE_OPTIONS += --prefix="/usr"
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared

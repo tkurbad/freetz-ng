@@ -56,10 +56,27 @@ if [ "$MOD_MOUNTED_TFFS" == "yes" ]; then
 	percent=$(grep '^fill=' /proc/tffs)
 	percent=${percent#fill=}
 	let tffs_size="0x$(awk '/tffs/ { print $2; exit }' /proc/mtd)/1024"
+	if [ -z "$tffs_size" ]; then  # Puma7
+		mmcp="$(sed -rn 's!.*block2mtd: /dev/!!p' /proc/mtd)"
+		[ -n "$mmcp" ] && tffs_size="$(grep "${mmcp//\"/}$" /proc/partitions | awk '{ print $3; exit }')"
+	fi
 	let tffs_used="tffs_size*percent/100"
 	let tffs_free="tffs_size - tffs_used"
 	echo "<div>$tffs_used kB $(lang de:"von" en:"of") $tffs_size kB $(lang de:"belegt" en:"used"), $tffs_free kB $(lang de:"frei" en:"free")</div>"
 	stat_bar $percent
+	sec_end
+fi
+
+# NVRAM
+if [ -d "/nvram" ] && [ "$MOD_MOUNTED_NVRAM" == "yes" ]; then
+	sec_begin "$(lang de:"Config-Speicher" en:"Config memory") (NVRAM)"
+	nvram_df="$(df /nvram 2>/dev/null | tail -n1)"
+	nvram_size="$(echo "$nvram_df" | awk '{ print $2; exit }')"
+	nvram_used="$(echo "$nvram_df" | awk '{ print $3; exit }')"
+	nvram_free="$(echo "$nvram_df" | awk '{ print $4; exit }')"
+	nvram_perc="$(echo "$nvram_df" | awk '{ print $5; exit }')"
+	echo "<div>$nvram_used kB $(lang de:"von" en:"of") $nvram_size kB $(lang de:"belegt" en:"used"), $nvram_free kB $(lang de:"frei" en:"free")</div>"
+	stat_bar ${nvram_perc/%}
 	sec_end
 fi
 

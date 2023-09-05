@@ -206,9 +206,23 @@ endif
 all: step
 world: check-dot-config-uptodateness clear-echo-temporary $(DL_DIR) $(BUILD_DIR) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT) $(TOOLCHAIN_BUILD_DIR)
 
+ALL_PACKAGES_AND_LIBRARIES:=
+NON_LOCALSOURCE_DOWNLOADABLE:=
 KCONFIG_TARGETS:=config menuconfig menuconfig-single nconfig nconfig-single gconfig xconfig oldconfig olddefconfig allnoconfig allyesconfig randconfig listnewconfig config-compress
 
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
+# check linux for WSL
+ifeq ($(shell uname -r | grep -q -i 'Microsoft' && echo y),y)
+ifeq ($(FREETZ_TOOLCHAIN_CCACHE),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_TOOLCHAIN_CCACHE=.*/\# FREETZ_TOOLCHAIN_CCACHE is not set/' -i $(TOPDIR)/.config)
+$(info You are running WSL, ccache automatically disabled.)
+endif
+endif
+# check cpu for aarch64
+ifeq ($(shell uname -m),aarch64)
+DLCHG:=y
+$(info You have an aarch64 CPU+OS and so you can not compile and run 32-bit code, please use another one.)
+endif
 # check cpu for x86_64
 ifneq ($(shell uname -m),x86_64)
 ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
@@ -303,6 +317,7 @@ TOOLS_DISTCLEAN:=$(patsubst %,%-distclean,$(TOOLS))
 TOOLS_SOURCE:=$(patsubst %,%-source,$(TOOLS))
 TOOLS_PRECOMPILED:=$(patsubst %,%-precompiled,$(TOOLS))
 TOOLS_RECOMPILE:=$(patsubst %,%-recompile,$(TOOLS))
+TOOLS_FIXHARDCODED:=$(patsubst %,%-fixhardcoded,$(TOOLS))
 TOOLS_AUTOFIX:=$(patsubst %,%-autofix,$(TOOLS))
 
 $(DL_DIR):
@@ -344,14 +359,13 @@ include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/Makefile.in)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/Makefile.in)
 include $(call sorted-wildcard,$(MAKE_DIR)/kernel/Makefile.in)
 
-ALL_PACKAGES:=
-NON_LOCALSOURCE_PACKAGES:=
 include $(call sorted-wildcard,$(MAKE_DIR)/libs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/busybox.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/kernel/kernel.mk)
-PACKAGES_CHECK_DOWNLOADS:=$(patsubst %,%-check-download,$(NON_LOCALSOURCE_PACKAGES))
-PACKAGES_MIRROR:=$(patsubst %,%-download-mirror,$(NON_LOCALSOURCE_PACKAGES))
+
+DOWNLOADABLES_CHECK_DOWNLOADS:=$(patsubst %,%-check-download,$(NON_LOCALSOURCE_DOWNLOADABLE))
+DOWNLOADABLES_MIRROR:=$(patsubst %,%-download-mirror,$(NON_LOCALSOURCE_DOWNLOADABLE))
 
 TARGETS_CLEAN:=$(patsubst %,%-clean,$(TARGETS))
 TARGETS_DIRCLEAN:=$(patsubst %,%-dirclean,$(TARGETS))
@@ -437,9 +451,9 @@ sources: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(PACKAGES_DIR_ROOT) $(DL
 precompiled: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) toolchain-depend \
 	$(LIBS_PRECOMPILED) $(TARGETS_PRECOMPILED) $(PACKAGES_PRECOMPILED)
 
-check-downloads: $(PACKAGES_CHECK_DOWNLOADS)
+check-downloads: $(DOWNLOADABLES_CHECK_DOWNLOADS)
 
-mirror: $(MIRROR_DIR) $(PACKAGES_MIRROR)
+mirror: $(MIRROR_DIR) $(DOWNLOADABLES_MIRROR)
 
 cacheclean: $(TOOLS_CACHECLEAN) common-cacheclean
 clean: $(TARGETS_CLEAN) $(PACKAGES_CLEAN) $(LIBS_CLEAN) $(TOOLCHAIN_CLEAN) $(TOOLS_CLEAN) common-clean
@@ -461,6 +475,8 @@ $(filter $(TOOLS_BUILD_LOCAL),$(TOOLS)): % : %-precompiled
 $(patsubst %,%-autofix,$(TOOLS)): %-autofix : %-dirclean
 	$(MAKE) AUTO_FIX_PATCHES=y $*-unpacked
 $(patsubst %,%-recompile,$(TOOLS)): %-recompile : %-dirclean %-precompiled
+
+$(patsubst %,%-fixhardcoded,$(TOOLS)): %-fixhardcoded : 
 
 tools: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_CONDITIONAL),$(TOOLS))
 tools-all: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_TARXZBUNDLE),$(TOOLS))
@@ -673,7 +689,7 @@ help:
 .PHONY: all world step $(KCONFIG_TARGETS) config-cache config-cache-clean config-cache-refresh tools recover \
 	config-clean-deps-modules config-clean-deps-libs config-clean-deps-busybox config-clean-deps-terminfo config-clean-deps config-clean-deps-keep-busybox \
 	cacheclean clean dirclean distclean common-cacheclean common-clean common-dirclean common-distclean release \
-	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) $(TOOLS_RECOMPILE) $(TOOLS_AUTOFIX) \
+	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) $(TOOLS_RECOMPILE) $(TOOLS_FIXHARDCODED) $(TOOLS_AUTOFIX) \
 	clear-echo-temporary check-dot-config-uptodateness
 
 endif # Envira

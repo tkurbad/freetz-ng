@@ -1,8 +1,13 @@
-$(call TOOLS_INIT, v6.3)
+$(call TOOLS_INIT, v6.5)
 ## patches/100-main_makefile.patch contains also the version
 $(PKG)_SOURCE:=kconfig-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=9849956c60f8c71aae73d06767b4a0ad515437ebc7ad79529400a9afb63d4e3b
+$(PKG)_HASH:=768d9b87cc688cb6f93e29b8b39d13c76e843f99803fe045e2449278e12de5f8
 $(PKG)_SITE:=git_archive@git://repo.or.cz/linux.git,scripts/basic,scripts/kconfig,scripts/Kbuild.include,scripts/Makefile.compiler,scripts/Makefile.build,scripts/Makefile.host,scripts/Makefile.lib,Documentation/kbuild/kconfig-language.rst,Documentation/kbuild/kconfig-macro-language.rst,Documentation/kbuild/kconfig.rst
+
+$(PKG)_DEPENDS_ON:=
+
+$(PKG)_BUILD_PREREQ += bison flex
+$(PKG)_BUILD_PREREQ_HINT := You have to install the bison and flex packages
 
 $(PKG)_TARGET_DIR:=$(TOOLS_DIR)/kconfig
 $(PKG)_TARGET_DEF := conf   mconf
@@ -10,10 +15,6 @@ $(PKG)_TARGET_PRG := conf   mconf      nconf   gconf   gconf.glade qconf
 $(PKG)_TARGET_ARG := config menuconfig nconfig gconfig gconfig     xconfig
 $(PKG)_TARGET_ALL := $(join $(KCONFIG_HOST_TARGET_ARG),$(patsubst %,--%,$(KCONFIG_HOST_TARGET_PRG)))
 
-$(PKG)_BUILD_PREREQ += bison flex
-$(PKG)_BUILD_PREREQ_HINT := You have to install the bison and flex packages
-
-$(PKG)_DEPENDS_ON:=
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TOOLS_KCONFIG_BUTTONS),buttons)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_KCONFIG_BUTTONS

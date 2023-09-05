@@ -26,7 +26,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-systemd
 $(PKG)_CONFIGURE_OPTIONS += --disable-man
 $(PKG)_CONFIGURE_OPTIONS += --without-libcap
 
-$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -i;
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 
 
 $(PKG_SOURCE_DOWNLOAD)

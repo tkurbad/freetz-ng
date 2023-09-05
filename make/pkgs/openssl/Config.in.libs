@@ -2,6 +2,7 @@ config FREETZ_LIB_libcrypto
 	bool "OpenSSL cryptographic library (libcrypto.so)"
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs && FREETZ_OPENSSL_VERSION_2_MIN
+	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_3_MIN
 	default n
 	help
 		crypto - OpenSSL cryptographic library
@@ -20,8 +21,9 @@ config FREETZ_LIB_libcrypto
 
 config FREETZ_LIB_libssl
 	bool "OpenSSL SSL/TLS library (libssl.so)"
-	select FREETZ_LIB_libdl if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_3_MIN
 	default n
 	help
 		SSL - OpenSSL SSL/TLS library
@@ -47,6 +49,7 @@ choice
 
 		Version 1.1.1:
 		 - Supported until 2023-09-11, Long Term Support (LTS) version
+		 - NOT supported by the OpenSSL development team anymore
 
 		Version 3.0:
 		 - Supported until 2026-09-07, Long Term Support (LTS) version
@@ -62,7 +65,7 @@ choice
 		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_OPENSSL_VERSION_2
-		bool "1.1.1"
+		bool "1.1.1 - DEPRECATED"
 		depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29
 
 	config FREETZ_OPENSSL_VERSION_3

@@ -1,5 +1,19 @@
 # NEWS
 
+ * __[2023-08-20](#2023-08-20)__<a id='2023-08-20'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23080` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng23080](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng23080)<br>
+
+ * __[2023-07-04](#2023-07-04)__<a id='2023-07-04'></a><br>
+   Für Kernelmodule gibt es die neue ".ko-on"-Option im menuconfig. Diese sorgt dafür dass im Kernel automatisch<br>
+   Module aus Freetz heraus ausgewählt werden. Da nicht alle möglichen Kombinationen geprüft wurden kann es zu<br>
+   Warnungen wegen unbekannte Symbole oder gar Compilierfehlern kommen. Dann sollte `FREETZ_MODULES_KOON`<br>
+   deaktiviert werden und die Module manuell wie vorher im `kernel-menuconfig` konfiguriert werden.<br>
+   Siehe [0196e188](https://github.com/Freetz-NG/freetz-ng/commit/0196e18884a7c48b8e0c79b60ad0eb6da4985d48)<br>
+
  * __[2023-06-09](#2023-06-09)__<a id='2023-06-09'></a><br>
    Diese Woche hat AVM für die ersten Geräte Fritzos 7.56 freigegeben, nachdem aufgefallen ist dass lediglich 1<br>
    der 2 neuen Features nutzbar war. Die neuen 7.56 Sourcecodekonglomerate gibt es auch schon und für 7590 ac<br>
@@ -62,6 +76,26 @@
    wie Ubuntu 14. Durch diese Option werden Dinge deaktivert die mit Sicherheit nicht funktionieren werden. Es<br>
    gibt dennoch keine Funktionsgarantie füe diese veralteten Systeme.<br>
    Siehe [d5e0121d](https://github.com/Freetz-NG/freetz-ng/commit/d5e0121d94c7835e44fb9c83f8f1dc291f6a6bb7)<br>
+
+ * __[2023-01-26](#2023-01-26)__<a id='2023-01-26'></a><br>
+   Es werden die 3 neue Buildsysteme Meson, Ninja und Cmake unterstützt.<br>
+    - Meson<br>
+      Beispiele:
+      [cairo](../make/libs/cairo/cairo.mk) /
+      [glib2](../make/libs/glib2/glib2.mk) /
+      [pango](../make/libs/pango/pango.mk)<br>
+      Siehe [801e7cf7](https://github.com/Freetz-NG/freetz-ng/commit/801e7cf71c630e8ea06d13cefbb96dc2fcff183c)<br>
+    - Ninja<br>
+      Beispiele:
+      [cmake](../make/host-tools/cmake-host/cmake-host.mk)<br>
+      Siehe [947cfa8c](https://github.com/Freetz-NG/freetz-ng/commit/947cfa8cadb0b5f0794e0e8fe8c48ef450e882b2)<br>
+    - Cmake<br>
+      Beispiele:
+      [getdns](../make/pkgs/getdns/getdns.mk) /
+      [openjp2](../make/libs/openjp2/openjp2.mk) /
+      [libdeflate](../make/libs/libdeflate/libdeflate.mk) /
+      [transmission](../make/pkgs/transmission/transmission.mk)<br>
+      Siehe [d8450e6a](https://github.com/Freetz-NG/freetz-ng/commit/d8450e6a234f666a1b1dbd638b7aefd2c75f6085)<br>
 
  * __[2023-01-14](#2023-01-14)__<a id='2023-01-14'></a><br>
    Mit `tools/prerequisites` können alle nötigen Packages für das laufende Linux angezeigt und installiert werden.<br>

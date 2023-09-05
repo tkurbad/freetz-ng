@@ -1,31 +1,39 @@
-$(call TOOLS_INIT, v2023.01)
+$(call TOOLS_INIT, v2023.07.02)
 $(PKG)_SOURCE:=uboot-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=5b5c697d1cd4a9099ba51061949ab1a39e11704f7a109c6bd69a1194c2abb7c8
+$(PKG)_HASH:=932cc24331086e902d4e4ff2a215b1f88b7d6b39ddffd1dfed3639f7749321e5
 $(PKG)_SITE:=git@https://github.com/u-boot/u-boot.git
 ### CHANGES:=https://github.com/u-boot/u-boot/tags
 ### CVSREPO:=https://github.com/u-boot/u-boot
 
-$(PKG)_INSTALL_DIR := $(TOOLS_DIR)/fit
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/fit
+
+$(PKG)_DEPENDS_ON+=$(if $(FREETZ_TOOLS_UBOOT_STATIC),openssl-host)
 
 $(PKG)_BINARIES            := dumpimage fdtgrep mkimage
 $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/tools/%)
-$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_INSTALL_DIR)/%)
+$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/%)
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TOOLS_UBOOT_STATIC),static_openssl)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_UBOOT_STATIC
+ifeq ($(FREETZ_TOOLS_UBOOT_STATIC),y)
+$(PKG)_CONDITIONAL_PATCHES+=static_openssl
+$(PKG)_MAKE_VARS += HOSTLDFLAGS="-Wl,-L$(OPENSSL_HOST_DIR)"
+endif
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 
 $($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.unpacked
-	$(TOOLS_SUBMAKE) -C $(UBOOT_HOST_DIR) tools-only_defconfig
+	$(TOOLS_SUBMAKE) -C $(UBOOT_HOST_DIR) \
+		tools-only_defconfig
 	touch $@
 
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(UBOOT_HOST_DIR) tools-only
+	$(TOOLS_SUBMAKE) -C $(UBOOT_HOST_DIR) \
+		$(UBOOT_HOST_MAKE_VARS) \
+		tools-only
 
-$($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_INSTALL_DIR)/%: $($(PKG)_DIR)/tools/%
+$($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DESTDIR)/%: $($(PKG)_DIR)/tools/%
 	$(INSTALL_FILE)
 
 $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
@@ -39,8 +47,6 @@ $(pkg)-dirclean:
 
 $(pkg)-distclean: $(pkg)-dirclean
 	$(RM) \
-		$(UBOOT_HOST_INSTALL_DIR)/dumpimage \
-		$(UBOOT_HOST_INSTALL_DIR)/fdtgrep \
-		$(UBOOT_HOST_INSTALL_DIR)/mkimage
+		$(UBOOT_HOST_BINARIES_TARGET_DIR)
 
 $(TOOLS_FINISH)

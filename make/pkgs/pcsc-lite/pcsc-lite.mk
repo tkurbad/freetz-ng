@@ -1,12 +1,14 @@
-$(call PKG_INIT_BIN, 1.9.9)
+$(call PKG_INIT_BIN, 2.0.0)
 $(PKG)_LIB_VERSION:=1.0.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=cbcc3b34c61f53291cecc0d831423c94d437b188eb2b97b7febc08de1c914e8a
+$(PKG)_HASH:=d6c3e2b64510e5ed6fcd3323febf2cc2a8e5fda5a6588c7671f2d77f9f189356
 $(PKG)_SITE:=https://pcsclite.apdu.fr/files
 ### WEBSITE:=https://pcsclite.apdu.fr/
 ### MANPAGE:=https://salsa.debian.org/rousseau/PCSC/blob/master/README
 ### CHANGES:=https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
 ### CVSREPO:=https://salsa.debian.org/rousseau/PCSC
+
+$(PKG)_STARTLEVEL=90
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/pcscd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/pcscd
@@ -29,6 +31,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-libudev
 $(PKG)_CONFIGURE_OPTIONS += --disable-libsystemd
 $(PKG)_CONFIGURE_OPTIONS += --enable-embedded
 $(PKG)_CONFIGURE_OPTIONS += --enable-usbdropdir=$(PCSC_LITE_USBDROPDIR)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -54,6 +57,7 @@ $($(PKG)_TARGET_LIB): $($(PKG)_STAGING_LIB)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_TARGET_LIB)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(PCSC_LITE_DIR) clean

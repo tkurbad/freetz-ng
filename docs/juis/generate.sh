@@ -7,6 +7,11 @@ CACHE="/tmp/.freetz-juis"
 CRAP_FILTER="5382169925"
 
 
+#crc32
+[ -e "$TOOLS/crc32" ] && CRC32="$TOOLS/crc32" || CRC32="$(which crc32)"
+[ -e "$TOOLS/xxd"   ] && XXD="$TOOLS/xxd"     || XXD="$(which xxd)"
+[ ! -x "$CRC32" -o ! -x "$XXD" ] && echo "You have to install 'crc32' and 'xxd' or run 'make tools' first." && exit 1
+
 #rel
 echo -e '\n### FOS-Release ################################################'
 for x in $(seq 150 300); do  env - $TOOLS/juis_check        HW=$x                                     -a; done | tee fos-rel
@@ -52,9 +57,9 @@ cat dect-lab | while read -s x; do sed "/\/${x##*/}$/d" -i          dect-inh; do
 echo -e '\n### BPjM #######################################################'
                              env - $TOOLS/juis_check --bpjm HW=252                                    -a       | tee bpjm
 [ ! -s bpjm ] || curl -sS "$(sed -n 's/.*=//p' bpjm)" -o bpjm.out
-read="$(head -c4 bpjm.out | xxd -p)"
-calc="$(crc32 <( tail -c +$((1 + 4)) bpjm.out ))"
-[ "$read" != "$calc" ] && comp="mismatch $read/$calc" || comp="$read"
+read="$(head -c4 bpjm.out | $XXD -p)"
+calc="$($CRC32 <( tail -c +$((1 + 4)) bpjm.out ))"
+[ "$read" != "${calc%% *}" ] && comp="mismatch $read/$calc" || comp="$read"
 sed -i "s/.*=/$comp=/" bpjm
 
 
@@ -72,6 +77,13 @@ for x in fos-xxx fos-rel fos-dwn fos-lab fos-inh  dect-rel dect-lab dect-inh; do
 	ln -s -f "$CACHE/$x" $x
 done
 rm -rf "$TEMPS"
+
+
+#duplicates
+cat fos-xxx  | while read -s x; do sed "/^${x////\\/}$/d" -i fos-inh  fos-lab  ; done
+cat fos-lab  | while read -s x; do sed "/^${x////\\/}$/d" -i fos-inh           ; done
+cat dect-rel | while read -s x; do sed "/^${x////\\/}$/d" -i dect-inh dect-lab ; done
+cat dect-lab | while read -s x; do sed "/^${x////\\/}$/d" -i dect-inh          ; done
 
 
 #gen

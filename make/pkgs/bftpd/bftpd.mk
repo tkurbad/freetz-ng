@@ -1,7 +1,11 @@
-$(call PKG_INIT_BIN, 3.3)
+$(call PKG_INIT_BIN, 6.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=c5c7c074623a6cf0a4682e6f769b1aebfc8ef69150204fbe071169d83ceb3435
+$(PKG)_HASH:=9721d0614e1a5d0fe6b80c9a8a04ada8efd42cbdfddd239e95a8059ae283aa6f
 $(PKG)_SITE:=@SF/bftpd
+### WEBSITE:=https://bftpd.sourceforge.net/
+### MANPAGE:=https://bftpd.sourceforge.net/documents.html
+### CHANGES:=https://bftpd.sourceforge.net/downloads/CHANGELOG
+### CVSREPO:=https://sourceforge.net/projects/bftpd/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/bftpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/bftpd
@@ -13,6 +17,7 @@ endif
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_BFTPD_WITH_ZLIB
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_BFTPD_WITH_ZLIB),--enable-libz)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -27,6 +32,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(BFTPD_DIR) clean

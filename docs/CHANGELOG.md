@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23080](#ng23080)
   * [ng23050](#ng23050)
   * [ng23030](#ng23030)
   * [ng22100](#ng22100)
@@ -45,44 +46,130 @@ Latest changes
 ### devel
 
  - Build system:
-   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.40.x
-   * Ccache 4.8.2
-   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/9.3.0/13.1.0
+   * Ccache 4.8.3
 
  - Host tools:
-   * python 3.11.4
-
- - AVM sources:
-   * 1200 7.50 - 4.4.271
-   * 2400 7.27 - 4.4.60
-   * 2400 7.50 - 4.4.271
-   * 6591 7.56 - 4.9.279 (delta 6591 7.50)
-   * 6690 7.29 - 4.9.250
-   * 6690 7.56 - 4.9.279
-   * 7530 7.56 - 4.4.271
-   * 7590 7.56 - 4.9.325
+   * cmake 3.27.4
+   * kconfig 6.5
+   * python 3.11.5
 
  - Packages:
-   * ACME.sh 3.0.6 (letsencrypt)
-   * BIND 9.11.37/9.16.41
-   * CA-bundle 2023-05-30
-   * Curl 8.1.2
-   * Git 2.41.0
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1u/3.0.9
-   * OpenVPN 2.4.12/2.5.9/2.6.5
-   * SQLite 3.42.0
-   * UnRAR 6.1.7/6.2.8
-   * vnstat 1.18
-   * Wget GNU 1.21.4
-   * xsltproc 1.1.38
+   * Atop 2.9.0
+   * BIND 9.11.37/9.16.43
+   * CA-bundle 2023-08-22
+   * FFmpeg 5.1.3
+   * Git 2.42.0
+   * mc (Midnight Commander) 4.8.30
+   * Nmap 4.76/5.51/7.94
+   * OpenSSH 9.3p2/9.4p1
+   * PCSC-lite 2.0.0
+   * Screen 4.9.1
+   * SQLite 3.43.0
+   * strace 4.9/5.0/6.5
+   * Tor 0.4.8.5
+   * Transmission 3.00/4.0.4
+   * UnRAR 6.1.7/6.2.10
 
  - Libraries:
-   * libnettle 3.9.1
-   * libssh2 1.11.0
-   * libuv 1.44.2/1.45.0
+   * glib2 2.32.4/2.76.5
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23080
+
+ - Build system:
+   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.41.x
+   * Ccache 4.8.2
+   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/9.3.0/13.2.0
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.44
+
+ - Host tools:
+   * autoconf 2.71
+   * automake 1.16.5
+   * cmake 3.27.3
+   * fakeroot 1.32.1
+   * kconfig 6.4
+   * libtool 2.4.7
+   * m4 1.4.19
+   * meson 1.2.1
+   * make 4.4.1
+   * openssl 3.0.10
+   * pkgconf 2.0.1
+   * precompiled host-tools 2023-08-18
+   * precompiled toolchains r22199
+   * python 3.11.4
+   * u-boot 2023.07.02
+   * xz 5.4.4
+
+ - AVM sources:
+   * 1200 ac 7.50 - 4.4.271
+   * 1200 ax 7.56 - 4.4.271
+   * 2400    7.27 - 4.4.60
+   * 2400    7.50 - 4.4.271
+   * 4040    7.56 - 4.4.271
+   * 4060    7.30 - 4.4.60
+   * 4060    7.56 - 4.4.271
+   * 6000    7.56 - 4.4.271
+   * 6590    7.56 - 2.6.39.4
+   * 6591    7.56 - 4.9.279 (delta 6591 7.50)
+   * 6690    7.29 - 4.9.250
+   * 6690    7.56 - 4.9.279
+   * 6820    7.56 - 4.4.271
+   * 7490    7.56 - 3.10.107
+   * 7510    7.56 - 4.4.271
+   * 7530 ac 7.56 - 4.4.271
+   * 7530 ax 7.56 - 4.19.183 (corrupt)
+   * 7590    7.56 - 4.9.325
+   * Gateway 7.54 - 4.4.271
+
+ - Packages:
+   * ACME.sh 3.0.6 (letsencrypt)
+   * Bftpd 6.1
+   * BIND 9.11.37/9.16.42
+   * CA-bundle 2023-05-30
+   * Curl 8.2.1
+   * Git 2.41.0
+   * HAProxy 2.6.15
+   * iPerf3 3.3/3.14
+   * minidlna 1.3.3
+   * Net-SNMP 5.9.4
+   * NZBGet 21.1/21.4-rc1
+   * OpenSSH 9.4p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1v/3.0.10
+   * OpenVPN 2.4.12/2.5.9/2.6.6
+   * pptp 1.10.0
+   * psl 0.21.2
+   * pyLoad 0.4.20/9b358adf
+   * Smartmontools 7.4
+   * SQLite 3.42.0
+   * strace 4.9/5.0/6.4
+   * Stunnel 5.70
+   * Sudo 1.9.14p3
+   * Tor 0.4.7.14
+   * Transmission 3.00/4.0.3
+   * Tree 1.8.0/2.1.1
+   * UnRAR 6.1.7/6.2.8
+   * vnstat 1.18
+   * Wget GNU 1.21.4
+   * wput 0.6.2
+   * xsltproc 1.1.38
+   * XZ Utils 5.4.4
+
+ - Libraries:
+   * FreeType 2.13.1
+   * libdeflate 1.18
+   * glib2 2.32.4/2.76.4
+   * harfbuzz 8.1.1
+   * libnettle 3.9.1
+   * libpng 1.6.40
+   * libssh2 1.11.0
+   * libuv 1.44.2/1.46.0
+   * mbedTLS 2.7.19/2.28.4
+   * zlib 1.3
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23080/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23050
 
@@ -92,7 +179,7 @@ Latest changes
 
  - Host tools:
    * busybox 1.36.1
-   * cmake 3.26.4
+   * cmake 3.27.0
    * kconfig 6.3
    * meson 1.1.1
    * precompiled host-tools 2023-05-28

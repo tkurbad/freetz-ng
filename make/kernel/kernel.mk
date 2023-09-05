@@ -65,10 +65,12 @@ ifeq ($(strip $(FREETZ_KERNEL_AVMDIFF_AVAILABLE)),y)
 	  [ "$$a" == "touch" ] && touch       "$(KERNEL_SOURCE_DIR)/$${b}"; \
 	done || true
 endif
+ifneq ($(strip $(FREETZ_KERNEL_AVM_CHAOTIC_PACK)),y)
 	@echo "#kernel version specific patches: $(KERNEL_PATCHES_DIR)" $(SILENT)
 	@$(call APPLY_PATCHES,$(KERNEL_PATCHES_DIR),$(KERNEL_DIR))
 	@echo "#firmware version specific patches: $(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID)" $(SILENT)
 	@$(call APPLY_PATCHES,$(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID),$(KERNEL_DIR))
+endif
 	@echo "#additional generic fixes" $(SILENT)
 	@for i in $(KERNEL_LINKING_FILES); do \
 		f="$${i%%,*}"; symlink_location="$${i##*,}"; \
@@ -151,15 +153,27 @@ endif
 	ln -s linux-$(KERNEL_VERSION_MAJOR) $(KERNEL_DIR)/linux
 	touch $@
 
+kernel-configured-gen: $(KERNEL_DIR)/.configured
+kernel-configured-del:
+	-rm -f $(KERNEL_DIR)/.configured
+kernel-configured-rebuild: kernel-configured-del kernel-configured-gen
+.PHONY: kernel-configured-gen kernel-configured-del kernel-configured-rebuild
+
+ifeq ($(strip $(FREETZ_MODULES_KOON)),y)
+# Force kernel rebuild if the user changed the selected modules in freetz-config and they should be automatically be enable in kernel-config.
+$(shell grep '^FREETZ_MODULE_' $(TOPDIR)/.config | diff -du --label "old" --label "new" "$(KERNEL_DIR)/.configured" - >/dev/null 2>&1 || $(RM) "$(KERNEL_DIR)/.configured" >/dev/null 2>&1)
+endif
+
 $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE)
 	$(call _ECHO,configuring,$(KERNEL_ECHO_TYPE))
 	cp $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
+	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
-	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig
+	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null
 else
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig
 endif
-	touch $@
+	@cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
 
 $(KERNEL_DIR)/.prepared: $(KERNEL_DIR)/.configured
 	@$(call _ECHO,preparing,$(KERNEL_ECHO_TYPE))
@@ -181,14 +195,17 @@ $(TARGET_TOOLCHAIN_KERNEL_VERSION_HEADER): $(TOPDIR)/.config $(KERNEL_HEADERS_DE
 	@$(call COPY_KERNEL_HEADERS,$(KERNEL_HEADERS_DEVEL_DIR),$(TARGET_TOOLCHAIN_STAGING_DIR)/usr)
 	@touch $@
 
+
 ifeq ($(strip $(FREETZ_AVM_KERNEL_CONFIG_AREA_KNOWN)),y)
 KERNEL_BUILD_DEPENDENCIES += $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.S
+
+DL_SOURCE_ID=$(shell echo $(DL_SOURCE_LOCAL) | md5sum | sed 's/ .*//')
 
 $(AVM_KERNEL_CONFIG_DIR): | $(KERNEL_DIR)/.unpacked
 	@mkdir -p $@
 
 $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.$(DL_SOURCE_ID).bin: $(DL_FW_DIR)/$(DL_SOURCE_LOCAL) | $(KERNEL_DIR)/.unpacked $(AVM_KERNEL_CONFIG_DIR) tools
-	@$(TOOLS_DIR)/avm_kernel_config.extract.sh -s $(FREETZ_AVM_KERNEL_CONFIG_AREA_SIZE) "$<" >"$@" || { $(RM) "$@"; exit 1; }
+	@$(TOOLS_DIR)/avm_kernel_config.extract.sh -s $(FREETZ_AVM_KERNEL_CONFIG_AREA_SIZE) "$<" > "$@" || { $(RM) "$@"; exit 1; }
 
 $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.$(DL_SOURCE_ID).S: $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.$(DL_SOURCE_ID).bin | $(KERNEL_DIR)/.unpacked $(AVM_KERNEL_CONFIG_DIR) tools
 	@$(TOOLS_DIR)/avm_kernel_config.bin2asm "$<" >"$@" || { $(RM) "$@"; exit 1; }
@@ -206,8 +223,9 @@ $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.S: $(AVM_KERNEL_CONFIG_DIR)/avm_
 avm_kernel_config: $(AVM_KERNEL_CONFIG_DIR)/avm_kernel_config_area.S
 endif
 
+
 kernel-autofix: kernel-dirclean
-	$(MAKE) AUTO_FIX_PATCHES=y kernel-unpacked
+	$(MAKE) AUTO_FIX_PATCHES=y $(KERNEL_DIR)/.configured
 kernel-recompile: kernel-dirclean kernel-precompiled
 .PHONY: kernel-autofix kernel-recompile
 
@@ -246,16 +264,20 @@ kernel-help: $(KERNEL_DIR)/.unpacked
 kernel-menuconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) menuconfig
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $<
 
 kernel-xconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) xconfig
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $<
 
 kernel-oldconfig: $(KERNEL_DIR)/.configured
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $<
+
+kernel-olddefconfig: $(KERNEL_DIR)/.configured
+	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
+	touch $<
 
 kernel-source: $(KERNEL_DIR)/.unpacked
 
@@ -267,7 +289,11 @@ kernel-mrproper:
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE)
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) mrproper
 	-cp -f $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
+ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 	-$(SUBMAKE) kernel-oldconfig
+else
+	-$(SUBMAKE) kernel-olddefconfig
+endif
 
 kernel-dirclean:
 	$(RM) -r $(KERNEL_DIR)
@@ -279,5 +305,5 @@ kernel-dirclean:
 kernel-distclean: kernel-dirclean
 
 
-.PHONY: kernel-unpacked kernel-configured kernel-modules kernel-menuconfig kernel-oldconfig target-toolchain-kernel-headers
+.PHONY: kernel-unpacked kernel-configured kernel-modules kernel-menuconfig kernel-oldconfig kernel-olddefconfig target-toolchain-kernel-headers
 
