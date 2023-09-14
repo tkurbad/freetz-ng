@@ -142,7 +142,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Ctorrent dnh3.3.2 (binary only)](../../docs/make/ctorrent.md)<a id='ctorrent'></a>**<br>
     CTorrent is a BitTorrent client written in the C programming language, known to be a very robust and mature programming language, which produces fast and optimized application.
 
-  * **[Curl 8.2.1 (binary only)](../../docs/make/curl.md)<a id='curl'></a>**<br>
+  * **[Curl 8.3.0 (binary only)](../../docs/make/curl.md)<a id='curl'></a>**<br>
     Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 
   * **<u>CurlFtpFS 0.9.2</u><a id='curlftpfs'></a>**<br>
@@ -621,7 +621,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[OpenSSH 9.3p2/9.4p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
-  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1v/3.0.10 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
+  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.10 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
   * **[OpenVPN 2.4.12/2.5.9/2.6.6](../../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
@@ -977,7 +977,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>uMurmur 0.2.20</u><a id='umurmur'></a>**<br>
     umurmur is a minimalistic Mumble server primarily targeted to run on routers using less resources. It targets to fill the needs of a pretty small group of users communicating, which in part originates from the other goal of working well on a small system with a limited CPU and limited amount of disk space. It also aims to minimize writing to the disk since these kinds of systems usually only has a flash memory for disk. umurmur supports a subset of the features of Murmur. https://github.com/umurmur/umurmur
 
-  * **[Unbound 1.17.1](../../docs/make/unbound.md)<a id='unbound'></a>**<br>
+  * **[Unbound 1.18.0](../../docs/make/unbound.md)<a id='unbound'></a>**<br>
     Unbound is designed as a set of modular components, so that also DNSSEC (secure DNS) validation and stub-resolvers (that do not run as a server, but are linked into an application) are easily possible.
 
   * **[UNFS3 0.9.23](../../docs/make/unfs3.md)<a id='unfs3'></a>**<br>
