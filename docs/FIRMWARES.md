@@ -460,6 +460,8 @@ Currently supported devices and firmwares
   - 150.06.92 rev47432 {ALL}
   - 150.07.01 rev63180 {ALL}
   - 150.07.16 rev108014 {ALL} [WU22 MESH18]
+* __FRITZ!Powerline 1240 AX (UNTESTED)__
+  - 275.07.57 rev108112 {ALL} [MOVE21NL1]
 * __Fritz!Powerline 1260E__
   - 157.07.01 rev63181 {ALL}
   - 157.07.12 rev70670 {ALL} [MESH18 NL2]
@@ -498,7 +500,7 @@ Currently supported devices and firmwares
   - 172.07.57 rev107845 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 1200 AX__
   - 268.07.30 rev93528 {ALL} [PSQ19P2NL4]
-  - 268.07.56 rev106867 {ALL} [MOVE21NL1]
+  - 268.07.57 rev107840 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 2400__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
   - 169.07.29 rev93265 {ALL} [PSQ19P2NL4]
@@ -509,10 +511,10 @@ Currently supported devices and firmwares
   - 174.07.29 rev93268 {ALL} [PSQ19P2NL4]
   - 174.07.57 rev107846 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 3000 AX (UNTESTED)__
-  - 270.07.56 rev106866 {ALL} [MOVE21NL1]
+  - 270.07.57 rev107839 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 6000__
   - 253.07.30 rev98407 {ALL} [PSQ19P2NL4]
-  - 253.07.56 rev106865 {ALL} [MOVE21NL1]
+  - 253.07.57 rev107838 {ALL} [MOVE21NL1]
 
 ### Fritz!Smart
 

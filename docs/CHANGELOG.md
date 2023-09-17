@@ -49,8 +49,9 @@ Latest changes
    * Ccache 4.8.3
 
  - Host tools:
-   * cmake 3.27.4
+   * cmake 3.27.5
    * kconfig 6.5
+   * pkgconf 2.0.3
    * python 3.11.5
 
  - Packages:
@@ -60,6 +61,7 @@ Latest changes
    * Curl 8.3.0
    * FFmpeg 5.1.3
    * Git 2.42.0
+   * iPerf3 3.3/3.15
    * mc (Midnight Commander) 4.8.30
    * Nmap 4.76/5.51/7.94
    * OpenSSH 9.3p2/9.4p1
@@ -76,6 +78,10 @@ Latest changes
  - Libraries:
    * glib2 2.32.4/2.76.5
    * harfbuzz 8.2.0
+   * libconfuse 3.3
+   * libxml2 2.11.5
+   * pango 1.51.0
+   * uClibc++ 0.2.6-6687fc92
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
