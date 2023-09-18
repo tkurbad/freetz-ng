@@ -52,6 +52,7 @@ Latest changes
    * cmake 3.27.5
    * kconfig 6.5
    * pkgconf 2.0.3
+   * precompiled host-tools 2023-09-17
    * python 3.11.5
 
  - Packages:
@@ -60,6 +61,7 @@ Latest changes
    * CA-bundle 2023-08-22
    * Curl 8.3.0
    * FFmpeg 5.1.3
+   * ftdi1 1.5
    * Git 2.42.0
    * iPerf3 3.3/3.15
    * mc (Midnight Commander) 4.8.30
@@ -79,7 +81,9 @@ Latest changes
    * glib2 2.32.4/2.76.5
    * harfbuzz 8.2.0
    * libconfuse 3.3
+   * fribidi 1.0.13
    * libxml2 2.11.5
+   * neon 0.30.2/0.32.5
    * pango 1.51.0
    * uClibc++ 0.2.6-6687fc92
 
