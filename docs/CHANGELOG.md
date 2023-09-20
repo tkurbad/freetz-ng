@@ -67,19 +67,20 @@ Latest changes
    * mc (Midnight Commander) 4.8.30
    * Nmap 4.76/5.51/7.94
    * OpenSSH 9.3p2/9.4p1
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.10
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.11
    * PCSC-lite 2.0.0
    * Screen 4.9.1
    * SQLite 3.43.0
    * strace 4.9/5.0/6.5
-   * Tor 0.4.8.5
+   * Tor 0.4.8.6
    * Transmission 3.00/4.0.4
    * Unbound 1.18.0
    * UnRAR 6.1.7/6.2.10
+   * Vim 9.0.1872
 
  - Libraries:
    * glib2 2.32.4/2.76.5
-   * harfbuzz 8.2.0
+   * harfbuzz 8.2.1
    * libconfuse 3.3
    * fribidi 1.0.13
    * libxml2 2.11.5
