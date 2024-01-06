@@ -105,7 +105,7 @@ Currently supported devices and firmwares
   - 155.07.57 rev107816 {ALL} [MOVE21NL1]
 * __Fritz!Box 4060__
   - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
-  - 261.07.57 rev107817 {ALL} [MOVE21NL1]
+  - 261.07.57 rev109903 {ALL} [MOVE21NL1]
 
 ### Fritz!Box Fon (50xx/51xx)
 
@@ -141,7 +141,7 @@ Currently supported devices and firmwares
   - 257.07.70 rev108943 {ALL} [GoFiber23] (Labor)
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
-  - 272.07.58 rev108019 {ALL} [MOVE21NL1]
+  - 272.07.58 rev109907 {ALL} [MOVE21NL1]
   - 272.07.70 rev108944 {ALL} [GoFiber23] (Labor)
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
@@ -172,7 +172,7 @@ Currently supported devices and firmwares
   - 252.07.57 rev107842 {GER} [MOVE21NL1]
 * __Fritz!Box 6690 Cable__
   - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
-  - 267.07.57 rev107843 {GER} [MOVE21NL1]
+  - 267.07.57 rev109915 {GER} [MOVE21NL1]
 
 ### Fritz!Box LTE (68xx)
 
@@ -398,7 +398,7 @@ Currently supported devices and firmwares
   - 164.07.57 rev107823 {ALL} [MOVE21NL1]
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
-  - 256.07.57 rev107818 {ALL} [MOVE21NL1]
+  - 256.07.57 rev109901 {ALL} [MOVE21NL1]
   - 256.07.70 rev108941 {ALL} [GoFiber23] (Labor)
 * __Fritz!Box Fon WLAN 7560__
   - 149.06.53 rev41227 {GER}
@@ -516,7 +516,7 @@ Currently supported devices and firmwares
   - 174.07.57 rev107846 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 3000 AX (UNTESTED)__
   - 270.07.42 rev108161 {ALL} [MOVE21]
-  - 270.07.57 rev107839 {ALL} [MOVE21NL1]
+  - 270.07.57 rev109902 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 6000__
   - 253.07.31 rev108162 {ALL} [PSQ19P2NL4]
   - 253.07.57 rev107838 {ALL} [MOVE21NL1]
