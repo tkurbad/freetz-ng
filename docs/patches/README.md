@@ -330,6 +330,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Remove WLAN](REMOVE_WLAN.md)<a id='remove-wlan'></a>**<br>
     Radically remove a lot of wlan-related files. This patch saves about 700 kb of uncomrpessed data size in the firmware image. WARNING: Do not enable Wlan, you will get a reboot loop!
 
+### Z
+
+  * **<u>Remove zram.ko</u><a id='remove-zram'></a>**<br>
+    Remove zram.ko (about 30 kB uncompressed).
+
 # Other patches
 
   * **[Add Annex A firmware file](ADD_ANNEX_A_FIRMWARE.md)<a id='add-annex-a-firmware'></a>**<br>
@@ -421,6 +426,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **<u>DROP_NOEXEC_EXTERNAL: Drop noexec for (external) storages</u><a id='drop-noexec-external'></a>**<br>
     Allows to execute files on external storages like USB sticks and HDDs.
+
+  * **<u>Enable GPON serial textbox</u><a id='enable-gpon-serial'></a>**<br>
+    Re-enables access to the GPON serial textbox on support page.
 
   * **<u>Enable LED deactivation page</u><a id='enable-led-deactivation'></a>**<br>
     Re-enables access to the LED deactivation page in expert mode.
@@ -554,6 +562,12 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **<u>PATCH_SECURE_2fa: Caused by twofactor_disabled</u><a id='patch-secure-2fa'></a>**<br>
     twofactor_disabled does not trigger the message.
+
+  * **<u>PATCH_SECURE_nau: Caused by noAutoupdate</u><a id='patch-secure-nau'></a>**<br>
+    noAutoupdate does not trigger the message.
+
+  * **<u>PATCH_SECURE_nus: Caused by noUpdateSearch</u><a id='patch-secure-nus'></a>**<br>
+    noUpdateSearch does not trigger the message.
 
   * **<u>PATCH_SECURE_sip: Caused by ipphone_from_outside</u><a id='patch-secure-sip'></a>**<br>
     ipphone_from_outside does not trigger the message.

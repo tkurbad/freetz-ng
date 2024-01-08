@@ -1,9 +1,13 @@
-$(call PKG_INIT_LIB, 1.6.1)
+$(call PKG_INIT_LIB, 1.6.3)
+$(PKG)_LIB_VERSION:=0.6.3
 $(PKG)_MAJOR_VERSION:=1
-$(PKG)_LIB_VERSION:=0.6.1
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b
+$(PKG)_HASH:=a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5
 $(PKG)_SITE:=@APACHE/apr
+### WEBSITE:=https://apr.apache.org/
+### MANPAGE:=https://apr.apache.org/docs/apr-util/1.6/
+### CHANGES:=https://downloads.apache.org/apr/CHANGES-APR-UTIL-1.6
+### CVSREPO:=https://svn.apache.org/viewvc/apr/apr-util/
 
 $(PKG)_MAJOR_LIBNAME=libaprutil-$(APR_UTIL_MAJOR_VERSION)
 $(PKG)_LIBNAME=$($(PKG)_MAJOR_LIBNAME).so.$($(PKG)_LIB_VERSION)
@@ -38,6 +42,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-crypto=no
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl=no
 $(PKG)_CONFIGURE_OPTIONS += --with-nss=no
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -65,6 +70,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(APR_UTIL_DIR) clean

@@ -1,10 +1,10 @@
-$(call PKG_INIT_BIN, 0.4.8.6)
+$(call PKG_INIT_BIN, 0.4.8.10)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=552d895fcaf66c7cd2b50f5abe63b7884b30fed254115be7bfb9236807355088
+$(PKG)_HASH:=e628b4fab70edb4727715b23cf2931375a9f7685ac08f2c59ea498a178463a86
 $(PKG)_SITE:=https://www.torproject.org/dist
 ### WEBSITE:=https://www.torproject.org/download/tor/
 ### MANPAGE:=https://trac.torproject.org/projects/tor/wiki/
-### CHANGES:=https://gitweb.torproject.org/tor.git/tree/ChangeLog
+### CHANGES:=https://gitlab.torproject.org/tpo/core/tor/tags
 ### CVSREPO:=https://gitweb.torproject.org/tor.git/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/app/tor

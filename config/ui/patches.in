@@ -721,6 +721,13 @@ config FREETZ_REMOVE_RAMZSWAP
 	help
 		Remove ramzswap.ko (about 35 kB uncompressed).
 
+config FREETZ_REMOVE_ZRAM
+	bool "Remove zram.ko"
+	default n
+	depends on FREETZ_AVM_HAS_ZRAM_MODULE
+	help
+		Remove zram.ko (about 30 kB uncompressed).
+
 config FREETZ_REMOVE_LSOF
 	bool "Remove lsof"
 	depends on FREETZ_AVM_HAS_LSOF
@@ -1278,19 +1285,35 @@ config FREETZ_PATCH_SECURE
 	help
 		Hides the "unsecure settings" message from the web interface.
 
-config FREETZ_PATCH_SECURE_2fa
-	bool "Caused by twofactor_disabled"
-	depends on FREETZ_PATCH_SECURE
-	default y
-	help
-		twofactor_disabled does not trigger the message.
+if FREETZ_PATCH_SECURE
 
-config FREETZ_PATCH_SECURE_sip
-	bool "Caused by ipphone_from_outside"
-	depends on FREETZ_PATCH_SECURE
-	default n
-	help
-		ipphone_from_outside does not trigger the message.
+	config FREETZ_PATCH_SECURE_2fa
+		bool "Caused by twofactor_disabled"
+		default y
+		help
+			twofactor_disabled does not trigger the message.
+
+	config FREETZ_PATCH_SECURE_sip
+		bool "Caused by ipphone_from_outside"
+		default n
+		help
+			ipphone_from_outside does not trigger the message.
+
+	config FREETZ_PATCH_SECURE_nau
+		bool "Caused by noAutoupdate"
+		depends on FREETZ_AVM_VERSION_07_8X_MIN
+		default y
+		help
+			noAutoupdate does not trigger the message.
+
+	config FREETZ_PATCH_SECURE_nus
+		bool "Caused by noUpdateSearch"
+		depends on FREETZ_AVM_VERSION_07_8X_MIN
+		default n
+		help
+			noUpdateSearch does not trigger the message.
+
+endif # FREETZ_PATCH_SECURE
 
 config FREETZ_MODIFY_DSL_WARNING
 	bool "Patch DSL modified message"
@@ -1321,6 +1344,14 @@ config FREETZ_MODIFY_COUNTER
 	default n
 	help
 		Converts counter hours to days and traffic MB to GB.
+
+config FREETZ_ENABLE_GPON_SERIAL
+	bool "Enable GPON serial textbox"
+	depends on FREETZ_TYPE_FIBER && FREETZ_AVM_VERSION_07_5X_MAX
+	depends on !FREETZ_REMOVE_SUPPORT
+	default n
+	help
+		Re-enables access to the GPON serial textbox on support page.
 
 config FREETZ_ENABLE_LED_DEACTIVATION
 	bool "Enable LED deactivation page"
@@ -1380,6 +1411,15 @@ menuconfig FREETZ_PATCH_MODFS_BOOT_MANAGER
 		endchoice
 
 	endif # FREETZ_PATCH_MODFS_BOOT_MANAGER
+
+	if FREETZ_AVM_HAS_FWLAYOUT_6 && !FREETZ_FWMOD_SKIP_MODIFY && !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
+	if FREETZ_PATCH_MODFS_BOOT_MANAGER
+		comment " WARNING WARNING WARNING WARNING WARNING WARNING WARNING"
+		comment " ## Freetz details of inactive firmware are no longer  #"
+		comment " ## available on System page if you use yf-bootmanager #"
+		comment " WARNING WARNING WARNING WARNING WARNING WARNING WARNING"
+	endif # FREETZ_PATCH_MODFS_BOOT_MANAGER
+	endif # FREETZ_AVM_HAS_FWLAYOUT_6 && !FREETZ_FWMOD_SKIP_MODIFY && !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 
 if FREETZ_AVM_HAS_USB_HOST
 comment "USB patches ----------------------------------------------"

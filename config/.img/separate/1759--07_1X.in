@@ -36,6 +36,9 @@ config FREETZ_AVM_HAS_REBOOT_SCRIPT
 config FREETZ_AVM_HAS_IP_BINARY
 	def_bool y
 
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 
@@ -52,6 +55,9 @@ config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4

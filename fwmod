@@ -300,10 +300,10 @@ validate_signature() {
 		cat "$2" > "$TMP/img"
 		# fix
 		local FIX="$(mktemp -p $TMP)"
-		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --append  ${FIX##*/}
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$TMP"  --append  ${FIX##*/}
 		# sig
-		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --extract ./var/signature --transform='s!.*!sig!'
-		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu             --delete  ./var/signature ${FIX##*/}
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$TMP"  --extract ./var/signature --transform='s!.*!sig!'
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --numeric-owner  --format=oldgnu              --delete  ./var/signature ${FIX##*/}
 		# key
 		{
 			echo -n 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ==' | base64 -d
@@ -475,10 +475,10 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		fi
 		# Unpack standard *.image file in tar format
 		tail -c $(( $image_size - ${image_grbg:-0x0} )) "$FIRMWARE" | \
-		  "$TAR_GNU" -x -C "$FIRMWARE_DIR" || untar_failed=1
+		  "$TAR_GNU" -x  --owner=0 --group=0 --numeric-owner  -C "$FIRMWARE_DIR" || untar_failed=1
 	elif [ "$FIRMWARE_EXTENSION" != "exe" ]; then
 		# Unpack standard *.image file in tar format
-		"$TAR_GNU" -xif "$FIRMWARE" -C "$FIRMWARE_DIR" || untar_failed=1
+		"$TAR_GNU" -xif "$FIRMWARE"  --owner=0 --group=0 --numeric-owner  -C "$FIRMWARE_DIR" || untar_failed=1
 	fi
 	if [ "$FIRMWARE_EXTENSION" == "exe" ] || [ "$untar_failed" ]; then
 		# Unpack Windows recover.exe file or mtdblock dump
@@ -594,7 +594,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 	if [ -r "$AVMPLUGINS" ]; then
 		echo0 "unpacking AVM plugins"
 		mkdir -p "$AVMPLUGINS_DIR"
-		"$TAR_GNU" -xif "$AVMPLUGINS" -C "$AVMPLUGINS_DIR" || error 1 "tar failed"
+		"$TAR_GNU" -xif "$AVMPLUGINS"  --owner=0 --group=0 --numeric-owner  -C "$AVMPLUGINS_DIR" || error 1 "tar failed"
 
 		for i in "${AVMPLUGINS_DIR}/var/"*.image; do
 			AVMPLUGIN="${i##*/plugin-}"
@@ -615,7 +615,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 
 	echo "unpacking var.tar"
 	mkdir "$VARTAR_DIR"
-	"$TAR_GNU" -xipf "$VARTAR" -C "$VARTAR_DIR" || error 1 "tar failed"
+	"$TAR_GNU" -xipf "$VARTAR"  --owner=0 --group=0 --numeric-owner  -C "$VARTAR_DIR" || error 1 "tar failed"
 
 	image_details
 	echo2 -lc "detected firmware version: ${SOURCE_IMAGE_DETAILS}"
@@ -795,7 +795,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	[ -n "$PV" ] && echo0 "preparing directory build/modified/"
 	mkdir -p "$MOD_DIR"
 	[ "$FREETZ_AVM_HAS_UDEV" == y ] || exclude_dev="--exclude=./filesystem/dev"
-	"$TAR_GNU" -c -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR" -x -C "$MOD_DIR" || error 1 "tar failed"
+	"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR" -x -C "$MOD_DIR" || error 1 "tar failed"
 
 	# Fix some permissions
 	chmod -R u+w "$FILESYSTEM_MOD_DIR"
@@ -1283,10 +1283,11 @@ if [ "$DO_MOD" -gt 0 ]; then
 		pkg_name=$(pkg_name "$pkg")
 
 		"$TAR_GNU" $(find "${PACKAGES_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
-		  -c -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+		  -c  --owner=0 --group=0 --numeric-owner  -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
 		if [ -d "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
-			"$TAR_GNU" -c -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+			"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | \
+			  "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
 		fi
 
 		[ -r "${PACKAGES_DIR}/${pkg}/.language" ] && \
@@ -1312,15 +1313,15 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 		if [ -e "${ADDON_DIR}/${pkg}/etc/init.d/rc.${pkg_name}" ]; then
 			echo "NOTICE: addon '$pkg' is in old-style format (no language support)." 1>&2
-			"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+			"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${ADDON_DIR}/${pkg}" . | \
+			  "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 		elif [ "$(echo ${pkg^^}-corrupt | sed -r 's/([^.-_-]*).*/\LfLawed-\1-Addon/' | md5sum | sed 's/ .*//')" != "80d00cf16e1a48ec11801feed60a2be7" ]; then
-			"$TAR"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
-				-c -C "${ADDON_DIR}/${pkg}/root" \
-				. | \
-			"$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+			"$TAR"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') -c -C "${ADDON_DIR}/${pkg}/root" . | \
+			  "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
 			if [ -d "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
-				"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+				"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | \
+				  "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
 			fi
 
 			[ -r "${ADDON_DIR}/${pkg}/.language" ] && \
@@ -1428,13 +1429,22 @@ if [ "$DO_MOD" -gt 0 ]; then
 		rm -f "$DEPMOD_TEMP"
 		# add plugin kernel modules for 7270v1 if plugins are not enabled
 		if [ "$FREETZ_TYPE_7270_V1" == "y" -a "$FREETZ_AVMPLUGINS_INTEGRATE" != "y" ]; then
-			echo "kernel/drivers/net/rfcntl/rfcntl.ko: kernel/drivers/char/audio/avm_audio.ko" >> $MODULES_DIR/modules.dep
-			echo "kernel/drivers/char/audio/avm_audio.ko:" >> $MODULES_DIR/modules.dep
+			echo "kernel/drivers/net/rfcntl/rfcntl.ko: kernel/drivers/char/audio/avm_audio.ko" >> "$MODULES_DIR/modules.dep"
+			echo "kernel/drivers/char/audio/avm_audio.ko:" >> "$MODULES_DIR/modules.dep"
+		fi
+		if [ "$FREETZ_REPRODUCIBLE" == "y" ]; then
+			sort "$MODULES_DIR/modules.dep" | while read -r mod dep; do
+				echo -n "$mod"
+				echo "$dep" | sed 's/ /\n/g' | sort | while read line; do echo -n " $line"; done
+				echo
+			done > "$MODULES_DIR/modules.dep.reproducible"
+			cat "$MODULES_DIR/modules.dep.reproducible" > "$MODULES_DIR/modules.dep"
+			rm -f "$MODULES_DIR/modules.dep.reproducible"
 		fi
 	fi
 
-	kolinecnt="$(cat $MODULES_DIR/modules.dep | wc -l)"
-	kofilecnt="$(find $MODULES_DIR -type f -name '*.ko' | wc -l)"
+	kolinecnt="$(cat "$MODULES_DIR/modules.dep" | wc -l)"
+	kofilecnt="$(find "$MODULES_DIR" -type f -name '*.ko' | wc -l)"
 	echo1 "kernel modules installed: $kolinecnt entries in modules.dep and $kofilecnt .ko-files found."
 	if [ "$FREETZ_KERNEL_VERSION_2_6_28" == "y" ]; then
 		if [ "$FREETZ_REPLACE_KERNEL" != "y" ];then
@@ -1449,7 +1459,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 
 	echo1 "removing empty kernel module directories"
-	for dir in $(find ${MODULES_DIR} -type d -empty -delete -printf "%P\n"); do
+	for dir in $(find "${MODULES_DIR}" -type d -empty -delete -printf "%P\n"); do
 		echo2 $dir
 	done
 
@@ -1570,7 +1580,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 	if  [ "$FREETZ_STRIP_MODULES_ALL" == "y" ]; then
 		echo0 "stripping all kernel modules"
-		for i in $(find ${MODULES_DIR} -name '*.ko'); do
+		for i in $(find "${MODULES_DIR}" -name '*.ko'); do
 			echo2 $i
 			${ABS_BASE_DIR}/toolchain/kernel/bin/${FREETZ_KERNEL_CROSS}strip -p --strip-unneeded \
 			  --remove-section={.comment,.pdr,.mdebug.abi32,.note.gnu.build-id} $i
@@ -1808,6 +1818,14 @@ if [ "$action_names" ]; then
 	modmakedate="$(date +%Y%m%d-%H%M%S)"
 	modstring="$(get_modstring)"
 
+	if [ "$FREETZ_REPRODUCIBLE" != "y" ]; then
+		export_modmakedate="$modmakedate"
+		export_modstring="$modstring"
+	else
+		export_modmakedate="reproducible"
+		export_modstring="${modstring/$modmakedate/reproducible}"
+	fi
+
 	# collect externalized files
 	externalised_files=$(find "$EXTERNAL_MOD_DIR/" -type f 2>/dev/null | sed -e "/external[.]pkg/d;/[.]external/d;s,$EXTERNAL_MOD_DIR/,,")
 
@@ -1819,15 +1837,18 @@ if [ "$action_names" ]; then
 		echo "export FREETZ_INFO_FIRMWAREVERSION='${AVM_FW_VERSION}'" >> "$freetz_info_file"
 		echo "export FREETZ_INFO_VERSION='${FREETZ_VERSION}'" >> "$freetz_info_file"
 		echo "export FREETZ_INFO_LANG='${FREETZ_TYPE_LANGUAGE}'" >> "$freetz_info_file"
-		echo "export FREETZ_INFO_MAKEDATE='${modmakedate}'" >> "$freetz_info_file"
-		echo "export FREETZ_INFO_IMAGE_NAME='${modstring}.image'" >> "$freetz_info_file"
+		echo "export FREETZ_INFO_MAKEDATE='${export_modmakedate}'" >> "$freetz_info_file"
+		echo "export FREETZ_INFO_IMAGE_NAME='${export_modstring}.image'" >> "$freetz_info_file"
 		echo "export FREETZ_INFO_COMMENT='${FREETZ_USER_DEFINED_COMMENT}'" >> "$freetz_info_file"
 		echo "export FREETZ_INFO_EXTERNAL_FILES='${externalised_files}'" >> "$freetz_info_file"
 	fi
 
 	# Pack var.tar (use old tar for compatibility)
+	# Switch to new tar because of uid/gid
+	# oldgnu should be enough compatibility ...
 	echo0 "packing var.tar"
-	"$TAR" -C "$VARTAR_MOD_DIR" -cf "$VARTAR_MOD" .
+	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$VARTAR_MOD_DIR" "$VARTAR_DIR"
+	"$TAR_GNU" -f "$VARTAR_MOD"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$VARTAR_MOD_DIR"  --create ./var/
 	if [ $? -ne 0 ] || ! is_valid_tarball "$VARTAR_MOD"; then
 		mv "${VARTAR_MOD}" "${VARTAR_MOD}.corrupted" 2>/dev/null
 		error 1 "packing of var.tar failed"
@@ -1908,6 +1929,7 @@ if [ "$DO_ZIP" -gt 0 ]; then
 		zip_name="${DIR}/${modstring}_rootfs.tar.gz"
 	fi
 	echo0 "zipping root file system to $zip_name"
+	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FILESYSTEM_MOD_DIR" "$FILESYSTEM_DIR"
 	"$TAR" -C "$FILESYSTEM_MOD_DIR" -czf "$zip_name" .
 	if [ $? -ne 0 ] || ! is_valid_tarball "$zip_name"; then
 		mv "${zip_name}" "${zip_name}.corrupted" 2>/dev/null
@@ -1923,6 +1945,7 @@ fi
 if [ "$DO_PACK" -gt 0 ]; then
 	[ ! -x "$MKSQUASHFS" ] && error 1 "cannot find $MKSQUASHFS"
 
+	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FILESYSTEM_MOD_DIR" "$FILESYSTEM_DIR"
 	if [ "$FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO" == "y" ]; then
 		echo0 "creating ${INNER_FS_PREFIX}filesystem image (CPIO-gz)"
 
@@ -1991,6 +2014,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 	if [ "${FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE}" == "y" ]; then
 
 		if [ "${FREETZ_AVM_HAS_INNER_OUTER_FILESYSTEM}" == "y" ]; then
+			[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FILESYSTEM_OUTER_MOD_DIR" "$FILESYSTEM_OUTER_DIR"
 			if [ "${FREETZ_AVM_OUTER_FILESYSTEM_TYPE}" == "Ext2FS" ]; then
 				echo0 "creating outer-filesystem image (Ext2FS)"
 				$TOOLS_DIR/mke2img -G 2 -R 0 -d "${FILESYSTEM_OUTER_MOD_DIR}" -o "$ABS_BASE_DIR/$RAW_FILESYSTEM_MOD.ext2" >> $MOD_DIR/filesystem.log 2>&1
@@ -2126,7 +2150,8 @@ if [ "$DO_PACK" -gt 0 ]; then
 		echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
 	fi
 	echo0 "packing ${img_name}"
-	"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --create ./var
+	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FIRMWARE_MOD_DIR" "$FIRMWARE_DIR"
+	"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --create ./var
 	if [ $? -ne 0 ] || ! is_valid_tarball "${img_name}"; then
 		mv "${img_name}" "${img_name}.packed.corrupted" 2>/dev/null
 		error 1 "packing of firmware image failed"
@@ -2147,7 +2172,8 @@ if [ "$DO_PACK" -gt 0 ]; then
 		else
 			openssl md5 -sign "${SIGNATURE_SUBDIR}/prv" -passin "pass:$FREETZ_FWMOD_SIGN_PASSWORD" -out "${FIRMWARE_MOD_DIR}/var/signature" "${img_name}" || \
 				error 1 "could not create signature file for firmware image"
-			"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --append ./var/signature
+			[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FIRMWARE_MOD_DIR/var/signature" "$FIRMWARE_DIR/var/signature"
+			"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --append ./var/signature
 			RET=$?
 		fi
 		if [ $RET -ne 0 ] || ! is_valid_tarball "${img_name}"; then
@@ -2176,6 +2202,7 @@ if [ "$action_names" ]; then
 		#static packages
 		modexternal="${FW_IMAGES_DIR:-$DIR}/${modstring}.external"
 		echo "packing ${modexternal}"
+		[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$EXTERNAL_MOD_DIR"
 		"$TAR" -C "$EXTERNAL_MOD_DIR" -cf "$modexternal" .
 		if [ $? -ne 0 ] || ! is_valid_tarball "$modexternal"; then
 			mv "${modexternal}" "${modexternal}.corrupted" 2>/dev/null
@@ -2189,6 +2216,7 @@ if [ "$action_names" ]; then
 				pkg=${pkg#${EXTERNAL_MOD_DIR}-}
 				pkgexternal="${FW_IMAGES_DIR:-$DIR}/${modstring}_${pkg}.external"
 				echo "packing ${pkgexternal}"
+				[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$EXTERNAL_MOD_DIR-${pkg}"
 				"$TAR" -C "$EXTERNAL_MOD_DIR-${pkg}" -cf "$pkgexternal" .
 				if [ $? -ne 0 ] || ! is_valid_tarball "$pkgexternal"; then
 					mv "${pkgexternal}" "${pkgexternal}.corrupted" 2>/dev/null

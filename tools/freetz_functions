@@ -79,14 +79,21 @@ menu2html_remove() {
 	  "${HTML_SPEC_MOD_DIR}/menus/menu2_home.html"
 }
 
-#homelua_disable <function-name> [optional return value]
-#easily disable functions within home.lua by returning $2, if $2 is omitted the function is assumed to return void
-homelua_disable() {
-	local return_statement="${2:+return }${2}"
+#replace_lua_function <lua_file_name> <function_name> [optional return_statement]
+#easily replace function $2 within file $1 by returning $3, if $3 is omitted the function is assumed to return void
+replace_lua_function() {
+	local lua_file_name="$1"
+	local function_name="$2"
+	local return_statement="${3:+return }${3}"
 	modsed -r \
-	  "s/^(((local )?function $1)([(][^)]*[)]))$/\1\n${return_statement}\nend\n\2_\4/" \
-	  "${HTML_LANG_MOD_DIR}/home/home.lua" \
-	  " $1_("
+	  "s/^(((local )?function $function_name)([(][^)]*[)]))$/\1\n${return_statement}\nend\n\2_\4/" \
+	  "$lua_file_name" \
+	  " $function_name_("
+}
+#homelua_disable <function-name> [optional return value]
+#easily disable function $1 within "home.lua" by returning $2, if $2 is omitted the function is assumed to return void
+homelua_disable() {
+	replace_lua_function "${HTML_LANG_MOD_DIR}/home/home.lua" "$1" "$2"
 }
 homelua_disable_wrapper() {
 	if [ "$FREETZ_AVM_HAS_LUA_SCALABLE" == "y" ]; then
@@ -149,8 +156,7 @@ decrip_file() {
 # if isFreetzType 7170 7240 7270 && isFreetzType LABOR_AIO; then
 # -------------------------------------------------------------------
 
-isFreetzType()
-{
+isFreetzType() {
 	for i; do
 		eval [ \"\$FREETZ_TYPE_$i\" == y ] && return 0
 	done
@@ -158,8 +164,7 @@ isFreetzType()
 }
 
 # little helper function used by many patches (maybe this should be sourced out)
-rm_files()
-{
+rm_files() {
 	for file in "$@"; do
 		echo2 "rm -rf $file"
 		rm -rf $file
@@ -268,8 +273,7 @@ mod_del_area() {
 }
 
 # General printing (info messages, warnings and errors)
-echoX()
-{
+echoX() {
 	# If an error occurs because a parameter starting with "-" (but none of the
 	# predefined letters below) is detected, we heuristically stop option parsing,
 	# assuming the caller wants to print a string like "----" or "-blah",
@@ -331,8 +335,7 @@ warn3() { [ "$FREETZ_VERBOSITY_LEVEL" -ge 3 ] && warn "$@"; }
 
 
 # Error message + exit with specified error code
-error()
-{
+error() {
 	local err_no=$1
 	[ $err_no -eq 0 ] && return
 	shift
@@ -341,8 +344,7 @@ error()
 	exit $err_no
 }
 
-modunext2()
-{
+modunext2() {
 	dd if="$2" of="$2.ext2" bs=256 skip=1 conv=sync >/dev/null 2>&1 \
 	&& { mkdir -p "$1"; echo "rdump / $1" | "$DEBUGFS" "$2.ext2" >"$1.debugfs-rdump.log" 2>&1; }
 
@@ -351,8 +353,7 @@ modunext2()
 	fi
 }
 
-modunsqfs()
-{
+modunsqfs() {
 	local STATUS
 	if [ "$FREETZ_VERBOSITY_LEVEL" -ge 2 ]; then
 		"$UNSQUASHFS" $UNSQUASHFS_OPTIONS -dest "$1" "$2" 2>&1 | grep -v "^$" | sed -e "s/^/${L2}/g"
@@ -366,8 +367,7 @@ modunsqfs()
 	fi
 }
 
-moduncpio()
-{
+moduncpio() {
 	mkdir -p "$1"
 	cat "$2" | gunzip | cpio -mid --quiet -D "$1" 2>&1
 	
@@ -376,8 +376,7 @@ moduncpio()
 	fi
 }
 
-modunpack_autodetect_fs()
-{
+modunpack_autodetect_fs() {
 	if $BLKID -O 256 "$2" 2>/dev/null | grep -q 'TYPE="ext2"'; then
 		modunext2 "$@"
 	elif $BLKID -O 0 "$2" 2>/dev/null | grep -q 'TYPE="squashfs"'; then
@@ -390,8 +389,7 @@ modunpack_autodetect_fs()
 }
 
 
-modlangsubst()
-{
+modlangsubst() {
 	# modlangsubst <lang> <file>
 	#   Substitutes all $(lang de:"Deutscher Text" en:"English text" ...) occurrences
 	#   in <file> with <text> of the corresponding <lang>:"<text>" section.
@@ -412,8 +410,7 @@ modlangsubst()
 		" "$2"
 }
 
-modlangconf()
-{
+modlangconf() {
 	# modlangconf <key> <file>
 	#   Get <content> of a <key> { <content> } section in <file>
 
@@ -422,8 +419,7 @@ modlangconf()
 	sed -n -e ":n;N;\$!bn;s/^.*${1}${s}\+{${s}*\([^}]*\)${s}*}.*$/\1/p" "$2"
 }
 
-modlang()
-{
+modlang() {
 	# modlang <conffile> <dir>
 
 	[ "$FREETZ_LANG_STRING" == "xx" ] && return
@@ -477,13 +473,11 @@ modlang()
 
 
 # list of static packages, sorted by start level
-static_packages()
-{
+static_packages() {
 	sort $PACKAGES_LIST_FILE | cut -d ' ' -f 2,3 | sed 's/ /-/'
 }
 
-static_addons()
-{
+static_addons() {
 	cat $STATIC_ADDON_FILES 2>/dev/null \
 	  | sed -e 's/^[\ \t]*//' -e 's/[\ \t]*$//' \
 	  | grep -v '^#' | grep -v '^$'
@@ -492,24 +486,21 @@ static_addons()
 #
 # returns package name with the version number stripped
 #
-real_pkg_name()
-{
+real_pkg_name() {
 	echo "$1" | sed -r -e 's/-(alpha|beta|rc|(un)?stable|.)[0-9]*$//i' -e 's/-[0-9a-f]{7}([0-9a-f]{3}([0-9a-f]{30})?)?$//' -e 's/-v?[0-9][^-]*$//' -e 's/-v?[0-9][^-]*$//'
 }
 
 #
 # returns package name the with version number and special suffixes (e.g. -cgi) stripped
 #
-pkg_name()
-{
+pkg_name() {
 	real_pkg_name "$1" | sed -r -e 's/(-v2)?-cgi$//'
 }
 
 #
 # $1 .. * - pkgname1 pkgname2 ...
 #
-pkg_menuconfig_symbol_name()
-{
+pkg_menuconfig_symbol_name() {
 	echo "$@" | sed -r -e 's,-,_,g' -e 's,([^ \t]*),FREETZ_PACKAGE_\U\1,g'
 }
 
@@ -522,8 +513,7 @@ pkg_menuconfig_symbol_name()
 #
 # requires GNU tar because of the '--null' option (not supported by busybox tar)
 #
-collect_pkg_files()
-{
+collect_pkg_files() {
 	local p=, pkg=, pkg_dir=, pkg_menuconfig_symbol=
 	for p in "$@"; do
 		pkg=$(real_pkg_name "${p}")
@@ -551,21 +541,15 @@ collect_pkg_files()
 # checks if (.)fwmod_custom scripts exists, have correct syntax, and invokes them
 # with exactly the same parameters as those passed to invoke_fwmod_custom itself
 #
-invoke_fwmod_custom()
-{
-	local dirty
-	[ "$(git ls-files -m  fwmod_custom 2>/dev/null | wc -l)" != "0" ] && dirty=1
-	[ "$(svn st           fwmod_custom 2>/dev/null | wc -l)" != "0" ] && dirty=1
-	[ -e .fwmod_custom ]                                              && dirty=1
-	[ "$1" == "all_no_freetz" ]                                       && dirty=1
-	[ -n "$dirty" ] && echo0 "invoking custom scripts" || return
-
+invoke_fwmod_custom() {
+	echo0 "invoking custom scripts"
 	for file in fwmod_custom .fwmod_custom; do
 		[ -x "${BASE_DIR}/$file" ] || continue
 
 		# syntax check
 		$SHELL -n "${BASE_DIR}/$file" || error 1 "syntax error in $file script"
 
+		echo1 "$file"
 		(
 		  AVM_FW_MAJOR="$AVM_FW_MAJOR" \
 		  AVM_FW_VERSION="$AVM_FW_VERSION" \
@@ -580,8 +564,7 @@ invoke_fwmod_custom()
 #
 # Returns "(NEEDED)"-entries for all binaries/libraries supplied
 #
-getNeededEntries()
-{
+getNeededEntries() {
 	"${FREETZ_BASE_DIR}"/toolchain/target/bin/${FREETZ_TARGET_CROSS}readelf -d "$@" 2>/dev/null \
 	| grep "(NEEDED)" | sed -r -e 's,^[^[]* [[]([^]]*)[]].*$,\1,' | sort -u
 }
@@ -590,8 +573,7 @@ getNeededEntries()
 # Returns if $1 is a "(NEEDED)"-entry of one of the binaries/libraries supplied after $1
 # $1 might also be an extended grep-pattern, e.g. (libcapi|libfax)
 #
-isNeededEntry()
-{
+isNeededEntry() {
 	[ $# -lt 2 ] && error 1 "isNeededEntry failed, not enough parameters."
 	local neededPattern="$1"; shift
 	local neededEntries=$(getNeededEntries "$@")
@@ -601,7 +583,7 @@ isNeededEntry()
 #
 # Strips trailing slash if provided
 #
-function stripTrailingSlash() {
+stripTrailingSlash() {
 	local path="$1"
 	[ -n "${path}" -a "${path: -1: 1}" == "/" ] && path="${path: 0: -1}"
 	echo -n "$path"
@@ -610,7 +592,7 @@ function stripTrailingSlash() {
 #
 # Adds trailing slash if missing
 #
-function addTrailingSlash() {
+addTrailingSlash() {
 	local path="$1"
 	[ -n "${path}" -a "${path: -1: 1}" != "/" ] && path="$path/"
 	echo -n "$path"
@@ -621,7 +603,7 @@ function addTrailingSlash() {
 #
 # Dependencies: readlink, realpath, bash (uses bash specific functions).
 #
-function symlinks-abs2rel() {
+symlinks-abs2rel() {
 	local USAGE="$(
 		echo -e "Usage:\t${FUNCNAME} [-v|-verbose] [-r|-recursive] TARGET_FS_ROOT DIR [MASK], where"
 		echo -e "\t\tTARGET_FS_ROOT is the directory pointing to the root directory of the target filesystem"
@@ -704,7 +686,7 @@ join() {
 }
 # $1 - file to wrap
 # $2 $3 ... - libraries to preload
-function create_LD_PRELOAD_wrapper() {
+create_LD_PRELOAD_wrapper() {
 	local file_to_wrap="$1"; shift
 	[ -f "${FILESYSTEM_MOD_DIR}${file_to_wrap}" -a -x "${FILESYSTEM_MOD_DIR}${file_to_wrap}" ] || error 1 "${FUNCNAME}: ${file_to_wrap} is expected to exist and be executable"
 	local libraries_to_preload=$(join ':' "$@")
@@ -730,7 +712,7 @@ function create_LD_PRELOAD_wrapper() {
 # create preloading environment file
 # $1 - target file
 # $2 - preload lib
-function create_service_environment() {
+create_service_environment() {
 	[ -n "$2" ] && echo "LD_PRELOAD=$2" > "$1" || echo -n > "$1"
 }
 
@@ -738,7 +720,7 @@ function create_service_environment() {
 # use preloading environment file
 # $1 - avm service file
 # $2 - environment file
-function alter_service__use_own_env_file() {
+alter_service__use_own_env_file() {
 	modsed -r \
 	  "s/^(EnvironmentFile)=.*/\1=${2//\//\\/}/" \
 	  "$1" \
@@ -748,7 +730,7 @@ function alter_service__use_own_env_file() {
 # change daemon file to avm bianry
 # $1 - avm service file
 # $2 - avm daemon name
-function alter_service__dont_use_wrapper() {
+alter_service__dont_use_wrapper() {
 	modsed \
 	  "s,^ExecStart=.*/,&avm/," \
 	  "$1" \
@@ -758,7 +740,7 @@ function alter_service__dont_use_wrapper() {
 # add argument to daemon binary
 # $1 - avm service file
 # $2 - daemon arguments
-function alter_service__add_daemon_arg() {
+alter_service__add_daemon_arg() {
 	modsed -r \
 	  "s,^ExecStart=.*,& $2," \
 	  "$1" \
@@ -770,7 +752,7 @@ function alter_service__add_daemon_arg() {
 # $1 - avm service file
 # $2 - avm daemon name
 # $3 - new wrapper path
-function alter_service__use_old_wrap_sh() {
+alter_service__use_old_wrap_sh() {
 	modsed -r \
 	  "s,^(ExecStart *=).*/($2.*)$,\1${3//\//\\/}/\2," \
 	  "$1" \
@@ -779,17 +761,36 @@ function alter_service__use_old_wrap_sh() {
 
 
 # $1 - number (or mathematical expression) in bytes
-function byte_to_mb() {
+byte_to_mb() {
 	echo $(($1)) | awk '{ printf "%.1f MB", $1 /1024/1024 }'
 }
 
 # $1 - tarball filename
-function is_valid_tarball() {
+is_valid_tarball() {
 	# integrity check by listing the content
 	[ -s "$1" ] && "$TAR" -tf "$1"    >/dev/null 2>&1
 
 	# integrity check by decompressing to stdout
 #	[ -s "$1" ] && "$TAR" -xf "$1" -O >/dev/null 2>&1
+}
+
+# copy timestamps from (all in) $1 to $2 - if item (in) $1 exists, otherwise sets $SOURCE_DATE_EPOCH or 1970
+# $1 - required - destination file or directory
+# $2 - optional - source file or directory
+sync_timestamps() {
+	local dst_dir="$1"
+	local src_dir="$2"
+	local dst_itm
+	local src_itm
+
+	find "$dst_dir" | while read -r dst_itm; do
+		src_itm="$src_dir${dst_itm#$dst_dir}"
+		if [ ! -e "$src_itm" -a ! -L "$src_itm" ]; then
+			touch -h -c -d "@${SOURCE_DATE_EPOCH:-0}" "$dst_itm"
+		else
+			touch -h -c -r "$src_itm" "$dst_itm"
+		fi
+	done
 }
 
 # avm image details
@@ -798,7 +799,7 @@ function is_valid_tarball() {
 # Optional	$FREETZ_TYPE_LANG_IT
 # Optional	$FREETZ_TYPE_LANG_A_CH
 # Returns	$SOURCE_IMAGE_DETAILS
-function image_details() {
+image_details() {
 	local AVM_FW_PRODUCT
 	local AVM_FW_LANGUAGE
 	#AVM_FW_MAJOR
@@ -851,13 +852,13 @@ function image_details() {
 #
 # shamelessly stolen from modfs project
 #
-function supported_brandings() {
+supported_brandings() {
 	local etc_default_PRODUKT_path brandings
 	etc_default_PRODUKT_path=$(find "${FILESYSTEM_MOD_DIR}/etc" -type d -name "default.*" | sed -e "\|${FILESYSTEM_MOD_DIR}/etc/default.[0-9]*$|d")
 	brandings=$(find "${etc_default_PRODUKT_path}" -maxdepth 1 -type d | sed -n -e "s|${etc_default_PRODUKT_path}[/]*||p" | sed -e "/^$/d" | sort -u)
 	echo $brandings
 }
-function firmware_version() {
+firmware_version() {
 	local varname oem supported_brandings="$@"
 	for oem in ${supported_brandings}; do
 		varname="FREETZ_ENFORCE_BRANDING_$oem"

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+TOOLS="$(dirname $(realpath $0))"
 
 # Buildroot wrapper to the collection of ext2/3/4 filesystem tools:
 # - genext2fs, to generate ext2 filesystem images
@@ -110,7 +111,8 @@ main() {
     if [ -n "${nb_res_blocks}" ]; then
         genext2fs_opts+=( -m ${nb_res_blocks} )
     fi
-    genext2fs "${genext2fs_opts[@]}" "${image}"
+    [ -n "$SOURCE_DATE_EPOCH" ] && genext2fs_opts+=( -f )
+    $TOOLS/genext2fs "${genext2fs_opts[@]}" "${image}"
 
     # genext2fs does not generate a UUID, but fsck will whine if one
     # is missing, so we need to add a UUID.
@@ -121,11 +123,11 @@ main() {
     # Although a random UUID may seem bad for reproducibility, there
     # already are so many things that are not reproducible in a
     # filesystem: file dates, file ordering, content of the files...
-    tune2fs -U "${uuid:-random}" "${image}"
+    $TOOLS/tune2fs -U "${uuid:-random}" "${image}"
 
     # Upgrade the filesystem
     if [ ${#tune2fs_opts[@]} -ne 0 ]; then
-        tune2fs "${tune2fs_opts[@]}" "${image}"
+        $TOOLS/tune2fs "${tune2fs_opts[@]}" "${image}"
     fi
 
     # After changing filesystem options, running fsck is required
@@ -140,7 +142,8 @@ main() {
     # Exit codes 1 & 2 are OK, it means fs errors were successfully
     # corrected, hence our little trick with $ret.
     ret=0
-    e2fsck -pDf "${image}" >/dev/null || ret=$?
+    export E2FSCK_TIME="$SOURCE_DATE_EPOCH"
+    $TOOLS/e2fsck -pDf "${image}" >/dev/null || ret=$?
     case ${ret} in
        0|1|2) ;;
        *)   errorN ${ret} "failed to run e2fsck on '%s' (ext%d)\n" \
@@ -150,10 +153,31 @@ main() {
     trace "e2fsck was successfully run on '%s' (ext%d)\n" "${image}" ${gen}
     printf "\n"
 
+    # set a reproducible uuid and last-check date
+    if [ -n "$SOURCE_DATE_EPOCH" ]; then
+        local UUID=''
+        if   [ -x "$TOOLS/python2" ]; then
+             UUID="$($TOOLS/python2 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
+        elif [ -x "$TOOLS/python3" ]; then
+             UUID="$($TOOLS/python3 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
+        elif command -v python3 >/dev/null; then
+             UUID="$(python3 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
+        elif command -v python2 >/dev/null; then
+             UUID="$(python2 -c "import uuid; print(uuid.uuid3(uuid.NAMESPACE_URL,'freetz-$SOURCE_DATE_EPOCH'))")"
+        elif command -v uuidgen >/dev/null; then
+             UUID="$($TOOLS/uuidgen --sha1 --namespace @dns --name "freetz-$SOURCE_DATE_EPOCH")"
+        fi
+        [ -z "$UUID" ] && echo "Failed, python2(-host), python3(-host) or uuidgen is required to generate the UUID." && exit 1
+        $TOOLS/tune2fs \
+          -U "$UUID" \
+          -T "$(date -d@"$SOURCE_DATE_EPOCH" "+%Y%m%d%H%M%S")" \
+          "${image}"
+    fi
+
     # Remove count- and time-based checks, they are not welcome
     # on embedded devices, where they can cause serious boot-time
     # issues by tremendously slowing down the boot.
-    tune2fs -c 0 -i 0 "${image}"
+    $TOOLS/tune2fs -c 0 -i 0 "${image}"
 }
 
 help() {
@@ -166,6 +190,12 @@ SYNOPSIS
 
 DESCRIPTION
     Create ext2/3/4 filesystem image from the content of a directory.
+
+    reproducible:
+      If SOURCE_DATE_EPOCH is set it overwrites
+       - the UUID
+       - last-check time
+       - last-write time
 
     -b BLOCKS
         Create a filesystem of BLOCKS 1024-byte blocs. The default is to

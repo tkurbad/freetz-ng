@@ -230,6 +230,14 @@ menu "Additional informations"
 			help
 				This selects curl and uses it for encrypted https connections.
 
+	config FREETZ_ADD_UIMODS
+		bool "Add FOS UI-Modules"
+		depends on FREETZ_AVM_HAS_CTLMGR_CTL
+		depends on FREETZ_SHOW_EXPERT
+		default y
+		help
+			Adds fos ui-modules management to webif, category 'system'.
+
 	config FREETZ_ADD_INACTIVE_SYSTEM
 		bool "Show inactive firmware"
 		depends on ( FREETZ_AVM_HAS_FWLAYOUT_6 && (FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE) )
@@ -243,7 +251,7 @@ menu "Additional informations"
 			The freetz webif shows on the system page the installed firmware in
 			the inactive partion too.
 			Squashfs devices are using fitdump, the evaluation takes about 3 seconds.
-			Cpio devices, currently only 5530:
+			Cpio devices, currently only 5530 7.2x:
 			To do this the yf-bootmanager is selected. After every device start
 			it could take up to 1 minute until the informations are available.
 
@@ -352,7 +360,7 @@ menu "Additional informations"
 			bool "Buildtype"
 			default n
 			help
-				Adds the  build type.
+				Adds the build type.
 				Values: release/labor/beta/inhaus
 
 		config FREETZ_IMAGE_NAME_BRANDINGS

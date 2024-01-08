@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23110](#ng23110)
   * [ng23080](#ng23080)
   * [ng23050](#ng23050)
   * [ng23030](#ng23030)
@@ -46,50 +47,119 @@ Latest changes
 ### devel
 
  - Build system:
-   * Ccache 4.8.3
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.45
 
  - Host tools:
-   * cmake 3.27.5
-   * kconfig 6.5
-   * pkgconf 2.0.3
-   * precompiled host-tools 2023-09-17
-   * python 3.11.5
+   * cmake 3.27.9
+   * fakeroot 1.32.2
+   * meson 1.3.1
+   * precompiled host-tools 2023-12-05
+   * precompiled toolchains r22972
+   * python 3.11.7
 
  - Packages:
-   * Atop 2.9.0
-   * BIND 9.11.37/9.16.43
-   * CA-bundle 2023-08-22
-   * Curl 8.3.0
-   * FFmpeg 5.1.3
-   * ftdi1 1.5
-   * Git 2.42.0
-   * iPerf3 3.3/3.15
-   * mc (Midnight Commander) 4.8.30
-   * Nmap 4.76/5.51/7.94
-   * OpenSSH 9.3p2/9.4p1
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.11
-   * PCSC-lite 2.0.0
-   * Screen 4.9.1
-   * SQLite 3.43.0
-   * strace 4.9/5.0/6.5
-   * Tor 0.4.8.6
-   * Transmission 3.00/4.0.4
-   * Unbound 1.18.0
-   * UnRAR 6.1.7/6.2.10
-   * Vim 9.0.1872
+   * BIND 9.11.37/9.16.45
+   * CA-bundle 2023-12-12
+   * CCID 1.5.4
+   * Curl 8.5.0
+   * Git 2.43.0
+   * Lua 5.1.5/5.4.6
+   * minicom 2.9
+   * OpenSSH 9.3p2/9.6p1
+   * OpenVPN 2.4.12/2.5.9/2.6.8
+   * PCSC-lite 2.0.1
+   * pyLoad 0.4.20/78162d75
+   * SQLite 3.44.2
+   * Tor 0.4.8.10
+   * Transmission 3.00/4.0.5
+   * Unbound 1.19.0
+   * Vim 9.1.0000
+   * xsltproc 1.1.39
 
  - Libraries:
-   * glib2 2.32.4/2.76.5
-   * harfbuzz 8.2.1
-   * libconfuse 3.3
-   * fribidi 1.0.13
-   * libxml2 2.11.5
-   * neon 0.30.2/0.32.5
-   * pango 1.51.0
-   * uClibc++ 0.2.6-6687fc92
+   * cairo 1.18.0
+   * harfbuzz 8.3.0
+   * libmaxminddb 1.8.0
+   * libtirpc 1.3.4
+   * libuv 1.44.2/1.47.0
+   * libxml2 2.12.3
+   * mbedTLS 2.7.19/2.28.6
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23110
+
+ - Build system:
+   * Ccache 4.8.3
+
+ - Host tools:
+   * cmake 3.27.7
+   * dtc 1.7.0
+   * kconfig 6.6
+   * meson 1.2.2
+   * openssl 3.0.12
+   * pkgconf 2.0.3
+   * precompiled host-tools 2023-11-03
+   * pseudo 1.9.0 oe-core cc1f616
+   * python 3.11.6
+   * u-boot 2023.10
+   * xz 5.4.5
+
+ - AVM sources:
+   * 1240 ax 7.57 - 4.4.271
+
+ - Packages:
+   * ACME.sh 3.0.7 (letsencrypt)
+   * Apache2 2.4.58
+   * Atop 2.9.0
+   * BIND 9.11.37/9.16.43
+   * CA-bundle 2023-08-22
+   * Curl 8.4.0
+   * dtc 1.7.0
+   * FFmpeg 5.1.3
+   * ftdi1 1.5
+   * Git 2.42.0
+   * ImageMagick 7.1.1-20
+   * iPerf3 3.3/3.15
+   * Lighttpd 1.4.72
+   * mc (Midnight Commander) 4.8.30
+   * mysql-connector 8.0.21
+   * Nmap 4.76/5.51/7.94
+   * NZBGet 21.1/21.4-rc2
+   * OpenSSH 9.3p2/9.5p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.12
+   * PCSC-lite 2.0.0
+   * ProxyChains-NG 4.16
+   * Screen 4.9.1
+   * SQLite 3.43.2
+   * sslh 2.0.1
+   * strace 4.9/5.0/6.6
+   * Stunnel 5.71
+   * Tor 0.4.8.7
+   * Transmission 3.00/4.0.4
+   * Unbound 1.18.0
+   * UnRAR 6.1.7/6.2.12
+   * Vim 9.0.1872
+   * XZ Utils 5.4.5
+
+ - Libraries:
+   * apr 1.7.4
+   * apr-util 1.6.3
+   * FreeType 2.13.2
+   * glib2 2.32.4/2.76.5
+   * harfbuzz 8.2.2
+   * libconfuse 3.3
+   * fribidi 1.0.13
+   * libxml2 2.11.5
+   * mbedTLS 2.7.19/2.28.5
+   * neon 0.30.2/0.32.5
+   * pango 1.51.0
+   * serf 1.3.10
+   * uClibc++ 0.2.6-6687fc92
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23110/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23080
 

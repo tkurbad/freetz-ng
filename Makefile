@@ -43,6 +43,9 @@ ifneq ($(shell grep -q "$$($(ENVIRA_REV_TOOL))" $(ENVIRA_LAST_REV) 2>/dev/null &
 endif
 endif
 	@$(ENVIRA_REV_TOOL) make
+ifeq ($(strip $(MAKECMDGOALS)),)
+	@$(MAKE) olddefconfig > /dev/null
+endif
 	@umask $(ENVIRA_UMASK) && PATH="$(ENVIRA_PATH_ABS):$(PATH):/usr/sbin" $(MAKE) $(MAKECMDGOALS) $(ENVIRA_MAKE_VARS) || kill $$$$
 .PHONY: envira
 
@@ -104,6 +107,9 @@ ifeq ($(FREETZ_JLEVEL),0)
 MAKE=make -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
 else
 MAKE=make -j$(FREETZ_JLEVEL)
+endif
+ifeq ($(FREETZ_REPRODUCIBLE),y)
+export SOURCE_DATE_EPOCH:=$(shell tools/freetz_revision ticks)
 endif
 
 # Don't go parallel
@@ -562,6 +568,11 @@ config-compress: .config.compressed
 listnewconfig: config-cache kconfig-host-conf
 	@$(CONFIG)/conf --listnewconfig $(CONFIG_IN_CACHE)
 
+config-flush-invalid:
+	-@$(SED) '/^FREETZ_TARGET_CFLAGS=/d' -i .config 2>/dev/null
+
+oldconfig olddefconfig: config-flush-invalid
+
 oldconfig olddefconfig allnoconfig allyesconfig randconfig: config-cache kconfig-host-conf
 	@$(CONFIG)/conf --$@ $(CONFIG_IN_CACHE) && touch .config
 
@@ -688,7 +699,7 @@ check-dot-config-uptodateness: $(CONFIG_IN_CACHE)
 help:
 	@sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.en.md
 
-.PHONY: all world step $(KCONFIG_TARGETS) config-cache config-cache-clean config-cache-refresh tools recover \
+.PHONY: all world step $(KCONFIG_TARGETS) config-flush-invalid config-cache config-cache-clean config-cache-refresh tools recover \
 	config-clean-deps-modules config-clean-deps-libs config-clean-deps-busybox config-clean-deps-terminfo config-clean-deps config-clean-deps-keep-busybox \
 	cacheclean clean dirclean distclean common-cacheclean common-clean common-dirclean common-distclean release \
 	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) $(TOOLS_RECOMPILE) $(TOOLS_FIXHARDCODED) $(TOOLS_AUTOFIX) \

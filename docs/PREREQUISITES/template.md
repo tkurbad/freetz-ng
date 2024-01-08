@@ -6,6 +6,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
 ### Getestete Distributionen
  - [Fedora](#fedora)
  - [Debian](#debian)
+ - [Devuan](#devuan)
  - [Ubuntu](#ubuntu)
  - [Kali](#kali)
  - sonst keine
@@ -46,7 +47,7 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
- - Fedora 37/38 64-Bit:
+ - Fedora 37/38/39 64-Bit:
 ```
 sudo dnf -y install %%Fedora37%%
 ```
@@ -84,10 +85,20 @@ sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y dist-upgrade
 ```
- - Debian 11 (Bullseye) 64-Bit:
+
+ - Debian 12 64-Bit:
+```
+sudo apt -y install %%Debian12%%
+```
+
+ - Debian 11 64-Bit:
 ```
 sudo apt -y install %%Debian11%%
 ```
+
+
+### Devuan
+Devuan wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Debian vorgeschlagen werden.
 
 
 ### Ubuntu
@@ -113,7 +124,12 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 22/23 64-Bit:
+ - Ubuntu 23 64-Bit:
+```
+sudo apt-get -y install %%Ubuntu23%%
+```
+
+ - Ubuntu 22 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu22%%
 ```
