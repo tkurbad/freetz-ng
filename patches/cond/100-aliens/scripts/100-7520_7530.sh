@@ -1,6 +1,22 @@
 isFreetzType 7520_7530 || return 0
+
+if [ -z "$FIRMWARE2" ]; then
+	echo "ERROR: no tk firmware" 1>&2
+	exit 1
+fi
+
 echo1 "adapt firmware for 7520"
 
+files=""
+files+=" css/rd/illustrations/box.gif"    # 7.1x / 7.0x
+files+=" css/rd/illustrations/box.svg"    # 7.2x
+files+=" assets/illustrations/box.svg"    # 7.5x
+files+=" assets/illustrations/box3d.svg"  # 7.5x
+for i in $files; do
+	[ ! -e "${FILESYSTEM_TK_DIR}/usr/www/avm/$i" ] && continue
+	echo2 "replacing $i"
+	cp -a "${FILESYSTEM_TK_DIR}/usr/www/avm/$i" "${HTML_LANG_MOD_DIR}/$i"
+done
 
 echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW236 \
