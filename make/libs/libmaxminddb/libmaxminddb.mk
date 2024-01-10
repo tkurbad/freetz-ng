@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.8.0)
+$(call PKG_INIT_LIB, 1.9.1)
 $(PKG)_SHLIB_VERSION:=0.0.7
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=1107799f77be6aa3b9796ad0eed8ffcc334bf45f8bd18e6a984d8adf3e719c6d
+$(PKG)_HASH:=a80682a89d915fdf60b35d316232fb04ebf36fff27fda9bd39fe8a38d3cd3f12
 $(PKG)_SITE:=https://github.com/maxmind/libmaxminddb/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://maxmind.github.io/libmaxminddb/
 ### CHANGES:=https://github.com/maxmind/libmaxminddb/releases
