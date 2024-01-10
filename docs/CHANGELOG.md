@@ -64,6 +64,7 @@ Latest changes
    * CCID 1.5.4
    * Curl 8.5.0
    * Git 2.43.0
+   * htop 1.0.3/3.3.0
    * Lua 5.1.5/5.4.6
    * minicom 2.9
    * OpenSSH 9.3p2/9.6p1
