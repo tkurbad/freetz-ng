@@ -74,6 +74,7 @@ Latest changes
    * SQLite 3.44.2
    * Tor 0.4.8.10
    * Transmission 3.00/4.0.5
+   * Subversion 1.9.12/1.14.3
    * Unbound 1.19.0
    * Vim 9.1.0000
    * xsltproc 1.1.39
