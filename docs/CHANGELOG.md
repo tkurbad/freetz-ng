@@ -71,10 +71,10 @@ Latest changes
    * OpenVPN 2.4.12/2.5.9/2.6.8
    * PCSC-lite 2.0.1
    * pyLoad 0.4.20/78162d75
+   * Subversion 1.9.12/1.14.3
    * SQLite 3.44.2
    * Tor 0.4.8.10
    * Transmission 3.00/4.0.5
-   * Subversion 1.9.12/1.14.3
    * Unbound 1.19.0
    * Vim 9.1.0000
    * xsltproc 1.1.39
