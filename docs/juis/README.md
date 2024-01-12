@@ -83,13 +83,13 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 185: [FRITZ.Box_7490-07.57.image](http://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.57.image)
  - HWR 190: [FRITZ.Powerline_546E.118.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-546e/deutschland/fritz.os/FRITZ.Powerline_546E.118.07.15.image)
  - HWR 253: [FRITZ.Repeater_6000-07.57.image](http://download.avm.de/fritzwlan/fritzrepeater-6000/deutschland/fritz.os/FRITZ.Repeater_6000-07.57.image)
- - HWR 256: [FRITZ.Box_7530_AX-07.70-109880-LabBETA.image](http://download.avm.de/labor/GoFiber23/7530AX/FRITZ.Box_7530_AX-07.70-109880-LabBETA.image)
- - HWR 257: [FRITZ.Box_5530_Fiber-07.70-109881-LabBETA.image](http://download.avm.de/labor/GoFiber23/5530Fiber/FRITZ.Box_5530_Fiber-07.70-109881-LabBETA.image)
+ - HWR 256: [FRITZ.Box_7530_AX-07.70-110135-LabBETA.image](http://download.avm.de/labor/GoFiber23/7530AX/FRITZ.Box_7530_AX-07.70-110135-LabBETA.image)
+ - HWR 257: [FRITZ.Box_5530_Fiber-07.70-110136-LabBETA.image](http://download.avm.de/labor/GoFiber23/5530Fiber/FRITZ.Box_5530_Fiber-07.70-110136-LabBETA.image)
  - HWR 259: [FRITZ.Box_7590_AX-07.70-109882-LabBETA.image](http://download.avm.de/labor/GoFiber23/7590AX/FRITZ.Box_7590_AX-07.70-109882-LabBETA.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
  - HWR 261: [FRITZ.Box_4060-07.57-109903-Release.image](http://download.avm.de/firmware/WWA/FRITZ.Box_4060-07.57-109903-Release.image)
  - HWR 267: [FRITZ.Box_6690_Cable-07.57.image](http://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
- - HWR 272: [FRITZ.Box_5590_Fiber-07.70-109883-LabBETA.image](http://download.avm.de/labor/GoFiber23/5590Fiber/FRITZ.Box_5590_Fiber-07.70-109883-LabBETA.image)
+ - HWR 272: [FRITZ.Box_5590_Fiber-07.70-110139-LabBETA.image](http://download.avm.de/labor/GoFiber23/5590Fiber/FRITZ.Box_5590_Fiber-07.70-110139-LabBETA.image)
 
 ### FOS-Inhaus
  - HWR 240: [FRITZ.Repeater_600-07.51-105598-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/600/FRITZ.Repeater_600-07.51-105598-Inhaus.image)
