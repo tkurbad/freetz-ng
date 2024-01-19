@@ -4,7 +4,7 @@ $(PKG)_HASH:=fbd42bd2f0e54a3af6d01bdf15385384ab82dbc0e4f1a5e153b3e0be1b6380ac
 $(PKG)_SITE:=http://www.dest-unreach.org/socat/download
 ### WEBSITE:=http://www.dest-unreach.org/socat/
 ### MANPAGE:=http://www.dest-unreach.org/socat/doc/socat.html
-### CHANGES:=http://www.dest-unreach.org/socat/doc/CHANGES
+### CHANGES:=https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES
 ### CVSREPO:=https://repo.or.cz/socat.git
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/socat
