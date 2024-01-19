@@ -1,7 +1,7 @@
 # socat 1.7.4.4 (binary only)
  - Homepage: [http://www.dest-unreach.org/socat/](http://www.dest-unreach.org/socat/)
  - Manpage: [http://www.dest-unreach.org/socat/doc/socat.html](http://www.dest-unreach.org/socat/doc/socat.html)
- - Changelog: [http://www.dest-unreach.org/socat/doc/CHANGES](http://www.dest-unreach.org/socat/doc/CHANGES)
+ - Changelog: [https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES](https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES)
  - Repository: [https://repo.or.cz/socat.git](https://repo.or.cz/socat.git)
  - Package: [master/make/pkgs/socat/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/socat/)
 
