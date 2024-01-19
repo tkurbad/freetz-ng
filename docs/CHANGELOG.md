@@ -71,6 +71,7 @@ Latest changes
    * OpenVPN 2.4.12/2.5.9/2.6.8
    * PCSC-lite 2.0.1
    * pyLoad 0.4.20/78162d75
+   * socat 1.7.4.4
    * Subversion 1.9.12/1.14.3
    * SQLite 3.45.0
    * Tor 0.4.8.10

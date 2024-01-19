@@ -1,6 +1,7 @@
 config FREETZ_PACKAGE_SOCAT
-	bool "socat 1.7.4.2 (binary only)"
+	bool "socat 1.7.4.4 (binary only)"
 	select FREETZ_REMOVE_SOCAT if FREETZ_AVM_HAS_SOCAT
+	select FREETZ_LIB_libcrypto_WITH_EC
 	select FREETZ_LIB_libcrypto
 	select FREETZ_LIB_libssl
 	select FREETZ_LIB_libutil if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
