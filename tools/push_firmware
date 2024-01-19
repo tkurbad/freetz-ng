@@ -416,15 +416,9 @@ trap cleanup EXIT SIGTERM SIGINT
 usage() {
 cat << EOX
 
-Usage: $0 [image] [ -m<s|r|d|u|f> ] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram <mb> ] [ -lfs <0|1|9> ] [ -cmd <ftp|ncftp> ] [ -hn ]
+Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram <mb> ] [ -lfs <0|1|9> ] [ -cmd <ftp|ncftp> ] [ -hn ]
 
 [image]           When no 'image' file is given, images/latest.image will be tried.
--ms               Force mode single-boot (classic devices, like 7270 & 7390)
--mr               Force mode ram-boot (newer devices, like 7490 & 7590)
--md               Force mode dual-boot (classic docsis devices, like 6490 & 6590)
--mu               Force mode uimg-boot (newer docsis devices, like 6591 & 6660)
-                    See https://bitbucket.org/fesc2000/ffritz/src/6591/README-6591.md
--mf               Force mode fit-boot (latest devices, like 5530 & 7530 AX)
 -f                Disable safety prompt, force instant flash.
 -w                The device is yet halted in the bootloader, don't wait for shutdown.
 -ip <ip>          Bootloader IP address or hostname, default 192.168.178.1
@@ -442,6 +436,8 @@ Usage: $0 [image] [ -m<s|r|d|u|f> ] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ 
 -cmd <ftp|ncftp>  Force the prefered usage of ncftp (buggy) or ftp command for upload.
 -hn               Only single-boot mode: Flash to an 'Alice/HanseNet' version of 7570.
 
+This scipt supports currently single-, ram-, dual-, uimg- and fit-boot modes, for more
+infomations see https://freetz-ng.github.io/freetz-ng/INSTALL#methoden
 If flashing ram-boot/nand/inmemory does not work...
 For ram-boot mode you may need to set a larger '-ram' value then the default of '128' MB.
 You could use '-ram 0' to detect the size and use the maximum. The value AVM uses is
@@ -454,21 +450,6 @@ exit 1
 
 while [ $# -ge 1 ]; do
 	case "$1" in
-		(-ms|-msingle)
-			ISSINGLE=true
-			;;
-		(-mr|-mram)
-			ISRAM=true
-			;;
-		(-md|-mdual)
-			ISDUAL=true
-			;;
-		(-mu|-muimg)
-			ISUIMG=true
-			;;
-		(-mf|-mfit)
-			ISFIT=true
-			;;
 		(-f|-force)
 			ISFORCE=true
 			;;
@@ -565,7 +546,7 @@ if [ -z "$ISSINGLE$ISDUAL$ISRAM$ISUIMG$ISFIT" ]; then
 		[ "$N" == "1" -a "$S" == "0" ] && ISSINGLE=true
 	fi
 fi
-[ -z "$ISSINGLE$ISDUAL$ISRAM$ISUIMG$ISFIT" ]   && echo "Can not recognize image, please use '-m<s|r|d|u|f>'."              && exit 1
+[ -z "$ISSINGLE$ISDUAL$ISRAM$ISUIMG$ISFIT" ]   && echo "Can not recognize image format, use a valid one."                  && exit 1
 # arg check
 [ ! $ISSINGLE ] && [ $ISALICE ]                && echo "Parameter '-hn' is only allowed for single-boot mode."             && exit 1
 [ $ISSINGLE ]   && [ $LFS ]                    && echo "Parameter '-lfs' is not allowed for single-boot mode."             && exit 1
