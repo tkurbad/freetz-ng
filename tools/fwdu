@@ -229,16 +229,15 @@ image() {
 		SIZEKD="$(($SIZE_K1 - $SIZE_K2))"
 		SIZEFD="$(($SIZE_F1 - $SIZE_F2))"
 		if [ "$FLV_FIT" == "1" ]; then
-			FLV=6 # fit
+			FLV=5 # fit
 		elif [ "$FLV_IUI" == "1" ]; then
-			FLV=5 # umig
+			FLV=4 # umig
 		elif [ "$SIZE_F1" == "0" ]; then
-		#	FLV=2 # alice
-			FLV=1 # single
+			FLV=1 # single (+alice)
 		elif [ "$SIZEKD" == "8" -a "$SIZEFD" == "8" ]; then
-			FLV=3 # ram
+			FLV=2 # ram
 		elif [ "${SIZEKD#-}" -lt 192 -a "${SIZEFD#-}" -lt 446 ]; then
-			FLV=4 # dual
+			FLV=3 # dual
 		else
 			FLV=0 # unknown
 		fi
