@@ -6,6 +6,9 @@ config FREETZ_AVM_HAS_DSLD
 config FREETZ_AVM_HAS_DTRACE
 	def_bool y
 
+config FREETZ_AVM_HAS_FWLAYOUT_1
+	def_bool y
+
 config FREETZ_AVM_HAS_OPENSSL
 	def_bool y
 

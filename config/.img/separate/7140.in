@@ -12,6 +12,9 @@ config FREETZ_AVM_HAS_EXT2_MODULE
 config FREETZ_AVM_HAS_FAT_MODULE
 	def_bool y
 
+config FREETZ_AVM_HAS_FWLAYOUT_1
+	def_bool y
+
 config FREETZ_AVM_HAS_ISOFS_MODULE
 	def_bool y
 

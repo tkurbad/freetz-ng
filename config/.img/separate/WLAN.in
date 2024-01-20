@@ -9,6 +9,9 @@ config FREETZ_AVM_HAS_DSLD
 config FREETZ_AVM_HAS_ETHERNET_OVER_USB
 	def_bool y
 
+config FREETZ_AVM_HAS_FWLAYOUT_1
+	def_bool y
+
 config FREETZ_AVM_HAS_KIDS
 	def_bool y
 

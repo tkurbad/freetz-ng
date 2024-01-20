@@ -48,7 +48,7 @@ config FREETZ_AVM_HAS_ETCSERVICES
 config FREETZ_AVM_HAS_FAX
 	def_bool y
 
-config FREETZ_AVM_HAS_FWLAYOUT_6
+config FREETZ_AVM_HAS_FWLAYOUT_5
 	def_bool y
 
 config FREETZ_AVM_HAS_INETD
