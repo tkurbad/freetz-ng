@@ -3,11 +3,11 @@ echo '<pre>Toggling ...'
 
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 FWLAYOUT=''
+[ "$FREETZ_AVM_HAS_FWLAYOUT_4" == "y" ] && FWLAYOUT='4'
 [ "$FREETZ_AVM_HAS_FWLAYOUT_5" == "y" ] && FWLAYOUT='5'
-[ "$FREETZ_AVM_HAS_FWLAYOUT_6" == "y" ] && FWLAYOUT='6'
 
 case "$FWLAYOUT" in
-	5)	# UIMG
+	4)	# UIMG
 		. /var/env.cache
 		LFS_LIVE="$(sed -n 's/^linux_fs_start[ \t]*//p' /proc/sys/urlader/environment)"
 		[ -z "$LFS_LIVE" ] && LFS_LIVE=0
@@ -15,7 +15,7 @@ case "$FWLAYOUT" in
 		echo "changing $LFS_LIVE -> $LFS_DEAD ... and rebooting"
 		/bin/aicmd pumaglued uimg switchandreboot && LFS_TEST="$LFS_DEAD" || LFS_TEST="9"
 		;;
-	6)	# FIT
+	5)	# FIT
 		. /var/env.mod.daemon  # CONFIG_ENVIRONMENT_PATH
 		LFS_LIVE="$(bootslotctl get_active)"
 		LFS_DEAD="$(bootslotctl get_other)"
