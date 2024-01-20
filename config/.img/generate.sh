@@ -909,9 +909,9 @@ determine_() {
 	#LAYOUT
 	X="$(sed -rn 's/^firmware layout v([0-9])/\1/p' "$unpacked.nfo")"
 	[ -z "$X" ] && echo "ERROR-14" 1>&2 && X=ERROR
-	[ "$X" == "3" -o "$X" == "4" -o "$X" == "5" -o "$X" == "6" ] && in_b "FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE"
-	in_b "FREETZ_AVM_HAS_FWLAYOUT_$X"  # 5+6 are mandatory
-	X="$(echo $X | sed 's/1/&-single/;s/2/&-alice/;s/3/&-ram/;s/4/&-dual/;s/5/&-uimg/;s/6/&-fit/')"
+	[ "$X" == "2" -o "$X" == "3" -o "$X" == "4" -o "$X" == "5" ] && in_b "FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE"
+	in_b "FREETZ_AVM_HAS_FWLAYOUT_$X"  # 4+5 are mandatory
+	X="$(echo $X | sed 's/1/&-single/;s/2/&-ram/;s/3/&-dual/;s/4/&-uimg/;s/5/&-fit/')"
 	[ $DOSHOW -ge 1 ] && outp "layout" "v$X"
 
 	#RAMSIZE
