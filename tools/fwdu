@@ -233,13 +233,14 @@ image() {
 		elif [ "$FLV_IUI" == "1" ]; then
 			FLV=5 # umig
 		elif [ "$SIZE_F1" == "0" ]; then
-			FLV=2 # most
+		#	FLV=2 # alice
+			FLV=1 # single
 		elif [ "$SIZEKD" == "8" -a "$SIZEFD" == "8" ]; then
-			FLV=3 # nand
+			FLV=3 # ram
 		elif [ "${SIZEKD#-}" -lt 192 -a "${SIZEFD#-}" -lt 446 ]; then
-			FLV=4 # docsis
+			FLV=4 # dual
 		else
-			FLV=1 # old
+			FLV=0 # unknown
 		fi
 		echo "firmware layout v$FLV" >> "$nfo"
 
