@@ -134,13 +134,14 @@ image() {
 		return 1
 	fi
 
-	if [ -e var/tmp/fit-image ]; then
-		FLV_FIT='1'
-		$FTOOLS/fit.sh unpack var/tmp/fit-image var/tmp
+	# FWL3
+	if [ -d var/remote/var/tmp/x86/ ]; then
+		FLV_DUAL='1'
 	fi
 
+	# FWL4
 	if [ -e var/firmware-update.uimg ]; then
-		FLV_IUI='1'
+		FLV_UIMG='1'
 		$FTOOLS/uimg -u var/firmware-update.uimg >/dev/null
 		rm -f var/firmware-update.uimg var/*_GWFS.bin
 		chmod +w var/*.bin
@@ -149,6 +150,12 @@ image() {
 		mv var/*_ARM_ROOTFS.bin var/remote/var/tmp/filesystem.image
 		mv var/*_ATOM_KERNEL.bin var/remote/var/tmp/x86/kernel.image
 		mv var/*_ATOM_ROOTFS.bin var/remote/var/tmp/x86/filesystem.image
+	fi
+
+	# FWL5
+	if [ -e var/tmp/fit-image ]; then
+		FLV_FIT='1'
+		$FTOOLS/fit.sh unpack var/tmp/fit-image var/tmp
 	fi
 
 	for d in "${probeDirs[@]}" no_kernel_image_found; do
@@ -230,14 +237,16 @@ image() {
 		SIZEFD="$(($SIZE_F1 - $SIZE_F2))"
 		if [ "$FLV_FIT" == "1" ]; then
 			FLV=5 # fit
-		elif [ "$FLV_IUI" == "1" ]; then
+		elif [ "$FLV_UIMG" == "1" ]; then
 			FLV=4 # umig
+		elif [ "$FLV_DUAL" == "1" ]; then
+			FLV=3 # dual
 		elif [ "$SIZE_F1" == "0" ]; then
 			FLV=1 # single (+alice)
 		elif [ "$SIZEKD" == "8" -a "$SIZEFD" == "8" ]; then
 			FLV=2 # ram
-		elif [ "${SIZEKD#-}" -lt 192 -a "${SIZEFD#-}" -lt 446 ]; then
-			FLV=3 # dual
+#		elif [ "${SIZEKD#-}" -lt 192 -a "${SIZEFD#-}" -lt 446 ]; then
+#			FLV=3 # dual
 		else
 			FLV=0 # unknown
 		fi
