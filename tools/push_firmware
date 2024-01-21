@@ -44,7 +44,9 @@ UIMG_TOOL="${0%/*}/uimg"
 TSUM_TOOL="${0%/*}/tichksum"
 FDTD_TOOL="${0%/*}/fit/fdtdump"
 
+WAIT_FOR_LOADER_DONE='n'
 function wait_loader() {
+	[ "$WAIT_FOR_LOADER_DONE" == "y" ] && return
 	echo -en " * No reply from box, assuming switch-off or restart. Trying to re-detect box.\n   Waiting "
 	[ -z "$SLEEP1" ] && SLEEP1=do || sleep 1
 	while ! ping $ping_params $ip > /dev/null; do
@@ -52,6 +54,7 @@ function wait_loader() {
 		sleep 0.2
 	done
 	echo -e ". found!\n"
+	WAIT_FOR_LOADER_DONE='y'
 }
 
 function read_enval() {
@@ -59,7 +62,7 @@ function read_enval() {
 open $ip
 user adam2 adam2
 quote GETENV $1
-quote REBOOT
+quote BYE
 quit
 EOT
 }
