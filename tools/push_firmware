@@ -243,7 +243,7 @@ function push_fw() {
 		fi
 	elif [ $FOUND_FTP ]; then
 		if [ $ISFIT ]; then
-			ftp -n -p <<EOT
+			ftp -v -n -p <<EOT
 open $ip
 user adam2 adam2
 debug
@@ -255,7 +255,7 @@ put ${fitimage} "${MTDSTART} ${MAPLIMIT}"
 quit
 EOT
 		elif [ $ISRAM ]; then
-			ftp -n -p <<EOT
+			ftp -v -n -p <<EOT
 open $ip
 user adam2 adam2
 debug
@@ -268,7 +268,7 @@ $([ $LFS ] && echo quote SETENV linux_fs_start $LFS)
 quit
 EOT
 		elif [ -n "$ISDUAL$ISUIMG" ]; then
-			ftp -n -p <<EOT
+			ftp -v -n -p <<EOT
 open $ip
 user adam2 adam2
 debug
@@ -284,7 +284,7 @@ quote REBOOT
 quit
 EOT
 		elif [ $ISSINGLE ]; then
-			ftp -n -p <<EOT
+			ftp -v -n -p <<EOT
 open $ip
 user adam2 adam2
 debug
