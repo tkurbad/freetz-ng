@@ -70,6 +70,7 @@ Latest changes
    * OpenSSH 9.3p2/9.6p1
    * OpenVPN 2.4.12/2.5.9/2.6.8
    * PCSC-lite 2.0.1
+   * ProxyChains-NG 4.17
    * pyLoad 0.4.20/78162d75
    * socat 1.7.4.4
    * Subversion 1.9.12/1.14.3

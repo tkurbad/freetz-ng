@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 4.16)
+$(call PKG_INIT_BIN, 4.17)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=37a9983d995857cc398cfeefb96739827b3d86a71e03a5193b99f1b097046812
+$(PKG)_HASH:=36ddc7f64cb3df2ca4170627c6e0f0dea33d1a6d0730629dff6f5c633f2006f9
 $(PKG)_SITE:=https://ftp.barfooze.de/pub/sabotage/tarballs
 ### WEBSITE:=https://proxychains-ng.sourceforge.net
 ### MANPAGE:=https://github.com/rofl0r/proxychains-ng#readme
