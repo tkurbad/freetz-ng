@@ -38,11 +38,14 @@ echo
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 # workaround for eg debian
-PATH=${PATH:+${PATH}:}/sbin
+PATH="${PATH:+${PATH}:}/sbin"
 
-UIMG_TOOL="${0%/*}/uimg"
-TSUM_TOOL="${0%/*}/tichksum"
-FDTD_TOOL="${0%/*}/fit/fdtdump"
+TOOLS_DIR="${0%/*}"
+PATH="${TOOLS_DIR}/path:${PATH}"
+
+UIMG_TOOL="${TOOLS_DIR}/uimg"
+TSUM_TOOL="${TOOLS_DIR}/tichksum"
+FDTD_TOOL="${TOOLS_DIR}/fit/fdtdump"
 
 WAIT_FOR_LOADER_DONE='n'
 function wait_loader() {
