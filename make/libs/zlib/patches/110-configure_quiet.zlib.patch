@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -143,6 +143,7 @@
+@@ -144,6 +144,7 @@
      --sanitize) address=1; shift ;;
      --address) address=1; shift ;;
      --memory) memory=1; shift ;;

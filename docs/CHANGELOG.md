@@ -88,6 +88,7 @@ Latest changes
    * libuv 1.44.2/1.47.0
    * libxml2 2.12.4
    * mbedTLS 2.7.19/2.28.6
+   * zlib 1.3.1
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
