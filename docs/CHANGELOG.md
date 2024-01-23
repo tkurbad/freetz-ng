@@ -54,6 +54,7 @@ Latest changes
    * fakeroot 1.33
    * kconfig 6.7
    * meson 1.3.1
+   * netkit-ftp 0.17-35
    * precompiled host-tools 2023-12-05
    * precompiled toolchains r22972
    * python 3.11.7

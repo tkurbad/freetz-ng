@@ -20,6 +20,7 @@
 /execstack
 /fastjar
 /find-squashfs
+/ftp
 /genext2fs
 /gperf
 /gunzip
