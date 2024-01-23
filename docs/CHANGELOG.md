@@ -58,6 +58,7 @@ Latest changes
    * precompiled host-tools 2024-01-23
    * precompiled toolchains r22972
    * python 3.11.7
+   * tar 1.35
 
  - Packages:
    * BIND 9.11.37/9.16.45

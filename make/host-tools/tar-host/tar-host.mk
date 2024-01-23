@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 1.34)
+$(call TOOLS_INIT, 1.35)
 $(PKG)_SOURCE:=tar-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=63bebd26879c5e1eea4352f0d03c991f966aeb3ddeb3c7445c902568d5411d28
+$(PKG)_HASH:=4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16
 $(PKG)_SITE:=@GNU/tar
 
 $(PKG)_DEPENDS_ON:=kconfig-host
