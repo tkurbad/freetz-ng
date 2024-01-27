@@ -182,6 +182,11 @@ function push_fw() {
 	fi
 
 	if [ $FOUND_NCFTP ]; then
+		if [ $ISMANUAL ]; then
+			echo "Interactive mode."
+			ncftp $ip
+			return
+		fi
 		if [ $ISFIT ]; then
 			ncftpput \
 				-C -d stdout -u adam2 -p adam2 \
@@ -245,6 +250,11 @@ function push_fw() {
 			echo "miserable failure" && exit 1
 		fi
 	elif [ $FOUND_FTP ]; then
+		if [ $ISMANUAL ]; then
+			echo "Interactive mode."
+			ftp -v -n -p $ip
+			return
+		fi
 		if [ $ISFIT ]; then
 			ftp -v -n -p <<EOT
 open $ip
@@ -426,6 +436,7 @@ Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram
 
 [image]           When no 'image' file is given, images/latest.image will be tried.
 -f                Disable safety prompt, force instant flash.
+-m                Connect to the device via FTP and allow manual commands (for development).
 -w                The device is yet halted in the bootloader, don't wait for shutdown.
 -ip <ip>          Bootloader IP address or hostname, default 192.168.178.1
 -map <hex>        Only ram-boot and fit-boot mode: Start of mapped memory (PHYS_OFFSET).
@@ -457,6 +468,9 @@ while [ $# -ge 1 ]; do
 	case "$1" in
 		(-f|-force)
 			ISFORCE=true
+			;;
+		(-m|-manual)
+			ISMANUAL=true
 			;;
 		(-w|-waits)
 			ISWAITS=true
@@ -773,4 +787,3 @@ fi
 echo
 echo done
 exit 0
-
