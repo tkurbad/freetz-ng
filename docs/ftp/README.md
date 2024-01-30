@@ -30,10 +30,14 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - other: [FRITZ.Box_5491-07.31.image](https://download.avm.de/fritzbox/fritzbox-5491/other/fritz.os/FRITZ.Box_5491-07.31.image)
  * fritzbox-5530-fiber/
    - deutschland: [FRITZ.Box_5530_Fiber-07.58.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530_Fiber-07.58.image)
+   - deutschland: [FRITZ.Box_5530_Fiber-07.80.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530_Fiber-07.80.image)
    - other: [FRITZ.Box_5530_Fiber-07.58.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/other/fritz.os/FRITZ.Box_5530_Fiber-07.58.image)
+   - other: [FRITZ.Box_5530_Fiber-07.80.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/other/fritz.os/FRITZ.Box_5530_Fiber-07.80.image)
  * fritzbox-5590-fiber/
    - deutschland: [FRITZ.Box_5590_Fiber-07.58.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-07.58.image)
+   - deutschland: [FRITZ.Box_5590_Fiber-07.80.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-07.80.image)
    - other: [FRITZ.Box_5590_Fiber-07.58.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/other/fritz.os/FRITZ.Box_5590_Fiber-07.58.image)
+   - other: [FRITZ.Box_5590_Fiber-07.80.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/other/fritz.os/FRITZ.Box_5590_Fiber-07.80.image)
  * fritzbox-6430-cable/
    - deutschland: [FRITZ.Box_6430_Cable-07.30.image](https://download.avm.de/fritzbox/fritzbox-6430-cable/deutschland/fritz.os/FRITZ.Box_6430_Cable-07.30.image)
  * fritzbox-6490-cable/
@@ -124,8 +128,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_7530-07.57.image](https://download.avm.de/fritzbox/fritzbox-7530/deutschland/fritz.os/FRITZ.Box_7530-07.57.image)
    - other: [FRITZ.Box_7530-07.57.image](https://download.avm.de/fritzbox/fritzbox-7530/other/fritz.os/FRITZ.Box_7530-07.57.image)
  * fritzbox-7530-ax/
-   - deutschland: [FRITZ.Box_7530_AX-07.57.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/deutschland/fritz.os/FRITZ.Box_7530_AX-07.57.image)
-   - other: [FRITZ.Box_7530_AX-07.57.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/other/fritz.os/FRITZ.Box_7530_AX-07.57.image)
+   - deutschland: [FRITZ.Box_7530_AX-07.80.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/deutschland/fritz.os/FRITZ.Box_7530_AX-07.80.image)
+   - other: [FRITZ.Box_7530_AX-07.80.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/other/fritz.os/FRITZ.Box_7530_AX-07.80.image)
  * fritzbox-7560/
    - deutschland: [FRITZ.Box_7560-07.30.image](https://download.avm.de/fritzbox/fritzbox-7560/deutschland/fritz.os/FRITZ.Box_7560-07.30.image)
    - other: [FRITZ.Box_7560-07.30.image](https://download.avm.de/fritzbox/fritzbox-7560/other/fritz.os/FRITZ.Box_7560-07.30.image)
@@ -146,8 +150,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_7590-07.57.image](https://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-07.57.image)
    - other: [FRITZ.Box_7590-07.57.image](https://download.avm.de/fritzbox/fritzbox-7590/other/fritz.os/FRITZ.Box_7590-07.57.image)
  * fritzbox-7590-ax/
-   - deutschland: [FRITZ.Box_7590_AX-07.57.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/deutschland/fritz.os/FRITZ.Box_7590_AX-07.57.image)
-   - other: [FRITZ.Box_7590_AX-07.57.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/other/fritz.os/FRITZ.Box_7590_AX-07.57.image)
+   - deutschland: [FRITZ.Box_7590_AX-07.80.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/deutschland/fritz.os/FRITZ.Box_7590_AX-07.80.image)
+   - other: [FRITZ.Box_7590_AX-07.80.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/other/fritz.os/FRITZ.Box_7590_AX-07.80.image)
 
 ### FritzPowerline
  * fritzpowerline-1000e/
