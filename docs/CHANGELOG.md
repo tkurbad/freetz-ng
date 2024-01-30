@@ -83,6 +83,7 @@ Latest changes
    * Unbound 1.19.0
    * Vim 9.1.0000
    * xsltproc 1.1.39
+   * XZ Utils 5.4.6
 
  - Libraries:
    * cairo 1.18.0
