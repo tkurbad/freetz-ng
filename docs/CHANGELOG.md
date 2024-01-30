@@ -91,7 +91,7 @@ Latest changes
    * libtirpc 1.3.4
    * libuv 1.44.2/1.47.0
    * libxml2 2.12.4
-   * mbedTLS 2.7.19/2.28.6
+   * mbedTLS 2.7.19/2.28.7
    * zlib 1.3.1
 
  - Firmware updates:
