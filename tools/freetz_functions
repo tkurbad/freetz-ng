@@ -768,10 +768,10 @@ byte_to_mb() {
 # $1 - tarball filename
 is_valid_tarball() {
 	# integrity check by listing the content
-	[ -s "$1" ] && "$TAR" -tf "$1"    >/dev/null 2>&1
+	[ -s "$1" ] && tar -tf "$1"    >/dev/null 2>&1
 
 	# integrity check by decompressing to stdout
-#	[ -s "$1" ] && "$TAR" -xf "$1" -O >/dev/null 2>&1
+#	[ -s "$1" ] && tar -xf "$1" -O >/dev/null 2>&1
 }
 
 # copy timestamps from (all in) $1 to $2 - if item (in) $1 exists, otherwise sets $SOURCE_DATE_EPOCH or 1970
