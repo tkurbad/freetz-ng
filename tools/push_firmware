@@ -631,8 +631,14 @@ fi
 [ -n "$FOUND_NCFTP" ] && UCMD="ncftpput" || UCMD="ftp"
 
 # logging
+function relpath() {
+	local ARG="$1"
+	local URI="$(realpath $(command -v "$ARG"))"
+	echo "${URI#$PWD/}"
+}
 [ -n "$PRODUCT" ] && echo " * Product: $PRODUCT"
-echo " * Using command: $UCMD"
+echo " * Using tar binary: $(relpath tar)"
+echo " * Using ftp binary: $(relpath $UCMD)"
 echo " * Target host: $ip"
 echo " * Outgoing IP: $oa"
 
