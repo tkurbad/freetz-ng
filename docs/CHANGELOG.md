@@ -56,7 +56,7 @@ Latest changes
    * kconfig 6.7
    * meson 1.3.1
    * netkit-ftp 0.17-35
-   * precompiled host-tools 2024-01-24
+   * precompiled host-tools 2024-01-30
    * precompiled toolchains r22972
    * python 3.11.7
    * tar 1.35
