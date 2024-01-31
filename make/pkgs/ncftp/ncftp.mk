@@ -29,7 +29,9 @@ $(PKG)_CFLAGS := $(TARGET_CFLAGS)
 $(PKG)_CFLAGS += -fcommon
 
 
+ifneq ($(strip $(DL_DIR)/$(NCFTP_SOURCE)), $(strip $(DL_DIR)/$(NCFTP_HOST_SOURCE)))
 $(PKG_SOURCE_DOWNLOAD)
+endif
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
