@@ -457,12 +457,7 @@ config FREETZ_AVM_HAS_FIRMWARE_07_5X
 		))
 
 
-#config FREETZ_AVM_HAS_FIRMWARE_07_8X
-#	bool
-#	default y
-#	depends on \
-
-config FREETZ_AVM_HAS_FIRMWARE_07_8X_LABOR
+config FREETZ_AVM_HAS_FIRMWARE_07_8X
 	bool
 	default y
 	depends on \
@@ -472,6 +467,11 @@ config FREETZ_AVM_HAS_FIRMWARE_07_8X_LABOR
 			FREETZ_TYPE_7539 || \
 			FREETZ_TYPE_7599 \
 		))
+
+#config FREETZ_AVM_HAS_FIRMWARE_07_8X_LABOR
+#	bool
+#	default y
+#	depends on \
 
 config FREETZ_AVM_HAS_FIRMWARE_07_8X_INHAUS
 	bool
