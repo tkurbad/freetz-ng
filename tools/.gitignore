@@ -34,6 +34,8 @@
 /mksquashfs3-multi
 /mksquashfs4-avm-be
 /mksquashfs4-avm-le
+/ncftp
+/ncftpput
 /ninja
 /patchelf
 /sed
