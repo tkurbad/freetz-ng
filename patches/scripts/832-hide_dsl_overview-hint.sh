@@ -1,7 +1,9 @@
 [ "$FREETZ_MODIFY_DSL_WARNING" == "y" ] || return 0
 echo1 "patching dsl overview"
 
-if [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ] ; then
+if [ "$FREETZ_AVM_VERSION_07_8X_MIN" == "y" ] ; then
+	PVER="07_8X"
+elif [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ] ; then
 	PVER="07_2X"
 elif [ "$FREETZ_AVM_VERSION_07_0X_MIN" == "y" ] ; then
 	PVER="07_0X"
