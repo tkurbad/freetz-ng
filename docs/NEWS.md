@@ -1,7 +1,7 @@
 # NEWS
 
  * __[2024-01-30](#2024-01-30)__<a id='2024-01-30'></a><br>
-   Freetz-NG gibt es nun seit 5 Jahre!<br>
+   Freetz-NG gibt es nun seit 5 Jahren!<br>
    Siehe [eaf06dbb](https://github.com/Freetz-NG/freetz-ng/commit/eaf06dbb153d8ee2eabeedb827f1c8d80e409744)<br>
 
  * __[2023-11-03](#2023-11-03)__<a id='2023-11-03'></a><br>
