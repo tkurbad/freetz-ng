@@ -1,9 +1,9 @@
 --- Configurations/10-main.conf
 +++ Configurations/10-main.conf
-@@ -1941,5 +1941,66 @@
-         inherit_from     => [ "vms-generic" ],
-         bn_ops           => "SIXTY_FOUR_BIT",
-         pointer_size     => "",
+@@ -1951,5 +1951,66 @@
+         inherit_from     => [ "vms-x86_64" ],
+         cflags           => add("/POINTER_SIZE=64=ARGV"),
+         pointer_size     => "64",
 +    },
 +
 +    "linux-freetz-arm-asm" => {

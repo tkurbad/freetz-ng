@@ -72,6 +72,7 @@ Latest changes
    * Lua 5.1.5/5.4.6
    * minicom 2.9
    * OpenSSH 9.3p2/9.6p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.13
    * OpenVPN 2.4.12/2.5.9/2.6.8
    * PCSC-lite 2.0.1
    * ProxyChains-NG 4.17
