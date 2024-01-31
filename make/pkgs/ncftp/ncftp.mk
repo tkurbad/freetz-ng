@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 3.2.6)
+$(call PKG_INIT_BIN, 3.2.7)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION)-src.tar.xz
-$(PKG)_HASH:=5f200687c05d0807690d9fb770327b226f02dd86155b49e750853fce4e31098d
-$(PKG)_SITE:=https://www.ncftp.com/downloads/ncftp,ftp://ftp.ncftp.com/ncftp
+$(PKG)_HASH:=d41c5c4d6614a8eae2ed4e4d7ada6b6d3afcc9fb65a4ed9b8711344bef24f7e8
+$(PKG)_SITE:=https://www.ncftp.com/downloads/ncftp,https://www.ncftp.com/public_ftp/ncftp/older_versions,https://www.ncftp.com/public_ftp/ncftp
 ### WEBSITE:=https://www.ncftp.com/ncftp/
 ### MANPAGE:=https://www.ncftp.com/ncftp/doc/faq.html
 ### CHANGES:=https://www.ncftp.com/ncftp/doc/changelog.html
@@ -21,6 +21,7 @@ $(PKG)_CONFIGURE_ENV += wi_cv_snprintf_terminates=yes
 $(PKG)_CONFIGURE_ENV += wi_cv_snprintf_returns_ptr=no
 $(PKG)_CONFIGURE_ENV += TARGET_ARCH=$(TARGET_ARCH_ENDIANNESS_DEPENDENT)
 
+$(PKG)_CONFIGURE_OPTIONS += --disable-ccdv
 $(PKG)_CONFIGURE_OPTIONS += --without-curses
 $(PKG)_CONFIGURE_OPTIONS += --without-ncurses
 
