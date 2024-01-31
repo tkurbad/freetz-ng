@@ -1,5 +1,9 @@
 # NEWS
 
+ * __[2024-01-30](#2024-01-30)__<a id='2024-01-30'></a><br>
+   Freetz-NG gibt es nun seit 5 Jahre!<br>
+   Siehe [eaf06dbb](https://github.com/Freetz-NG/freetz-ng/commit/eaf06dbb153d8ee2eabeedb827f1c8d80e409744)<br>
+
  * __[2023-11-03](#2023-11-03)__<a id='2023-11-03'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23110` erstellt.<br>
    Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
