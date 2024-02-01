@@ -1,4 +1,4 @@
-# libusb1: libusb-1.0 (libusb-1.0.so) 1.0.23/1.0.26
+# libusb1: libusb-1.0 (libusb-1.0.so) 1.0.23/1.0.27
  - Homepage: [https://libusb.info/](https://libusb.info/)
  - Manpage: [https://github.com/libusb/libusb/wiki](https://github.com/libusb/libusb/wiki)
  - Changelog: [https://github.com/libusb/libusb/milestones](https://github.com/libusb/libusb/milestones)
