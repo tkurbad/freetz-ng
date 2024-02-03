@@ -47,7 +47,9 @@ UIMG_TOOL="${TOOLS_DIR}/uimg"
 TSUM_TOOL="${TOOLS_DIR}/tichksum"
 FDTD_TOOL="${TOOLS_DIR}/fit/fdtdump"
 
+WAIT_FOR_LOADER_DONE='n'
 function wait_loader() {
+	[ "$WAIT_FOR_LOADER_DONE" == "y" ] && return
 	echo -en " * No reply from box, assuming switch-off or restart. Trying to re-detect box.\n   Waiting "
 	[ -z "$SLEEP1" ] && SLEEP1=do || sleep 1
 	while ! ping $ping_params $ip > /dev/null; do
@@ -55,6 +57,7 @@ function wait_loader() {
 		sleep 0.2
 	done
 	echo -e ". found!\n"
+	WAIT_FOR_LOADER_DONE='y'
 }
 
 function read_enval() {
@@ -62,7 +65,7 @@ function read_enval() {
 open $ip
 user adam2 adam2
 quote GETENV $1
-quote REBOOT
+quote BYE
 quit
 EOT
 }
@@ -90,9 +93,6 @@ function push_fw() {
 			[ "$enval" != "${enval#0x}" ] && FULLSIZE="$enval"
 			[ -z "$FULLSIZE" ] && echo "Invalid value for memsize." && exit 1
 			echo " * Detected memsize: '$enval'"
-			echo
-			echo " * A reboot has been issued. Please manually unplug the power socket"
-            echo "   and plug it again if the box does not reboot itself."
 			echo
 		fi
 
@@ -128,9 +128,6 @@ function push_fw() {
 			[ -z "$LFS" ]     && LFS="$(( ($enval + 1) % 2))" #other
 			[ "$LFS" == "9" ] && LFS="$enval" #current
 			echo " * Designated linux_fs_start: $LFS"
-			echo
-			echo " * A reboot has been issued. Please manually unplug the power socket"
-            echo "   and plug it again if the box does not reboot itself."
 			echo
 		fi
 		if [ -n "$ISRAM$ISFIT" ]; then
@@ -680,7 +677,6 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			# RAM
 			Fritz_Box_HW224*)	MAPSTART=0x00000000 ;;  # 7581 BCM
 			Fritz_Box_HW228*)	MAPSTART=0x00000000 ;;  # 7582 BCM
-			Fritz_Box_HW259*)	MAPSTART=0x80000000 ;;  # 7590 AX
 			# FIT
 			Fritz_Box_HW253*)	MAPSTART=0x40000000 ;;  # 6000
 			Fritz_Box_HW256*)	MAPSTART=0x00000000 ;;  # 7539
