@@ -674,9 +674,9 @@ echo " * Flash mode: $OUTVAL-boot"
 if [ -n "$ISRAM$ISFIT" ]; then
 	if [ -z "$MAPSTART" ]; then
 		case "$PRODUCT" in
-			# RAM
-			Fritz_Box_HW224*)	MAPSTART=0x00000000 ;;  # 7581 BCM
-			Fritz_Box_HW228*)	MAPSTART=0x00000000 ;;  # 7582 BCM
+			# RAM (BCM only!)
+			Fritz_Box_HW224*)	MAPSTART=0x00000000 ;;  # 7581
+			Fritz_Box_HW228*)	MAPSTART=0x00000000 ;;  # 7582
 			# FIT
 			Fritz_Box_HW253*)	MAPSTART=0x40000000 ;;  # 6000
 			Fritz_Box_HW256*)	MAPSTART=0x00000000 ;;  # 7539
