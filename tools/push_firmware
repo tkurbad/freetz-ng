@@ -47,9 +47,7 @@ UIMG_TOOL="${TOOLS_DIR}/uimg"
 TSUM_TOOL="${TOOLS_DIR}/tichksum"
 FDTD_TOOL="${TOOLS_DIR}/fit/fdtdump"
 
-WAIT_FOR_LOADER_DONE='n'
 function wait_loader() {
-	[ "$WAIT_FOR_LOADER_DONE" == "y" ] && return
 	echo -en " * No reply from box, assuming switch-off or restart. Trying to re-detect box.\n   Waiting "
 	[ -z "$SLEEP1" ] && SLEEP1=do || sleep 1
 	while ! ping $ping_params $ip > /dev/null; do
@@ -57,14 +55,10 @@ function wait_loader() {
 		sleep 0.2
 	done
 	echo -e ". found!\n"
-	WAIT_FOR_LOADER_DONE='y'
 }
 
-# Download the "env" file from the device and set ProductID, MAPSTART,
-# FULLSIZE, CURRENT_LFS, LFS. Check that the "env" file includes all needed
-# settings, as well as wlan_ssid (as the last setting of the file).
-# Will not replace variables already valued.
-# Return 0 if success, else 1
+# Download the "env" file from the device. Check that the "env" file includes 
+# wlan_ssid (as it is the last setting of the file).
 function read_env() {
 	tmpenv="$(mktemp -tu freetz_env_XXX)"
 	echo " * Reading 'env' file to $tmpenv"
@@ -87,7 +81,7 @@ quit" | ftp -v -n -p 2>/dev/null 1>&2 &
 	grep -qs ^wlan_ssid "$tmpenv" && dos2unix -q "$tmpenv" || rm -f "$tmpenv"
 }
 
-function read_env_val() {
+function read_enval() {
 	sed -n "s/^$1[ \t]*[ \t]//p" "$tmpenv" 2>/dev/null
 }
 
@@ -110,7 +104,7 @@ function push_fw() {
 	wait_loader
 	read_env
 	for x in ProductID SerialNumber HWRevision HWSubRevision memsize linux_fs_start; do
-		eval env_$x="\$(read_env_val '$x')"
+		eval env_$x="\$(read_enval '$x')"
 		eval echo -e "\ \ \ $x:\ \ \ \ \ \\\t   \$env_$x"
 	done
 	echo
@@ -175,7 +169,6 @@ function push_fw() {
 		fi
 	fi
 
-	wait_loader
 	echo " * Box is back up again, initiating transfer."
 	echo
 
