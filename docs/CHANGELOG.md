@@ -72,6 +72,7 @@ Latest changes
    * Curl 8.5.0
    * Git 2.43.0
    * htop 1.0.3/3.3.0
+   * Lighttpd 1.4.73
    * Lua 5.1.5/5.4.6
    * minicom 2.9
    * NcFTP 3.2.7
