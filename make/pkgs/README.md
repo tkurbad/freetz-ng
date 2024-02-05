@@ -818,6 +818,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[shellinabox 2.21](../../docs/make/shellinabox.md)<a id='shellinabox'></a>**<br>
     Shell In A Box implements a web server that can export arbitrary command line tools to a web based terminal emulator. This emulator is accessible to any JavaScript and CSS enabled web browser and does not require any additional browser plugins.
+     - [Anmerkungen (05.02.2024 - getestet mit FritzBox Firmware 154.07.57 und Shell-In-A-Box v2.21)](../../docs/make/shellinabox.md#anmerkungen-05022024---getestet-mit-fritzbox-firmware-1540757-und-shell-in-a-box-v221)
 
   * **[siproxd 0.8.1](../../docs/make/siproxd.md)<a id='siproxd'></a>**<br>
     Siproxd is a proxy/masquerading daemon for the SIP protocol. See http://siproxd.sourceforge.net for more information.
