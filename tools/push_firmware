@@ -678,6 +678,7 @@ function relpath() {
 	echo "${URI#$PWD/}"
 }
 [ -n "$PRODUCT" ] && echo " * Product: $PRODUCT"
+echo " * Using dos2unix binary: $(relpath dos2unix)"
 echo " * Using tar binary: $(relpath tar)"
 echo " * Using ftp binary: $(relpath $UCMD)"
 echo " * Target host: $ip"
