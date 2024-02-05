@@ -52,6 +52,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.28.2
+   * dos2unix 7.5.2
    * fakeroot 1.33
    * kconfig 6.7
    * meson 1.3.1
