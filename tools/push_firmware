@@ -47,7 +47,9 @@ UIMG_TOOL="${TOOLS_DIR}/uimg"
 TSUM_TOOL="${TOOLS_DIR}/tichksum"
 FDTD_TOOL="${TOOLS_DIR}/fit/fdtdump"
 
+WAIT_FOR_LOADER_DONE='n'
 function wait_loader() {
+	[ "$WAIT_FOR_LOADER_DONE" == "y" ] && return
 	echo -en " * No reply from box, assuming switch-off or restart. Trying to re-detect box.\n   Waiting "
 	[ -z "$SLEEP1" ] && SLEEP1=do || sleep 1
 	while ! ping $ping_params $ip > /dev/null; do
@@ -55,6 +57,77 @@ function wait_loader() {
 		sleep 0.2
 	done
 	echo -e ". found!\n"
+	WAIT_FOR_LOADER_DONE='y'
+}
+
+# Download the "env" file from the device and set ProductID, MAPSTART,
+# FULLSIZE, CURRENT_LFS, LFS. Check that the "env" file includes all needed
+# settings, as well as wlan_ssid (as the last setting of the file).
+# Will not replace variables already valued.
+# Return 0 if success, else 1
+function read_env() {
+	echo "Reading 'env' file:"
+	TMP_ENV="/tmp/env-$$"
+	rm -f "$TMP_ENV"
+	echo "open $ip
+user adam2 adam2
+debug
+bin
+quote MEDIA SDRAM
+get env $TMP_ENV
+quit" | ftp -v -n -p &
+	bg_pid=$!
+
+	count=0  # give 10 seconds to read the file, detecting the ending line, then kill the FTP
+	until (( count == 10 )) || grep -qs wlan_ssid "$TMP_ENV"; do
+		sleep 1
+		let count=count+1
+	done
+	kill $bg_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
+	wait $bg_pid
+	test -f "$TMP_ENV" || return 1
+	env_file=$(<"$TMP_ENV")
+	rm -f "$TMP_ENV"
+
+	# All references must exist to continue
+	[[ "$env_file" == *"memsize "* ]] || return 1
+	[[ "$env_file" == *"linux_fs_start "* ]] || return 1
+	[[ "$env_file" == *"ProductID "* ]] || return 1
+	[[ "$env_file" == *"firstfreeaddress "* ]] || return 1
+
+	enval=$(echo "$env_file" | sed '/^memsize[\t ]/!d; s/^memsize[\t ]*//; s/\r//')
+	[ -z "$enval" ] && echo "Invalid value for memsize." && return 1
+	[ -z "$FULLSIZE" ] && [ "$enval" != "${enval#0x}" ] && FULLSIZE="$enval"
+
+	enval=$(echo "$env_file" | sed '/^linux_fs_start[\t ]/!d; s/^linux_fs_start[\t ]*//; s/\r//')
+	[ "$enval" != "0" -a "$enval" != "1" ] && echo "Invalid value for linux_fs_start." && return 1
+	CURRENT_LFS="$enval"
+	[ -z "$LFS" ] && LFS="$(( ($enval + 1) % 2))" #other
+	[ "$LFS" == "9" ] && LFS="$enval" #current
+
+	enval=$(echo "$env_file" | sed '/^ProductID[\t ]/!d; s/^ProductID[\t ]*//; s/\r//')
+	[ -z "$enval" ] && echo "Invalid value for ProductID." && return 1
+	[ -z "$ProductID" ] && ProductID="$enval"
+
+	enval=$(echo "$env_file" | sed '/^firstfreeaddress[\t ]/!d; s/^firstfreeaddress[\t ]*//; s/\r//')
+	[ -z "$enval" ] && echo "Invalid value for firstfreeaddress." && return 1
+	[ -z "$MAPSTART" ] && [ "$enval" != "${enval#0x}" ] && MAPSTART="$enval"
+	echo -e "'env' file downloaded with valid values.\n"
+	return 0
+}
+
+function get_device_params() {
+	wait_loader
+	if ! read_env; then
+		echo -e "\nYou need to run this program before booting the device."
+		echo -e "The device shall be connected via Ethernet card.\n"
+		exit 1
+	fi
+	if ! [[ "$PRODUCT" =~ "$ProductID"* ]]; then
+		echo "Firmware not appropriate for this device."
+		exit 1
+	fi
+	ISWAITS=true
 }
 
 function read_enval() {
@@ -62,7 +135,7 @@ function read_enval() {
 open $ip
 user adam2 adam2
 quote GETENV $1
-quote REBOOT
+quote BYE
 quit
 EOT
 }
@@ -90,9 +163,6 @@ function push_fw() {
 			[ "$enval" != "${enval#0x}" ] && FULLSIZE="$enval"
 			[ -z "$FULLSIZE" ] && echo "Invalid value for memsize." && exit 1
 			echo " * Detected memsize: '$enval'"
-			echo
-			echo " * A reboot has been issued. Please manually unplug the power socket"
-			echo "   and plug it again if the box does not reboot itself."
 			echo
 		fi
 
@@ -128,9 +198,6 @@ function push_fw() {
 			[ -z "$LFS" ]     && LFS="$(( ($enval + 1) % 2))" #other
 			[ "$LFS" == "9" ] && LFS="$enval" #current
 			echo " * Designated linux_fs_start: $LFS"
-			echo
-			echo " * A reboot has been issued. Please manually unplug the power socket"
-			echo "   and plug it again if the box does not reboot itself."
 			echo
 		fi
 		if [ -n "$ISRAM$ISFIT" ]; then
@@ -726,7 +793,7 @@ if [ -n "$ISRAM$ISFIT" ]; then
 #			Fritz_Box_HW249*)	FULLSIZE=0x??000000 ;;  # 1260 V2   (??? MB)
 			Fritz_Box_HW254*)	FULLSIZE=0x08000000 ;;  # 6820 V3   (128 MB)
 			Fritz_Box_HW258*)	FULLSIZE=0x20000000 ;;  # 6850 5G   (512 MB)
-			Fritz_Box_HW259*)	FULLSIZE=0x0C000000 ;;  # 7590 AX   (192 MB)
+			Fritz_Box_HW259*)	get_device_params   ;;  # 7590 AX   (192 MB)
 #			Fritz_Box_HW260*)	FULLSIZE=0x??000000 ;;  # 7583 VDSL (??? MB)
 			Fritz_Box_HW262*)	FULLSIZE=0x20000000 ;;  # 6850 LTE  (512 MB)
 			Fritz_Box_HW276*)	FULLSIZE=0x10000000 ;;  # 7520 B    (256 MB)
