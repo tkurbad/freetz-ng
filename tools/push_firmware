@@ -91,20 +91,6 @@ function read_env_val() {
 	sed -n "s/^$1[ \t]*[ \t]//p" "$tmpenv" 2>/dev/null
 }
 
-function get_device_params() {
-	wait_loader
-	if ! read_env; then
-		echo -e "\nYou need to run this program before booting the device."
-		echo -e "The device shall be connected via Ethernet card.\n"
-		exit 1
-	fi
-	if ! [[ "$PRODUCT" =~ "$ProductID"* ]]; then
-		echo "Firmware not appropriate for this device."
-		exit 1
-	fi
-	ISWAITS=true
-}
-
 function push_fw() {
 	trap 'echo ; echo "aborted" ; exit 1' TERM INT
 
