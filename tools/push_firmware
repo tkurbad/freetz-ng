@@ -67,27 +67,25 @@ function wait_loader() {
 # Return 0 if success, else 1
 function read_env() {
 	echo "Reading 'env' file:"
-	TMP_ENV="/tmp/env-$$"
-	rm -f "$TMP_ENV"
+	tmpenv="$(mktemp -tu freetz_env_XXX)"
 	echo "open $ip
 user adam2 adam2
 debug
 bin
 quote MEDIA SDRAM
-get env $TMP_ENV
+get env $tmpenv
 quit" | ftp -v -n -p &
 	bg_pid=$!
 
 	count=0  # give 10 seconds to read the file, detecting the ending line, then kill the FTP
-	until (( count == 10 )) || grep -qs wlan_ssid "$TMP_ENV"; do
+	until (( count == 10 )) || grep -qs wlan_ssid "$tmpenv"; do
 		sleep 1
 		let count=count+1
 	done
 	kill $bg_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
 	wait $bg_pid
-	test -f "$TMP_ENV" || return 1
-	env_file=$(<"$TMP_ENV")
-	rm -f "$TMP_ENV"
+	test -f "$tmpenv" || return 1
+	env_file=$(<"$tmpenv")
 
 	# All references must exist to continue
 	[[ "$env_file" == *"memsize "* ]] || return 1
@@ -491,10 +489,11 @@ prepare_image() {
 
 function cleanup() {
 	local val=$?
-	[ -n "$tmpdir"        -a -d "$tmpdir"        ] && rm -rf "$tmpdir";
-	[ -n "$tmpimg"        -a -f "$tmpimg"        ] && rm -rf "$tmpimg";
-	[ -n "${kernel_mtd1}" -a -f "${kernel_mtd1}" ] && rm -rf "${kernel_mtd1}";
-	[ -n "${kernel_mtd5}" -a -f "${kernel_mtd5}" ] && rm -rf "${kernel_mtd5}";
+	[ -n "${tmpenv}"      ] && [ -f "${tmpenv}"      ] && rm -f  "${tmpenv}"       # all modes
+	[ -n "${tmpdir}"      ] && [ -d "${tmpdir}"      ] && rm -fr "${tmpdir}"       # not single
+	[ -n "${tmpimg}"      ] && [ -f "${tmpimg}"      ] && rm -f  "${tmpimg}"       # single only
+	[ -n "${kernel_mtd1}" ] && [ -f "${kernel_mtd1}" ] && rm -f  "${kernel_mtd1}"  # alice only
+	[ -n "${kernel_mtd5}" ] && [ -f "${kernel_mtd5}" ] && rm -f  "${kernel_mtd5}"  # alice only
 	exit $val
 }
 trap cleanup EXIT SIGTERM SIGINT
@@ -534,6 +533,8 @@ EOX
 exit 1
 }
 
+
+# main
 while [ $# -ge 1 ]; do
 	case "$1" in
 		(-f|-force)
@@ -602,6 +603,13 @@ while [ $# -ge 1 ]; do
 	esac
 	shift
 done
+
+# trap cleanup
+tmpenv=""
+tmpdir=""
+tmpimg=""
+kernel_mtd1=""
+kernel_mtd5=""
 
 # environment
 [ "$FREETZ_FORCEPF" == "true" ] && ISFORCE=true
