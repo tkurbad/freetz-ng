@@ -7,7 +7,7 @@ $(PKG)_SITE:=https://www.ncftp.com/downloads/ncftp,https://www.ncftp.com/public_
 ### CHANGES:=https://www.ncftp.com/ncftp/doc/changelog.html
 
 $(PKG)_BINARIES_ALL := ncftp ncftpput  ncftpget ncftpls  ncftpbatch
-$(PKG)_BINARIES := ncftp ncftpput
+$(PKG)_BINARIES := ncftp ncftpput  ncftpget ncftpls
 $(PKG)_BINARIES_BUILD_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$(TOOLS_DIR)/%)
 $(PKG)_BINARIES_TARGET_DIR_ALL := $($(PKG)_BINARIES_ALL:%=$(TOOLS_DIR)/%)

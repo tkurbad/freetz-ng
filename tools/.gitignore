@@ -35,6 +35,8 @@
 /mksquashfs4-avm-be
 /mksquashfs4-avm-le
 /ncftp
+/ncftpget
+/ncftpls
 /ncftpput
 /ninja
 /patchelf
