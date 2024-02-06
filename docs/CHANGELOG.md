@@ -96,6 +96,7 @@ Latest changes
 
  - Libraries:
    * cairo 1.18.0
+   * expat 2.6.0
    * harfbuzz 8.3.0
    * libmaxminddb 1.9.1
    * libtirpc 1.3.4
