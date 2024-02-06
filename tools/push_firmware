@@ -108,7 +108,8 @@ function push_fw() {
 		eval echo -e "\ \ \ $x:\ \ \ \ \ \\\t   \$env_$x"
 	done
 	echo
-	[ "${PRODUCT% (*}" != "$env_ProductID" ] && echo "Error, ProductID of image does not match device"&& exit 1
+	[ -z "$ProductID" ] && echo "You are not connected to the bootloader of the device." && exit 1
+	[ "${PRODUCT% (*}" != "$env_ProductID" ] && echo "Error, ProductID of image does not match device" && exit 1
 
 	if [ -n "$ISRAM$ISFIT" ]; then
 		if [ "${FULLSIZE//0/}" == "x" ]; then
