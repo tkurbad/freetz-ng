@@ -31,13 +31,4 @@ Die Shell-In-A-Box-Doku gibt darüber Auskunft, was sonst noch möglich ist (all
 Sind mehrere Services aktiv, kann auf der Shell-In-A-Box Login-Webseite (standardmässig Port 4200) per Rechtsklick ein Menü aufgeschaltet werden, in dem die eingestellten Services auswählbar sein sollen (habe ich bisher nicht ausprobiert).
 
 Nachdem auf SSH-Service umgestellt wurde, klappt auch der Login.
-Nach Eingabe des Benutzernamens kommen zwar ein paar Fehlerzeilen:
-```
-  *FritzBox7590 login: root*
-  *command-line line 0: Unsupported option "gssapiauthentication"*
-  *command-line line 0: Unsupported option "rhostsrsaauthentication"*
-  *command-line line 0: Unsupported option "rsaauthentication"*
-  *root@fritzbox7590's password:*
-```
-...die kann man aber ignorieren!
-(ich habe keine Ahnung wo die herkommen)
+
