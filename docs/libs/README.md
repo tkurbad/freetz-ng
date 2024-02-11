@@ -161,7 +161,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libgsm (libgsm.so) 1.0.13](libgsm.md)<a id='libgsm'></a>**<br>
     This package contains runtime shared libraries for libgsm, an implementation of the European GSM 06.10 provisional standard for full-rate speech transcoding, prI-ETS 300 036, which uses RPE/LTP (residual pulse excitation/long term prediction) coding at 13 kbit/s.
 
-  * **[libid3tag (libid3tag.so) 0.15.1b](libid3tag.md)<a id='libid3tag'></a>**<br>
+  * **[libid3tag (libid3tag.so) 0.16.3](libid3tag.md)<a id='libid3tag'></a>**<br>
     ID3 tag manipulation library
 
   * **[libidn (libidn.so) 1.41](libidn.md)<a id='libidn'></a>**<br>
