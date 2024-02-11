@@ -62,7 +62,7 @@ Latest changes
    * pkgconf 2.1.1
    * precompiled host-tools 2024-02-06
    * precompiled toolchains r22972
-   * python 3.11.7
+   * python 3.11.8
    * tar 1.35
    * xz 5.4.6
 
