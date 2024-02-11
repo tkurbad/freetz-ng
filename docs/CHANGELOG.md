@@ -100,6 +100,7 @@ Latest changes
    * cairo 1.18.0
    * expat 2.6.0
    * harfbuzz 8.3.0
+   * libid3tag 0.16.3
    * libmaxminddb 1.9.1
    * libonig 6.9.9
    * libtirpc 1.3.4
