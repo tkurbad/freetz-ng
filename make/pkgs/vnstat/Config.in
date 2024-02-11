@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_VNSTAT
-	bool "vnstat 1.18 (binary only)"
+	bool "vnStat 1.18 (binary only)"
 	default n
 	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	help
@@ -8,20 +8,21 @@ config FREETZ_PACKAGE_VNSTAT
 		However, it isn't a packet sniffer. The traffic information is analyzed
 		from the proc(5) filesystem. That way vnStat can be used even
 		without root permissions.
-		WWW: http://humdi.net/vnstat/
 
-config FREETZ_PACKAGE_VNSTAT_DAEMON
-	bool "vnstat daemon"
-	depends on FREETZ_PACKAGE_VNSTAT
-	default n
-	help
-		This is a daemon for collection data
+if FREETZ_PACKAGE_VNSTAT
 
-config FREETZ_PACKAGE_VNSTAT_IMAGE
-	bool "vnstat image"
-	depends on FREETZ_PACKAGE_VNSTAT
-	default n
-	select FREETZ_LIB_libgd
-	help
-		This component is for creating images
+	config FREETZ_PACKAGE_VNSTAT_DAEMON
+		bool "vnstat daemon"
+		default n
+		help
+			This is a daemon for collection data
+
+	config FREETZ_PACKAGE_VNSTAT_IMAGE
+		bool "vnstat image"
+		default n
+		select FREETZ_LIB_libgd
+		help
+			This component is for creating images
+
+endif # FREETZ_PACKAGE_VNSTAT
 
