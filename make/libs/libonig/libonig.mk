@@ -1,8 +1,12 @@
-$(call PKG_INIT_LIB, v6.7.1)
-$(PKG)_LIB_VERSION:=4.0.0
-$(PKG)_SOURCE:=onig-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=X
-$(PKG)_SITE:=git@https://github.com/kkos/oniguruma
+$(call PKG_INIT_LIB, 6.9.9)
+$(PKG)_LIB_VERSION:=5.4.0
+$(PKG)_SOURCE:=onig-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=60162bd3b9fc6f4886d4c7a07925ffd374167732f55dce8c491bfd9cd818a6cf
+$(PKG)_SITE:=https://github.com/kkos/oniguruma/releases/download/v$($(PKG)_VERSION)
+### WEBSITE:=https://github.com/kkos/oniguruma/blob/master/README.md
+### MANPAGE:=https://github.com/kkos/oniguruma/blob/master/README.md#usage
+### CHANGES:=https://github.com/kkos/oniguruma/releases
+### CVSREPO:=https://github.com/kkos/oniguruma
 
 $(PKG)_LIBBASE:=libonig.so
 $(PKG)_LIBNAME:=$($(PKG)_LIBBASE).$($(PKG)_LIB_VERSION)
@@ -12,6 +16,7 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME)
 
 $(PKG)_PATCH_POST_CMDS += $(RM) compile config.guess config.sub depcomp install-sh missing test-driver;
 $(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -35,6 +40,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBONIG_DIR) clean
