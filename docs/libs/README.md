@@ -188,7 +188,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libogg (libogg.so) 1.3.2](libogg.md)<a id='libogg'></a>**<br>
     Libogg is a library for manipulating ogg bitstreams. It handles both making ogg bitstreams and getting packets from ogg bitstreams.
 
-  * **[libonig: Oniguruma (libonig.so) 6.7.1](libonig.md)<a id='libonig'></a>**<br>
+  * **[libonig: Oniguruma (libonig.so) 6.9.9](libonig.md)<a id='libonig'></a>**<br>
     Oniguruma is a modern and flexible regular expressions library. It encompasses features from different regular expression implementations that traditionally exist in different languages. It comes close to being a complete superset of all regular expression features found in other regular expression implementations.
 
   * **[liboping (liboping.so) 1.6.1](liboping.md)<a id='liboping'></a>**<br>
