@@ -70,7 +70,7 @@ Latest changes
    * CA-bundle 2023-12-12
    * CCID 1.5.4
    * Curl 8.5.0
-   * Git 2.43.0
+   * Git 2.43.1
    * htop 1.0.3/3.3.0
    * Lighttpd 1.4.73
    * Lua 5.1.5/5.4.6
