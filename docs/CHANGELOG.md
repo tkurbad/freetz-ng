@@ -59,6 +59,7 @@ Latest changes
    * ncftp 3.2.7
    * netkit-ftp 0.17-35
    * openssl 3.0.13
+   * pkgconf 2.1.1
    * precompiled host-tools 2024-02-06
    * precompiled toolchains r22972
    * python 3.11.7
