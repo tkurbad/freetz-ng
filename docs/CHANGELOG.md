@@ -73,6 +73,7 @@ Latest changes
    * Curl 8.5.0
    * Git 2.43.1
    * htop 1.0.3/3.3.0
+   * jq 1.7.1
    * Lighttpd 1.4.73
    * Lua 5.1.5/5.4.6
    * minicom 2.9

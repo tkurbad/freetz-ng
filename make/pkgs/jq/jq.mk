@@ -1,7 +1,11 @@
-$(call PKG_INIT_BIN, 1.6)
+$(call PKG_INIT_BIN, 1.7.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72
-$(PKG)_SITE:=https://github.com/stedolan/jq/releases/download/jq-$($(PKG)_VERSION)
+$(PKG)_HASH:=478c9ca129fd2e3443fe27314b455e211e0d8c60bc8ff7df703873deeee580c2
+$(PKG)_SITE:=https://github.com/jqlang/jq/releases/download/jq-$($(PKG)_VERSION)
+### WEBSITE:=https://jqlang.github.io/jq/
+### MANPAGE:=https://jqlang.github.io/jq/manual/
+### CHANGES:=https://github.com/jqlang/jq/releases
+### CVSREPO:=https://github.com/jqlang/jq/
 
 $(PKG)_BINARY := $($(PKG)_DIR)/jq
 $(PKG)_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/bin/jq
@@ -37,6 +41,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-docs
 $(PKG)_CONFIGURE_OPTIONS += --disable-valgrind
 $(PKG)_CONFIGURE_OPTIONS += --disable-maintainer-mode
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -52,6 +57,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(JQ_DIR) clean
