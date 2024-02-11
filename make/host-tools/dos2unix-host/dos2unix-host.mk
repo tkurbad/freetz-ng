@@ -15,9 +15,6 @@ $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_NOP)
 
-xx: $($(PKG)_DIR)/.configured
-	echo $(DOS2UNIX_HOST_DIR)/.configured
-
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(TOOLS_SUBMAKE) -C $(DOS2UNIX_HOST_DIR)
 
