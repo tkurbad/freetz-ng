@@ -93,7 +93,7 @@ Latest changes
    * tmux 3.4
    * Tor 0.4.8.10
    * Transmission 3.00/4.0.5
-   * Unbound 1.19.0
+   * Unbound 1.19.1
    * Vim 9.1.0000
    * xsltproc 1.1.39
    * XZ Utils 5.4.6
