@@ -90,6 +90,7 @@ Latest changes
    * Subversion 1.9.12/1.14.3
    * SQLite 3.45.1
    * strace 4.9/5.0/6.7
+   * tmux 3.4
    * Tor 0.4.8.10
    * Transmission 3.00/4.0.5
    * Unbound 1.19.0
