@@ -72,6 +72,7 @@ Latest changes
    * CA-bundle 2023-12-12
    * CCID 1.5.4
    * Curl 8.5.0
+   * Dnsmasq 2.80/2.90
    * Git 2.43.1
    * htop 1.0.3/3.3.0
    * jq 1.7.1
