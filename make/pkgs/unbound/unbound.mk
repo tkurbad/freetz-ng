@@ -1,5 +1,5 @@
 $(call PKG_INIT_BIN, 1.19.1)
-$(PKG)_LIB_VERSION:=8.1.23
+$(PKG)_LIB_VERSION:=8.1.24
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=bc1d576f3dd846a0739adc41ffaa702404c6767d2b6082deb9f2f97cbb24a3a9
 $(PKG)_SITE:=https://www.unbound.net/downloads
