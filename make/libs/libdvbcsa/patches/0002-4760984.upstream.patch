@@ -1,0 +1,77 @@
+From 47609842e17c5f52a9d67a47fde2dd07e2082ce2 Mon Sep 17 00:00:00 2001
+From: Alexandre Becoulet <alexandre.becoulet@free.fr>
+Date: Mon, 20 May 2013 20:15:01 +0000
+Subject: [PATCH 03/11] added missing inline keywords
+
+
+ 100.0% src/
+diff --git a/src/dvbcsa_bs_stream.c b/src/dvbcsa_bs_stream.c
+index f659ad6..1fada11 100644
+--- a/src/dvbcsa_bs_stream.c
++++ b/src/dvbcsa_bs_stream.c
+@@ -26,7 +26,7 @@
+ #include "dvbcsa/dvbcsa.h"
+ #include "dvbcsa_bs.h"
+ 
+-static void DVBCSA_INLINE
++static void DVBCSA_INLINE inline
+ dvbcsa_bs_stream_sbox1(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+ 		       dvbcsa_bs_word_t fc, dvbcsa_bs_word_t fd,
+ 		       dvbcsa_bs_word_t fe,
+@@ -43,7 +43,7 @@ dvbcsa_bs_stream_sbox1(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+   *sb = BS_XOR (tmp2, BS_AND (fe, tmp3));
+ }
+ 
+-static void DVBCSA_INLINE
++static void DVBCSA_INLINE inline
+ dvbcsa_bs_stream_sbox2(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+ 		       dvbcsa_bs_word_t fc, dvbcsa_bs_word_t fd,
+ 		       dvbcsa_bs_word_t fe,
+@@ -60,7 +60,7 @@ dvbcsa_bs_stream_sbox2(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+   *sb = BS_XOR (tmp2, BS_AND (fe, tmp3));
+ }
+ 
+-static void DVBCSA_INLINE
++static void DVBCSA_INLINE inline
+ dvbcsa_bs_stream_sbox3(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+ 		       dvbcsa_bs_word_t fc, dvbcsa_bs_word_t fd,
+ 		       dvbcsa_bs_word_t fe,
+@@ -76,7 +76,7 @@ dvbcsa_bs_stream_sbox3(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+   *sb = BS_XOR (tmp2, fe);
+ }
+ 
+-static void DVBCSA_INLINE
++static void DVBCSA_INLINE inline
+ dvbcsa_bs_stream_sbox4(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+ 		       dvbcsa_bs_word_t fc, dvbcsa_bs_word_t fd,
+ 		       dvbcsa_bs_word_t fe,
+@@ -92,7 +92,7 @@ dvbcsa_bs_stream_sbox4(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+   *sb = BS_XOR (BS_XOR (*sa, tmp2), fe);
+ }
+ 
+-static void DVBCSA_INLINE
++static void DVBCSA_INLINE inline
+ dvbcsa_bs_stream_sbox5(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+ 		       dvbcsa_bs_word_t fc, dvbcsa_bs_word_t fd,
+ 		       dvbcsa_bs_word_t fe,
+@@ -109,7 +109,7 @@ dvbcsa_bs_stream_sbox5(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+   *sb = BS_XOR (tmp2, BS_AND (fe, tmp3));
+ }
+ 
+-static void DVBCSA_INLINE
++static void DVBCSA_INLINE inline
+ dvbcsa_bs_stream_sbox6(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+ 		       dvbcsa_bs_word_t fc, dvbcsa_bs_word_t fd,
+ 		       dvbcsa_bs_word_t fe,
+@@ -126,7 +126,7 @@ dvbcsa_bs_stream_sbox6(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+   *sb = BS_XOR (tmp2, BS_AND (fe, tmp3));
+ }
+ 
+-static void DVBCSA_INLINE
++static void DVBCSA_INLINE inline
+ dvbcsa_bs_stream_sbox7(dvbcsa_bs_word_t fa, dvbcsa_bs_word_t fb,
+ 		       dvbcsa_bs_word_t fc, dvbcsa_bs_word_t fd,
+ 		       dvbcsa_bs_word_t fe,
+-- 
+2.43.0
+

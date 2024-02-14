@@ -1,0 +1,23 @@
+From c529cafc933b1d76b81b4c1d92d7a3eb6af6b67c Mon Sep 17 00:00:00 2001
+From: Alexandre Becoulet <alexandre.becoulet@free.fr>
+Date: Wed, 23 Nov 2016 12:38:26 +0000
+Subject: [PATCH 10/11] fixed gcc 6 -Wmisleading-indentation
+
+
+ 100.0% test/
+diff --git a/test/benchdec.c b/test/benchdec.c
+index fb3a40d..fe193bb 100644
+--- a/test/benchdec.c
++++ b/test/benchdec.c
+@@ -76,7 +76,7 @@ main		(void)
+       for (i = 0; i < n; i++)
+ 	dvbcsa_decrypt(key, data, TS_SIZE);
+ 
+-	c += n;
++      c += n;
+     }
+ 
+   gettimeofday(&t1, NULL);
+-- 
+2.43.0
+
