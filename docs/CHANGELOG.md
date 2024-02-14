@@ -56,7 +56,7 @@ Latest changes
    * dos2unix 7.5.2
    * fakeroot 1.33
    * kconfig 6.7
-   * meson 1.3.1
+   * meson 1.3.2
    * ncftp 3.2.7
    * netkit-ftp 0.17-35
    * openssl 3.0.13
