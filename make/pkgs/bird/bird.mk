@@ -1,7 +1,7 @@
 $(call PKG_INIT_BIN, 1.6.8)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=6c61ab5d2ef59d2559a8735b8252b5a0238013b43e5fb8a96c5d9d06e7bc00b2
-$(PKG)_SITE:=https://bird.network.cz/download;ftp://bird.network.cz/pub/bird
+$(PKG)_SITE:=https://bird.network.cz/download,ftp://bird.network.cz/pub/bird
 ### WEBSITE:=https://bird.network.cz/
 ### MANPAGE:=https://gitlab.nic.cz/labs/bird/wikis/home
 ### CHANGES:=https://bird.network.cz/?o_news
