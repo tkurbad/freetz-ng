@@ -76,25 +76,25 @@
  
  # Scripts hat don't need adaptation to the local system
  EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z uc1541
---- src/vfs/fish/helpers/Makefile.am
-+++ src/vfs/fish/helpers/Makefile.am
+--- src/vfs/shell/helpers/Makefile.am
++++ src/vfs/shell/helpers/Makefile.am
 @@ -1,7 +1,7 @@
- fishdir = $(libexecdir)/@PACKAGE@/fish
+ shelldir = $(libexecdir)/@PACKAGE@/shell
  
- # Files to install and distribute other than fish scripts
--FISH_MISC  = README.fish
-+FISH_MISC  =
+ # Files to install and distribute other than shell scripts
+-SHELL_MISC  = README.shell
++SHELL_MISC  =
  
- # Install and distribute FISH helper scripts w/o shebang & executable bit as data
- fish_DATA = $(FISH_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime
---- src/vfs/fish/helpers/Makefile.in
-+++ src/vfs/fish/helpers/Makefile.in
+ # Install and distribute SHELL helper scripts w/o shebang & executable bit as data
+ shell_DATA = $(SHELL_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime
+--- src/vfs/shell/helpers/Makefile.in
++++ src/vfs/shell/helpers/Makefile.in
 @@ -413,7 +413,7 @@
- fishdir = $(libexecdir)/@PACKAGE@/fish
+ shelldir = $(libexecdir)/@PACKAGE@/shell
  
- # Files to install and distribute other than fish scripts
--FISH_MISC = README.fish
-+FISH_MISC =
+ # Files to install and distribute other than shell scripts
+-SHELL_MISC = README.shell
++SHELL_MISC =
  
- # Install and distribute FISH helper scripts w/o shebang & executable bit as data
- fish_DATA = $(FISH_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime
+ # Install and distribute SHELL helper scripts w/o shebang & executable bit as data
+ shell_DATA = $(SHELL_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime

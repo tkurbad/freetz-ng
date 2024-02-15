@@ -78,6 +78,7 @@ Latest changes
    * jq 1.7.1
    * Lighttpd 1.4.73
    * Lua 5.1.5/5.4.6
+   * mc (Midnight Commander) 4.8.31
    * minicom 2.9
    * minisatip 1.0.4/1.3.3
    * NcFTP 3.2.7
