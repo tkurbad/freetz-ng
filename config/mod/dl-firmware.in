@@ -247,7 +247,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzbox-7590-ax/{deutschland,other}/fritz.os,@AVM/7590AX"                                           if FREETZ_TYPE_7599
 	#
-	default "@AVM/fritzwlan/fritzsmart-gateway/deutschland/fritz.os,@AVM/FRITZSmartGateway"                            if FREETZ_TYPE_GATE
+	default "@AVM/fritzdect/fritzsmart-gateway/deutschland/fritz.os,@AVM/FRITZSmartGateway"                            if FREETZ_TYPE_GATE
 	#
 	default "@TELEKOM/Speedport/Speedport_W501V"                                                                       if FREETZ_TYPE_W501V
 	#
