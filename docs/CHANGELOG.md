@@ -97,6 +97,7 @@ Latest changes
    * Tor 0.4.8.10
    * Transmission 3.00/4.0.5
    * Unbound 1.19.1
+   * vermagic D1W0U
    * Vim 9.1.0000
    * xsltproc 1.1.39
    * XZ Utils 5.4.6
