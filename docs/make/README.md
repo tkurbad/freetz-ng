@@ -820,7 +820,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[usbutils 007 (binary only)](usbutils.md)<a id='usbutils'></a>**<br>
     USB devices listing utilities To avoid name conflicts with AVM's lsusb the binary is renamed to lsusb-freetz.
 
-  * **<u>vermagic 1ac45e08d4-git (binary only)</u><a id='vermagic'></a>**<br>
+  * **<u>vermagic D1W0U (binary only)</u><a id='vermagic'></a>**<br>
     A tool dump .modinfo section and set vermagic variable of Linux Kernel Modules. It also supports (not tested) CRC dump and changes, including the vermagic string. The original work is from here: https://github.com/fanfuqiang/vc The extended code of this tool: https://github.com/D1W0U/vermagic
 
 # Unstable
