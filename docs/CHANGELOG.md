@@ -65,6 +65,7 @@ Latest changes
    * precompiled toolchains r22972
    * python 3.11.8
    * tar 1.35
+   * u-boot 2024.01
    * xz 5.4.6
 
  - Packages:
