@@ -41,6 +41,7 @@ $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(UBOOT_HOST_DIR) clean
+	-$(RM) $(UBOOT_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(UBOOT_HOST_DIR)

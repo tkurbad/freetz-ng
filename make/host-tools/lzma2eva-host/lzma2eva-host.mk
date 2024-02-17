@@ -17,6 +17,7 @@ $(pkg)-precompiled: $($(PKG)_BINS:%=$(TOOLS_DIR)/%)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(LZMA2EVA_HOST_DIR) clean
+	-$(RM) $(LZMA2EVA_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(LZMA2EVA_HOST_DIR)

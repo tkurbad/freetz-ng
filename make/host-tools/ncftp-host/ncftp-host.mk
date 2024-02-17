@@ -38,6 +38,7 @@ $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(NCFTP_HOST_DIR) clean
+	-$(RM) $(NCFTP_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(NCFTP_HOST_DIR)
@@ -46,4 +47,3 @@ $(pkg)-distclean: $(pkg)-dirclean
 	$(RM) $(NCFTP_HOST_BINARIES_TARGET_DIR_ALL)
 
 $(TOOLS_FINISH)
-

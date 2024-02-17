@@ -61,6 +61,7 @@ $(pkg)-clean:
 		$(KCONFIG_HOST_DIR)/scripts/kconfig/gconf \
 		$(KCONFIG_HOST_DIR)/scripts/kconfig/nconf \
 		$(KCONFIG_HOST_DIR)/scripts/kconfig/mconf
+	-$(RM) $(KCONFIG_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(KCONFIG_HOST_DIR)

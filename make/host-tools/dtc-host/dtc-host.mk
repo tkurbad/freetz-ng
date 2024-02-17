@@ -26,6 +26,7 @@ $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(DTC_HOST_DIR) clean
+	-$(RM) $(DTC_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(DTC_HOST_DIR)
