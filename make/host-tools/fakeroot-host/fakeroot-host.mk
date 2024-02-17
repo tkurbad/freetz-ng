@@ -85,6 +85,9 @@ $(pkg)-precompiled: $($(PKG)_TARGET_SCRIPT) $(if $(HOST_BIARCH),$($(PKG)_TARGET_
 $(pkg)-clean:
 	-$(MAKE) -C $(FAKEROOT_HOST_MAINARCH_DIR) clean
 	-$(MAKE) -C $(FAKEROOT_HOST_BIARCH_DIR) clean
+	-$(RM) $(FAKEROOT_HOST_DIR)/.{compiled,fixhardcoded}
+	-$(RM) $(FAKEROOT_HOST_MAINARCH_DIR)/.{configured,compiled}
+	-$(RM) $(FAKEROOT_HOST_BIARCH_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(FAKEROOT_HOST_DIR)
