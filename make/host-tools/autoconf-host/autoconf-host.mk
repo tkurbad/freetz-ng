@@ -48,7 +48,7 @@ $(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(AUTOCONF_HOST_DIR) uninstall
-	-$(RM) $(AUTOCONF_HOST_DIR)/.{configured,compiled} $(AUTOCONF_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(AUTOCONF_HOST_DIR)/.{configured,compiled,fixhardcoded} $(AUTOCONF_HOST_INSTALLED_FLAG_FILE)
 
 $(pkg)-dirclean:
 	$(RM) -r $(AUTOCONF_HOST_DIR)

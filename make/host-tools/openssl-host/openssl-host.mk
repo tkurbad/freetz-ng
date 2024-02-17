@@ -45,7 +45,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.compiled
 
 $(pkg)-clean:
 	-$(MAKE) -C $(OPENSSL_HOST_DIR) clean
-	-$(RM) $(OPENSSL_HOST_DIR)/.{configured,compiled} $(OPENSSL_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(OPENSSL_HOST_DIR)/.{configured,compiled,fixhardcoded} $(OPENSSL_HOST_INSTALLED_FLAG_FILE)
 
 $(pkg)-dirclean:
 	$(RM) -r $(OPENSSL_HOST_DIR)

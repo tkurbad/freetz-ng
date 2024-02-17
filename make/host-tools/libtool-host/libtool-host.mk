@@ -42,7 +42,7 @@ $(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(LIBTOOL_HOST_DIR) uninstall
-	-$(RM) $(LIBTOOL_HOST_DIR)/.{configured,compiled} $(LIBTOOL_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(LIBTOOL_HOST_DIR)/.{configured,compiled,fixhardcoded} $(LIBTOOL_HOST_INSTALLED_FLAG_FILE)
 
 $(pkg)-dirclean:
 	$(RM) -r $(LIBTOOL_HOST_DIR)

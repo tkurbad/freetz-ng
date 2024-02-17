@@ -52,7 +52,7 @@ $(pkg)-precompiled: $($(PKG)_LINKS_TARGET_DIR)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(AUTOMAKE_HOST_DIR) uninstall
-	-$(RM) $(AUTOMAKE_HOST_DIR)/.{configured,compiled} $(AUTOMAKE_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(AUTOMAKE_HOST_DIR)/.{configured,compiled,fixhardcoded} $(AUTOMAKE_HOST_INSTALLED_FLAG_FILE)
 
 $(pkg)-dirclean:
 	$(RM) -r $(AUTOMAKE_HOST_DIR)
