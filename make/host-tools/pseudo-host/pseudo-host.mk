@@ -89,6 +89,9 @@ $(pkg)-precompiled: $($(PKG)_TARGET_MAINARCH_LIB) $(if $(HOST_BIARCH),$($(PKG)_T
 $(pkg)-clean:
 	-$(MAKE) -C $(PSEUDO_HOST_MAINARCH_DIR) clean
 	-$(MAKE) -C $(PSEUDO_HOST_BIARCH_DIR) clean
+	-$(RM) $(PSEUDO_HOST_DIR)/.{compiled}
+	-$(RM) $(PSEUDO_HOST_MAINARCH_DIR)/.{configured,compiled}
+	-$(RM) $(PSEUDO_HOST_BIARCH_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(PSEUDO_HOST_DIR)
