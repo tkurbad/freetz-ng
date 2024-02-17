@@ -34,6 +34,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.fixhardcoded
 
 
 $(pkg)-clean:
+	-$(RM) $(TOOLS_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(TOOLS_HOST_DIR)
