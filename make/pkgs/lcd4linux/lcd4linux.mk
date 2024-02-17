@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 9d4e4b7917f89828a44726d18782540c62551169)
+$(call PKG_INIT_BIN, 3fce054efff9b6eba70414ea76246ee479780ff0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=02b6141c8acc994f86511a616e89b32316dbf05ff8db21b2fef9b2ef728a2756
+$(PKG)_HASH:=ac1f8c6a3823cf603b36d31ef435ea80948e730e94ee3a1142422669e532394b
 $(PKG)_SITE:=git@https://github.com/TangoCash/lcd4linux.git
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/lcd4linux
