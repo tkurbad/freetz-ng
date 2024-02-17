@@ -7,7 +7,8 @@ $(PKG)_SITE:=https://distfiles.ariadne.space/pkgconf
 ### CHANGES:=https://github.com/pkgconf/pkgconf/blob/master/NEWS
 ### CVSREPO:=https://github.com/pkgconf/pkgconf/tags
 
-$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
+$(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
+$(PKG)_INSTALLED_FLAG_FILE := $($(PKG)_DESTDIR)/.installed-$(pkg_short)
 
 $(PKG)_BINARIES            := pkgconf bomtool
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
@@ -29,19 +30,19 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 		all
 	@touch $@
 
-$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
+$($(PKG)_INSTALLED_FLAG_FILE): $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(PKGCONF_HOST_DIR) install
 	@touch $@
 
 $($(PKG)_WRAPPER_TARGET): $($(PKG)_WRAPPER_SOURCE)
 	cp $< $@
 
-$(pkg)-precompiled: $($(PKG)_DIR)/.installed $($(PKG)_WRAPPER_TARGET)
+$(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE) $($(PKG)_WRAPPER_TARGET)
 
 
 $(pkg)-clean:
 	-$(MAKE) -C $(PKGCONF_HOST_DIR) uninstall
-	-$(RM) $(PKGCONF_HOST_DIR)/.{configured,compiled,installed}
+	-$(RM) $(PKGCONF_HOST_DIR)/.{configured,compiled} $(PKGCONF_HOST_INSTALLED_FLAG_FILE)
 
 $(pkg)-dirclean:
 	$(RM) -r $(PKGCONF_HOST_DIR)

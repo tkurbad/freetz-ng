@@ -10,7 +10,8 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 
 $(PKG)_DEPENDS_ON+=ninja-host
 
-$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
+$(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
+$(PKG)_INSTALLED_FLAG_FILE := $($(PKG)_DESTDIR)/.installed-$(pkg_short)
 
 $(PKG)_BINARIES            := ccmake cmake cpack ctest
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
@@ -36,18 +37,18 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 	$(TOOLS_SUBNINJA) -C $(CMAKE_HOST_DIR) all
 	@touch $@
 
-$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
+$($(PKG)_INSTALLED_FLAG_FILE): $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBNINJA) -C $(CMAKE_HOST_DIR) install
 	@$(RM) -r "$(CMAKE_HOST_DOC_TARGET_DIR)"
 	@rmdir "$(dir $(CMAKE_HOST_DOC_TARGET_DIR))" || true
 	@touch $@
 
-$(pkg)-precompiled: $($(PKG)_DIR)/.installed
+$(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE)
 
 
 $(pkg)-clean:
 	-$(NINJA) -C $(CMAKE_HOST_DIR) uninstall
-	-$(RM) $(CMAKE_HOST_DIR)/.{configured,compiled,installed}
+	-$(RM) $(CMAKE_HOST_DIR)/.{configured,compiled} $(CMAKE_HOST_INSTALLED_FLAG_FILE)
 
 $(pkg)-dirclean:
 	$(RM) -r $(CMAKE_HOST_DIR)
