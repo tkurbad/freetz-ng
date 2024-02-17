@@ -76,6 +76,7 @@ Latest changes
    * Dnsmasq 2.80/2.90
    * Git 2.43.2
    * htop 1.0.3/3.3.0
+   * jpeg 9f
    * jq 1.7.1
    * LCD4linux 3fce054e
    * Lighttpd 1.4.73

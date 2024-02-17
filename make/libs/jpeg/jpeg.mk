@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 9e)
-$(PKG)_LIB_VERSION:=9.5.0
+$(call PKG_INIT_LIB, 9f)
+$(PKG)_LIB_VERSION:=9.6.0
 $(PKG)_SOURCE:=jpegsrc.v$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=4077d6a6a75aeb01884f708919d25934c93305e49f7e3f36db9129320e6f4f3d
+$(PKG)_HASH:=04705c110cb2469caa79fb71fba3d7bf834914706e9641a4589485c1f832565b
 $(PKG)_SITE:=https://www.ijg.org/files
 ### WEBSITE:=https://www.ijg.org/
 ### MANPAGE:=http://www.faqs.org/faqs/jpeg-faq/
