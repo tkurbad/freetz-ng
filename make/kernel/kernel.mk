@@ -63,7 +63,7 @@ ifeq ($(strip $(FREETZ_KERNEL_AVMDIFF_AVAILABLE)),y)
 	  [ "$$a" == "chmod" ] && chmod +x    "$(KERNEL_SOURCE_DIR)/$${b}"; \
 	  [ "$$a" == "slink" ] && ln -s "$$c" "$(KERNEL_SOURCE_DIR)/$${b}"; \
 	  [ "$$a" == "touch" ] && touch       "$(KERNEL_SOURCE_DIR)/$${b}"; \
-	done || true
+	done $(SILENT) || true
 endif
 ifneq ($(strip $(FREETZ_KERNEL_AVM_CHAOTIC_PACK)),y)
 	@echo "#kernel version specific patches: $(KERNEL_PATCHES_DIR)" $(SILENT)
