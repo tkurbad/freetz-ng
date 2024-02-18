@@ -1,0 +1,21 @@
+--- Configure
++++ Configure
+@@ -389,6 +389,7 @@
+ $config{libdir}="";
+ my $auto_threads=1;    # enable threads automatically? true by default
+ my $default_ranlib;
++my $quiet=0;
+ 
+ # Known TLS and DTLS protocols
+ my @tls = qw(ssl3 tls1 tls1_1 tls1_2 tls1_3);
+@@ -1032,6 +1033,10 @@
+                         {
+                         push @{$useradd{CPPFLAGS}}, $1;
+                         }
++                elsif (/^--quiet$/)
++                        {
++                        $quiet=1
++                        }
+                 else    # common if (/^[-+]/), just pass down...
+                         {
+                         # Treat %xx as an ASCII code (e.g. replace %20 by a space character).
