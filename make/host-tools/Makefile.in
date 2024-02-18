@@ -199,7 +199,8 @@ endef
 # Finalise tool package
 define TOOLS_FINISH__INT
 
-$(pkg)-precompiled--int: $(pkg)-build-prereq $(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON))
+# tools dont like -precompiled postfix because of precompiled
+$(pkg)-precompiled--int: $(pkg)-build-prereq  $(patsubst %-host-precompiled,%-host,$(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON)))
 .PHONY: $(pkg)-precompiled--int
 
 $(pkg)-precompiled:

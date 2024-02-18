@@ -541,7 +541,8 @@ endef
 # PKG_FINISH: Finalise packages (general functionality + call to type specifics)
 define PKG_FINISH__INT
 
-$(pkg)-precompiled--int: $(pkg)-build-prereq $(TOOLCHAIN) $(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON))
+# tools dont like -precompiled postfix because of precompiled
+$(pkg)-precompiled--int: $(pkg)-build-prereq $(TOOLCHAIN)  $(patsubst %-host-precompiled,%-host,$(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON)))
 .PHONY: $(pkg)-precompiled--int
 
 $(pkg)-precompiled:
