@@ -1,6 +1,9 @@
 KERNEL_MAKE_DIR:=$(MAKE_DIR)/kernel
 KERNEL_PATCHES_DIR:=$(KERNEL_MAKE_DIR)/patches/$(KERNEL_VERSION)$(SYSTEM_TYPE_CORE_SUFFIX)
 
+KERNEL_DEPENDS_ON += lzma1-host
+KERNEL_DEPENDS_ON += lzma2eva-host
+
 KERNEL_IMAGE:=vmlinux.eva_pad
 KERNEL_IMAGE_BUILD_SUBDIR:=$(if $(FREETZ_KERNEL_VERSION_3_10_MIN),/arch/$(KERNEL_ARCH)/boot)
 KERNEL_TARGET_BINARY:=kernel-$(KERNEL_ID).bin
@@ -229,7 +232,7 @@ kernel-autofix: kernel-dirclean
 kernel-recompile: kernel-dirclean kernel-precompiled
 .PHONY: kernel-autofix kernel-recompile
 
-$(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE): $(KERNEL_DIR)/.prepared $(KERNEL_BUILD_DEPENDENCIES) | $(TOOLS_DIR)/lzma $(TOOLS_DIR)/lzma2eva
+$(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE): $(KERNEL_DIR)/.prepared $(KERNEL_BUILD_DEPENDENCIES) | $(KERNEL_DEPENDS_ON)
 	$(call _ECHO,image,$(KERNEL_ECHO_TYPE))
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) $(KERNEL_IMAGE)
 	touch -c $@
