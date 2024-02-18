@@ -82,6 +82,8 @@ quit
 	kill $bg_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
 	wait $bg_pid
 
+# debug-out > quit > kill
+
 	dos2unix -q "$tmpenv"
 }
 
