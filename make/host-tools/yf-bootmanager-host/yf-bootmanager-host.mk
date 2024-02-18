@@ -11,7 +11,6 @@ $(PKG)_SITE:=git_sparse@$($(PKG)_REPOSITORY),bootmanager
 ### CVSREPO:=https://github.com/PeterPawn/YourFritz/tree/main/bootmanager
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
-$(PKG)_INSTALLED_FLAG_FILE := $($(PKG)_DESTDIR)/.installed-$(pkg_short)
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PATCH_MODFS_BOOT_MANAGER_tested
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PATCH_MODFS_BOOT_MANAGER_latest
@@ -22,16 +21,16 @@ $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_NOP)
 
-$($(PKG)_INSTALLED_FLAG_FILE): $($(PKG)_DIR)/.unpacked
+$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.unpacked
 	mkdir -p $(TOOLS_DIR)/yf/
 	$(call COPY_USING_TAR,$(YF_BOOTMANAGER_HOST_DIR)/,$(TOOLS_DIR)/yf/,bootmanager/)
 	touch $@
 
-$(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE)
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
-	-$(RM) $(YF_BOOTMANAGER_HOST_DIR)/.{configured,compiled} $(YF_BOOTMANAGER_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(YF_BOOTMANAGER_HOST_DIR)/.{configured,compiled,installed}
 
 $(pkg)-dirclean:
 	$(RM) -r $(YF_BOOTMANAGER_HOST_DIR)

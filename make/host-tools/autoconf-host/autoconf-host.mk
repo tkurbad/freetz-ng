@@ -10,7 +10,6 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 $(PKG)_DEPENDS_ON+=m4-host
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
-$(PKG)_INSTALLED_FLAG_FILE := $($(PKG)_DESTDIR)/.installed-$(pkg_short)
 
 $(PKG)_BINARIES            := autoconf autoheader autom4te autoreconf autoscan autoupdate ifnames
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
@@ -32,7 +31,7 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 		all
 	@touch $@
 
-$($(PKG)_INSTALLED_FLAG_FILE): $($(PKG)_DIR)/.compiled
+$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(AUTOCONF_HOST_DIR) \
 		$(AUTOCONF_HOST_MAKE_VARS) \
 		install
@@ -43,12 +42,12 @@ $(pkg)-fixhardcoded:
 		$(AUTOCONF_HOST_BINARIES_TARGET_DIR) \
 		$(AUTOCONF_HOST_SHARE_TARGET_DIR)/autom4te.cfg
 
-$(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE)
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
 	-$(MAKE) -C $(AUTOCONF_HOST_DIR) uninstall
-	-$(RM) $(AUTOCONF_HOST_DIR)/.{configured,compiled,fixhardcoded} $(AUTOCONF_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(AUTOCONF_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(AUTOCONF_HOST_DIR)

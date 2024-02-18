@@ -8,7 +8,6 @@ $(PKG)_SITE:=https://www.openssl.org/source
 ### CVSREPO:=https://github.com/openssl/openssl
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
-$(PKG)_INSTALLED_FLAG_FILE := $($(PKG)_DESTDIR)/.installed-$(pkg_short)
 
 #$(PKG)_PKGCONFIG_SHORT       := openssl libcrypto libssl
 #$(PKG)_PKGCONFIG_TARGET_DIR  := $($(PKG)_PKGCONFIG_SHORT:%=$($(PKG)_DESTDIR)/lib*/pkgconfig/%.pc)
@@ -31,7 +30,7 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 	$(TOOLS_SUBMAKE) -C $(OPENSSL_HOST_DIR) all
 	@touch $@
 
-#$($(PKG)_INSTALLED_FLAG_FILE): $($(PKG)_DIR)/.compiled
+#$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 #	$(TOOLS_SUBMAKE) -C $(OPENSSL_HOST_DIR) install_sw
 #	@touch $@
 
@@ -39,13 +38,13 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 #	-@$(SED) -i "s!$(TOOLS_HARDCODED_DIR)!$(OPENSSL_HOST_DESTDIR)!g" \
 #		$(OPENSSL_HOST_PKGCONFIG_TARGET_DIR)
 
-#$(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE)
+#$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 $(pkg)-precompiled: $($(PKG)_DIR)/.compiled
 
 
 $(pkg)-clean:
 	-$(MAKE) -C $(OPENSSL_HOST_DIR) clean
-	-$(RM) $(OPENSSL_HOST_DIR)/.{configured,compiled,fixhardcoded} $(OPENSSL_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(OPENSSL_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(OPENSSL_HOST_DIR)

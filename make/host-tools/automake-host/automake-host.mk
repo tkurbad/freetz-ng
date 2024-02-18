@@ -11,7 +11,6 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 $(PKG)_DEPENDS_ON+=autoconf-host
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
-$(PKG)_INSTALLED_FLAG_FILE := $($(PKG)_DESTDIR)/.installed-$(pkg_short)
 
 $(PKG)_LINKS                 := aclocal automake
 $(PKG)_BINARIES              := $(patsubst %, %-$($(PKG)_MAJOR_VERSION), $($(PKG)_LINKS))
@@ -34,12 +33,12 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 	$(TOOLS_SUBMAKE) -C $(AUTOMAKE_HOST_DIR) all
 	@touch $@
 
-$($(PKG)_INSTALLED_FLAG_FILE): $($(PKG)_DIR)/.compiled
+$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(AUTOMAKE_HOST_DIR) install
 	@rm -f $($(PKG)_LINKS_TARGET_DIR)
 	@touch $@
 
-$($(PKG)_LINKS_TARGET_DIR) : $($(PKG)_DESTDIR)/bin/% : $($(PKG)_INSTALLED_FLAG_FILE)
+$($(PKG)_LINKS_TARGET_DIR) : $($(PKG)_DESTDIR)/bin/% : $($(PKG)_DIR)/.installed
 	ln -sf "$(notdir $@)-$(call GET_MAJOR_VERSION,$(AUTOMAKE_HOST_VERSION))" "$@"
 
 $(pkg)-fixhardcoded:
@@ -52,7 +51,7 @@ $(pkg)-precompiled: $($(PKG)_LINKS_TARGET_DIR)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(AUTOMAKE_HOST_DIR) uninstall
-	-$(RM) $(AUTOMAKE_HOST_DIR)/.{configured,compiled,fixhardcoded} $(AUTOMAKE_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(AUTOMAKE_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(AUTOMAKE_HOST_DIR)

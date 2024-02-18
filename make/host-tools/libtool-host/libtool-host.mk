@@ -10,7 +10,6 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 $(PKG)_DEPENDS_ON+=autoconf-host
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
-$(PKG)_INSTALLED_FLAG_FILE := $($(PKG)_DESTDIR)/.installed-$(pkg_short)
 
 $(PKG)_BINARIES            := libtool libtoolize
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
@@ -28,7 +27,7 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 		all
 	@touch $@
 
-$($(PKG)_INSTALLED_FLAG_FILE): $($(PKG)_DIR)/.compiled
+$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(LIBTOOL_HOST_DIR) install
 	@touch $@
 
@@ -37,12 +36,12 @@ $(pkg)-fixhardcoded:
 		$(LIBTOOL_HOST_BINARIES_TARGET_DIR) \
 		$(LIBTOOL_HOST_DESTDIR)/lib/libltdl.la
 
-$(pkg)-precompiled: $($(PKG)_INSTALLED_FLAG_FILE)
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
 	-$(MAKE) -C $(LIBTOOL_HOST_DIR) uninstall
-	-$(RM) $(LIBTOOL_HOST_DIR)/.{configured,compiled,fixhardcoded} $(LIBTOOL_HOST_INSTALLED_FLAG_FILE)
+	-$(RM) $(LIBTOOL_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(LIBTOOL_HOST_DIR)
