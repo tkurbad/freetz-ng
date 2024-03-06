@@ -75,6 +75,7 @@ Latest changes
    * Curl 8.5.0
    * Dnsmasq 2.80/2.90
    * Git 2.43.2
+   * HAProxy 2.6.16
    * htop 1.0.3/3.3.0
    * jpeg 9f
    * jq 1.7.1
