@@ -26,7 +26,7 @@ uimods_table() {
 		[ "$uikey" == "${uikey//\//}" ] && uikey="settings/$uikey"
 		[ "$oldhr" != "$modul" ] && table_head "$modul" "$oldhr" && oldhr="$modul"
 		saved="$(echo "$uimods_result" | sed -n "s,^${modul}:${uikey} = ,,p")"
-		[ "$defa" -gt 0 ] 2>/dev/null && [ "$(echo "$vals" | cut -f$defa -d'|')" != "$saved" ] && colit="red" || colit=''
+		[ -n "$saved" ] && [ "$defa" -gt 0 ] 2>/dev/null && [ "$(echo "$vals" | cut -f$defa -d'|')" != "$saved" ] && colit="red" || colit=''
 		table_line "$modul" "$uikey" "$saved" "$colit" "${vals#|}" "$desc"
 	done
 	table_end
