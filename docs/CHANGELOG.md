@@ -108,7 +108,7 @@ Latest changes
 
  - Libraries:
    * cairo 1.18.0
-   * expat 2.6.0
+   * expat 2.6.1
    * libffi 3.4.6
    * harfbuzz 8.3.0
    * libid3tag 0.16.3

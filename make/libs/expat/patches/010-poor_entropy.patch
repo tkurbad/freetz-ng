@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -19587,6 +19587,9 @@
+@@ -19591,6 +19591,9 @@
  
  
  
@@ -10,7 +10,7 @@
  # Check whether --with-libbsd was given.
  if test ${with_libbsd+y}
  then :
-@@ -19712,6 +19715,7 @@
+@@ -19716,6 +19719,7 @@
  fi
  rm -f core conftest.err conftest.$ac_objext conftest.beam \
      conftest$ac_exeext conftest.$ac_ext
