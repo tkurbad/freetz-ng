@@ -84,7 +84,7 @@ Latest changes
    * Lua 5.1.5/5.4.6
    * mc (Midnight Commander) 4.8.31
    * minicom 2.9
-   * minisatip 1.0.4/1.3.3
+   * minisatip 1.0.4/1.3.4
    * NcFTP 3.2.7
    * OpenSSH 9.3p2/9.6p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.13
