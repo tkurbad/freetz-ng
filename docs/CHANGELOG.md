@@ -114,6 +114,7 @@ Latest changes
    * libid3tag 0.16.3
    * libmaxminddb 1.9.1
    * libonig 6.9.9
+   * libpng 1.6.42
    * libtirpc 1.3.4
    * libusb1 1.0.23/1.0.27
    * libuv 1.44.2/1.48.0
