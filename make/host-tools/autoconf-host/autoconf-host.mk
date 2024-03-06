@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 2.71)
+$(call TOOLS_INIT, 2.72)
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=f14c83cfebcc9427f2c3cea7258bd90df972d92eb26752da4ddad81c87a0faa4
+$(PKG)_HASH:=ba885c1319578d6c94d46e9b0dceb4014caafe2490e437a0dbca3f270a223f5a
 $(PKG)_SITE:=@GNU/$(pkg_short)
 ### WEBSITE:=https://www.gnu.org/software/autoconf/
 ### MANPAGE:=https://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/
