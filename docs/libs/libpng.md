@@ -1,4 +1,4 @@
-# libpng: PNG library (libpng.so) 1.6.40
+# libpng: PNG library (libpng.so) 1.6.42
  - Homepage: [http://www.libpng.org/pub/png/libpng.html](http://www.libpng.org/pub/png/libpng.html)
  - Changelog: [https://libpng.sourceforge.io/index.html](https://libpng.sourceforge.io/index.html)
  - Repository: [https://github.com/glennrp/libpng](https://github.com/glennrp/libpng)
