@@ -1,6 +1,6 @@
 --- src/mod_openssl.c
 +++ src/mod_openssl.c
-@@ -2133,7 +2133,7 @@
+@@ -2228,7 +2228,7 @@
  static int
  mod_openssl_ssl_conf_dhparameters(server *srv, plugin_config_socket *s, const buffer *dhparameters)
  {

@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.4.73)
+$(call PKG_INIT_BIN, 1.4.74)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=818816d0b314b0aa8728a7076513435f6d5eb227f3b61323468e1f10dbe84ca8
+$(PKG)_HASH:=5c08736e83088f7e019797159f306e88ec729abe976dc98fb3bed71b9d3e53b5
 $(PKG)_SITE:=https://download.lighttpd.net/lighttpd/releases-1.4.x
 ### WEBSITE:=https://www.lighttpd.net/
 ### MANPAGE:=https://redmine.lighttpd.net/projects/lighttpd/wiki
@@ -121,8 +121,6 @@ $(PKG)_CONFIGURE_OPTIONS += --without-webdav-props
 endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_LOCKS)),y)
-$(PKG)_DEPENDS_ON += e2fsprogs # we need libuuid from it
-$(PKG)_CONFIGURE_ENV += ac_cv_header_uuid_uuid_h=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-webdav-locks
 else
 $(PKG)_CONFIGURE_OPTIONS += --without-webdav-locks

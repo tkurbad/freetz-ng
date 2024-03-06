@@ -80,7 +80,7 @@ Latest changes
    * jpeg 9f
    * jq 1.7.1
    * LCD4linux 3fce054e
-   * Lighttpd 1.4.73
+   * Lighttpd 1.4.74
    * Lua 5.1.5/5.4.6
    * mc (Midnight Commander) 4.8.31
    * minicom 2.9
