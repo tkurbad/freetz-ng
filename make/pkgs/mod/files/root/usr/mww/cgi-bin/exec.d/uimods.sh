@@ -30,7 +30,8 @@ else
 	echo "old --> $old"
 
 	echo "new --> $V"
-	ack="$(ctlmgr_ctl w "$M" "$X" -- "$V")"
+	[ "$V" != "${V#-}" ] && SEP='--' || SEP=''
+	ack="$(ctlmgr_ctl w "$M" "$X" $SEP "$V")"
 	echo "ack --> $ack"
 
 	chk="$(ctlmgr_ctl r "$M" "$X")"
