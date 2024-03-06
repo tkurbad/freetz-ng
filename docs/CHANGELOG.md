@@ -74,7 +74,7 @@ Latest changes
    * CCID 1.5.4
    * Curl 8.5.0
    * Dnsmasq 2.80/2.90
-   * Git 2.43.2
+   * Git 2.44.0
    * HAProxy 2.6.16
    * htop 1.0.3/3.3.0
    * jpeg 9f
