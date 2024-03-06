@@ -49,7 +49,7 @@ Latest changes
  - Build system:
    * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.42.x
    * Ccache 4.9.1
-   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.45
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.46
 
  - Host tools:
    * autoconf 2.72

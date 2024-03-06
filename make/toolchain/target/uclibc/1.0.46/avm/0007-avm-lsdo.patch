@@ -1,6 +1,6 @@
 --- ldso/ldso/dl-elf.c
 +++ ldso/ldso/dl-elf.c
-@@ -1082,6 +1082,7 @@
+@@ -1088,6 +1088,7 @@
  
  #ifdef IS_IN_rtld
  /* Minimal printf which handles only %s, %d, and %x */
@@ -8,7 +8,7 @@
  void _dl_dprintf(int fd, const char *fmt, ...)
  {
  #if __WORDSIZE > 32
-@@ -1091,23 +1092,16 @@
+@@ -1097,23 +1098,16 @@
  #endif
  	va_list args;
  	char *start, *ptr, *string;
@@ -35,7 +35,7 @@
  	}
  
  	_dl_strcpy(buf, fmt);
-@@ -1169,7 +1163,6 @@
+@@ -1175,7 +1169,6 @@
  			start = NULL;
  		}
  	}
@@ -43,7 +43,7 @@
  	return;
  }
  
-@@ -1180,7 +1173,9 @@
+@@ -1186,7 +1179,9 @@
  
  	len = _dl_strlen(string);
  	retval = _dl_malloc(len + 1);
