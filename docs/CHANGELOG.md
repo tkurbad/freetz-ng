@@ -55,7 +55,7 @@ Latest changes
    * autoconf 2.72
    * cmake 3.28.3
    * dos2unix 7.5.2
-   * fakeroot 1.33
+   * fakeroot 1.34
    * kconfig 6.7
    * meson 1.3.2
    * ncftp 3.2.7
