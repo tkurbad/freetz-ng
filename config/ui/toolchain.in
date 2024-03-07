@@ -307,6 +307,7 @@ config FREETZ_SEPARATE_AVM_UCLIBC
 config FREETZ_TARGET_UNSUPPORTED_VERSIONS
 	bool "Show unsupported versions"
 	depends on FREETZ_SHOW_EXPERT
+	depends on FREETZ_BUILD_TOOLCHAIN
 	default n
 	help
 		Shows versions which are not supported.
