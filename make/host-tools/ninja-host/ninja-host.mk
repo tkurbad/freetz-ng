@@ -1,8 +1,8 @@
-$(call TOOLS_INIT, a524bf3f6bacd1b4ad85d719eed2737d8562f27a)
-$(PKG)_SOURCE:=ninja-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=b96b1f70a89cfa6d7bc47bf11d5bb894956a4ea3a3163da830c6869c0b85c014
-$(PKG)_SITE:=git@https://github.com/ninja-build/ninja.git
-### VERSION:=1.11.1
+$(call TOOLS_INIT, 1.11.1)
+$(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea
+$(PKG)_SITE:=https://github.com/ninja-build/ninja/archive/refs/tags
 ### WEBSITE:=https://ninja-build.org/
 ### MANPAGE:=https://github.com/ninja-build/ninja/wiki
 ### CHANGES:=https://github.com/ninja-build/ninja/releases
