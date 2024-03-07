@@ -136,4 +136,4 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 ### Dect-Inhaus
 
 ### BPjM
- - CRC 32090143: [bpjm_20240129_bpjm-modul_01_24.txt.data](http://download.avm.de/bpjm/242548/bpjm_20240129_bpjm-modul_01_24.txt.data)
+ - CRC f09db49c: [bpjm_20240307_bpjm-modul_02_24.txt.data](http://download.avm.de/bpjm/244891/bpjm_20240307_bpjm-modul_02_24.txt.data)
