@@ -13,6 +13,7 @@ $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/libserf-1.so.$($(PKG)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libserf-1.so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_DEPENDS_ON += apr apr-util openssl zlib
+$(PKG)_DEPENDS_ON += scons-host
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
 
@@ -32,7 +33,7 @@ $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
-$($(PKG)_BINARY): $($(PKG)_DIR)/.configured | scons-host
+$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SCONS_HOST_TARGET_BINARY) -C $(SERF_DIR) $(SERF_SCONS_OPTIONS)
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
