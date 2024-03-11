@@ -501,19 +501,19 @@ Currently supported devices and firmwares
 * __Fritz!Repeater 1200__
   - 172.07.14 rev73941 {ALL} [MESH18 NL4]
   - 172.07.29 rev93267 {ALL} [PSQ19P2NL4]
-  - 172.07.57 rev107845 {ALL} [MOVE21NL1]
+  - 172.07.58 rev111616 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 1200 AX__
   - 268.07.31 rev108167 {ALL} [PSQ19P2NL4]
   - 268.07.57 rev107840 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 2400__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
   - 169.07.29 rev93265 {ALL} [PSQ19P2NL4]
-  - 169.07.57 rev107844 {ALL} [MOVE21NL1]
+  - 169.07.58 rev111615 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 3000__
   - 174.07.04 rev66458 {ALL}
   - 174.07.14 rev73940 {ALL} [MESH18 NL4]
   - 174.07.29 rev93268 {ALL} [PSQ19P2NL4]
-  - 174.07.57 rev107846 {ALL} [MOVE21NL1]
+  - 174.07.58 rev111617 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 3000 AX (UNTESTED)__
   - 270.07.42 rev108161 {ALL} [MOVE21]
   - 270.07.57 rev109902 {ALL} [MOVE21NL1]
