@@ -67,7 +67,7 @@ Latest changes
    * python 3.11.8
    * tar 1.35
    * u-boot 2024.01
-   * xz 5.4.6
+   * xz 5.6.1
 
  - Packages:
    * BIND 9.11.37/9.16.48
