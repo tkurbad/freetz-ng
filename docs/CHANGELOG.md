@@ -105,7 +105,7 @@ Latest changes
    * vermagic D1W0U
    * Vim 9.1.0000
    * xsltproc 1.1.39
-   * XZ Utils 5.4.6
+   * XZ Utils 5.6.1
 
  - Libraries:
    * cairo 1.18.0
