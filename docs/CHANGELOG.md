@@ -56,7 +56,7 @@ Latest changes
    * cmake 3.28.3
    * dos2unix 7.5.2
    * fakeroot 1.34
-   * kconfig 6.7
+   * kconfig 6.8
    * meson 1.3.2
    * ncftp 3.2.7
    * netkit-ftp 0.17-35

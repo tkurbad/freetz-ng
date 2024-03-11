@@ -1,6 +1,6 @@
 --- scripts/kconfig/Makefile
 +++ scripts/kconfig/Makefile
-@@ -39,7 +39,6 @@
+@@ -47,7 +47,6 @@
  define config_rule
  PHONY += $(1)
  $(1): $(obj)/$($(1)-prog)
