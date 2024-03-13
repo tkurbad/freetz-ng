@@ -71,7 +71,7 @@ Latest changes
 
  - Packages:
    * BIND 9.11.37/9.16.48
-   * CA-bundle 2023-12-12
+   * CA-bundle 2024-03-11
    * CCID 1.5.4
    * Curl 8.5.0
    * Dnsmasq 2.80/2.90
