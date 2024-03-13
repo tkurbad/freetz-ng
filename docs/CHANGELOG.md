@@ -71,6 +71,7 @@ Latest changes
 
  - Packages:
    * BIND 9.11.37/9.16.48
+   * BIRD 1.6.8/2.15
    * CA-bundle 2024-03-11
    * CCID 1.5.4
    * Curl 8.5.0

@@ -1,6 +1,8 @@
-$(call PKG_INIT_BIN, 1.6.8)
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),1.6.8,2.15))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=6c61ab5d2ef59d2559a8735b8252b5a0238013b43e5fb8a96c5d9d06e7bc00b2
+$(PKG)_HASH_ABANDON:=6c61ab5d2ef59d2559a8735b8252b5a0238013b43e5fb8a96c5d9d06e7bc00b2
+$(PKG)_HASH_CURRENT:=7a6458fa41109c005531b23e3f7abd63d7000a99d195db4944ebccb539ed02f0
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://bird.network.cz/download,ftp://bird.network.cz/pub/bird
 ### WEBSITE:=https://bird.network.cz/
 ### MANPAGE:=https://gitlab.nic.cz/labs/bird/wikis/home
@@ -9,6 +11,8 @@ $(PKG)_SITE:=https://bird.network.cz/download,ftp://bird.network.cz/pub/bird
 # v2: https://gitlab.nic.cz/labs/bird/-/wikis/transition-notes-to-bird-2
 
 $(PKG)_STARTLEVEL=82
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),abandon,current)
 
 $(PKG)_BINARIES_ALL := bird birdc
 ifeq ($(strip $(FREETZ_PACKAGE_BIRDC)),y)
@@ -22,6 +26,7 @@ $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/sbin/%)
 
 $(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)/usr/sbin/%,$(filter-out $($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL)))
 
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_BIRD_VERSION_ABANDON
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_BIRD_DEBUG
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_BIRDC
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
@@ -29,7 +34,14 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_BIRDC),--enable-client,--disable-client)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_BIRD_DEBUG),--enable-debug,--disable-debug)
 $(PKG)_CONFIGURE_OPTIONS += --disable-memcheck
+ifeq ($(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),y)
 #$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
+else
+#$(PKG)_CONFIGURE_OPTIONS += --disable-pthreads
+$(PKG)_CONFIGURE_OPTIONS += --disable-compact-tries
+$(PKG)_CONFIGURE_OPTIONS += --disable-libssh
+$(PKG)_CONFIGURE_OPTIONS += --disable-mpls-kernel
+endif
 
 
 $(PKG_SOURCE_DOWNLOAD)

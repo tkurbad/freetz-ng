@@ -1,0 +1,11 @@
+--- Makefile.in
++++ Makefile.in
+@@ -19,7 +19,7 @@
+ MAKEFLAGS += -r
+ 
+ # Variable definitions
+-CPPFLAGS=-I$(objdir) -I$(srcdir) @CPPFLAGS@
++CPPFLAGS=-I$(objdir) -I$(srcdir) @CPPFLAGS@ -D_GNU_SOURCE
+ CFLAGS=$(CPPFLAGS) @CFLAGS@
+ LDFLAGS=@LDFLAGS@
+ M4FLAGS=@M4FLAGS@
