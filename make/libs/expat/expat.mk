@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 2.6.1)
-$(PKG)_LIB_VERSION:=1.9.1
+$(call PKG_INIT_LIB, 2.6.2)
+$(PKG)_LIB_VERSION:=1.9.2
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=0c00d2760ad12efef6e26efc8b363c8eb28eb8c8de719e46d5bb67b40ba904a3
+$(PKG)_HASH:=ee14b4c5d8908b1bec37ad937607eab183d4d9806a08adee472c3c3121d27364
 $(PKG)_SITE:=@SF/expat,https://github.com/libexpat/libexpat/releases/download/R_$(subst .,_,$($(PKG)_VERSION))
 ### WEBSITE:=https://libexpat.github.io/
 ### MANPAGE:=https://libexpat.github.io/doc/
