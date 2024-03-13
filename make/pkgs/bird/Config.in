@@ -15,6 +15,10 @@ if FREETZ_PACKAGE_BIRD
 
 		config FREETZ_PACKAGE_BIRD_VERSION_CURRENT
 			bool "2.15"
+			select FREETZ_PACKAGE_BIRD_REMOVE_WEBIF
+			help
+				The Web interface is disabled because
+				of the not compatible option syntax.
 
 	endchoice
 
@@ -33,6 +37,12 @@ if FREETZ_PACKAGE_BIRD
 		default n
 		help
 			birdc (command-line interface for bird)
+
+	config FREETZ_PACKAGE_BIRD_REMOVE_WEBIF
+		bool "remove webinterface"
+		default n
+		help
+			This option removes the webinterface
 
 endif # FREETZ_PACKAGE_BIRD
 

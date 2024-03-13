@@ -12,6 +12,8 @@ $(PKG)_SITE:=https://bird.network.cz/download,ftp://bird.network.cz/pub/bird
 
 $(PKG)_STARTLEVEL=82
 
+$(PKG)_EXCLUDED+=$(if $(FREETZ_PACKAGE_BIRD_REMOVE_WEBIF),usr/lib/cgi-bin/bird.cgi etc/default.bird etc/init.d/rc.bird)
+
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),abandon,current)
 
 $(PKG)_BINARIES_ALL := bird birdc
