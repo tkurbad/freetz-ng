@@ -1,4 +1,4 @@
-# BIRD 1.6.8
+# BIRD 1.6.8/2.15
  - Homepage: [https://bird.network.cz/](https://bird.network.cz/)
  - Manpage: [https://gitlab.nic.cz/labs/bird/wikis/home](https://gitlab.nic.cz/labs/bird/wikis/home)
  - Changelog: [https://bird.network.cz/?o_news](https://bird.network.cz/?o_news)
