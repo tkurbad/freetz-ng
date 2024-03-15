@@ -1,6 +1,6 @@
 --- os.hpp
 +++ os.hpp
-@@ -177,7 +177,7 @@
+@@ -169,7 +169,7 @@
  #define SAVE_LINKS
  #endif
  
