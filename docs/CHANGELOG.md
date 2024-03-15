@@ -84,6 +84,7 @@ Latest changes
    * LCD4linux 3fce054e
    * Lighttpd 1.4.74
    * Lua 5.1.5/5.4.6
+   * Lynx 2.9.0
    * mc (Midnight Commander) 4.8.31
    * minicom 2.9
    * minisatip 1.0.4/1.3.4
