@@ -1,0 +1,23 @@
+From e75a48d2c32d92b0321fbb09c25885a706077201 Mon Sep 17 00:00:00 2001
+From: Stefan Eissing <stefan@eissing.org>
+Date: Wed, 31 Jan 2024 12:14:34 +0100
+Subject: [PATCH] ntml_wb: fix buffer type typo
+
+Closes #12825
+---
+ lib/curl_ntlm_wb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/curl_ntlm_wb.c b/lib/curl_ntlm_wb.c
+index 0c7892ab702722..acb0093956ba08 100644
+--- a/lib/curl_ntlm_wb.c
++++ b/lib/curl_ntlm_wb.c
+@@ -266,7 +266,7 @@ static CURLcode ntlm_wb_response(struct Curl_easy *data, struct ntlmdata *ntlm,
+   size_t len_in = strlen(input), len_out = 0;
+   struct dynbuf b;
+   char *ptr = NULL;
+-  usigned char buf[1024]
++  unsigned char buf[1024];
+   Curl_dyn_init(&b, MAX_NTLM_WB_RESPONSE);
+ 
+   while(len_in > 0) {

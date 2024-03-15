@@ -74,7 +74,7 @@ Latest changes
    * BIRD 1.6.8/2.15
    * CA-bundle 2024-03-11
    * CCID 1.5.4
-   * Curl 8.5.0
+   * Curl 8.6.0
    * Dnsmasq 2.80/2.90
    * Git 2.44.0
    * HAProxy 2.6.16
