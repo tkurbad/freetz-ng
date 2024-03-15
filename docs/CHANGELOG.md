@@ -107,6 +107,7 @@ Latest changes
    * UnRAR 6.1.7/7.0.7
    * vermagic D1W0U
    * Vim 9.1.0181
+   * Wget 1.24.5
    * xsltproc 1.1.39
    * XZ Utils 5.6.1
 

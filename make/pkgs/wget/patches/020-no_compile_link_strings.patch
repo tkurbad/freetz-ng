@@ -30,7 +30,7 @@
  
 --- src/Makefile.in
 +++ src/Makefile.in
-@@ -3144,11 +3144,6 @@
+@@ -3220,11 +3220,6 @@
  	echo '' >> $@
  	echo '#include "version.h"' >> $@
  	echo 'const char *version_string = "@VERSION@";' >> $@

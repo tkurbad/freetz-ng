@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.21.4)
+$(call PKG_INIT_BIN, 1.24.5)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.lz
-$(PKG)_HASH:=3683619a5f50edcbccb1720a79006fa37bf9b9a255a8c5b48048bc3c7a874bd9
+$(PKG)_HASH:=57a107151e4ef94fdf94affecfac598963f372f13293ed9c74032105390b36ee
 $(PKG)_SITE:=@GNU/$(pkg)
 ### WEBSITE:=https://www.gnu.org/software/wget/
 ### MANPAGE:=https://www.gnu.org/software/wget/manual/
