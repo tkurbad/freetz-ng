@@ -103,7 +103,7 @@ Latest changes
    * tmux 3.4
    * Tor 0.4.8.10
    * Transmission 3.00/4.0.5
-   * Unbound 1.19.2
+   * Unbound 1.19.3
    * UnRAR 6.1.7/7.0.7
    * vermagic D1W0U
    * Vim 9.1.0181
