@@ -1,4 +1,4 @@
-# Wget GNU 1.21.4 (binary only)
+# Wget 1.24.5 (binary only)
  - Homepage: [https://www.gnu.org/software/wget/](https://www.gnu.org/software/wget/)
  - Manpage: [https://www.gnu.org/software/wget/manual/](https://www.gnu.org/software/wget/manual/)
  - Changelog: [https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS](https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS)
