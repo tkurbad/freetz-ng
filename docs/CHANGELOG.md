@@ -104,7 +104,7 @@ Latest changes
    * Transmission 3.00/4.0.5
    * Unbound 1.19.2
    * vermagic D1W0U
-   * Vim 9.1.0000
+   * Vim 9.1.0181
    * xsltproc 1.1.39
    * XZ Utils 5.6.1
 
