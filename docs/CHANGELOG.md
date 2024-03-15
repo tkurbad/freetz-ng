@@ -88,7 +88,7 @@ Latest changes
    * minicom 2.9
    * minisatip 1.0.4/1.3.4
    * NcFTP 3.2.7
-   * OpenSSH 9.3p2/9.6p1
+   * OpenSSH 9.3p2/9.7p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.13
    * OpenVPN 2.4.12/2.5.9/2.6.9
    * PCSC-lite 1.9.5/2.0.1

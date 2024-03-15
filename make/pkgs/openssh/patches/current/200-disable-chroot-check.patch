@@ -1,7 +1,7 @@
 --- session.c
 +++ session.c
 @@ -1330,6 +1330,15 @@
- 	
+ 
  		debug3_f("checking '%s'", component);
  
 +		/* do not check root directory on Freetz as this
