@@ -79,6 +79,7 @@ Latest changes
    * Git 2.44.0
    * HAProxy 2.6.16
    * htop 1.0.3/3.3.0
+   * iPerf3 3.3/3.16
    * jpeg 9f
    * jq 1.7.1
    * LCD4linux 3fce054e

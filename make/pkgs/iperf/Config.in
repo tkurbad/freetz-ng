@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_IPERF
-	bool "iPerf3 3.3/3.15 (binary only)"
+	bool "iPerf3 3.3/3.16 (binary only)"
 	default n
 	help
 		iPerf3 is a tool for active measurements of the maximum achievable
@@ -22,10 +22,15 @@ if FREETZ_PACKAGE_IPERF
 				Also this version is compatible with old uClibc.
 
 		config FREETZ_PACKAGE_IPERF_VERSION_CURRENT
-			bool "3.15"
+			bool "3.16"
 			depends on FREETZ_TARGET_IPV6_SUPPORT && !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
+			select FREETZ_LIB_libatomic if ! FREETZ_PACKAGE_IPERF_STATIC
 
 	endchoice
+
+	config FREETZ_PACKAGE_IPERF_STATIC
+		bool "Link statically"
+		depends on FREETZ_PACKAGE_IPERF_VERSION_CURRENT || FREETZ_PACKAGE_IPERF_WITH_OPENSSL
 
 	config FREETZ_PACKAGE_IPERF_WITH_OPENSSL
 		bool "build with SSL support"
@@ -33,10 +38,6 @@ if FREETZ_PACKAGE_IPERF
 		default n
 		help
 			This option enables OpenSSL support in iperf.
-
-		config FREETZ_PACKAGE_IPERF_STATIC
-			bool "Link statically"
-			depends on FREETZ_PACKAGE_IPERF_WITH_OPENSSL
 
 endif # FREETZ_PACKAGE_IPERF
 
