@@ -63,6 +63,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-4020/
    - [source-files-FRITZ.Box_4020-06.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-06.50.tar.gz)
    - [source-files-FRITZ.Box_4020-07.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-07.01.tar.gz)
+   - [source-files-FRITZ.Box_4020-drgfly-06.83.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-drgfly-06.83.tar.gz)
    - [source-files-FRITZ.Box_4020-drgfly-06.84.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-drgfly-06.84.tar.gz)
    - [source-files-FRITZ.Box_4020-drgfly-07.02.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-drgfly-07.02.tar.gz)
  * fritzbox-4040/
