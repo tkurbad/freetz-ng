@@ -172,9 +172,9 @@ $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE)
 	cp $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
 	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
-	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null
+	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null $(SILENT)
 else
-	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig
+	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig $(SILENT)
 endif
 	@cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
 
