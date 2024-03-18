@@ -10,7 +10,7 @@ $(PKG)_LIBFDT_BINARY:=$($(PKG)_DIR)/libfdt/libfdt.a
 $(PKG)_BINARY:=$(HOST_TOOLS_DIR)/lib/libfdt.a
 
 
-# libdtc-host, dtc-host and fitdump using the same source
+# dtc-host and dtc using the same source, libdtc-host an older version
 ifneq ($($(PKG)_SOURCE),$(DTC_HOST_SOURCE))
 $(TOOLS_SOURCE_DOWNLOAD)
 endif
