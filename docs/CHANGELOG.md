@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng24030](#ng24030)
   * [ng23110](#ng23110)
   * [ng23080](#ng23080)
   * [ng23050](#ng23050)
@@ -45,6 +46,11 @@ Latest changes
 <br>
 
 ### devel
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng24030
 
  - Build system:
    * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.42.x
@@ -130,7 +136,7 @@ Latest changes
    * zlib 1.3.1
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng24030/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23110
 
