@@ -72,8 +72,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_6850_5G-07.57.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/deutschland/fritz.os/FRITZ.Box_6850_5G-07.57.image)
    - other: [FRITZ.Box_6850_5G-07.57.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/other/fritz.os/FRITZ.Box_6850_5G-07.57.image)
  * fritzbox-6850-lte/
-   - deutschland: [FRITZ.Box_6850_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/deutschland/fritz.os/FRITZ.Box_6850_LTE-07.57.image)
-   - other: [FRITZ.Box_6850_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/other/fritz.os/FRITZ.Box_6850_LTE-07.57.image)
+   - deutschland: [FRITZ.Box_6850_LTE-07.58.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/deutschland/fritz.os/FRITZ.Box_6850_LTE-07.58.image)
+   - other: [FRITZ.Box_6850_LTE-07.58.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/other/fritz.os/FRITZ.Box_6850_LTE-07.58.image)
  * fritzbox-6890-lte/
    - belgium: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/belgium/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
    - deutschland: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/deutschland/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
@@ -237,8 +237,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_WLAN_Repeater_1160-07.15.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1160/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_1160-07.15.image)
    - other: [FRITZ.Box_WLAN_Repeater_1160-07.15.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1160/other/fritz.os/FRITZ.Box_WLAN_Repeater_1160-07.15.image)
  * fritzwlan-repeater-1750e/
-   - deutschland: [FRITZ.Repeater_1750E-07.31.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/deutschland/fritz.os/FRITZ.Repeater_1750E-07.31.image)
-   - other: [FRITZ.Repeater_1750E-07.31.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/other/fritz.os/FRITZ.Repeater_1750E-07.31.image)
+   - deutschland: [FRITZ_Repeater_1750E-07.32.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/deutschland/fritz.os/FRITZ_Repeater_1750E-07.32.image)
+   - other: [FRITZ_Repeater_1750E-07.32.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/other/fritz.os/FRITZ_Repeater_1750E-07.32.image)
  * fritzwlan-repeater-300e/
    - deutschland: [FRITZ.Box_WLAN_Repeater_300E-06.34.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-300e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_300E-06.34.image)
    - other: [FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.34.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-300e/other/fritz.os/FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.34.image)
