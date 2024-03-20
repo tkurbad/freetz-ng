@@ -47,6 +47,9 @@ Latest changes
 
 ### devel
 
+ - Packages:
+   * OpenVPN 2.4.12/2.5.9/2.6.10
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
