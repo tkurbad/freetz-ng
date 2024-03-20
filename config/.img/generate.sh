@@ -351,7 +351,7 @@ determine_() {
 		*_ar10_*)			CPU="MIPS_34Kc"			&& X="AR10" ;;
 		*_grx5_*)			CPU="MIPS_interAptiv"		&& X="GRX5" ;;
 		*_2GB_*_kabel_*)		CPU="X86_ATOM"			&& X="PUMA6_X86" ;;
-		*_4GB_*_kabel_*)		CPU="X86_ATOM"			&& X="PUMA7_X86" ;;
+		*_4GB_*_kabel_*|*_57450)	CPU="X86_ATOM"			&& X="PUMA7_X86" ;;
 		*_cortexa9_*)			CPU="ARM_cortex_a9"		&& X="IPQ40xx" ;;
 		brcm_*)				CPU="ARM_cortex_a9"		&& X="BCM63138" ;;
 		*_qcaarmv8_*)			CPU="ARM_cortex_a53"		&& X="QCAARMv8" ;;
