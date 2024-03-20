@@ -143,6 +143,7 @@ config FREETZ_KERNEL_VERSION_4_4
 		FREETZ_KERNEL_VERSION_4_4_60 || \
 		FREETZ_KERNEL_VERSION_4_4_271
 
+
 config FREETZ_KERNEL_VERSION_4_9_161
 	bool
 	default y
@@ -227,6 +228,18 @@ config FREETZ_KERNEL_VERSION_4_19
 		FREETZ_KERNEL_VERSION_4_19_183
 
 
+config FREETZ_KERNEL_VERSION_5_15_111
+	bool
+	default y
+	depends on FREETZ_AVM_PROP_KERNEL_5_15_111
+
+config FREETZ_KERNEL_VERSION_5_15
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_VERSION_5_15_111
+
+
 # full kernel version
 config FREETZ_KERNEL_VERSION
 	string
@@ -260,6 +273,7 @@ config FREETZ_KERNEL_VERSION
 	default "4.9.279"   if FREETZ_KERNEL_VERSION_4_9_279
 	default "4.9.325"   if FREETZ_KERNEL_VERSION_4_9_325
 	default "4.19.183"  if FREETZ_KERNEL_VERSION_4_19_183
+	default "5.15.111"  if FREETZ_KERNEL_VERSION_5_15_111
 
 # major kernel version
 config FREETZ_KERNEL_VERSION_MAJOR
@@ -275,6 +289,7 @@ config FREETZ_KERNEL_VERSION_MAJOR
 	default "4.4"       if FREETZ_KERNEL_VERSION_4_4
 	default "4.9"       if FREETZ_KERNEL_VERSION_4_9
 	default "4.19"      if FREETZ_KERNEL_VERSION_4_19
+	default "5.15"      if FREETZ_KERNEL_VERSION_5_15
 
 # vanilla kernel dldir
 config FREETZ_KERNEL_VANILLA_DLDIR
@@ -282,6 +297,7 @@ config FREETZ_KERNEL_VANILLA_DLDIR
 	default "2.6"       if FREETZ_KERNEL_VERSION_2
 	default "3.x"       if FREETZ_KERNEL_VERSION_3
 	default "4.x"       if FREETZ_KERNEL_VERSION_4
+	default "5.x"       if FREETZ_KERNEL_VERSION_5
 	help
 		The subdirectory for downloads, eg
 		https://kernel.org/pub/linux/kernel/v*/
@@ -346,7 +362,6 @@ config FREETZ_KERNEL_VERSION_3_MIN
 	default y
 	depends on FREETZ_KERNEL_VERSION_3_10_MIN
 
-
 config FREETZ_KERNEL_VERSION_3_10_MIN
 	bool
 	default y
@@ -366,7 +381,6 @@ config FREETZ_KERNEL_VERSION_4_MIN
 	bool
 	default y
 	depends on FREETZ_KERNEL_VERSION_4_1_MIN
-
 
 config FREETZ_KERNEL_VERSION_4_1_MIN
 	bool
@@ -388,12 +402,24 @@ config FREETZ_KERNEL_VERSION_4_9_MIN
 	depends on \
 		FREETZ_KERNEL_VERSION_4_9 || \
 		FREETZ_KERNEL_VERSION_4_19_MIN
-		
+
 config FREETZ_KERNEL_VERSION_4_19_MIN
 	bool
 	default y
 	depends on \
 		FREETZ_KERNEL_VERSION_4_19
+
+
+config FREETZ_KERNEL_VERSION_5_MIN
+	bool
+	default y
+	depends on FREETZ_KERNEL_VERSION_5_15_MIN
+
+config FREETZ_KERNEL_VERSION_5_15_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_VERSION_5_15
 
 
 config FREETZ_KERNEL_VERSION_2_6_13_MAX
@@ -434,7 +460,8 @@ config FREETZ_KERNEL_VERSION_2_6_39_MAX
 config FREETZ_KERNEL_VERSION_2_MAX
 	bool
 	default y
-	depends on FREETZ_KERNEL_VERSION_2_6_39_MAX
+	depends on \
+		FREETZ_KERNEL_VERSION_2_6_39_MAX
 
 
 config FREETZ_KERNEL_VERSION_3_10_MAX
@@ -455,7 +482,8 @@ config FREETZ_KERNEL_VERSION_3_12_MAX
 config FREETZ_KERNEL_VERSION_3_MAX
 	bool
 	default y
-	depends on FREETZ_KERNEL_VERSION_3_12_MAX
+	depends on \
+		FREETZ_KERNEL_VERSION_3_12_MAX
 
 
 config FREETZ_KERNEL_VERSION_4_1_MAX
@@ -486,6 +514,28 @@ config FREETZ_KERNEL_VERSION_4_19_MAX
 		FREETZ_KERNEL_VERSION_4_9_MAX || \
 		FREETZ_KERNEL_VERSION_4_19
 
+config FREETZ_KERNEL_VERSION_4_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_VERSION_4_19_MAX
+
+
+config FREETZ_KERNEL_VERSION_5_15_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_VERSION_4_19_MAX || \
+		FREETZ_KERNEL_VERSION_5_15
+
+
+config FREETZ_KERNEL_VERSION_5_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_VERSION_5_15_MAX
+
+
 
 config FREETZ_KERNEL_VERSION_2
 	bool
@@ -502,8 +552,15 @@ config FREETZ_KERNEL_VERSION_3
 config FREETZ_KERNEL_VERSION_4
 	bool
 	default y
-	depends on FREETZ_KERNEL_VERSION_4_MIN
+	depends on \
+		FREETZ_KERNEL_VERSION_4_MIN && \
+		FREETZ_KERNEL_VERSION_4_MAX
 
+config FREETZ_KERNEL_VERSION_5
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_VERSION_5_MIN
 
 
 # AVM kernel config area size in KB
