@@ -1,16 +1,24 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2),1.4.11.1,$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL3),1.4.21,1.6.2)))
-$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2),1.4.11.1,$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL3),1.4.21,$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL4),1.6.2,1.8.10))))
+$(PKG)_KERNNBR:=$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2),2,$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL3),3,$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL4),4,5)))
+$(PKG)_SOURCE_EXT2:=bz2
+$(PKG)_SOURCE_EXT3:=bz2
+$(PKG)_SOURCE_EXT4:=bz2
+$(PKG)_SOURCE_EXT5:=xz
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.$($(PKG)_SOURCE_EXT$($(PKG)_KERNNBR))
 $(PKG)_HASH_KERNEL2:=170c294698ca573477b1b2a3815e1563bf9929d182efef6cf0331a6e955c9ade
 $(PKG)_HASH_KERNEL3:=52004c68021da9a599feed27f65defcfb22128f7da2c0531c0f75de0f479d3e0
 $(PKG)_HASH_KERNEL4:=55d02dfa46263343a401f297d44190f2a3e5113c8933946f094ed40237053733
-$(PKG)_HASH:=$($(PKG)_HASH_KERNEL$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2),2,$(if $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL3),3,4)))
+$(PKG)_HASH_KERNEL5:=5cc255c189356e317d070755ce9371eb63a1b783c34498fb8c30264f3cc59c9c
+$(PKG)_HASH:=$($(PKG)_HASH_KERNEL$($(PKG)_KERNNBR))
 $(PKG)_SITE:=https://netfilter.org/projects/iptables/files
 ### WEBSITE:=https://netfilter.org/projects/iptables/index.html
 ### CHANGES:=https://netfilter.org/projects/iptables/downloads.html
 ### CVSREPO:=https://git.netfilter.org/iptables/
 
-$(PKG)_CONDITIONAL_PATCHES_DIR := kernel$(strip $(foreach v,2 3 4 5,$(word 2,$(filter $(v)%,$(KERNEL_VERSION_MAJOR)) $v)))
-$(PKG)_CONDITIONAL_PATCHES+=$($(PKG)_CONDITIONAL_PATCHES_DIR) $($(PKG)_CONDITIONAL_PATCHES_DIR)/$(KERNEL_VERSION_MAJOR)
+$(PKG)_CONDITIONAL_PATCHES+=kernel$($(PKG)_KERNNBR)
+ifeq ($(strip $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2)),y)
+$(PKG)_CONDITIONAL_PATCHES+=kernel$($(PKG)_KERNNBR)/$(KERNEL_VERSION_MAJOR)
+endif
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_KERNEL_VERSION
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
@@ -18,8 +26,13 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_IPTABLES_SAVE_RESTORE
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_IPTABLES_XML
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_IPTABLES_STATIC
 
-$(PKG)_BINARY := $($(PKG)_DIR)/iptables/$(if $(FREETZ_PACKAGE_IPTABLES_STATIC),,.libs/)xtables-multi
-$(PKG)_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/sbin/xtables-multi
+$(PKG)_BINARY_NAME2 := xtables-multi
+$(PKG)_BINARY_NAME3 := xtables-multi
+$(PKG)_BINARY_NAME4 := xtables-multi
+$(PKG)_BINARY_NAME5 := xtables-legacy-multi
+$(PKG)_BINARY_NAME  := $($(PKG)_BINARY_NAME$($(PKG)_KERNNBR))
+$(PKG)_BINARY := $($(PKG)_DIR)/iptables/$(if $(FREETZ_PACKAGE_IPTABLES_STATIC),,.libs/)$($(PKG)_BINARY_NAME)
+$(PKG)_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/sbin/$($(PKG)_BINARY_NAME)
 
 $(PKG)_LIBS_SUBDIRS := libiptc/.libs/
 ifeq ($(strip $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2)),y)
@@ -32,15 +45,11 @@ $(PKG)_LIBS_SUBDIRS += libiptc/.libs/
 endif
 
 ifneq ($(strip $(FREETZ_PACKAGE_IPTABLES_STATIC)),y)
-ifeq ($(strip $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2)),y)
-$(PKG)_LIBNAMES_ALL := libip4tc.so.0.0.0 libxtables.so.6.0.0 libip6tc.so.0.0.0
-else
-ifeq ($(strip $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL3)),y)
-$(PKG)_LIBNAMES_ALL := libip4tc.so.0.1.0 libxtables.so.10.0.0 libip6tc.so.0.1.0
-else
-$(PKG)_LIBNAMES_ALL := libip4tc.so.0.1.0 libxtables.so.12.0.0 libip6tc.so.0.1.0
-endif
-endif
+$(PKG)_LIBNAMES_ALL2 := libip4tc.so.0.0.0 libxtables.so.6.0.0  libip6tc.so.0.0.0
+$(PKG)_LIBNAMES_ALL3 := libip4tc.so.0.1.0 libxtables.so.10.0.0 libip6tc.so.0.1.0
+$(PKG)_LIBNAMES_ALL4 := libip4tc.so.0.1.0 libxtables.so.12.0.0 libip6tc.so.0.1.0
+$(PKG)_LIBNAMES_ALL5 := libip4tc.so.2.0.0 libxtables.so.12.7.0 libip6tc.so.2.0.0
+$(PKG)_LIBNAMES_ALL  := $($(PKG)_LIBNAMES_ALL$($(PKG)_KERNNBR))
 $(PKG)_LIBNAMES := $(filter-out $(if $(FREETZ_TARGET_IPV6_SUPPORT),,libip6tc%), $($(PKG)_LIBNAMES_ALL))
 $(PKG)_LIBS_BUILD_DIR := $(addprefix $($(PKG)_DIR)/,$(join $($(PKG)_LIBS_SUBDIRS),$($(PKG)_LIBNAMES)))
 $(PKG)_LIBS_TARGET_DIR := $(addprefix $($(PKG)_DEST_LIBDIR)/,$($(PKG)_LIBNAMES))
@@ -82,6 +91,7 @@ $(PKG)_CONFIGURE_PRE_CMDS += $(SED) -i -r -e 's,ac_cv(_header_linux),do_not_cach
 # touch some patched files to prevent auto*-tools from being executed
 $(PKG)_CONFIGURE_PRE_CMDS += touch -t 200001010000.00 ./configure.ac;
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -114,6 +124,7 @@ endif
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR) $($(PKG)_BINARY) $($(PKG)_SYMLINKS_TARGET_DIR) $($(PKG)_TARGET_EXTENSIONS)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(IPTABLES_DIR) clean
