@@ -535,7 +535,7 @@ determine_() {
 	#INETD
 	P=INETD
 	X="$(sed -rn "s/^export CONFIG_$P=\"?([^\"])\"?.*$/\1/p" "$unpacked/etc/init.d/rc.conf" | head -n1)"
-	[ "$X" != "y" ] && [ -e "$unpacked//usr/sbin/inetd" ] && X="y"
+	[ "$X" != "y" ] && [ -e "$unpacked/usr/sbin/inetd" ] && X="y"
 	[ "$X" != "y" ] && X="%" || X="available"
 	[ "$X" == "available" ] && in_b "FREETZ_AVM_HAS_${P^^}"
 	[ $DOSHOW -ge 2 ] && outp "${P,,}" "$X"
