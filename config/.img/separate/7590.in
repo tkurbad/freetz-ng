@@ -66,13 +66,7 @@ config FREETZ_AVM_HAS_NLS_MODULE
 config FREETZ_AVM_HAS_NOEXEC
 	def_bool y
 
-config FREETZ_AVM_HAS_NTFS
-	def_bool y
-
 config FREETZ_AVM_HAS_OPENSSL
-	def_bool y
-
-config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 
 config FREETZ_AVM_HAS_PCPD
@@ -100,9 +94,6 @@ config FREETZ_AVM_HAS_TR064
 	def_bool y
 
 config FREETZ_AVM_HAS_TR069
-	def_bool y
-
-config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 
 config FREETZ_AVM_HAS_UDEV

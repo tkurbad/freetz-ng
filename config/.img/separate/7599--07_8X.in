@@ -1,5 +1,14 @@
 if FREETZ_TYPE_7599 && FREETZ_AVM_VERSION_07_8X
 
+config FREETZ_AVM_HAS_REBOOT_SCRIPT
+	def_bool y
+
+config FREETZ_AVM_HAS_NTFS
+	def_bool y
+
+config FREETZ_AVM_HAS_TR069_FWUPDATE
+	def_bool y
+
 config FREETZ_AVM_HAS_WIREGUARD
 	def_bool y
 
@@ -7,6 +16,9 @@ config FREETZ_AVM_HAS_AVMCOUNTERD
 	def_bool y
 
 config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
+
+config FREETZ_AVM_HAS_LIBFUSE
 	def_bool y
 
 config FREETZ_AVM_HAS_OPENSSL_VERSION_3
