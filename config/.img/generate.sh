@@ -601,7 +601,7 @@ determine_() {
 
 	#TR069_FWUPDATE
 	X="%"
-	[ -e "$unpacked/usr/bin/tr069fwupdate" ] && X="available" && in_b "FREETZ_AVM_HAS_TR069_FWUPDATE"
+	[ -e "$unpacked/usr/bin/fwupdate" -o -e "$unpacked/usr/bin/tr069fwupdate" ] && X="available" && in_b "FREETZ_AVM_HAS_TR069_FWUPDATE"
 	[ $DOSHOW -ge 2 ] && outp "tr069fwu" "$X"
 
 
