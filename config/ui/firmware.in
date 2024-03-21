@@ -741,21 +741,27 @@ choice
 		select FREETZ_AVM_VERSION_07_8X
 		depends on FREETZ_AVM_HAS_FIRMWARE_07_8X
 
-	config FREETZ_TYPE_FIRMWARE_07_8X_LABOR
-		bool "FRITZ!OS 07.70 Labor - UNTESTED"
-		select FREETZ_AVM_VERSION_07_8X
-		depends on FREETZ_AVM_HAS_FIRMWARE_07_8X_LABOR && FREETZ_SHOW_EXPERT
+
+	config FREETZ_TYPE_FIRMWARE_08_0X_INHAUS
+		bool "FRITZ!OS 07.90 Inhaus - UNTESTED"
+		select FREETZ_AVM_VERSION_08_0X
+#		select FREETZ_TYPE_FIRMWARE_DETECT_LATEST
+		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X_INHAUS && FREETZ_SHOW_EXPERT
+		help
+			Enable this to use an AVM Inhaus firmware as base for modding.
+
+	config FREETZ_TYPE_FIRMWARE_08_0X_LABOR
+		bool "FRITZ!OS 07.90 Labor - UNTESTED"
+		select FREETZ_AVM_VERSION_08_0X
+		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X_LABOR && FREETZ_SHOW_EXPERT
 		help
 			Enable this to use an AVM Labor firmware as base for modding.
 			For more details see <http://www.avm.de/Labor/>.
 
-	config FREETZ_TYPE_FIRMWARE_07_8X_INHAUS
-		bool "FRITZ!OS 07.70 Inhaus - UNTESTED"
-		select FREETZ_AVM_VERSION_07_8X
-		select FREETZ_TYPE_FIRMWARE_DETECT_LATEST
-		depends on FREETZ_AVM_HAS_FIRMWARE_07_8X_INHAUS && FREETZ_SHOW_EXPERT
-		help
-			Enable this to use an AVM Inhaus firmware as base for modding.
+	config FREETZ_TYPE_FIRMWARE_08_0X
+		bool "FRITZ!OS 08.00+"
+		select FREETZ_AVM_VERSION_08_0X
+		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X
 
 
 endchoice # "Firmware version" #
@@ -818,20 +824,20 @@ config FREETZ_AVM_HAS_FIRMWARE_LABOR
 	bool
 	default y
 	depends on \
-		FREETZ_AVM_HAS_FIRMWARE_07_8X_LABOR
+		FREETZ_AVM_HAS_FIRMWARE_08_0X_LABOR
 
 config FREETZ_TYPE_FIRMWARE_INHAUS
 	bool
 	default y
 	depends on \
 		FREETZ_TYPE_FIRMWARE_07_1X_INHAUS || \
-		FREETZ_TYPE_FIRMWARE_07_8X_INHAUS
+		FREETZ_TYPE_FIRMWARE_08_0X_INHAUS
 
 config FREETZ_TYPE_FIRMWARE_LABOR
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_FIRMWARE_07_8X_LABOR
+		FREETZ_TYPE_FIRMWARE_08_0X_LABOR
 
 ###
 ### Warning messages
