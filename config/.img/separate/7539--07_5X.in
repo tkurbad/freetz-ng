@@ -6,9 +6,6 @@ config FREETZ_AVM_HAS_REBOOT_SCRIPT
 config FREETZ_AVM_HAS_NTFS
 	def_bool y
 
-config FREETZ_AVM_HAS_TR069_FWUPDATE
-	def_bool y
-
 config FREETZ_AVM_HAS_KMOD
 	def_bool y
 

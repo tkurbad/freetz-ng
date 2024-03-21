@@ -33,9 +33,6 @@ config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 config FREETZ_AVM_HAS_NTFS
 	def_bool y
 
-config FREETZ_AVM_HAS_TR069_FWUPDATE
-	def_bool y
-
 config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 
