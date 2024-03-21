@@ -903,8 +903,8 @@ config FREETZ_REMOVE_TR069_FWUPDATE
 	depends on !FREETZ_AVM_HAS_PLUGINS_UPDATE || FREETZ_AVMPLUGINS_INTEGRATE
 	default n
 	help
-		Removes the file /usr/bin/tr069fwupdate, needed for
-		updating the firmware of dect devices.
+		Removes the file /usr/bin/tr069fwupdate or /usr/bin/fwupdate,
+		needed for updating the firmware of dect devices.
 
 config FREETZ_REMOVE_TR069_HTTPSDL
 	bool "Remove httpsdl"
