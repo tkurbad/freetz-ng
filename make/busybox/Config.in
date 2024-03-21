@@ -421,7 +421,7 @@ config FREETZ_BUSYBOX__MANDATORY_05_2X
 	select FREETZ_BUSYBOX_UNZIP
 	select FREETZ_BUSYBOX_XZ
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 5.20 and up)
+		Selects everything needed to run properly with Fritz!OS 5.20 and up
 
 config FREETZ_BUSYBOX__MANDATORY_06_5X
 	bool # mandatory (since Fritz!OS 6.50)"
@@ -433,7 +433,7 @@ config FREETZ_BUSYBOX__MANDATORY_06_5X
 	select FREETZ_BUSYBOX_FEATURE_RTMINMAX
 	select FREETZ_BUSYBOX_LSOF
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 6.50 and up)
+		Selects everything needed to run properly with Fritz!OS 6.50 and up
 
 config FREETZ_BUSYBOX__MANDATORY_07_0X
 	bool # mandatory (since Fritz!OS 7.00)"
@@ -515,7 +515,7 @@ config FREETZ_BUSYBOX__MANDATORY_07_0X
 	# select FREETZ_BUSYBOX_UBIUPDATEVOL
 	#
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 7.00 and up)
+		Selects everything needed to run properly with Fritz!OS 7.00 and up
 
 config FREETZ_BUSYBOX__MANDATORY_07_2X
 	bool # mandatory (since Fritz!OS 7.20)"
@@ -542,7 +542,7 @@ config FREETZ_BUSYBOX__MANDATORY_07_2X
 	select FREETZ_BUSYBOX_TCPSVD
 	select FREETZ_BUSYBOX_TIMEOUT
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 7.20 and up)
+		Selects everything needed to run properly with Fritz!OS 7.20 and up
 
 config FREETZ_BUSYBOX__MANDATORY_07_5X
 	bool # mandatory (since Fritz!OS 7.50)"
@@ -553,7 +553,7 @@ config FREETZ_BUSYBOX__MANDATORY_07_5X
 	select FREETZ_BUSYBOX_FEATURE_SH_EMBEDDED_SCRIPTS
 	select FREETZ_BUSYBOX_NOLOGIN
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 7.50 and up)
+		Selects everything needed to run properly with Fritz!OS 7.50 and up
 
 #config FREETZ_BUSYBOX__NOEXEC_NOFORK_OPTIMIZATIONS
 #	bool "enable NOEXEC/NOFORK performance optimizations"
