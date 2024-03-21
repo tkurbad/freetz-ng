@@ -792,13 +792,13 @@ determine_() {
 
 	#LIBFUSE
 	X="%"
-	[ -e "$unpacked/lib/libfuse.so" -o -L "$unpacked/lib/libfuse.so" ] && X="available" && in_b "FREETZ_AVM_HAS_LIBFUSE"
+	[ -e "$unpacked/usr/lib/libfuse.so" -o -e "$unpacked/lib/libfuse.so" -o -L "$unpacked/lib/libfuse.so" ] && X="available" && in_b "FREETZ_AVM_HAS_LIBFUSE"
 	[ $DOSHOW -ge 2 ] && outp "libfuse" "$X"
 
 
 	#OPENSSL
 	#X="$([ -e "$unpacked/lib/libssl.so" ] && realpath "$unpacked/lib/libssl.so" 2>/dev/null | sed 's/.*\/lib\/libssl\.so\.//')"
-	X="$( strings "${unpacked}/lib/libssl.so" 2>/dev/null | sed -nr 's/^@?(Open)?SSL ([013]\.[0-9a-z\.]*).*/\2/p' )"
+	X="$( strings "${unpacked}/usr/lib/libssl.so" "${unpacked}/lib/libssl.so" 2>/dev/null | sed -nr 's/^@?(Open)?SSL ([013]\.[0-9a-z\.]*).*/\2/p' )"
 	[ -z "$X" ] && X="%"
 	[ $DOSHOW -ge 2 ] && outp "openssl" "$X"
 	if [ "$X" != "%" ]; then
