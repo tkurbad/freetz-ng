@@ -55,6 +55,9 @@ Latest changes
    * iptables 1.4.11.1/1.4.21/1.6.2/1.8.10
    * strace 4.9/5.0/6.8
 
+ - Libraries:
+   * libdeflate 1.19
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
