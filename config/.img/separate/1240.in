@@ -102,6 +102,9 @@ config FREETZ_AVM_PROP_NAME
 config FREETZ_AVM_PROP_NMI_V3
 	def_bool y
 
+config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_B
+	def_bool y
+
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
 	def_bool y
 

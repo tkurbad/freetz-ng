@@ -147,6 +147,9 @@ config FREETZ_AVM_PROP_NAME
 	string
 	default "FRITZ!Box Fon WLAN 7360"
 
+config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_B
+	def_bool y
+
 config FREETZ_AVM_PROP_UCLIBC_0_9_33
 	def_bool y
 
