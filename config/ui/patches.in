@@ -911,7 +911,7 @@ config FREETZ_REMOVE_TR069_HTTPSDL
 	depends on FREETZ_REMOVE_TR069 && FREETZ_AVM_HAS_TR069_FWUPDATE && FREETZ_REMOVE_TR069_FWUPDATE
 	default y
 	help
-		Removes the file /usr/bin/httpsdl, used by:
+		Removes the file /usr/bin/httpsdl or /usr/bin/webget, used by:
 		* tr069/fwupdate, you have removed it
 		* firmware updater, with Freetz you don't want it
 		* live-pictures from door clock (TFE)
