@@ -143,6 +143,7 @@ Currently supported devices and firmwares
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.58 rev109907 {ALL} [MOVE21NL1]
   - 272.07.80 rev110627 {ALL} [GoFiber23]
+  - 272.07.90 rev111969 {ALL} [Smart24 P1] (Inhaus)
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
 
