@@ -900,6 +900,7 @@ determine_() {
 	#SQEND
 	X="$(sed -rn "s/^(.).* endian squashfs signature found at [0-9]*$/\1/p" "$unpacked.nfo")"
 	[ "$X" != "L" -a "$X" != "B" ] && echo "ERROR-24" 1>&2 && X=ERROR
+	[ "$X" == "B" ] && X=BE || X=LE
 	in_b "FREETZ_AVM_PROP_SQUASHFS_ENDIANN_${X}"
 	[ $DOSHOW -ge 1 ] && outp "SquashE" "${X}"
 
