@@ -58,6 +58,7 @@ Latest changes
 
  - Libraries:
    * libdeflate 1.20
+   * pango 1.52.1
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
