@@ -56,7 +56,7 @@ Latest changes
    * strace 4.9/5.0/6.8
 
  - Libraries:
-   * libdeflate 1.19
+   * libdeflate 1.20
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
