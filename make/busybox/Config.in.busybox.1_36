@@ -4420,7 +4420,7 @@ config FREETZ_BUSYBOX___V136_CHRT
 	Manipulate real-time attributes of a process.
 	This requires sched_{g,s}etparam support in your libc.
 config FREETZ_BUSYBOX___V136_DMESG
-	depends on FREETZ_AVM_HAS_DMESG_APPLET
+	depends on !FREETZ_AVM_HAS_DMESG_FILE
 	bool "dmesg (3.7 kb)"
 	default n
 	help

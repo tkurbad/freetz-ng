@@ -189,7 +189,7 @@ depends_on NSENTER "FREETZ_KERNEL_VERSION_3_10_MIN \&\& !FREETZ_AVM_PROP_UCLIBC_
 depends_on FALLOCATE FREETZ_TARGET_UCLIBC_0_9_33
 
 # avm uses a dmesg applet only on old devices
-depends_on DMESG "FREETZ_AVM_HAS_DMESG_APPLET"
+depends_on DMESG "!FREETZ_AVM_HAS_DMESG_FILE"
 
 depends_on NOMMU "FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL"
 # ensure only SH_IS_ASH could be selected
