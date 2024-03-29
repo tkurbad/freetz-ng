@@ -6,6 +6,9 @@ config FREETZ_AVM_HAS_AHA
 config FREETZ_AVM_HAS_AURA_USB
 	def_bool y
 
+config FREETZ_AVM_HAS_BASH_FILE
+	def_bool y
+
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
 

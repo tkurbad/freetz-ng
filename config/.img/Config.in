@@ -6597,6 +6597,8 @@ config FREETZ_AVM_HAS_AHA
 	def_bool y
 config FREETZ_AVM_HAS_AURA_USB
 	def_bool y
+config FREETZ_AVM_HAS_BASH_FILE
+	def_bool y
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
 config FREETZ_AVM_HAS_CHRONYD
@@ -6782,6 +6784,8 @@ if FREETZ_TYPE_6660
 config FREETZ_AVM_HAS_AHA
 	def_bool y
 config FREETZ_AVM_HAS_AURA_USB
+	def_bool y
+config FREETZ_AVM_HAS_BASH_FILE
 	def_bool y
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
@@ -6995,6 +6999,8 @@ config FREETZ_AVM_HAS_UMTS
 	def_bool y
 config FREETZ_AVM_HAS_FAX
 	def_bool y
+config FREETZ_AVM_HAS_BASH_FILE
+	def_bool y
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
 config FREETZ_AVM_HAS_TC
@@ -7096,6 +7102,8 @@ if FREETZ_TYPE_6690
 config FREETZ_AVM_HAS_AHA
 	def_bool y
 config FREETZ_AVM_HAS_AURA_USB
+	def_bool y
+config FREETZ_AVM_HAS_BASH_FILE
 	def_bool y
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
@@ -15922,6 +15930,8 @@ config FREETZ_AVM_HAS_UMTS
 	def_bool y
 config FREETZ_AVM_HAS_FAX
 	def_bool y
+config FREETZ_AVM_HAS_BASH_LINK
+	def_bool y
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
 config FREETZ_AVM_HAS_TC
@@ -16081,6 +16091,8 @@ config FREETZ_AVM_HAS_DDNSD
 config FREETZ_AVM_HAS_UMTS
 	def_bool y
 config FREETZ_AVM_HAS_FAX
+	def_bool y
+config FREETZ_AVM_HAS_BASH_LINK
 	def_bool y
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
