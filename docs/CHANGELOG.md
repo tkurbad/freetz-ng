@@ -50,6 +50,9 @@ Latest changes
  - Host tools:
    * cmake 3.28.4
 
+ - AVM sources:
+   * 6670 7.61 - 5.15.111
+
  - Packages:
    * Curl 8.7.1
    * OpenVPN 2.4.12/2.5.10/2.6.10
