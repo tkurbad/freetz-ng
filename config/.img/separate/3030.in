@@ -34,6 +34,9 @@ config FREETZ_AVM_HAS_TR069
 config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 
+config FREETZ_AVM_HAS_DMESG_APPLET
+	def_bool y
+
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
 	def_bool y
 

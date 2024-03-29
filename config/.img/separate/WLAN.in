@@ -3,6 +3,9 @@ if FREETZ_TYPE_WLAN
 config FREETZ_AVM_HAS_CDROM_ISO
 	def_bool y
 
+config FREETZ_AVM_HAS_DMESG_APPLET
+	def_bool y
+
 config FREETZ_AVM_HAS_DSLD
 	def_bool y
 

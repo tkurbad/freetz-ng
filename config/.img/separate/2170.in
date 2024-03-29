@@ -34,6 +34,9 @@ config FREETZ_AVM_HAS_USB_HOST
 config FREETZ_AVM_HAS_TR064
 	def_bool y
 
+config FREETZ_AVM_HAS_DMESG_APPLET
+	def_bool y
+
 config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 
