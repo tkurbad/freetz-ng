@@ -59,6 +59,7 @@ Latest changes
  - Libraries:
    * libdeflate 1.20
    * libxml2 2.12.6
+   * mbedTLS 2.7.19/2.28.8
    * pango 1.52.1
 
  - Firmware updates:
