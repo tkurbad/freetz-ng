@@ -153,19 +153,21 @@ cat <<'EOX'
         mkdir -p ~/vanilla
         rm -rf ~/vanilla/avm
         ln -sf $(realpath sources/kernel) ~/vanilla/avm
-        ~/freetz-ng/tools/vanilla.sh vanilla4avm "" "" "7590_07.50"
-        add hash to config/mod/dl-kernel.in
-        upload ~/vanilla/pxz/*.patch.xz
-        update docs/CHANGELOG.md
-        make sure the kernel version exists in config/avm/kernel.in
-        add "7590_07.50" to config/avm/source.in
-        get config name: grep KCONFIG sources/kernel/linux*/.kernelvariables
-        add make/kernel/configs/freetz/config-*-7590_07.50
-        add make/kernel/configs/avm/config-*-7590_07.50
-        add make/busybox/avm/07.50-7590--busybox.config.*
-        add make/kernel/patches/*/7590_07.50/
-        enable kernel (modules) in config/mod/source.in
-        verify skb_put_data in make/pkgs/wireguard-linux-compat/Config.in
+        ~/freetz-ng/tools/vanilla.sh vanilla4avm "" "" "7590_07.50"  # generate ad
+        ge ~/freetz-ng/config/mod/dl-kernel.in  # add hash
+        ls ~/vanilla/pxz/*.patch.xz  # upload file
+        ge ~/freetz-ng/docs/CHANGELOG.md  # AVM sources
+        ge ~/freetz-ng/config/avm/kernel.in  # add kernel version
+        ge ~/freetz-ng/config/avm/source.in  # add "7590_07.50"
+        grep KCONFIG sources/kernel/linux*/.kernelvariables  # get config name
+        ls $(dirname sources/kernel/linux*/.kernelvariables)/$(sed -n 's,.*_KCONFIG_.* = ,,p' sources/kernel/linux*/.kernelvariables)
+        add ~/freetz-ng/make/kernel/configs/freetz/config-*-7590_07.50
+        add ~/freetz-ng/make/kernel/configs/avm/config-*-7590_07.50
+        ls conf/buildroot/busybox.config*
+        add ~/freetz-ng/make/busybox/avm/07.50-7590--busybox.config.*
+        add ~/freetz-ng/make/kernel/patches/*/7590_07.50/
+        ge ~/freetz-ng/config/mod/source.in  # enable kernel (modules)
+        ge ~/freetz-ng/make/pkgs/wireguard-linux-compat/Config.in  # verify skb_put_data
         check if avms .config matches with provided sources (unlikely)
 
 EOX
