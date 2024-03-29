@@ -1,6 +1,6 @@
 --- src/liblzma/liblzma.pc.in
 +++ src/liblzma/liblzma.pc.in
-@@ -12,5 +12,4 @@
+@@ -16,5 +16,4 @@
  Version: @PACKAGE_VERSION@
  Cflags: -I${includedir}
  Cflags.private: -DLZMA_API_STATIC
