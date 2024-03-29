@@ -8499,6 +8499,7 @@ choice
 	"bash" as a supported applet name.
 
 config FREETZ_BUSYBOX___V136_BASH_IS_ASH
+	depends on !FREETZ_AVM_HAS_BASH_FILE
 	depends on !FREETZ_BUSYBOX___V136_NOMMU
 	bool "ash"
 	select FREETZ_BUSYBOX___V136_SHELL_ASH
@@ -8519,7 +8520,7 @@ config FREETZ_BUSYBOX___V136_BASH_IS_HUSH
 	the name 'bash' (and not 'hush').
 
 config FREETZ_BUSYBOX___V136_BASH_IS_NONE
-	depends on FREETZ_DISABLE_OPTION_BY_MAKING_IT_DEPEND_ON_NONEXISTING_SYMBOL
+	depends on FREETZ_AVM_HAS_BASH_FILE
 	bool "none"
 
 endchoice
