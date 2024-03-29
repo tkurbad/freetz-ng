@@ -49,6 +49,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.28.4
+   * xz 5.4.6
 
  - AVM sources:
    * 6670 7.61 - 5.15.111
