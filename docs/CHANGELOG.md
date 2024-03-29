@@ -57,6 +57,7 @@ Latest changes
    * strace 4.9/5.0/6.8
 
  - Libraries:
+   * harfbuzz 8.4.0
    * libdeflate 1.20
    * libxml2 2.12.6
    * mbedTLS 2.7.19/2.28.8
