@@ -59,7 +59,7 @@ Latest changes
    * OpenVPN 2.4.12/2.5.10/2.6.10
    * iptables 1.4.11.1/1.4.21/1.6.2/1.8.10
    * strace 4.9/5.0/6.8
-   * xz 5.4.6
+   * XZ Utils 5.4.6
 
  - Libraries:
    * harfbuzz 8.4.0
