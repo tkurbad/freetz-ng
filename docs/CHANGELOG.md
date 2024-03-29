@@ -49,6 +49,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.29.0
+   * precompiled host-tools 2024-03-29
    * xz 5.4.6
 
  - AVM sources:
