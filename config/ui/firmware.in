@@ -870,6 +870,7 @@ endif
 config FREETZ_TYPE_FIRMWARE_UNTESTED
 	bool
 	default y
+	depends on !FREETZ_REAL_DEVELOPER_ONLY__KCONF
 	depends on \
 		FREETZ_TYPE_0300 || \
 		FREETZ_TYPE_1240 || \
