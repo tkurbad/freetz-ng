@@ -1,5 +1,5 @@
 comment " Kernel modules (not available, ask fritzbox_info@avm.de)"
-	depends on ! FREETZ_REPLACE_MODULE_AVAILABLE
+	depends on !FREETZ_REPLACE_MODULE_AVAILABLE && !FREETZ_TYPE_FIRMWARE_UNTESTED
 
 
 menu "Kernel modules"
