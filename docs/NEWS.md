@@ -1,6 +1,7 @@
 # NEWS
 
  * __[2024-03-18](#2024-03-18)__<a id='2024-03-18'></a><br>
+   UPDATE: Der Tag wurde wegen (CVE-2024-3094) gelöscht.<br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24030` erstellt.<br>
    Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
    darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
