@@ -133,6 +133,7 @@ main() {
 			nls_iso8859_15)			koon  NLS_ISO8859_15			 ;;
 			nls_utf8)			koon  NLS_UTF8				 ;;
 			crc_ccitt)			koon  CRC_CCITT				 ;;
+			wireguard)			koon  WIREGUARD				 ;;
 			tun)				koon  TUN				 ;;
 			exportfs)			koon  EXPORTFS				 ;;
 			lzo_compress)			koon  CRYPTO_LZO			 ;;
