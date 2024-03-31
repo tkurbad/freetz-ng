@@ -14,7 +14,7 @@ config FREETZ_DL_KERNEL_TOOLCHAIN_VERSION
 	string "Kernel toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
 #	default "rXXXXX"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
 #	default "rXXXXX"                                                              if FREETZ_TARGET_GCC_13
-	default "r23270"
+	default "rXXXXX"
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 	string "Kernel toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
@@ -40,7 +40,7 @@ config FREETZ_DL_TARGET_TOOLCHAIN_VERSION
 	string "Target toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
 #	default "rXXXXX"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
 #	default "rXXXXX"                                                              if FREETZ_TARGET_GCC_13
-	default "r23270"
+	default "rXXXXX"
 
 config FREETZ_DL_TARGET_TOOLCHAIN_HASH
 	string "Target toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
