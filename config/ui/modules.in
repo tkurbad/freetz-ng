@@ -764,7 +764,7 @@ config FREETZ_MODULE_wireguard
 	bool "wireguard.ko"
 	default n
 	depends on !FREETZ_AVM_HAS_WIREGUARD_BUILTIN
-	depends on FREETZ_PACKAGE_WIREGUARD
+	depends on FREETZ_PACKAGE_WIREGUARD_LINUX_COMPAT
 
 config FREETZ_MODULE_tun
 	bool "tun.ko"
