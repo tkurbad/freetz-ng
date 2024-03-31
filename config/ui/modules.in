@@ -760,15 +760,15 @@ config FREETZ_MODULE_sit
 	default n
 
 
-config FREETZ_MODULE_tun
-	bool "tun.ko"
-	depends on !FREETZ_AVM_HAS_TUN_BUILTIN
-	default n
-
 config FREETZ_MODULE_wireguard
 	bool "wireguard.ko"
 	default n
 	depends on FREETZ_PACKAGE_WIREGUARD
+
+config FREETZ_MODULE_tun
+	bool "tun.ko"
+	depends on !FREETZ_AVM_HAS_TUN_BUILTIN
+	default n
 
 config FREETZ_MODULE_yf_patchkernel
 	bool "yf_patchkernel.ko"
