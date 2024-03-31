@@ -264,6 +264,15 @@ config FREETZ_AVM_HAS_JUIS_SUPPORT
 	help
 		If /var/juis_boxinfo.xml or /usr/www/$OEM/jason_boxinfo.xml exists.
 
+config FREETZ_AVM_HAS_WIREGUARD_KERNEL
+	bool
+	default y
+	depends on FREETZ_KERNEL_VERSION_5_MIN
+	help
+		The avm-kernel contains the wireguard module.
+		A placeholder, conditions may change!
+		Vanilla kernel got wireguard support with v5.6.
+
 # multid.leases file used by AVM uses "8 columns"-format instead of "7 columns"-one
 # Note: v2 is a Freetz internal name, it is unknown if and how AVM distinguishes the file format version.
 # TODO: check the default values, at the moment pure assumption
