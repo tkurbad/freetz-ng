@@ -11,6 +11,7 @@ for files in \
   bin/wg-utils \
   lib/libwireguard.so \
   ${MODULES_DIR}/extra/wireguard.ko \
+  ${MODULES_DIR}/kernel/drivers/net/wireguard/wireguard.ko \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$files"
 done
