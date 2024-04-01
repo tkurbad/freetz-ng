@@ -1,5 +1,12 @@
 # NEWS
 
+ * __[2024-04-01](#2024-04-01)__<a id='2024-04-01'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24040` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng24040](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng24040)<br>
+
  * __[2024-03-18](#2024-03-18)__<a id='2024-03-18'></a><br>
    UPDATE: Der Tag wurde wegen (CVE-2024-3094) gelöscht.<br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24030` erstellt.<br>

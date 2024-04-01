@@ -4,7 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
-  * [ng24030](#ng24030)
+  * [ng24040](#ng24040)
   * [ng23110](#ng23110)
   * [ng23080](#ng23080)
   * [ng23050](#ng23050)
@@ -47,44 +47,19 @@ Latest changes
 
 ### devel
 
- - Build system:
-   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.47
-
- - Host tools:
-   * cmake 3.29.0
-   * precompiled host-tools 2024-03-29
-   * xz 5.4.6
-
- - AVM sources:
-   * 6670 7.61 - 5.15.111
-
- - Packages:
-   * Curl 8.7.1
-   * OpenVPN 2.4.12/2.5.10/2.6.10
-   * iptables 1.4.11.1/1.4.21/1.6.2/1.8.10
-   * strace 4.9/5.0/6.8
-   * XZ Utils 5.4.6
-
- - Libraries:
-   * harfbuzz 8.4.0
-   * libdeflate 1.20
-   * libxml2 2.12.6
-   * mbedTLS 2.7.19/2.28.8
-   * pango 1.52.1
-
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
-### ng24030
+### ng24040
 
  - Build system:
    * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.42.x
    * Ccache 4.9.1
-   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.46
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.47
 
  - Host tools:
    * autoconf 2.72
-   * cmake 3.28.3
+   * cmake 3.29.0
    * dos2unix 7.5.2
    * fakeroot 1.34
    * kconfig 6.8
@@ -93,24 +68,28 @@ Latest changes
    * netkit-ftp 0.17-35
    * openssl 3.0.13
    * pkgconf 2.1.1
-   * precompiled host-tools 2024-03-18
+   * precompiled host-tools 2024-03-29
    * precompiled toolchains r23270
    * python 3.11.8
    * tar 1.35
    * u-boot 2024.01
-   * xz 5.6.1
+   * xz 5.4.6
+
+ - AVM sources:
+   * 6670 7.61 - 5.15.111
 
  - Packages:
    * BIND 9.11.37/9.16.48
    * BIRD 1.6.8/2.15
    * CA-bundle 2024-03-11
    * CCID 1.5.4
-   * Curl 8.6.0
+   * Curl 8.7.1
    * Dnsmasq 2.80/2.90
    * Git 2.44.0
    * HAProxy 2.6.16
    * htop 1.0.3/3.3.0
    * iPerf3 3.3/3.16
+   * iptables 1.4.11.1/1.4.21/1.6.2/1.8.10
    * jpeg 9f
    * jq 1.7.1
    * LCD4linux 3fce054e
@@ -123,7 +102,7 @@ Latest changes
    * NcFTP 3.2.7
    * OpenSSH 9.3p2/9.7p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.13
-   * OpenVPN 2.4.12/2.5.9/2.6.9
+   * OpenVPN 2.4.12/2.5.10/2.6.10
    * PCSC-lite 1.9.5/2.0.1
    * ProxyChains-NG 4.17
    * pyLoad 0.4.20/78162d75
@@ -131,7 +110,7 @@ Latest changes
    * Stunnel 5.72
    * Subversion 1.9.12/1.14.3
    * SQLite 3.45.2
-   * strace 4.9/5.0/6.7
+   * strace 4.9/5.0/6.8
    * tmux 3.4
    * Tor 0.4.8.10
    * Transmission 3.00/4.0.5
@@ -141,13 +120,14 @@ Latest changes
    * Vim 9.1.0181
    * Wget 1.24.5
    * xsltproc 1.1.39
-   * XZ Utils 5.6.1
+   * XZ Utils 5.4.6
 
  - Libraries:
    * cairo 1.18.0
    * expat 2.6.2
+   * harfbuzz 8.4.0
+   * libdeflate 1.20
    * libffi 3.4.6
-   * harfbuzz 8.3.1
    * libid3tag 0.16.3
    * libmaxminddb 1.9.1
    * libonig 6.9.9
@@ -155,13 +135,14 @@ Latest changes
    * libtirpc 1.3.4
    * libusb1 1.0.23/1.0.27
    * libuv 1.44.2/1.48.0
-   * libxml2 2.12.5
-   * mbedTLS 2.7.19/2.28.7
+   * libxml2 2.12.6
+   * mbedTLS 2.7.19/2.28.8
+   * pango 1.52.1
    * pcre2 10.43
    * zlib 1.3.1
 
  - Firmware updates:
-   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng24030/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng24040/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23110
 
