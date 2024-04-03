@@ -47,6 +47,9 @@ Latest changes
 
 ### devel
 
+ - Host tools:
+   * python 3.11.9
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
