@@ -1,5 +1,4 @@
-# build and deploy a Jekyll site to GitHub Pages
-name: jekyll-gh-pages
+name: generate_pages
 
 on:
   push:
@@ -43,3 +42,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+
