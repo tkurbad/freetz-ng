@@ -209,7 +209,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-6850-5g/
    - [source-files-FRITZ.Box_6850_5G-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6850-5g/source-files-FRITZ.Box_6850_5G-07.56.tar.gz)
  * fritzbox-6850-lte/
-   - [source-files-FRITZ.Box_6850_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6850-lte/source-files-FRITZ.Box_6850_LTE-07.56.tar.gz)
+   - [source-files-FRITZ.Box_6850_LTE-cortexa9-07.58.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6850-lte/source-files-FRITZ.Box_6850_LTE-cortexa9-07.58.tar.gz)
  * fritzbox-6890-lte/
    - [source-files-FRITZ.Box_6890_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6890-lte/source-files-FRITZ.Box_6890_LTE-07.56.tar.gz)
  * fritzbox-7112/
