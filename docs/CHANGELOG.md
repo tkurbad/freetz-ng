@@ -51,6 +51,7 @@ Latest changes
    * python 3.11.9
 
  - Packages:
+   * Apache2 2.4.59
    * Dropbear 2024.84
 
  - Firmware updates:
