@@ -50,6 +50,9 @@ Latest changes
  - Host tools:
    * python 3.11.9
 
+ - Packages:
+   * Dropbear 2024.84
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 

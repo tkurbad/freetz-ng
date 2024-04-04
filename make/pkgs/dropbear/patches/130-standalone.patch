@@ -1,6 +1,6 @@
---- sshpty.c
-+++ sshpty.c
-@@ -398,15 +398,19 @@
+--- src/sshpty.c
++++ src/sshpty.c
+@@ -400,15 +400,19 @@
  
  	if ((st.st_mode & (S_IRWXU|S_IRWXG|S_IRWXO)) != mode) {
  		if (chmod(tty_name, mode) < 0) {

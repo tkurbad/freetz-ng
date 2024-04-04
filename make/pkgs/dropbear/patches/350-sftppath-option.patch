@@ -1,5 +1,5 @@
---- runopts.h
-+++ runopts.h
+--- src/runopts.h
++++ src/runopts.h
 @@ -69,6 +69,10 @@
  
  typedef struct svr_runopts {
@@ -11,8 +11,8 @@
  	char * bannerfile;
  
  	int forkbg;
---- svr-chansession.c
-+++ svr-chansession.c
+--- src/svr-chansession.c
++++ src/svr-chansession.c
 @@ -687,7 +687,7 @@
  			if ((cmdlen == 4) && strncmp(chansess->cmd, "sftp", 4) == 0) {
  				char *expand_path = expand_homedir_path(SFTPSERVER_PATH);
@@ -22,9 +22,9 @@
  				m_free(expand_path);
  			} else 
  #endif
---- svr-runopts.c
-+++ svr-runopts.c
-@@ -63,6 +63,10 @@
+--- src/svr-runopts.c
++++ src/svr-runopts.c
+@@ -64,6 +64,10 @@
  #if DROPBEAR_DELAY_HOSTKEY
  					"-R		Create hostkeys as required\n" 
  #endif
@@ -35,7 +35,7 @@
  					"-F		Don't fork into background\n"
  					"-e		Pass on server process environment to child process\n"
  #ifdef DISABLE_SYSLOG
-@@ -127,6 +131,9 @@
+@@ -132,6 +136,9 @@
  #if DROPBEAR_ED25519
  					ED25519_PRIV_FILENAME,
  #endif
@@ -45,7 +45,7 @@
  					MAX_AUTH_TRIES,
  					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
  					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT);
-@@ -150,6 +157,9 @@
+@@ -155,6 +162,9 @@
  
  
  	/* see printhelp() for options */
@@ -55,7 +55,7 @@
  	svr_opts.bannerfile = NULL;
  	svr_opts.banner = NULL;
  	svr_opts.forced_command = NULL;
-@@ -225,6 +235,11 @@
+@@ -230,6 +240,11 @@
  				case 'R':
  					svr_opts.delay_hostkey = 1;
  					break;
@@ -67,7 +67,7 @@
  				case 'F':
  					svr_opts.forkbg = 0;
  					break;
-@@ -377,6 +392,12 @@
+@@ -387,6 +402,12 @@
  		svr_opts.portcount = 1;
  	}
  
@@ -78,5 +78,5 @@
 +#endif
 +
  	if (svr_opts.bannerfile) {
- 		struct stat buf;
- 		if (stat(svr_opts.bannerfile, &buf) != 0) {
+ 		load_banner();
+ 	}
