@@ -81,7 +81,7 @@ $(PKG_CONFIGURED_CONFIGURE)
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(DROPBEAR_DIR) \
 		$(DROPBEAR_MAKE_OPTIONS) \
-		EXTRA_CFLAGS="-ffunction-sections -fdata-sections" \
+		EXTRA_CFLAGS="-ffunction-sections -fdata-sections -Wno-undef" \
 		EXTRA_CPPFLAGS="$(DROPBEAR_CPPFLAGS)" \
 		EXTRA_LDFLAGS="-Wl,--gc-sections"
 
