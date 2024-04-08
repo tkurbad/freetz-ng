@@ -54,6 +54,9 @@ Latest changes
    * Apache2 2.4.59
    * Dropbear 2024.84
 
+ - Libraries:
+   * libpng 1.6.43
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
