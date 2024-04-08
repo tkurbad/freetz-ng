@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_IMAGEMAGICK
-	bool "ImageMagick 7.1.1-20 (binary only)"
+	bool "ImageMagick 7.1.1-30 (binary only)"
 	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
@@ -45,7 +45,6 @@ if FREETZ_PACKAGE_IMAGEMAGICK
 		bool "Support xml"
 		default y
 		select FREETZ_LIB_libxml2
-
 
 	config FREETZ_PACKAGE_IMAGEMAGICK_STATIC
 		bool "Link statically"

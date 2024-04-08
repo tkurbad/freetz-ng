@@ -54,6 +54,7 @@ Latest changes
  - Packages:
    * Apache2 2.4.59
    * Dropbear 2024.84
+   * ImageMagick 7.1.1-30
 
  - Libraries:
    * libpng 1.6.43
