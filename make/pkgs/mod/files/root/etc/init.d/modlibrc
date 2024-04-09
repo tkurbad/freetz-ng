@@ -13,6 +13,7 @@
 # CONF_ENABLED          ${DAEMON}_ENABLED                      variablename with starttype of daemon (yes,no,inetd) in .cfg-file
 # DAEMON_CONFIG         /mod/etc/${DAEMON}.conf                modlib_config will generate this file
 # DAEMON_BIN            ${DAEMON}                              other binary name than $DAEMON
+# DAEMON_SVC            ${DAEMON}                              name of the supervisor service other than $DAEMON
 # DAEMON_ENV            <empty>                                additional environment settings
 # DAEMON_CHECK          <empty>                                daemon(s) to check with pidof for running-status
 # PID_FILE              /var/run/${DAEMON_BIN}.pid             pid-file for DAEMON
@@ -26,6 +27,7 @@
 : ${CONF_ENABLED:=${DAEMON}_ENABLED}
 : ${DAEMON_CONFIG:=/mod/etc/${DAEMON}.conf}
 : ${DAEMON_BIN:=$DAEMON}
+: ${DAEMON_SVC:=$DAEMON}
 : ${PID_FILE:=/var/run/${DAEMON_BIN}.pid}
 : ${DAEMON_CFGFILE:=/tmp/flash/${DAEMON}/${DAEMON}.cfg}
 
