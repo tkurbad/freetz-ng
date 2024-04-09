@@ -17,10 +17,11 @@ start() {
 
 	#save ipv6 for 'lan' (since fw 04.86)
 	if [ -e /proc/sys/net/ipv6/conf/lan/disable_ipv6 ]; then
-		local addresses_ipv6_lan="$(ifconfig lan | sed -rn 's/.*inet6 addr: (.*) Scope:Global/\1/p')"
-		local disable_ipv6_lan="$(cat /proc/sys/net/ipv6/conf/lan/disable_ipv6)"
+		ifconfig lan | sed -rn 's/.*inet6 addr: (.*) Scope:Global/\1/p' > ${TMPFILE}addresses_ipv6_lan
+		cat /proc/sys/net/ipv6/conf/lan/disable_ipv6                    > ${TMPFILE}disable_ipv6_lan
 	fi
 
+	local use_preload="n"
 	rm -rf /var/tmp/avm-resolv.conf /var/tmp/resolv.conf 2>/dev/null
 	if [ "$FREETZ_AVMDAEMON_DISABLE_MULTIDPORTS" == "y" ]; then
 		local _resolv_conf_dns="$(modconf value MOD_RESOLV_DNS mod 2>/dev/null)"
@@ -32,44 +33,58 @@ start() {
 		if [ "$_resolv_conf_dns" == "127.0.0.1" -a "$_bind_enabled" != yes -a "$_dnsmasq_dns_enabled" != yes -a "$_unbound_enabled" != yes ]; then
 			echo -n "discarded libmultid, no enabled dns server ... "
 		else
-			export LD_PRELOAD=libmultid.so
+			use_preload="y"
 		fi
 	fi
-	if modlib_check_supervisor; then
-		nohup $DAEMON_BIN -v 0</dev/null 1>/dev/null 2>&1 &
-		exitval=0
+	if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ]; then
+		# Don't use a subshell, like "(...code...) &", here.
+		# It will produce a zombie process once "exec" gets executed
+		sh -c "\
+			$0 start_postexec; \
+			echo 'by svctl.' \
+		" &
+
+		[ "$use_preload" == "y" ] && export LD_PRELOAD=libmultid.so
+		exec $DAEMON_BIN -v 2>/dev/null
+		exitval=$?  # Never reached, as long as exec (not the command) isn't failing
 	else
+		[ "$use_preload" == "y" ] && export LD_PRELOAD=libmultid.so
 		$DAEMON_BIN -v 2>/dev/null
 		exitval=$?
 	fi
 	unset LD_PRELOAD
+
+	if [ "$exitval" -eq 0 ]; then
+		start_postexec
+		echo 'done.'
+	else
+		echo 'failed.'
+		exit $exitval
+	fi
+}
+
+start_postexec() {
 	sleep 1
 	[ -f /tmp/flash/mod/multid.start ] && . /tmp/flash/mod/multid.start
 
 	#load ipv6 for 'lan' (since fw 04.86)
+	local disable_ipv6_lan="$(cat ${TMPFILE}disable_ipv6_lan 2>/dev/null)"
 	if [ -n "$disable_ipv6_lan" ]; then
 		if [ "$(cat /proc/sys/net/ipv6/conf/lan/disable_ipv6)" != "$disable_ipv6_lan" ]; then
 			ifconfig lan down
 			echo $disable_ipv6_lan > /proc/sys/net/ipv6/conf/lan/disable_ipv6
 			ifconfig lan up
 		fi
-		for address_ipv6_lan in $addresses_ipv6_lan; do
+		for address_ipv6_lan in $(cat ${TMPFILE}addresses_ipv6_lan 2>/dev/null); do
 			ifconfig lan add $address_ipv6_lan 2>/dev/null
 		done
 	fi
 
-	# do we have another local dns-sever? multid doesn't create /var/tmp/avm-resolv.conf itself if port 53 is in use.
+	# do we have another local dns-sever? the daemon doesn't create /var/tmp/avm-resolv.conf itself if port 53 is in use.
 	# some (older?) boxes uses /var/tmp/resolv.conf for upstream-dnsserver.
 	for resolv_file in /var/tmp/avm-resolv.conf /var/tmp/resolv.conf; do
 		[ ! -e $resolv_file ] && echo "nameserver 127.0.0.1" > $resolv_file
 	done
-
-	if [ "$exitval" -eq 0 ]; then
-		echo 'done.'
-	else
-		echo 'failed.'
-		exit $exitval
-	fi
 }
 
 stop() {
@@ -99,6 +114,9 @@ case $1 in
 		;;
 	start)
 		modlib_start
+		;;
+	start_postexec)
+		start_postexec
 		;;
 	stop)
 		modlib_stop

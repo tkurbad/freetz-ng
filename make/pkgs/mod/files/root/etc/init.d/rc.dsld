@@ -41,19 +41,31 @@ start() {
 
 	#remove duplicate arguments
 	DAEMON_ARGS="$(for arg in $DAEMON_CMD $DAEMON_OPT; do [ "$arg" != "dsld" ] && echo " $arg"; done |sort -u)"
-	if modlib_check_supervisor; then
-		nohup $DAEMON_BIN $DAEMON_ARGS 0</dev/null 1>/dev/null 2>&1 &
-		exitval=0
+	if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ]; then
+		# Don't use a subshell, like "(...code...) &", here.
+		# It will produce a zombie process once "exec" gets executed
+		sh -c "\
+			$0 start_postexec; \
+			echo 'by svctl.' \
+		" &
+
+		exec $DAEMON_BIN $DAEMON_ARGS 2>/dev/null
+		exitval=$?  # Never reached, as long as exec (not the command) isn't failing
 	else
 		$DAEMON_BIN $DAEMON_ARGS 2>/dev/null
 		exitval=$?
 	fi
 	if [ "$exitval" -eq 0 ]; then
+		start_postexec
 		echo 'done.'
 	else
 		echo 'failed.'
 		exit $exitval
 	fi
+}
+
+start_postexec() {
+	sleep 1
 }
 
 stop() {
@@ -101,6 +113,9 @@ case $1 in
 		;;
 	start)
 		modlib_start
+		;;
+	start_postexec)
+		start_postexec
 		;;
 	stop)
 		modlib_stop
