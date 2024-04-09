@@ -3,6 +3,7 @@
 . /etc/init.d/modlibrc
 DAEMON=dsld
 DAEMON_BIN=$DAEMON
+DAEMON_SVC=$DAEMON
 DAEMON_LONG_NAME="AVM-$DAEMON"
 PID_FILE=/var/run/${DAEMON}.pid
 
@@ -14,6 +15,16 @@ TMPFILE="/tmp/.$DAEMON."
 
 start() {
 	echo -n "Starting ${DAEMON_LONG_NAME} ... "
+
+	# handle daemon start not by this script but by supervisor, if available
+	if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ] && ! modlib_check_supervisor; then
+		# Caution this can cause an endless loop, which will make supervisor crash.
+		# Always make sure, in service-file, that this script gets called directly or,  if a script chain
+		# is needed (like .rc-wrapper), the chain calls every following script/binary with "exec" command.
+		svctl start $DAEMON_SVC &> /dev/null
+		echo 'by svctl.'
+		exit
+	fi
 
 	if [ -e ${TMPFILE}CMD ]; then
 		DAEMON_CMD="$(cat ${TMPFILE}CMD)"
