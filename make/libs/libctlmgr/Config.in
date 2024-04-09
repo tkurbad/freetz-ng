@@ -1,6 +1,8 @@
 config FREETZ_LIB_libctlmgr
 	bool "libctlmgr (libctlmgr.so)"
 	depends on FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD
+	select FREETZ_LIB_libctlmgr_WITH_CHMOD   if FREETZ_AVM_VERSION_07_0X_MIN
+	select FREETZ_LIB_libctlmgr_WITH_RENAME  if FREETZ_AVM_VERSION_07_1X_MAX && FREETZ_AVM_HAS_USB_HOST
 	default n
 	help
 		This is Freetz compatibility library which overwrites
@@ -18,7 +20,7 @@ if FREETZ_LIB_libctlmgr
 
 	config FREETZ_LIB_libctlmgr_WITH_RENAME
 		bool
-		depends on FREETZ_AVM_HAS_USB_HOST
+		depends on FREETZ_AVM_VERSION_07_1X_MAX && FREETZ_AVM_HAS_USB_HOST
 		default n
 		help
 			Alters rename() for /etc/passwd
