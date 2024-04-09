@@ -1,15 +1,15 @@
 #!/bin/sh
 
 DAEMON=multid
-DAEMON_BIN=multid
+DAEMON_BIN=$DAEMON
 DAEMON_LONG_NAME="AVM-$DAEMON"
 CONF_NAME=avm
 . /etc/init.d/modlibrc
 
-TMPFILE="/tmp/.multid."
+TMPFILE="/tmp/.$DAEMON."
 
 [ -r /etc/options.cfg ] && . /etc/options.cfg
-# include environment required for multid restart
+# include environment required for daemon restart
 . /bin/env.mod.rcconf avm
 
 start() {
@@ -19,7 +19,7 @@ start() {
 		DAEMON_CMD_IGD=$(cat ${TMPFILE}IGD)
 	else
 		if [ "$FREETZ_AVMDAEMON_DISABLE_IGD" == "y" ]; then
-			DAEMON_CMD_IGD="$(multid -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*upnp.[^p][^l][^u][^g].*/\1/p')"
+			DAEMON_CMD_IGD="$($DAEMON_BIN -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*upnp.[^p][^l][^u][^g].*/\1/p')"
 		fi
 		echo "$DAEMON_CMD_IGD" > ${TMPFILE}IGD
 	fi
@@ -28,7 +28,7 @@ start() {
 		DAEMON_CMD_NTP=$(cat ${TMPFILE}NTP)
 	else
 		if [ "$FREETZ_AVMDAEMON_DISABLE_NTP" == "y" ]; then
-			DAEMON_CMD_NTP="$(multid -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*NTP client.*/\1/p')"
+			DAEMON_CMD_NTP="$($DAEMON_BIN -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*NTP client.*/\1/p')"
 		fi
 		echo "$DAEMON_CMD_NTP" > ${TMPFILE}NTP
 	fi
@@ -37,7 +37,7 @@ start() {
 		DAEMON_CMD_IGM=$(cat ${TMPFILE}IGM)
 	else
 		if [ "$FREETZ_AVMDAEMON_DISABLE_IGM" == "y" ]; then
-			DAEMON_CMD_IGM="$(multid -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*IGMP proxy.*/\1/p')"
+			DAEMON_CMD_IGM="$($DAEMON_BIN -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*IGMP proxy.*/\1/p')"
 		fi
 		echo "$DAEMON_CMD_IGM" > ${TMPFILE}IGM
 	fi
@@ -46,7 +46,7 @@ start() {
 		DAEMON_CMD_069=$(cat ${TMPFILE}069)
 	else
 		if [ "$FREETZ_AVMDAEMON_DISABLE_TR069" == "y" ]; then
-			DAEMON_CMD_069="$(multid -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*without tr069.*/\1/p')"
+			DAEMON_CMD_069="$($DAEMON_BIN -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*without tr069.*/\1/p')"
 		fi
 		echo "$DAEMON_CMD_069" > ${TMPFILE}069
 	fi

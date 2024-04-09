@@ -2,14 +2,14 @@
 
 . /etc/init.d/modlibrc
 DAEMON=dsld
-DAEMON_BIN=dsld
+DAEMON_BIN=$DAEMON
 DAEMON_LONG_NAME="AVM-$DAEMON"
 PID_FILE=/var/run/${DAEMON}.pid
 
-TMPFILE="/tmp/.dsld."
+TMPFILE="/tmp/.$DAEMON."
 
 [ -r /etc/options.cfg ] && . /etc/options.cfg
-# include environment required for dsld restart
+# include environment required for daemon restart
 . /bin/env.mod.rcconf avm
 
 start() {
@@ -19,7 +19,7 @@ start() {
 		DAEMON_CMD="$(cat ${TMPFILE}CMD)"
 	else
 		if [ "$FREETZ_AVMDAEMON_DISABLE_IGD" == "y" ]; then
-			DAEMON_CMD=" $(dsld -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*igd.*/\1/p')"
+			DAEMON_CMD=" $($DAEMON_BIN -? 2>&1 | sed -nr 's/^[ \t]*([^ ]*).*igd.*/\1/p')"
 		fi
 		DAEMON_CMD=" -i$DAEMON_CMD"
 		echo "$DAEMON_CMD" > ${TMPFILE}CMD

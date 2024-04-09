@@ -1,13 +1,15 @@
 #!/bin/sh
 
 DAEMON=rextd
-DAEMON_BIN=rextd
+DAEMON_BIN=$DAEMON
 DAEMON_LONG_NAME="AVM-$DAEMON"
 CONF_NAME=avm
 . /etc/init.d/modlibrc
 
+TMPFILE="/tmp/.$DAEMON."
+
 [ -r /etc/options.cfg ] && . /etc/options.cfg
-# include environment required for rextd restart
+# include environment required for daemon restart
 . /bin/env.mod.rcconf avm
 
 start() {
