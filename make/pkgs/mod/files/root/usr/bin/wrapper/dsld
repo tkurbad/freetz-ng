@@ -14,6 +14,15 @@ while [ $# -gt 0 ]; do
 	[ "$1" == "-I" ] && daemon_mode="reload"
 	shift
 done
+echo "Wrapper for dsld is executing: $daemon_mode" | log
+
+[ -r /etc/options.cfg ] && . /etc/options.cfg
+if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ]; then
+	# Exec makes sure the .rc-script will not become a new process, which would generate
+	# new PID and PPID. Instead it will override this process and inherit its PIDs.
+	exec /etc/init.d/rc.dsld $daemon_mode
+	exit $?  # this will never be reached
+fi
 
 /etc/init.d/rc.dsld $daemon_mode 2>&1 | log
 
