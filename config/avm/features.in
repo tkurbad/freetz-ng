@@ -74,6 +74,7 @@ config FREETZ_TYPE_WAN
 	depends on \
 		FREETZ_TYPE_4020 || \
 		FREETZ_TYPE_4040 || \
+		FREETZ_TYPE_4050 || \
 		FREETZ_TYPE_4060
 
 
@@ -160,6 +161,7 @@ config FREETZ_AVM_HAS_FIT_SIZE
 	default 50 if FREETZ_TYPE_1209
 	default 50 if FREETZ_TYPE_1249
 	default 50 if FREETZ_TYPE_3009
+#	default 50 if FREETZ_TYPE_4050
 	default 80 if FREETZ_TYPE_4060
 	default 50 if FREETZ_TYPE_5530
 	default 80 if FREETZ_TYPE_5590

@@ -103,6 +103,8 @@ Currently supported devices and firmwares
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
   - 155.07.29 rev92647 {ALL} [PSQ19P2NL4]
   - 155.07.57 rev107816 {ALL} [MOVE21NL1]
+* __Fritz!Box 4050 (UNTESTED)__
+  - 287.07.57 rev110614 {ALL} [MOVE21NL1] (Inhaus)
 * __Fritz!Box 4060__
   - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
   - 261.07.57 rev109903 {ALL} [MOVE21NL1]

@@ -85,6 +85,8 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzbox-4040/{other,deutschland}/fritz.os,@AVM/4040"                                                if FREETZ_TYPE_4040
 	#
+	default "@AVM/fritzbox-4050/{other,deutschland}/fritz.os,@AVM/4050"                                                if FREETZ_TYPE_4050
+	#
 	default "@AVM/fritzbox-4060/{other,deutschland}/fritz.os,@AVM/4060"                                                if FREETZ_TYPE_4060
 	#
 	default "@AVM/fritzbox.fon_5010/firmware/deutsch_a-ch"                                                             if FREETZ_TYPE_5010
@@ -384,6 +386,8 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_4040-07.14.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_4040-07.29.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_4040-07.57.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_5X
+	#
+	default "FRITZ.Box_4050-07.57-110614-Inhaus.image"                                     if FREETZ_TYPE_4050 && FREETZ_TYPE_FIRMWARE_07_5X_INHAUS
 	#
 	default "FRITZ.Box_4060-07.30.image"                                                   if FREETZ_TYPE_4060 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_4060-07.57-V2.image/FRITZ.Box_4060-07.57.image"                     if FREETZ_TYPE_4060 && FREETZ_TYPE_FIRMWARE_07_5X
