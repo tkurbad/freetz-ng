@@ -453,6 +453,9 @@ Currently supported devices and firmwares
   - 259.07.80 rev110629 {ALL} [GoFiber23]
   - 259.07.90 rev111684 {ALL} [Smart24 P1] (Inhaus)
 
+* __FRITZ!Box 7690 (UNTESTED)__
+  - 285.07.59 rev112138 {ALL} [FCS23] (Inhaus)
+
 ### Fritz!Powerline
 
 * __Fritz!Powerline 540E__
