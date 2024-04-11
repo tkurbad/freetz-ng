@@ -549,17 +549,19 @@ config FREETZ_BUSYBOX__MANDATORY_07_5X
 	bool # mandatory (since Fritz!OS 7.50)"
 	depends on FREETZ_AVM_VERSION_07_5X_MIN
 	select FREETZ_BUSYBOX_BC
+	select FREETZ_BUSYBOX_DEVMEM
 	select FREETZ_BUSYBOX_I2CTRANSFER
+	select FREETZ_BUSYBOX_TFTPD
 	select FREETZ_BUSYBOX_TS
 	select FREETZ_BUSYBOX_FEATURE_SH_EMBEDDED_SCRIPTS
 	select FREETZ_BUSYBOX_NOLOGIN
+	select FREETZ_BUSYBOX_UDPSVD
 	help
 		Selects everything needed to run properly with Fritz!OS 7.50 and up
 
 config FREETZ_BUSYBOX__MANDATORY_08_0X
 	bool # mandatory (since Fritz!OS 8.00)"
 	depends on FREETZ_AVM_VERSION_08_0X_MIN
-	select FREETZ_BUSYBOX_DEVMEM
 	select FREETZ_BUSYBOX_SEEDRNG
 	select FREETZ_BUSYBOX_TREE
 	select FREETZ_BUSYBOX_TSORT
