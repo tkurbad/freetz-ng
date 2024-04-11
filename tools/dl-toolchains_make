@@ -111,6 +111,8 @@ esac
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_7590    FREETZ_TYPE_FIRMWARE_07_0X"
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7590    FREETZ_TYPE_FIRMWARE_07_2X"  # SEPARATE
 
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_7690    FREETZ_TYPE_FIRMWARE_07_5X_INHAUS"  # SEPARATE
+
 
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_1750    FREETZ_TYPE_FIRMWARE_07_0X"
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_1750    FREETZ_TYPE_FIRMWARE_07_2X"  # SEPARATE

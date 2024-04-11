@@ -57,22 +57,23 @@ config FREETZ_DL_TARGET_TOOLCHAIN_HASH
 	#MIPS
 	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_3_10
 	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_4_4
-	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_3_10
-	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_4_4
-	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_4_9
+	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_3_10
+	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_4_4
+	default "X"                                                                   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_4_9
 	#ARM
 	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_4_4
-	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_4_1 && FREETZ_SYSTEM_TYPE_BCM63138
-	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_4_1
-	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_4_4
-	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_4_19
+	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_4_1 && FREETZ_SYSTEM_TYPE_BCM63138
+	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_4_1
+	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_4_4
+	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_4_19
+	default "X"                                                                   if FREETZ_TARGET_ARCH_ARM                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_5_4
 	#X86
 	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_4_7 && FREETZ_TARGET_UCLIBC_0_9_33 && FREETZ_KERNEL_VERSION_2
 	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_5   && FREETZ_TARGET_UCLIBC_1_0_14 && FREETZ_KERNEL_VERSION_2
-	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_2
-	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_3_12
-	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_4_9
-	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_46 && FREETZ_KERNEL_VERSION_5_15
+	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_2
+	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_3_12
+	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_4_9
+	default "X"                                                                   if FREETZ_TARGET_ARCH_X86                           && FREETZ_TARGET_GCC_13  && FREETZ_TARGET_UCLIBC_1_0_47 && FREETZ_KERNEL_VERSION_5_15
 	#
 	default "X"
 
