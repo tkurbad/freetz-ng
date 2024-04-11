@@ -123,6 +123,12 @@ config FREETZ_SYSTEM_TYPE_IPQ53xx
 	depends on \
 		FREETZ_TYPE_7690
 
+config FREETZ_SYSTEM_TYPE_IPQ95xx
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_5690
+
 config FREETZ_SYSTEM_TYPE_MAPLE
 	bool
 	default y
@@ -232,6 +238,7 @@ config FREETZ_SYSTEM_TYPE
 	default "iks"           if FREETZ_SYSTEM_TYPE_IKS
 	default "ipq40xx"       if FREETZ_SYSTEM_TYPE_IPQ40xx
 	default "ipq53xx"       if FREETZ_SYSTEM_TYPE_IPQ53xx
+	default "ipq95xx"       if FREETZ_SYSTEM_TYPE_IPQ95xx
 	default "maple"         if FREETZ_SYSTEM_TYPE_MAPLE
 	default "puma6"         if FREETZ_SYSTEM_TYPE_PUMA6
 	default "puma7"         if FREETZ_SYSTEM_TYPE_PUMA7
@@ -255,7 +262,8 @@ config FREETZ_CPU_MODEL_ARM_cortex
 	default y
 	depends on \
 		FREETZ_CPU_MODEL_ARM_cortex_a9 || \
-		FREETZ_CPU_MODEL_ARM_cortex_a53
+		FREETZ_CPU_MODEL_ARM_cortex_a53 || \
+		FREETZ_CPU_MODEL_ARM_cortex_a73
 
 config FREETZ_CPU_MODEL_ARM_cortex_a9
 	bool
@@ -272,6 +280,12 @@ config FREETZ_CPU_MODEL_ARM_cortex_a53
 		FREETZ_SYSTEM_TYPE_IPQ53xx || \
 		FREETZ_SYSTEM_TYPE_MAPLE || \
 		FREETZ_SYSTEM_TYPE_QCAARMv8
+
+config FREETZ_CPU_MODEL_ARM_cortex_a73
+	bool
+	default y
+	depends on \
+		FREETZ_SYSTEM_TYPE_IPQ95xx
 
 config FREETZ_CPU_MODEL_MIPS_4KEc
 	bool

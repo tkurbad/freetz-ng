@@ -13,6 +13,7 @@ config FREETZ_REPLACE_KERNEL_AVAILABLE
 		! (FREETZ_SYSTEM_TYPE_IKS_VX185) && \
 		! (FREETZ_SYSTEM_TYPE_IPQ40xx) && \
 		! (FREETZ_SYSTEM_TYPE_IPQ53xx) && \
+		! (FREETZ_SYSTEM_TYPE_IPQ95xx) && \
 		! (FREETZ_SYSTEM_TYPE_PUMA6 && FREETZ_TYPE_6430) && \
 		! (FREETZ_SYSTEM_TYPE_PUMA7) && \
 		! (FREETZ_SYSTEM_TYPE_QCA955x) && \
@@ -40,7 +41,7 @@ config FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	depends on ! FREETZ_KERNEL_VERSION_4_1_38                                              # 07_1X-final 7581/7582 (corrupt)
 	depends on !(FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_MAPLE && FREETZ_AVM_VERSION_07_2X_MAX)  # 07_2X-final 7510/1209 (corrupt)
 	depends on ! FREETZ_KERNEL_VERSION_4_19_183                                            # 07_5X-final 7539 (corrupt)
-	depends on ! FREETZ_KERNEL_VERSION_5_4_213                                             # 07_5X-inhaus 7690
+	depends on ! FREETZ_KERNEL_VERSION_5_4_213                                             # 07_5X-inhaus 5690 Pro + 7690
 	default y
 	help
 		There are no avm sources at all of this kernel version and thus no avmdiff, so unpatched vanilla is used.
