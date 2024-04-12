@@ -48,7 +48,7 @@ Latest changes
 ### devel
 
  - Host tools:
-   * cmake 3.29.1
+   * cmake 3.29.2
    * python 3.11.9
 
  - Packages:
