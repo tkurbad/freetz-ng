@@ -33,8 +33,8 @@ $(PKG)_CONFIGURE_ENV += rd_cv_ieee_works=yes
 
 $(PKG)_CONFIGURE_OPTIONS += --without-x
 
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libart-2.0"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/freetype2"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libart-2.0"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/freetype2"
 
 else
 $(PKG)_DEPENDS_ON += glib2 gettext libpng libxml2 harfbuzz cairo pango
@@ -50,11 +50,11 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-rrdcached
 $(PKG)_CONFIGURE_OPTIONS += --enable-rrd_graph
 $(PKG)_CONFIGURE_OPTIONS += --enable-rrd_restore
 
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/glib-2.0/include"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/glib-2.0"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/harfbuzz"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/cairo"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/pango-1.0"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/glib-2.0/include"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/glib-2.0"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/harfbuzz"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/cairo"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/pango-1.0"
 
 $(PKG)_EXCLUDED += usr/share/rrdtool/fonts/DejaVuSansMono-Roman.ttf
 endif
@@ -79,8 +79,8 @@ $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY) $($(PKG)_LIBS_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(RRDTOOL_DIR) all \
-		LDFLAGS="$(TARGET_LDFLAGS) $(RRDTOOL_EXTRA_LDFLAGS)" \
-		CPPFLAGS="$(TARGET_CPPFLAGS) $(RRDTOOL_EXTRA_CPPFLAGS)"
+		CFLAGS="$(TARGET_CFLAGS) $(RRDTOOL_EXTRA_CFLAGS)" \
+		LDFLAGS="$(TARGET_LDFLAGS)"
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)
