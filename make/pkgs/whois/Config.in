@@ -1,7 +1,15 @@
 config FREETZ_PACKAGE_WHOIS
 	bool "Whois 5.5.22 (binary only)"
 	default n
-	select FREETZ_LIB_libidn
 	help
 		Whois - client for the whois directory service.
+
+if FREETZ_PACKAGE_WHOIS
+
+	config FREETZ_PACKAGE_WHOIS_WHIS_LIBIDN
+		bool "With libidn"
+		default y
+		select FREETZ_LIB_libidn
+
+endif # FREETZ_PACKAGE_WHOIS
 
