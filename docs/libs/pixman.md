@@ -1,4 +1,4 @@
-# Pixman (libpixman-1.so) 0.42.2
+# Pixman (libpixman-1.so) 0.43.4
  - Homepage: [http://www.pixman.org/](http://www.pixman.org/)
  - Changelog: [https://www.cairographics.org/releases/](https://www.cairographics.org/releases/)
  - Repository: [https://cgit.freedesktop.org/pixman/](https://cgit.freedesktop.org/pixman/)
