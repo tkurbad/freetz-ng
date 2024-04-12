@@ -46,7 +46,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
-	-$(MAKE) -C $(AUTOCONF_HOST_DIR) uninstall
+	-$(MAKE) -C $(AUTOCONF_HOST_DIR) clean
 	-$(RM) $(AUTOCONF_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:

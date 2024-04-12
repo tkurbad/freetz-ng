@@ -50,7 +50,7 @@ $(pkg)-precompiled: $($(PKG)_LINKS_TARGET_DIR)
 
 
 $(pkg)-clean:
-	-$(MAKE) -C $(AUTOMAKE_HOST_DIR) uninstall
+	-$(MAKE) -C $(AUTOMAKE_HOST_DIR) clean
 	-$(RM) $(AUTOMAKE_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:

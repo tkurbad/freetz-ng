@@ -40,7 +40,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
-	-$(MAKE) -C $(LIBTOOL_HOST_DIR) uninstall
+	-$(MAKE) -C $(LIBTOOL_HOST_DIR) clean
 	-$(RM) $(LIBTOOL_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:

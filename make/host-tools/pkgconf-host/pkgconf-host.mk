@@ -40,7 +40,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed $($(PKG)_WRAPPER_TARGET)
 
 
 $(pkg)-clean:
-	-$(MAKE) -C $(PKGCONF_HOST_DIR) uninstall
+	-$(MAKE) -C $(PKGCONF_HOST_DIR) clean
 	-$(RM) $(PKGCONF_HOST_DIR)/.{configured,compiled,installed}
 
 $(pkg)-dirclean:

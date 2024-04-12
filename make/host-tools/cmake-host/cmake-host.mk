@@ -46,7 +46,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
-	-$(NINJA) -C $(CMAKE_HOST_DIR) uninstall
+	-$(NINJA) -C $(CMAKE_HOST_DIR) clean
 	-$(RM) $(CMAKE_HOST_DIR)/.{configured,compiled,installed}
 
 $(pkg)-dirclean:
