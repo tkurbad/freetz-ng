@@ -102,6 +102,7 @@ PYTHON3=python3
 MESON=meson
 CMAKE=cmake
 NINJA=ninja
+PERL=perl
 MAKE1=make
 ifeq ($(FREETZ_JLEVEL),0)
 MAKE=make -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
