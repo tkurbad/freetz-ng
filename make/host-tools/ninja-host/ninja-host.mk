@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 1.11.1)
+$(call TOOLS_INIT, 1.12.0)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea
+$(PKG)_HASH:=8b2c86cd483dc7fcb7975c5ec7329135d210099a89bc7db0590a07b0bbfe49a5
 $(PKG)_SITE:=https://github.com/ninja-build/ninja/archive/refs/tags
 ### WEBSITE:=https://ninja-build.org/
 ### MANPAGE:=https://github.com/ninja-build/ninja/wiki
