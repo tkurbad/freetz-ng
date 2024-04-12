@@ -57,8 +57,8 @@ $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR)
 
 
 $(pkg)-clean:
-	-$(SUBMAKE) -C $(PANGO_DIR) clean
-	$(RM) \
+	-$(SUBNINJA) -C $(PANGO_DIR)/builddir/ clean
+	$(RM) -r \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpango* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/pango/ \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/pango*.pc

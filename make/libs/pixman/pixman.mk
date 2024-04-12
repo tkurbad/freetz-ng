@@ -63,8 +63,8 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 
 $(pkg)-clean:
-	-$(SUBMAKE) -C $(PIXMAN_DIR) clean
-	$(RM) \
+	-$(SUBNINJA) -C $(PIXMAN_DIR)/builddir/ clean
+	$(RM) -r \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpixman-1.* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/pixman-1/ \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/pixman-1.pc

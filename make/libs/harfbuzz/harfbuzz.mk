@@ -64,8 +64,8 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 
 $(pkg)-clean:
-	-$(SUBMAKE) -C $(HARFBUZZ_DIR) clean
-	$(RM) \
+	-$(SUBNINJA) -C $(HARFBUZZ_DIR)/builddir/ clean
+	$(RM) -r \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/harfbuzz/ \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz*.pc

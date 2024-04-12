@@ -133,7 +133,11 @@ $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR)
 
 
 $(pkg)-clean:
+ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
 	-$(SUBMAKE) -C $(GLIB2_DIR) clean
+else
+	-$(SUBNINJA) -C $(GLIB2_DIR)/builddir/ clean
+endif
 	$(RM) -r \
 		$(GLIB2_LIBNAMES_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib%-$(GLIB2_MAJOR_VERSION)*) \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/glib-$(GLIB2_MAJOR_VERSION) \

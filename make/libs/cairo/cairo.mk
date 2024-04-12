@@ -60,8 +60,8 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 
 $(pkg)-clean:
-	-$(SUBMAKE) -C $(CAIRO_DIR) clean
-	$(RM) \
+	-$(SUBNINJA) -C $(CAIRO_DIR)/builddir/ clean
+	$(RM) -r \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcairo* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/cairo/ \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/cairo*.pc
