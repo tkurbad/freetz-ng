@@ -1,0 +1,8 @@
+config EXTERNAL_FREETZ_PACKAGE_WHOIS
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_WHOIS
+	bool "whois"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/whois
+
