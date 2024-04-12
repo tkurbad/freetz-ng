@@ -49,6 +49,15 @@ config FREETZ_GCC_ARCH
 # -mcpu=%, -mtune=%
 config FREETZ_GCC_CPU
 	string
+	#
+	# There are currently only 2 devices with A73 and they are the only one with kernel 5.4
+	#
+	default "cortex-a73" if \
+		FREETZ_CPU_MODEL_ARM_cortex_a73
+#	default "cortex-a53" if \
+#		FREETZ_CPU_MODEL_ARM_cortex_a53 && FREETZ_BUILD_TOOLCHAIN
+#	default "cortex-a9" if \
+#		FREETZ_CPU_MODEL_ARM_cortex_a9 && FREETZ_BUILD_TOOLCHAIN
 	default "cortex-a9" if \
 		FREETZ_CPU_MODEL_ARM_cortex
 	#
