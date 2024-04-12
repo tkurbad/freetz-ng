@@ -60,6 +60,7 @@ Latest changes
    * Whois 5.5.22
 
  - Libraries:
+   * libidn 1.41
    * libpng 1.6.43
    * pixman 0.43.4
 

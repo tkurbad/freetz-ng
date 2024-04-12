@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.41)
-$(PKG)_LIB_VERSION:=12.6.4
+$(call PKG_INIT_LIB, 1.42)
+$(PKG)_LIB_VERSION:=12.6.5
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=884d706364b81abdd17bee9686d8ff2ae7431c5a14651047c68adf8b31fd8945
+$(PKG)_HASH:=d6c199dcd806e4fe279360cb4b08349a0d39560ed548ffd1ccadda8cdecb4723
 $(PKG)_SITE:=@GNU/$(pkg)
 ### WEBSITE:=https://www.gnu.org/software/libidn/
 ### MANPAGE:=https://www.gnu.org/software/libidn/manual/libidn.html
