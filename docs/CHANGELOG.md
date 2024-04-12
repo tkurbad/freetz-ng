@@ -57,6 +57,7 @@ Latest changes
    * Dropbear 2024.84
    * ImageMagick 7.1.1-30
    * Tor 0.4.8.11
+   * Whois 5.5.22
 
  - Libraries:
    * libpng 1.6.43
