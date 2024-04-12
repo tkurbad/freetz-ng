@@ -60,6 +60,7 @@ Latest changes
 
  - Libraries:
    * libpng 1.6.43
+   * pixman 0.43.4
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
