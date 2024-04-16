@@ -51,6 +51,7 @@ Latest changes
    * cmake 3.29.2
    * ninja 1.12.0
    * python 3.11.9
+   * rsync 3.3.0
 
  - Packages:
    * Apache2 2.4.59
