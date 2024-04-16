@@ -10,6 +10,8 @@ $(PKG)_SITE:=@SAMBA/rsync/src
 $(PKG)_BINARY:=$($(PKG)_DIR)/rsync
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/rsync
 
+$(PKG)_EXCLUDED+=$(if $(FREETZ_PACKAGE_RSYNC_REMOVE_WEBIF),usr/lib/cgi-bin/rsync.cgi etc/default.rsync etc/init.d/rc.rsync)
+
 $(PKG)_DEPENDS_ON += popt zlib
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
