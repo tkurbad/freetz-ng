@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.4.75)
+$(call PKG_INIT_BIN, 1.4.76)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=8b721ca939d312afaa6ef31dcbd6afb5161ed385ac828e6fccd4c5b76be189d6
+$(PKG)_HASH:=8cbf4296e373cfd0cedfe9d978760b5b05c58fdc4048b4e2bcaf0a61ac8f5011
 $(PKG)_SITE:=https://download.lighttpd.net/lighttpd/releases-1.4.x
 ### WEBSITE:=https://www.lighttpd.net/
 ### MANPAGE:=https://redmine.lighttpd.net/projects/lighttpd/wiki
@@ -46,6 +46,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_MAXMINDDB
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_PROPS
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LIGHTTPD_MOD_WEBDAV_WITH_LOCKS
 
+$(PKG)_PATCH_PRE_CMDS += ./autogen.sh;
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 $(PKG)_CONFIGURE_OPTIONS += --libdir=$($(PKG)_MODULES_DIR)

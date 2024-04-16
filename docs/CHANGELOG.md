@@ -49,6 +49,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.29.2
+   * Lighttpd 1.4.76
    * ninja 1.12.0
    * python 3.11.9
    * rsync 3.3.0
