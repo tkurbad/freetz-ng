@@ -10,21 +10,29 @@ config FREETZ_LIB_libctlmgr
 
 if FREETZ_LIB_libctlmgr
 
+	config FREETZ_LIB_libctlmgr_WITH_DEBUG
+		bool "With DEBUG - DEVELOPER"
+		depends on FREETZ_SHOW_DEVELOPER
+		default n
+		help
+			Show some debug output on console.
+			Do not enable it if you dont know a reason.
+
 	config FREETZ_LIB_libctlmgr_WITH_CHMOD
-		bool
+		bool "With CHMOD"
 		depends on FREETZ_AVM_VERSION_07_0X_MIN
 		default n
 		help
-			Alters chmod() for /var/tmp
-			Used to keep filesystem permissions
+			Alters chmod() for /var/tmp directory.
+			Used to keep filesystem permissions.
 
 	config FREETZ_LIB_libctlmgr_WITH_RENAME
-		bool
+		bool "With RENAME"
 		depends on FREETZ_AVM_VERSION_07_1X_MAX && FREETZ_AVM_HAS_USB_HOST
 		default n
 		help
-			Alters rename() for /etc/passwd
-			Used to keep freetz users
+			Alters rename() for /etc/passwd file.
+			Used to keep freetz users.
 
 endif # FREETZ_LIB_libctlmgr
 
