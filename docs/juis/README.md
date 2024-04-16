@@ -60,7 +60,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 247: [FRITZ.Box_7520-07.57.image](http://download.avm.de/fritzbox/fritzbox-7520/deutschland/fritz.os/FRITZ.Box_7520-07.57.image)
  - HWR 249: [FRITZ.Powerline_1260.249.07.57.image](http://download.avm.de/fritzpowerline/fritzpowerline-1260/deutschland/fritz.os/FRITZ.Powerline_1260.249.07.57.image)
  - HWR 252: [FRITZ.Box_6660_Cable-07.57.image](http://download.avm.de/fritzbox/fritzbox-6660-cable/deutschland/fritz.os/FRITZ.Box_6660_Cable-07.57.image)
- - HWR 253: [FRITZ.Repeater_6000-07.31-109964-Release.image](http://download.avm.de/firmware/WWA/FRITZ.Repeater_6000-07.31-109964-Release.image)
+ - HWR 253: [FRITZ.Repeater_6000-07.31.image](http://download.avm.de/fritzwlan/fritzrepeater-6000/deutschland/fritz.os/FRITZ.Repeater_6000-07.31.image)
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.57.image](http://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.57.image)
  - HWR 256: [FRITZ.Box_7530_AX-07.80.image](http://download.avm.de/fritzbox/fritzbox-7530-ax/deutschland/fritz.os/FRITZ.Box_7530_AX-07.80.image)
  - HWR 257: [FRITZ.Box_5530_Fiber-07.80.image](http://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530_Fiber-07.80.image)
