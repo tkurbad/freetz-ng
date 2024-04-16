@@ -1,4 +1,4 @@
-comment "SynCE serial (not available, needs kernel modules)"
+comment "SynCE serial (not available, needs replace kernel)"
 	depends on !(FREETZ_REPLACE_KERNEL && FREETZ_PACKAGE_PPP)
 
 config FREETZ_PACKAGE_SYNCE_SERIAL
