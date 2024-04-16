@@ -49,16 +49,16 @@ Latest changes
 
  - Host tools:
    * cmake 3.29.2
-   * Lighttpd 1.4.76
    * ninja 1.12.0
    * python 3.11.9
-   * rsync 3.3.0
-   * Sudo 1.9.15p5
 
  - Packages:
    * Apache2 2.4.59
    * Dropbear 2024.84
    * ImageMagick 7.1.1-30
+   * Lighttpd 1.4.76
+   * rsync 3.3.0
+   * Sudo 1.9.15p5
    * Tor 0.4.8.11
    * Whois 5.5.22
 
