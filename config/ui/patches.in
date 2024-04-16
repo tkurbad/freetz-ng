@@ -1795,12 +1795,14 @@ config FREETZ_REPLACE_ONLINECHANGED
 
 comment "Additional patches ---------------------------------------"
 
-config FREETZ_ADD_TELNETD
-	bool "Add telnetd"
-	depends on !FREETZ_AVM_HAS_TELNETD
+config FREETZ_ADD_ANNEX_A_FIRMWARE
+	bool "Add Annex A firmware file"
+	depends on FREETZ_TYPE_7270_V1
 	default n
 	help
-		Adds the busybox applet for telnetd, its link and the configuration webif.
+		Add lib/modules/dsp_ur8/ur8-A-dsl.bin. This costs about 400 KB of
+		uncompressed data size. But you can remove Annex B file if you
+		plan to use Annex A.
 
 config FREETZ_ADD_SWAPOPTIONS
 	bool "Add swap options"
@@ -1809,6 +1811,20 @@ config FREETZ_ADD_SWAPOPTIONS
 	select FREETZ_PACKAGE_MOD_SWAPOPTIONS
 	help
 		Add swap configuration options.
+
+config FREETZ_ADD_TELNETD
+	bool "Add telnetd"
+	depends on !FREETZ_AVM_HAS_TELNETD
+	default n
+	help
+		Adds the busybox applet for telnetd, its link and the configuration webif.
+
+config FREETZ_ADD_ETCNETCONFIG
+	bool "Add /etc/netconfig"
+	default n
+	help
+		Adds /etc/netconfig file.
+		Used eg by libtirpc and rpcbind.
 
 config FREETZ_ADD_ETCSERVICES
 	bool "Add /etc/services"
@@ -1826,22 +1842,6 @@ config FREETZ_CUSTOM_ETCSERVICES
 	help
 		Adds freetz-specific services to /etc/services.
 		Used eg by netstat to display names of IP-ports.
-
-config FREETZ_ADD_ETCNETCONFIG
-	bool "Add /etc/netconfig"
-	default n
-	help
-		Adds /etc/netconfig file.
-		Used eg by libtirpc and rpcbind.
-
-config FREETZ_ADD_ANNEX_A_FIRMWARE
-	bool "Add Annex A firmware file"
-	depends on FREETZ_TYPE_7270_V1
-	default n
-	help
-		Add lib/modules/dsp_ur8/ur8-A-dsl.bin. This costs about 400 KB of
-		uncompressed data size. But you can remove Annex B file if you
-		plan to use Annex A.
 
 config FREETZ_ENFORCE_URLADER_SETTINGS
 	bool "Enforce urlader environment"
