@@ -1,4 +1,4 @@
-# rsync 3.2.6
+# rsync 3.3.0
  - Homepage: [https://rsync.samba.org/](https://rsync.samba.org/)
  - Manpage: [https://rsync.samba.org/documentation.html](https://rsync.samba.org/documentation.html)
  - Changelog: [https://download.samba.org/pub/rsync/NEWS](https://download.samba.org/pub/rsync/NEWS)
