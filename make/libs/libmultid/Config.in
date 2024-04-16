@@ -8,6 +8,14 @@ config FREETZ_LIB_libmultid
 
 if FREETZ_LIB_libmultid
 
+	config FREETZ_LIB_libmultid_WITH_DEBUG
+		bool "With DEBUG - DEVELOPER"
+		depends on FREETZ_SHOW_DEVELOPER
+		default n
+		help
+			Show some debug output on console.
+			Do not enable it if you dont know a reason.
+
 	choice
 		prompt "Listen on"
 			default FREETZ_LIB_libmultid_WITH_ANYIP
