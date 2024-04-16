@@ -89,6 +89,7 @@ case "$3" in
 		do_log /var/log/onlinechanged.log
 		do_log /var/log/external.log
 		do_log /var/log/mod_mount.log
+		do_log /var/log/stickymon.log
 		;;
 esac
 

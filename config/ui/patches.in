@@ -1843,6 +1843,15 @@ config FREETZ_CUSTOM_ETCSERVICES
 		Adds freetz-specific services to /etc/services.
 		Used eg by netstat to display names of IP-ports.
 
+config FREETZ_ENFORCE_TMP_PERMISSIONS
+	bool "Enforce /tmp/ permissions"
+	depends on !FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD && FREETZ_AVM_VERSION_07_2X_MIN
+	select FREETZ_BUSYBOX_INOTIFYD
+	select FREETZ_BUSYBOX_START_STOP_DAEMON
+	default n
+	help
+		Changes /tmp/ permissions back to 1777 after AVM sets 755.
+
 config FREETZ_ENFORCE_URLADER_SETTINGS
 	bool "Enforce urlader environment"
 	depends on FREETZ_SHOW_EXPERT

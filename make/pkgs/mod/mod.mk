@@ -15,6 +15,8 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_CUSTOM_UDEV_RULES),,etc/default.mod/udev_*.def 
 $(PKG)_EXCLUDED += $(if $(FREETZ_PATCH_FREETZMOUNT),,usr/lib/libmodmount.sh usr/lib/cgi-bin/mod/conf/30-mount.sh)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PATCH_UDEVMOUNT),,usr/lib/libmodudevm.sh usr/lib/cgi-bin/mod/conf/30-udevm.sh)
 
+$(PKG)_EXCLUDED += $(if $(FREETZ_ENFORCE_TMP_PERMISSIONS),,usr/bin/stickymon etc/init.d/rc.stickymon)
+
 $(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD),usr/bin/wrapper/dsld   etc/init.d/rc.dsld)
 $(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD),usr/bin/wrapper/multid etc/init.d/rc.multid)
 $(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD),usr/bin/wrapper/rextd  etc/init.d/rc.rextd)

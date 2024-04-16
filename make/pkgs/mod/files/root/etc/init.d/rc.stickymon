@@ -1,0 +1,58 @@
+#!/bin/sh
+
+DAEMON=stickymon
+DAEMON_LONG_NAME=StickyMon
+. /etc/init.d/modlibrc
+
+tmp_dir='/var/tmp'
+
+
+startdaemon_pre() {
+	while [ ! -d "$tmp_dir" ]; do 
+		echo -n '.'
+		sleep 1
+	done
+
+	$DAEMON_BIN init
+}
+
+start() {
+	modlib_startdaemon start-stop-daemon -S -b -q -m -p $PID_FILE -n $DAEMON -a inotifyd -- $DAEMON_BIN "$tmp_dir:e"
+}
+
+stop_post() {
+	$DAEMON_BIN stop
+}
+
+case $1 in
+	""|load)
+		modreg pkg $DAEMON "$DAEMON_LONG_NAME"
+		modreg daemon -p mod $DAEMON
+
+		modlib_start "yes"
+		;;
+	unload)
+		modunreg daemon $DAEMON
+		modunreg pkg $DAEMON
+
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

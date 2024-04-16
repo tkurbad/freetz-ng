@@ -1,0 +1,42 @@
+#!/bin/sh
+. /etc/init.d/loglibrc
+
+tmp_dir='/var/tmp'
+perm='1777'
+
+log() {
+	local _log="$(cat)" # save stdin to _log
+	loglib_system "STICKYMON" "$_log"
+	echo "$(date) -- $_log" >> /var/log/stickymon.log
+}
+
+stickymonCheck() {
+	stat="$(stat -c '%a' $tmp_dir 2>/dev/null)"
+	[ "$stat" == "$perm" ] && return
+	chmod "$perm" "$tmp_dir"
+	echo "Corrected permissions from $stat to $perm" | log
+}
+
+stickymonSlow() {
+	stickymonCheck 1
+	sleep 1
+	stickymonCheck 2
+}
+
+stickymonInit() {
+	echo "Initializing stickymon for $tmp_dir" | log
+	stickymonCheck 0
+}
+
+stickymonStop() {
+	echo "Terminated stickymon" | log
+}
+
+case "$1" in
+	stop)	stickymonStop ;;
+	init)	stickymonInit ;;
+	*)	stickymonSlow ;;
+esac
+
+exit 0
+
