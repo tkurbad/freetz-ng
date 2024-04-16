@@ -478,6 +478,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>ENFORCE_BRANDING_versatel: versatel</u><a id='enforce-branding-versatel'></a>**<br>
     Versatel branding
 
+  * **<u>ENFORCE_TMP_PERMISSIONS: Enforce /tmp/ permissions</u><a id='enforce-tmp-permissions'></a>**<br>
+    Changes /tmp/ permissions back to 1777 after AVM sets 755.
+
   * **<u>ENFORCE_URLADER_SETTING_FIRMWARE_VERSION: Enforce firmware_version variable</u><a id='enforce-urlader-setting-firmware-version'></a>**<br>
     Choose wisely. Your image beeing built must support this. Typical settings are eg.: avm, avme, tcom, 1und1, ... If this is empty the urlader setting won't be touched.
 
