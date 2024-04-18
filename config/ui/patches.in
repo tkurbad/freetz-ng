@@ -1850,7 +1850,7 @@ config FREETZ_ENFORCE_TMP_PERMISSIONS
 	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	default n
 	help
-		Changes /tmp/ permissions back to 1777 after AVM sets 755.
+		Changes /var/tmp/ permissions back to 1777 after AVM sets 755.
 
 config FREETZ_ENFORCE_URLADER_SETTINGS
 	bool "Enforce urlader environment"
