@@ -83,7 +83,7 @@ quit
 #		grep -q "^ProductID" "$tmpenv" && break
 #		grep -q "^226 " "$tmpout" && break  # Transfer complete
 		grep -q "^221 " "$tmpout" && break  # Thank you for using the FTP service on ADAM2
-		[ $count -gt 25 ] && echo "Timeout! -- PLEASE REPORT YOUR DEVICE AND FULL LOG" && break
+		[ $count -gt 15 ] && echo "Timeout!" && break
 	done
 	kill $log_pid >/dev/null 2>&1  # cant get (simply) correct ftp/ppid in pipe if using tee
 	kill $ftp_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
