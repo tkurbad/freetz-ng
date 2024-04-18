@@ -53,6 +53,7 @@ Latest changes
    * python 3.11.9
 
  - Packages:
+   * BIND 9.11.37/9.18.24
    * Apache2 2.4.59
    * Dropbear 2024.84
    * ImageMagick 7.1.1-30

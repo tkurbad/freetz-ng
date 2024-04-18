@@ -1,0 +1,3 @@
+ifneq (,$(strip $(filter y, $(FREETZ_LIB_libbind9) $(FREETZ_LIB_libdns) $(FREETZ_LIB_libirs) $(FREETZ_LIB_libisccc) $(FREETZ_LIB_libisccfg) $(FREETZ_LIB_libisc) $(FREETZ_LIB_libns) )))
+LIBS+=bind
+endif

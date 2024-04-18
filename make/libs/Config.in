@@ -7,6 +7,12 @@ menu "Avahi libraries"
 	source "make/pkgs/avahi/Config.in.libs"
 endmenu ### "Avahi libraries"
 
+if FREETZ_PACKAGE_BIND_VERSION_CURRENT
+menu "Bind"
+	source "make/pkgs/bind/Config.in.libs"
+endmenu ### "Bind"
+endif # FREETZ_PACKAGE_BIND_VERSION_CURRENT
+
 menu "Charsets & Internationalization"
 	source "make/pkgs/iconv/Config.in.libs"
 	source "make/libs/gettext/Config.in"

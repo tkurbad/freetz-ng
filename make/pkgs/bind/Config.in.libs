@@ -1,0 +1,57 @@
+config FREETZ_LIB_libbind9
+	bool "libbind9 (libbind9.so)"
+	default n
+	select FREETZ_LIB_libdns
+	select FREETZ_LIB_libisc
+	select FREETZ_LIB_libisccfg
+	select FREETZ_LIB_libns
+	select FREETZ_LIB_libatomic
+
+config FREETZ_LIB_libdns
+	bool "libdns (libdns.so)"
+	default n
+	select FREETZ_LIB_libisc
+	select FREETZ_LIB_libatomic
+	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libssl
+	select FREETZ_LIB_libuv
+
+config FREETZ_LIB_libirs
+	bool "libirs (libirs.so)"
+	default n
+	select FREETZ_LIB_libdns
+	select FREETZ_LIB_libisc
+	select FREETZ_LIB_libisccfg
+	select FREETZ_LIB_libatomic
+
+config FREETZ_LIB_libisc
+	bool "libisc (libisc.so)"
+	default n
+	select FREETZ_LIB_libatomic
+	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libssl
+	select FREETZ_LIB_libuv
+
+config FREETZ_LIB_libisccc
+	bool "libisccc (libisccc.so)"
+	default n
+	select FREETZ_LIB_libisc
+	select FREETZ_LIB_libatomic
+
+config FREETZ_LIB_libisccfg
+	bool "libisccfg (libisccfg.so)"
+	default n
+	select FREETZ_LIB_libdns
+	select FREETZ_LIB_libisc
+	select FREETZ_LIB_libatomic
+
+config FREETZ_LIB_libns
+	bool "libns (libns.so)"
+	default n
+	select FREETZ_LIB_libdns
+	select FREETZ_LIB_libisc
+	select FREETZ_LIB_libatomic
+	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libssl
+	select FREETZ_LIB_libuv
+
