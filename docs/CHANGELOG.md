@@ -58,7 +58,7 @@ Latest changes
 
  - Packages:
    * Apache2 2.4.59
-   * BIND 9.11.37/9.18.24
+   * BIND 9.11.37/9.18.26
    * Dropbear 2024.84
    * ImageMagick 7.1.1-30
    * Lighttpd 1.4.76
