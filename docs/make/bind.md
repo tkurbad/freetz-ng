@@ -1,7 +1,7 @@
-# BIND 9.11.37/9.16.48
+# BIND 9.11.37/9.18.24
  - Homepage: [https://www.isc.org/bind/](https://www.isc.org/bind/)
  - Manpage: [https://bind9.readthedocs.io/en/](https://bind9.readthedocs.io/en/)
- - Changelog: [https://downloads.isc.org/isc/bind9/cur/9.16/](https://downloads.isc.org/isc/bind9/cur/9.16/)
+ - Changelog: [https://downloads.isc.org/isc/bind9/cur/9.18/](https://downloads.isc.org/isc/bind9/cur/9.18/)
  - Repository: [https://gitlab.isc.org/isc-projects/bind9/](https://gitlab.isc.org/isc-projects/bind9/)
  - Package: [master/make/pkgs/bind/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bind/)
 
