@@ -59,6 +59,7 @@ function wait_loader() {
 
 # Download the "env" file from the device.
 function read_env() {
+	tmpout="$(mktemp -tu freetz_out_XXX)"
 	tmpenv="$(mktemp -tu freetz_env_XXX)"
 	echo " * Reading 'env' file to $tmpenv"
 	echo "open $ip
@@ -69,20 +70,24 @@ quote SYST
 quote MEDIA SDRAM
 get env $tmpenv
 quit
-" | ftp -v -n -p &
-	bg_pid=$!
+" | ftp -v -n -p 2>&1 > "$tmpout" &
+	local ftp_pid=$!
 
-	count=0
+	tail -n 1234 -f "$tmpout" &
+	local log_pid=$!
+
+	local count=0
 	while true; do
 		sleep 0.2
 		let count++
-		grep -qs "^ProductID" "$tmpenv" && break
-		(( count > 15 )) && echo "Timeout!" && break
+#		grep -q "^ProductID" "$tmpenv" && break
+#		grep -q "^226 " "$tmpout" && break  # Transfer complete
+		grep -q "^221 " "$tmpout" && break  # Thank you for using the FTP service on ADAM2
+		[ $count -gt 25 ] && echo "Timeout! -- PLEASE REPORT YOUR DEVICE AND FULL LOG" && break
 	done
-	kill $bg_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
-	wait $bg_pid
-
-# debug-out > quit > kill
+	kill $log_pid >/dev/null 2>&1  # cant get (simply) correct ftp/ppid in pipe if using tee
+	kill $ftp_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
+	wait $ftp_pid
 
 	dos2unix -q "$tmpenv"
 }
@@ -447,6 +452,7 @@ prepare_image() {
 
 function cleanup() {
 	local val=$?
+	[ -n "${tmpout}"      ] && [ -f "${tmpout}"      ] && rm -f  "${tmpout}"       # all modes
 	[ -n "${tmpenv}"      ] && [ -f "${tmpenv}"      ] && rm -f  "${tmpenv}"       # all modes
 	[ -n "${tmpdir}"      ] && [ -d "${tmpdir}"      ] && rm -fr "${tmpdir}"       # not single
 	[ -n "${tmpimg}"      ] && [ -f "${tmpimg}"      ] && rm -f  "${tmpimg}"       # single only
@@ -563,6 +569,7 @@ while [ $# -ge 1 ]; do
 done
 
 # trap cleanup
+tmpout=""
 tmpenv=""
 tmpdir=""
 tmpimg=""
