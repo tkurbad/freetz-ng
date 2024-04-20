@@ -65,6 +65,7 @@ Latest changes
    * minisatip 1.0.4/1.3.6
    * rsync 3.3.0
    * Sudo 1.9.15p5
+   * SQLite 3.45.3
    * Tor 0.4.8.11
    * Whois 5.5.22
 
