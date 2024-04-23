@@ -6,7 +6,7 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 cgi --id=freetz
 
-# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'TobjasR\nL3P3\nhermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' 
+# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'McBane87\nTobjasR\nL3P3\nhermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' 
 cgi_begin "$(lang de:"&Uuml;ber" en:"About")"
 cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <center>
@@ -18,6 +18,7 @@ aholler
 Alex
 asmcc
 berndy2001
+Bodenseematze
 buehmann
 BugReporter-ilKY
 cawidtu
@@ -26,6 +27,7 @@ cinereous
 cm8
 Conan179
 cuma
+dionysius
 Dirk
 e6e7e8
 er13
@@ -48,6 +50,7 @@ hippie2000
 horle
 id1508
 idealist1508
+Ircama
 JanpieterSollie
 JasperMichalke
 JBBgameich
@@ -67,6 +70,7 @@ martinkoehler
 Maurits
 MaxMuster
 maz
+McBane87
 McNetic
 MichaelHeimpold
 mickey
@@ -77,6 +81,7 @@ mrtnmtth
 Oliver
 openfnord
 PeterFichtner
+PeterKowalsky
 PeterMeiser
 PeterPawn
 Rainer
