@@ -80,7 +80,6 @@ case "$3" in
 	*)
 		do_log /var/log/mod_lang.log
 		do_log /var/log/mod_load.log
-		do_log /var/log/mod_net.log
 		do_log /var/log/mod_voip.log
 		do_log /var/log/mod.log
 		do_log /var/log/mod_swap.log
@@ -89,7 +88,7 @@ case "$3" in
 		do_log /var/log/onlinechanged.log
 		do_log /var/log/external.log
 		do_log /var/log/mod_mount.log
-		do_log /var/log/stickymon.log
+		do_log /var/log/mod_net.log
 		;;
 esac
 
