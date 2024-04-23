@@ -7,7 +7,7 @@ perm='1777'
 log() {
 	local _log="$(cat)" # save stdin to _log
 	loglib_system "STICKYMON" "$_log"
-	echo "$(date) -- $_log" >> /var/log/stickymon.log
+	echo "$(date +'%Y-%m-%d %H:%M:%S') -- $_log" >> /var/log/stickymon.log
 }
 
 stickymonCheck() {
