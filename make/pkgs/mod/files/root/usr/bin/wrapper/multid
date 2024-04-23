@@ -5,7 +5,7 @@ log() {
 	local _log="$(cat)" # save stdin to _log
 	[ -z "$_log" ] && return
 	loglib_system "AVM-MULTID" "$_log"
-	echo "$_log" >> /var/log/mod_net.log
+	echo "$(date +'%Y-%m-%d %H:%M:%S') -- $_log" >> /var/log/mod_net.log
 }
 
 daemon_mode=start
