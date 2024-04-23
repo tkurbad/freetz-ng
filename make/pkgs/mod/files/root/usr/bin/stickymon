@@ -14,7 +14,7 @@ stickymonCheck() {
 	stat="$(stat -c '%a' $tmp_dir 2>/dev/null)"
 	[ "$stat" == "$perm" ] && return
 	chmod "$perm" "$tmp_dir"
-	echo "Corrected permissions from $stat to $perm" | log
+	echo "Changed /tmp permissions from $stat to $perm" | log
 }
 
 stickymonSlow() {
@@ -24,12 +24,12 @@ stickymonSlow() {
 }
 
 stickymonInit() {
-	echo "Initializing stickymon for $tmp_dir" | log
+	echo "Started StickyMon ... done." | log
 	stickymonCheck 0
 }
 
 stickymonStop() {
-	echo "Terminated stickymon" | log
+	echo "Stopped StickyMon ... done." | log
 }
 
 case "$1" in
