@@ -120,7 +120,17 @@ function push_fw() {
 	done
 	echo
 	[ -z "$env_ProductID" ] && echo "You are not connected to the bootloader of the device." && exit 1
-	[ -n "$PRODUCT" ] && [ "${PRODUCT% (*}" != "$env_ProductID" ] && echo "Error, ProductID of image does not match device" && exit 1
+
+	local HWR_ENV="$( echo "$env_ProductID" | sed -nr 's/.*_HW(...).*/\1/p')"
+	local HWR_IMG="$( echo "$PRODUCT"       | sed -nr 's/.*_HW(...).*/\1/p')"
+	if [ -n "$PRODUCT" ] && [ "$HWR_IMG" != "$HWR_ENV" ]; then
+		echo "Error, ProductID of image does not match device!"
+		echo -n "Type 'c' to ignore and continue: "
+		read -n1 -t9 c
+		[ "$?" != "0" ] && echo -e "¿\nTimeout" && exit 1
+		[ "$c" != "c" ] && echo -e "\nAborted" && exit 1
+		echo -e "\n"
+	fi
 
 	if [ -n "$ISRAM$ISFIT" ]; then
 		if [ "${FULLSIZE//0/}" == "x" ]; then
