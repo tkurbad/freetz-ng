@@ -99,13 +99,7 @@ config FREETZ_AVM_HAS_NOEXEC
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 
-config FREETZ_AVM_HAS_NTFS
-	def_bool y
-
 config FREETZ_AVM_HAS_OPENSSL
-	def_bool y
-
-config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 
 config FREETZ_AVM_HAS_PCPD
@@ -118,9 +112,6 @@ config FREETZ_AVM_HAS_PLCD
 	def_bool y
 
 config FREETZ_AVM_HAS_PRINTSERV
-	def_bool y
-
-config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
