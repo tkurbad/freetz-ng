@@ -49,6 +49,18 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
+ - Fedora 40 64-Bit:
+```
+sudo dnf -y install \
+  bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel flex gcc gcc-c++ \
+  gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape javapackages-tools \
+  kmod libacl-devel libattr-devel libcap-devel libgcc.i686 libglade2-devel \
+  libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel libzstd-devel.x86_64 make \
+  ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl openssl-devel patch patchutils \
+  perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen rsync sharutils \
+  sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget2 xz zlib-devel
+```
+
  - Fedora 37/38/39 64-Bit:
 ```
 sudo dnf -y install \
