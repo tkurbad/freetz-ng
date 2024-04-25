@@ -59,8 +59,8 @@ do_download() {
 	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"$outFile\""; rm "$outFile" 2>/dev/null; exit 1' TERM INT
 	echo 1>&11
 	[ "$DEBUG" == "1" ] && echo \
-	"wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp '${fullURL}' -O '${outFile}' 1>&11 2>&12"
-	 wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp "${fullURL}" -O "${outFile}" 1>&11 2>&12
+	"wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll '${fullURL}' -O '${outFile}' 1>&11 2>&12"
+	 wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll "${fullURL}" -O "${outFile}" 1>&11 2>&12
 	wget_result=$?
 	[ "$opt_trap_delete" == y ] && trap - TERM INT
 	if [ "$wget_result" != "0" ]; then
@@ -81,8 +81,8 @@ do_check() {
 	local mode wget_output wget_result
 	for mode in --spider --output-document=/dev/null; do
 		[ "$DEBUG" == "1" ] && \
-		echo         "LC_ALL=C wget -t3 --timeout=20 --passive-ftp -S $mode '$1' 2>&1"
-		wget_output=$(LC_ALL=C wget -t3 --timeout=20 --passive-ftp -S $mode "$1" 2>&1)
+		echo         "LC_ALL=C wget -t3 --timeout=20 -S $mode '$1' 2>&1"
+		wget_output=$(LC_ALL=C wget -t3 --timeout=20 -S $mode "$1" 2>&1)
 		wget_result=$?
 		if [ "$wget_result" != "0" ]; then
 			# workaround wget spider-mode bug (false negative): known to happen with all sites
