@@ -47,6 +47,11 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
+ - Fedora 40 64-Bit:
+```
+sudo dnf -y install %%Fedora40%%
+```
+
  - Fedora 37/38/39 64-Bit:
 ```
 sudo dnf -y install %%Fedora37%%
