@@ -57,7 +57,7 @@ sudo dnf -y install \
   libacl-devel libattr-devel libcap-devel libgcc libglade2-devel libstdc++-devel libtool \
   libuuid-devel libxml2-devel libzstd-devel make ncurses ncurses-devel ncurses-term netcat net-tools \
   openssl openssl-devel patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel \
-  readline-devel rpcgen rsync sharutils sqlite sqlite-devel subversion texinfo unar util-linux wget2 xz \
+  readline-devel rpcgen rsync sharutils sqlite sqlite-devel subversion texinfo unar util-linux wget xz \
   zlib-devel
 ```
 
