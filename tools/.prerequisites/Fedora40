@@ -50,8 +50,8 @@ readline-devel
 rpcgen
 rsync
 sharutils
-sqlite-devel
 sqlite
+sqlite-devel
 subversion
 texinfo
 unar
