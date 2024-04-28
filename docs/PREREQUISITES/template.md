@@ -129,7 +129,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 23 64-Bit:
+ - Ubuntu 23/24 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu23%%
 ```
