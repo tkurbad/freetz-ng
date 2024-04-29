@@ -453,12 +453,12 @@ Currently supported devices and firmwares
   - 154.07.13 rev74390 {INT} [MESH18 NL3]
   - 154.07.29 rev92051 {ALL} [PSQ19P2NL4]
   - 154.07.57 rev107893 {ALL} [MOVE21NL1]
-  - 154.07.90 rev111682 {ALL} [Smart24 P1] (Inhaus)
+  - 154.07.90 rev112649 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.57 rev107809 {ALL} [MOVE21NL1]
   - 259.07.80 rev110629 {ALL} [GoFiber23]
-  - 259.07.90 rev111684 {ALL} [Smart24 P1] (Inhaus)
+  - 259.07.90 rev112650 {ALL} [Smart24 P1] (Labor)
 
 * __FRITZ!Box 7690 (UNTESTED)__
   - 285.07.60 rev112616 {ALL} [FCS23] (Inhaus)
