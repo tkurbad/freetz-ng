@@ -2,8 +2,8 @@ $(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_NMAP_VERSION_4),4.76,$(if $(FREETZ_PA
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH_4:=4e24328ca6ec97afb2a8caf312b1f111a15cf41763a5ac41e7a633fdb217d66d
 $(PKG)_HASH_5:=15b3e134a74fa9b54aba2c3a53d6701c7ad221dc4051657ef95465a5a5a8687e
-$(PKG)_HASH_7:=d71be189eec43d7e099bac8571509d316c4577ca79491832ac3e1217bc8f92cc
-$(PKG)_HASH:=e14ab530e47b5afd88f1c8a2bac7f89cd8fe6b478e22d255c5b9bddb7a1c5778
+$(PKG)_HASH_7:=e14ab530e47b5afd88f1c8a2bac7f89cd8fe6b478e22d255c5b9bddb7a1c5778
+$(PKG)_HASH:=$($(PKG)_HASH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1))
 $(PKG)_SITE:=https://nmap.org/dist
 ### WEBSITE:=https://nmap.org/
 ### MANPAGE:=https://nmap.org/docs.html
