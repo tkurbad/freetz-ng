@@ -63,6 +63,7 @@ Latest changes
    * ImageMagick 7.1.1-30
    * Lighttpd 1.4.76
    * minisatip 1.0.4/1.3.6
+   * Nmap 4.76/5.51/7.95
    * precompiled host-tools 2024-04-23
    * rsync 3.3.0
    * Sudo 1.9.15p5

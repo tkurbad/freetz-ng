@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_NMAP_VERSION_4),4.76,$(if $(FREETZ_PACKAGE_NMAP_VERSION_5),5.51,7.94)))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_NMAP_VERSION_4),4.76,$(if $(FREETZ_PACKAGE_NMAP_VERSION_5),5.51,7.95)))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH_4:=4e24328ca6ec97afb2a8caf312b1f111a15cf41763a5ac41e7a633fdb217d66d
 $(PKG)_HASH_5:=15b3e134a74fa9b54aba2c3a53d6701c7ad221dc4051657ef95465a5a5a8687e
 $(PKG)_HASH_7:=d71be189eec43d7e099bac8571509d316c4577ca79491832ac3e1217bc8f92cc
-$(PKG)_HASH:=$($(PKG)_HASH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1))
+$(PKG)_HASH:=e14ab530e47b5afd88f1c8a2bac7f89cd8fe6b478e22d255c5b9bddb7a1c5778
 $(PKG)_SITE:=https://nmap.org/dist
 ### WEBSITE:=https://nmap.org/
 ### MANPAGE:=https://nmap.org/docs.html
@@ -13,7 +13,13 @@ $(PKG)_SITE:=https://nmap.org/dist
 $(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
 
 # make sure nmap never fallbacks to using the bundled libraries by deleting them
-$(PKG)_PATCH_POST_CMDS += $(RM) -r $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_DNET),libdnet-stripped) $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_LUA),liblua) $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_PCAP),libpcap) $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_PCRE),libpcre) $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_Z),libz) $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_SSH2),libssh2) $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_LINEAR),liblinear);
+$(PKG)_PATCH_POST_CMDS += $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_DNET),$(RM) -r libdnet-stripped;)
+$(PKG)_PATCH_POST_CMDS += $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_LUA),$(RM) -r liblua;)
+$(PKG)_PATCH_POST_CMDS += $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_PCAP),$(RM) -r libpcap;)
+$(PKG)_PATCH_POST_CMDS += $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_PCRE),$(RM) -r libpcre;)
+$(PKG)_PATCH_POST_CMDS += $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_Z),$(RM) -r libz;)
+$(PKG)_PATCH_POST_CMDS += $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_SSH2),$(RM) -r libssh2;)
+$(PKG)_PATCH_POST_CMDS += $(if $(FREETZ_PACKAGE_NMAP_WITH_SHARED_LINEAR),$(RM) -r liblinear;)
 
 ifneq ($(strip $(FREETZ_PACKAGE_NMAP_VERSION_4)),y)
 $(PKG)_BINARIES5_ALL       := ncat nping
