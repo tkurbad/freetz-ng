@@ -533,11 +533,6 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 	[ ! -r "${KERNEL}" ] && error 1 "cannot find kernel.image (${KERNEL})"
 	[ ! -r "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" ] && error 1 "cannot find filesystem.image (${FIRMWARE_DIR}/${FILESYSTEM_IMAGE})"
 
-	# Do we have the tool ?
-	for tool in "$UNSQUASHFS" "$FINDSQUASHFS" "$TICHKSUM"; do
-		[ ! -x $tool ] && error 1 "cannot find the tool $tool"
-	done
-
 	# Remove NMI vector from SquashFS
 	if [ "$FREETZ_AVM_HAS_NMI_VECTOR" == "y" ]; then
 		echo0 "removing NMI vector from SquashFS"
@@ -554,6 +549,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		esac
 	fi
 
+	[ ! -x "$TICHKSUM" ] && error 1 "cannot find the tool $TICHKSUM"
 	"$TICHKSUM" -r "${KERNEL}" > /dev/null
 	"$TICHKSUM" -r "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" > /dev/null
 
@@ -571,6 +567,8 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		echo "unpacking ${INNER_FS_PREFIX}filesystem image"
 		modunpack_autodetect_fs "$FILESYSTEM_DIR" "$FILESYSTEM" || error 1 "unpacking ${INNER_FS_PREFIX}filesystem image failed"
 	else
+		[ ! -x "$FINDSQUASHFS" ] && error 1 "cannot find the tool $FINDSQUASHFS"
+
 		echo "splitting kernel image"
 		( cd "$KERNEL_DIR" && "${TOOLS_DIR}/${FINDSQUASHFS_TOOL}" "../${FIRMWARE_SUBDIR}/${KERNEL_IMAGE}" > /dev/null 2>&1 )
 
@@ -694,6 +692,7 @@ HTML_MOD_DIR="${FILESYSTEM_MOD_DIR}/${HTML_SUBDIR}"
 
 
 if [ -z "$FREETZ_SQUASHFS_BLOCKSIZE" ]; then # expected to be empty only if FREETZ_SQUASHFS_BLOCKSIZE_ORIG is set
+	[ ! -x "$UNSQUASHFS"   ] && error 1 "cannot find the tool $UNSQUASHFS"
 	echo -n "determining SquashFS block size of the original firmware: "
 	FREETZ_SQUASHFS_BLOCKSIZE=$("$UNSQUASHFS" -s "$FILESYSTEM" 2>/dev/null | sed -nr 's/Block size ([0-9]+)/\1/p')
 	[ -z "$FREETZ_SQUASHFS_BLOCKSIZE" ] && error 1 "failed" || echo -e "$((FREETZ_SQUASHFS_BLOCKSIZE/1024)) kB\n"
@@ -1937,7 +1936,6 @@ fi
 # -------------------------
 
 if [ "$DO_PACK" -gt 0 ]; then
-	[ ! -x "$MKSQUASHFS" ] && error 1 "cannot find $MKSQUASHFS"
 
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FILESYSTEM_MOD_DIR" "$FILESYSTEM_DIR"
 	if [ "$FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO" == "y" ]; then
@@ -1945,6 +1943,8 @@ if [ "$DO_PACK" -gt 0 ]; then
 
 		find $FILESYSTEM_MOD_DIR/ -mindepth 1 -printf '%P\n' | cpio -o --quiet -H newc -D $FILESYSTEM_MOD_DIR/ | gzip -9 > $ABS_BASE_DIR/${MAIN_FILESYSTEM_MOD}
 	else
+		[ ! -x "$MKSQUASHFS" ] && error 1 "cannot find $MKSQUASHFS"
+
 		echo0 "creating ${INNER_FS_PREFIX}filesystem image (SquashFS${FREETZ_SQUASHFS_VERSION}_${FREETZ_AVM_SQUASHFS_ENDIANNESS}-${FREETZ_AVM_SQUASHFS_COMPRESSION})"
 		echo1 "SquashFS block size: $(($FREETZ_SQUASHFS_BLOCKSIZE/1024)) kB ($FREETZ_SQUASHFS_BLOCKSIZE bytes)"
 
