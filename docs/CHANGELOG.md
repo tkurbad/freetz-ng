@@ -51,6 +51,7 @@ Latest changes
    * cmake 3.29.2
    * cpio 2.15
    * ninja 1.12.0
+   * precompiled host-tools 2024-05-01
    * python 3.11.9
 
  - Patches:
@@ -65,7 +66,6 @@ Latest changes
    * Lighttpd 1.4.76
    * minisatip 1.0.4/1.3.6
    * Nmap 4.76/5.51/7.95
-   * precompiled host-tools 2024-04-23
    * rsync 3.3.0
    * Sudo 1.9.15p5
    * SQLite 3.45.3
