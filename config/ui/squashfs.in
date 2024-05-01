@@ -1,5 +1,6 @@
 menu "SquashFS options"
 	visible if FREETZ_SHOW_EXPERT
+	visible if !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 
 	comment "CAUTION: SquashFS block sizes >64 KB can cause an unstable box due to extensive memory usage"
 		depends on ! (FREETZ_SQUASHFS_BLOCKSIZE_ORIG || FREETZ_SQUASHFS_BLOCKSIZE_65536)
