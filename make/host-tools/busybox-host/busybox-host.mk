@@ -20,6 +20,18 @@ $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_NOP)
 
+.PHONY: $(pkg)-oldconfig $(pkg)-olddefconfig $(pkg)-menuconfig
+
+$(pkg)-menuconfig: $($(PKG)_DIR)/.configured
+	cp $(BUSYBOX_HOST_CONFIG_FILE) $(BUSYBOX_HOST_DIR)/.config
+	$(TOOLS_SUBMAKE) -C $(BUSYBOX_HOST_DIR) menuconfig
+	cp $(BUSYBOX_HOST_DIR)/.config $(BUSYBOX_HOST_CONFIG_FILE)
+
+$(pkg)-oldconfig $(pkg)-olddefconfig: $($(PKG)_DIR)/.configured
+	cp $(BUSYBOX_HOST_CONFIG_FILE) $(BUSYBOX_HOST_DIR)/.config
+	$(TOOLS_SUBMAKE) -C $(BUSYBOX_HOST_DIR) oldconfig
+	cp $(BUSYBOX_HOST_DIR)/.config $(BUSYBOX_HOST_CONFIG_FILE)
+
 $($(PKG)_DIR)/.prepared: $($(PKG)_DIR)/.configured
 	cp $(BUSYBOX_HOST_CONFIG_FILE) $(BUSYBOX_HOST_DIR)/.config
 	$(TOOLS_SUBMAKE) -C $(BUSYBOX_HOST_DIR) oldconfig
