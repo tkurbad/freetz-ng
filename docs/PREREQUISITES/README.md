@@ -52,8 +52,8 @@ sudo dnf -y update && sudo systemctl daemon-reload
  - Fedora 40 64-Bit:
 ```
 sudo dnf -y install \
-  bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel flex gcc gcc-c++ \
-  gettext git glib2-devel glibc-devel gnutls-devel ImageMagick inkscape javapackages-tools kmod \
+  bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex gcc gcc-c++ gettext \
+  git glib2-devel glibc-devel gnutls-devel ImageMagick inkscape javapackages-tools kmod \
   libacl-devel libattr-devel libcap-devel libgcc libglade2-devel libstdc++-devel libtool \
   libuuid-devel libxml2-devel libzstd-devel make ncurses ncurses-devel ncurses-term netcat net-tools \
   openssl openssl-devel patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel \
@@ -64,7 +64,7 @@ sudo dnf -y install \
  - Fedora 37/38/39 64-Bit:
 ```
 sudo dnf -y install \
-  bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel flex ftp gcc gcc-c++ \
+  bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex ftp gcc gcc-c++ \
   gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape javapackages-tools \
   kmod libacl-devel libattr-devel libcap-devel libgcc.i686 libglade2-devel \
   libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel libzstd-devel.x86_64 make \
@@ -77,8 +77,8 @@ sudo dnf -y install \
  - Fedora 36 64-Bit:
 ```
 sudo dnf -y install \
-  autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
-  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
+  autoconf automake bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex \
+  gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
   javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 libglade2-devel \
   libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel libzstd-devel.x86_64 make \
   ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl openssl-devel \
@@ -90,8 +90,8 @@ sudo dnf -y install \
  - Fedora 35 64-Bit:
 ```
 sudo dnf -y install \
-  autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
-  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
+  autoconf automake bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex \
+  gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
   javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 libglade2-devel \
   libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel libzstd-devel.x86_64 make \
   ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl openssl-devel \
@@ -103,7 +103,7 @@ sudo dnf -y install \
  - Fedora 33/34 64-Bit:
 ```
 sudo dnf -y install \
-  autoconf automake bc binutils bison bzip2 ccache cmake cpio ecj flex gcc gcc-c++ gettext git \
+  autoconf automake bc binutils bison bzip2 ccache cmake ecj flex gcc gcc-c++ gettext git \
   glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape kmod libacl-devel libattr-devel \
   libcap-devel libgcc.i686 libglade2-devel libstdc++-devel.i686 libtool libuuid-devel libxml2-devel \
   libzstd-devel.i686 make ncurses-devel ncurses-devel.i686 ncurses-term openssl openssl-devel patch perl \
@@ -136,7 +136,7 @@ sudo apt -y dist-upgrade
  - Debian 12 64-Bit:
 ```
 sudo apt -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj flex ftp g++ gawk gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -148,7 +148,7 @@ sudo apt -y install \
  - Debian 11 64-Bit:
 ```
 sudo apt -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj flex ftp g++ gawk gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -187,7 +187,7 @@ sudo apt-get -y dist-upgrade
  - Ubuntu 23/24 64-Bit:
 ```
 sudo apt-get -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj flex ftp g++ gawk gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -199,7 +199,7 @@ sudo apt-get -y install \
  - Ubuntu 22 64-Bit:
 ```
 sudo apt-get -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj flex ftp g++ gawk gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -211,7 +211,7 @@ sudo apt-get -y install \
  - Ubuntu 20/21 64-Bit:
 ```
 sudo apt-get -y install \
-  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj flex ftp g++ gawk gcc \
+  autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool java-wrappers kmod \
   lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libelf-dev \
   libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev \
@@ -226,8 +226,8 @@ sudo apt -y install libzstd-dev:i386 sqlite3:i386
  - Ubuntu 18/19 64-Bit:
 ```
 sudo apt-get -y install \
-  autopoint bc binutils bison bsdmainutils build-essential bzip2 ccache cmake cpio curl ecj \
-  flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool kmod \
+  autopoint bc binutils bison bsdmainutils build-essential bzip2 ccache cmake curl ecj flex \
+  g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool kmod \
   lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev libglib2.0-dev \
   libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev libstring-crc32-perl \
   libtool-bin libusb-dev libzstd-dev make ncftp netcat net-tools openssl patch patchutils perl \
@@ -237,7 +237,7 @@ sudo apt-get -y install \
  - Ubuntu 15/16/17 64-Bit:
 ```
 sudo apt-get -y install \
-  autoconf automake autopoint bc binutils bison bsdmainutils bzip2 cpio ecj flex g++ gawk gcc \
+  autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ecj flex g++ gawk gcc \
   gcc-multilib gettext git graphicsmagick imagemagick inkscape intltool kmod lib32ncurses5-dev \
   lib32stdc++6 libacl1-dev libc6-dev-i386 libcap-dev libglib2.0-dev libncurses5-dev libreadline-dev \
   libstring-crc32-perl libtool-bin libusb-dev make patch perl pkg-config pv realpath rsync subversion sudo texinfo \
@@ -248,11 +248,11 @@ sudo apt-get -y install \
 ```
 sudo apt-get -y install \
   autoconf automake automake1.9 autopoint bc binutils bison bsdmainutils build-essential \
-  bzip2 ccache cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git graphicsmagick \
-  imagemagick inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
-  libc6-dev-i386 libcap-dev libglib2.0-dev libncurses5-dev libreadline-dev libsqlite3-dev \
-  libstring-crc32-perl libtool libusb-dev make netcat openssl patch perl pkg-config pv realpath rsync sqlite3 \
-  subversion sudo texinfo tofrodos unar unzip wget zlib1g-dev
+  bzip2 ccache cmake curl ecj flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick \
+  inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 \
+  libcap-dev libglib2.0-dev libncurses5-dev libreadline-dev libsqlite3-dev libstring-crc32-perl \
+  libtool libusb-dev make netcat openssl patch perl pkg-config pv realpath rsync sqlite3 subversion \
+  sudo texinfo tofrodos unar unzip wget zlib1g-dev
 ```
 Zusätzlich muss manuell installiert werden:
 ```
