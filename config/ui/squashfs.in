@@ -11,6 +11,7 @@ menu "SquashFS options"
 
 		config FREETZ_SQUASHFS_BLOCKSIZE_ORIG
 			bool "original (usually 64 KB)"
+			depends on !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 			help
 				Block size of the root filesystem. SquashFS 2.x can use block sizes
 				up to 64 KB, SquashFS 3.x (only available for kernel 2.6.19.2 or
