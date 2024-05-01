@@ -5,7 +5,6 @@ bison
 bzip2
 ccache
 cmake
-cpio
 curl
 ecj
 elfutils-libelf-devel
