@@ -70,6 +70,7 @@ Latest changes
    * Sudo 1.9.15p5
    * SQLite 3.45.3
    * Tor 0.4.8.11
+   * Unbound 1.20.0
    * Whois 5.5.22
 
  - Libraries:
