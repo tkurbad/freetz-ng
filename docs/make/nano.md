@@ -1,7 +1,7 @@
-# Nano 7.2 (binary only)
+# Nano 8.0 (binary only)
  - Homepage: [https://www.nano-editor.org/](https://www.nano-editor.org/)
  - Manpage: [https://www.nano-editor.org/docs.php](https://www.nano-editor.org/docs.php)
- - Changelog: [https://www.nano-editor.org/dist/v7/NEWS](https://www.nano-editor.org/dist/v7/NEWS)
+ - Changelog: [https://www.nano-editor.org/dist/v8/NEWS](https://www.nano-editor.org/dist/v8/NEWS)
  - Repository: [https://git.savannah.gnu.org/cgit/nano.git/](https://git.savannah.gnu.org/cgit/nano.git/)
  - Package: [master/make/pkgs/nano/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nano/)
 
