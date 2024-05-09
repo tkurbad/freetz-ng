@@ -62,6 +62,7 @@ Latest changes
    * Apache2 2.4.59
    * BIND 9.11.37/9.18.26
    * Dropbear 2024.85
+   * Git 2.45.0
    * HAProxy 2.6.17
    * ImageMagick 7.1.1-30
    * Lighttpd 1.4.76
