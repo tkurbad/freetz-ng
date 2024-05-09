@@ -1,10 +1,10 @@
-$(call PKG_INIT_BIN, 7.2)
+$(call PKG_INIT_BIN, 8.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=86f3442768bd2873cec693f83cdf80b4b444ad3cc14760b74361474fc87a4526
-$(PKG)_SITE:=https://www.nano-editor.org/dist/v7
+$(PKG)_HASH:=c17f43fc0e37336b33ee50a209c701d5beb808adc2d9f089ca831b40539c9ac4
+$(PKG)_SITE:=https://www.nano-editor.org/dist/v8
 ### WEBSITE:=https://www.nano-editor.org/
 ### MANPAGE:=https://www.nano-editor.org/docs.php
-### CHANGES:=https://www.nano-editor.org/dist/v7/NEWS
+### CHANGES:=https://www.nano-editor.org/dist/v8/NEWS
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/nano.git/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/nano
