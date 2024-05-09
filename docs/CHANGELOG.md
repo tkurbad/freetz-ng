@@ -48,7 +48,7 @@ Latest changes
 ### devel
 
  - Host tools:
-   * cmake 3.29.2
+   * cmake 3.29.3
    * cpio 2.15
    * ninja 1.12.0
    * precompiled host-tools 2024-05-01
