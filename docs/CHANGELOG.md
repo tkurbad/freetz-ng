@@ -55,6 +55,7 @@ Latest changes
    * cpio 2.15
    * ninja 1.12.0
    * precompiled host-tools 2024-05-01
+   * precompiled toolchains r23647
    * python 3.11.9
 
  - Patches:
