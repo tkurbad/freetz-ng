@@ -1,6 +1,6 @@
 --- scripts/kconfig/symbol.c
 +++ scripts/kconfig/symbol.c
-@@ -298,7 +298,7 @@
+@@ -301,7 +301,7 @@
  	struct gstr gs = str_new();
  
  	str_printf(&gs,
@@ -9,7 +9,7 @@
  		   sym->name);
  	str_printf(&gs,
  		   "  Depends on [%c]: ",
-@@ -313,6 +313,7 @@
+@@ -316,6 +316,7 @@
  
  	fputs(str_get(&gs), stderr);
  	sym_warnings++;
