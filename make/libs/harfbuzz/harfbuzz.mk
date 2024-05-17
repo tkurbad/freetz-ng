@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 8.4.0)
-$(PKG)_LIB_VERSION:=0.60840.0
+$(call PKG_INIT_LIB, 8.5.0)
+$(PKG)_LIB_VERSION:=0.60850.0
 $(PKG)_SOURCE:=harfbuzz-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=af4ea73e25ab748c8c063b78c2f88e48833db9b2ac369e29bd115702e789755e
+$(PKG)_HASH:=77e4f7f98f3d86bf8788b53e6832fb96279956e1c3961988ea3d4b7ca41ddc27
 $(PKG)_SITE:=https://github.com/harfbuzz/harfbuzz/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://harfbuzz.github.io/
 ### MANPAGE:=https://github.com/harfbuzz/harfbuzz/wiki

@@ -82,6 +82,7 @@ Latest changes
    * Whois 5.5.22
 
  - Libraries:
+   * harfbuzz 8.5.0
    * libidn 1.42
    * libpng 1.6.43
    * libxml2 2.12.7
