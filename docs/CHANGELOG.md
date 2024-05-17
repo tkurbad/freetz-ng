@@ -54,7 +54,7 @@ Latest changes
    * cmake 3.29.3
    * cpio 2.15
    * kconfig 6.9
-   * ninja 1.12.0
+   * ninja 1.12.1
    * precompiled host-tools 2024-05-10
    * precompiled toolchains r23647
    * python 3.11.9
