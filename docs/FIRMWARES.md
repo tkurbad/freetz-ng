@@ -522,7 +522,7 @@ Currently supported devices and firmwares
   - 172.07.58 rev111616 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 1200 AX__
   - 268.07.31 rev108167 {ALL} [PSQ19P2NL4]
-  - 268.07.57 rev107840 {ALL} [MOVE21NL1]
+  - 268.07.58 rev113012 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 2400__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
   - 169.07.29 rev93265 {ALL} [PSQ19P2NL4]
@@ -534,10 +534,10 @@ Currently supported devices and firmwares
   - 174.07.58 rev111617 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 3000 AX (UNTESTED)__
   - 270.07.42 rev108161 {ALL} [MOVE21]
-  - 270.07.57 rev109902 {ALL} [MOVE21NL1]
+  - 270.07.58 rev113013 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 6000__
   - 253.07.31 rev109964 {ALL} [PSQ19P2NL4]
-  - 253.07.57 rev109986 {ALL} [MOVE21NL1]
+  - 253.07.58 rev113014 {ALL} [MOVE21NL1]
 
 ### Fritz!Smart
 
