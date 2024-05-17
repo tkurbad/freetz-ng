@@ -17,7 +17,7 @@ start() {
 	echo -n "Starting ${DAEMON_LONG_NAME} ... "
 
 	# handle daemon start not by this script but by supervisor, if available
-	if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ] && ! modlib_check_supervisor; then
+	if [ -f "/lib/systemd/system/${DAEMON_SVC}.service" ] && ! modlib_check_supervisor; then
 		# Caution this can cause an endless loop, which will make supervisor crash.
 		# Always make sure, in service-file, that this script gets called directly or,  if a script chain
 		# is needed (like .rc-wrapper), the chain calls every following script/binary with "exec" command.
@@ -47,7 +47,7 @@ start() {
 			use_preload="y"
 		fi
 	fi
-	if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ]; then
+	if [ -f "/lib/systemd/system/${DAEMON_SVC}.service" ]; then
 		# Don't use a subshell, like "(...code...) &", here.
 		# It will produce a zombie process once "exec" gets executed
 		sh -c "\
@@ -104,7 +104,7 @@ stop() {
 
 reload() {
 	local ret
-	if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ]; then
+	if [ -f "/lib/systemd/system/${DAEMON_SVC}.service" ]; then
 		msgsend -a $DAEMON reload
 		ret=$?
 	else

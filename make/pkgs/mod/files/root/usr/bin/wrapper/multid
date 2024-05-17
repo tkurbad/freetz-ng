@@ -31,8 +31,7 @@ fi
 
 #[ "$daemon_mode" == "start" -a  "$(/etc/init.d/rc.multid status)" == "running" ] && daemon_mode=reload
 
-[ -r /etc/options.cfg ] && . /etc/options.cfg
-if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ]; then
+if [ -f /lib/systemd/system/multid.service ]; then
 	# Exec makes sure the .rc-script will not become a new process, which would generate
 	# new PID and PPID. Instead it will override this process and inherit its PIDs.
 	exec /etc/init.d/rc.multid $daemon_mode
