@@ -439,7 +439,6 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Repeater_3000-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_3000-07.56.tar.gz)
  * fritzrepeater-3000-ax/
    - [source-files-FRITZ.Repeater_3000_AX-07.41.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000-ax/source-files-FRITZ.Repeater_3000_AX-07.41.tar.gz)
-   - [source-files-FRITZ.Repeater_3000_AX-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000-ax/source-files-FRITZ.Repeater_3000_AX-07.56.tar.gz)
  * fritzrepeater-6000/
    - [source-files-FRITZ.Repeater_6000-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-6000/source-files-FRITZ.Repeater_6000-07.30.tar.gz)
    - [source-files-FRITZ.Repeater_6000-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-6000/source-files-FRITZ.Repeater_6000-07.56.tar.gz)
