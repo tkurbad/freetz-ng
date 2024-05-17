@@ -70,6 +70,7 @@ Latest changes
    * Git 2.45.0
    * HAProxy 2.6.17
    * ImageMagick 7.1.1-30
+   * iPerf3 3.3/3.17.1
    * Lighttpd 1.4.76
    * minisatip 1.0.4/1.3.6
    * Nano 8.0
