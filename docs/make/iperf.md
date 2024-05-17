@@ -1,4 +1,4 @@
-# iPerf3 3.3/3.16 (binary only)
+# iPerf3 3.3/3.17.1 (binary only)
  - Homepage: [https://iperf.fr/](https://iperf.fr/)
  - Manpage: [https://iperf.fr/iperf-doc.php](https://iperf.fr/iperf-doc.php)
  - Changelog: [https://github.com/esnet/iperf/tags](https://github.com/esnet/iperf/tags)
