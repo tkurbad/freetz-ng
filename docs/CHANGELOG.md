@@ -75,6 +75,7 @@ Latest changes
    * Nano 8.0
    * Nmap 4.76/5.51/7.95
    * rsync 3.3.0
+   * strace 4.9/5.0/6.9
    * Sudo 1.9.15p5
    * SQLite 3.45.3
    * Tor 0.4.8.11
