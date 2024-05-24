@@ -75,6 +75,7 @@ Latest changes
    * minisatip 1.0.4/1.3.6
    * Nano 8.0
    * Nmap 4.76/5.51/7.95
+   * sslh 2.1.2
    * rsync 3.3.0
    * strace 4.9/5.0/6.9
    * Sudo 1.9.15p5

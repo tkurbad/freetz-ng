@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.0.1)
+$(call PKG_INIT_BIN, 2.1.2)
 $(PKG)_SOURCE:=$(pkg)-v$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=d88d43ee11cf1324983c196c894b41766c33d957b6af53b62c8479703bbbd26c
+$(PKG)_HASH:=dce8e1a77f48017b5164486084f000d9f20de2d54d293385aec18d606f9c61d9
 $(PKG)_SITE:=https://www.rutschle.net/tech/sslh
 ### WEBSITE:=https://www.rutschle.net/tech/sslh/README.html
 ### MANPAGE:=https://www.rutschle.net/tech/sslh/doc/config
@@ -15,7 +15,7 @@ $(PKG)_DEPENDS_ON += libconfig pcre2
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
-$(PKG_CONFIGURED_NOP)
+$(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(SSLH_DIR) \
