@@ -2,6 +2,10 @@
 ### GCC version used by AVM to compile the kernel and all the binaries/libraries
 ###
 
+###
+### FREETZ_AVM_GCC_x_x
+###
+
 config FREETZ_AVM_GCC_3_4
 	bool
 	default y
@@ -22,24 +26,36 @@ config FREETZ_AVM_GCC_4_8
 	default y
 	depends on FREETZ_AVM_PROP_GCC_4_8
 
-# AVM never used it
-#config FREETZ_AVM_GCC_4_9
-#	bool
-
-config FREETZ_AVM_GCC_5
+config FREETZ_AVM_GCC_5_1
 	bool
 	default y
-	depends on FREETZ_AVM_PROP_GCC_5
+	depends on FREETZ_AVM_PROP_GCC_5_1
 
-config FREETZ_AVM_GCC_8
+config FREETZ_AVM_GCC_5_4
 	bool
 	default y
-	depends on FREETZ_AVM_PROP_GCC_8
+	depends on FREETZ_AVM_PROP_GCC_5_4
 
-config FREETZ_AVM_GCC_9
+config FREETZ_AVM_GCC_5_5
 	bool
 	default y
-	depends on FREETZ_AVM_PROP_GCC_9
+	depends on FREETZ_AVM_PROP_GCC_5_5
+
+
+config FREETZ_AVM_GCC_8_3
+	bool
+	default y
+	depends on FREETZ_AVM_PROP_GCC_8_3
+
+config FREETZ_AVM_GCC_8_4
+	bool
+	default y
+	depends on FREETZ_AVM_PROP_GCC_8_4
+
+config FREETZ_AVM_GCC_9_3
+	bool
+	default y
+	depends on FREETZ_AVM_PROP_GCC_9_3
 
 ###
 ### FREETZ_AVM_GCC_x
