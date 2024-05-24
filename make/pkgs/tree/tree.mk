@@ -12,6 +12,8 @@ $(PKG)_SITE:=https://mama.indstate.edu/users/ice/tree/src,ftp://mama.indstate.ed
 $(PKG)_BINARY:=$($(PKG)_DIR)/tree
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/tree
 
+$(PKG)_DEPENDS_ON += wget-host
+
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_TREE_VERSION_ABANDON),abandon,current)
 
 

@@ -14,8 +14,6 @@ $(PKG)_STARTLEVEL=82
 
 $(PKG)_EXCLUDED+=$(if $(FREETZ_PACKAGE_BIRD_REMOVE_WEBIF),usr/lib/cgi-bin/bird.cgi etc/default.bird etc/init.d/rc.bird)
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),abandon,current)
-
 $(PKG)_BINARIES_ALL := bird birdc
 ifeq ($(strip $(FREETZ_PACKAGE_BIRDC)),y)
 $(PKG)_DEPENDS_ON += ncurses readline
@@ -27,6 +25,10 @@ $(PKG)_BINARIES_BUILD_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/sbin/%)
 
 $(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)/usr/sbin/%,$(filter-out $($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL)))
+
+$(PKG)_DEPENDS_ON += wget-host
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),abandon,current)
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_BIRD_VERSION_ABANDON
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_BIRD_DEBUG

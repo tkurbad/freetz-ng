@@ -8,6 +8,8 @@ $(PKG)_BINARY:=$($(PKG)_DIR)/lsof
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/lsof
 $(PKG)_CATEGORY:=Debug helpers
 
+$(PKG)_DEPENDS_ON += wget-host
+
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 ifeq ($(FREETZ_TARGET_IPV6_SUPPORT),y)
 $(PKG)_HASIPV6 := Y

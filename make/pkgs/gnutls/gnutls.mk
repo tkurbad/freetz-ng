@@ -24,6 +24,8 @@ $(PKG)_LIBS_BUILD_DIR := $($(PKG)_LIB:%=$($(PKG)_DIR)/lib/.libs/%) $(if $(FREETZ
 $(PKG)_LIBS_STAGING_DIR := $(addprefix $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/,$($(PKG)_LIB) $(if $(FREETZ_LIB_libgnutls_openssl),$($(PKG)_LIB_OPENSSL)))
 $(PKG)_LIBS_TARGET_DIR := $(addprefix $($(PKG)_TARGET_LIBDIR)/,$($(PKG)_LIB) $(if $(FREETZ_LIB_libgnutls_openssl),$($(PKG)_LIB_OPENSSL)))
 
+$(PKG)_DEPENDS_ON += wget-host
+
 $(PKG)_EXCLUDED += $(addprefix $($(PKG)_TARGET_LIBDIR)/, \
 	$(if $(FREETZ_LIB_libgnutls_openssl),,$($(PKG)_LIB_OPENSSL) libgnutls-openssl.so.$(call GET_MAJOR_VERSION,$($(PKG)_OPENSSL_LIB_VERSION),1) libgnutls-openssl.so) \
 )

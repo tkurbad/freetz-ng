@@ -5,6 +5,7 @@ $(PKG)_SITE:=ftp://iptraf.seul.org/pub/iptraf
 
 $(PKG)_PATCH_POST_CMDS += $(SED) -i -r -e 's,<linux/(if_(tr|ether)[.]h)>,<netinet/\1>,g' src/*.h src/*.c;
 
+$(PKG)_DEPENDS_ON += wget-host
 $(PKG)_DEPENDS_ON += ncurses
 
 $(PKG)_BINARIES_ALL := iptraf rvnamed

@@ -26,6 +26,7 @@ $(PKG)_LIB_BINARIES_INCLUDED    := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_LIB_B
 $(PKG)_LIB_BINARIES_BUILD_DIR   := $(addprefix $($(PKG)_DIR)/,$($(PKG)_LIB_BINARIES))
 $(PKG)_LIB_BINARIES_TARGET_DIR  := $(addprefix $($(PKG)_DEST_DIR)/usr/lib/,$($(PKG)_LIB_BINARIES))
 
+$(PKG)_DEPENDS_ON += wget-host
 $(PKG)_DEPENDS_ON += zlib
 
 # even in '--without-openssl'-mode OpenSSL is still a compile-time

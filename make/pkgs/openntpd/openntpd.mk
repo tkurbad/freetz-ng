@@ -3,10 +3,12 @@ $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=83dd7c1e8ec8b4567afe49af539271b5a73562fb7a3ca51df73eccba89ec8c49
 $(PKG)_SITE:=ftp://ftp.openbsd.org/pub/OpenBSD/OpenNTPD
 
+$(PKG)_STARTLEVEL=60
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/ntpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/ntpd
 
-$(PKG)_STARTLEVEL=60
+$(PKG)_DEPENDS_ON += wget-host
 
 $(PKG)_CONFIGURE_ENV += ac_cv_have_decl_asprintf=yes
 $(PKG)_CONFIGURE_ENV += ac_cv_func_setresuid=yes
