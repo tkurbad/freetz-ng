@@ -1,6 +1,6 @@
 --- Makefile.am
 +++ Makefile.am
-@@ -134,8 +134,8 @@
+@@ -86,8 +86,8 @@
  
  bin_SCRIPTS = curl-config
  
@@ -11,7 +11,7 @@
  
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
-@@ -249,14 +249,11 @@
+@@ -201,14 +201,11 @@
  else
  install-data-hook:
  	(cd include && $(MAKE) install)
@@ -28,7 +28,7 @@
  	@echo "generating a fresh ca-bundle.crt"
 --- Makefile.in
 +++ Makefile.in
-@@ -665,8 +665,8 @@
+@@ -621,8 +621,8 @@
   $(VC14_30_LIBVCXPROJ) $(VC14_30_SRCVCXPROJ)
  
  bin_SCRIPTS = curl-config
@@ -39,7 +39,7 @@
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
  LIB_VAUTH_CFILES = \
-@@ -1798,13 +1798,10 @@
+@@ -1755,13 +1755,10 @@
  @BUILD_DOCS_TRUE@	(cd docs/libcurl && $(MAKE) install)
  @BUILD_DOCS_FALSE@install-data-hook:
  @BUILD_DOCS_FALSE@	(cd include && $(MAKE) install)
