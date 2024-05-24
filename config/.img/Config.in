@@ -141,7 +141,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -173,7 +173,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -393,7 +393,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -447,7 +447,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -645,7 +645,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -699,7 +699,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -769,6 +769,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -783,6 +785,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -792,6 +796,8 @@ config FREETZ_AVM_HAS_KMOD
 config FREETZ_AVM_HAS_SVCTL
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -864,8 +870,6 @@ config FREETZ_AVM_PROP_ALL_REGIONS
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
-	def_bool y
-config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -975,7 +979,7 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -1043,7 +1047,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -1071,7 +1075,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -1255,7 +1259,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -1272,6 +1276,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_128
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -1291,6 +1297,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -1309,6 +1317,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -1322,6 +1332,8 @@ config FREETZ_AVM_HAS_ETCSERVICES
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -1392,8 +1404,6 @@ config FREETZ_AVM_PROP_ALL_REGIONS
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
-	def_bool y
-config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -1501,7 +1511,7 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -1627,7 +1637,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -1681,7 +1691,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -1735,7 +1745,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -1889,7 +1899,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -1945,7 +1955,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -2085,6 +2095,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -2101,6 +2113,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -2112,6 +2126,8 @@ config FREETZ_AVM_HAS_SVCTL
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_96
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -2187,8 +2203,6 @@ config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
-	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
 	default "241"
@@ -2219,6 +2233,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_128
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -2236,6 +2252,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -2257,6 +2275,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -2272,6 +2292,8 @@ config FREETZ_AVM_HAS_ETCSERVICES
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -2340,8 +2362,6 @@ config FREETZ_AVM_PROP_ALL_REGIONS
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
-	def_bool y
-config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -2439,7 +2459,7 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -3741,7 +3761,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -3859,7 +3879,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -3901,7 +3921,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -4069,7 +4089,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -4123,7 +4143,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -4275,7 +4295,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -4403,6 +4423,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_128
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -4420,6 +4442,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -4442,6 +4466,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -4466,6 +4492,8 @@ config FREETZ_AVM_HAS_LIBFUSE
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -4576,8 +4604,6 @@ config FREETZ_AVM_PROP_ALL_REGIONS
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
-	def_bool y
-config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -4753,7 +4779,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -4903,7 +4929,7 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -5208,6 +5234,8 @@ config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 config FREETZ_AVM_PROP_OUTER_FILESYSTEM_TYPE_EXT2
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -5222,6 +5250,8 @@ config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_PROP_OUTER_FILESYSTEM_TYPE_EXT2
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -5235,6 +5265,8 @@ config FREETZ_AVM_HAS_SAMBA_NQCS
 config FREETZ_AVM_HAS_UNTRUSTEDD
 	def_bool y
 config FREETZ_AVM_HAS_ETCSERVICES
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -5358,8 +5390,6 @@ config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
-	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
 	default "223"
@@ -5396,6 +5426,8 @@ config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 config FREETZ_AVM_PROP_OUTER_FILESYSTEM_TYPE_EXT2
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -5410,6 +5442,8 @@ config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_PROP_OUTER_FILESYSTEM_TYPE_EXT2
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -5423,6 +5457,8 @@ config FREETZ_AVM_HAS_SAMBA_NQCS
 config FREETZ_AVM_HAS_UNTRUSTEDD
 	def_bool y
 config FREETZ_AVM_HAS_ETCSERVICES
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -5546,8 +5582,6 @@ config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
-	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
 	default "243"
@@ -5591,6 +5625,8 @@ config FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_231
 	def_bool y
+config FREETZ_AVM_PROP_GCC_8_3
+	def_bool y
 endif
 if FREETZ_TYPE_5530 && FREETZ_AVM_VERSION_07_5X
 config FREETZ_AVM_PROP_NAME
@@ -5610,6 +5646,8 @@ config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_BE
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_276
 	def_bool y
+config FREETZ_AVM_PROP_GCC_8_4
+	def_bool y
 endif
 if FREETZ_TYPE_5530 && FREETZ_AVM_VERSION_07_8X
 config FREETZ_AVM_PROP_NAME
@@ -5628,6 +5666,8 @@ config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
 config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_BE
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_276
+	def_bool y
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_5530
@@ -5733,8 +5773,6 @@ config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
-	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
 	default "257"
@@ -5769,7 +5807,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_5590 && FREETZ_AVM_VERSION_07_5X
@@ -5792,7 +5830,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_5590 && FREETZ_AVM_VERSION_07_8X
@@ -5815,7 +5853,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_5590 && FREETZ_AVM_VERSION_08_0X
@@ -5834,7 +5872,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_5590
@@ -6135,7 +6173,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -6225,7 +6263,7 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -6261,6 +6299,8 @@ config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_3
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -6274,6 +6314,8 @@ config FREETZ_AVM_HAS_SAMBA_NQCS
 config FREETZ_AVM_HAS_UNTRUSTEDD
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_4
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -6391,8 +6433,6 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_X86
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
-	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
 	default "231"
@@ -6449,7 +6489,7 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_3
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -6477,7 +6517,7 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_3
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -6509,7 +6549,7 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_4
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -6541,7 +6581,7 @@ config FREETZ_AVM_HAS_LIBFUSE
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_4
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -6701,7 +6741,7 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_3
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -6729,7 +6769,7 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_3
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -6761,7 +6801,7 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_4
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -6793,7 +6833,7 @@ config FREETZ_AVM_HAS_LIBFUSE
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_2_6_39_4
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -6933,7 +6973,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_3_12_59
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 endif
 if FREETZ_TYPE_6591 && FREETZ_AVM_VERSION_07_1X
@@ -6951,7 +6991,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_3_12_74
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 endif
 if FREETZ_TYPE_6591 && FREETZ_AVM_VERSION_07_2X
@@ -6981,7 +7021,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_250
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 endif
 if FREETZ_TYPE_6591 && FREETZ_AVM_VERSION_07_5X
@@ -7019,7 +7059,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_279
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_6591 && FREETZ_AVM_VERSION_08_0X
@@ -7053,7 +7093,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_5_15_111
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9
+config FREETZ_AVM_PROP_GCC_9_3
 	def_bool y
 endif
 if FREETZ_TYPE_6591
@@ -7203,7 +7243,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_175
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_6660 && FREETZ_AVM_VERSION_07_2X
@@ -7225,7 +7265,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_250
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 endif
 if FREETZ_TYPE_6660 && FREETZ_AVM_VERSION_07_5X
@@ -7255,7 +7295,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_279
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_6660 && FREETZ_AVM_VERSION_08_0X
@@ -7281,7 +7321,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_5_15_111
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9
+config FREETZ_AVM_PROP_GCC_9_3
 	def_bool y
 endif
 if FREETZ_TYPE_6660
@@ -7573,7 +7613,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_X86
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9
+config FREETZ_AVM_PROP_GCC_9_3
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_GLIBC
 	def_bool y
@@ -7591,7 +7631,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_250
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 endif
 if FREETZ_TYPE_6690 && FREETZ_AVM_VERSION_07_5X
@@ -7613,7 +7653,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_9_279
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_6690 && FREETZ_AVM_VERSION_08_0X
@@ -7631,7 +7671,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_5_15_111
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9
+config FREETZ_AVM_PROP_GCC_9_3
 	def_bool y
 endif
 if FREETZ_TYPE_6690
@@ -7947,7 +7987,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -7987,7 +8027,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -8025,7 +8065,7 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -8129,6 +8169,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
@@ -8147,6 +8189,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -8164,6 +8208,8 @@ config FREETZ_AVM_HAS_UNTRUSTEDD
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_96
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -8246,8 +8292,6 @@ config FREETZ_AVM_HAS_ZRAM_MODULE
 config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
-	def_bool y
-config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -8381,7 +8425,7 @@ config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -8821,7 +8865,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_6850_4G && FREETZ_AVM_VERSION_07_5X
@@ -8841,7 +8885,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_6850_4G && FREETZ_AVM_VERSION_08_0X
@@ -8857,7 +8901,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_6850_4G
@@ -9017,7 +9061,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_6850_5G && FREETZ_AVM_VERSION_07_5X
@@ -9037,7 +9081,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_6850_5G && FREETZ_AVM_VERSION_08_0X
@@ -9053,7 +9097,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_6850_5G
@@ -9209,7 +9253,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -9239,7 +9283,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -9271,7 +9315,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -9309,7 +9353,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_198
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -9349,7 +9393,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -12378,7 +12422,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -12412,7 +12456,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -13338,7 +13382,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -13456,7 +13500,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -13498,7 +13542,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -13666,7 +13710,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -13720,7 +13764,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -13892,7 +13936,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -13960,7 +14004,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -14130,7 +14174,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -14176,7 +14220,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -14344,7 +14388,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -14398,7 +14442,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_107
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_64
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -14660,7 +14704,7 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -14722,6 +14766,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -14762,6 +14808,8 @@ config FREETZ_AVM_HAS_LIBFUSE
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -14773,6 +14821,8 @@ config FREETZ_AVM_HAS_SAMBA_SMBD
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -14881,8 +14931,6 @@ config FREETZ_AVM_HAS_WLAN
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
-	def_bool y
-config FREETZ_AVM_PROP_GCC_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -15056,7 +15104,7 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -15130,6 +15178,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -15182,6 +15232,8 @@ config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
@@ -15203,6 +15255,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_128
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -15229,6 +15283,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -15263,6 +15319,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_128
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -15299,6 +15357,8 @@ config FREETZ_AVM_HAS_NSSWITCH
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_1_0_14
 	def_bool y
@@ -15398,8 +15458,6 @@ config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
-	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
 	default "236"
@@ -15436,7 +15494,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_1_52
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 endif
 if FREETZ_TYPE_7539 && FREETZ_AVM_VERSION_07_5X
@@ -15456,7 +15514,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_19_183
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9
+config FREETZ_AVM_PROP_GCC_9_3
 	def_bool y
 endif
 if FREETZ_TYPE_7539 && FREETZ_AVM_VERSION_07_8X
@@ -15476,7 +15534,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_19_183
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9
+config FREETZ_AVM_PROP_GCC_9_3
 	def_bool y
 endif
 if FREETZ_TYPE_7539 && FREETZ_AVM_VERSION_08_0X
@@ -15492,7 +15550,7 @@ config FREETZ_AVM_HAS_OPENSSL_VERSION_3
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_19_183
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9
+config FREETZ_AVM_PROP_GCC_9_3
 	def_bool y
 endif
 if FREETZ_TYPE_7539
@@ -15702,7 +15760,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_198
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -15726,7 +15784,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -15754,7 +15812,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -15784,7 +15842,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -15822,7 +15880,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -15862,7 +15920,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -15898,7 +15956,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -15944,7 +16002,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -15992,7 +16050,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -16228,7 +16286,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -16248,7 +16306,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -16270,7 +16328,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -16300,7 +16358,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -16332,7 +16390,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -16382,7 +16440,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_198
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -16662,7 +16720,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_GLIBC
 	def_bool y
@@ -16826,7 +16884,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_GLIBC
 	def_bool y
@@ -16878,7 +16936,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_198
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -16934,7 +16992,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -16960,7 +17018,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -16998,7 +17056,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17134,6 +17192,8 @@ config FREETZ_AVM_PROP_KERNEL_4_9_198
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
+config FREETZ_AVM_PROP_GCC_8_3
+	def_bool y
 endif
 if FREETZ_TYPE_7584 && FREETZ_AVM_VERSION_07_5X
 config FREETZ_AVM_HAS_WIREGUARD
@@ -17147,6 +17207,8 @@ config FREETZ_AVM_HAS_LIBFUSE
 config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_7584
@@ -17282,8 +17344,6 @@ config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
-	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
 	default "260"
@@ -17370,7 +17430,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_198
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_3
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -17442,7 +17502,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -17510,7 +17570,7 @@ config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -17540,7 +17600,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17574,7 +17634,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17616,7 +17676,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17660,7 +17720,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17702,7 +17762,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_12
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_1
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17754,7 +17814,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17808,7 +17868,7 @@ config FREETZ_AVM_PROP_KERNEL_3_10_104
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_160
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
@@ -17938,6 +17998,8 @@ config FREETZ_AVM_PROP_KERNEL_4_9_198
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
+config FREETZ_AVM_PROP_GCC_8_3
+	def_bool y
 endif
 if FREETZ_TYPE_7599 && FREETZ_AVM_VERSION_07_5X
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
@@ -17959,6 +18021,8 @@ config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_BE
 config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_7599 && FREETZ_AVM_VERSION_07_8X
@@ -17982,6 +18046,8 @@ config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
+config FREETZ_AVM_PROP_GCC_8_4
+	def_bool y
 endif
 if FREETZ_TYPE_7599 && FREETZ_AVM_VERSION_08_0X
 config FREETZ_AVM_HAS_WIREGUARD
@@ -17999,6 +18065,8 @@ config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_LE
 config FREETZ_AVM_PROP_KERNEL_4_9_325
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 endif
 if FREETZ_TYPE_7599
@@ -18127,8 +18195,6 @@ config FREETZ_AVM_PROP_ALL_REGIONS
 config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
-	def_bool y
-config FREETZ_AVM_PROP_GCC_8
 	def_bool y
 config FREETZ_AVM_PROP_HWREV
 	string
@@ -18308,7 +18374,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
-config FREETZ_AVM_PROP_GCC_8
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
@@ -18512,7 +18578,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
