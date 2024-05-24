@@ -58,6 +58,7 @@ Latest changes
    * precompiled host-tools 2024-05-10
    * precompiled toolchains r23647
    * python 3.11.9
+   * wget 1.24.5
 
  - Patches:
    * Enforce /tmp/ permissions: Changes /var/tmp/ permissions back to 1777 after AVM sets 755.

@@ -1008,6 +1008,14 @@ config FREETZ_TOOLS_UBOOT_STATIC
 		Used for precompiled dl-tools. You need to
 		have a installed libssl.a and libctypto.a
 
+config FREETZ_TOOLS_WGET_STATIC
+	bool "Build Wget with static OpenSSL"
+	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
+	default n
+	help
+		Used for precompiled dl-tools. You need to
+		have a installed libssl.a and libctypto.a
+
 config FREETZ_TOOLS_KCONFIG_BUTTONS
 	bool "No load+save buttons in menuconfig"
 	default n
