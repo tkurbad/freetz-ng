@@ -84,6 +84,7 @@ Latest changes
    * SQLite 3.45.3
    * Tor 0.4.8.11
    * Unbound 1.20.0
+   * UnRAR 6.1.7/7.0.9
    * Whois 5.5.22
 
  - Libraries:
