@@ -1,7 +1,7 @@
 --- Makefile
 +++ Makefile
-@@ -33,7 +33,7 @@
- all: 		atop atopsar atopacctd atopconvert atopcat
+@@ -34,7 +34,7 @@
+ all: 		atop atopsar atopacctd atopconvert atopcat atophide
  
  atop:		atop.o    $(ALLMODS) Makefile
 -		$(CC) atop.o $(ALLMODS) -o atop -lncursesw -lz -lm -lrt $(LDFLAGS)
