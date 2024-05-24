@@ -42,6 +42,46 @@ config FREETZ_AVM_GCC_9
 	depends on FREETZ_AVM_PROP_GCC_9
 
 ###
+### FREETZ_AVM_GCC_x
+###
+
+config FREETZ_AVM_GCC_3
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_3_4
+
+config FREETZ_AVM_GCC_4
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_4_6 || \
+		FREETZ_AVM_GCC_4_7 || \
+		FREETZ_AVM_GCC_4_8 || \
+		FREETZ_AVM_GCC_4_9
+
+config FREETZ_AVM_GCC_5
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_5_1 || \
+		FREETZ_AVM_GCC_5_4 || \
+		FREETZ_AVM_GCC_5_5
+
+config FREETZ_AVM_GCC_8
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_8_3 || \
+		FREETZ_AVM_GCC_8_4
+
+config FREETZ_AVM_GCC_9
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_9_3
+
+###
 ### FREETZ_AVM_GCC_x_x_MIN
 ###
 
