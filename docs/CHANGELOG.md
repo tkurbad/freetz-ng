@@ -65,6 +65,7 @@ Latest changes
 
  - Packages:
    * Apache2 2.4.59
+   * AutoFS 5.0.5/5.1.9
    * BIND 9.11.37/9.18.26
    * Dropbear 2024.85
    * Git 2.45.1
