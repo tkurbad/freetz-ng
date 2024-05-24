@@ -21,6 +21,9 @@
 DL_DIR=~/fw-avm
 
 download() {
+	echo 'AVM does not use FTP anymore, abort.'
+	exit 1
+
 	mkdir -p $DL_DIR
 	cd $DL_DIR
 	rm -rf ftp.avm.de 2>/dev/null
