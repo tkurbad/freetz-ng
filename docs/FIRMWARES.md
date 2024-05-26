@@ -550,7 +550,9 @@ Currently supported devices and firmwares
   - Alien Fritz!Box Fon {GER}
 
 * __Speedport W501V__
-  - T-Com 28.04.38 & 7141 40.04.37 {GER}
+  - Alien 7141 40.04.37 & T-Com 28.04.38 {GER}
+* __Speedport W504V MK__
+  - Alien 7270 v3 & Typ B 92.05.04 {INT}
 * __Speedport W701V__
   - Alien 7170 & T-Com 33.04.57 {GER}
 * __Speedport W900V__
