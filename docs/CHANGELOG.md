@@ -71,6 +71,7 @@ Latest changes
    * BIND 9.11.37/9.18.27
    * Bftpd 6.2
    * Dropbear 2024.85
+   * FFmpeg 5.1.4
    * Git 2.45.1
    * HAProxy 2.6.17
    * ImageMagick 7.1.1-30
