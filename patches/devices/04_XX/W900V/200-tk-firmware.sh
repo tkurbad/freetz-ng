@@ -9,12 +9,12 @@ rm -rf "${FILESYSTEM_MOD_DIR}/usr/www/tcom"
 
 echo1 "copying AVM Webinterface"
 mkdir "${HTML_LANG_MOD_DIR}"
-"$TAR" -c -C "${DIR}/.tk/original/filesystem/usr/www/all" . | "$TAR" -x -C "${HTML_LANG_MOD_DIR}"
+"$TAR_BBA" -c -C "${DIR}/.tk/original/filesystem/usr/www/all" . | "$TAR_BBA" -x -C "${HTML_LANG_MOD_DIR}"
 ln -sf /usr/www/all "${FILESYSTEM_MOD_DIR}/usr/www/tcom"
 ln -sf /usr/www/all "${FILESYSTEM_MOD_DIR}/usr/www/avm"
 ln -s /usr/bin/system_status "${FILESYSTEM_MOD_DIR}/usr/www/cgi-bin"
 
-"$TAR" -c -C "${DIR}/.tk/original/filesystem/etc/default.Fritz_Box_7150/avm" --exclude=*.cfg . | "$TAR" -x -C "${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_DECT_W900V/tcom"
+"$TAR_BBA" -c -C "${DIR}/.tk/original/filesystem/etc/default.Fritz_Box_7150/avm" --exclude=*.cfg . | "$TAR_BBA" -x -C "${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_DECT_W900V/tcom"
 ln -sf tcom "${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_DECT_W900V/avm"
 
 echo1 "copying mailer"
