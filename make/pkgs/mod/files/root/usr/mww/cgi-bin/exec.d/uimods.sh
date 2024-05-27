@@ -24,7 +24,7 @@ if [ -z "$M" -o -z "$K" ] ; then
 	echo "Miserable failure, mod and/or key could not be empty."
 	echo "abort."
 else
-	. /var/env.mod.daemon
+	. /bin/env.mod.rcconf avm
 
 	old="$(ctlmgr_ctl r "$M" "$X")"
 	echo "old --> $old"

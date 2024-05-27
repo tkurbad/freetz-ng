@@ -181,7 +181,7 @@ install() {
 	fi
 	(
 		set -o pipefail
-		. /var/env.cache
+		. /bin/env.mod.rcconf avm
 		cd /
 		/var/install 2>&1 | tee /tmp/var-install.out
 	)
@@ -229,7 +229,7 @@ fi
 
 burner() {
 	(
-		. /var/env.cache
+		. /bin/env.mod.rcconf avm
 		burnuimg /var/firmware-update.uimg && aicmd pumaglued uimg switchandreboot
 	)
 }

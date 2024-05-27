@@ -8,7 +8,7 @@ FWLAYOUT=''
 
 case "$FWLAYOUT" in
 	4)	# UIMG
-		. /var/env.cache
+		. /bin/env.mod.rcconf avm
 		LFS_LIVE="$(sed -n 's/^linux_fs_start[ \t]*//p' /proc/sys/urlader/environment)"
 		[ -z "$LFS_LIVE" ] && LFS_LIVE=0
 		LFS_DEAD="$(( ($LFS_LIVE+1) %2 ))"
@@ -16,7 +16,7 @@ case "$FWLAYOUT" in
 		/bin/aicmd pumaglued uimg switchandreboot && LFS_TEST="$LFS_DEAD" || LFS_TEST="9"
 		;;
 	5)	# FIT
-		. /var/env.mod.daemon  # CONFIG_ENVIRONMENT_PATH
+		. /bin/env.mod.rcconf avm  # CONFIG_ENVIRONMENT_PATH
 		LFS_LIVE="$(bootslotctl get_active)"
 		LFS_DEAD="$(bootslotctl get_other)"
 		if [ "$LFS_LIVE" == "$LFS_DEAD" ]; then
