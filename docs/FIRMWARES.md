@@ -547,19 +547,19 @@ Currently supported devices and firmwares
 ### T-Com derivatives
 
 * __Eumex 300IP__
-  - Alien Fritz!Box Fon {GER}
-
+  - Fritz!Box Fon 06.04.33 {GER}
 * __Speedport W501V__
-  - Alien 7141 40.04.37 & T-Com 28.04.38 {GER}
+  - Fritz!Box 7141 40.04.37 {GER} & T-Com 28.04.38
+
 * __Speedport W504V MK__
-  - Alien 7270 v3 & Typ B 92.05.04 {INT}
+  - Alien 7270 v3 {INT} & dump 92.05.04
 * __Speedport W701V__
-  - Alien 7170 & T-Com 33.04.57 {GER}
+  - Alien 7170 {GER} & T-Com 33.04.57
 * __Speedport W900V__
-  - Alien 7170 & T-Com 34.04.57 {GER}
+  - Alien 7170 {GER} & T-Com 34.04.57
 * __Speedport W920V__
-  - Alien 7270 v2 {GER+INT}
-  - Alien 7570 & T-Com 65.04.79 rev27472 {GER}
+  - Alien 7270 v2 {GER+INT} (No vdsl!)
+  - Alien 7570 {GER} & T-Com 65.04.79
 
 ### Alice derivatives
 
@@ -567,7 +567,7 @@ Currently supported devices and firmwares
   - Alien 7170 {GER}
 
 * __Alice IAD 7570 VDSL__
-  - Alien 7270 v2 {GER+INT}
+  - Alien 7270 v2 {GER+INT} (No vdsl!)
   - Alien 7570 {INT}
 
 ```
