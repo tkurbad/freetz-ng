@@ -27,6 +27,8 @@ menu "Firmware packaging (fwmod) options"
 			Keep this enabled to check the signature of the image
 			file with AVM's device specific public key.
 			Some very old devices have no signed firmware yet.
+			 - Alien 3170 has (unsupported) mixed signature
+			 - Alien W504V has only dumped (unsigned) firmware
 
 	config FREETZ_FWMOD_SKIP_MODIFY
 		bool "Skip modifying unpacked firmware, adding Freetz stuff"
