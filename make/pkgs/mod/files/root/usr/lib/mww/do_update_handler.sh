@@ -39,8 +39,8 @@ do_exit() {
 status() {
 	local status msg=$2
 	case $1 in
-		"done") status="$(lang de:'ERLEDIGT' en:'DONE')" ;;
-		"failed") status="$(lang de:'FEHLGESCHLAGEN' en:'FAILED')" ;;
+		"done") status="$(lang de:"ERLEDIGT" en:"DONE")" ;;
+		"failed") status="$(lang de:"FEHLGESCHLAGEN" en:"FAILED")" ;;
 	esac
 	echo -n "<p><span class='status'>$status</span>"
 	[ -n "$msg" ] && echo -n " &ndash; $msg"
@@ -205,7 +205,7 @@ case $result in
 	6) result_txt="INSTALL_OTHER_ERROR" ;;
 	7) result_txt="INSTALL_FIRMWARE_VERSION" ;;
 	8) result_txt="INSTALL_DOWNGRADE_NEEDED" ;;
-	*) result_txt="$(lang de:'unbekannter Fehlercode' en:'unknown error code')" ;;
+	*) result_txt="$(lang de:"unbekannter Fehlercode" en:"unknown error code")" ;;
 esac
 
 [ $result -ne 1 ] 2>/dev/null && rebootbox=false;
