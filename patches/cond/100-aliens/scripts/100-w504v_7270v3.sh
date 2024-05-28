@@ -1,7 +1,7 @@
-# 7270v3 firmware on Macedonian W504V hardware, grown at:
+# 7270v3 firmware on Macedonian W504V (Typ B?) hardware, grown at:
 # https://boxmatrix.info/wiki/FREETZ_TYPE_W504V_7270_V3
 
-isFreetzType W504V_7270_V3 || return 0
+isFreetzType W504V_7270 || return 0
 
 if [ -z "$FIRMWARE2" ]; then
 	echo "ERROR: no tk firmware" 1>&2
@@ -40,3 +40,4 @@ modsed "s/2\.6\.32\.21/2.6.32.41/g" "${FILESYSTEM_MOD_DIR}/lib/modules/2.6.32.41
 # patch install script to accept firmware for w504v
 echo2 "applying install patch"
 modsed "s/ur8_16MB_xilinx_4eth_2ab_isdn_nt_te_pots_wlan_usb_host_dect_plus_55266/ur8_16MB_xilinx_4eth_2ab_isdn_pots_wlan_usb_host_dect_504avm_07585/g" "${FIRMWARE_MOD_DIR}/var/install"
+
