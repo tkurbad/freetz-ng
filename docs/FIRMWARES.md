@@ -483,15 +483,15 @@ Currently supported devices and firmwares
   - 150.07.01 rev63180 {ALL}
   - 150.07.16 rev108014 {ALL} [WU22 MESH18]
 * __FRITZ!Powerline 1240 AX__
-  - 275.07.57 rev108112 {ALL} [MOVE21NL1]
+  - 275.07.58 rev113257 {ALL} [MOVE21NL1]
 * __Fritz!Powerline 1260E__
   - 157.07.01 rev63181 {ALL}
   - 157.07.12 rev70670 {ALL} [MESH18 NL2]
   - 157.07.29 rev93269 {ALL} [PSQ19P2NL4]
-  - 157.07.57 rev107853 {ALL} [MOVE21NL1]
+  - 157.07.58 rev113255 {ALL} [MOVE21NL1]
 * __Fritz!Powerline 1260 v2 (UNTESTED)__
   - 249.07.29 rev93271 {ALL} [PSQ19P2NL4]
-  - 249.07.57 rev107850 {ALL} [MOVE21NL1]
+  - 249.07.58 rev113256 {ALL} [MOVE21NL1]
 
 ### Fritz!Repeater
 
