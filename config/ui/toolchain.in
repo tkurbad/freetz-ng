@@ -549,7 +549,7 @@ choice
 		depends on FREETZ_AVM_GCC_9
 
 	config FREETZ_TARGET_GCC_13
-		bool "gcc-13.2"
+		bool "gcc-13.3"
 		depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 endchoice
@@ -814,7 +814,7 @@ config FREETZ_TARGET_GCC_MINOR_VERSION
 	default "5.0"       if FREETZ_TARGET_GCC_5
 	default "3.0"       if FREETZ_TARGET_GCC_8
 	default "3.0"       if FREETZ_TARGET_GCC_9
-	default "2.0"       if FREETZ_TARGET_GCC_13
+	default "3.0"       if FREETZ_TARGET_GCC_13
 
 config FREETZ_TARGET_GCC_VERSION
 	string
