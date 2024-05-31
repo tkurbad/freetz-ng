@@ -151,6 +151,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-7590-ax/
    - deutschland: [FRITZ.Box_7590_AX-07.81.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/deutschland/fritz.os/FRITZ.Box_7590_AX-07.81.image)
    - other: [FRITZ.Box_7590_AX-07.81.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/other/fritz.os/FRITZ.Box_7590_AX-07.81.image)
+ * fritzbox-7690/
+   - deutschland: [FRITZ.Box_7690-07.61.image](https://download.avm.de/fritzbox/fritzbox-7690/deutschland/fritz.os/FRITZ.Box_7690-07.61.image)
 
 ### FritzDect
  * fritzsmart-gateway/
@@ -186,6 +188,9 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzpowerline-1260/
    - deutschland: [FRITZ.Powerline_1260.249.07.58.image](https://download.avm.de/fritzpowerline/fritzpowerline-1260/deutschland/fritz.os/FRITZ.Powerline_1260.249.07.58.image)
    - other: [FRITZ.Powerline_1260.249.07.58.image](https://download.avm.de/fritzpowerline/fritzpowerline-1260/other/fritz.os/FRITZ.Powerline_1260.249.07.58.image)
+ * fritzpowerline-1260e/
+   - deutschland: [FRITZ.Powerline_1260E.157.07.58.image](https://download.avm.de/fritzpowerline/fritzpowerline-1260e/deutschland/fritz.os/FRITZ.Powerline_1260E.157.07.58.image)
+   - other: [FRITZ.Powerline_1260E.157.07.58.image](https://download.avm.de/fritzpowerline/fritzpowerline-1260e/other/fritz.os/FRITZ.Powerline_1260E.157.07.58.image)
  * fritzpowerline-510e-a/
    - deutschland: [fritz.powerline_510E_A_150_02_24.image](https://download.avm.de/fritzpowerline/fritzpowerline-510e-a/deutschland/fritz.os/fritz.powerline_510E_A_150_02_24.image)
    - deutschland-recover: [fritz.powerline_510E_A_120_01_14.image](https://download.avm.de/fritzpowerline/fritzpowerline-510e-a/deutschland/recover/fritz.powerline_510E_A_120_01_14.image)
