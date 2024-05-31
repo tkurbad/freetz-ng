@@ -89,6 +89,7 @@ Latest changes
    * Sudo 1.9.15p5
    * SQLite 3.45.3
    * Tor 0.4.8.11
+   * Transmission 3.00/4.0.6
    * Unbound 1.20.0
    * UnRAR 6.1.7/7.0.9
    * Whois 5.5.22

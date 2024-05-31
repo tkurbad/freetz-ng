@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),3.00,4.0.5))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),3.00,4.0.6))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2
-$(PKG)_HASH_CURRENT:=fd68ff114a479200043c30c7e69dba4c1932f7af36ca4c5b5d2edcb5866e6357
+$(PKG)_HASH_CURRENT:=2a38fe6d8a23991680b691c277a335f8875bdeca2b97c6b26b598bc9c7b0c45f
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE_ABANDON:=https://github.com/transmission/transmission-releases/raw/master
 $(PKG)_SITE_CURRENT:=https://github.com/transmission/transmission/releases/download/$($(PKG)_VERSION)
@@ -43,6 +43,8 @@ $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),
 ifeq ($(strip $(FREETZ_PACKAGE_TRANSMISSION_WITH_FINISHDIR)),y)
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),abandon,current)/finishdir
 endif
+
+$(PKG)_PATCH_POST_CMDS += rmdir third-party/miniupnpc; ln -s miniupnp/miniupnpc third-party/miniupnpc;
 
 ifeq ($(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),y)
 ## OLD v3
