@@ -2,7 +2,7 @@ $(call PKG_INIT_LIB, 2.5.1)
 $(PKG)_LIB_VERSION:=1.1.2501
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=db448a626f9313a1a970d636767316a8da32aede70518b8050fa0de7947adc32
-$(PKG)_SITE:=https://download.savannah.nongnu.org/releases/attr,http://ftp.de.debian.org/debian/pool/main/a/attr
+$(PKG)_SITE:=@SAVANNAH/attr,https://ftp.de.debian.org/debian/pool/main/a/attr
 ### WEBSITE:=https://savannah.nongnu.org/projects/attr/
 ### CHANGES:=https://git.savannah.nongnu.org/cgit/attr.git/log/
 ### CVSREPO:=https://git.savannah.nongnu.org/cgit/attr.git

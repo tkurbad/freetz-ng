@@ -349,6 +349,12 @@ if [ -n "$URLs" ]; then
 				sites[(( num_sites++ ))]=https://download.samba.org/pub/$subpath
 				sites[(( num_sites++ ))]=https://www.samba.org/ftp/$subpath
 				sites[(( num_sites++ ))]=https://ftp.samba.org/pub/$subpath
+			elif [ ${url:0:9} == "@SAVANNAH" ]; then
+				subpath=${url/@SAVANNAH\//}
+				sites[(( num_sites++ ))]=https://download.savannah.nongnu.org/releases/$subpath
+				sites[(( num_sites++ ))]=https://download.savannah.gnu.org/releases/$subpath
+				sites[(( num_sites++ ))]=https://ftpmirror.gnu.org/$subpath
+				sites[(( num_sites++ ))]=https://mirror.netcologne.de/savannah/$subpath
 			else
 				sites[(( num_sites++ ))]=$url
 			fi
