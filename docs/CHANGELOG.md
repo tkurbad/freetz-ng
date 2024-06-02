@@ -58,7 +58,7 @@ Latest changes
    * meson 1.4.1
    * ninja 1.12.1
    * precompiled host-tools 2024-05-10
-   * precompiled toolchains r23647
+   * precompiled toolchains r23751
    * python 3.11.9
    * wget 1.24.5
 
