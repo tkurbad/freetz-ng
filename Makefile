@@ -426,7 +426,7 @@ ifneq ($(strip $(FREETZ_FWMOD_SKIP_ALL)),y)
 		$(if $(filter firmware-nocompile,$(MAKECMDGOALS)),-n)                                \
 		$(if $(call is-y,$(FREETZ_FWMOD_FORCE_PACK)),-f)                                     \
 		-d $(BUILD_DIR)                                                                      \
-		$(DL_IMAGE)
+		"$(DL_IMAGE)"
 endif
 
 ifneq ($(strip $(FREETZ_FWMOD_SKIP_MODIFY)),y)
