@@ -412,7 +412,7 @@ Currently supported devices and firmwares
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
   - 256.07.57 rev109901 {ALL} [MOVE21NL1]
   - 256.07.80 rev110628 {ALL} [GoFiber23]
-  - 256.07.90 rev111749 {ALL} [Smart24 P1] (Inhaus)
+  - 256.07.90 rev113462 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box Fon WLAN 7560__
   - 149.06.53 rev41227 {GER}
   - 149.06.83 rev43670 {GER}
