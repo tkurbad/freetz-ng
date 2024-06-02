@@ -92,13 +92,13 @@ unfs_probe() {
 }
 
 image() {
-	local img=$1
-	local dst=$2
+	local img="$1"
+	local dst="$2"
 	[ -n "${dst}" ] && dst="${dst%/}/"
 	local data=999999999
 
-	local imgID=$(basename "${img}")
-	imgID=${imgID%.*}
+	local imgID="$(basename "${img}")"
+	imgID="${imgID%.*}"
 
 	declare -A probeDirs=(
 		[default]=var/tmp
@@ -106,7 +106,7 @@ image() {
 		[atom]=var/remote/var/tmp/x86
 	)
 
-	if [ ! -e $img ]; then
+	if [ ! -e "$img" ]; then
 		echo -e "~~~~\t$img" | tee -a _failed.log
 		return 1
 	fi
@@ -114,17 +114,17 @@ image() {
 	rm -rf var
 
 	if [ "$img" != "${img%.cvc}" ]; then
-		local size="0x$(printf "%08X\n" $(stat -L -c %s $img))"
-		local grbg="$($FTOOLS/sfk hexfind $img _./var/_ | sed -n 's/.*hit at offset //p' |head -n1)"
+		local size="0x$(printf "%08X\n" $(stat -L -c %s "$img"))"
+		local grbg="$($FTOOLS/sfk hexfind "$img" _./var/_ | sed -n 's/.*hit at offset //p' |head -n1)"
 		[ -n "$grbg" ] && echo -e "\tSkipping $(($grbg)) Bytes garbage" && data="$(( $size - ${grbg:-0x0} ))"
 	fi
 	if [ "$img" != "${img%.exe}" ]; then
-		$FTOOLS/extract-images $img >/dev/null
+		$FTOOLS/extract-images "$img" >/dev/null
 		mkdir -p var/tmp
-		mv ${img##*/}.unp/*.image var/tmp/
-		rm -rf ${img##*/}.unp
+		mv "${img##*/}.unp"/*.image var/tmp/
+		rm -rf "${img##*/}.unp"
 	else
-		tail -c $data $img | tar -xi \
+		tail -c $data "$img" | tar -xi \
 		  $(printf " --wildcards ./var/content"                              ) \
 		  $(printf " --wildcards ./var/tmp/fit-image"                        ) \
 		  $(printf " --wildcards ./var/firmware-update.uimg"                 ) \
@@ -256,7 +256,7 @@ image() {
 		echo "firmware layout v$FLV" >> "$nfo"
 
 		# unpack it
-		unfs_probe kernelsquashfs.raw || echo FALSE ${img}${arch}
+		unfs_probe kernelsquashfs.raw || echo "FALSE ${img}${arch}"
 		rm -f kernelsquashfs.raw kernelsquashfs.raw.ext2
 
 		# unpack the inner / the outer root-filesystem if found
@@ -316,6 +316,7 @@ image() {
 }
 
 # check args
+declare -a images
 while [ $# -gt 0 ]; do
 	case $1 in
 		n|nfo)
@@ -343,7 +344,7 @@ while [ $# -gt 0 ]; do
 			unpack=y
 			;;
 		*)
-			image="$image $1"
+			images+=("$1")
 			;;
 	esac
 	shift
@@ -374,9 +375,9 @@ fi
 # main
 [ "$download" == "y" ] && download $dl_arg
 if [ "$unpack" == "y" ]; then
-	[ -z "$image" ] && unpack
-	for imgfile in $image; do
-		image $imgfile
+	[ ${#images[@]} == "0" ] && unpack
+	for image in "${images[@]}"; do
+		image "$image"
 	done
 fi
 
