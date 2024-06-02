@@ -47,13 +47,13 @@ else
 	@ \
 	if [ "$$(call qstrip,$(FREETZ_TYPE_FIRMWARE_DETECT_LATEST))" == "y" -a -z "$(1)" ]; then \
 		echo -n "JUIS: "; \
-		find $$(DL_FW_DIR) -maxdepth 1 -name $$(DL_SOURCE$(1)_LOCAL).url -mmin +360 -exec rm -f {} ';'; \
-		DL_URL_FIRMWARE="$$$$(cat $$(IMAGE$(1)).url.own 2>/dev/null)"; \
+		find $$(DL_FW_DIR) -maxdepth 1 -name "$$(DL_SOURCE$(1)_LOCAL).url" -mmin +360 -exec rm -f {} ';'; \
+		DL_URL_FIRMWARE="$$$$(cat "$$(IMAGE$(1)).url.own" 2>/dev/null)"; \
 		if [ -n "$$$$DL_URL_FIRMWARE" ]; then \
 			echo -n "Using custom value ... "; \
 		fi; \
 		if [ -z "$$$$DL_URL_FIRMWARE" ]; then \
-			DL_URL_FIRMWARE="$$$$(cat $$(IMAGE$(1)).url 2>/dev/null)"; \
+			DL_URL_FIRMWARE="$$$$(cat "$$(IMAGE$(1)).url" 2>/dev/null)"; \
 			echo -n "Using cached value ... "; \
 		fi; \
 		if [ -z "$$$$DL_URL_FIRMWARE" ]; then \
@@ -63,7 +63,7 @@ else
 		fi; \
 		if [ -z "$$$$DL_URL_FIRMWARE" ]; then \
 			echo -n "no valid answer, trying backup ... "; \
-			DL_URL_FIRMWARE="$$$$(cat $$(IMAGE$(1)).url.bak 2>/dev/null)"; \
+			DL_URL_FIRMWARE="$$$$(cat "$$(IMAGE$(1)).url.bak" 2>/dev/null)"; \
 		fi; \
 		if [ -z "$$$$DL_URL_FIRMWARE" ]; then \
 			$$(call ERROR,3,Failed to detect the URL of the latest firmware version) \
@@ -82,26 +82,26 @@ else
 	fi; \
 	if [ ! -e "$$(IMAGE$(1))" ]; then \
 		if [ -n "$$$$DL_SOURCE0_CONTAINER" ]; then \
-			if [ ! -r $$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER ]; then \
-				if ! $$(DL_TOOL) --delete-on-trap --no-append-servers --checksum-optional $$(DL_FW_DIR) "$$$$DL_SOURCE0_CONTAINER" "$$$$DL_SITE0" $$(DL_SOURCE$(1)_CONTAINER_HASH) $$(SILENT); then \
+			if [ ! -r "$$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER" ]; then \
+				if ! $$(DL_TOOL) --delete-on-trap --no-append-servers --checksum-optional "$$(DL_FW_DIR)" "$$$$DL_SOURCE0_CONTAINER" "$$$$DL_SITE0" $$(DL_SOURCE$(1)_CONTAINER_HASH) $$(SILENT); then \
 					$$(call ERROR,3,Could not download firmware image. See https://freetz-ng.github.io/freetz-ng/wiki/FAQ#Couldnotdownloadfirmwareimage for details.) \
 				fi; \
 			fi; \
 			case "$$$${DL_SOURCE0_CONTAINER^^}" in \
 				*.IMAGE) \
-					DL_SOURCE_DETECTED=$$$$DL_SOURCE0_CONTAINER; \
+					DL_SOURCE_DETECTED="$$$$DL_SOURCE0_CONTAINER"; \
 					;; \
 				*.ZIP) \
 					if [ "$$(FREETZ_DL_DETECT_IMAGE_NAME)" == "y" ]; then \
-						DL_SOURCE_DETECTED=$$$$(unzip -j $$(QUIETSHORT) -l $$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER *.image | sed -rn 's/.*( |\/)(.*\.image)/\2/p'); \
+						DL_SOURCE_DETECTED="$$$$(unzip -j $$(QUIETSHORT) -l "$$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER" *.image | sed -rn 's/.*( |\/)(.*\.image)/\2/p')"; \
 						echo "Using detected .image name: $$$$DL_SOURCE_DETECTED" >/dev/null; \
 					else \
-						DL_SOURCE_DETECTED=$$(DL_SOURCE$(1)_LOCAL); \
+						DL_SOURCE_DETECTED="$$(DL_SOURCE$(1)_LOCAL)"; \
 						echo "Using hardcoded .image name: $$$$DL_SOURCE_DETECTED" >/dev/null; \
 					fi; \
-					if [ ! -f $$(DL_FW_DIR)/$$$$DL_SOURCE_DETECTED ]; then \
+					if [ ! -f "$$(DL_FW_DIR)/$$$$DL_SOURCE_DETECTED" ]; then \
 						echo "Unzipping archive file: $$$$DL_SOURCE0_CONTAINER" >/dev/null; \
-						if ! unzip -j $$(QUIETSHORT) $$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER *$$$$DL_SOURCE_DETECTED -d $$(DL_FW_DIR); then \
+						if ! unzip -j $$(QUIETSHORT) "$$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER" "*$$$$DL_SOURCE_DETECTED" -d "$$(DL_FW_DIR)"; then \
 							$$(call ERROR,3,Could not unzip firmware image.) \
 						fi; \
 					fi; \
@@ -111,15 +111,15 @@ else
 						$$(call ERROR,3,Prerequisite unar is missing.) \
 					fi; \
 					if [ "$$(FREETZ_DL_DETECT_IMAGE_NAME)" == "y" ]; then \
-						DL_SOURCE_DETECTED=$$$$(unar -D -q $$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER *.image -o /dev/null 2>&1 | sed -rn 's/.*( |\/)(.*\.image).*/\2/p'); \
+						DL_SOURCE_DETECTED="$$$$(unar -D -q "$$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER" *.image -o /dev/null 2>&1 | sed -rn 's/.*( |\/)(.*\.image).*/\2/p')"; \
 						echo "Using detected .image name: $$$$DL_SOURCE_DETECTED" >/dev/null; \
 					else \
-						DL_SOURCE_DETECTED=$$(DL_SOURCE$(1)_LOCAL); \
+						DL_SOURCE_DETECTED="$$(DL_SOURCE$(1)_LOCAL)"; \
 						echo "Using hardcoded .image name: $$$$DL_SOURCE_DETECTED" >/dev/null; \
 					fi; \
-					if [ ! -f $$(DL_FW_DIR)/$$$$DL_SOURCE_DETECTED ]; then \
+					if [ ! -f "$$(DL_FW_DIR)/$$$$DL_SOURCE_DETECTED" ]; then \
 						echo "Unaring archive file: $$$$DL_SOURCE0_CONTAINER" >/dev/null; \
-						if ! unar -D -q $$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER *$$$$DL_SOURCE_DETECTED -o $$(DL_FW_DIR); then \
+						if ! unar -D -q "$$(DL_FW_DIR)/$$$$DL_SOURCE0_CONTAINER" "*$$$$DL_SOURCE_DETECTED" -o "$$(DL_FW_DIR)"; then \
 							$$(call ERROR,3,Could not unar firmware image.) \
 						fi; \
 					fi; \
@@ -129,11 +129,11 @@ else
 					;; \
 			esac; \
 			if [ "$$(FREETZ_DL_DETECT_IMAGE_NAME)" == "y" ]; then \
-				[ -f $$(DL_FW_DIR)/$$$$DL_SOURCE_DETECTED ] && ln -s $$$$DL_SOURCE_DETECTED $$(IMAGE$(1)); \
+				[ -f "$$(DL_FW_DIR)/$$$$DL_SOURCE_DETECTED" ] && ln -s "$$$$DL_SOURCE_DETECTED" "$$(IMAGE$(1))"; \
 				echo "Created symlink for .image file: $$(DL_SOURCE$(1)_LOCAL)" >/dev/null; \
 			fi; \
-		elif ! $$(DL_TOOL) $$(if $$(DL_SOURCE$(1)_REMOTE),--out-file $$(DL_SOURCE$(1)_LOCAL)) --delete-on-trap --no-append-servers --checksum-optional $$(DL_FW_DIR) \
-			  "$$(if $$(DL_SOURCE$(1)_REMOTE),$$(DL_SOURCE$(1)_REMOTE),$$(DL_SOURCE$(1)_LOCAL))" "$$$$DL_SITE0" $$(DL_SOURCE$(1)_HASH) $$(SILENT); then \
+		elif ! $$(DL_TOOL) $$(if $$(DL_SOURCE$(1)_REMOTE),--out-file "$$(DL_SOURCE$(1)_LOCAL)") --delete-on-trap --no-append-servers --checksum-optional "$$(DL_FW_DIR)" \
+			  "$$(if $$(DL_SOURCE$(1)_REMOTE),$$(DL_SOURCE$(1)_REMOTE),$$(DL_SOURCE$(1)_LOCAL))" "$$$$DL_SITE0" "$$(DL_SOURCE$(1)_HASH)" $$(SILENT); then \
 			$$(call ERROR,3,Could not download firmware image. See https://freetz-ng.github.io/freetz-ng/wiki/FAQ#Couldnotdownloadfirmwareimage for details.) \
 		fi; \
 	fi
