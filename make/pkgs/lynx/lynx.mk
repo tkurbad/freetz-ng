@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.9.1)
+$(call PKG_INIT_BIN, 2.9.2)
 $(PKG)_SOURCE:=$(pkg)$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=a6db9b22c20df435df3757925a505531ce9a514d134742e935d71aa5c41339c5
+$(PKG)_HASH:=7374b89936d991669e101f4e97f2c9592036e1e8cdaa7bafc259a77ab6fb07ce
 $(PKG)_SITE:=https://invisible-mirror.net/archives/lynx/tarballs,ftp://ftp.invisible-island.net/lynx/tarballs
 ### WEBSITE:=https://lynx.invisible-island.net/
 ### MANPAGE:=https://lynx.invisible-island.net/lynx_help/lynx_help_main.html
