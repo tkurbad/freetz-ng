@@ -93,7 +93,7 @@ Latest changes
    * Transmission 3.00/4.0.6
    * Unbound 1.20.0
    * UnRAR 6.1.7/7.0.9
-   * Whois 5.5.22
+   * Whois 5.5.23
 
  - Libraries:
    * harfbuzz 8.5.0
