@@ -140,11 +140,11 @@ Currently supported devices and firmwares
 * __Fritz!Box 5530 Fiber (DEVELOPER, No fiber!)__
   - 257.07.30 rev99334 {ALL} [PSQ19P2NL4]
   - 257.07.58 rev108018 {ALL} [MOVE21NL1]
-  - 257.07.80 rev110630 {ALL} [GoFiber23]
+  - 257.07.81 rev113241 {ALL} [GoFiber23NL1]
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.58 rev109907 {ALL} [MOVE21NL1]
-  - 272.07.80 rev110627 {ALL} [GoFiber23]
+  - 272.07.81 rev113243 {ALL} [GoFiber23NL1]
   - 272.07.90 rev113227 {ALL} [Smart24 P1] (Labor)
 * __FRITZ!Box 5690 Pro (UNTESTED)__
   - 279.07.59 rev112003 {ALL} [FCS23] (Inhaus)
@@ -452,7 +452,7 @@ Currently supported devices and firmwares
   - 154.07.01 rev61989 {INT}
   - 154.07.13 rev74390 {INT} [MESH18 NL3]
   - 154.07.29 rev92051 {ALL} [PSQ19P2NL4]
-  - 154.07.57 rev107893 {ALL} [MOVE21NL1]
+  - 154.07.59 rev113250 {ALL} [MOVE21NL2]
   - 154.07.90 rev112649 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
