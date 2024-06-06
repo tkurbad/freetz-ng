@@ -52,7 +52,7 @@ Latest changes
    * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/9.3.0/13.3.0
 
  - Host tools:
-   * cmake 3.29.4
+   * cmake 3.29.5
    * cpio 2.15
    * fakeroot 1.35
    * kconfig 6.9
