@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 3.0.13)
+$(call TOOLS_INIT, 3.0.14)
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=88525753f79d3bec27d2fa7c66aa0b92b3aa9498dafd93d7cfa4b3780cdae313
+$(PKG)_HASH:=eeca035d4dd4e84fc25846d952da6297484afa0650a6f84c682e39df3a4123ca
 $(PKG)_SITE:=https://www.openssl.org/source
 ### WEBSITE:=https://www.openssl.org/source/
 ### MANPAGE:=https://www.openssl.org/docs/
