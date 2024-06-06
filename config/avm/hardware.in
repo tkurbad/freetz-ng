@@ -117,12 +117,6 @@ config FREETZ_SYSTEM_TYPE_IPQ40xx
 		FREETZ_TYPE_7521 || \
 		FREETZ_TYPE_7530
 
-config FREETZ_SYSTEM_TYPE_IPQ53xx
-	bool
-	default y
-	depends on \
-		FREETZ_TYPE_7690
-
 config FREETZ_SYSTEM_TYPE_IPQ95xx
 	bool
 	default y
@@ -139,6 +133,12 @@ config FREETZ_SYSTEM_TYPE_MAPLE
 		FREETZ_TYPE_4050 || \
 		FREETZ_TYPE_7510 || \
 		FREETZ_TYPE_GATE
+
+config FREETZ_SYSTEM_TYPE_MIAMI
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_7690
 
 config FREETZ_SYSTEM_TYPE_PUMA6_X86
 	bool
@@ -237,9 +237,9 @@ config FREETZ_SYSTEM_TYPE
 	default "grx5"          if FREETZ_SYSTEM_TYPE_GRX5
 	default "iks"           if FREETZ_SYSTEM_TYPE_IKS
 	default "ipq40xx"       if FREETZ_SYSTEM_TYPE_IPQ40xx
-	default "ipq53xx"       if FREETZ_SYSTEM_TYPE_IPQ53xx
 	default "ipq95xx"       if FREETZ_SYSTEM_TYPE_IPQ95xx
 	default "maple"         if FREETZ_SYSTEM_TYPE_MAPLE
+	default "miami"         if FREETZ_SYSTEM_TYPE_MIAMI
 	default "puma6"         if FREETZ_SYSTEM_TYPE_PUMA6
 	default "puma7"         if FREETZ_SYSTEM_TYPE_PUMA7
 	default "qca955x"       if FREETZ_SYSTEM_TYPE_QCA955x
@@ -277,8 +277,8 @@ config FREETZ_CPU_MODEL_ARM_cortex_a53
 	bool
 	default y
 	depends on \
-		FREETZ_SYSTEM_TYPE_IPQ53xx || \
 		FREETZ_SYSTEM_TYPE_MAPLE || \
+		FREETZ_SYSTEM_TYPE_MIAMI || \
 		FREETZ_SYSTEM_TYPE_QCAARMv8
 
 config FREETZ_CPU_MODEL_ARM_cortex_a73
