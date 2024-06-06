@@ -273,7 +273,7 @@ config FREETZ_AVM_HAS_JUIS_SUPPORT
 config FREETZ_AVM_HAS_WIREGUARD_KERNEL
 	bool
 	default y
-	depends on FREETZ_KERNEL_VERSION_5_MIN
+	depends on FREETZ_KERNEL_VERSION_5_15_MIN
 	help
 		The avm-kernel contains the wireguard module.
 		A placeholder, conditions may change!
