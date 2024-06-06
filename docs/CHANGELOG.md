@@ -64,6 +64,9 @@ Latest changes
    * python 3.11.9
    * wget 1.24.5
 
+ - AVM sources:
+   * 7690 7.61 - 5.4.213
+
  - Patches:
    * Enforce /tmp/ permissions: Changes /var/tmp/ permissions back to 1777 after AVM sets 755.
    * Various Fritzos 8.0 related changes
