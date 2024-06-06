@@ -54,6 +54,7 @@ Latest changes
  - Host tools:
    * cmake 3.29.4
    * cpio 2.15
+   * fakeroot 1.35
    * kconfig 6.9
    * meson 1.4.1
    * ninja 1.12.1
