@@ -106,6 +106,7 @@ Latest changes
    * libidn 1.42
    * libpng 1.6.43
    * libxml2 2.12.7
+   * pcre2 10.44
    * pixman 0.43.4
 
  - Firmware updates:
