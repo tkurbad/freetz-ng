@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 0.4.8.11)
+$(call PKG_INIT_BIN, 0.4.8.12)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=8f2bdf90e63380781235aa7d604e159570f283ecee674670873d8bb7052c8e07
+$(PKG)_HASH:=ca7cc735d98e3747b58f2f3cc14f804dd789fa0fb333a84dcb6bd70adbb8c874
 $(PKG)_SITE:=https://www.torproject.org/dist
 ### WEBSITE:=https://www.torproject.org/download/tor/
 ### MANPAGE:=https://trac.torproject.org/projects/tor/wiki/
