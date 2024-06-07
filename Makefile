@@ -411,7 +411,7 @@ package-list: package-list-clean $(PACKAGES_LIST)
 package-list-clean:
 	@$(RM) .packages
 
-firmware-nocompile: tools $(DL_IMAGE)
+firmware-nocompile: tools $(DL_IMAGE) $(DL_IMAGE2) $(DL_IMAGE3)
 ifneq ($(strip $(FREETZ_FWMOD_SKIP_ALL)),y)
 	@./fwmod \
 		$(if $(call is-y,$(FREETZ_FWMOD_SKIP_UNPACK)),,-u)                                   \
@@ -426,7 +426,7 @@ ifneq ($(strip $(FREETZ_FWMOD_SKIP_ALL)),y)
 		$(if $(filter firmware-nocompile,$(MAKECMDGOALS)),-n)                                \
 		$(if $(call is-y,$(FREETZ_FWMOD_FORCE_PACK)),-f)                                     \
 		-d $(BUILD_DIR)                                                                      \
-		$(DL_IMAGE)
+		$(if $(DL_IMAGE),"$(DL_IMAGE)") $(if $(DL_IMAGE2),"$(DL_IMAGE2)") $(if $(DL_IMAGE3),"$(DL_IMAGE3)")
 endif
 
 ifneq ($(strip $(FREETZ_FWMOD_SKIP_MODIFY)),y)
@@ -454,7 +454,7 @@ toolchain: $(DL_DIR) $(SOURCE_DIR_ROOT) $(TOOLCHAIN) tools lzma1-host
 
 libs: $(DL_DIR) $(SOURCE_DIR_ROOT) $(LIBS_PRECOMPILED)
 
-sources: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(PACKAGES_DIR_ROOT) $(DL_IMAGE) \
+sources: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(PACKAGES_DIR_ROOT) $(DL_IMAGE) $(DL_IMAGE2) $(DL_IMAGE3) \
 	$(TARGETS_SOURCE) $(PACKAGES_SOURCE) $(LIBS_SOURCE) $(TOOLCHAIN_SOURCE) $(TOOLS_SOURCE)
 
 precompiled: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) toolchain-depend \

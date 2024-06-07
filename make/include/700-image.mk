@@ -27,6 +27,8 @@ $(eval $(call DEFINE_DL_SOURCE_VARS,3))
 
 
 DL_IMAGE:=
+DL_IMAGE2:=
+DL_IMAGE3:=
 image:
 
 # Download Firmware Image
@@ -34,7 +36,7 @@ image:
 define DOWNLOAD_FIRMWARE
 ifneq ($(strip $(DL_SOURCE$(1))),)
 IMAGE$(1):=$(DL_FW_DIR)/$(DL_SOURCE$(1)_LOCAL)
-DL_IMAGE+=$$(IMAGE$(1))
+DL_IMAGE$(1)=$$(IMAGE$(1))
 image: $$(IMAGE$(1))
 .PHONY: $$(IMAGE$(1))
 $$(IMAGE$(1)): | $(DL_FW_DIR)
