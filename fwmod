@@ -234,6 +234,8 @@ sed -nr 's/^([^=]+)=(.*)/: ${\1:=\2}/p' "$DOT_CONFIG" > "$DOT_CONFIG.fwmod"
 source "$DOT_CONFIG.fwmod"
 rm "$DOT_CONFIG.fwmod"
 
+# Verbosity level of fwmod
+FREETZ_VERBOSITY_LEVEL="$FREETZ_VERBOSITY_FWMOD"
 # Set default verbosity level, just in case none was defined in the (possibly
 # user-defined and minimal) config file
 : ${FREETZ_VERBOSITY_LEVEL:=0}
