@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 # shows hashes of toolchains in dl/*freetz-VERSION-shared-glibc.tar.lzma
 #Arg $1: <VERSION>
-#Arg $2: <new|old|all>
+#Arg $2: <new|old|all|gen>
 
 DLTCIN='config/mod/dl-toolchain.in'
 VERSION="$(tools/freetz_revision short)"
@@ -26,6 +26,7 @@ evalconfig() {
 }
 
 case "$2" in
+	g|gen)		ver="gen" ;; # 2024: About 11ooo iterations!
 	a|all|"")	ver=""    ;;
 	o|old)		ver="old" ;;
 	n|new)		ver="new" ;;
@@ -33,18 +34,21 @@ case "$2" in
 esac
 
 #r
-#sed -nr "s/^#?.*$ver.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
-sed -nr "s/^.*$ver.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
-#FRITZBOX="$(cat config/ui/firmware.in | grep -A9999 '^### Hardware type' | grep -B9999 '^endchoice # "Hardware type"' | sed -rn 's/\t*config (FREETZ_TYPE_)/\1/p')"
-#FIRMWARE="$(sed -rn 's/^\tconfig (FREETZ_TYPE_FIRMWARE_[X_0-9]{5}).*/\1/p' config/ui/firmware.in)"
-#MUECLIBC="$(sed -rn 's/.* FREETZ_TARGET_UCLIBC_([0-1]_[0-9]_[0-9][0-9]*).*/FREETZ_TARGET_UCLIBC_\1/p' config/ui/toolchain.in | sort -u)"
-#for box in $FRITZBOX; do
-#for fos in $FIRMWARE; do
-#for mue in $MUECLIBC; do
-#evalconfig "$box $fos $mue"
-#done
-#done
-#done
+if [ "$ver" != "gen" ]; then
+#	sed -nr "s/^#?.*$ver.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
+	sed -nr   "s/^.*$ver.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
+else
+	FRITZBOX="$(cat config/ui/firmware.in | grep -A9999 '^### Hardware type' | grep -B9999 '^endchoice # "Hardware type"' | sed -rn 's/\t*config (FREETZ_TYPE_)/\1/p')"
+	FIRMWARE="$(sed -rn 's/^\tconfig (FREETZ_TYPE_FIRMWARE_[X_0-9]{5}).*/\1/p' config/ui/firmware.in)"
+	MUECLIBC="$(sed -rn 's/.* FREETZ_TARGET_UCLIBC_([0-1]_[0-9]_[0-9][0-9]*).*/FREETZ_TARGET_UCLIBC_\1/p' config/ui/toolchain.in | sort -u)"
+	for box in $FRITZBOX; do
+		for fos in $FIRMWARE; do
+			for mue in $MUECLIBC; do
+				evalconfig "$box $fos $mue"
+			done
+		done
+	done
+fi
 echo
 
 #w
