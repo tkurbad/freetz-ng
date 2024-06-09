@@ -7,7 +7,7 @@ menu "Hardware series"
 
 	config FREETZ_SERIES_X
 		bool "Extender: Powerline & Repeater"
-		default y
+		default n
 
 	config FREETZ_SERIES_6
 		bool "Series 6 / Flagship: 7690"
@@ -19,11 +19,11 @@ menu "Hardware series"
 
 	config FREETZ_SERIES_4
 		bool "Series 4 / Flagship: 7490"
-		default y
+		default n
 
 	config FREETZ_SERIES_3
 		bool "Series 3 / Flagship: 7390"
-		default y
+		default n
 
 	config FREETZ_SERIES_2
 		bool "Series 2 / Flagship: 7270"
