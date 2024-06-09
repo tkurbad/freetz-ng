@@ -32,36 +32,29 @@ config FREETZ_TOOLCHAIN_CCACHE
 
 config FREETZ_TOOLCHAIN_MINIMIZE_REQUIRED_GLIBC_VERSION
 #	bool "Minimize required GLIBC version" if FREETZ_BUILD_TOOLCHAIN
-	bool
-	default y
+	def_bool y
 
 
 comment "Kernel toolchain options ----------------------------------------"
 
 config FREETZ_KERNEL_BINUTILS_2_18_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_3_4_MAX
-	default y
 config FREETZ_KERNEL_BINUTILS_2_22_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_4_6_MIN && FREETZ_AVM_VERSION_06_9X_MAX && FREETZ_KERNEL_VERSION_2_6_39_MAX
-	default y
 config FREETZ_KERNEL_BINUTILS_2_24_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_4_6_MIN && FREETZ_AVM_VERSION_06_9X_MAX && FREETZ_KERNEL_VERSION_3_10_MIN
-	default y
 config FREETZ_KERNEL_BINUTILS_2_25_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_5
-	default y
 config FREETZ_KERNEL_BINUTILS_2_31_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_8
-	default y
 config FREETZ_KERNEL_BINUTILS_2_36_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_9
-	default y
 
 choice
 	prompt "Kernel binutils"
@@ -155,12 +148,12 @@ choice
 		depends on FREETZ_AVM_GCC_4_8
 
 	config FREETZ_KERNEL_GCC_5_1
-		bool "gcc-5.5"
+		bool "gcc-5.1"
 		depends on FREETZ_AVM_GCC_5_1
 
 	config FREETZ_KERNEL_GCC_5_4
 		bool "gcc-5.4"
-		depends on FREETZ_AVM_GCC_5_5
+		depends on FREETZ_AVM_GCC_5_4
 
 	config FREETZ_KERNEL_GCC_5_5
 		bool "gcc-5.5"
@@ -185,55 +178,47 @@ endchoice
 ###
 
 config FREETZ_KERNEL_GCC_3_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_3_4
 
 config FREETZ_KERNEL_GCC_4_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_6_MIN
 
 config FREETZ_KERNEL_GCC_4_6_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_6 || \
 		FREETZ_KERNEL_GCC_4_7_MIN
 
 config FREETZ_KERNEL_GCC_4_7_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_7 || \
 		FREETZ_KERNEL_GCC_4_8_MIN
 
 config FREETZ_KERNEL_GCC_4_8_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_8 || \
 		FREETZ_KERNEL_GCC_5_MIN
 
 config FREETZ_KERNEL_GCC_5_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_5 || \
 		FREETZ_KERNEL_GCC_8_MIN
 
 config FREETZ_KERNEL_GCC_8_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_8 || \
 		FREETZ_KERNEL_GCC_9_MIN
 
 config FREETZ_KERNEL_GCC_9_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_9
 
@@ -242,14 +227,12 @@ config FREETZ_KERNEL_GCC_9_MIN
 ###
 
 config FREETZ_KERNEL_GCC_3_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_3_4
 
 config FREETZ_KERNEL_GCC_4_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_6 || \
 		FREETZ_KERNEL_GCC_4_7 || \
@@ -257,22 +240,19 @@ config FREETZ_KERNEL_GCC_4_MAX
 		FREETZ_KERNEL_GCC_3_MAX
 
 config FREETZ_KERNEL_GCC_5_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_MAX || \
 		FREETZ_KERNEL_GCC_5
 
 config FREETZ_KERNEL_GCC_8_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_5_MAX || \
 		FREETZ_KERNEL_GCC_8
 
 config FREETZ_KERNEL_GCC_9_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_8_MAX || \
 		FREETZ_KERNEL_GCC_9
@@ -374,8 +354,7 @@ comment "CAUTION: Usage of an uClibc version higher than that used by AVM may le
 		|| (FREETZ_AVM_UCLIBC_0_9_32 && !FREETZ_TARGET_UCLIBC_0_9_32)
 
 config FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_UCLIBC_0_9_28 || \
 		FREETZ_TARGET_UCLIBC_0_9_29 || \
@@ -384,8 +363,7 @@ config FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 		FREETZ_TARGET_UCLIBC_1_0_14
 
 config FREETZ_TARGET_UCLIBC_SUPPORTS_inotify
-	bool
-	default y
+	def_bool y
 	depends on \
 		!FREETZ_TARGET_UCLIBC_0_9_28 && \
 		!FREETZ_TARGET_UCLIBC_0_9_29 && \
@@ -395,8 +373,7 @@ config FREETZ_TARGET_UCLIBC_SUPPORTS_inotify
 		Supported since uClibc 0.9.33.1 & Linux kernel 2.6.36
 
 config FREETZ_TARGET_UCLIBC_SUPPORTS_rpc
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_UCLIBC_0_9_28 || \
 		FREETZ_TARGET_UCLIBC_0_9_29 || \
@@ -597,78 +574,67 @@ endchoice
 ###
 
 config FREETZ_TARGET_GCC_4_6_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_6 || \
 		FREETZ_TARGET_GCC_4_7_MIN
 
 config FREETZ_TARGET_GCC_4_7_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_7 || \
 		FREETZ_TARGET_GCC_4_8_MIN
 
 config FREETZ_TARGET_GCC_4_8_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_8 || \
 		FREETZ_TARGET_GCC_4_9_MIN
 
 config FREETZ_TARGET_GCC_4_9_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_9 || \
 		FREETZ_TARGET_GCC_5_1_MIN
 
 config FREETZ_TARGET_GCC_5_1_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_1 || \
 		FREETZ_TARGET_GCC_5_4_MIN
 
 config FREETZ_TARGET_GCC_5_4_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_4 || \
 		FREETZ_TARGET_GCC_5_5_MIN
 
 config FREETZ_TARGET_GCC_5_5_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_5 || \
 		FREETZ_TARGET_GCC_8_3_MIN
 
 config FREETZ_TARGET_GCC_8_3_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_8_3 || \
 		FREETZ_TARGET_GCC_8_4_MIN
 
 config FREETZ_TARGET_GCC_8_4_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_8_4 || \
 		FREETZ_TARGET_GCC_9_3_MIN
 
 config FREETZ_TARGET_GCC_9_3_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_9_3 || \
 		FREETZ_TARGET_GCC_13_3_MIN
 
 config FREETZ_TARGET_GCC_13_3_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_13_3
 
@@ -677,32 +643,27 @@ config FREETZ_TARGET_GCC_13_3_MIN
 ###
 
 config FREETZ_TARGET_GCC_4_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_6_MIN
 
 config FREETZ_TARGET_GCC_5_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_1_MIN
 
 config FREETZ_TARGET_GCC_8_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_8_3_MIN
 
 config FREETZ_TARGET_GCC_9_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_9_3_MIN
 
 config FREETZ_TARGET_GCC_13_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_13_3_MIN
 
@@ -711,78 +672,67 @@ config FREETZ_TARGET_GCC_13_MIN
 ###
 
 config FREETZ_TARGET_GCC_4_6_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_6
 
 config FREETZ_TARGET_GCC_4_7_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_6_MAX || \
 		FREETZ_TARGET_GCC_4_7
 
 config FREETZ_TARGET_GCC_4_8_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_7_MAX || \
 		FREETZ_TARGET_GCC_4_8
 
 config FREETZ_TARGET_GCC_4_9_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_8_MAX || \
 		FREETZ_TARGET_GCC_4_9
 
 config FREETZ_TARGET_GCC_5_1_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_9_MAX || \
 		FREETZ_TARGET_GCC_5_1
 
 config FREETZ_TARGET_GCC_5_4_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_1_MAX || \
 		FREETZ_TARGET_GCC_5_4
 
 config FREETZ_TARGET_GCC_5_5_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_4_MAX || \
 		FREETZ_TARGET_GCC_5_5
 
 config FREETZ_TARGET_GCC_8_3_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_5_MAX || \
 		FREETZ_TARGET_GCC_8_3
 
 config FREETZ_TARGET_GCC_8_4_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_8_3_MAX || \
 		FREETZ_TARGET_GCC_8_4
 
 
 config FREETZ_TARGET_GCC_9_3_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_8_4_MAX || \
 		FREETZ_TARGET_GCC_9_3
 
 config FREETZ_TARGET_GCC_13_3_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_9_3_MAX || \
 		FREETZ_TARGET_GCC_13_3
@@ -792,32 +742,27 @@ config FREETZ_TARGET_GCC_13_3_MAX
 ###
 
 config FREETZ_TARGET_GCC_4_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_9_MAX
 
 config FREETZ_TARGET_GCC_5_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_5_5_MAX
 
 config FREETZ_TARGET_GCC_8_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_8_4_MAX
 
 config FREETZ_TARGET_GCC_9_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_9_3_MAX
 
 config FREETZ_TARGET_GCC_13_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_13_3_MAX
 
@@ -840,13 +785,11 @@ config FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 		as the implementation of the Standard C++ Library.
 
 config FREETZ_STDCXXLIB_USE_UCLIBCXX
-	bool
-	default y
+	def_bool y
 	depends on FREETZ_STDCXXLIB_USE_UCLIBCXX_CHOICE
 
 config FREETZ_STDCXXLIB_USE_GNULIBSTDCXX
-	bool
-	default y
+	def_bool y
 	depends on FREETZ_STDCXXLIB_USE_GNULIBSTDCXX_CHOICE || FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 
 choice
@@ -1066,8 +1009,7 @@ config FREETZ_TARGET_UCLIBC_REDUCED_LOCALE_SET
 		This saves about 235KB in the image and at run-time.
 
 config FREETZ_TARGET_UCLIBC_PROVIDES_SSP
-	bool
-	default y
+	def_bool y
 	depends on FREETZ_TARGET_UCLIBC_1
 
 config FREETZ_TARGET_NLS
