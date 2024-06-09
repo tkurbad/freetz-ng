@@ -174,6 +174,40 @@ choice
 endchoice
 
 ###
+### FREETZ_KERNEL_GCC_x
+###
+
+config FREETZ_KERNEL_GCC_3
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_3_4
+
+config FREETZ_KERNEL_GCC_4
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_4_6 || \
+		FREETZ_KERNEL_GCC_4_7 || \
+		FREETZ_KERNEL_GCC_4_8
+
+config FREETZ_KERNEL_GCC_5
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_5_1 || \
+		FREETZ_KERNEL_GCC_5_4 || \
+		FREETZ_KERNEL_GCC_5_5
+
+config FREETZ_KERNEL_GCC_8
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_3 || \
+		FREETZ_KERNEL_GCC_8_4
+
+config FREETZ_KERNEL_GCC_9
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_9_3
+
+###
 ### FREETZ_KERNEL_GCC_x_MIN
 ###
 
@@ -209,13 +243,24 @@ config FREETZ_KERNEL_GCC_5_MIN
 	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_5 || \
-		FREETZ_KERNEL_GCC_8_MIN
+		FREETZ_KERNEL_GCC_8_3_MIN
+
+config FREETZ_KERNEL_GCC_8_3_MIN
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_3 || \
+		FREETZ_KERNEL_GCC_8_4_MIN
+
+config FREETZ_KERNEL_GCC_8_4_MIN
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_4 || \
+		FREETZ_KERNEL_GCC_9_MIN
 
 config FREETZ_KERNEL_GCC_8_MIN
 	def_bool y
 	depends on \
-		FREETZ_KERNEL_GCC_8 || \
-		FREETZ_KERNEL_GCC_9_MIN
+		FREETZ_KERNEL_GCC_8_3_MIN
 
 config FREETZ_KERNEL_GCC_9_MIN
 	def_bool y
@@ -234,10 +279,10 @@ config FREETZ_KERNEL_GCC_3_MAX
 config FREETZ_KERNEL_GCC_4_MAX
 	def_bool y
 	depends on \
+		FREETZ_KERNEL_GCC_3_MAX || \
 		FREETZ_KERNEL_GCC_4_6 || \
 		FREETZ_KERNEL_GCC_4_7 || \
-		FREETZ_KERNEL_GCC_4_8 || \
-		FREETZ_KERNEL_GCC_3_MAX
+		FREETZ_KERNEL_GCC_4_8
 
 config FREETZ_KERNEL_GCC_5_MAX
 	def_bool y
@@ -245,16 +290,27 @@ config FREETZ_KERNEL_GCC_5_MAX
 		FREETZ_KERNEL_GCC_4_MAX || \
 		FREETZ_KERNEL_GCC_5
 
-config FREETZ_KERNEL_GCC_8_MAX
+config FREETZ_KERNEL_GCC_8_3_MAX
 	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_5_MAX || \
-		FREETZ_KERNEL_GCC_8
+		FREETZ_KERNEL_GCC_8_3
+
+config FREETZ_KERNEL_GCC_8_4_MAX
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_3_MAX || \
+		FREETZ_KERNEL_GCC_8_4
+
+config FREETZ_KERNEL_GCC_8_MAX
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_4_MAX
 
 config FREETZ_KERNEL_GCC_9_MAX
 	def_bool y
 	depends on \
-		FREETZ_KERNEL_GCC_8_MAX || \
+		FREETZ_KERNEL_GCC_8_4_MAX || \
 		FREETZ_KERNEL_GCC_9
 
 ###
