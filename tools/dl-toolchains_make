@@ -110,8 +110,7 @@ esac
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_7580    FREETZ_TYPE_FIRMWARE_06_8X"
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_7590    FREETZ_TYPE_FIRMWARE_07_0X"
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7590    FREETZ_TYPE_FIRMWARE_07_2X"  # SEPARATE
-
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7690    FREETZ_TYPE_FIRMWARE_07_5X"  # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_7590    FREETZ_TYPE_FIRMWARE_07_5X"  # SEPARATE
 
 
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_1750    FREETZ_TYPE_FIRMWARE_07_0X"
@@ -125,6 +124,7 @@ esac
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_4040    FREETZ_TYPE_FIRMWARE_07_0X"
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_1200    FREETZ_TYPE_FIRMWARE_07_2X"  # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_5590    FREETZ_TYPE_FIRMWARE_08_0X_INHAUS"  # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_7690    FREETZ_TYPE_FIRMWARE_07_5X"  # SEPARATE
 
 #X86
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_6490    FREETZ_TYPE_FIRMWARE_06_8X"
@@ -135,6 +135,7 @@ esac
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6660    FREETZ_TYPE_FIRMWARE_07_1X"  # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6660    FREETZ_TYPE_FIRMWARE_07_2X"  # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6670    FREETZ_TYPE_FIRMWARE_07_5X"  # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_6690    FREETZ_TYPE_FIRMWARE_07_5X"  # SEPARATE
 
 
 exit 0
