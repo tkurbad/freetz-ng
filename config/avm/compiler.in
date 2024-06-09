@@ -41,7 +41,6 @@ config FREETZ_AVM_GCC_5_5
 	default y
 	depends on FREETZ_AVM_PROP_GCC_5_5
 
-
 config FREETZ_AVM_GCC_8_3
 	bool
 	default y
@@ -56,6 +55,11 @@ config FREETZ_AVM_GCC_9_3
 	bool
 	default y
 	depends on FREETZ_AVM_PROP_GCC_9_3
+
+config FREETZ_AVM_GCC_13_3
+	bool
+	default y
+	depends on FREETZ_AVM_PROP_GCC_13_3
 
 ###
 ### FREETZ_AVM_GCC_x
@@ -97,6 +101,12 @@ config FREETZ_AVM_GCC_9
 	depends on \
 		FREETZ_AVM_GCC_9_3
 
+config FREETZ_AVM_GCC_13
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_13_3
+
 ###
 ### FREETZ_AVM_GCC_x_x_MIN
 ###
@@ -134,11 +144,66 @@ config FREETZ_AVM_GCC_4_9_MIN
 	default y
 	depends on \
 		FREETZ_AVM_GCC_4_9 || \
-		FREETZ_AVM_GCC_5_MIN
+		FREETZ_AVM_GCC_5_1_MIN
+
+config FREETZ_AVM_GCC_5_1_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_5_1 || \
+		FREETZ_AVM_GCC_5_4_MIN
+
+config FREETZ_AVM_GCC_5_4_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_5_4 || \
+		FREETZ_AVM_GCC_5_5_MIN
+
+config FREETZ_AVM_GCC_5_5_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_5_5 || \
+		FREETZ_AVM_GCC_8_3_MIN
+
+config FREETZ_AVM_GCC_8_3_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_8_3 || \
+		FREETZ_AVM_GCC_8_4_MIN
+
+config FREETZ_AVM_GCC_8_4_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_8_4 || \
+		FREETZ_AVM_GCC_9_3_MIN
+
+config FREETZ_AVM_GCC_9_3_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_9_3 || \
+		FREETZ_AVM_GCC_13_3_MIN
+
+config FREETZ_AVM_GCC_13_3_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_13_3
 
 ###
 ### FREETZ_AVM_GCC_x_MIN
 ###
+
+config FREETZ_AVM_GCC_4_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_4 || \
+		FREETZ_AVM_GCC_5_MIN
 
 config FREETZ_AVM_GCC_5_MIN
 	bool
@@ -146,7 +211,7 @@ config FREETZ_AVM_GCC_5_MIN
 	depends on \
 		FREETZ_AVM_GCC_5 || \
 		FREETZ_AVM_GCC_8_MIN
-		
+
 config FREETZ_AVM_GCC_8_MIN
 	bool
 	default y
@@ -158,7 +223,14 @@ config FREETZ_AVM_GCC_9_MIN
 	bool
 	default y
 	depends on \
-		FREETZ_AVM_GCC_9
+		FREETZ_AVM_GCC_9 ||
+		FREETZ_AVM_GCC_13_MIN
+
+config FREETZ_AVM_GCC_13_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_13
 
 ###
 ### FREETZ_AVM_GCC_x_x_MAX
@@ -198,21 +270,77 @@ config FREETZ_AVM_GCC_4_9_MAX
 		FREETZ_AVM_GCC_4_8_MAX || \
 		FREETZ_AVM_GCC_4_9
 
+config FREETZ_AVM_GCC_5_1_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_4_9_MAX || \
+		FREETZ_AVM_GCC_5_1
+
+config FREETZ_AVM_GCC_5_4_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_5_1_MAX || \
+		FREETZ_AVM_GCC_5_4
+
+config FREETZ_AVM_GCC_5_5_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_5_4_MAX || \
+		FREETZ_AVM_GCC_5_5
+
+config FREETZ_AVM_GCC_8_3_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_5_5_MAX || \
+		FREETZ_AVM_GCC_8_3
+
+config FREETZ_AVM_GCC_8_4_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_8_3_MAX || \
+		FREETZ_AVM_GCC_8_4
+
+config FREETZ_AVM_GCC_9_3_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_8_4_MAX || \
+		FREETZ_AVM_GCC_9_3
+
+config FREETZ_AVM_GCC_13_3_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_9_3_MAX || \
+		FREETZ_AVM_GCC_13_3
+
 ###
 ### FREETZ_AVM_GCC_x_MAX
 ###
+
+config FREETZ_AVM_GCC_3_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_3_4_MAX
 
 config FREETZ_AVM_GCC_4_MAX
 	bool
 	default y
 	depends on \
-		FREETZ_AVM_GCC_4_9_MAX
+		FREETZ_AVM_GCC_3_MAX || \
+		FREETZ_AVM_GCC_4
 
 config FREETZ_AVM_GCC_5_MAX
 	bool
 	default y
 	depends on \
-		FREETZ_AVM_GCC_4_9_MAX || \
+		FREETZ_AVM_GCC_4_MAX || \
 		FREETZ_AVM_GCC_5
 
 config FREETZ_AVM_GCC_8_MAX
@@ -228,4 +356,11 @@ config FREETZ_AVM_GCC_9_MAX
 	depends on \
 		FREETZ_AVM_GCC_8_MAX || \
 		FREETZ_AVM_GCC_9
+
+config FREETZ_AVM_GCC_13_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_AVM_GCC_9_MAX || \
+		FREETZ_AVM_GCC_13
 
