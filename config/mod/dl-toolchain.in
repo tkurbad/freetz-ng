@@ -25,14 +25,16 @@ config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 	default "ed38e7143a9148bb35a41b7e3a70b780a397918e7f85cd73d65c26b32efd763f"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_8
 	default "19602e8c6f9e24afc573f1d0a48341ed6091b86bfacc8afb867e2ef81ab96bba"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_5_5
 	default "2cd5527be0f9de65c00aef30f253647885e809286be9a43de9eb0f41a6015dbd"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_8_3
+	default "1edcb72bfc3fe2a6521083eb3caebdcf6f250c78a709a7e2b28c1045b7a97dbb"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_8_4
 	default "e91ddea0bd915073f508cc5e39dac7efa32c3d980e38cf3474ab8577504bfe7a"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_5_5 && FREETZ_SYSTEM_TYPE_BCM63138
 	default "f1a1db0b6ecceef06c22abb338ccc496494b20ac59e3e9ce4205d8101a6daf82"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_5_5
 	default "3fa6527b71a09befcbbecd53fec6097552d017a7116bbadd62ea02dc149e7522"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_8_3
-	default "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_8_4
+	default "9e403580a9d906620b42ad2acf8d902f3b7ce12d70896e71646048227114bda7"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_8_4
 	default "5bcee5ae5d815a350f90a83fa5e1de935cffc5848bb11eecff62870a174ef8bb"    if FREETZ_TARGET_ARCH_ARM                           && FREETZ_KERNEL_GCC_9_3
 	default "4dc334227f9c641169ae87f727986076943318eaae6348c5d8a6319f721f9447"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_4_7
 	default "18948f7f6f39d2b22572261ebc30db6992d7d1e5ac4559a40468f55b4cec7afd"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_5_5
 	default "37f9543f3bada20b1bb6787a37414085cd929d9a288b686b90085b5c93b556d2"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_8_3
+	default "f2adb016953d3c91b0b6976ad455eaa2b86066023d96b52e90418abe8f132f41"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_8_4
 	default "c673ea454bdb5e9734f321e22989c3201311848f0eab4673e916d46e9d564908"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_9_3
 	#
 	default "X"
