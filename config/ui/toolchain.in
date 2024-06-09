@@ -697,6 +697,41 @@ config FREETZ_TARGET_GCC_13_3_MIN
 		FREETZ_TARGET_GCC_13_3
 
 ###
+### FREETZ_TARGET_GCC_x
+###
+
+config FREETZ_TARGET_GCC_4
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_4_6 || \
+		FREETZ_TARGET_GCC_4_7 || \
+		FREETZ_TARGET_GCC_4_8 || \
+		FREETZ_TARGET_GCC_4_9
+
+config FREETZ_TARGET_GCC_5
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_1 || \
+		FREETZ_TARGET_GCC_5_4 || \
+		FREETZ_TARGET_GCC_5_5
+
+config FREETZ_TARGET_GCC_8
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_8_3 || \
+		FREETZ_TARGET_GCC_8_4
+
+config FREETZ_TARGET_GCC_9
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_9_3
+
+config FREETZ_TARGET_GCC_13
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_13_3
+
+###
 ### FREETZ_TARGET_GCC_x_MIN
 ###
 
