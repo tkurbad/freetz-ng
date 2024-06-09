@@ -78,14 +78,17 @@ esac
 echo -n " $ENDI" | tee -a out.kernel >> out.target
 
 case "${linek#*gcc-}" in
-	3*|4*)    GCCK="$(echo $linek | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
-	5*|8*|9*) GCCK="$(echo $linek | sed -nr 's/.*gcc-(.).*/\1  /p')" ;;
+#	3*|4*)    GCCK="$(echo $linek | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
+#	5*|8*|9*) GCCK="$(echo $linek | sed -nr 's/.*gcc-(.).*/\1  /p')" ;;
+	*)        GCCK="$(echo $linek | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
 esac
 echo -n " && FREETZ_KERNEL_GCC_$GCCK" >> out.kernel
 case "${linet#*gcc-}" in
-	3*|4*)    GCCT="$(echo $linet | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
-	5*|8*|9*) GCCT="$(echo $linet | sed -nr 's/.*gcc-(.).*/\1  /p')" ;;
-	1*)       GCCT="$(echo $linet | sed -nr 's/.*gcc-(..)\..*/\1 /p')" ;;
+#	3*|4*)    GCCT="$(echo $linet | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
+#	5*|8*|9*) GCCT="$(echo $linet | sed -nr 's/.*gcc-(.).*/\1  /p')" ;;
+#	1*)       GCCT="$(echo $linet | sed -nr 's/.*gcc-(..)\..*/\1 /p')" ;;
+	1*)       GCCT="$(echo $linet | sed -nr 's/.*gcc-(..)\.(.)\..*/\1_\2/p')" ;;
+	*)        GCCT="$(echo $linet | sed -nr 's/.*gcc-(.)\.(.)\..*/\1_\2 /p')" ;;
 esac
 echo -n " && FREETZ_TARGET_GCC_$GCCT" >> out.target
 
