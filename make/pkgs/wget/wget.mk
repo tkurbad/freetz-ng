@@ -51,7 +51,9 @@ endif
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
 $(PKG)_CONFIGURE_OPTIONS += --disable-iri
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre
+$(PKG)_CONFIGURE_OPTIONS += --disable-pcre2
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
+$(PKG)_CONFIGURE_OPTIONS += --without-libpsl
 $(PKG)_CONFIGURE_OPTIONS += --without-libuuid
 $(PKG)_CONFIGURE_OPTIONS += --without-zlib # is only required for compressing warc files
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),,--disable-ipv6)
