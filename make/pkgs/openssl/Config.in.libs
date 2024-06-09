@@ -86,10 +86,12 @@ menu "OpenSSL configuration"
 
 	config FREETZ_OPENSSL_LIBCRYPTO_EXTRA_LIBS
 		string
-		default "-ldl -pthread -lz"  if FREETZ_OPENSSL_VERSION_2_MIN && FREETZ_LIB_libcrypto_WITH_ZLIB
-		default "-ldl -pthread"      if FREETZ_OPENSSL_VERSION_2_MIN
-		default "-ldl -lz"           if FREETZ_OPENSSL_VERSION_1_MAX && FREETZ_LIB_libcrypto_WITH_ZLIB
-		default "-ldl"               if FREETZ_OPENSSL_VERSION_1_MAX
+		default "-ldl -pthread -latomic -lz"  if FREETZ_OPENSSL_VERSION_3_MIN && FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -pthread -latomic"      if FREETZ_OPENSSL_VERSION_3_MIN
+		default "-ldl -pthread -lz"           if FREETZ_OPENSSL_VERSION_2_MIN && FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -pthread"               if FREETZ_OPENSSL_VERSION_2_MIN
+		default "-ldl -lz"                    if FREETZ_OPENSSL_VERSION_1_MAX && FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl"                        if FREETZ_OPENSSL_VERSION_1_MAX
 
 	config FREETZ_LIB_libcrypto_WITH_EC
 		bool "Support elliptic curve cryptography"
