@@ -12,8 +12,6 @@ $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 #$(PKG)_PKGCONFIG_SHORT       := openssl libcrypto libssl
 #$(PKG)_PKGCONFIG_TARGET_DIR  := $($(PKG)_PKGCONFIG_SHORT:%=$($(PKG)_DESTDIR)/lib*/pkgconfig/%.pc)
 
-$(PKG)_DEPENDS_ON+=ca-bundle-host
-
 $(PKG)_LIBRARIES_SHORT       := libcrypto libssl
 $(PKG)_LIBRARIES_SOURCE_DIR  := $($(PKG)_LIBRARIES_SHORT:%=$($(PKG)_DIR)/%.a)
 

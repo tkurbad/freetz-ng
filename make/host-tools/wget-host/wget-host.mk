@@ -11,6 +11,7 @@ $(PKG)_BINARY:=$($(PKG)_DIR)/src/wget
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/wget
 
 $(PKG)_DEPENDS_ON+=$(if $(FREETZ_TOOLS_WGET_STATIC),openssl-host)
+$(PKG)_DEPENDS_ON+=ca-bundle-host
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_WGET_STATIC
 
