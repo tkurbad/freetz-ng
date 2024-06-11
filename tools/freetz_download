@@ -18,7 +18,7 @@ CHECKSUM_ALGOS[64]="sha256"
 CHECKSUM_ALGOS[128]="sha512"
 
 MYPWD="$(dirname $(realpath $0))"
-[ -s "$MYPWD/cacert.pem" ] && CERTS="$MYPWD/cacert.pem" || CERTS="$SSL_CERT_DIR"
+[ -s "$MYPWD/cacert.pem" ] && CERTS="--ca-certificate='$MYPWD/cacert.pem'" || CERTS=""
 FREETZ_BASE_DIR_FOUND="${FREETZ_BASE_DIR:-.}"
 DOT_CONFIG="$FREETZ_BASE_DIR_FOUND/.config"
 #SVN_INSECURE_CERT="--trust-server-cert"
@@ -61,10 +61,8 @@ do_download() {
 	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"$outFile\""; rm "$outFile" 2>/dev/null; exit 1' TERM INT
 	echo 1>&11
 	[ "$DEBUG" == "1" ] && echo \
-	"SSL_CERT_DIR=$CERTS wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll '${fullURL}' -O '${outFile}' 1>&11 2>&12"
-	 SSL_CERT_DIR=$CERTS wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll "${fullURL}" -O "${outFile}" 1>&11 2>&12
-#	"wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll '${fullURL}' -O '${outFile}' 1>&11 2>&12"
-#	 wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll "${fullURL}" -O "${outFile}" 1>&11 2>&12
+	"wget $WGET_INSECURE_HTTPS -nd -t3 $CERTS --timeout=20 --progress=bar:force:noscroll '${fullURL}' -O '${outFile}' 1>&11 2>&12"
+	 wget $WGET_INSECURE_HTTPS -nd -t3 $CERTS --timeout=20 --progress=bar:force:noscroll "${fullURL}" -O "${outFile}" 1>&11 2>&12
 	wget_result=$?
 	[ "$opt_trap_delete" == y ] && trap - TERM INT
 	if [ "$wget_result" != "0" ]; then
