@@ -29,10 +29,9 @@ ifeq ($(strip $(FREETZ_TOOLS_WGET_STATIC)),y)
 $(PKG)_CONFIGURE_OPTIONS += --with-included-libunistring
 $(PKG)_CONFIGURE_OPTIONS += --with-ssl=openssl
 $(PKG)_CONFIGURE_OPTIONS += --without-libgnutls-prefix
-#$(PKG)_CONFIGURE_ENV += OPENSSL_CFLAGS="-I$(OPENSSL_HOST_DIR)/include/openssl"
-#$(PKG)_CONFIGURE_ENV += OPENSSL_LDFLAGS="-L$(OPENSSL_HOST_DIR) -static"
-#$(PKG)_CONFIGURE_ENV += OPENSSL_LIBS="-lssl -lcrypto  -static"
+$(PKG)_CONFIGURE_ENV += OPENSSL_CFLAGS="-I$(OPENSSL_HOST_DIR)/include"
 $(PKG)_CONFIGURE_ENV += OPENSSL_LIBS="-L$(OPENSSL_HOST_DIR)  -Wl,-Bstatic -l:libssl.a -l:libcrypto.a  -Wl,-Bdynamic -ldl -pthread"
+#$(PKG)_CONFIGURE_ENV += LDFLAGS="-static  -lssl -lcrypto"
 endif
 
 
