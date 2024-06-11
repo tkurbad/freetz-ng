@@ -91,7 +91,6 @@ TOOLS_BUILD_LOCAL+=mpfr-host
 TOOLS_BUILD_LOCAL+=openssl-host
 
 # until next host-tools update
-TOOLS_BUILD_LOCAL+=wget-host
 #TOOLS_BUILD_LOCAL+=...
 
 
