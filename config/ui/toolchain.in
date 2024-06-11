@@ -1165,6 +1165,7 @@ config FREETZ_TOOLS_WGET_STATIC
 	default n
 	help
 		Used for precompiled dl-tools with static openssl.
+		Maybe you have to export SSL_CERT_DIR with ca-certs.
 
 config FREETZ_TOOLS_KCONFIG_BUTTONS
 	bool "No load+save buttons in menuconfig"
