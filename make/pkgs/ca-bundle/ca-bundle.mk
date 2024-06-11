@@ -10,7 +10,9 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/etc/ssl/certs/ca-bundle.crt
 $(PKG)_STARTLEVEL=30
 
 
+ifneq ($(strip $(DL_DIR)/$(CA_BUNDLE_SOURCE)), $(strip $(DL_DIR)/$(CA_BUNDLE_HOST_SOURCE)))
 $(PKG_SOURCE_DOWNLOAD)
+endif
 $(PKG_UNPACKED)
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
