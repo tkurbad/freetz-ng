@@ -2,11 +2,11 @@
 MYOWN="$(realpath $0)"
 TOOLS="$(dirname $(dirname $MYOWN))"
 
-file="$TOOLS/cacert.pem"
-[ -s "$file" ] && CAC="--ca-certificate='$file'" || CAC=""
-
+CAC="$TOOLS/cacert.pem"
+if [ -s "$CAC" ]; then
 file="$TOOLS/wget"
-[ -x "$file" ] && exec "$file" $CAC "$@"
+[ -x "$file" ] && exec "$file" ${CAC:+--ca-certificate="$CAC"} "$@"
+fi
 
 file="$(which -a 'wget' | grep -v "^$MYOWN$" | head -n1)"
 [ -x "$file" ] && exec "$file" "$@"
