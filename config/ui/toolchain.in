@@ -37,6 +37,152 @@ config FREETZ_TOOLCHAIN_MINIMIZE_REQUIRED_GLIBC_VERSION
 
 comment "Kernel toolchain options ----------------------------------------"
 
+choice
+	prompt "Kernel version"
+	help
+		Version can NOT be changed here.
+
+
+	config FREETZ_KERNEL_VERSION_2_6_13
+		bool "kernel-2.6.13"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_13
+
+	config FREETZ_KERNEL_VERSION_2_6_19
+		bool "kernel-2.6.19"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_19
+
+	config FREETZ_KERNEL_VERSION_2_6_28
+		bool "kernel-2.6.28"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_28
+
+
+	config FREETZ_KERNEL_VERSION_2_6_32_41
+		bool "kernel-2.6.32.41"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_32_41
+
+	config FREETZ_KERNEL_VERSION_2_6_32_60
+		bool "kernel-2.6.32.60"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_32_60
+
+	config FREETZ_KERNEL_VERSION_2_6_32_61
+		bool "kernel-2.6.32.61"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_32_61
+
+
+	config FREETZ_KERNEL_VERSION_2_6_39_3
+		bool "kernel-2.6.39.3"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_39_3
+
+	config FREETZ_KERNEL_VERSION_2_6_39_4
+		bool "kernel-2.6.39.4"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_39_4
+
+
+	config FREETZ_KERNEL_VERSION_3_10_12
+		bool "kernel-3.10.12"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_12
+
+	config FREETZ_KERNEL_VERSION_3_10_73
+		bool "kernel-3.10.73"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_73
+
+	config FREETZ_KERNEL_VERSION_3_10_104
+		bool "kernel-3.10.104"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_104
+
+	config FREETZ_KERNEL_VERSION_3_10_107
+		bool "kernel-3.10.107"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_107
+
+
+	config FREETZ_KERNEL_VERSION_3_12_59
+		bool "kernel-3.12.59"
+		depends on FREETZ_AVM_PROP_KERNEL_3_12_59
+
+	config FREETZ_KERNEL_VERSION_3_12_74
+		bool "kernel-3.12.74"
+		depends on FREETZ_AVM_PROP_KERNEL_3_12_74
+
+
+	config FREETZ_KERNEL_VERSION_4_1_38
+		bool "kernel-4.1.38"
+		depends on FREETZ_AVM_PROP_KERNEL_4_1_38
+
+	config FREETZ_KERNEL_VERSION_4_1_52
+		bool "kernel-4.1.52"
+		depends on FREETZ_AVM_PROP_KERNEL_4_1_52
+
+
+	config FREETZ_KERNEL_VERSION_4_4_60
+		bool "kernel-4.4.60"
+		depends on FREETZ_AVM_PROP_KERNEL_4_4_60
+
+	config FREETZ_KERNEL_VERSION_4_4_271
+		bool "kernel-4.4.271"
+		depends on FREETZ_AVM_PROP_KERNEL_4_4_271
+
+
+	config FREETZ_KERNEL_VERSION_4_9_161
+		bool "kernel-4.9.161"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_161
+
+	config FREETZ_KERNEL_VERSION_4_9_175
+		bool "kernel-4.9.175"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_175
+
+	config FREETZ_KERNEL_VERSION_4_9_198
+		bool "kernel-4.9.198"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_198
+
+	config FREETZ_KERNEL_VERSION_4_9_199
+		bool "kernel-4.9.199"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_199
+
+	config FREETZ_KERNEL_VERSION_4_9_218
+		bool "kernel-4.9.218"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_218
+
+	config FREETZ_KERNEL_VERSION_4_9_231
+		bool "kernel-4.9.231"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_231
+
+	config FREETZ_KERNEL_VERSION_4_9_240
+		bool "kernel-4.9.240"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_240
+
+	config FREETZ_KERNEL_VERSION_4_9_250
+		bool "kernel-4.9.250"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_250
+
+	config FREETZ_KERNEL_VERSION_4_9_276
+		bool "kernel-4.9.276"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_276
+
+	config FREETZ_KERNEL_VERSION_4_9_279
+		bool "kernel-4.9.279"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_279
+
+	config FREETZ_KERNEL_VERSION_4_9_325
+		bool "kernel-4.9.325"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_325
+
+
+	config FREETZ_KERNEL_VERSION_4_19_183
+		bool "kernel-4.19.183"
+		depends on FREETZ_AVM_PROP_KERNEL_4_19_183
+
+
+	config FREETZ_KERNEL_VERSION_5_4_213
+		bool "kernel-5.4.213"
+		depends on FREETZ_AVM_PROP_KERNEL_5_4_213
+
+
+	config FREETZ_KERNEL_VERSION_5_15_111
+		bool "kernel-5.15.111"
+		depends on FREETZ_AVM_PROP_KERNEL_5_15_111
+
+endchoice
+
 config FREETZ_KERNEL_BINUTILS_2_18_DEFAULT
 	def_bool y
 	depends on FREETZ_AVM_GCC_3_4_MAX
