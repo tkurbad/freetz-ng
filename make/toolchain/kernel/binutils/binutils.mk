@@ -36,7 +36,7 @@ $(BINUTILS_KERNEL_DIR)/.unpacked: $(DL_DIR)/$(BINUTILS_KERNEL_SOURCE) | $(KERNEL
 	@$(call _ECHO,preparing,$(BINUTILS_KERNEL_ECHO_TYPE),$(BINUTILS_KERNEL_ECHO_MAKE))
 	$(RM) -r $(BINUTILS_KERNEL_DIR)
 	$(call UNPACK_TARBALL,$(DL_DIR)/$(BINUTILS_KERNEL_SOURCE),$(KERNEL_TOOLCHAIN_DIR))
-	$(call APPLY_PATCHES,$(BINUTILS_KERNEL_MAKE_DIR)/$(call GET_MAJOR_VERSION,$(BINUTILS_KERNEL_VERSION)),$(BINUTILS_KERNEL_DIR))
+	$(call APPLY_PATCHES,$(BINUTILS_KERNEL_MAKE_DIR)/patches/$(call GET_MAJOR_VERSION,$(BINUTILS_KERNEL_VERSION)),$(BINUTILS_KERNEL_DIR))
 	# fool zlib test in all configure scripts so it doesn't find zlib and thus no zlib gets linked in
 	sed -i -r -e 's,(zlibVersion)([ \t]*[(][)]),\1WeDontWantZlib\2,g' $$(find $(BINUTILS_KERNEL_DIR) -name "configure" -type f)
 	touch $@
