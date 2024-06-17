@@ -1110,7 +1110,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 # Unstable
 
-  * **<u>Asterisk 11.25.3 - EXPERIMENTAL</u><a id='asterisk'></a>**<br>
+  * **<u>Asterisk 11.25.3 - DEPRECATED</u><a id='asterisk'></a>**<br>
     Asterisk is an open source framework for building communications applications.
 
   * **<u>axtlswrap: axTLS wrapper 2.1.3 (binary only)</u><a id='axtlswrap'></a>**<br>
@@ -1147,10 +1147,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Mögliche Nebeneffekte](../../docs/make/mini_fo.md#mögliche-nebeneffekte)
      - [Restore original file](../../docs/make/mini_fo.md#restore-original-file)
 
-  * **[MySQL 6.0.11-alpha](../../docs/make/mysql.md)<a id='mysql'></a>**<br>
+  * **[MySQL 6.0.11-alpha - DEPRECATED](../../docs/make/mysql.md)<a id='mysql'></a>**<br>
     MySQL is a very fast, multi-threaded, multi-user and robust SQL (Structured Query Language) database server. Unstable, as this version is quite old, but runs well on Fritzbox. Do not expose this daemon to the internet!
 
-  * **[PHP 5.6.40 (binary only)](../../docs/make/php.md)<a id='php'></a>**<br>
+  * **[PHP 5.6.40 (binary only) - DEPRECATED](../../docs/make/php.md)<a id='php'></a>**<br>
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
      - [Memory usage](../../docs/make/php.md#memory-usage)
 

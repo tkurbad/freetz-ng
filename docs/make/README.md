@@ -828,7 +828,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 # Unstable
 
-  * **<u>Asterisk 11.25.3 - EXPERIMENTAL</u><a id='asterisk'></a>**<br>
+  * **<u>Asterisk 11.25.3 - DEPRECATED</u><a id='asterisk'></a>**<br>
     Asterisk is an open source framework for building communications applications.
 
   * **<u>axtlswrap: axTLS wrapper 2.1.3 (binary only)</u><a id='axtlswrap'></a>**<br>
@@ -851,10 +851,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[mini_fo 0.3](mini_fo.md)<a id='mini-fo'></a>**<br>
     Makes the filesystem writeable. Changes are not reboot-persistent, unless stored on a hard disk or on flash storage media. The way mini_fo is configured here creates the overlay filesystem in the router's RAM disk, so they definitely are *not* reboot-persistent. Nonetheless, mini_fo is tremendously helpful, eliminating the need for tricks like 'mount -o bind' etc. Note: The mini_fo root filesystem will not be used if an NFS-root was mounted first (see NFS-root package). Still, both packages can be installed at the same time, because mini_fo is still useful if NFS-root is decativated. This package does not work with (at least) 7390 at the moment.
 
-  * **[MySQL 6.0.11-alpha](mysql.md)<a id='mysql'></a>**<br>
+  * **[MySQL 6.0.11-alpha - DEPRECATED](mysql.md)<a id='mysql'></a>**<br>
     MySQL is a very fast, multi-threaded, multi-user and robust SQL (Structured Query Language) database server. Unstable, as this version is quite old, but runs well on Fritzbox. Do not expose this daemon to the internet!
 
-  * **[PHP 5.6.40 (binary only)](php.md)<a id='php'></a>**<br>
+  * **[PHP 5.6.40 (binary only) - DEPRECATED](php.md)<a id='php'></a>**<br>
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
 
   * **[sane-backends: SANE 1.0.27](sane-backends.md)<a id='sane-backends'></a>**<br>
