@@ -26,6 +26,8 @@ UCLIBC_DEVEL_SUBDIR:=uClibc_dev
 
 UCLIBC_CONFIG_FILE:=$(UCLIBC_MAKE_DIR)/configs/freetz/config-$(FREETZ_TARGET_ARCH)-$(UCLIBC_VERSION)
 
+UCLIBC_PATCHES_DIR:=$(UCLIBC_MAKE_DIR)/patches/$(if $(FREETZ_SEPARATE_AVM_UCLIBC),separate,$(UCLIBC_VERSION))
+
 UCLIBC_TARGET_SUBDIR:=$(if $(FREETZ_SEPARATE_AVM_UCLIBC),$(FREETZ_RPATH),/lib)
 
 # uClibc >= 0.9.31 supports parallel building
@@ -80,7 +82,7 @@ $(UCLIBC_DIR)/.unpacked: $(DL_DIR)/$(UCLIBC_SOURCE) $(DL_DIR)/$(UCLIBC_LOCALE_DA
 	@$(call _ECHO,preparing,$(UCLIBC_ECHO_TYPE),$(UCLIBC_ECHO_MAKE))
 	$(RM) -r $(UCLIBC_DIR)
 	$(call UNPACK_TARBALL,$(DL_DIR)/$(UCLIBC_SOURCE),$(TARGET_TOOLCHAIN_DIR))
-	$(call APPLY_PATCHES,$(UCLIBC_MAKE_DIR)/$(UCLIBC_VERSION)/avm $(UCLIBC_MAKE_DIR)/$(UCLIBC_VERSION),$(UCLIBC_DIR))
+	$(call APPLY_PATCHES,$(UCLIBC_PATCHES_DIR)/avm $(UCLIBC_PATCHES_DIR),$(UCLIBC_DIR))
 ifeq ($(FREETZ_TARGET_UCLIBC_0_9_33),y)
 # "remove"-part of 980-nptl_remove_duplicate_vfork_in_libpthread
 # instead of removing files using patch, we remove them using rm
