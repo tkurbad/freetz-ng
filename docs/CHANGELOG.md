@@ -107,6 +107,7 @@ Latest changes
  - Libraries:
    * harfbuzz 8.5.0
    * libidn 1.42
+   * libmaxminddb 1.10.0
    * libpng 1.6.43
    * libxml2 2.12.7
    * pcre2 10.44
