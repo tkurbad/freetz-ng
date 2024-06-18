@@ -887,13 +887,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     This frontend allows the management of the authorized_keys file used by either Dropbear or OpenSSH to allow a key-based authentication. The key-based authentication is much more secure than password-based authentication.
 
   * **[AVM-firewall](avm-firewall.md)<a id='avm-firewall'></a>**<br>
-    Configuration front-end for AVM-firewall. This front-end is used for managing firewall rules for the AVM standard firewall. You can also modify the ar7.cfg file manually. But a better way is to use this GUI.
+    For FritzOS 4.xx - 5.5x only. Configuration front-end for AVM-firewall. This front-end is used for managing firewall rules for the AVM standard firewall. You can also modify the ar7.cfg file manually. But a better way is to use this GUI.
 
   * **<u>AVM-forwarding</u><a id='avm-forwarding'></a>**<br>
-    Configuration of forwardings to FB itself (open ports). Requires an existing forwarding in the configuration, e.g. HTTPS to box is allowed in the regular AVM GUI.
+    For FritzOS 6.0x - 6.5x only. Configuration of forwardings to FB itself (open ports). Requires an existing forwarding in the configuration, e.g. HTTPS to box is allowed in the regular AVM GUI.
 
   * **[AVM-portfw](avm-portfw.md)<a id='avm-portfw'></a>**<br>
-    Configuration of port forwardings to the FritzBox itself by using internet_forwardrules. Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
+    For FritzOS 6.8x - 7.5x only. Configuration of port forwardings to the FritzBox itself by using internet_forwardrules. Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
 
   * **[AVM-rules (deprecated)](avm-rules.md)<a id='avm-rules'></a>**<br>
     Configuration of port forwardings to the FritzBox itself by using voip_forwardrules. Please don't use this package, but AVM-portfw! Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
