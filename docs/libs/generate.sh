@@ -25,6 +25,14 @@ for dir in $(find "$INPWD" -maxdepth 1 -mindepth 1 -type d | sort); do
 	lnk="https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/$lib/"
 	sed "/^ - Library: \[.*)$/d" -i "$MDPWD/$lib.md"
 	sed "2i\ - Library: \[${lnk:44}\]($lnk)" -i "$MDPWD/$lib.md"
+
+	sed "/^ - Maintainer: \[.*)$/d" -i "$MDPWD/$lib.md"
+	lnk="$(sed -n "s/^### SUPPORT:= *//p" $dir/*.mk)"
+	if [ -n "$lnk" ]; then
+		[ "$lnk" == "${lnk/:\/\//}" ] && lnk="\[@$lnk\](https://github.com/$lnk)" || lnk="\[$lnk\]($lnk)"
+		sed "2i\ - Maintainer: $lnk" -i "$MDPWD/$lib.md"
+	fi
+
 	for pair in CVSREPO°Repository CHANGES°Changelog MANPAGE°Manpage WEBSITE°Homepage; do
 		sed "/^ - ${pair#*°}: \[.*)$/d" -i "$MDPWD/$lib.md"
 		lnk="$(sed -n "s/^### ${pair%%°*}:= *//p" $INPWD/$lib/*.mk 2>/dev/null)"
