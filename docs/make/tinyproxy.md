@@ -1,4 +1,4 @@
-# Tinyproxy 1.11.1
+# Tinyproxy 1.11.2
  - Homepage: [https://tinyproxy.github.io/](https://tinyproxy.github.io/)
  - Manpage: [https://tinyproxy.github.io/#documentation](https://tinyproxy.github.io/#documentation)
  - Changelog: [https://github.com/tinyproxy/tinyproxy/releases](https://github.com/tinyproxy/tinyproxy/releases)

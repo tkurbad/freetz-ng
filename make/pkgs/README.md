@@ -934,7 +934,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Features](../../docs/make/tinc.md#features)
      - [Verwendete Bibliotheken](../../docs/make/tinc.md#verwendete-bibliotheken)
 
-  * **[Tinyproxy 1.11.1](../../docs/make/tinyproxy.md)<a id='tinyproxy'></a>**<br>
+  * **[Tinyproxy 1.11.2](../../docs/make/tinyproxy.md)<a id='tinyproxy'></a>**<br>
     Tinyproxy is a lightweight HTTP and HTTPS proxy.
      - [Proxy auto-config (pac)](../../docs/make/tinyproxy.md#proxy-auto-config-pac)
      - [URL blocking](../../docs/make/tinyproxy.md#url-blocking)
