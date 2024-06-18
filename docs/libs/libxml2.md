@@ -4,5 +4,6 @@
  - Changelog: [https://gitlab.gnome.org/GNOME/libxml2/-/releases](https://gitlab.gnome.org/GNOME/libxml2/-/releases)
  - Repository: [https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home](https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home)
  - Library: [master/make/libs/libxml2/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/libxml2/)
+ - Maintainer: -
 
 XML toolkit from the GNOME project

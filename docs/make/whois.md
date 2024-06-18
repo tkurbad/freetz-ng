@@ -4,4 +4,5 @@
  - Changelog: [https://github.com/rfc1036/whois/tags](https://github.com/rfc1036/whois/tags)
  - Repository: [https://github.com/rfc1036/whois](https://github.com/rfc1036/whois)
  - Package: [master/make/pkgs/whois/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/whois/)
+ - Maintainer: -
 

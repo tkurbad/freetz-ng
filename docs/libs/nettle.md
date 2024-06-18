@@ -4,5 +4,6 @@
  - Changelog: [https://git.lysator.liu.se/nettle/nettle/blob/master/ChangeLog](https://git.lysator.liu.se/nettle/nettle/blob/master/ChangeLog)
  - Repository: [https://git.lysator.liu.se/nettle/nettle](https://git.lysator.liu.se/nettle/nettle)
  - Library: [master/make/libs/nettle/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/nettle/)
+ - Maintainer: -
 
 A low level cryptographic library (symmetric and one-way cryptos)

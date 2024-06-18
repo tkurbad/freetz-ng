@@ -3,6 +3,7 @@
  - Manpage: [https://security.appspot.com/vsftpd/vsftpd_conf.html](https://security.appspot.com/vsftpd/vsftpd_conf.html)
  - Changelog: [https://security.appspot.com/vsftpd/Changelog.txt](https://security.appspot.com/vsftpd/Changelog.txt)
  - Package: [master/make/pkgs/vsftpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vsftpd/)
+ - Maintainer: -
 
 **vsFTP** steht für **v**ery **s**ecure **F**ile **T**ransfer
 **P**rotocol. Der

@@ -4,6 +4,7 @@
  - Changelog: [https://www.lighttpd.net/releases/](https://www.lighttpd.net/releases/)
  - Repository: [https://git.lighttpd.net/lighttpd/lighttpd1.4.git](https://git.lighttpd.net/lighttpd/lighttpd1.4.git)
  - Package: [master/make/pkgs/lighttpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lighttpd/)
+ - Maintainer: -
 
 Mit diesem Paket ist es möglich, den lighttpd Webserver zu erstellen.
 

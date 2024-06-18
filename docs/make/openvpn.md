@@ -4,6 +4,7 @@
  - Changelog: [https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst](https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst)
  - Repository: [https://github.com/OpenVPN/openvpn](https://github.com/OpenVPN/openvpn)
  - Package: [master/make/pkgs/openvpn/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openvpn/)
+ - Maintainer: -
 
 OpenVPN ist ein Programm zur Herstellung eines Virtuellen Privaten
 Netzwerkes (VPN) über eine verschlüsselte TLS-Verbindung.

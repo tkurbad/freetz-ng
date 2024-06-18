@@ -4,5 +4,6 @@
  - Changelog: [https://gitlab.com/gnutls/libtasn1/blob/master/NEWS](https://gitlab.com/gnutls/libtasn1/blob/master/NEWS)
  - Repository: [https://gitlab.com/gnutls/libtasn1.git](https://gitlab.com/gnutls/libtasn1.git)
  - Library: [master/make/libs/libtasn1/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/libtasn1/)
+ - Maintainer: -
 
 A small ASN.1 library.

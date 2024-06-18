@@ -4,6 +4,7 @@
  - Changelog: [https://github.com/acmesh-official/acme.sh/releases](https://github.com/acmesh-official/acme.sh/releases)
  - Repository: [https://github.com/acmesh-official/acme.sh](https://github.com/acmesh-official/acme.sh)
  - Package: [master/make/pkgs/acme/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/acme/)
+ - Maintainer: -
 
 Mit ACME.sh können Let's Encrypt Zertifikate erstellt und aktualisiert werden.
 <br>

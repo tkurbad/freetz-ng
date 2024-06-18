@@ -4,6 +4,7 @@
  - Changelog: [https://github.com/radvd-project/radvd/blob/master/CHANGES](https://github.com/radvd-project/radvd/blob/master/CHANGES)
  - Repository: [https://github.com/radvd-project/radvd](https://github.com/radvd-project/radvd)
  - Package: [master/make/pkgs/radvd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/radvd/)
+ - Maintainer: -
 
 The router advertisement daemon (RADVD) allows to both Linux and
 Windonws clients to obtain an IPv6 IP address, without any changes on

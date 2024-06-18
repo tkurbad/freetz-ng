@@ -4,5 +4,6 @@
  - Changelog: [https://sites.google.com/site/fullycapable/release-notes-for-libcap](https://sites.google.com/site/fullycapable/release-notes-for-libcap)
  - Repository: [https://git.kernel.org/pub/scm/libs/libcap/libcap.git](https://git.kernel.org/pub/scm/libs/libcap/libcap.git)
  - Library: [master/make/libs/libcap/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/libcap/)
+ - Maintainer: -
 
 A library for getting and setting POSIX.1e (formerly POSIX 6) draft 15 capabilities.

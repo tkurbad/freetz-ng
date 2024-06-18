@@ -4,6 +4,7 @@
  - Changelog: [https://sourceforge.net/p/ser2net/news/](https://sourceforge.net/p/ser2net/news/)
  - Repository: [https://sourceforge.net/projects/ser2net/](https://sourceforge.net/projects/ser2net/)
  - Package: [master/make/pkgs/ser2net/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ser2net/)
+ - Maintainer: -
 
 Anwendungsbeispiele:
 [http://www.nwlab.net/tutorials/ser2net/konsolenserver-linux.html](http://www.nwlab.net/tutorials/ser2net/konsolenserver-linux.html)

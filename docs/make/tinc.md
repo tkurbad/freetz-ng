@@ -4,6 +4,7 @@
  - Changelog: [https://www.tinc-vpn.org/news/](https://www.tinc-vpn.org/news/)
  - Repository: [https://www.tinc-vpn.org/git/browse?p=tinc](https://www.tinc-vpn.org/git/browse?p=tinc)
  - Package: [master/make/pkgs/tinc/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/tinc/)
+ - Maintainer: -
 
 **[tinc](http://www.tinc-vpn.org/)** ist ein
 Virtual Privat Network

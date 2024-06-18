@@ -4,6 +4,7 @@
  - Changelog: [https://e2fsprogs.sourceforge.net/e2fsprogs-release.html](https://e2fsprogs.sourceforge.net/e2fsprogs-release.html)
  - Repository: [https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git](https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git)
  - Package: [master/make/pkgs/e2fsprogs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/e2fsprogs/)
+ - Maintainer: -
 
 **e2fsprogs** ist eine Tool-Sammlung zur Wartung von *ext2* and *ext3*
 Dateisystemen. Diese Dateisysteme werden für gewöhnlich als Standard bei

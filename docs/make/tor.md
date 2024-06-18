@@ -4,6 +4,7 @@
  - Changelog: [https://gitlab.torproject.org/tpo/core/tor/tags](https://gitlab.torproject.org/tpo/core/tor/tags)
  - Repository: [https://gitweb.torproject.org/tor.git/](https://gitweb.torproject.org/tor.git/)
  - Package: [master/make/pkgs/tor/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/tor/)
+ - Maintainer: -
 
 Tor ist ein **anonymes Kommunikationssystem** für das Internet, mit dem
 man **verschlüsselt** und **sicher surfen** kann. Die Installation eines

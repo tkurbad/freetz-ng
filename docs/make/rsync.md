@@ -4,4 +4,5 @@
  - Changelog: [https://download.samba.org/pub/rsync/NEWS](https://download.samba.org/pub/rsync/NEWS)
  - Repository: [https://git.samba.org/?p=rsync.git](https://git.samba.org/?p=rsync.git)
  - Package: [master/make/pkgs/rsync/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/rsync/)
+ - Maintainer: -
 

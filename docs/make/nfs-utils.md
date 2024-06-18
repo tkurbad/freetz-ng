@@ -4,6 +4,7 @@
  - Changelog: [https://sourceforge.net/projects/nfs/files/nfs-utils/](https://sourceforge.net/projects/nfs/files/nfs-utils/)
  - Repository: [http://git.linux-nfs.org/?p=steved/nfs-utils.git](http://git.linux-nfs.org/?p=steved/nfs-utils.git)
  - Package: [master/make/pkgs/nfs-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nfs-utils/)
+ - Maintainer: -
 
 Die NFS-Utils erweitern Freetz um einen NFS Server inklusive
 Administrationswebinterface (siehe [nfsd-cgi](nfsd.md)) für die

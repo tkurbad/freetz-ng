@@ -4,6 +4,7 @@
  - Changelog: [https://sourceforge.net/p/minidlna/git/ci/master/tree/NEWS](https://sourceforge.net/p/minidlna/git/ci/master/tree/NEWS)
  - Repository: [https://sourceforge.net/p/minidlna/git/ci/master/tree/](https://sourceforge.net/p/minidlna/git/ci/master/tree/)
  - Package: [master/make/pkgs/minidlna/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/minidlna/)
+ - Maintainer: -
 
 [![minidlna](../screenshots/243_md.jpg)](../screenshots/243.jpg)
 

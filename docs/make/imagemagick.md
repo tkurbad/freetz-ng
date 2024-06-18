@@ -4,4 +4,5 @@
  - Changelog: [https://github.com/ImageMagick/ImageMagick/releases](https://github.com/ImageMagick/ImageMagick/releases)
  - Repository: [https://github.com/ImageMagick/ImageMagick](https://github.com/ImageMagick/ImageMagick)
  - Package: [master/make/pkgs/imagemagick/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/imagemagick/)
+ - Maintainer: -
 

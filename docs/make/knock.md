@@ -4,6 +4,7 @@
  - Changelog: [https://github.com/jvinet/knock/blob/master/ChangeLog](https://github.com/jvinet/knock/blob/master/ChangeLog)
  - Repository: [https://github.com/jvinet/knock](https://github.com/jvinet/knock)
  - Package: [master/make/pkgs/knock/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/knock/)
+ - Maintainer: -
 
 *"Wer klopfet, dem wird aufgetan"* - so könnte man dieses Paket
 überschreiben. *knockd* bietet eine gute Möglichkeit, Dienste von Remote

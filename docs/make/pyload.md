@@ -4,4 +4,5 @@
  - Changelog: [https://github.com/pyload/pyload/releases](https://github.com/pyload/pyload/releases)
  - Repository: [https://github.com/pyload/pyload/commits/](https://github.com/pyload/pyload/commits/)
  - Package: [master/make/pkgs/pyload/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pyload/)
+ - Maintainer: -
 

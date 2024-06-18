@@ -4,6 +4,7 @@
  - Changelog: [https://github.com/dehydrated-io/dehydrated/releases](https://github.com/dehydrated-io/dehydrated/releases)
  - Repository: [https://github.com/dehydrated-io/dehydrated/commits/master](https://github.com/dehydrated-io/dehydrated/commits/master)
  - Package: [master/make/pkgs/dehydrated/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dehydrated/)
+ - Maintainer: -
 
 Mit Dehydrated (und LigHTTPd) können Let's Encrypt Zertifikate erstellt und automatisch aktualisiert werden.
 <br>

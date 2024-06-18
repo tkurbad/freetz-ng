@@ -1,5 +1,6 @@
 # bridge-utils 1.4 (binary only)
  - Package: [master/make/pkgs/bridge-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bridge-utils/)
+ - Maintainer: -
 
 Dieses Paket beinhaltet Utilities für die Konfiguration des
 [IEEE

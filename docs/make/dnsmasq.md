@@ -4,6 +4,7 @@
  - Changelog: [https://thekelleys.org.uk/dnsmasq/CHANGELOG](https://thekelleys.org.uk/dnsmasq/CHANGELOG)
  - Repository: [https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary](https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary)
  - Package: [master/make/pkgs/dnsmasq/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dnsmasq/)
+ - Maintainer: -
 
 [![Konfiguration](../screenshots/200_md.png)](../screenshots/200.png)
 

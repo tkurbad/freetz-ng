@@ -4,5 +4,6 @@
  - Changelog: [https://github.com/libusb/libusb/milestones](https://github.com/libusb/libusb/milestones)
  - Repository: [https://github.com/libusb/libusb](https://github.com/libusb/libusb)
  - Library: [master/make/libs/libusb1/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/libusb1/)
+ - Maintainer: -
 
 A library for accessing Linux USB devices (current API).

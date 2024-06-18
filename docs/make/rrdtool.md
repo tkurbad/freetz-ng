@@ -4,6 +4,7 @@
  - Changelog: [https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES](https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES)
  - Repository: [https://github.com/oetiker/rrdtool-1.x](https://github.com/oetiker/rrdtool-1.x)
  - Package: [master/make/pkgs/rrdtool/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/rrdtool/)
+ - Maintainer: -
 
 ### Einleitung
 

@@ -4,6 +4,7 @@
  - Changelog: [https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/](https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/)
  - Repository: [https://github.com/torvalds/linux/tree/master/fs/autofs](https://github.com/torvalds/linux/tree/master/fs/autofs)
  - Package: [master/make/pkgs/autofs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/autofs/)
+ - Maintainer: -
 
 Mit diesem Paket können verschiedene Dateisysteme nach /var/media/autofs
 gemountet werden.

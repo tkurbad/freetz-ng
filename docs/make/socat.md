@@ -4,6 +4,7 @@
  - Changelog: [https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES](https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES)
  - Repository: [https://repo.or.cz/socat.git](https://repo.or.cz/socat.git)
  - Package: [master/make/pkgs/socat/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/socat/)
+ - Maintainer: -
 
 **[socat](http://www.dest-unreach.org/socat/)** ist
 eine Alternative zum [netcat Paket](netcat.md), welches mit
