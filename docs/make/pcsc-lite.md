@@ -1,4 +1,4 @@
-# PCSC-lite 1.9.5/2.1.0 (binary only)
+# PCSC-lite 1.9.5/2.1.0 (binary only) - DEPRECATED
  - Homepage: [https://pcsclite.apdu.fr/](https://pcsclite.apdu.fr/)
  - Manpage: [https://salsa.debian.org/rousseau/PCSC/blob/master/README](https://salsa.debian.org/rousseau/PCSC/blob/master/README)
  - Changelog: [https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog](https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog)
