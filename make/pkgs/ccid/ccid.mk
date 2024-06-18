@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://ccid.apdu.fr/files
 ### MANPAGE:=https://salsa.debian.org/rousseau/CCID/blob/master/README.md
 ### CHANGES:=https://salsa.debian.org/rousseau/CCID/blob/master/README.md#history
 ### CVSREPO:=https://salsa.debian.org/rousseau/CCID
+### SUPPORT:=MasterRoCcO
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/libccid.so
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)$(PCSC_LITE_USBDROPDIR)/ifd-ccid.bundle/Contents/Linux/libccid.so
