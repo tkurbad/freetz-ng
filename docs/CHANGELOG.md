@@ -98,6 +98,7 @@ Latest changes
    * strace 4.9/5.0/6.9
    * Sudo 1.9.15p5
    * SQLite 3.45.3
+   * Tinyproxy 1.11.2
    * Tor 0.4.8.12
    * Transmission 3.00/4.0.6
    * Unbound 1.20.0
