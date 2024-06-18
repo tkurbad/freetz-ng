@@ -409,6 +409,7 @@ Currently supported devices and firmwares
   - 164.07.13 rev75481 {INT} [MESH18 NL3]
   - 164.07.29 rev92062 {ALL} [PSQ19P2NL4]
   - 164.07.59 rev113249 {ALL} [MOVE21NL2]
+  - 164.07.90 rev113954 {ALL} [Smart24 P1] (Inhaus)
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
   - 256.07.57 rev109901 {ALL} [MOVE21NL1]
