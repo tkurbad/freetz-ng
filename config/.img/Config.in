@@ -15188,7 +15188,11 @@ config FREETZ_AVM_HAS_LANGUAGE_nl
 	def_bool y
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
+config FREETZ_AVM_HAS_REBOOT_SCRIPT
+	def_bool y
 config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+config FREETZ_AVM_HAS_NTFS
 	def_bool y
 config FREETZ_AVM_HAS_LEDPAGE
 	def_bool y
@@ -15202,6 +15206,8 @@ config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_OPENSSL_VERSION_1
+	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
@@ -15212,6 +15218,66 @@ config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 endif
 if FREETZ_TYPE_7530 && FREETZ_AVM_VERSION_07_5X
+config FREETZ_AVM_PROP_ALL_REGIONS
+	def_bool y
+config FREETZ_AVM_HAS_MULTIPLE_BRANDINGS
+	def_bool y
+config FREETZ_AVM_HAS_BRANDING_1und1
+	def_bool y
+config FREETZ_AVM_HAS_BRANDING_avm
+	def_bool y
+config FREETZ_AVM_HAS_BRANDING_avme
+	def_bool y
+config FREETZ_AVM_HAS_MULTIPLE_LANGUAGES
+	def_bool y
+config FREETZ_AVM_HAS_LANGUAGE_de
+	def_bool y
+config FREETZ_AVM_HAS_LANGUAGE_en
+	def_bool y
+config FREETZ_AVM_HAS_LANGUAGE_es
+	def_bool y
+config FREETZ_AVM_HAS_LANGUAGE_fr
+	def_bool y
+config FREETZ_AVM_HAS_LANGUAGE_it
+	def_bool y
+config FREETZ_AVM_HAS_LANGUAGE_nl
+	def_bool y
+config FREETZ_AVM_HAS_LANGUAGE_pl
+	def_bool y
+config FREETZ_AVM_HAS_REBOOT_SCRIPT
+	def_bool y
+config FREETZ_AVM_HAS_NTFS
+	def_bool y
+config FREETZ_AVM_HAS_LEDPAGE
+	def_bool y
+config FREETZ_AVM_HAS_KMOD
+	def_bool y
+config FREETZ_AVM_HAS_SVCTL
+	def_bool y
+config FREETZ_AVM_HAS_SAMBA_NQCS
+	def_bool y
+config FREETZ_AVM_HAS_WIREGUARD
+	def_bool y
+config FREETZ_AVM_HAS_AVMCOUNTERD
+	def_bool y
+config FREETZ_AVM_HAS_UNTRUSTEDD
+	def_bool y
+config FREETZ_AVM_HAS_ETCSERVICES
+	def_bool y
+config FREETZ_AVM_HAS_LIBFUSE
+	def_bool y
+config FREETZ_AVM_HAS_OPENSSL_VERSION_1
+	def_bool y
+config FREETZ_AVM_PROP_KERNEL_4_4_271
+	def_bool y
+config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
+	def_bool y
+config FREETZ_AVM_PROP_GCC_5_5
+	def_bool y
+config FREETZ_AVM_PROP_UCLIBC_SEPARATE
+	def_bool y
+endif
+if FREETZ_TYPE_7530 && FREETZ_AVM_VERSION_08_0X
 config FREETZ_AVM_PROP_ALL_REGIONS
 	def_bool y
 config FREETZ_AVM_HAS_MULTIPLE_BRANDINGS
@@ -15250,17 +15316,21 @@ config FREETZ_AVM_HAS_WIREGUARD
 	def_bool y
 config FREETZ_AVM_HAS_AVMCOUNTERD
 	def_bool y
+config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
 config FREETZ_AVM_HAS_UNTRUSTEDD
 	def_bool y
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_LIBFUSE
 	def_bool y
+config FREETZ_AVM_HAS_OPENSSL_VERSION_3
+	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_256
 	def_bool y
-config FREETZ_AVM_PROP_GCC_5_5
+config FREETZ_AVM_PROP_GCC_8_4
 	def_bool y
 config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
@@ -15272,13 +15342,19 @@ config FREETZ_AVM_HAS_BRANDING_1und1
 	def_bool y
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
+config FREETZ_AVM_HAS_REBOOT_SCRIPT
+	def_bool y
 config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+config FREETZ_AVM_HAS_NTFS
 	def_bool y
 config FREETZ_AVM_HAS_LEDPAGE
 	def_bool y
 config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
@@ -15298,7 +15374,11 @@ config FREETZ_AVM_HAS_BRANDING_1und1
 	def_bool y
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
+config FREETZ_AVM_HAS_REBOOT_SCRIPT
+	def_bool y
 config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+config FREETZ_AVM_HAS_NTFS
 	def_bool y
 config FREETZ_AVM_HAS_LEDPAGE
 	def_bool y
@@ -15307,6 +15387,8 @@ config FREETZ_AVM_HAS_SAMBA_SMBD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
@@ -15338,11 +15420,17 @@ config FREETZ_AVM_HAS_LANGUAGE_nl
 	def_bool y
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
+config FREETZ_AVM_HAS_REBOOT_SCRIPT
+	def_bool y
 config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+config FREETZ_AVM_HAS_NTFS
 	def_bool y
 config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
@@ -15374,13 +15462,19 @@ config FREETZ_AVM_HAS_LANGUAGE_nl
 	def_bool y
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
+config FREETZ_AVM_HAS_REBOOT_SCRIPT
+	def_bool y
 config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+config FREETZ_AVM_HAS_NTFS
 	def_bool y
 config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_PROP_KERNEL_4_4_60
 	def_bool y
@@ -15440,11 +15534,7 @@ config FREETZ_AVM_HAS_NEXUS
 	def_bool y
 config FREETZ_AVM_HAS_NOEXEC
 	def_bool y
-config FREETZ_AVM_HAS_NTFS
-	def_bool y
 config FREETZ_AVM_HAS_OPENSSL
-	def_bool y
-config FREETZ_AVM_HAS_OPENSSL_VERSION_1
 	def_bool y
 config FREETZ_AVM_HAS_PCPD
 	def_bool y
@@ -15453,8 +15543,6 @@ config FREETZ_AVM_HAS_PHONE
 config FREETZ_AVM_HAS_PLCD
 	def_bool y
 config FREETZ_AVM_HAS_PRINTSERV
-	def_bool y
-config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_SHOWDSLDSTAT
 	def_bool y
