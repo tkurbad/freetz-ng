@@ -53,7 +53,7 @@ Latest changes
 
  - Host tools:
    * ca-bundle 2024-03-11
-   * cmake 3.29.5
+   * cmake 3.29.6
    * cpio 2.15
    * fakeroot 1.35
    * kconfig 6.9
