@@ -1185,7 +1185,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Mögliche Nebenwirkungen](../../docs/make/usbroot.md#mögliche-nebenwirkungen)
      - [Verbesserungsmöglichkeiten](../../docs/make/usbroot.md#verbesserungsmöglichkeiten)
 
-  * **[virtualip-cgi: Virtual IP CGI (deprecated)](../../docs/make/virtualip-cgi.md)<a id='virtualip'></a>**<br>
+  * **[virtualip-cgi: Virtual IP CGI - DEPRECATED](../../docs/make/virtualip-cgi.md)<a id='virtualip'></a>**<br>
     Creates a virtual network interface. In former times this was used to comfortably open server ports on the Fritz!Box itself via AVM web interface. Nowadays the avm-firewall package is used for this task. The package is also equipped with a configuration interface for the Freetz web configurator which lets you choose the IP address and net mask of the virtual interface as well as toggle auto-start.
      - [Einrichtung](../../docs/make/virtualip-cgi.md#einrichtung)
      - [Bekannte Probleme und Bugs](../../docs/make/virtualip-cgi.md#bekannte-probleme-und-bugs)
