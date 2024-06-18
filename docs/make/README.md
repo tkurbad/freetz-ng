@@ -895,8 +895,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[AVM-portfw](avm-portfw.md)<a id='avm-portfw'></a>**<br>
     For FritzOS 6.8x - 7.5x only. Configuration of port forwardings to the FritzBox itself by using internet_forwardrules. Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
 
-  * **[AVM-rules (deprecated)](avm-rules.md)<a id='avm-rules'></a>**<br>
-    Configuration of port forwardings to the FritzBox itself by using voip_forwardrules. Please don't use this package, but AVM-portfw! Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
+  * **[AVM-rules - DEVELOPER](avm-rules.md)<a id='avm-rules'></a>**<br>
+    For FritzOS since v8.0x only. Configuration of port forwardings to the FritzBox itself by using voip_forwardrules. Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
 
   * **<u>Cpmaccfg CGI</u><a id='cpmaccfg'></a>**<br>
     Configuration front-end to cpmaccfg This frontend shows the current settings of the LAN ports and gives a very simple way to set VLAN, portmode and WLAN assigment. Additional to this, you can set IP addresses for the VLAN interfaces eth0-eth3 if needed.
