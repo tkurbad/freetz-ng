@@ -508,7 +508,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### N
 
-  * **[nagios 2.11 (binary only)](../../docs/make/nagios.md)<a id='nagios'></a>**<br>
+  * **[nagios 2.11 (binary only) - DEPRECATED](../../docs/make/nagios.md)<a id='nagios'></a>**<br>
     Nagios is an Open Source host, service and network monitoring program.
      - [Weiterführende Informationen](../../docs/make/nagios.md#weiterführende-informationen)
 

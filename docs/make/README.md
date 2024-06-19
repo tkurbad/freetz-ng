@@ -391,7 +391,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### N
 
-  * **[nagios 2.11 (binary only)](nagios.md)<a id='nagios'></a>**<br>
+  * **[nagios 2.11 (binary only) - DEPRECATED](nagios.md)<a id='nagios'></a>**<br>
     Nagios is an Open Source host, service and network monitoring program.
 
   * **[Nano 8.0 (binary only)](nano.md)<a id='nano'></a>**<br>
