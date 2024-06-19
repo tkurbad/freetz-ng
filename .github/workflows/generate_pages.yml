@@ -1,13 +1,18 @@
 name: generate_pages
 
 on:
+  workflow_run:
+    workflows: ["generate_docs"]
+    types:
+      - completed
   push:
     branches: ["master"]
     paths:
       - '.github/workflows/generate_pages.yml'
       - 'docs/**/*.md'
-  schedule:
-    - cron: '0 0 * * 0'
+      - 'docs/**/*.jpg'
+      - 'docs/**/*.png'
+      - 'docs/**/*.gif'
   workflow_dispatch:
 
 permissions:
