@@ -447,8 +447,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[ObexFTP 0.23 (binary only)](obexftp.md)<a id='obexftp'></a>**<br>
     This package contains an ObexFTP server.
 
-  * **<u>oidentd 2.0.8</u><a id='oidentd'></a>**<br>
-    From the README: "oidentd is an ident (rfc1413 compliant) daemon that runs on Linux, FreeBSD, OpenBSD and Solaris.  oidentd can handle IP masqueraded/NAT connections on Linux, FreeBSD (ipf only) and OpenBSD.  oidentd has a flexible mechanism for specifying ident responses.  Users can be granted permission to specify their own ident responses. Responses can be specified according to host and port pairs." WWW: http://ojnk.sourceforge.net/
+  * **[oidentd 2.0.8 - DEPRECATED](oidentd.md)<a id='oidentd'></a>**<br>
+    oidentd is an ident (rfc1413 compliant) daemon that runs on Linux, FreeBSD, OpenBSD and Solaris. oidentd can handle IP masqueraded/NAT connections on Linux, FreeBSD (ipf only) and OpenBSD. oidentd has a flexible mechanism for specifying ident responses. Users can be granted permission to specify their own ident responses. Responses can be specified according to host and port pairs.
 
   * **<u>OpenConnect 7.04 (binary only)</u><a id='openconnect'></a>**<br>
     Cisco AnyConnect VPN Client
