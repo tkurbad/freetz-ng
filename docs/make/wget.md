@@ -4,7 +4,7 @@
  - Changelog: [https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS](https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS)
  - Repository: [https://git.savannah.gnu.org/cgit/wget.git/](https://git.savannah.gnu.org/cgit/wget.git/)
  - Package: [master/make/pkgs/wget/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/wget/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 GNU Wget ist ein freies Kommandozeilen-Programm zum Herunterladen von Ressourcen
 (Dateien, Webseiten, etc) über ein Netzwerk. Zu den unterstützten Protokollen gehören
