@@ -1168,7 +1168,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>scanbuttond cvs</u><a id='scanbuttond'></a>**<br>
     Scanner button daemon. It allows you to invoke actions such as shell scripts whenever one of the scanner front panel buttons is pressed.
 
-  * **<u>Squid 3.0.STABLE26</u><a id='squid'></a>**<br>
+  * **<u>Squid 3.0.STABLE26 - DEPRECATED</u><a id='squid'></a>**<br>
     Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth and improves response times by caching and reusing frequently-requested web pages. Squid has extensive access controls and makes a great server accelerator.
 
   * **[usbip: USB/IP 0.1.8](../../docs/make/usbip.md)<a id='usbip'></a>**<br>
