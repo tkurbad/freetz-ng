@@ -179,7 +179,7 @@ Currently supported devices and firmwares
   - 252.07.57 rev107842 {GER} [MOVE21NL1]
   - 252.07.90 rev113092 {GER} [Smart24 P1] (Labor)
 * __Fritz!Box 6670 Cable (UNTESTED)__
-  - 284.07.62 rev112288 {GER} [FCS23]
+  - 284.07.63 rev113732 {GER} [FCS23]
 * __Fritz!Box 6690 Cable__
   - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
   - 267.07.57 rev109915 {GER} [MOVE21NL1]
