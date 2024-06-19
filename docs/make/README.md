@@ -587,7 +587,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>sablevm-sdk: sablevm 1.13 (binary only)</u><a id='sablevm-sdk'></a>**<br>
     SableVM is a robust, extremely portable, efficient, and specifications-compliant Java virtual machine that aims to be easy to maintain and to extend. It features a state-of-the-art and efficient interpreter engine. Its source code is very accessible and easy to understand. It also has many robustness features that have been the object of careful design.
 
-  * **[Samba 3.0.37/3.6.25](samba.md)<a id='samba'></a>**<br>
+  * **[Samba 3.0.37/3.6.25 - DEPRECATED](samba.md)<a id='samba'></a>**<br>
     The binary with smbd and nmbd needs about 1033 kB (uncompressed).
 
   * **[Screen 4.9.1](screen.md)<a id='screen'></a>**<br>
