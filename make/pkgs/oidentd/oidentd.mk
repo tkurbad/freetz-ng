@@ -4,6 +4,10 @@ $(PKG)_HASH:=a54cbed187281f8d5a301d1d8fd5cb0f30bfb13a5a8e9ab752ace76c1010fb6f
 $(PKG)_SITE:=@SF/ojnk
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)
+### WEBSITE:=https://ojnk.sourceforge.net/
+### MANPAGE:=https://oidentd.janikrabe.com/
+### CHANGES:=https://github.com/janikrabe/oidentd/blob/master/NEWS
+### CVSREPO:=https://github.com/janikrabe/oidentd/
 
 $(PKG)_STARTLEVEL=60 # before bip, before ngircd
 
