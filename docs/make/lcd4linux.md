@@ -1,6 +1,7 @@
 # LCD4linux 3fce054e
  - Package: [master/make/pkgs/lcd4linux/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lcd4linux/)
  - Maintainer: -
+ - Maintainer: -
 
 Mit LCD4linux kann ein an die Fritz!Box angeschlossenes Display angesteuert werden.<br>
 <br>

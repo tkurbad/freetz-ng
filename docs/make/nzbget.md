@@ -5,4 +5,5 @@
  - Repository: [https://github.com/nzbget-ng/nzbget](https://github.com/nzbget-ng/nzbget)
  - Package: [master/make/pkgs/nzbget/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nzbget/)
  - Maintainer: -
+ - Maintainer: -
 

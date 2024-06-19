@@ -5,6 +5,7 @@
  - Repository: [https://github.com/MidnightCommander/mc](https://github.com/MidnightCommander/mc)
  - Package: [master/make/pkgs/mc/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/mc/)
  - Maintainer: -
+ - Maintainer: -
 
 Der Midnight Commander ist ein OpenSource-Klon des Norton Commander -
 und wesentlich umfangreicher als z.B. der [DECO](deco.md), was

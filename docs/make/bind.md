@@ -5,6 +5,7 @@
  - Repository: [https://gitlab.isc.org/isc-projects/bind9/](https://gitlab.isc.org/isc-projects/bind9/)
  - Package: [master/make/pkgs/bind/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bind/)
  - Maintainer: -
+ - Maintainer: -
 
 Mit [bind](http://isc.org/software/bind) (Berkeley
 Internet Name Daemon) kann ein DNS-Server zur IP- und Namensauflösung

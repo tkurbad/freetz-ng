@@ -1,9 +1,10 @@
-# ser2net 3.5.4
+# ser2net 3.5.4 - DEPRECATED
  - Homepage: [https://ser2net.sourceforge.net/](https://ser2net.sourceforge.net/)
  - Manpage: [https://linux.die.net/man/8/ser2net](https://linux.die.net/man/8/ser2net)
  - Changelog: [https://sourceforge.net/p/ser2net/news/](https://sourceforge.net/p/ser2net/news/)
  - Repository: [https://sourceforge.net/projects/ser2net/](https://sourceforge.net/projects/ser2net/)
  - Package: [master/make/pkgs/ser2net/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ser2net/)
+ - Maintainer: -
  - Maintainer: -
 
 Anwendungsbeispiele:

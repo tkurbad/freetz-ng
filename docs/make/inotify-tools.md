@@ -5,6 +5,7 @@
  - Repository: [https://github.com/inotify-tools/inotify-tools/commits/master](https://github.com/inotify-tools/inotify-tools/commits/master)
  - Package: [master/make/pkgs/inotify-tools/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inotify-tools/)
  - Maintainer: -
+ - Maintainer: -
 
 **Inotify** ist eine Kernel-Schnittstelle zur Überwachung von
 Dateizugriffen, verbunden mit einem Event-Mechanismus, von dem man sich

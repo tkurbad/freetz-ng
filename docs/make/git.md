@@ -5,4 +5,5 @@
  - Repository: [https://github.com/git/git](https://github.com/git/git)
  - Package: [master/make/pkgs/git/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/git/)
  - Maintainer: -
+ - Maintainer: -
 

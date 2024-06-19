@@ -5,6 +5,7 @@
  - Repository: [https://git.savannah.gnu.org/cgit/screen.git](https://git.savannah.gnu.org/cgit/screen.git)
  - Package: [master/make/pkgs/screen/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/screen/)
  - Maintainer: -
+ - Maintainer: -
 
 *"Screen is a full-screen window manager that multiplexes a physical
 terminal between several processes, typically interactive shells."*

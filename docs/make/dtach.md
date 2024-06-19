@@ -1,6 +1,7 @@
 # dtach 0.8 (binary only)
  - Package: [master/make/pkgs/dtach/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dtach/)
  - Maintainer: -
+ - Maintainer: -
 
 *"dtach is a free (GPL'ed) program for POSIX-compliant OSs intended to
 provide similar functionality to that of the GNU Project's Screen, but

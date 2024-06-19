@@ -1,6 +1,7 @@
 # netcat 0.7.1 (binary only)
  - Package: [master/make/pkgs/netcat/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/netcat/)
  - Maintainer: -
+ - Maintainer: -
 
 **[netcat](http://netcat.sourceforge.net/)** ist
 ein einfaches Werkzeug, um Daten von der Standardein- oder -ausgabe über

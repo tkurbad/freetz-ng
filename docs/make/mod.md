@@ -1,6 +1,7 @@
 # Freetz(-MOD)
  - Package: [master/make/pkgs/mod/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/mod/)
  - Maintainer: -
+ - Maintainer: -
 
 "mod" ist das sogenannte Base-Package. Es wird immer automatisch
 installiert.
