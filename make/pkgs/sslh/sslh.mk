@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.rutschle.net/tech/sslh
 ### MANPAGE:=https://www.rutschle.net/tech/sslh/doc/config
 ### CHANGES:=https://www.rutschle.net/tech/sslh/download.html
 ### CVSREPO:=https://github.com/yrutschle/sslh
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/sslh-fork
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/sslh

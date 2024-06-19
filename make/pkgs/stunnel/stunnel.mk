@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.stunnel.org/downloads/archive/5.x
 ### MANPAGE:=https://www.stunnel.org/static/stunnel.html
 ### CHANGES:=https://www.stunnel.org/NEWS.html
 ### CVSREPO:=https://github.com/mtrojnar/stunnel
+### SUPPORT:=fda77
 
 $(PKG)_STARTLEVEL=81
 

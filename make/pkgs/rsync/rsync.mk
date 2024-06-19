@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SAMBA/rsync/src
 ### MANPAGE:=https://rsync.samba.org/documentation.html
 ### CHANGES:=https://download.samba.org/pub/rsync/NEWS
 ### CVSREPO:=https://git.samba.org/?p=rsync.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/rsync
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/rsync

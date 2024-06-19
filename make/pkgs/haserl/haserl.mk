@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SF/haserl
 ### MANPAGE:=http://haserl.sourceforge.net/manpage.html
 ### CHANGES:=https://sourceforge.net/p/haserl/mailman/haserl-users/
 ### CVSREPO:=https://sourceforge.net/projects/haserl/files/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/haserl
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/haserl

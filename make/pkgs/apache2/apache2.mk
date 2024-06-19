@@ -6,6 +6,7 @@ $(PKG)_SITE:=@APACHE/httpd
 ### MANPAGE:=https://httpd.apache.org/docs/2.4/
 ### CHANGES:=https://downloads.apache.org/httpd/CHANGES_2.4
 ### CVSREPO:=https://github.com/apache/httpd
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/$(pkg)

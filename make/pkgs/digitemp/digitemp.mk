@@ -6,6 +6,7 @@ $(PKG)_SITE:=git@https://github.com/bcl/digitemp.git
 ### MANPAGE:=https://github.com/bcl/digitemp#readme
 ### CHANGES:=https://github.com/bcl/digitemp/releases
 ### CVSREPO:=https://github.com/bcl/digitemp/commits/master
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/digitemp
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/digitemp

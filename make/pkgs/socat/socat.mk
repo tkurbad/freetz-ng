@@ -6,6 +6,7 @@ $(PKG)_SITE:=http://www.dest-unreach.org/socat/download
 ### MANPAGE:=http://www.dest-unreach.org/socat/doc/socat.html
 ### CHANGES:=https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES
 ### CVSREPO:=https://repo.or.cz/socat.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/socat
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/socat

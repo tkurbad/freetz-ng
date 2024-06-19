@@ -9,6 +9,7 @@ $(PKG)_SITE:=https://download.imagemagick.org/archive,http://www.imagemagick.org
 ### MANPAGE:=https://www.imagemagick.org/Usage/
 ### CHANGES:=https://github.com/ImageMagick/ImageMagick/releases
 ### CVSREPO:=https://github.com/ImageMagick/ImageMagick
+### SUPPORT:=fda77
 
 $(PKG)_BINARY := magick
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_BINARY:%=$($(PKG)_DIR)/utilities/$(if $(FREETZ_PACKAGE_IMAGEMAGICK_STATIC),,.libs/)%)
