@@ -6,6 +6,7 @@ $(PKG)_SITE:=http://ftp.midnight-commander.org,ftp://ftp.midnight-commander.org/
 ### MANPAGE:=http://midnight-commander.org/wiki/doc
 ### CHANGES:=https://github.com/MidnightCommander/mc/blob/master/doc/NEWS
 ### CVSREPO:=https://github.com/MidnightCommander/mc
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/mc
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/mc

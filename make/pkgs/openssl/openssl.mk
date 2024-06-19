@@ -13,6 +13,7 @@ $(PKG)_SITE:=https://www.openssl.org/source$($(PKG)_SITE_SUFFIX_$(call GET_MAJOR
 ### MANPAGE:=https://www.openssl.org/docs/
 ### CHANGES:=https://www.openssl.org/news/changelog.html
 ### CVSREPO:=https://github.com/openssl/openssl
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 

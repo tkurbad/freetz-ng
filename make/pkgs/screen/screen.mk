@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/$(pkg)
 ### MANPAGE:=https://www.gnu.org/software/screen/manual/
 ### CHANGES:=https://git.savannah.gnu.org/cgit/screen.git/refs/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/screen.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/screen
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/screen.bin

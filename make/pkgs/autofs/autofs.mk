@@ -8,6 +8,7 @@ $(PKG)_SITE:=@KERNEL/linux/daemons/$(pkg)/v5
 ### MANPAGE:=https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst
 ### CHANGES:=https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/
 ### CVSREPO:=https://github.com/torvalds/linux/tree/master/fs/autofs
+### SUPPORT:=fda77
 
 $(PKG)_STARTLEVEL=50
 

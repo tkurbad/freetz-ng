@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://www.tcpdump.org/release
 ### MANPAGE:=https://www.tcpdump.org/manpages/tcpdump.1.html
 ### CHANGES:=https://git.tcpdump.org/tcpdump/blob/HEAD:/CHANGES
 ### CVSREPO:=https://github.com/the-tcpdump-group/tcpdump
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/tcpdump
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/tcpdump

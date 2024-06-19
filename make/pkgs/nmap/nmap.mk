@@ -9,6 +9,7 @@ $(PKG)_SITE:=https://nmap.org/dist
 ### MANPAGE:=https://nmap.org/docs.html
 ### CHANGES:=https://nmap.org/changelog.html
 ### CVSREPO:=https://github.com/nmap/nmap
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
 

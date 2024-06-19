@@ -9,6 +9,7 @@ $(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.is
 ### MANPAGE:=https://bind9.readthedocs.io/en/
 ### CHANGES:=https://downloads.isc.org/isc/bind9/cur/9.18/
 ### CVSREPO:=https://gitlab.isc.org/isc-projects/bind9/
+### SUPPORT:=fda77
 
 $(PKG)_STARTLEVEL=40 # multid-wrapper may start it earlier!
 

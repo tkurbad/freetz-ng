@@ -6,6 +6,7 @@ $(PKG)_SITE:=git@https://salsa.debian.org/minicom-team/minicom.git
 ### MANPAGE:=https://linux.die.net/man/1/minicom
 ### CHANGES:=https://salsa.debian.org/minicom-team/minicom/-/releases
 ### CVSREPO:=https://salsa.debian.org/minicom-team/minicom/-/commits/master/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/minicom
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/minicom

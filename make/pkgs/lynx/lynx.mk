@@ -5,6 +5,7 @@ $(PKG)_SITE:=https://invisible-mirror.net/archives/lynx/tarballs,ftp://ftp.invis
 ### WEBSITE:=https://lynx.invisible-island.net/
 ### MANPAGE:=https://lynx.invisible-island.net/lynx_help/lynx_help_main.html
 ### CHANGES:=https://lynx.invisible-island.net/current/CHANGES.html
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)

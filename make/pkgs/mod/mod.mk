@@ -1,4 +1,5 @@
 $(call PKG_INIT_BIN,1.0)
+### SUPPORT:=X
 
 $(PKG_UNPACKED)
 

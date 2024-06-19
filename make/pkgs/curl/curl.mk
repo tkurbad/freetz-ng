@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://curl.se/download,https://curl.haxx.se/download
 ### MANPAGE:=https://curl.se/docs/manpage.html
 ### CHANGES:=https://curl.se/changes.html
 ### CVSREPO:=https://github.com/curl/curl
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/curl
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/curl

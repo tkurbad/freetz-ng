@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://thekelleys.org.uk/dnsmasq
 ### MANPAGE:=https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
 ### CHANGES:=https://thekelleys.org.uk/dnsmasq/CHANGELOG
 ### CVSREPO:=https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary
+### SUPPORT:=fda77
 
 $(PKG)_STARTLEVEL=40 # multid-wrapper may start it earlier!
 

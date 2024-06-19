@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://www.unbound.net/downloads
 ### MANPAGE:=https://www.unbound.net/documentation/unbound.html
 ### CHANGES:=https://www.nlnetlabs.nl/projects/unbound/download/
 ### CVSREPO:=https://github.com/NLnetLabs/unbound
+### SUPPORT:=fda77
 
 $(PKG)_STARTLEVEL=40 # multid-wrapper may start it earlier!
 

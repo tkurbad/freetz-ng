@@ -5,6 +5,7 @@ $(PKG)_SITE:=https://www.inet.no/dante/files
 ### WEBSITE:=https://www.inet.no/dante/
 ### MANPAGE:=https://www.inet.no/dante/doc/1.4.x/index.html
 ### CHANGES:=https://www.inet.no/dante/index.html#Recent
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/sockd/sockd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/danted

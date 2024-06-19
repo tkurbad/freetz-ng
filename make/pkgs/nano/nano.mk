@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.nano-editor.org/dist/v8
 ### MANPAGE:=https://www.nano-editor.org/docs.php
 ### CHANGES:=https://www.nano-editor.org/dist/v8/NEWS
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/nano.git/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/nano
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/nano

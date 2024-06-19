@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://ftp.barfooze.de/pub/sabotage/tarballs
 ### MANPAGE:=https://github.com/rofl0r/proxychains-ng#readme
 ### CHANGES:=https://github.com/rofl0r/proxychains-ng/releases
 ### CVSREPO:=https://github.com/rofl0r/proxychains-ng
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/proxychains4
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/proxychains4

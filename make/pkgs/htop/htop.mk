@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://github.com/htop-dev/htop/releases/download/$($(PKG)_VERSION
 ### MANPAGE:=https://linux.die.net/man/1/htop
 ### CHANGES:=https://github.com/htop-dev/htop/blob/main/ChangeLog
 ### CVSREPO:=https://github.com/htop-dev/htop 
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/htop
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/htop

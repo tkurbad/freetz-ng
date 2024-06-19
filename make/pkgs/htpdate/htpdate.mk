@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.vervest.org/htp/archive/c
 ### MANPAGE:=https://www.vervest.org/htp/?FAQ
 ### CHANGES:=https://github.com/twekkel/htpdate/blob/master/Changelog
 ### CVSREPO:=https://github.com/twekkel/htpdate
+### SUPPORT:=fda77
 
 $(PKG)_BINARIES:=$(pkg)
 $(PKG)_BINARIES_BUILD_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)

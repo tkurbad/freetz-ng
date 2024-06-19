@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://matt.ucc.asn.au/dropbear/releases,https://dropbear.nl/mirro
 ### MANPAGE:=https://linux.die.net/man/8/dropbear
 ### CHANGES:=https://matt.ucc.asn.au/dropbear/CHANGES
 ### CVSREPO:=https://hg.ucc.asn.au/dropbear/file/tip
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/dropbearmulti
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/dropbearmulti

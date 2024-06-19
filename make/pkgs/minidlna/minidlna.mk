@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SF/minidlna
 ### MANPAGE:=https://manpages.debian.org/testing/minidlna/minidlnad.1.en.html
 ### CHANGES:=https://sourceforge.net/p/minidlna/git/ci/master/tree/NEWS
 ### CVSREPO:=https://sourceforge.net/p/minidlna/git/ci/master/tree/
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_MINIDLNA_LANG_DE),de)
 
