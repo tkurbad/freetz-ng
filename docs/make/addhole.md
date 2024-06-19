@@ -1,6 +1,6 @@
 # Addhole (for dnsmasq)
  - Package: [master/make/pkgs/addhole/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/addhole/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 Addhole ist eine Erweiterung für Dnsmasq.<br>
 <br>
