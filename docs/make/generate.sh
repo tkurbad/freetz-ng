@@ -31,14 +31,14 @@ echo "$PKGS" | sed 's/##.*//g' | uniq | while read cat; do
 			while [ "$(awk 'END{print NR}' "$MDPWD/$pkg.md")" -lt 2 ]; do echo >> "$MDPWD/$pkg.md"; done
 			sed "1c# $dsc" -i "$MDPWD/$pkg.md"
 
-			sed "/^ - Maintainer: \[.*)$/d" -i "$MDPWD/$pkg.md"
+			sed "/^ - Maintainer: .*$/d" -i "$MDPWD/$pkg.md"
 			lnk="$(sed -n "s/^### SUPPORT:= *//p" "$INPWD/$pkg/$pkg.mk")"
-			if [ -z "$lnk" ]; then
-				lnk="-"
-			else
-				[ "$lnk" == "${lnk/:\/\//}" ] && lnk="\[@$lnk\](https://github.com/$lnk)" || lnk="\[$lnk\]($lnk)"
-			fi
-			sed "2i\ - Maintainer: $lnk" -i "$MDPWD/$pkg.md"
+			case "$lnk" in
+				X)	lnk="" ;;
+				"")	lnk="-" ;;
+				*)	[ "$lnk" != "${lnk/:\/\//}" ] && lnk="\[$lnk\]($lnk)" || lnk="\[@$lnk\](https://github.com/$lnk)" ;; #"
+			esac
+			[ -n "$lnk" ] && sed "2i\ - Maintainer: $lnk" -i "$MDPWD/$pkg.md"
 
 			lnk="https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/$pkg/"
 			sed "/^ - Package: \[.*)$/d" -i "$MDPWD/$pkg.md"
