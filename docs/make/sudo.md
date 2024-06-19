@@ -5,5 +5,4 @@
  - Repository: [https://github.com/sudo-project/sudo](https://github.com/sudo-project/sudo)
  - Package: [master/make/pkgs/sudo/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sudo/)
  - Maintainer: -
- - Maintainer: -
 

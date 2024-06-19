@@ -1,7 +1,6 @@
 # AVM-portfw
  - Package: [master/make/pkgs/avm-portfw/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/avm-portfw/)
  - Maintainer: -
- - Maintainer: -
 
 Mit AVM-portfw können (ausschliesslich) Ports der Fritz!Box selbst für Zugriff aus dem Internet freigegeben werden.<br>
 <br>

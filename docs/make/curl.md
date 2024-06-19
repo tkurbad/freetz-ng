@@ -5,7 +5,6 @@
  - Repository: [https://github.com/curl/curl](https://github.com/curl/curl)
  - Package: [master/make/pkgs/curl/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/curl/)
  - Maintainer: -
- - Maintainer: -
 
 **[cURL](http://curl.haxx.se/)** ist ein Programm,
 um einzelne Dateien aus dem Internet zu transferieren - wobei nicht mit

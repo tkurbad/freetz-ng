@@ -5,5 +5,4 @@
  - Repository: [https://www.sqlite.org/src/timeline](https://www.sqlite.org/src/timeline)
  - Package: [master/make/pkgs/sqlite/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sqlite/)
  - Maintainer: -
- - Maintainer: -
 

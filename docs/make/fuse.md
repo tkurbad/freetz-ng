@@ -5,7 +5,6 @@
  - Repository: [https://github.com/libfuse/libfuse/commits/master](https://github.com/libfuse/libfuse/commits/master)
  - Package: [master/make/pkgs/fuse/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fuse/)
  - Maintainer: -
- - Maintainer: -
 
 **[FUSE](http://de.wikipedia.org/wiki/Filesystem_in_Userspace)**
 ([Filesystem](http://de.wikipedia.org/wiki/Dateisystem)

@@ -1,7 +1,6 @@
 # bash 3.2.57 (binary only)
  - Package: [master/make/pkgs/bash/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bash/)
  - Maintainer: -
- - Maintainer: -
 
 Bei der **B**ourne **A**gain **Sh**ell handelt es sich um eine
 [Unix

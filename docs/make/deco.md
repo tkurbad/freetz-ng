@@ -1,7 +1,6 @@
 # Deco 1.3.9 (binary only)
  - Package: [master/make/pkgs/deco/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/deco/)
  - Maintainer: -
- - Maintainer: -
 
 DECO ist ein Dateimanager für das Betriebssystem UNIX, das zu den
 Motiven des weit bekannten Norton Commander entwickelt wurde. Der

@@ -5,5 +5,4 @@
  - Repository: [http://git.linux-nfs.org/?p=steved/rpcbind.git](http://git.linux-nfs.org/?p=steved/rpcbind.git)
  - Package: [master/make/pkgs/rpcbind/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/rpcbind/)
  - Maintainer: -
- - Maintainer: -
 

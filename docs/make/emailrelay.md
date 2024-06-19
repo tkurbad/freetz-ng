@@ -5,7 +5,6 @@
  - Repository: [https://sourceforge.net/p/emailrelay/git/ci/master/tree/](https://sourceforge.net/p/emailrelay/git/ci/master/tree/)
  - Package: [master/make/pkgs/emailrelay/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/emailrelay/)
  - Maintainer: -
- - Maintainer: -
 
 [![E-MailRelay](../screenshots/274_md.jpg)](../screenshots/274.jpg)
 

@@ -5,7 +5,6 @@
  - Repository: [https://www.smartmontools.org/timeline](https://www.smartmontools.org/timeline)
  - Package: [master/make/pkgs/smartmontools/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/smartmontools/)
  - Maintainer: -
- - Maintainer: -
 
 Mit den Smartmontools (bzw. mit smartctl) können die
 "Gesundheitswerte" von Festplatten (auch

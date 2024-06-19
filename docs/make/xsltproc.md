@@ -5,5 +5,4 @@
  - Repository: [https://gitlab.gnome.org/GNOME/libxslt](https://gitlab.gnome.org/GNOME/libxslt)
  - Package: [master/make/pkgs/xsltproc/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/xsltproc/)
  - Maintainer: -
- - Maintainer: -
 

@@ -1,7 +1,6 @@
 # WOL 0.7.1 (binary only)
  - Package: [master/make/pkgs/wol/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/wol/)
  - Maintainer: -
- - Maintainer: -
 
 Es gibt zwei Programme, die WoL unterstützen:
 1. *ether-wake*, das in der busybox integriert ist und

@@ -5,5 +5,4 @@
  - Repository: [https://git.haproxy.org/](https://git.haproxy.org/)
  - Package: [master/make/pkgs/haproxy/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/haproxy/)
  - Maintainer: -
- - Maintainer: -
 

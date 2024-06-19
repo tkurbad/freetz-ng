@@ -5,7 +5,6 @@
  - Repository: [https://git.savannah.gnu.org/cgit/nano.git/](https://git.savannah.gnu.org/cgit/nano.git/)
  - Package: [master/make/pkgs/nano/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nano/)
  - Maintainer: -
- - Maintainer: -
 
 **Nano** ist ein kleiner Texteditor für die Konsole, der aber im
 Gegensatz zu (n)vi eine Bedienung wie ein normaler Editor (z.B. der

@@ -5,7 +5,6 @@
  - Repository: [https://sourceforge.net/projects/bftpd/](https://sourceforge.net/projects/bftpd/)
  - Package: [master/make/pkgs/bftpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bftpd/)
  - Maintainer: -
- - Maintainer: -
 
 > "The bftpd program is a small, easy-to-configure FTP server. It
 > strives to be fast, secure and quick to install/configure."

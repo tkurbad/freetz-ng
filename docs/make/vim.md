@@ -5,7 +5,6 @@
  - Repository: [https://github.com/vim/vim](https://github.com/vim/vim)
  - Package: [master/make/pkgs/vim/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vim/)
  - Maintainer: -
- - Maintainer: -
 
 **vim** (**vi i**mproved)
 ist eine Variante des bekannten Unix-Editors *vi*. Wie sein "Parent",

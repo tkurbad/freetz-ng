@@ -5,7 +5,6 @@
  - Repository: [https://gitlab.nic.cz/labs/bird](https://gitlab.nic.cz/labs/bird)
  - Package: [master/make/pkgs/bird/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bird/)
  - Maintainer: -
- - Maintainer: -
 
 **Bird** ist die OpenSource Implementierung eines TCP/IP Routing Daemons
 für Unix/Linux Systeme. Es unterstützt sowohl IPv4 als auch IPv6,

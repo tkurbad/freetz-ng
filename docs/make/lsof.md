@@ -2,7 +2,6 @@
  - Homepage: [https://people.freebsd.org/~abe/](https://people.freebsd.org/~abe/)
  - Package: [master/make/pkgs/lsof/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lsof/)
  - Maintainer: -
- - Maintainer: -
 
 Mit `lsof` lässt sich feststellen, welche Dateien wo und von wem gerade
 geöffnet sind. Dies kann sehr hilfreich sein, wenn man z.B. ein

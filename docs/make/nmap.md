@@ -5,7 +5,6 @@
  - Repository: [https://github.com/nmap/nmap](https://github.com/nmap/nmap)
  - Package: [master/make/pkgs/nmap/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nmap/)
  - Maintainer: -
- - Maintainer: -
 
 "*Nmap ("Network Mapper") is a free and open source (license) utility
 for network exploration or security auditing. Many systems and network

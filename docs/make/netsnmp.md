@@ -5,7 +5,6 @@
  - Repository: [https://github.com/net-snmp/net-snmp](https://github.com/net-snmp/net-snmp)
  - Package: [master/make/pkgs/netsnmp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/netsnmp/)
  - Maintainer: -
- - Maintainer: -
 
 Net-SNMP (**S**imple **N**etwork **M**anagement **P**rotocol) includes
 an open source SNMPd agent to monitor and administer SNMP capable

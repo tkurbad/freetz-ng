@@ -5,5 +5,4 @@
  - Repository: [https://github.com/openssh/openssh-portable](https://github.com/openssh/openssh-portable)
  - Package: [master/make/pkgs/openssh/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openssh/)
  - Maintainer: -
- - Maintainer: -
 

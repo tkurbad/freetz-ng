@@ -1,7 +1,6 @@
 # Inetd 1.0
  - Package: [master/make/pkgs/inetd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inetd/)
  - Maintainer: -
- - Maintainer: -
 
 [![Inetd Webinterface](../screenshots/206_md.png)](../screenshots/206.png)
 

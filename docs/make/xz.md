@@ -4,5 +4,4 @@
  - Repository: [https://git.tukaani.org/?p=xz.git](https://git.tukaani.org/?p=xz.git)
  - Package: [master/make/pkgs/xz/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/xz/)
  - Maintainer: -
- - Maintainer: -
 

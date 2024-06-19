@@ -5,7 +5,6 @@
  - Repository: [https://github.com/traviscross/mtr](https://github.com/traviscross/mtr)
  - Package: [master/make/pkgs/mtr/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/mtr/)
  - Maintainer: -
- - Maintainer: -
 
 **[mtr](http://www.bitwizard.nl/mtr/)** (**M**y
 **TR**aceroute) kombiniert die Funktionalität von

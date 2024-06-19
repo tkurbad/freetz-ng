@@ -4,5 +4,4 @@
  - Changelog: [https://www.rarlab.com/rarnew.htm](https://www.rarlab.com/rarnew.htm)
  - Package: [master/make/pkgs/unrar/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/unrar/)
  - Maintainer: -
- - Maintainer: -
 

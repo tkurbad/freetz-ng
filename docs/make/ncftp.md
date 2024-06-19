@@ -4,7 +4,6 @@
  - Changelog: [https://www.ncftp.com/ncftp/doc/changelog.html](https://www.ncftp.com/ncftp/doc/changelog.html)
  - Package: [master/make/pkgs/ncftp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ncftp/)
  - Maintainer: -
- - Maintainer: -
 
 *"NcFTP Client (also known as just NcFTP) is a set of FREE application
 programs implementing the File Transfer Protocol (FTP)."*

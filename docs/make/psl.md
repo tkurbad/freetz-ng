@@ -5,5 +5,4 @@
  - Repository: [https://github.com/rockdaboot/libpsl](https://github.com/rockdaboot/libpsl)
  - Package: [master/make/pkgs/psl/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/psl/)
  - Maintainer: -
- - Maintainer: -
 

@@ -5,5 +5,4 @@
  - Repository: [https://github.com/yrutschle/sslh](https://github.com/yrutschle/sslh)
  - Package: [master/make/pkgs/sslh/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sslh/)
  - Maintainer: -
- - Maintainer: -
 
