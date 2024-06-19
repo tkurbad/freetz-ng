@@ -3,6 +3,9 @@ name: generate_pages
 on:
   push:
     branches: ["master"]
+    paths:
+      - '.github/workflows/generate_pages.yml'
+      - 'docs/**/*.md'
   workflow_dispatch:
 
 permissions:
