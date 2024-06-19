@@ -456,7 +456,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[OpenDD 0.7.9](opendd.md)<a id='opendd'></a>**<br>
     opendd is a DynDNS client, written in C, and especially designed for small gateway machines, like a Soekris box. Its main feature is that it does not require any Perl or Python interpreter. It supports HTTPS, can send a mail report, and can run as daemon. It is also very easy to deploy. WWW: http://www.bsdmon.com/wakka/OpenDD
 
-  * **[Openntpd 3.9p1](openntpd.md)<a id='openntpd'></a>**<br>
+  * **[Openntpd 3.9p1 - DEPRECATED](openntpd.md)<a id='openntpd'></a>**<br>
     OpenNTPD is a FREE, easy to use implementation of the Network Time Protocol. This package automatically removes AVM'S chronyd if necessary.
 
   * **[OpenSSH 9.3p2/9.7p1](openssh.md)<a id='openssh'></a>**<br>

@@ -613,7 +613,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Account](../../docs/make/opendd.md#account)
      - [E-Mail](../../docs/make/opendd.md#e-mail)
 
-  * **[Openntpd 3.9p1](../../docs/make/openntpd.md)<a id='openntpd'></a>**<br>
+  * **[Openntpd 3.9p1 - DEPRECATED](../../docs/make/openntpd.md)<a id='openntpd'></a>**<br>
     OpenNTPD is a FREE, easy to use implementation of the Network Time Protocol. This package automatically removes AVM'S chronyd if necessary.
      - [Vorteile:](../../docs/make/openntpd.md#vorteile)
      - [Ubuntu client setup](../../docs/make/openntpd.md#ubuntu-client-setup)

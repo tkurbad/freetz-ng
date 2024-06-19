@@ -1,4 +1,4 @@
-# Openntpd 3.9p1
+# Openntpd 3.9p1 - DEPRECATED
  - Package: [master/make/pkgs/openntpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openntpd/)
  - Maintainer: -
 
