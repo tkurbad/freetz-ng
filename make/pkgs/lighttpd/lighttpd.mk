@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://download.lighttpd.net/lighttpd/releases-1.4.x
 ### MANPAGE:=https://redmine.lighttpd.net/projects/lighttpd/wiki
 ### CHANGES:=https://www.lighttpd.net/releases/
 ### CVSREPO:=https://git.lighttpd.net/lighttpd/lighttpd1.4.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/src/lighttpd
 $(PKG)_BINARY_TARGET_DIR := $($(PKG)_DEST_DIR)/usr/bin/lighttpd
