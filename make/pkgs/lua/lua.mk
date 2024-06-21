@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://www.lua.org/ftp
 ### MANPAGE:=https://www.lua.org/docs.html
 ### CHANGES:=https://www.lua.org/versions.html
 ### CVSREPO:=https://github.com/lua/lua
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_liblua_WITH_VERSION_ABANDON),abandon,current)
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_LUA_FLOAT),$(if $(FREETZ_LIB_liblua_WITH_VERSION_ABANDON),abandon,current)/float)

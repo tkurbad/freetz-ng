@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://github.com/jqlang/jq/releases/download/jq-$($(PKG)_VERSION)
 ### MANPAGE:=https://jqlang.github.io/jq/manual/
 ### CHANGES:=https://github.com/jqlang/jq/releases
 ### CVSREPO:=https://github.com/jqlang/jq/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY := $($(PKG)_DIR)/jq
 $(PKG)_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/bin/jq
