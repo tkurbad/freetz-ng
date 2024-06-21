@@ -1,6 +1,9 @@
 # LCD4linux 3fce054e
+ - Manpage: [https://wiki.vuplus-support.org/index.php?title=LCD4Linux](https://wiki.vuplus-support.org/index.php?title=LCD4Linux)
+ - Changelog: [https://github.com/TangoCash/lcd4linux/commits/master/](https://github.com/TangoCash/lcd4linux/commits/master/)
+ - Repository: [https://github.com/TangoCash/lcd4linux](https://github.com/TangoCash/lcd4linux)
  - Package: [master/make/pkgs/lcd4linux/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lcd4linux/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 Mit LCD4linux kann ein an die Fritz!Box angeschlossenes Display angesteuert werden.<br>
 <br>
