@@ -1,4 +1,4 @@
-# Nano Shell 0.1 (binary only)
+# Nano Shell 0.1 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/nano-shell/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nano-shell/)
  - Maintainer: -
 

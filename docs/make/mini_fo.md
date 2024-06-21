@@ -1,4 +1,4 @@
-# mini_fo 0.3
+# mini_fo 0.3 - DEPRECATED
  - Package: [master/make/pkgs/mini_fo/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/mini_fo/)
  - Maintainer: -
 

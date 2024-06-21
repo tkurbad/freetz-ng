@@ -3,7 +3,7 @@
  - Changelog: [https://netfilter.org/projects/iptables/downloads.html](https://netfilter.org/projects/iptables/downloads.html)
  - Repository: [https://git.netfilter.org/iptables/](https://git.netfilter.org/iptables/)
  - Package: [master/make/pkgs/iptables/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/iptables/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 ### Current state (largely broken)
 

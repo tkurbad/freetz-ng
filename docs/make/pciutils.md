@@ -1,4 +1,4 @@
-# pciutils 3.1.7 (binary only)
+# pciutils 3.1.7 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/pciutils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pciutils/)
  - Maintainer: -
 

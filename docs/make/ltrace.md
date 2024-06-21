@@ -1,4 +1,4 @@
-# ltrace 0.7.3checkpoint1-git (binary only)
+# ltrace 0.7.3checkpoint1-git (binary only) - DEPRECATED
  - Homepage: [https://www.ltrace.org/](https://www.ltrace.org/)
  - Manpage: [https://linux.die.net/man/1/ltrace](https://linux.die.net/man/1/ltrace)
  - Changelog: [https://github.com/dkogan/ltrace/commits/master](https://github.com/dkogan/ltrace/commits/master)

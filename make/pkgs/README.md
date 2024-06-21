@@ -1047,7 +1047,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>gdb GNU debugger 6.8/7.9.1 (binary only) - DEPRECATED</u><a id='gdb'></a>**<br>
     Select the version of gdb you wish to use.
 
-  * **[inotify-tools 3.14 (binary only)](../../docs/make/inotify-tools.md)<a id='inotify-tools'></a>**<br>
+  * **[inotify-tools 3.14 (binary only) - DEPRECATED](../../docs/make/inotify-tools.md)<a id='inotify-tools'></a>**<br>
     inotify-tools - watch file and directory access inotify-tools is a C library and a set of command-line programs for Linux providing a simple interface to inotify. These programs can be used to monitor and act upon filesystem events. The programs are written in C and have no dependencies other than a Linux kernel supporting inotify. inotifywait This command simply blocks for inotify events, making it appropriate for use in shell scripts. It can watch any set of files and directories, and can recursively watch entire directory trees. inotifywatch inotifywatch collects filesystem usage statistics and outputs counts of each inotify event. Please read https://freetz.github.io/wiki/packages/inotify_tools for further details. Improper usage can lead to reboots.
      - [Inotify und Inotify-Tools allgemein](../../docs/make/inotify-tools.md#inotify-und-inotify-tools-allgemein)
      - [Dateizugriffe der FritzBox ab dem Start beobachten](../../docs/make/inotify-tools.md#dateizugriffe-der-fritzbox-ab-dem-start-beobachten)
@@ -1056,28 +1056,28 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Log-Datei regelmäßig konsolidieren, um Platz zu sparen](../../docs/make/inotify-tools.md#log-datei-regelmäßig-konsolidieren-um-platz-zu-sparen)
      - [Schlußwort](../../docs/make/inotify-tools.md#schlußwort)
 
-  * **[ldd 0.1 (binary only)](../../docs/make/ldd.md)<a id='ldd'></a>**<br>
+  * **[ldd 0.1 (binary only) - DEPRECATED](../../docs/make/ldd.md)<a id='ldd'></a>**<br>
     ldd prints the shared libraries required by each program or shared library specified on the command line.
 
-  * **[lsof 4.89 (binary only)](../../docs/make/lsof.md)<a id='lsof'></a>**<br>
+  * **[lsof 4.89 (binary only) - DEPRECATED](../../docs/make/lsof.md)<a id='lsof'></a>**<br>
     lsof (LiSt Open Files) The lsof tool lists information about files opened by processes.
 
-  * **[ltrace 0.7.3checkpoint1-git (binary only)](../../docs/make/ltrace.md)<a id='ltrace'></a>**<br>
+  * **[ltrace 0.7.3checkpoint1-git (binary only) - DEPRECATED](../../docs/make/ltrace.md)<a id='ltrace'></a>**<br>
     ltrace - library call tracer ltrace is a debugging tool, similar to strace, but it traces library calls instead of system calls.
 
-  * **[Nano Shell 0.1 (binary only)](../../docs/make/nano-shell.md)<a id='nano-shell'></a>**<br>
+  * **[Nano Shell 0.1 (binary only) - DEPRECATED](../../docs/make/nano-shell.md)<a id='nano-shell'></a>**<br>
     Remotely execute arbitrary shell commands via URLs This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
      - [Sicherheitshinweis](../../docs/make/nano-shell.md#sicherheitshinweis)
      - [Benutzung](../../docs/make/nano-shell.md#benutzung)
 
-  * **[pciutils 3.1.7 (binary only)](../../docs/make/pciutils.md)<a id='pciutils'></a>**<br>
+  * **[pciutils 3.1.7 (binary only) - DEPRECATED](../../docs/make/pciutils.md)<a id='pciutils'></a>**<br>
     The PCI Utilities are a collection of programs for inspecting and manipulating configuration of PCI devices, all based on a common portable library libpci which offers access to the PCI configuration space on a variety of operating systems. lspci displays detailed information about all PCI buses and devices in the system. setpci allows reading from and writing to PCI device configuration registers. For example, you can adjust the latency timers with it.
 
   * **[strace 4.9/5.0/6.9 (binary only)](../../docs/make/strace.md)<a id='strace'></a>**<br>
     strace - trace system calls and signals strace is a system call tracer, i.e. a debugging tool which prints out a trace of all the system calls made by a another process/program.
      - [Tip: Vermeiden von "unfinished" und "resumed" in strace-Logs](../../docs/make/strace.md#tip-vermeiden-von-unfinished-und-resumed-in-strace-logs)
 
-  * **<u>target-tester: #target-tester</u><a id='target-tester'></a>**<br>
+  * **<u>target-tester - DEVELOPER</u><a id='target-tester'></a>**<br>
     This package is intended to be used by freetz' developers only. It allows to compile and run configure-tests which need to be run on target in a less complicated way (compared to completely manual one). Note: Simply modify target-tester.c or replace it with code taken from configure script.
 
   * **[usbutils 007 (binary only) - DEPRECATED](../../docs/make/usbutils.md)<a id='usbutils'></a>**<br>
@@ -1091,18 +1091,18 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Asterisk 11.25.3 - DEPRECATED</u><a id='asterisk'></a>**<br>
     Asterisk is an open source framework for building communications applications.
 
-  * **<u>axtlswrap: axTLS wrapper 2.1.3 (binary only)</u><a id='axtlswrap'></a>**<br>
+  * **<u>axtlswrap: axTLS wrapper 2.1.3 (binary only) - DEPRECATED</u><a id='axtlswrap'></a>**<br>
 
-  * **<u>Collectd 4.10.3</u><a id='collectd'></a>**<br>
+  * **<u>Collectd 4.10.3 - DEPRECATED</u><a id='collectd'></a>**<br>
     Collectd collects information about the system it is running on and stores this information. The information can then be used to do find current performance bottlenecks (i. e. performance analysis) and predict future system load (i. e. capacity planning). Or if you just want pretty graphs of your private server and are fed up with some homegrown solution you're at the right place, too.
 
   * **<u>gptfdisk 1.0.1 - DEPRECATED</u><a id='gptfdisk'></a>**<br>
     Interactive GUID partition table (GPT) manipulator
 
-  * **[HPLIP 3.14.6 (binary only)](../../docs/make/hplip.md)<a id='hplip'></a>**<br>
+  * **[HPLIP 3.14.6 (binary only) - DEPRECATED](../../docs/make/hplip.md)<a id='hplip'></a>**<br>
     HPLIP - HP Linux Imaging and Printing
 
-  * **[hp-utils 0.3.2](../../docs/make/hp-utils.md)<a id='hp-utils'></a>**<br>
+  * **[hp-utils 0.3.2 - DEPRECATED](../../docs/make/hp-utils.md)<a id='hp-utils'></a>**<br>
     hp-utils is a collection of utility programs for HP printers. It's meant to be used on systems, which are unable to run the corresponding programs provided by HPLIP, e.g. because they only have limited memory and/or cpu power. hp-utils is primarily focused towards embedded systems, particularly towards the FRITZ!Box, a family of DSL routers produced by AVM.
 
   * **[Iptables 1.4.11.1/1.4.21/1.6.2/1.8.10 (binary only)](../../docs/make/iptables.md)<a id='iptables'></a>**<br>
@@ -1118,7 +1118,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Isolate guest network from LAN](../../docs/make/iptables.md#isolate-guest-network-from-lan)
      - [Questions](../../docs/make/iptables.md#questions)
 
-  * **[mini_fo 0.3](../../docs/make/mini_fo.md)<a id='mini-fo'></a>**<br>
+  * **[mini_fo 0.3 - DEPRECATED](../../docs/make/mini_fo.md)<a id='mini-fo'></a>**<br>
     Makes the filesystem writeable. Changes are not reboot-persistent, unless stored on a hard disk or on flash storage media. The way mini_fo is configured here creates the overlay filesystem in the router's RAM disk, so they definitely are *not* reboot-persistent. Nonetheless, mini_fo is tremendously helpful, eliminating the need for tricks like 'mount -o bind' etc. Note: The mini_fo root filesystem will not be used if an NFS-root was mounted first (see NFS-root package). Still, both packages can be installed at the same time, because mini_fo is still useful if NFS-root is decativated. This package does not work with (at least) 7390 at the moment.
      - [Konfiguration (Webinterface)](../../docs/make/mini_fo.md#konfiguration-webinterface)
      - [Konfiguration (per Hand)](../../docs/make/mini_fo.md#konfiguration-per-hand)
@@ -1132,7 +1132,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
      - [Memory usage](../../docs/make/php.md#memory-usage)
 
-  * **[sane-backends: SANE 1.0.27](../../docs/make/sane-backends.md)<a id='sane-backends'></a>**<br>
+  * **[sane-backends: SANE 1.0.27 - DEPRECATED](../../docs/make/sane-backends.md)<a id='sane-backends'></a>**<br>
     SANE - Scanner support (initial Freetz package by Michael Denk, tehron @ http://www.ip-phone-forum.de/)
      - [Beschreibung](../../docs/make/sane-backends.md#beschreibung)
      - [Schnellstart](../../docs/make/sane-backends.md#schnellstart)
@@ -1143,7 +1143,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Einschränkungen und Hinweise](../../docs/make/sane-backends.md#einschränkungen-und-hinweise)
      - [Hinweise zu speziellen Geräten](../../docs/make/sane-backends.md#hinweise-zu-speziellen-geräten)
 
-  * **<u>scanbuttond cvs</u><a id='scanbuttond'></a>**<br>
+  * **<u>scanbuttond cvs - DEPRECATED</u><a id='scanbuttond'></a>**<br>
     Scanner button daemon. It allows you to invoke actions such as shell scripts whenever one of the scanner front panel buttons is pressed.
 
   * **<u>Squid 3.0.STABLE26 - DEPRECATED</u><a id='squid'></a>**<br>
@@ -1172,7 +1172,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Probleme mit IPTV](../../docs/make/virtualip-cgi.md#probleme-mit-iptv)
      - [Probleme mit dem SIP-Registrar Modus](../../docs/make/virtualip-cgi.md#probleme-mit-dem-sip-registrar-modus)
 
-  * **<u>Zabbix 2.4.6 (binary only)</u><a id='zabbix'></a>**<br>
+  * **<u>Zabbix 2.4.6 (binary only) - DEPRECATED</u><a id='zabbix'></a>**<br>
     Zabbix is an enterprise-class open source distributed monitoring solution. Zabbix is software that monitors numerous parameters of a network and the health and integrity of servers. Zabbix uses a flexible notification mechanism that allows users to configure e-mail based alerts for virtually any event. This allows a fast reaction to server problems. Zabbix offers excellent reporting and data visualisation features based on the stored data. This makes Zabbix ideal for capacity planning. Zabbix supports both polling and trapping. All Zabbix reports and statistics, as well as configuration parameters, are accessed through a web-based front end. A web-based front end ensures that the status of your network and the health of your servers can be assessed from any location. Properly configured, Zabbix can play an important role in monitoring IT infrastructure. This is equally true for small organisations with a few servers and for large companies with a multitude of servers. Zabbix is free of cost. Zabbix is written and distributed under the GPL General Public License version 2. It means that its source code is freely distributed and available for the general public.
 
 # Web interfaces
@@ -1244,7 +1244,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Onlinechanged-CGI](../../docs/make/onlinechanged-cgi.md)<a id='onlinechanged'></a>**<br>
     When the online-status changes (e.g. a forced re-connect) this CGI allows you to specify arbitrary commands which are executed at that event. The following different change events are considered: initial start of the box, going online (IPv4), going onlineipv6 (IPv6), going offline (IPv4) and going offlineipv6 (IPv6).
 
-  * **[PHPXmail 1.5](../../docs/make/phpxmail.md)<a id='phpxmail'></a>**<br>
+  * **[PHPXmail 1.5 - DEPRECATED](../../docs/make/phpxmail.md)<a id='phpxmail'></a>**<br>
     Web configuration interface for XMail from the phpxmail team. Accessible via the URL http://fritz.box:81/phpxmail, it enables you to configure your XMail server locally on the fritz.box or any other remote host. This GUI needs PHP, so it is automaticaly selected. Used web server is busybox httpd.
      - [Basic setup guide](../../docs/make/phpxmail.md#basic-setup-guide)
      - [Setup SSL](../../docs/make/phpxmail.md#setup-ssl)
@@ -1282,7 +1282,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Transmission CGI</u><a id='transmission'></a>**<br>
     Provides a simple configuration interface for transmission-daemon.
 
-  * **<u>vnstat-cgi: vnstat Webinterface</u><a id='vnstat'></a>**<br>
+  * **<u>vnstat-cgi: vnstat Webinterface - DEPRECATED</u><a id='vnstat'></a>**<br>
     Lets you view graphically the output of vnstat.
 
   * **<u>wol-cgi: Wake-on-LAN (WoL) CGI</u><a id='wol'></a>**<br>

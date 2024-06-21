@@ -1,4 +1,4 @@
-# hp-utils 0.3.2
+# hp-utils 0.3.2 - DEPRECATED
  - Package: [master/make/pkgs/hp-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/hp-utils/)
  - Maintainer: -
 

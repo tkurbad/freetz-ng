@@ -1,4 +1,4 @@
-# ldd 0.1 (binary only)
+# ldd 0.1 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/ldd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ldd/)
  - Maintainer: -
 
