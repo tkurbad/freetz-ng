@@ -8,6 +8,7 @@ $(PKG)_SITE:=@SAVANNAH/davfs2
 ### MANPAGE:=https://linux.die.net/man/5/davfs2.conf
 ### CHANGES:=https://git.savannah.nongnu.org/cgit/davfs2.git/refs/
 ### CVSREPO:=https://git.savannah.nongnu.org/cgit/davfs2.git/
+### SUPPORT:=fda77
 
 $(PKG)_STARTLEVEL=50
 

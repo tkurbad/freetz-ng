@@ -5,6 +5,7 @@ $(PKG)_SITE:=@KERNEL/software/utils/dtc
 ### WEBSITE:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git
 ### CHANGES:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git/log/
 ### CVSREPO:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
+### SUPPORT:=fda77
 
 $(PKG)_BINARIES            := fdtdump fdtget fdtput fitdump
 $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)

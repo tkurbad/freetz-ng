@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_DEBOOTSTRAP
-	bool "Debootstrap (binary only)"
+	bool "Debootstrap (binary only) - DEPRECATED"
 	select FREETZ_BUSYBOX_AR
 	select FREETZ_BUSYBOX_BUNZIP2
 	select FREETZ_BUSYBOX_CHROOT

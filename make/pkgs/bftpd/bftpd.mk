@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SF/bftpd
 ### MANPAGE:=https://bftpd.sourceforge.net/documents.html
 ### CHANGES:=https://bftpd.sourceforge.net/downloads/CHANGELOG
 ### CVSREPO:=https://sourceforge.net/projects/bftpd/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/bftpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/bftpd
