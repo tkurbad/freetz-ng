@@ -79,6 +79,7 @@ Latest changes
    * BIND 9.11.37/9.18.27
    * BIRD 1.6.8/2.15.1
    * Bftpd 6.2
+   * bvi 1.4.2
    * CCID 1.5.5
    * Dropbear 2024.85
    * FFmpeg 5.1.4
