@@ -504,7 +504,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[ProxyChains-NG 4.17](proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
     A preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies, tor is also supported. Usage: proxychains4 telnet mail.example.com 25
 
-  * **[psl 0.21.2 (binary only)](psl.md)<a id='psl'></a>**<br>
+  * **[psl 0.21.5 (binary only)](psl.md)<a id='psl'></a>**<br>
     Public Suffix List library functions This includes psl binary and public_suffix_list.dat
 
   * **[pyLoad 0.4.20/78162d75](pyload.md)<a id='pyload'></a>**<br>
