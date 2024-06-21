@@ -1,4 +1,4 @@
-# usb.ids a5edeafb60
+# usb.ids c70eea490a
  - Homepage: [http://www.linux-usb.org/usb-ids.html](http://www.linux-usb.org/usb-ids.html)
  - Changelog: [https://github.com/usbids/usbids/commits/master](https://github.com/usbids/usbids/commits/master)
  - Repository: [https://github.com/usbids/usbids](https://github.com/usbids/usbids)
