@@ -14,6 +14,7 @@ $(PKG)_SITE:=https://netfilter.org/projects/iptables/files
 ### WEBSITE:=https://netfilter.org/projects/iptables/index.html
 ### CHANGES:=https://netfilter.org/projects/iptables/downloads.html
 ### CVSREPO:=https://git.netfilter.org/iptables/
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=kernel$($(PKG)_KERNNBR)
 ifeq ($(strip $(FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL2)),y)
