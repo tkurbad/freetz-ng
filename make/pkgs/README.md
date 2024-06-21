@@ -356,13 +356,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### I
 
-  * **[iconv 1.13.1 (binary only)](../../docs/make/iconv.md)<a id='iconv'></a>**<br>
+  * **[iconv 1.13.1 (binary only) - DEPRECATED](../../docs/make/iconv.md)<a id='iconv'></a>**<br>
     A program for converting text from one encoding to another.
 
-  * **<u>ifstat 1.1 (binary only)</u><a id='ifstat'></a>**<br>
+  * **<u>ifstat 1.1 (binary only) - DEPRECATED</u><a id='ifstat'></a>**<br>
     ifstat is a tool to report network interfaces bandwith just like vmstat/iostat do for other system counters. ifstat gathers these statistics from the kernel internal counters, which is highly operating system dependent. If the net-snmp (or ucd-snmp) library is available, ifstat can use it to gather statistics from remote equipments (hosts, routers, switches...) or even the local host if a SNMP daemon is running. ifstat's functionnalities can also be included in a static library for use in other applications. To use it, you just have to pass --enable-library while configuring ifstat WWW: http://gael.roualland.free.fr/ifstat/
 
-  * **<u>iftop 0.17 (binary only)</u><a id='iftop'></a>**<br>
+  * **<u>iftop 0.17 (binary only) - DEPRECATED</u><a id='iftop'></a>**<br>
     iftop does for network usage what top(1) does for CPU usage. It listens to network traffic on a named interface and displays a table of current bandwidth usage by pairs of hosts. Handy for answering the question "why is our ADSL link so slow?". WWW: http://www.ex-parrot.com/pdw/iftop/
 
   * **[IGMPproxy 0.4](../../docs/make/igmpproxy.md)<a id='igmpproxy'></a>**<br>
@@ -371,12 +371,12 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[ImageMagick 7.1.1-30 (binary only)](../../docs/make/imagemagick.md)<a id='imagemagick'></a>**<br>
     ImageMagick is a robust collection of tools and libraries to read, write, and manipulate an image in many image formats, including popular formats like TIFF, JPEG, PNG, PDF, PhotoCD, and GIF. With ImageMagick, you can create images dynamically, making it suitable for Web applications. You can also resize, rotate, sharpen, color-reduce, or add special effects to an image and save your completed work in many different image formats. Image processing operations are available from the command line as well as through C, C++, and PERL-based programming interfaces.
 
-  * **[Inadyn-mt 02.28.10](../../docs/make/inadyn-mt.md)<a id='inadyn-mt'></a>**<br>
+  * **[Inadyn-mt 02.28.10 - DEPRECATED](../../docs/make/inadyn-mt.md)<a id='inadyn-mt'></a>**<br>
     INADYN-MT - Simple Dynamic DNS client. INADYN-MT is a free DynDNS client. It gives the possibility to have your own fixed hostname registered on the internet, although your IP might be changing. It checks periodically whether the IP address stored by the DNS server is the real current IP address of the machine that is running INADYN.
      - [Creating a Feetz Image with Inadyn](../../docs/make/inadyn-mt.md#creating-a-feetz-image-with-inadyn)
      - [Setup in Freetz web-interface](../../docs/make/inadyn-mt.md#setup-in-freetz-web-interface)
 
-  * **<u>Inadyn-OpenDNS 1.99</u><a id='inadyn-opendns'></a>**<br>
+  * **<u>Inadyn-OpenDNS 1.99 - DEPRECATED</u><a id='inadyn-opendns'></a>**<br>
     INADYN - Simple Dynamic DNS client. INADYN is a free DynDNS client. It gives the possibility to have your own fixed hostname registered on the internet, although your IP might be changing. It checks periodically whether the IP address stored by the DNS server is the real current IP address of the machine that is running INADYN. This is the version published by OpenDNS to support SSL.
 
   * **[Inetd 1.0](../../docs/make/inetd.md)<a id='inetd'></a>**<br>
@@ -385,7 +385,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Konfiguration](../../docs/make/inetd.md#konfiguration)
      - [Für Entwickler](../../docs/make/inetd.md#für-entwickler)
 
-  * **[iodine 0.7.0](../../docs/make/iodine.md)<a id='iodine'></a>**<br>
+  * **[iodine 0.7.0 - DEPRECATED](../../docs/make/iodine.md)<a id='iodine'></a>**<br>
     iodine lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed.
      - [Using with FreeDNS](../../docs/make/iodine.md#using-with-freedns)
      - [Security](../../docs/make/iodine.md#security)
@@ -394,20 +394,20 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[iPerf3 3.3/3.17.1 (binary only)](../../docs/make/iperf.md)<a id='iperf'></a>**<br>
     iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters. S. https://github.com/esnet/iperf for more details.
 
-  * **<u>IPsec-tools 0.7.2</u><a id='ipsec-tools'></a>**<br>
+  * **<u>IPsec-tools 0.7.2 - DEPRECATED</u><a id='ipsec-tools'></a>**<br>
     IPsec-tools (plainrsa-gen racoon racoonctl setkey)
 
   * **[Iptables-CGI](../../docs/make/iptables-cgi.md)<a id='iptables'></a>**<br>
 
-  * **<u>Iptraf 3.0.1 (binary only)</u><a id='iptraf'></a>**<br>
+  * **<u>Iptraf 3.0.1 (binary only) - DEPRECATED</u><a id='iptraf'></a>**<br>
     IPTraf is a console-based network monitoring program for Linux that displays information about IP traffic. It returns such information as: Current TCP connections UDP, ICMP, OSPF, and other types of IP packets Packet and byte counts on TCP connections IP, TCP, UDP, ICMP, non-IP, and other packet and byte counts TCP/UDP counts by ports Packet counts by packet sizes Packet and byte counts by IP address Interface activity Flag statuses on TCP packets LAN station statistics
 
-  * **<u>iputils' traceroute6 s20071127 (binary only)</u><a id='iputils'></a>**<br>
+  * **<u>iputils' traceroute6 s20071127 (binary only) - DEPRECATED</u><a id='iputils'></a>**<br>
 
-  * **[Irssi 0.8.15](../../docs/make/irssi.md)<a id='irssi'></a>**<br>
+  * **[Irssi 0.8.15 - DEPRECATED](../../docs/make/irssi.md)<a id='irssi'></a>**<br>
     Irssi - the client of the future - is a terminal based IRC client for UNIX systems. It also supports SILC and ICB protocols via plugins. Features: * Autologging: Irssi will automatically log any channels, queries or special windows that you want. * Formats and Themes: irssi has an easy yet powerful way to customize your client's look and feel. * Configurable keybindings: Irssi allows you to modify the default keybindings and create your own so you can customize your client. * Paste detection: Irssi tries to detect when you are pasting large amounts of text, by looking at the speed that characters are entered; if such pasting is detected [TAB]-characters are sent as-is instead of being tab-completed and eventually ending up in a wrong destination window.
 
-  * **<u>ISC dhcp 4.3.6-P1 (binary only)</u><a id='isc-dhcp'></a>**<br>
+  * **<u>ISC dhcp 4.3.6-P1 (binary only) - DEPRECATED</u><a id='isc-dhcp'></a>**<br>
     ISC DHCP is open source software that implements the Dynamic Host Configuration Protocol for connection to an IP network. It is production-grade software that offers a complete solution for implementing DHCP servers, relay agents, and clients for small local networks to large enterprises. ISC DHCP solution supports both IPv4 and IPv6, and is suitable for use in high-volume and high-reliability applications.
 
 ### J

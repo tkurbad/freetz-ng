@@ -1,4 +1,4 @@
-# Inadyn-mt 02.28.10
+# Inadyn-mt 02.28.10 - DEPRECATED
  - Package: [master/make/pkgs/inadyn-mt/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/inadyn-mt/)
  - Maintainer: -
 

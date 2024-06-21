@@ -1,4 +1,4 @@
-# iodine 0.7.0
+# iodine 0.7.0 - DEPRECATED
  - Package: [master/make/pkgs/iodine/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/iodine/)
  - Maintainer: -
 
