@@ -39,7 +39,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### B
 
-  * **[bash 3.2.57 (binary only)](bash.md)<a id='bash'></a>**<br>
+  * **[bash 3.2.57 (binary only) - DEPRECATED](bash.md)<a id='bash'></a>**<br>
     Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. Bash also incorporates useful features from the Korn and C shells (ksh and csh).(roundabout 540K minimal and 840K full featured)
 
   * **[Bftpd 6.2](bftpd.md)<a id='bftpd'></a>**<br>
@@ -51,22 +51,22 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[BIND 9.11.37/9.18.27](bind.md)<a id='bind'></a>**<br>
     BIND is a suite of software for interacting with the Domain Name System (DNS). The name BIND stands for "Berkeley Internet Name Daemon".
 
-  * **[Bip 0.9.2](bip.md)<a id='bip'></a>**<br>
+  * **[Bip 0.9.2 - DEPRECATED](bip.md)<a id='bip'></a>**<br>
     Bip is an IRC proxy, which means it keeps connected to your preferred IRC servers, can store the logs for you, and even send them back to your IRC client(s) upon connection. You may want to use bip to keep your logfiles (in a unique format and on a unique computer) whatever your client is, when you connect from multiple workstations, or when you simply want to have a playback of what was said while you were away.
 
   * **[BIRD 1.6.8/2.15.1](bird.md)<a id='bird'></a>**<br>
     The BIRD Internet Routing Daemon
 
-  * **<u>bittwist 1.1 (binary only)</u><a id='bittwist'></a>**<br>
+  * **<u>bittwist 1.1 (binary only) - DEPRECATED</u><a id='bittwist'></a>**<br>
     bittwist is designed to complement tcpdump, which by itself has done a great job in capturing network traffic. bittwist can regenerate the captured traffic onto a live network (the packets are generated from tcpdump trace file, generating a .pcap file). bittwist also comes with a comprehensive trace file editor to allow to change the contents of a trace file on the fly. Generally, a packet generator is useful in simulating networking traffic or scenario, testing firewall, IDS, and IPS, and troubleshooting various network problems. http://bittwist.sourceforge.net/doc.html
 
   * **[bluez-utils 2.25 (binary only, incl. Pin-Change and NAP)](bluez-utils.md)<a id='bluez-utils'></a>**<br>
     This package contains utilities for configuring bluetooth connections.
 
-  * **[br2684ctl (binary only)](br2684ctl.md)<a id='br2684ctl'></a>**<br>
+  * **[br2684ctl (binary only) - DEPRECATED](br2684ctl.md)<a id='br2684ctl'></a>**<br>
     ATM Ethernet bridging configuration utility
 
-  * **[bridge-utils 1.4 (binary only)](bridge-utils.md)<a id='bridge-utils'></a>**<br>
+  * **[bridge-utils 1.4 (binary only) - DEPRECATED](bridge-utils.md)<a id='bridge-utils'></a>**<br>
     This package contains utilities for configuring the Linux ethernet bridge. The Linux ethernet bridge can be used for connecting multiple ethernet devices together. The connection is fully transparent: hosts connected to one ethernet device see hosts connected to the other ethernet devices directly. Authors: Lennert Buytenhek <buytenh@gnu.org>
 
   * **[bvi/bmore 1.4.2 (binary only)](bvi.md)<a id='bvi'></a>**<br>
@@ -83,13 +83,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[CCID 1.5.5 - DEPRECATED](ccid.md)<a id='ccid'></a>**<br>
     ccid provides the source code for a generic USB CCID (Chip/Smart Card Interface Devices) driver and ICCD (Integrated Circuit(s) Card Devices).
 
-  * **[Checkmaild 0.4.7](checkmaild.md)<a id='checkmaild'></a>**<br>
+  * **[Checkmaild 0.4.7 - DEPRECATED](checkmaild.md)<a id='checkmaild'></a>**<br>
     Checkmaild checks pop3/smtp mail accounts for new mails on a given interval. A configurable shell script starts the desired actions when new mails arrive.
 
   * **[Cifsmount 7.0](cifsmount.md)<a id='cifsmount'></a>**<br>
     User space helper for mounting remote CIFS shares + CGI web interface for easy configuration of up to three mounts incl. (auto-) start/stop. CIFS is an extended version of SMB, the well-known protocol used by MS Windows and Samba for sharing folders, files and printers. Thus, cifsmount is a replacement for smbmount, having the advantage of being significantly smaller than smbmount. So if you want to mount Windows or Samba shares from your router box, this package is for you. If this does not work, enable replace-kernel!
 
-  * **[classpath GNU 0.99 (binary only)](classpath.md)<a id='classpath'></a>**<br>
+  * **[classpath GNU 0.99 (binary only) - DEPRECATED](classpath.md)<a id='classpath'></a>**<br>
     GNU Classpath, Essential Libraries for Java, is a GNU project to create free core class libraries for use with virtual machines and compilers for the java programming language.
 
   * **<u>Cntlm 0.93beta5 (binary only)</u><a id='cntlm'></a>**<br>
@@ -101,10 +101,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Cpmaccfg 0.6 (binary only)](cpmaccfg.md)<a id='cpmaccfg'></a>**<br>
     With a patched kernel and this tool it is possible to configure the ADM6996L switch (at least FB 7170, maybe other FBs with 4 LAN ports work too) to support VLANs and/or to split the LAN ports into different subnets. It is also possible to view or set each ports power configuration and to disable auto media detection and to force a given media type for each port (10/100 Mbit, Half-/Full-Duplex). Some features are only available when Replace Kernel is selected. Since version 0.6 cpmaccfg detects the tantos switches used i.e. in F!B 7270. However, since there is not enough documentation (freely) available yet, it is not yet possible to configure this chipset.
 
-  * **<u>cryptsetup 1.7.5 (binary only)</u><a id='cryptsetup'></a>**<br>
+  * **<u>cryptsetup 1.7.5 (binary only) - DEPRECATED</u><a id='cryptsetup'></a>**<br>
     cryptsetup is used to conveniently setup dm-crypt managed block devices under Linux. Hint: Don't forget to insmod all selected modules.
 
-  * **[Ctorrent dnh3.3.2 (binary only)](ctorrent.md)<a id='ctorrent'></a>**<br>
+  * **[Ctorrent dnh3.3.2 (binary only) - DEPRECATED](ctorrent.md)<a id='ctorrent'></a>**<br>
     CTorrent is a BitTorrent client written in the C programming language, known to be a very robust and mature programming language, which produces fast and optimized application.
 
   * **[Curl 8.8.0 (binary only)](curl.md)<a id='curl'></a>**<br>
@@ -124,10 +124,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>dbus: D-Bus 1.13.18</u><a id='dbus'></a>**<br>
     D-Bus is a message bus system, a simple way for applications to talk to one another. In addition to interprocess communication, D-Bus helps coordinate process lifecycle; it makes it simple and reliable to code a "single instance" application or daemon, and to launch applications and daemons on demand when their services are needed.
 
-  * **[Debootstrap (binary only)](debootstrap.md)<a id='debootstrap'></a>**<br>
+  * **[Debootstrap (binary only) - DEPRECATED](debootstrap.md)<a id='debootstrap'></a>**<br>
     debootstrap is used to create a Debian base system from scratch, without requiring the availability of dpkg or apt. It does this by downloading .deb files from a mirror site, and carefully unpacking them into a directory which can eventually be chrooted into.
 
-  * **[Deco 1.3.9 (binary only)](deco.md)<a id='deco'></a>**<br>
+  * **[Deco 1.3.9 (binary only) - DEPRECATED](deco.md)<a id='deco'></a>**<br>
     Norton commander clone. Compared with Midnight Commander (mc) it is considerably smaller, but also significantly less powerful and less fancy-looking. Use it if you want to trade power for file and memory footprint, but still feel like requiring a file manager instead of a plain UNIX shell. Uses about 149K uncompressed space.
 
   * **[decrypt-fritzos-cfg: decrypt FRITZ!OS configs 0.2](decrypt-fritzos-cfg.md)<a id='decrypt-fritzos-cfg'></a>**<br>
@@ -142,13 +142,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[DigiTemp 3.7.2 (binary only)](digitemp.md)<a id='digitemp'></a>**<br>
     digitemp for 1-wire modules You could use RRDstats for data collection and visualisation
 
-  * **[dns2tcp 0.5.2](dns2tcp.md)<a id='dns2tcp'></a>**<br>
+  * **[dns2tcp 0.5.2 - DEPRECATED](dns2tcp.md)<a id='dns2tcp'></a>**<br>
     Dns2tcp is a network tool designed to relay TCP connections through DNS traffic. Encapsulation is done on the TCP level, thus no specific driver is needed (i.e: TUN/TAP).
 
   * **[Dnsmasq 2.80/2.90](dnsmasq.md)<a id='dnsmasq'></a>**<br>
     Combined DHCP, DNS and TFTP server.
 
-  * **<u>dosfstools 3.0.28 (binary only)</u><a id='dosfstools'></a>**<br>
+  * **<u>dosfstools 3.0.28 (binary only) - DEPRECATED</u><a id='dosfstools'></a>**<br>
     utilities to create, check and label MS-DOS FAT filesystems
 
   * **[Dropbear 2024.85](dropbear.md)<a id='dropbear'></a>**<br>
@@ -160,13 +160,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[dtc 1.7.0](dtc.md)<a id='dtc'></a>**<br>
     Device  Tree  Compiler,  dtc, takes as input a device-tree in a given format and outputs a device-tree in another format for booting kernels on  embedded  systems.   Typically,  the input  format  is  "dts",  a  human readable source format, and creates a "dtb", or binary format as output.
 
-  * **<u>dvbsnoop 1.4.50 (binary only)</u><a id='dvbsnoop'></a>**<br>
+  * **<u>dvbsnoop 1.4.50 (binary only) - DEPRECATED</u><a id='dvbsnoop'></a>**<br>
     DVB analyzer / MPEG analyzer program to monitor, analyze, debug, dump or view dvb/mpeg/dsm-cc/mhp stream information (TS, PES, SECTION) (e.g. digital television) send via satellite, cable or terrestrial.
 
-  * **<u>dvbstream 0.5 (binary only)</u><a id='dvbstream'></a>**<br>
+  * **<u>dvbstream 0.5 (binary only) - DEPRECATED</u><a id='dvbstream'></a>**<br>
     DVB tools is a set of command-line tools for DVB cards such as the Hauppauge DVB-S and Nova-t. Includes RTP multicast streaming server. This package contains only dvbstream.
 
-  * **<u>dvbtune 0.5 (binary only)</u><a id='dvbtune'></a>**<br>
+  * **<u>dvbtune 0.5 (binary only) - DEPRECATED</u><a id='dvbtune'></a>**<br>
     DVB tools is a set of command-line tools for DVB cards such as the Hauppauge DVB-S and Nova-t. Includes RTP multicast streaming server. This package contains dvbtune.
 
 ### E

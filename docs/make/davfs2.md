@@ -4,7 +4,7 @@
  - Changelog: [https://git.savannah.nongnu.org/cgit/davfs2.git/refs/](https://git.savannah.nongnu.org/cgit/davfs2.git/refs/)
  - Repository: [https://git.savannah.nongnu.org/cgit/davfs2.git/](https://git.savannah.nongnu.org/cgit/davfs2.git/)
  - Package: [master/make/pkgs/davfs2/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/davfs2/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 [![WebDAV: Konfiguration](../screenshots/62_md.jpg)](../screenshots/62.jpg)
 

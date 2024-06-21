@@ -1,4 +1,4 @@
-# classpath GNU 0.99 (binary only)
+# classpath GNU 0.99 (binary only) - DEPRECATED
  - Homepage: [https://www.gnu.org/software/classpath/](https://www.gnu.org/software/classpath/)
  - Manpage: [https://developer.classpath.org/mediation/](https://developer.classpath.org/mediation/)
  - Changelog: [https://www.gnu.org/software/classpath/downloads/downloads.html](https://www.gnu.org/software/classpath/downloads/downloads.html)

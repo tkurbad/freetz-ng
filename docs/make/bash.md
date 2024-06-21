@@ -1,4 +1,4 @@
-# bash 3.2.57 (binary only)
+# bash 3.2.57 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/bash/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/bash/)
  - Maintainer: -
 

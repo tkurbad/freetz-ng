@@ -1,4 +1,4 @@
-# Checkmaild 0.4.7
+# Checkmaild 0.4.7 - DEPRECATED
  - Package: [master/make/pkgs/checkmaild/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/checkmaild/)
  - Maintainer: -
 
