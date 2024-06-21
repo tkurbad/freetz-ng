@@ -5,6 +5,7 @@ $(PKG)_SITE:=https://www.ncftp.com/downloads/ncftp,https://www.ncftp.com/public_
 ### WEBSITE:=https://www.ncftp.com/ncftp/
 ### MANPAGE:=https://www.ncftp.com/ncftp/doc/faq.html
 ### CHANGES:=https://www.ncftp.com/ncftp/doc/changelog.html
+### SUPPORT:=fda77
 
 $(PKG)_BINARIES_ALL := ncftp ncftpget ncftpput ncftpbatch ncftpls
 # ncftp is always included

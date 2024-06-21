@@ -10,6 +10,7 @@ $(PKG)_SITE:=https://swupdate.openvpn.net/community/releases,https://build.openv
 ### MANPAGE:=https://community.openvpn.net/openvpn/wiki
 ### CHANGES:=https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst
 ### CVSREPO:=https://github.com/OpenVPN/openvpn
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$($(PKG)_MAJOR_VERSION)
 ifeq ($(strip $(FREETZ_PACKAGE_OPENVPN_WITH_TRAFFIC_OBFUSCATION)),y)
