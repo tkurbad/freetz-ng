@@ -4,5 +4,5 @@
  - Changelog: [https://github.com/git/git/tree/master/Documentation/RelNotes](https://github.com/git/git/tree/master/Documentation/RelNotes)
  - Repository: [https://github.com/git/git](https://github.com/git/git)
  - Package: [master/make/pkgs/git/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/git/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
