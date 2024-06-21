@@ -84,6 +84,7 @@ Latest changes
    * dtach 0.9
    * Dropbear 2024.85
    * FFmpeg 5.1.4
+   * Fontconfig 2.15.0
    * Git 2.45.2
    * HAProxy 2.6.17
    * ImageMagick 7.1.1-30
