@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://getdnsapi.net/dist,https://getdnsapi.net/releases/getdns-$(
 ### MANPAGE:=https://dnsprivacy.org/dns_privacy_daemon_-_stubby/
 ### CHANGES:=https://github.com/getdnsapi/getdns/releases
 ### CVSREPO:=https://github.com/getdnsapi/getdns
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/stubby/stubby
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/stubby

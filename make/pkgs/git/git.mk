@@ -6,6 +6,7 @@ $(PKG)_SITE:=@KERNEL/software/scm/git
 ### MANPAGE:=https://www.git-scm.com/docs
 ### CHANGES:=https://github.com/git/git/tree/master/Documentation/RelNotes
 ### CVSREPO:=https://github.com/git/git
+### SUPPORT:=fda77
 
 # files to be moved from /usr/lib/git-core to /usr/bin
 $(PKG)_FILES_TO_MOVE := git-daemon
