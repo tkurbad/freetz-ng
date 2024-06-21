@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_INADYN_MT
-	bool "Inadyn-mt 02.28.10"
+	bool "Inadyn-mt 02.28.10 - DEPRECATED"
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
 	help

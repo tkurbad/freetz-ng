@@ -5,6 +5,7 @@ $(PKG)_SITE:=https://github.com/pali/igmpproxy/releases/download/$($(PKG)_VERSIO
 ### WEBSITE:=https://github.com/pali/igmpproxy
 ### CHANGES:=https://github.com/pali/igmpproxy/releases
 ### CVSREPO:=https://github.com/pali/igmpproxy/commits/master
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/igmpproxy
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/igmpproxy

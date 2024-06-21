@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://downloads.es.net/pub/iperf
 ### MANPAGE:=https://iperf.fr/iperf-doc.php
 ### CHANGES:=https://github.com/esnet/iperf/tags
 ### CVSREPO:=https://github.com/esnet/iperf
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_IPERF_VERSION_ABANDON),abandon,current)
 $(PKG)_PATCH_POST_CMDS += $(call PKG_ADD_EXTRA_FLAGS,LDFLAGS|LIBS)
