@@ -108,6 +108,7 @@ Latest changes
    * Transmission 3.00/4.0.6
    * Unbound 1.20.0
    * UnRAR 6.1.7/7.0.9
+   * usb.ids c70eea490a
    * Whois 5.5.23
 
  - Libraries:
