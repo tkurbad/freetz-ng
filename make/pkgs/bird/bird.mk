@@ -1,13 +1,14 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),1.6.8,2.15))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),1.6.8,2.15.1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=6c61ab5d2ef59d2559a8735b8252b5a0238013b43e5fb8a96c5d9d06e7bc00b2
-$(PKG)_HASH_CURRENT:=7a6458fa41109c005531b23e3f7abd63d7000a99d195db4944ebccb539ed02f0
+$(PKG)_HASH_CURRENT:=48e85c622de164756c132ea77ad1a8a95cc9fd0137ffd0d882746589ce75c75d
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://bird.network.cz/download,ftp://bird.network.cz/pub/bird
 ### WEBSITE:=https://bird.network.cz/
 ### MANPAGE:=https://gitlab.nic.cz/labs/bird/wikis/home
 ### CHANGES:=https://bird.network.cz/?o_news
 ### CVSREPO:=https://gitlab.nic.cz/labs/bird
+### SUPPORT:=fda77
 # v2: https://gitlab.nic.cz/labs/bird/-/wikis/transition-notes-to-bird-2
 
 $(PKG)_STARTLEVEL=82
