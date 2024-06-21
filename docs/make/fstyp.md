@@ -1,4 +1,4 @@
-# fstyp 0.1 (binary only)
+# fstyp 0.1 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/fstyp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fstyp/)
  - Maintainer: -
 

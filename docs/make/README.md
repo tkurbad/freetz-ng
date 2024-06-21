@@ -11,16 +11,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Apache2 2.4.59 (binary only)](apache2.md)<a id='apache2'></a>**<br>
     The Apache httpd server
 
-  * **<u>asterisk-chan-capi: chan_capi: ISDN API 2.0 module for asterisk</u><a id='asterisk-chan-capi'></a>**<br>
+  * **<u>asterisk-chan-capi: chan_capi: ISDN API 2.0 module for asterisk - DEPRECATED</u><a id='asterisk-chan-capi'></a>**<br>
     Common ISDN API 2.0 module for asterisk
 
-  * **<u>asterisk-chan-dongle: chan_dongle: Channel driver for Huawei UMTS 3G dongle</u><a id='asterisk-chan-dongle'></a>**<br>
+  * **<u>asterisk-chan-dongle: chan_dongle: Channel driver for Huawei UMTS 3G dongle - DEPRECATED</u><a id='asterisk-chan-dongle'></a>**<br>
     Asterisk channel driver for Huawei UMTS 3G dongle
 
-  * **<u>asterisk-chan-sccp: chan_sccp: SCCP channel provider for asterisk</u><a id='asterisk-chan-sccp'></a>**<br>
+  * **<u>asterisk-chan-sccp: chan_sccp: SCCP channel provider for asterisk - DEPRECATED</u><a id='asterisk-chan-sccp'></a>**<br>
     SCCP channel provider for asterisk. It delivers extended functionality for SCCP phones over chan_skinny delivered by asterisk by default.
 
-  * **<u>asterisk-gui: #Asterisk GUI 2.1.0-rc1</u><a id='asterisk-gui'></a>**<br>
+  * **<u>asterisk-gui: #Asterisk GUI 2.1.0-rc1 - DEPRECATED</u><a id='asterisk-gui'></a>**<br>
     Asterisk GUI is a framework for the creation of graphical interfaces for configuring Asterisk. Please read https://wiki.asterisk.org/wiki/display/AST/Asterisk+GUI for configuration instructions.
 
   * **[Atop 2.10.0 (binary only)](atop.md)<a id='atop'></a>**<br>
@@ -29,10 +29,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[AutoFS 5.0.5/5.1.9](autofs.md)<a id='autofs'></a>**<br>
     Autofs is a kernel-based automounter for Linux. It performs a job similar to amd(8) but relies on a small stub of kernel code instead of pretending to be an NFS server. The result is simpler code, better reliability, and much faster operation in the common case (everything already mounted).
 
-  * **<u>autossh 1.4g (binary only)</u><a id='autossh'></a>**<br>
+  * **<u>autossh 1.4g (binary only) - DEPRECATED</u><a id='autossh'></a>**<br>
     autossh is a program to start a copy of ssh and monitor it, restarting it as necessary should it die or stop passing traffic.
 
-  * **<u>Avahi 0.6.31</u><a id='avahi'></a>**<br>
+  * **<u>Avahi 0.6.31 - DEPRECATED</u><a id='avahi'></a>**<br>
     An mDNS/DNS-SD (aka RendezVous/Bonjour/ZeroConf) implementation (library).  Avahi is a system which facilitates service discovery on a local network -- this means that you can plug your laptop or computer into a network and instantly be able to view other people who you can chat with, find printers to print to or find files being shared. This kind of technology is already found in MacOS X (branded 'Rendezvous', 'Bonjour' and sometimes 'ZeroConf') and is very convenient.
 
   * **<u>AVM Services</u><a id='avm'></a>**<br>
@@ -60,7 +60,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>bittwist 1.1 (binary only) - DEPRECATED</u><a id='bittwist'></a>**<br>
     bittwist is designed to complement tcpdump, which by itself has done a great job in capturing network traffic. bittwist can regenerate the captured traffic onto a live network (the packets are generated from tcpdump trace file, generating a .pcap file). bittwist also comes with a comprehensive trace file editor to allow to change the contents of a trace file on the fly. Generally, a packet generator is useful in simulating networking traffic or scenario, testing firewall, IDS, and IPS, and troubleshooting various network problems. http://bittwist.sourceforge.net/doc.html
 
-  * **[bluez-utils 2.25 (binary only, incl. Pin-Change and NAP)](bluez-utils.md)<a id='bluez-utils'></a>**<br>
+  * **[bluez-utils 2.25 (binary only, incl. Pin-Change and NAP) - DEPRECATED](bluez-utils.md)<a id='bluez-utils'></a>**<br>
     This package contains utilities for configuring bluetooth connections.
 
   * **[br2684ctl (binary only) - DEPRECATED](br2684ctl.md)<a id='br2684ctl'></a>**<br>
@@ -92,10 +92,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[classpath GNU 0.99 (binary only) - DEPRECATED](classpath.md)<a id='classpath'></a>**<br>
     GNU Classpath, Essential Libraries for Java, is a GNU project to create free core class libraries for use with virtual machines and compilers for the java programming language.
 
-  * **<u>Cntlm 0.93beta5 (binary only)</u><a id='cntlm'></a>**<br>
+  * **<u>Cntlm 0.93beta5 (binary only) - DEPRECATED</u><a id='cntlm'></a>**<br>
     Cntlm is an NTLM / NTLM Session Response / NTLMv2 authenticating HTTP proxy.
 
-  * **<u>comgt 0.32 (binary only)</u><a id='comgt'></a>**<br>
+  * **<u>comgt 0.32 (binary only) - DEPRECATED</u><a id='comgt'></a>**<br>
     Option GlobeTrotter GPRS/EDGE/3G/HSDPA and Vodafone 3G/GPRS datacard control tool. comgt is a scripting language interpreter useful for establishing communications on serial lines and through PCMCIA modems as well as GPRS and 3G datacards.
 
   * **[Cpmaccfg 0.6 (binary only)](cpmaccfg.md)<a id='cpmaccfg'></a>**<br>
@@ -110,7 +110,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Curl 8.8.0 (binary only)](curl.md)<a id='curl'></a>**<br>
     Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 
-  * **<u>CurlFtpFS 0.9.2</u><a id='curlftpfs'></a>**<br>
+  * **<u>CurlFtpFS 0.9.2 - DEPRECATED</u><a id='curlftpfs'></a>**<br>
     CurlFtpFS is a filesystem for accessing FTP hosts based on FUSE and libcurl. Website: http://curlftpfs.sourceforge.net/ Features: - SSLv3 and TLSv1 support - connecting through tunneling HTTP proxies - automatically reconnection if the server times out - transform absolute symlinks to point back into the ftp file system
 
 ### D
@@ -121,7 +121,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[davfs2: davfs 1.5.2/1.7.0](davfs2.md)<a id='davfs2'></a>**<br>
     davfs is a Linux file system driver that allows you to mount a WebDAV server as a disk drive. WebDAV is an extension to HTTP/1.1 that allows remote collaborative authoring of Web resources, defined in RFC 4918.
 
-  * **<u>dbus: D-Bus 1.13.18</u><a id='dbus'></a>**<br>
+  * **<u>dbus: D-Bus 1.13.18 - DEPRECATED</u><a id='dbus'></a>**<br>
     D-Bus is a message bus system, a simple way for applications to talk to one another. In addition to interprocess communication, D-Bus helps coordinate process lifecycle; it makes it simple and reliable to code a "single instance" application or daemon, and to launch applications and daemons on demand when their services are needed.
 
   * **[Debootstrap (binary only) - DEPRECATED](debootstrap.md)<a id='debootstrap'></a>**<br>
@@ -197,7 +197,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>fowsr 1.0-20110904 (binary only) - DEPRECATED</u><a id='fowsr'></a>**<br>
     fowsr is a USB Data Collector application for WH1080 compatible weather stations. Output formats includes XML, Wunderground.com and pywws. See http://fowsr.googlecode.com for further information.
 
-  * **[fstyp 0.1 (binary only)](fstyp.md)<a id='fstyp'></a>**<br>
+  * **[fstyp 0.1 (binary only) - DEPRECATED](fstyp.md)<a id='fstyp'></a>**<br>
     fstyp can be used to heuristically detect which filesystem type a block device contains.
 
   * **[ftdi1 1.5](ftdi1.md)<a id='ftdi1'></a>**<br>
@@ -226,7 +226,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[GnuTLS 3.7.8 (binary only) - DEPRECATED](gnutls.md)<a id='gnutls'></a>**<br>
     GnuTLS is a project that aims to develop a library which provides a secure layer, over a reliable transport layer. Currently the GnuTLS library implements TLS 1.3, 1.2, 1.1, 1.0 protocols and SSL 3.0.
 
-  * **<u>gocr 0.49 (binary only)</u><a id='gocr'></a>**<br>
+  * **<u>gocr 0.49 (binary only) - DEPRECATED</u><a id='gocr'></a>**<br>
     GOCR is an optical character recognition program, released under the GNU General Public License. It reads images in many formats and outputs a text file.
 
   * **[gw6: Gateway6 client 5.1 - DEPRECATED](gw6.md)<a id='gw6'></a>**<br>
