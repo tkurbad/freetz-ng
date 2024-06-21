@@ -330,16 +330,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Haserl is a small program that uses shell or Lua script to create cgi web scripts. It is intended for environments where PHP or ruby are too big. A typical use is to run cgi scripts in an embedded environment, using a small web server, such as mini-httpd, lighty, or the server built into busybox. This package is mandatory
      - [Using busybox httpd / inet](../../docs/make/haserl.md#using-busybox-httpd--inet)
 
-  * **[hd-idle 0.99](../../docs/make/hd-idle.md)<a id='hd-idle'></a>**<br>
+  * **[hd-idle 0.99 - DEPRECATED](../../docs/make/hd-idle.md)<a id='hd-idle'></a>**<br>
     Another idle-daemon for attached hard drives if sg3utils doesn't work as expected. This can happen with most low-cost USB drives.
 
-  * **<u>hdparm 9.58 (binary only)</u><a id='hdparm'></a>**<br>
+  * **<u>hdparm 9.58 (binary only) - DEPRECATED</u><a id='hdparm'></a>**<br>
     Hdparm can be used to show and set parameters of ATA-drives (e.g. hard disk drives).
 
-  * **[hol: Halt-On-Lan 0.1](../../docs/make/hol.md)<a id='hol'></a>**<br>
+  * **[hol: Halt-On-Lan 1.0 - DEPRECATED](../../docs/make/hol.md)<a id='hol'></a>**<br>
     Halt-On-Lan is a package to run predefined actions on a remote host: shutdown, reboot, logoff, lock For successfull action poweroff.exe from http://users.telenet.be/jbosman/poweroff/poweroff.htm or similar compatible script or binary must be installed and run as service on the remote host. Moreover, in case of requested interaction this service should understand the syntax of poweroff.exe
 
-  * **<u>html2text 1.3.2a (binary only)</u><a id='html2text'></a>**<br>
+  * **<u>html2text 1.3.2a (binary only) - DEPRECATED</u><a id='html2text'></a>**<br>
     html2text is a command line utility, written in C++, that converts HTML documents into plain text.
 
   * **[htop 1.0.3/3.3.0 (binary only)](../../docs/make/htop.md)<a id='htop'></a>**<br>
@@ -348,10 +348,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[htpdate 1.3.7](../../docs/make/htpdate.md)<a id='htpdate'></a>**<br>
     The HTTP Time Protocol (HTP) is used to synchronize a computer's time with web servers as reference time source. Htpdate will synchronize your computer's time by extracting timestamps from HTTP headers found in web server responses. Htpdate can be used as a daemon, to keep your computer synchronized. WWW: http://www.clevervest.com/htp/ Manpage: http://linux.die.net/man/8/htpdate This package automatically removes AVM'S chronyd if necessary.
 
-  * **<u>httpry 0.1.8</u><a id='httpry'></a>**<br>
+  * **<u>httpry 0.1.8 - DEPRECATED</u><a id='httpry'></a>**<br>
     httpry is a specialized packet sniffer designed for displaying and logging HTTP traffic. It is not intended to perform analysis itself, but to capture, parse, and log the traffic for later analysis. It can be run in real-time displaying the traffic as it is parsed, or as a daemon process that logs to an output file. It is written to be as lightweight and flexible as possible, so that it can be easily adaptable to different applications. http://dumpsterventures.com/jason/httpry/
 
-  * **[httptunnel 3.3 (binary only)](../../docs/make/httptunnel.md)<a id='httptunnel'></a>**<br>
+  * **[httptunnel 3.3 (binary only) - DEPRECATED](../../docs/make/httptunnel.md)<a id='httptunnel'></a>**<br>
     httptunnel is a utility that provides a HTTP tunnel server.
 
 ### I

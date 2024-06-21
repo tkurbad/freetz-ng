@@ -1,4 +1,4 @@
-# Halt-On-Lan 0.1
+# Halt-On-Lan 1.0 - DEPRECATED
  - Package: [master/make/pkgs/hol/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/hol/)
  - Maintainer: -
 

@@ -1,4 +1,4 @@
-# hd-idle 0.99
+# hd-idle 0.99 - DEPRECATED
  - Package: [master/make/pkgs/hd-idle/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/hd-idle/)
  - Maintainer: -
 
