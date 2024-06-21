@@ -235,7 +235,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [mögliche Probleme](../../docs/make/dropbear.md#mögliche-probleme)
      - [Verbindungsaufbau beschleunigen](../../docs/make/dropbear.md#verbindungsaufbau-beschleunigen)
 
-  * **[dtach 0.8 (binary only)](../../docs/make/dtach.md)<a id='dtach'></a>**<br>
+  * **[dtach 0.9 (binary only)](../../docs/make/dtach.md)<a id='dtach'></a>**<br>
     dtach is a tiny program that emulates the detach feature of screen, allowing you to run a program in an environment that is protected from the controlling terminal and attach to it later.
      - [Bedienung](../../docs/make/dtach.md#bedienung)
 
