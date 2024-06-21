@@ -96,7 +96,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[bridge-utils 1.4 (binary only)](../../docs/make/bridge-utils.md)<a id='bridge-utils'></a>**<br>
     This package contains utilities for configuring the Linux ethernet bridge. The Linux ethernet bridge can be used for connecting multiple ethernet devices together. The connection is fully transparent: hosts connected to one ethernet device see hosts connected to the other ethernet devices directly. Authors: Lennert Buytenhek <buytenh@gnu.org>
 
-  * **<u>bvi/bmore 1.4.0 (binary only) </u><a id='bvi'></a>**<br>
+  * **[bvi/bmore 1.4.2 (binary only)](../../docs/make/bvi.md)<a id='bvi'></a>**<br>
     A hex editor/viewer for binary files
 
 ### C
