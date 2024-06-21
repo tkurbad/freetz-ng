@@ -1,4 +1,4 @@
-# Vpnc 0.5.3
+# Vpnc 0.5.3 - DEPRECATED
  - Package: [master/make/pkgs/vpnc/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vpnc/)
  - Maintainer: -
 

@@ -1,4 +1,4 @@
-# Pingtunnel 0.72
+# Pingtunnel 0.72 - DEPRECATED
  - Package: [master/make/pkgs/pingtunnel/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pingtunnel/)
  - Maintainer: -
 

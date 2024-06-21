@@ -1,4 +1,4 @@
-# usbutils 007 (binary only)
+# usbutils 007 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/usbutils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/usbutils/)
  - Maintainer: -
 

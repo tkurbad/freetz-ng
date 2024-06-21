@@ -4,7 +4,7 @@
  - Changelog: [https://github.com/tinyproxy/tinyproxy/releases](https://github.com/tinyproxy/tinyproxy/releases)
  - Repository: [https://github.com/tinyproxy/tinyproxy](https://github.com/tinyproxy/tinyproxy)
  - Package: [master/make/pkgs/tinyproxy/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/tinyproxy/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 Das [tinyproxy](http://tinyproxy.sourceforge.net/)
 Paket stellt einen kleinen HTTP Proxy mit Filterfunktionen bereit.

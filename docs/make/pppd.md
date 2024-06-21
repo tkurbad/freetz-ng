@@ -1,4 +1,4 @@
-# pppd 2.4.7
+# pppd 2.4.7 - DEPRECATED
  - Homepage: [https://ppp.samba.org/](https://ppp.samba.org/)
  - Manpage: [https://ppp.samba.org/documentation.html](https://ppp.samba.org/documentation.html)
  - Changelog: [https://github.com/ppp-project/ppp/releases](https://github.com/ppp-project/ppp/releases)

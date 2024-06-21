@@ -4,5 +4,5 @@
  - Changelog: [https://www.sudo.ws/releases/stable/](https://www.sudo.ws/releases/stable/)
  - Repository: [https://github.com/sudo-project/sudo](https://github.com/sudo-project/sudo)
  - Package: [master/make/pkgs/sudo/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sudo/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

@@ -1,4 +1,4 @@
-# portmap 6.0 (binary only)
+# portmap 6.0 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/portmap/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/portmap/)
  - Maintainer: -
 

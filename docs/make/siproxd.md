@@ -1,4 +1,4 @@
-# siproxd 0.8.1
+# siproxd 0.8.1 - DEPRECATED
  - Package: [master/make/pkgs/siproxd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/siproxd/)
  - Maintainer: -
 

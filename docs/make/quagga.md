@@ -1,4 +1,4 @@
-# quagga 0.99.17
+# quagga 0.99.17 - DEPRECATED
  - Package: [master/make/pkgs/quagga/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/quagga/)
  - Maintainer: -
 

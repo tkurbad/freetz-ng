@@ -1,4 +1,4 @@
-# Xrelayd 0.2.1pre2
+# Xrelayd 0.2.1pre2 - DEPRECATED
  - Package: [master/make/pkgs/xrelayd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/xrelayd/)
  - Maintainer: -
 

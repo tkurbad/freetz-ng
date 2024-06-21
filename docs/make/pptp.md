@@ -3,7 +3,7 @@
  - Changelog: [https://sourceforge.net/projects/pptpclient/files/pptp/](https://sourceforge.net/projects/pptpclient/files/pptp/)
  - Repository: [https://sourceforge.net/p/pptpclient/git/ci/master/tree/](https://sourceforge.net/p/pptpclient/git/ci/master/tree/)
  - Package: [master/make/pkgs/pptp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pptp/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 `"PPTP Client is a Linux, FreeBSD, NetBSD and OpenBSD client for the proprietary Microsoft Point-to-Point Tunneling Protocol, PPTP. Allows connection to a PPTP based Virtual Private Network (VPN)."`
 

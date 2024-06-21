@@ -477,18 +477,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>phonebook-tools: Phone book tools 1.0</u><a id='phonebook-tools'></a>**<br>
     A set of tools for reading and converting Fritz!Box phone book to such (easy parseable) formats like: - .csv (comma-separated values), or - .tsv (tab-separated values).
 
-  * **[Pingtunnel 0.72](pingtunnel.md)<a id='pingtunnel'></a>**<br>
+  * **[Pingtunnel 0.72 - DEPRECATED](pingtunnel.md)<a id='pingtunnel'></a>**<br>
     Ptunnel is an application that allows you to reliably tunnel TCP connections to a remote host using ICMP echo request and reply packets, commonly known as ping requests and replies. At first glance, this might seem like a rather useless thing to do, but it can actually come in handy in some cases.
 
-  * **[Polipo 1.1.1](polipo.md)<a id='polipo'></a>**<br>
+  * **[Polipo 1.1.1 - DEPRECATED](polipo.md)<a id='polipo'></a>**<br>
     Polipo is a small and fast caching web proxy (a web cache, an HTTP proxy, a proxy server).
 
-  * **[portmap 6.0 (binary only)](portmap.md)<a id='portmap'></a>**<br>
+  * **[portmap 6.0 (binary only) - DEPRECATED](portmap.md)<a id='portmap'></a>**<br>
     portmap is a part of the ONCRPC collection of software for implementing remote procedure calls between computer programs. It is use widely by NFS and NIS, and assorted other systems.
 
-  * **[ppp: Point-to-Point](ppp.md)<a id='ppp'></a>**<br>
-
-  * **[pppd 2.4.7](pppd.md)<a id='pppd'></a>**<br>
+  * **[pppd 2.4.7 - DEPRECATED](pppd.md)<a id='pppd'></a>**<br>
     An implementation of the Point-to-point protocol. http://www.samba.org/ppp/
 
   * **[pptp 1.10.0](pptp.md)<a id='pptp'></a>**<br>
@@ -515,40 +513,40 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Python 2.7.18 - DEPRECATED](python.md)<a id='python'></a>**<br>
     Python is a remarkably powerful dynamic programming language that is used in a wide variety of application domains. CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on your choice of modules) of uncompressed data to your image. In most cases, it should therefore be externalized.
 
-  * **<u>python-bjoern: bjoern 1.3.4</u><a id='python-bjoern'></a>**<br>
+  * **<u>python-bjoern: bjoern 1.3.4 - DEPRECATED</u><a id='python-bjoern'></a>**<br>
     A screamingly fast Python WSGI server written in C.
 
-  * **<u>python-cheetah: cheetah 2.4.4</u><a id='python-cheetah'></a>**<br>
+  * **<u>python-cheetah: cheetah 2.4.4 - DEPRECATED</u><a id='python-cheetah'></a>**<br>
 
-  * **<u>python-imaging-library: Imaging Library 1.1.7</u><a id='python-imaging-library'></a>**<br>
+  * **<u>python-imaging-library: Imaging Library 1.1.7 - DEPRECATED</u><a id='python-imaging-library'></a>**<br>
     The Python Imaging Library adds image processing capabilities to the Python interpreter. This library provides extensive file format support, an efficient internal representation, and fairly powerful image processing capabilities.
 
-  * **<u>python-mechanize: mechanize 0.2.5</u><a id='python-mechanize'></a>**<br>
+  * **<u>python-mechanize: mechanize 0.2.5 - DEPRECATED</u><a id='python-mechanize'></a>**<br>
     Stateful programmatic web browsing, after Andy Lester's Perl module WWW::Mechanize.
 
-  * **<u>python-mysql-connector: mysql-connector 8.0.21</u><a id='python-mysql-connector'></a>**<br>
+  * **<u>python-mysql-connector: mysql-connector 8.0.21 - DEPRECATED</u><a id='python-mysql-connector'></a>**<br>
     Python MySQL Connector.
 
-  * **<u>python-pycrypto: pycrypto 2.6.1</u><a id='python-pycrypto'></a>**<br>
+  * **<u>python-pycrypto: pycrypto 2.6.1 - DEPRECATED</u><a id='python-pycrypto'></a>**<br>
     A collection of both secure hash functions (such as MD5 and SHA), and various encryption algorithms (AES, DES, IDEA, RSA, ElGamal, etc.).
 
-  * **[python-pycurl: pycurl 7.43.0](python-pycurl.md)<a id='python-pycurl'></a>**<br>
+  * **[python-pycurl: pycurl 7.43.0 - DEPRECATED](python-pycurl.md)<a id='python-pycurl'></a>**<br>
     PycURL is a Python interface to libcurl. PycURL can be used to fetch objects identified by a URL from a Python program.
 
-  * **<u>python-pyopenssl: pyopenssl 0.13.1</u><a id='python-pyopenssl'></a>**<br>
+  * **<u>python-pyopenssl: pyopenssl 0.13.1 - DEPRECATED</u><a id='python-pyopenssl'></a>**<br>
     Python interface to the OpenSSL library.
 
-  * **<u>python-pyrrd: pyrrd 0.1.0</u><a id='python-pyrrd'></a>**<br>
+  * **<u>python-pyrrd: pyrrd 0.1.0 - DEPRECATED</u><a id='python-pyrrd'></a>**<br>
     An Object-Oriented Python Interface for RRDTool.
 
-  * **<u>python-pyserial: pyserial 2.6</u><a id='python-pyserial'></a>**<br>
+  * **<u>python-pyserial: pyserial 2.6 - DEPRECATED</u><a id='python-pyserial'></a>**<br>
     Python Serial Port Extension.
 
-  * **<u>python-yenc: yEnc 0.4.0</u><a id='python-yenc'></a>**<br>
+  * **<u>python-yenc: yEnc 0.4.0 - DEPRECATED</u><a id='python-yenc'></a>**<br>
 
 ### Q
 
-  * **[quagga 0.99.17](quagga.md)<a id='quagga'></a>**<br>
+  * **[quagga 0.99.17 - DEPRECATED](quagga.md)<a id='quagga'></a>**<br>
     The Quagga Software Routing Suite A routing software package that provides TCP/IP based routing services with routing protocols support such as RIPv1, RIPv2, RIPng, OSPFv2, OSPFv3, BGP-4, and BGP-4+. This package does not provide any configuration help yet, though you can edit the configuration file(s) via the web interface. You can find the documentation at http://www.quagga.net/. YOU SHOULD NOT SELECT THIS PACKAGE (I.E. YOU DO NOT NEED IT) IF YOU DON'T KNOW HOW TO CONFIGURE THE ROUTING DAEMONS! (However: a guided/safe config interface is on the todo list ;-)
 
 ### R
@@ -556,10 +554,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[radvd 1.9.3/2.19](radvd.md)<a id='radvd'></a>**<br>
     The "router advertisement daemon" (radvd) is used for host autoconfiguration in ipv6 networks.
 
-  * **<u>Rcapid 0.1</u><a id='rcapid'></a>**<br>
+  * **<u>Rcapid 0.1 - DEPRECATED</u><a id='rcapid'></a>**<br>
     Remote CAPI daemon from isdn4linux.
 
-  * **<u>ripmime 1.2.16.21 (binary only)</u><a id='ripmime'></a>**<br>
+  * **<u>ripmime 1.2.16.21 (binary only) - DEPRECATED</u><a id='ripmime'></a>**<br>
     ripmime is an utility to decode and extract the parts of mime-formatted mails.
 
   * **[RPCBind 1.2.6 (binary only)](rpcbind.md)<a id='rpcbind'></a>**<br>
@@ -571,15 +569,15 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[rsync 3.3.0](rsync.md)<a id='rsync'></a>**<br>
     rsync is an open source utility that provides fast incremental file transfer.
 
-  * **<u>RTMPDump 2.4-git (binary only)</u><a id='rtmpdump'></a>**<br>
+  * **<u>RTMPDump 2.4-git (binary only) - DEPRECATED</u><a id='rtmpdump'></a>**<br>
     rtmpdump is a toolkit for RTMP streams. All forms of RTMP are supported, including rtmp://, rtmpt://, rtmpe://, rtmpte://, and rtmps://.
 
-  * **<u>Rush 1.7 (binary only)</u><a id='rush'></a>**<br>
+  * **<u>Rush 1.7 (binary only) - DEPRECATED</u><a id='rush'></a>**<br>
     GNU Rush is a Restricted User Shell, designed for sites providing limited remote access to their resources, such as, for example, savannah.gnu.org. Its main program, rush, is configured as a user login shell for users that are allowed only remote access to the machine. Using a flexible configuration file, GNU Rush gives administrator complete control over the command lines that users execute, and allows to tune the usage of system resources, such as virtual memory, CPU time, etc. on a per-user basis. http://puszcza.gnu.org.ua/software/rush/
 
 ### S
 
-  * **<u>sablevm-sdk: sablevm 1.13 (binary only)</u><a id='sablevm-sdk'></a>**<br>
+  * **<u>sablevm-sdk: sablevm 1.13 (binary only) - DEPRECATED</u><a id='sablevm-sdk'></a>**<br>
     SableVM is a robust, extremely portable, efficient, and specifications-compliant Java virtual machine that aims to be easy to maintain and to extend. It features a state-of-the-art and efficient interpreter engine. Its source code is very accessible and easy to understand. It also has many robustness features that have been the object of careful design.
 
   * **[Samba 3.0.37/3.6.25 - DEPRECATED](samba.md)<a id='samba'></a>**<br>
@@ -594,22 +592,22 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[sfk: Swiss File Knife 1.9.8.2](sfk.md)<a id='sfk'></a>**<br>
     Swiss File Knife - A Command Line Tools Collection This packages provides the freeware version of SFK, see http://stahlworks.com/dev/swiss-file-knife.html for further information
 
-  * **<u>sg3_utils (binary only)</u><a id='sg3-utils'></a>**<br>
+  * **<u>sg3_utils (binary only) - DEPRECATED</u><a id='sg3-utils'></a>**<br>
     The sg3_utils package contains utilities that send SCSI commands to devices. As well as devices on transports traditionally associated with SCSI (e.g. Fibre Channel (FCP), Serial Attached SCSI (SAS) and the SCSI Parallel Interface(SPI)) many other devices use SCSI command sets. ATAPI cd/dvd drives and SATA disks that connect via a translation layer or a bridge device are examples of devices that use SCSI command sets. This package is primarly used by the spindown cgi package. Note also that currently only sg_start is built and used, other tools may follow as needed.
 
   * **[shellinabox 2.21](shellinabox.md)<a id='shellinabox'></a>**<br>
     Shell In A Box implements a web server that can export arbitrary command line tools to a web based terminal emulator. This emulator is accessible to any JavaScript and CSS enabled web browser and does not require any additional browser plugins.
 
-  * **[siproxd 0.8.1](siproxd.md)<a id='siproxd'></a>**<br>
+  * **[siproxd 0.8.1 - DEPRECATED](siproxd.md)<a id='siproxd'></a>**<br>
     Siproxd is a proxy/masquerading daemon for the SIP protocol. See http://siproxd.sourceforge.net for more information.
 
-  * **[sispmctl 3.1](sispmctl.md)<a id='sispmctl'></a>**<br>
+  * **[sispmctl 3.1 - DEPRECATED](sispmctl.md)<a id='sispmctl'></a>**<br>
     sispmctl is an application enabling the use of the GEMBIRD SiS-PM (sispm) USB-controlled power-outlet device under Linux. Note that the device is also sold under different names, i.e. as "IntelliPlug" in Germany.
 
-  * **<u>slang: S-Lang 2.3.1a (binary only)</u><a id='slang'></a>**<br>
+  * **<u>slang: S-Lang 2.3.1a (binary only) - DEPRECATED</u><a id='slang'></a>**<br>
     S-Lang is a powerful interpreted language that may be embedded into an application to make the application extensible. Note: at the moment this options causes only libslang to be included in the image, i.e. S-Lang shell support is disabled.
 
-  * **<u>Slurm 0.3.3 (binary only)</u><a id='slurm'></a>**<br>
+  * **<u>Slurm 0.3.3 (binary only) - DEPRECATED</u><a id='slurm'></a>**<br>
     slurm - yet another network load monitor slurm started as a FreeBSD port of the Linux ppp link monitor called pppstatus by Gabriel Montenegro. features: - "realtime" traffic statistics - three graph modes: combined RX and TX and two split views - can monitor any network device - curses ascii graphics
 
   * **[Smartmontools 7.4](smartmontools.md)<a id='smartmontools'></a>**<br>
@@ -624,7 +622,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[socat 1.8.0.0 (binary only)](socat.md)<a id='socat'></a>**<br>
     socat is an extended netcat-like utility
 
-  * **<u>spawn-fcgi 1.6.3 (binary only)</u><a id='spawn-fcgi'></a>**<br>
+  * **<u>spawn-fcgi 1.6.3 (binary only) - DEPRECATED</u><a id='spawn-fcgi'></a>**<br>
     Spawns FastCGI processes
 
   * **[SQLite 3.45.3 (binary only)](sqlite.md)<a id='sqlite'></a>**<br>
@@ -639,13 +637,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>squashfs4-le: squashfs-tools 4.3 (AVM-LE)</u><a id='squashfs4-le'></a>**<br>
     This package provides unsquashfs/mksquashfs utilities modified to be able to expand/create images in AVM-LE format. AVM-LE is the format used by AVM to pack the filesystem of some cable boxes, e.g. 6490, 6590 (x86 core only). The only difference of this format to the original LE format is that the value of the mkfs_time superblock field is equal to the bytes_used field.
 
-  * **<u>sshfs-fuse 2.4 (binary only)</u><a id='sshfs-fuse'></a>**<br>
+  * **<u>sshfs-fuse 2.4 (binary only) - DEPRECATED</u><a id='sshfs-fuse'></a>**<br>
     This is a filesystem client based on the SSH File Transfer Protocol. Since most SSH servers already support this protocol it is very easy to set up: i.e. on the server side there's nothing to do. On the client side mounting the filesystem is as easy as logging into the server with ssh.
 
   * **[sslh 2.1.2](sslh.md)<a id='sslh'></a>**<br>
     sslh accepts HTTPS, SSH and OpenVPN connections on the same port. This makes it possible to connect to an SSH server or an OpenVPN on port 443 (e.g. from inside a corporate firewall, which almost never block port 443) while still serving HTTPS on that port.
 
-  * **[Streamripper 1.64.6](streamripper.md)<a id='streamripper'></a>**<br>
+  * **[Streamripper 1.64.6 - DEPRECATED](streamripper.md)<a id='streamripper'></a>**<br>
     Streamripper records mp3 and ogg streams. For shoutcast style streams it finds the "meta data" or track separation data, and uses that as a marker for where the track should be separated.
 
   * **[Stunnel 5.72](stunnel.md)<a id='stunnel'></a>**<br>
@@ -657,16 +655,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Sudo 1.9.15p5 (binary only)](sudo.md)<a id='sudo'></a>**<br>
     Sudo (su "do") allows a system administrator to delegate authority to give certain users (or groups of users) the ability to run some (or all) commands as root or another user while providing an audit trail of the commands and their arguments.
 
-  * **[Sundtek DVB driver 130210.134617/170310.204343/210803.071224](sundtek.md)<a id='sundtek'></a>**<br>
+  * **[Sundtek DVB driver 130210.134617/170310.204343/210803.071224 - DEPRECATED](sundtek.md)<a id='sundtek'></a>**<br>
     Sundtek closed-source linux driver daemon & client. To use this driver you have to run: export LD_PRELOAD=/usr/lib/libsundtekmediaclient.so
 
-  * **<u>sundtek-rtspd: Include Sundtek Streaming Server (rtspd)</u><a id='sundtek-rtspd'></a>**<br>
+  * **<u>sundtek-rtspd: Include Sundtek Streaming Server (rtspd) - DEPRECATED</u><a id='sundtek-rtspd'></a>**<br>
     Download the latest version of rtspd each time Freetz is built.
 
-  * **<u>SynCE dccm 0.9.1</u><a id='synce-dccm'></a>**<br>
+  * **<u>SynCE dccm 0.9.1 - DEPRECATED</u><a id='synce-dccm'></a>**<br>
     SynCE is a framework to sync WinCE devices
 
-  * **<u>SynCE serial 0.10.0 (binary only)</u><a id='synce-serial'></a>**<br>
+  * **<u>SynCE serial 0.10.0 (binary only) - DEPRECATED</u><a id='synce-serial'></a>**<br>
     SynCE is a framework to sync WinCE devices
 
 ### T
@@ -674,18 +672,18 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[tcpdump 4.1.1/4.99.4 (binary only)](tcpdump.md)<a id='tcpdump'></a>**<br>
     Network monitoring and data acquisition tool
 
-  * **<u>tcpproxy 2.0.0-beta15 (binary only)</u><a id='tcpproxy'></a>**<br>
+  * **<u>tcpproxy 2.0.0-beta15 (binary only) - DEPRECATED</u><a id='tcpproxy'></a>**<br>
     tcpproxy is a proxy (or tunnel or redirector) for TCP/IP protocols. In standalone mode it waits for incoming connections forwarding them to another machine or starting a local server program.
 
-  * **[tcp_wrappers 7.6 (binary only)](tcp_wrappers.md)<a id='tcp-wrappers'></a>**<br>
+  * **[tcp_wrappers 7.6 (binary only) - DEPRECATED](tcp_wrappers.md)<a id='tcp-wrappers'></a>**<br>
     TCP Wrapper is a host-based Networking ACL system, used to filter network access to Internet Protocol servers on (Unix-like) operating systems such as Linux or BSD. It allows host or subnetwork IP addresses, names and/or ident query replies, to be used as tokens on which to filter for access control purposes.
 
   * **<u>Tesseract OCR 3.02.02 (binary only)</u><a id='tesseract'></a>**<br>
     Tesseract is an Open Source OCR engine Note: Tesseract including languages files is a huge package and requires a lot of RAM at run-time. It is NOT recommended to use it on boxes having less than 64MB RAM.
 
-  * **<u>tichksum: TI chksum 0.0</u><a id='tichksum'></a>**<br>
+  * **<u>tichksum: TI chksum 1.0</u><a id='tichksum'></a>**<br>
 
-  * **<u>TIFF utils 4.0.7 (binary only)</u><a id='tiff'></a>**<br>
+  * **<u>TIFF utils 4.0.7 (binary only) - DEPRECATED</u><a id='tiff'></a>**<br>
     Various utilities to manupulate/convert images to/from TIFF format.
 
   * **[Tinc 1.0.36/1.1pre18](tinc.md)<a id='tinc'></a>**<br>
@@ -706,21 +704,21 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Tree 1.8.0/2.1.1 (binary only)](tree.md)<a id='tree'></a>**<br>
     Tree is a recursive directory listing program that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.
 
-  * **[trickle 1.07 (binary only)](trickle.md)<a id='trickle'></a>**<br>
+  * **[trickle 1.07 (binary only) - DEPRECATED](trickle.md)<a id='trickle'></a>**<br>
     trickle is a simple and portable lightweight userspace bandwidth shaper, to rate limit the TCP connections of a given process or group of processes. It can run in collaborative mode (together with trickled) or in stand alone mode. trickle works by taking advantage of the unix loader preloading. Essentially it provides to the application, a new version of the functionality that is required to send and receive data through sockets. It then limits traffic based on delaying the sending and receiving of data over a socket. trickle runs entirely in userspace and does not require root privileges. *** Does NOT support statically linked executables!! WWW: http://monkey.org/~marius/trickle/
 
 ### U
 
-  * **<u>udpxy 1.0.23-9 (binary only)</u><a id='udpxy'></a>**<br>
+  * **<u>udpxy 1.0.23-9 (binary only) - DEPRECATED</u><a id='udpxy'></a>**<br>
     Small-footprint UNIX/Linux daemon to relay multicast UDP traffic to client's TCP (HTTP) connection.
 
-  * **<u>uMurmur 0.2.20</u><a id='umurmur'></a>**<br>
+  * **<u>uMurmur 0.2.20 - DEPRECATED</u><a id='umurmur'></a>**<br>
     umurmur is a minimalistic Mumble server primarily targeted to run on routers using less resources. It targets to fill the needs of a pretty small group of users communicating, which in part originates from the other goal of working well on a small system with a limited CPU and limited amount of disk space. It also aims to minimize writing to the disk since these kinds of systems usually only has a flash memory for disk. umurmur supports a subset of the features of Murmur. https://github.com/umurmur/umurmur
 
   * **[Unbound 1.20.0](unbound.md)<a id='unbound'></a>**<br>
     Unbound is designed as a set of modular components, so that also DNSSEC (secure DNS) validation and stub-resolvers (that do not run as a server, but are linked into an application) are easily possible.
 
-  * **[UNFS3 0.9.23](unfs3.md)<a id='unfs3'></a>**<br>
+  * **[UNFS3 0.9.23 - DEPRECATED](unfs3.md)<a id='unfs3'></a>**<br>
     Userspace NFS v3 Server.
 
   * **[UnRAR 6.1.7/7.0.9 (binary only)](unrar.md)<a id='unrar'></a>**<br>
@@ -729,7 +727,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[usbids: usb.ids a5edeafb60](usbids.md)<a id='usbids'></a>**<br>
     This package provides up-to-date version of the usb.ids file needed by many usb related packages.
 
-  * **<u>util-linux (binary only)</u><a id='util-linux'></a>**<br>
+  * **<u>util-linux (binary only) - DEPRECATED</u><a id='util-linux'></a>**<br>
     Provides blkid util from util-linux project
 
 ### V
@@ -740,13 +738,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[vnStat 1.18 (binary only) - DEPRECATED](vnstat.md)<a id='vnstat'></a>**<br>
     vnStat is a console-based network traffic monitor. It keeps a log of hourly, daily and monthly network traffic for the selected interface(s). However, it isn't a packet sniffer. The traffic information is analyzed from the proc(5) filesystem. That way vnStat can be used even without root permissions.
 
-  * **[Vpnc 0.5.3](vpnc.md)<a id='vpnc'></a>**<br>
+  * **[Vpnc 0.5.3 - DEPRECATED](vpnc.md)<a id='vpnc'></a>**<br>
     Cisco IPSec VPN Client
 
   * **[vsftpd 3.0.5](vsftpd.md)<a id='vsftpd'></a>**<br>
     A fast and secure FTP server
 
-  * **[VTun 3.0.4](vtun.md)<a id='vtun'></a>**<br>
+  * **[VTun 3.0.4 - DEPRECATED](vtun.md)<a id='vtun'></a>**<br>
     Virtual tunnel client and server
 
 ### W
@@ -763,21 +761,21 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[wireguard-linux-compat 1.0.20220627](wireguard-linux-compat.md)<a id='wireguard-linux-compat'></a>**<br>
     This package provides the kernel module required for Wireguard
 
-  * **[WOL 0.7.1 (binary only)](wol.md)<a id='wol'></a>**<br>
+  * **[WOL 0.7.1 (binary only) - DEPRECATED](wol.md)<a id='wol'></a>**<br>
     Simple Wake-On-Lan utility to wake up Magic-Packet-compliant hardware.
 
-  * **[wput 0.6.2 (binary only)](wput.md)<a id='wput'></a>**<br>
+  * **[wput 0.6.2 (binary only) - DEPRECATED](wput.md)<a id='wput'></a>**<br>
     Wput is a command-line ftp-client that looks like wget but instead of downloading, uploads files or whole directories to remote ftp-servers.
 
 ### X
 
-  * **[XMail 1.27](xmail.md)<a id='xmail'></a>**<br>
+  * **[XMail 1.27 - DEPRECATED](xmail.md)<a id='xmail'></a>**<br>
     XMail is an Internet and Intranet mail server featuring an SMTP server, POP3 server, finger server, multiple domains, no need for users to have a real system account, SMTP relay checking, RBL/RSS/ORBS/DUL and custom (IP based and address based) spam protection, SMTP authentication (PLAIN LOGIN CRAM-MD5 POP3-before-SMTP and custom), a POP3 account synchronizer with external POP3 accounts, account aliases, domain aliases, custom mail processing, direct mail files delivery, custom mail filters, mailing lists, remote administration, custom mail exchangers, logging, and multi-platform code.
 
-  * **<u>Xpdf 3.04 (binary only)</u><a id='xpdf'></a>**<br>
+  * **<u>Xpdf 3.04 (binary only) - DEPRECATED</u><a id='xpdf'></a>**<br>
     Xpdf is an open source viewer for Portable Document Format (PDF) files. (These are also sometimes also called 'Acrobat' files, from the name of Adobe's PDF software.) The Xpdf project also includes a PDF text extractor, PDF-to-PostScript converter, and various other utilities. This packages includes only the non-X utilities.
 
-  * **[Xrelayd 0.2.1pre2](xrelayd.md)<a id='xrelayd'></a>**<br>
+  * **[Xrelayd 0.2.1pre2 - DEPRECATED](xrelayd.md)<a id='xrelayd'></a>**<br>
     SSL tunnel based on PolarSSL. Xrelayd is a stripped down version of stunnel based on PolarSSL library. Essentially, this package makes your router's websrv or httpd SSL-enabled, offering you the option of remote configuration via WWW or secure remote use of features like Rudi-Shell.
 
   * **[xsltproc 1.1.39 (binary only)](xsltproc.md)<a id='xsltproc'></a>**<br>
@@ -815,7 +813,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>target-tester: #target-tester</u><a id='target-tester'></a>**<br>
     This package is intended to be used by freetz' developers only. It allows to compile and run configure-tests which need to be run on target in a less complicated way (compared to completely manual one). Note: Simply modify target-tester.c or replace it with code taken from configure script.
 
-  * **[usbutils 007 (binary only)](usbutils.md)<a id='usbutils'></a>**<br>
+  * **[usbutils 007 (binary only) - DEPRECATED](usbutils.md)<a id='usbutils'></a>**<br>
     USB devices listing utilities To avoid name conflicts with AVM's lsusb the binary is renamed to lsusb-freetz.
 
   * **<u>vermagic D1W0U (binary only)</u><a id='vermagic'></a>**<br>
@@ -861,10 +859,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Squid 3.0.STABLE26 - DEPRECATED</u><a id='squid'></a>**<br>
     Squid is a caching proxy for the Web supporting HTTP, HTTPS, FTP, and more. It reduces bandwidth and improves response times by caching and reusing frequently-requested web pages. Squid has extensive access controls and makes a great server accelerator.
 
-  * **[usbip: USB/IP 0.1.8](usbip.md)<a id='usbip'></a>**<br>
+  * **[usbip: USB/IP 0.1.8 - DEPRECATED](usbip.md)<a id='usbip'></a>**<br>
     USB/IP Project aims to develop a general USB device sharing system over IP network. To share USB devices between computers with their full functionality, USB/IP encapsulates "USB I/O messages" into IP packets and transmits them between computers. If you plan to share a printer with this package, consider to remove AVM's printserv, but not the usblp kernel module.
 
-  * **[usbroot: USB root 0.2](usbroot.md)<a id='usbroot'></a>**<br>
+  * **[usbroot: USB root 0.2 - DEPRECATED](usbroot.md)<a id='usbroot'></a>**<br>
     Mount an ext{2,3} filesystem (fs) from an USB stick and use it as root fs which may be fully writable and basically unlimited in size. The Linux kernel will still be loaded from your box and during the first phase of the init process the SquashFS on the box is still used, but after the USB root is mounted, we pivot_root into it and it becomes the new root fs. The default is to unmount the read-only fs on the box to conserve memory, but if desired, it can be still be accessed under /oldroot (though this is absolutely not necessary anymore after pivot_root). Having said that, it should be clear that the usb stick should contain everything necessary to run the box. Usually you just create a full copy of a target filesystem (e.g. from build/modified/filesystem or from an unpacked firmware image) and start modifying it as needed. The binaries (kernel modules, executables, shared libraries) used therein just have to fit the kernel installed on the box. Note: The webinterface makes it pretty easy to (de-)activate and configure the functionality of this package. However, USB root is an expert thing! See also the help screen of /etc/init.d/rc.usbroot for further description. As some config data is stored in bootloader environment, this package is special anyway.
 
   * **[virtualip-cgi: Virtual IP CGI - DEPRECATED](virtualip-cgi.md)<a id='virtualip'></a>**<br>
@@ -915,6 +913,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[PHPXmail 1.5](phpxmail.md)<a id='phpxmail'></a>**<br>
     Web configuration interface for XMail from the phpxmail team. Accessible via the URL http://fritz.box:81/phpxmail, it enables you to configure your XMail server locally on the fritz.box or any other remote host. This GUI needs PHP, so it is automaticaly selected. Used web server is busybox httpd.
+
+  * **[ppp: Point-to-Point](ppp.md)<a id='ppp'></a>**<br>
 
   * **<u>ppp-cgi: ppp dial-up-network</u><a id='ppp'></a>**<br>
     Use this package to establish a dun connection

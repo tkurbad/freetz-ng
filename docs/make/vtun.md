@@ -1,4 +1,4 @@
-# VTun 3.0.4
+# VTun 3.0.4 - DEPRECATED
  - Package: [master/make/pkgs/vtun/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/vtun/)
  - Maintainer: -
 

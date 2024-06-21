@@ -1,4 +1,4 @@
-# USB root 0.2
+# USB root 0.2 - DEPRECATED
  - Package: [master/make/pkgs/usbroot/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/usbroot/)
  - Maintainer: -
 
