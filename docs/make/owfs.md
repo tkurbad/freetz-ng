@@ -1,4 +1,4 @@
-# owfs 2.7p32 (binary only)
+# owfs 2.7p32 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/owfs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/owfs/)
  - Maintainer: -
 

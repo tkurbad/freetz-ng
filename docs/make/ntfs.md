@@ -1,4 +1,4 @@
-# NTFS-3G 2017.3.23 (binary only)
+# NTFS-3G 2017.3.23 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/ntfs/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ntfs/)
  - Maintainer: -
 

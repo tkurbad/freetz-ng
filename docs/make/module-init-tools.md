@@ -1,4 +1,4 @@
-# module-init-tools 3.12 (binary only)
+# module-init-tools 3.12 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/module-init-tools/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/module-init-tools/)
  - Maintainer: -
 

@@ -1,4 +1,4 @@
-# NHIPT Iptables CGI 0.8.3a - EXPERIMENTAL
+# NHIPT Iptables CGI 0.8.3a - DEPRECATED
  - Package: [master/make/pkgs/nhipt/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nhipt/)
  - Maintainer: -
 

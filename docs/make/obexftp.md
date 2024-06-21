@@ -1,4 +1,4 @@
-# ObexFTP 0.23 (binary only)
+# ObexFTP 0.23 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/obexftp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/obexftp/)
  - Maintainer: -
 

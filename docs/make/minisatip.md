@@ -4,7 +4,7 @@
  - Changelog: [https://github.com/catalinii/minisatip/releases](https://github.com/catalinii/minisatip/releases)
  - Repository: [https://github.com/catalinii/minisatip](https://github.com/catalinii/minisatip)
  - Package: [master/make/pkgs/minisatip/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/minisatip/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 Dieses Package stellt einen SAT>IP Server im Netzwerk bereit.<br>
 <br>

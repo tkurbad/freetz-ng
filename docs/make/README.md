@@ -348,19 +348,19 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### M
 
-  * **[madplay 0.15.2b (binary only)](madplay.md)<a id='madplay'></a>**<br>
+  * **[madplay 0.15.2b (binary only) - DEPRECATED](madplay.md)<a id='madplay'></a>**<br>
     MAD is a high-quality fixed-point MPEG audio decoder with 24-bit output. The implementation is entirely new, based on the ISO/IEC standards, and performs especially well on systems without native floating-point support.
 
   * **[mc (Midnight Commander) 4.8.31 (binary only)](mc.md)<a id='mc'></a>**<br>
     Subshell support means you can press Ctrl-O to hide the mc panels and have a real subshell. Both Bash (if package is installed) and BusyBox Ash can be used, depending which one is defined as your login shell. ATTENTION: You should *not* use CONFIG_FEATURE_BASH_IS_ASH in BusyBox or otherwise symlink /bin/bash to /bin/busybox because MC must differentiate handling between Ash and real Bash. This feature adds about 8 KB (uncompressed) to the mc binary.
 
-  * **[mcabber 0.9.9](mcabber.md)<a id='mcabber'></a>**<br>
+  * **[mcabber 0.9.9 - DEPRECATED](mcabber.md)<a id='mcabber'></a>**<br>
     mcabber is a small Jabber console client. http://www.lilotux.net/~mikael/mcabber/
 
-  * **[mediatomb 0.12.1 (binary only)](mediatomb.md)<a id='mediatomb'></a>**<br>
+  * **[mediatomb 0.12.1 (binary only) - DEPRECATED](mediatomb.md)<a id='mediatomb'></a>**<br>
     MediaTomb is an open source (GPL) UPnP MediaServer with a nice web user interface, it allows you to stream your digital media through your home network and listen to/watch it on a variety of UPnP compatible devices.
 
-  * **[microperl 5.10.1 (binary only)](microperl.md)<a id='microperl'></a>**<br>
+  * **[microperl 5.10.1 (binary only) - DEPRECATED](microperl.md)<a id='microperl'></a>**<br>
     Perl without operating-specific functions such as readdir.
 
   * **[minicom 2.9 (binary only)](minicom.md)<a id='minicom'></a>**<br>
@@ -378,7 +378,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[mod: Freetz(-MOD)](mod.md)<a id='mod'></a>**<br>
     This package is mandatory
 
-  * **[module-init-tools 3.12 (binary only)](module-init-tools.md)<a id='module-init-tools'></a>**<br>
+  * **[module-init-tools 3.12 (binary only) - DEPRECATED](module-init-tools.md)<a id='module-init-tools'></a>**<br>
     The module-init-tools (m-i-t) package provides many of the utilities needed by Linux systems for managing loadable Linux Kernel Modules. This includes depmod, insmod, rmmod, modprobe and tools like modinfo.
 
   * **[Mosquitto 1.6.15 - DEPRECATED](mosquitto.md)<a id='mosquitto'></a>**<br>
@@ -395,46 +395,43 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Nano 8.0 (binary only)](nano.md)<a id='nano'></a>**<br>
     GNU GPL'd Pico clone with more functionality. GNU nano is a small and friendly text editor. Besides basic text editing, nano offers many extra features like an interactive search and replace, go to line and column number, auto-indentation, feature toggles and filename tab completion. The original goal for nano was a complete bug-for-bug compatible emulation of Pico, but nano's current goal is to be as compatible as possible while offering a superset of Pico's functionality. IMPORTANT NOTES: 1.) Selecting any option besides "Tiny binary" will make the nano binary bigger. The range is somewhere between 142 KB and 249 KB, depending on the options chosen. 2.) Please also be aware of the fact that changing any feature options results in an automatic rebuild of the package - just in case you were wondering. 3.) Note that UTF8 support and spell checking is disabled by default.
 
-  * **<u>nc6 1.0 (binary only)</u><a id='nc6'></a>**<br>
+  * **<u>nc6 1.0 (binary only) - DEPRECATED</u><a id='nc6'></a>**<br>
     A netcat clone with ipv6 support.
 
   * **[NcFTP 3.2.7 (binaries only)](ncftp.md)<a id='ncftp'></a>**<br>
     NcFTP is a free program that use the File Transfer Protocol. The purpose of ncftp is to provide a powerful and flexible interface to the Internet standard File Transfer Protocol. Although the program appears to be rather spartan, you'll find that ncftp has a wealth of valuable performance and usage features. The program was designed with an emphasis on usability, and it does as much as it can for you automatically so you can do what you expect to do with a file transfer program, which is transfer files between two interconnected systems.
 
-  * **[ndas](ndas.md)<a id='ndas'></a>**<br>
+  * **[ndas - DEPRECATED](ndas.md)<a id='ndas'></a>**<br>
     Network Direct Attached Storage (NDAS)
 
-  * **<u>Netatalk 2.2.5</u><a id='netatalk'></a>**<br>
+  * **<u>Netatalk 2.2.5 - DEPRECATED</u><a id='netatalk'></a>**<br>
     Netatalk is a kernel level implementation of the AppleTalk Protocol Suite which contains the AppleShare file server (AFP).
 
-  * **[netcat 0.7.1 (binary only)](netcat.md)<a id='netcat'></a>**<br>
+  * **[netcat 0.7.1 (binary only) - DEPRECATED](netcat.md)<a id='netcat'></a>**<br>
     A feature-rich network debugging and exploration tool.
 
-  * **<u>Netpbm-tools 10.35.85 (binary only)</u><a id='netpbm'></a>**<br>
+  * **<u>Netpbm-tools 10.35.85 (binary only) - DEPRECATED</u><a id='netpbm'></a>**<br>
     Provides the following tools from netpbm-suite: bmptopnm, giftopnm, jpegtopnm, pngtopnm, pnmtojpeg, pnmtopng
 
   * **[netsnmp: Net-SNMP 5.9.4](netsnmp.md)<a id='netsnmp'></a>**<br>
     SNMP (Simple Network Management Protocol) daemon. SNMP is a widely used protocol for monitoring the health and welfare of network equipment (eg. routers), computer equipment and even devices like UPSs. Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3.
 
-  * **<u>nfsroot: NFS-root 1.0</u><a id='nfsroot'></a>**<br>
+  * **<u>nfsroot: NFS-root 1.0 - DEPRECATED</u><a id='nfsroot'></a>**<br>
     Mount a remote filesystem (fs) from an NFS server and use it as a root fs which is fully writable and basically unlimited in size. The Linux kernel will still be loaded from your box and during the first phase of the init process the SquashFS on the box is still used, but after the NFS-root is mounted, we pivot_root into it and it becomes the new root fs. The read-only fs on the box can still be accessed under /oldroot, but is absolutely not necessary anymore after pivot_root. Having said that, it should be clear that the remote folder to be mounted should contain everything necessary to run the box. Usually you just create a full copy of a target fs (e.g. from build/modified/filesystem or from an unpacked firmware image) and start modifying it as needed. The binaries (kernel modules, executables, shared libraries) used therein just have to fit the kernel installed on the box. Note: The mini_fo overlay filesystem will not be used if an NFS-root was mounted first (see mini_fo package). Still, both packages can be installed at the same time, because mini_fo is still useful if NFS-root is decativated. Note: This package needs "replace kernel" because a kernel patch is necessary to make the 'nfsroot' bootloader environment variable usable for our purpose. So, if if "replace kernel" is inactive, you will not see this package in menuconfig. Note: There currently is no web interface for this package, because an NFS-root is an expert thing anyway. The command-line interface and help screen of /etc/init.d/rc.nfs makes it pretty easy to (de-)activate and configure the functionality of this package. As configuration data are stored in bootloader environment rather than in TFFS like for other packages, this package is special anyway.
 
-  * **[nfs-utils 1.3.4 (binary only)](nfs-utils.md)<a id='nfs-utils'></a>**<br>
+  * **[nfs-utils 1.3.4 (binary only) - DEPRECATED](nfs-utils.md)<a id='nfs-utils'></a>**<br>
     Linux NFS utility package Select nfsd-cgi if you want a configuration web interface. If this does not work, enable replace-kernel!
 
-  * **<u>ngircd 22</u><a id='ngircd'></a>**<br>
+  * **<u>ngircd 22 - DEPRECATED</u><a id='ngircd'></a>**<br>
     ngIRCd is an Open Source server for the Internet Relay Chat (IRC), which is developed and published under the terms of the GNU General Public Licence (URL: http://www.gnu.org/licenses/gpl.html). ngIRCd means "next generation IRC daemon", it's written from scratch and not deduced from the "grandfather of IRC daemons", the daemon of the IRCNet. For documentation see: http://ngircd.barton.de/documentation.php.de
-
-  * **[NHIPT Iptables CGI 0.8.3a - EXPERIMENTAL](nhipt.md)<a id='nhipt'></a>**<br>
-    New Iptables configuration interface.
 
   * **[Nmap 4.76/5.51/7.95 (binary only)](nmap.md)<a id='nmap'></a>**<br>
     Nmap ("Network Mapper") is a free and open source (license) utility for network exploration or security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime. Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics. It was designed to rapidly scan large networks, but works fine against single hosts. Nmap runs on all major computer operating systems, and both console and graphical versions are available.
 
-  * **<u>noip 2.1.9-1 (binary only)</u><a id='noip'></a>**<br>
+  * **<u>noip 2.1.9-1 (binary only) - DEPRECATED</u><a id='noip'></a>**<br>
     This is No-IP.com's dynamic DNS update client. When configured correctly, the client will check the local IP address at a given time interval for any changes. If the local IP address has changed it will notify the DNS servers at No-IP.com and update the IP corresponding to your No-IP/No-IP+ hostname.
 
-  * **[NTFS-3G 2017.3.23 (binary only)](ntfs.md)<a id='ntfs'></a>**<br>
+  * **[NTFS-3G 2017.3.23 (binary only) - DEPRECATED](ntfs.md)<a id='ntfs'></a>**<br>
     The NTFS-3G driver is an open source, freely available read/write NTFS driver for Linux, FreeBSD, OS X, and NetBSD. It provides safe and fast handling of the Windows XP, Windows Server 2003, Windows 2000 and Windows Vista file systems. Most POSIX file system operations are supported, with the exception of full file ownership and access right support. This binary is needed for ntfs automount feature thus there is no webinterface.
 
   * **[NZBGet 21.1/21.4-rc2](nzbget.md)<a id='nzbget'></a>**<br>
@@ -442,16 +439,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### O
 
-  * **[ObexFTP 0.23 (binary only)](obexftp.md)<a id='obexftp'></a>**<br>
+  * **[ObexFTP 0.23 (binary only) - DEPRECATED](obexftp.md)<a id='obexftp'></a>**<br>
     This package contains an ObexFTP server.
 
   * **[oidentd 2.0.8 - DEPRECATED](oidentd.md)<a id='oidentd'></a>**<br>
     oidentd is an ident (rfc1413 compliant) daemon that runs on Linux, FreeBSD, OpenBSD and Solaris. oidentd can handle IP masqueraded/NAT connections on Linux, FreeBSD (ipf only) and OpenBSD. oidentd has a flexible mechanism for specifying ident responses. Users can be granted permission to specify their own ident responses. Responses can be specified according to host and port pairs.
 
-  * **<u>OpenConnect 7.04 (binary only)</u><a id='openconnect'></a>**<br>
+  * **<u>OpenConnect 7.04 (binary only) - DEPRECATED</u><a id='openconnect'></a>**<br>
     Cisco AnyConnect VPN Client
 
-  * **[OpenDD 0.7.9](opendd.md)<a id='opendd'></a>**<br>
+  * **[OpenDD 0.7.9 - DEPRECATED](opendd.md)<a id='opendd'></a>**<br>
     opendd is a DynDNS client, written in C, and especially designed for small gateway machines, like a Soekris box. Its main feature is that it does not require any Perl or Python interpreter. It supports HTTPS, can send a mail report, and can run as daemon. It is also very easy to deploy. WWW: http://www.bsdmon.com/wakka/OpenDD
 
   * **[Openntpd 3.9p1 - DEPRECATED](openntpd.md)<a id='openntpd'></a>**<br>
@@ -466,7 +463,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[OpenVPN 2.4.12/2.5.10/2.6.11](openvpn.md)<a id='openvpn'></a>**<br>
     VPN Server
 
-  * **[owfs 2.7p32 (binary only)](owfs.md)<a id='owfs'></a>**<br>
+  * **[owfs 2.7p32 (binary only) - DEPRECATED](owfs.md)<a id='owfs'></a>**<br>
     OWFS - 1-Wire Filesystem This package includes: - owserver for easy, world wide access to serial and USB 1-wire bus masters and attached devices - httpd and ftpd to control owserver over http or ftp - shellprograms like owdir, owwrite, owread, owpresent to control owserver via shell scripts
 
 ### P
@@ -909,6 +906,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[NFSD CGI](nfsd-cgi.md)<a id='nfsd'></a>**<br>
     Configuration frontend to NFS-server If this does not work, enable replace-kernel!
+
+  * **[NHIPT Iptables CGI 0.8.3a - DEPRECATED](nhipt.md)<a id='nhipt'></a>**<br>
+    New Iptables configuration interface.
 
   * **[Onlinechanged-CGI](onlinechanged-cgi.md)<a id='onlinechanged'></a>**<br>
     When the online-status changes (e.g. a forced re-connect) this CGI allows you to specify arbitrary commands which are executed at that event. The following different change events are considered: initial start of the box, going online (IPv4), going onlineipv6 (IPv6), going offline (IPv4) and going offlineipv6 (IPv6).

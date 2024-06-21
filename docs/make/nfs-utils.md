@@ -1,4 +1,4 @@
-# nfs-utils 1.3.4 (binary only)
+# nfs-utils 1.3.4 (binary only) - DEPRECATED
  - Homepage: [https://sourceforge.net/projects/nfs/](https://sourceforge.net/projects/nfs/)
  - Manpage: [https://www.linux-nfs.org/](https://www.linux-nfs.org/)
  - Changelog: [https://sourceforge.net/projects/nfs/files/nfs-utils/](https://sourceforge.net/projects/nfs/files/nfs-utils/)

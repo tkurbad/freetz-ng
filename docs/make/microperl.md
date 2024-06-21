@@ -1,4 +1,4 @@
-# microperl 5.10.1 (binary only)
+# microperl 5.10.1 (binary only) - DEPRECATED
  - Package: [master/make/pkgs/microperl/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/microperl/)
  - Maintainer: -
 
