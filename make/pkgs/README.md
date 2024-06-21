@@ -253,17 +253,17 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### E
 
-  * **[e2fsprogs 1.42.13 (binary only)](../../docs/make/e2fsprogs.md)<a id='e2fsprogs'></a>**<br>
+  * **[e2fsprogs 1.42.13 (binary only) - DEPRECATED](../../docs/make/e2fsprogs.md)<a id='e2fsprogs'></a>**<br>
     This package contains essential ext2, ext3 and ext4 filesystem utilities which consists of e2fsck, mke2fs, debugfs, dumpe2fs, tune2fs, and most of the other core ext2 filesystem utilities. Homepage: http://e2fsprogs.sourceforge.net/
 
-  * **[emailrelay: E-MailRelay 1.9](../../docs/make/emailrelay.md)<a id='emailrelay'></a>**<br>
+  * **[emailrelay: E-MailRelay 1.9 - DEPRECATED](../../docs/make/emailrelay.md)<a id='emailrelay'></a>**<br>
     E-MailRelay is a simple store-and-forward message transfer agent and proxy server. It runs on Unix-like operating systems (including Linux), and on Windows. When used as proxy server the E-MailRelay program (emailrelay) runs in the background and accepts e-mail from local e-mail client programs (KMail, Outlook etc.) or from the outside world, using the SMTP protocol. As soon as an e-mail message is received it is forwarded on to the next SMTP server for onward delivery. This becomes more useful when you add in your own message processing: as each message is received it can be passed one of your programs for editing, filtering, encrypting etc. When used as a store-and-forward transfer agent E-Mail- Relay runs in two modes: the storage daemon part, and the forwarding agent. The storage daemon waits for incoming mail and stores anything it receives in a spool directory. As a forwarding agent E-MailRelay pulls messages out of the	spool directory and passes them on to a remote server -- perhaps your ISP mail server. E-MailRelay can also run as a POP3 server so that e-mail client programs can read the spooled messages.
      - [Hilfe für die Konfiguration](../../docs/make/emailrelay.md#hilfe-für-die-konfiguration)
 
-  * **[Empty 0.6.15b (binary only)](../../docs/make/empty.md)<a id='empty'></a>**<br>
+  * **[Empty 0.6.15b (binary only) - DEPRECATED](../../docs/make/empty.md)<a id='empty'></a>**<br>
     empty is an utility that provides an interface to execute and/or interact with processes under pseudo-terminal sessions (PTYs). This tool is definitely useful in programming of shell scripts designed to communicate with interactive programs like telnet, ssh, ftp, etc. In some cases, empty can be the simplest replacement for TCL/expect or other similar programming tools.
 
-  * **[eSpeak 1.48.04 (binary only)](../../docs/make/espeak.md)<a id='espeak'></a>**<br>
+  * **[eSpeak 1.48.04 (binary only) - DEPRECATED](../../docs/make/espeak.md)<a id='espeak'></a>**<br>
     eSpeak is a compact open source software speech synthesizer for English and other languages.
      - [Installation](../../docs/make/espeak.md#installation)
      - [Aufruf](../../docs/make/espeak.md#aufruf)
@@ -271,18 +271,18 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### F
 
-  * **[FFmpeg 5.1.4](../../docs/make/ffmpeg.md)<a id='ffmpeg'></a>**<br>
+  * **[FFmpeg 5.1.4 - DEPRECATED](../../docs/make/ffmpeg.md)<a id='ffmpeg'></a>**<br>
     FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.
 
   * **[Fontconfig 2.14.2 (binary only)](../../docs/make/fontconfig.md)<a id='fontconfig'></a>**<br>
     Fontconfig is a library for configuring and customizing font access. This package adds /etc/fontsfonts.conf
 
-  * **[fortune 1.2](../../docs/make/fortune.md)<a id='fortune'></a>**<br>
+  * **[fortune 1.2 - DEPRECATED](../../docs/make/fortune.md)<a id='fortune'></a>**<br>
     Fortune is a small game that is meant to lighten up your life. It can be used to display a random entry from a cookie file. After having installed the package, just put some fortune- files into a directory and create a symbolic link to /var/media/fortunes like this: ln -s /var/media/ftp/ExternalDisk/fortunes/ /var/media/fortunes For your convenience I have packed some fortune-files up and uploaded them here: http://homepages.tu-darmstadt.de/~pkrueger/fortunes.7z If you'd rather get your own files, you could start looking here: http://www.freebsd.org/cgi/cvsweb.cg...tune/datfiles/
      - [Paket konfigurieren](../../docs/make/fortune.md#paket-konfigurieren)
      - [Anzeigen von fortunes beim Konsolen-Login](../../docs/make/fortune.md#anzeigen-von-fortunes-beim-konsolen-login)
 
-  * **<u>fowsr 1.0-20110904 (binary only)</u><a id='fowsr'></a>**<br>
+  * **<u>fowsr 1.0-20110904 (binary only) - DEPRECATED</u><a id='fowsr'></a>**<br>
     fowsr is a USB Data Collector application for WH1080 compatible weather stations. Output formats includes XML, Wunderground.com and pywws. See http://fowsr.googlecode.com for further information.
 
   * **[fstyp 0.1 (binary only)](../../docs/make/fstyp.md)<a id='fstyp'></a>**<br>
@@ -291,7 +291,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[ftdi1 1.5](../../docs/make/ftdi1.md)<a id='ftdi1'></a>**<br>
     ftdi_eeprom of libftdi1 is a small tool for reading/erasing/flashing FTDI USB chip eeproms. It uses libftdi1 to access the chip, so you will need to have the required permissions on the device. The ftdi_sio module should not be loaded. You have to unplug and replug your device to get the new values to be read. Otherwise, you will still get the old values.
 
-  * **[FUSE 2.9.9 (binary only)](../../docs/make/fuse.md)<a id='fuse'></a>**<br>
+  * **[FUSE 2.9.9 (binary only) - DEPRECATED](../../docs/make/fuse.md)<a id='fuse'></a>**<br>
     Filesystem in Userspace (FUSE) is a free Unix kernel module that allows non-privileged users to create their own file systems without the need to write any kernel code. This is achieved by running the file systemcode in user space, while the FUSE module only provides a "bridge" to the actual kernel interfaces. FUSE was officially merged into the mainstream Linux kernel tree in kernel version 2.6.14. FUSE is particularly useful for writing virtual file systems. Unlike traditional filesystems which essentially save data to and retrieve data from disk, virtual filesystems do not actually store data themselves. They act as a view or translation of an existing filesystem or storage device. In principle, any resource available to FUSE implementation can be exported as a file system. In Freetz, the NTFS package depends on fuse, for example.
 
 ### G

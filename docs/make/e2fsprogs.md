@@ -1,4 +1,4 @@
-# e2fsprogs 1.42.13 (binary only)
+# e2fsprogs 1.42.13 (binary only) - DEPRECATED
  - Homepage: [https://e2fsprogs.sourceforge.net/](https://e2fsprogs.sourceforge.net/)
  - Manpage: [https://www.mankier.com/package/e2fsprogs](https://www.mankier.com/package/e2fsprogs)
  - Changelog: [https://e2fsprogs.sourceforge.net/e2fsprogs-release.html](https://e2fsprogs.sourceforge.net/e2fsprogs-release.html)

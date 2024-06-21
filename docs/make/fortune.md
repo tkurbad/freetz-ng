@@ -1,4 +1,4 @@
-# fortune 1.2
+# fortune 1.2 - DEPRECATED
  - Package: [master/make/pkgs/fortune/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/fortune/)
  - Maintainer: -
 

@@ -1,4 +1,4 @@
-# FFmpeg 5.1.4
+# FFmpeg 5.1.4 - DEPRECATED
  - Homepage: [https://www.ffmpeg.org/](https://www.ffmpeg.org/)
  - Manpage: [https://www.ffmpeg.org/documentation.html](https://www.ffmpeg.org/documentation.html)
  - Changelog: [https://www.ffmpeg.org/index.html#news](https://www.ffmpeg.org/index.html#news)

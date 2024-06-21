@@ -1,4 +1,4 @@
-# E-MailRelay 1.9
+# E-MailRelay 1.9 - DEPRECATED
  - Homepage: [https://emailrelay.sourceforge.net/](https://emailrelay.sourceforge.net/)
  - Manpage: [https://emailrelay.sourceforge.net/index.html#userguide_md_User_Guide](https://emailrelay.sourceforge.net/index.html#userguide_md_User_Guide)
  - Changelog: [https://emailrelay.sourceforge.net/Change_Log.html](https://emailrelay.sourceforge.net/Change_Log.html)
