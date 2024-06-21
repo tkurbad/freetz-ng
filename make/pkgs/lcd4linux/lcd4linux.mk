@@ -2,6 +2,10 @@ $(call PKG_INIT_BIN, 3fce054efff9b6eba70414ea76246ee479780ff0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=ac1f8c6a3823cf603b36d31ef435ea80948e730e94ee3a1142422669e532394b
 $(PKG)_SITE:=git@https://github.com/TangoCash/lcd4linux.git
+### MANPAGE:=https://wiki.vuplus-support.org/index.php?title=LCD4Linux
+### CHANGES:=https://github.com/TangoCash/lcd4linux/commits/master/
+### CVSREPO:=https://github.com/TangoCash/lcd4linux
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/lcd4linux
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/lcd4linux
