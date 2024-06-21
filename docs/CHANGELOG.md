@@ -111,6 +111,7 @@ Latest changes
    * UnRAR 6.1.7/7.0.9
    * usb.ids c70eea490a
    * Whois 5.5.23
+   * xsltproc 1.1.41
 
  - Libraries:
    * harfbuzz 8.5.0

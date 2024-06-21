@@ -1,6 +1,6 @@
 --- libexslt/Makefile.in
 +++ libexslt/Makefile.in
-@@ -880,7 +880,7 @@
+@@ -879,7 +879,7 @@
  
  info-am:
  
@@ -11,7 +11,7 @@
  install-dvi: install-dvi-am
 --- libxslt/Makefile.in
 +++ libxslt/Makefile.in
-@@ -854,7 +854,7 @@
+@@ -853,7 +853,7 @@
  
  info-am:
  
@@ -22,7 +22,7 @@
  install-dvi: install-dvi-am
 --- Makefile.in
 +++ Makefile.in
-@@ -435,8 +435,8 @@
+@@ -432,8 +432,8 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  ACLOCAL_AMFLAGS = -I m4
@@ -33,15 +33,7 @@
  confexecdir = $(libdir)
  confexec_DATA = xsltConf.sh
  bin_SCRIPTS = xslt-config
-@@ -1029,14 +1029,13 @@
- 
- info-am:
- 
--install-data-am: install-cmakeDATA install-dist_cmakeDATA \
--	install-dist_m4dataDATA install-pkgconfigDATA
-+install-data-am: install-cmakeDATA install-dist_cmakeDATA install-pkgconfigDATA
- 
- install-dvi: install-dvi-recursive
+@@ -1008,7 +1008,7 @@
  
  install-dvi-am:
  
