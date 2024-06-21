@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_FSTYP
-	bool "fstyp 0.1 (binary only)"
+	bool "fstyp 0.1 (binary only) - DEPRECATED"
 	depends on FREETZ_PATCH_FREETZMOUNT
 	default n
 	help
