@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libpsl
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libpsl.so.5.3.4
+		 ${FREETZ_LIBRARY_DIR}/libpsl.so.5.3.5
 

@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 0.21.2)
-$(PKG)_SHLIB_VERSION:=5.3.4
+$(call PKG_INIT_BIN, 0.21.5)
+$(PKG)_SHLIB_VERSION:=5.3.5
 $(PKG)_SOURCE:=libpsl-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=e35991b6e17001afa2c0ca3b10c357650602b92596209b7492802f3768a6285f
+$(PKG)_HASH:=1dcc9ceae8b128f3c0b3f654decd0e1e891afc6ff81098f227ef260449dae208
 $(PKG)_SITE:=https://github.com/rockdaboot/libpsl/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://rockdaboot.github.io/libpsl/
 ### MANPAGE:=https://rockdaboot.github.io/libpsl/libpsl-Public-Suffix-List-functions.html

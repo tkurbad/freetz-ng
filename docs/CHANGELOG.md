@@ -97,6 +97,7 @@ Latest changes
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.14
    * OpenVPN 2.4.12/2.5.10/2.6.11
    * PCSC-lite 1.9.5/2.1.0
+   * psl 0.21.5
    * socat 1.8.0.0
    * sslh 2.1.2
    * rsync 3.3.0
