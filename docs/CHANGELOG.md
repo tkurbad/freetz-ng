@@ -81,6 +81,7 @@ Latest changes
    * Bftpd 6.2
    * bvi 1.4.2
    * CCID 1.5.5
+   * dtach 0.9
    * Dropbear 2024.85
    * FFmpeg 5.1.4
    * Git 2.45.2
