@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://www.rarlab.com/rar
 ### WEBSITE:=https://www.rarlab.com/rar_add.htm
 ### MANPAGE:=https://linux.die.net/man/1/unrar
 ### CHANGES:=https://www.rarlab.com/rarnew.htm
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/unrar
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/unrar

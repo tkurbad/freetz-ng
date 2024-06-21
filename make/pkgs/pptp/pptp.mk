@@ -7,6 +7,7 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/pptp
 ### WEBSITE:=https://sourceforge.net/projects/pptpclient/
 ### CHANGES:=https://sourceforge.net/projects/pptpclient/files/pptp/
 ### CVSREPO:=https://sourceforge.net/p/pptpclient/git/ci/master/tree/
+### SUPPORT:=fda77
 
 
 $(PKG_SOURCE_DOWNLOAD)

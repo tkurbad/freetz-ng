@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PORTMAP
-	bool "portmap 6.0 (binary only)"
+	bool "portmap 6.0 (binary only) - DEPRECATED"
 	depends on FREETZ_TARGET_UCLIBC_SUPPORTS_rpc
 	default n
 	select FREETZ_PACKAGE_TCP_WRAPPERS

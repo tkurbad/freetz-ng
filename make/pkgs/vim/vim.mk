@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://github.com/vim/vim/archive/refs/tags
 ### MANPAGE:=https://www.vim.org/docs.php
 ### CHANGES:=https://www.arp242.net/vimlog/
 ### CVSREPO:=https://github.com/vim/vim
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)

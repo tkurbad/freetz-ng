@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://github.com/tinyproxy/tinyproxy/releases/download/$($(PKG)_V
 ### MANPAGE:=https://tinyproxy.github.io/#documentation
 ### CHANGES:=https://github.com/tinyproxy/tinyproxy/releases
 ### CVSREPO:=https://github.com/tinyproxy/tinyproxy
+### SUPPORT:=fda77
 
 $(PKG)_CONFIGURE_PRE_CMDS += ./autogen.sh;
 

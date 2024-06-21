@@ -2,7 +2,7 @@ comment "SynCE serial (not available, needs replace kernel)"
 	depends on !(FREETZ_REPLACE_KERNEL && FREETZ_PACKAGE_PPP)
 
 config FREETZ_PACKAGE_SYNCE_SERIAL
-	bool "SynCE serial 0.10.0 (binary only)"
+	bool "SynCE serial 0.10.0 (binary only) - DEPRECATED"
 	depends on FREETZ_REPLACE_KERNEL && FREETZ_PACKAGE_PPP
 	select FREETZ_PACKAGE_PPPD
 	select FREETZ_PACKAGE_SYNCE_DCCM

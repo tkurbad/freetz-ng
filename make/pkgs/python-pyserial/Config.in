@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PYTHON_PYSERIAL
-	bool "pyserial 2.6"
+	bool "pyserial 2.6 - DEPRECATED"
 	depends on FREETZ_PACKAGE_PYTHON
 	select FREETZ_PACKAGE_PYTHON_MOD_CTYPES
 	default n

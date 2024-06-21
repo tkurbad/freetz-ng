@@ -9,6 +9,7 @@ $(PKG)_SITE:=@APACHE/subversion
 ### MANPAGE:=https://subversion.apache.org/quick-start
 ### CHANGES:=https://subversion.apache.org/docs/release-notes/release-history.html
 ### CVSREPO:=https://svn.apache.org/viewvc/subversion/
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_SUBVERSION_VERSION_ABANDON),abandon,current)
 

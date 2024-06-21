@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SF/rpcbind
 ### MANPAGE:=https://linux.die.net/man/8/rpcbind
 ### CHANGES:=http://git.linux-nfs.org/?p=steved/rpcbind.git;a=shortlog;h=refs/heads/master
 ### CVSREPO:=http://git.linux-nfs.org/?p=steved/rpcbind.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY_USRSBIN:=rpcbind
 $(PKG)_BINARY_BIN:=rpcinfo

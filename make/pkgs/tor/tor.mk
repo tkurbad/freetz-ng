@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.torproject.org/dist
 ### MANPAGE:=https://trac.torproject.org/projects/tor/wiki/
 ### CHANGES:=https://gitlab.torproject.org/tpo/core/tor/tags
 ### CVSREPO:=https://gitweb.torproject.org/tor.git/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/app/tor
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/tor

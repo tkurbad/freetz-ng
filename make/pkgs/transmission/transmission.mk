@@ -10,6 +10,7 @@ $(PKG)_SITE:=$($(PKG)_SITE_$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),A
 ### MANPAGE:=https://github.com/transmission/transmission/wiki
 ### CHANGES:=https://github.com/transmission/transmission/releases
 ### CVSREPO:=https://github.com/transmission/transmission
+### SUPPORT:=fda77
 
 $(PKG)_BINARIES_ALL_SHORT     := cli  daemon  remote  create  edit   show
 $(PKG)_BINARIES_BUILD_SUBDIRS := cli/ daemon/ utils/  utils/  utils/ utils/

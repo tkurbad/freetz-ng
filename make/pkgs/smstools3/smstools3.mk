@@ -4,6 +4,7 @@ $(PKG)_HASH:=a26ba4c02b16f6cf13177bffca6c9230dc5fefaeba8e3030cd4e4905f6a92084
 $(PKG)_SITE:=http://smstools3.kekekasvi.com/packages
 ### WEBSITE:=http://smstools3.kekekasvi.com/
 ### CHANGES:=http://smstools3.kekekasvi.com/index.php?p=history3
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/smsd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/smsd

@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://git.zx2c4.com/wireguard-tools/snapshot
 ### MANPAGE:=https://www.wireguard.com/quickstart/
 ### CHANGES:=https://git.zx2c4.com/wireguard-tools/log/
 ### CVSREPO:=https://git.zx2c4.com/wireguard-tools/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/wg
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/wg

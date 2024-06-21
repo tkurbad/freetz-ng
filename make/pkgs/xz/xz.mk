@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://github.com/tukaani-project/xz/releases/download/v$($(PKG)_V
 ### WEBSITE:=https://tukaani.org/xz/
 ### CHANGES:=https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS;hb=HEAD
 ### CVSREPO:=https://git.tukaani.org/?p=xz.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/xz/.libs/xz
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/xz

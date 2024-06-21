@@ -5,6 +5,7 @@ $(PKG)_SITE:=https://security.appspot.com/downloads
 ### WEBSITE:=http://vsftpd.beasts.org/
 ### MANPAGE:=https://security.appspot.com/vsftpd/vsftpd_conf.html
 ### CHANGES:=https://security.appspot.com/vsftpd/Changelog.txt
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/vsftpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/vsftpd

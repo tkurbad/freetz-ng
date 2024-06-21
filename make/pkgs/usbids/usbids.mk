@@ -6,6 +6,7 @@ $(PKG)_SITE:=git@$($(PKG)_GIT_REPOSITORY)
 ### WEBSITE:=http://www.linux-usb.org/usb-ids.html
 ### CHANGES:=https://github.com/usbids/usbids/commits/master
 ### CVSREPO:=https://github.com/usbids/usbids
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/usb.ids
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/share/usb.ids
