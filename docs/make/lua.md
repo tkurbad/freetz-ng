@@ -4,7 +4,7 @@
  - Changelog: [https://www.lua.org/versions.html](https://www.lua.org/versions.html)
  - Repository: [https://github.com/lua/lua](https://github.com/lua/lua)
  - Package: [master/make/pkgs/lua/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lua/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 **[Lua](http://www.lua.org/)** ist eine
 [Skriptsprache](http://de.wikipedia.org/wiki/Skriptsprache)

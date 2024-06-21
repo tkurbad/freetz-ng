@@ -1,4 +1,4 @@
-# Knock 0.8
+# Knock 0.8 - DEPRECATED
  - Homepage: [https://www.zeroflux.org/projects.html](https://www.zeroflux.org/projects.html)
  - Manpage: [https://linux.die.net/man/1/knockd](https://linux.die.net/man/1/knockd)
  - Changelog: [https://github.com/jvinet/knock/blob/master/ChangeLog](https://github.com/jvinet/knock/blob/master/ChangeLog)

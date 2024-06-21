@@ -4,5 +4,5 @@
  - Changelog: [https://github.com/jqlang/jq/releases](https://github.com/jqlang/jq/releases)
  - Repository: [https://github.com/jqlang/jq/](https://github.com/jqlang/jq/)
  - Package: [master/make/pkgs/jq/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/jq/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

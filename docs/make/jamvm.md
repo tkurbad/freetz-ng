@@ -1,4 +1,4 @@
-# JamVM 2.0.0 (binary only)
+# JamVM 2.0.0 (binary only) - DEPRECATED
  - Homepage: [https://jamvm.sourceforge.net/](https://jamvm.sourceforge.net/)
  - Manpage: [https://sourceforge.net/projects/jamvm/files/jamvm/JamVM%202.0.0/](https://sourceforge.net/projects/jamvm/files/jamvm/JamVM%202.0.0/)
  - Changelog: [https://sourceforge.net/projects/jamvm/files/jamvm/](https://sourceforge.net/projects/jamvm/files/jamvm/)
