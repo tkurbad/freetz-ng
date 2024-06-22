@@ -85,7 +85,8 @@ config FREETZ_KERNEL_VERSION_5_15
 	bool
 	default y
 	depends on \
-		FREETZ_KERNEL_VERSION_5_15_111
+		FREETZ_KERNEL_VERSION_5_15_111 || \
+		FREETZ_KERNEL_VERSION_5_15_153
 
 
 # full kernel version
@@ -123,6 +124,7 @@ config FREETZ_KERNEL_VERSION
 	default "4.19.183"  if FREETZ_KERNEL_VERSION_4_19_183
 	default "5.4.213"   if FREETZ_KERNEL_VERSION_5_4_213
 	default "5.15.111"  if FREETZ_KERNEL_VERSION_5_15_111
+	default "5.15.153"  if FREETZ_KERNEL_VERSION_5_15_153
 
 # major kernel version
 config FREETZ_KERNEL_VERSION_MAJOR

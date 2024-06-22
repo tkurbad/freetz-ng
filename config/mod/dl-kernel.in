@@ -77,6 +77,7 @@ config FREETZ_DL_KERNEL_VANILLA_HASH
 	default "bacfd95ddf51df70b2962fc685b5217fc449e644f16996e49d87eb259b84a5f5"  if FREETZ_KERNEL_VERSION_4_19_183
 	default "e67ce168477e580375a80f3caef16819a85b15faa2d382adc6df18a62ad6baf1"  if FREETZ_KERNEL_VERSION_5_4_213
 	default "77ceea259c0158dd624304871170d09b2e59ed612f3a4d436fe0f07362dcaec2"  if FREETZ_KERNEL_VERSION_5_15_111
+	default "d7ddb1e144a88773b56a5b4a71baea0b241f3996d446be45290537c6997c84bc"  if FREETZ_KERNEL_VERSION_5_15_153
 	default "X"
 	help
 		wget https://cdn.kernel.org/pub/linux/kernel/v${VER%%.*}.x/linux-${VER}.tar.xz -O - | sha256sum
