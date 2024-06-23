@@ -122,6 +122,9 @@ $(GCC_DIR)/.unpacked: $(DL_DIR)/$(GCC_SOURCE) | $(TARGET_TOOLCHAIN_DIR) $(UNPACK
 	for f in $$(find $(GCC_DIR) \( -name "configure" -o -name "config.rpath" \)); do $(call PKG_PREVENT_RPATH_HARDCODING1,$$f) done
 	touch $@
 
+gcc-autofix: gcc-dirclean
+	$(MAKE) AUTO_FIX_PATCHES=y gcc-unpacked
+
 ##############################################################################
 #
 #   build the first pass gcc compiler
@@ -339,7 +342,7 @@ gcc_target-dirclean: gcc_target-clean gcc-dirclean
 gcc_target-distclean: gcc_target-dirclean
 
 
-.PHONY: gcc-source gcc-unpacked
+.PHONY: gcc-source gcc-unpacked gcc-autofix
 .PHONY: gcc_initial gcc_initial-configured gcc_initial-uninstall gcc_initial-clean gcc_initial-dirclean gcc_initial-distclean
 .PHONY: gcc         gcc-configured         gcc-uninstall         gcc-clean         gcc-dirclean         gcc-distclean
 .PHONY: gcc_target  gcc_target-configured  gcc_target-uninstall  gcc_target-clean  gcc_target-dirclean  gcc_target-distclean
