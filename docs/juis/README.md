@@ -79,6 +79,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 276: [FRITZ.Box_7520_B-07.57.image](http://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-07.57.image)
 
 ### FOS-Labor
+ - HWR 185: [FRITZ.Box_7490-07.59.image](http://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.59.image)
  - HWR 190: [FRITZ.Powerline_546E.118.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-546e/deutschland/fritz.os/FRITZ.Powerline_546E.118.07.15.image)
  - HWR 226: [FRITZ.Box_7590-07.90-114019-LabBETA.image](http://download.avm.de/labor/Smart24P1/7590/FRITZ.Box_7590-07.90-114019-LabBETA.image)
  - HWR 233: [FRITZ.Box_6591_Cable-07.90-114051-LabBETA.image](http://download.avm.de/labor/Smart24P1/6591Cable/FRITZ.Box_6591_Cable-07.90-114051-LabBETA.image)
