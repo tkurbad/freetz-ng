@@ -2,11 +2,11 @@ name: generate_pages
 
 on:
   workflow_run:
-    workflows: ["generate_docs"]
+    workflows: [ generate_docs,generate_ftp,generate_osp,generate_juis,generate_juis-recache ]
     types:
       - completed
   push:
-    branches: ["master"]
+    branches: [ master ]
     paths:
       - '.github/workflows/generate_pages.yml'
       - 'docs/**/*.md'
