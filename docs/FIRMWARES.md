@@ -401,7 +401,7 @@ Currently supported devices and firmwares
   - Alien 7530 {GER}
 * __Fritz!Box Fon WLAN 7520 B (UNTESTED)__
   - 276.07.31 rev98652 {ALL} [PSQ19P2NL4]
-  - 276.07.57 rev107822 {ALL} [MOVE21NL1]
+  - 276.07.59 rev113613 {ALL} [MOVE21NL2]
 * __Fritz!Box Fon WLAN 7530__
   - 164.07.02 rev62311 {GER}
   - 164.07.14 rev73183 {GER} [MESH18 NL4]
