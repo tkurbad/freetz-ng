@@ -390,6 +390,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_4040-07.14.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_4040-07.29.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_4040-07.59.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Box_4040-07.90-114164-Inhaus.image"                                     if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_08_0X_INHAUS
 	#
 	default "FRITZ.Box_4050-07.57-110614-Inhaus.image"                                     if FREETZ_TYPE_4050 && FREETZ_TYPE_FIRMWARE_07_5X_INHAUS
 	#
