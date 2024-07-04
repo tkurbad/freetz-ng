@@ -86,6 +86,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 236: [FRITZ.Box_7530-07.90-114234-LabBETA.image](http://download.avm.de/labor/Smart24P1/7530/FRITZ.Box_7530-07.90-114234-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
+ - HWR 261: [FRITZ.Box_4060-07.90-114223-LabBETA.image](http://download.avm.de/labor/Smart24P1/4060/FRITZ.Box_4060-07.90-114223-LabBETA.image)
 
 ### FOS-Inhaus
  - HWR 185: [FRITZ.Box_7490-07.57-113062-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL2/7490/FRITZ.Box_7490-07.57-113062-Inhaus.image)
@@ -100,7 +101,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 257: [FRITZ.Box_5530_Fiber-07.90-114229-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/5530Fiber/FRITZ.Box_5530_Fiber-07.90-114229-Inhaus.image)
  - HWR 258: [FRITZ.Box_6850_5G-07.90-114137-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/68505G/FRITZ.Box_6850_5G-07.90-114137-Inhaus.image)
  - HWR 259: [FRITZ.Box_7590_AX-07.90-114238-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/7590AX/FRITZ.Box_7590_AX-07.90-114238-Inhaus.image)
- - HWR 261: [FRITZ.Box_4060-07.90-114082-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/4060/FRITZ.Box_4060-07.90-114082-Inhaus.image)
+ - HWR 261: [FRITZ.Box_4060-07.90-114221-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/4060/FRITZ.Box_4060-07.90-114221-Inhaus.image)
  - HWR 262: [FRITZ.Box_6850_LTE-07.90-114141-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/6850LTE/FRITZ.Box_6850_LTE-07.90-114141-Inhaus.image)
  - HWR 263: [FRITZ.Repeater_600v2-07.57-111457-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/600v2/FRITZ.Repeater_600v2-07.57-111457-Inhaus.image)
  - HWR 268: [FRITZ.Repeater_1200_AX-07.57-112910-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/1200AX/FRITZ.Repeater_1200_AX-07.57-112910-Inhaus.image)
