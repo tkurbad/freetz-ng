@@ -116,7 +116,7 @@ Latest changes
 
  - Libraries:
    * attr 2.5.2
-   * harfbuzz 8.5.0
+   * harfbuzz 9.0.0
    * libidn 1.42
    * libmaxminddb 1.10.0
    * libpng 1.6.43
