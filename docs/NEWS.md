@@ -1,5 +1,14 @@
 # NEWS
 
+ * __[2024-07-02](#2024-07-02)__<a id='2024-07-02'></a><br>
+   AVM muss wegen Preistreiberei zum Schaden seiner eigenen Kunden knapp 16 Millionen Euro Geldbußen zahlen.<br>
+   Andreas Mundt, Präsident des Bundeskartellamtes:<br>
+   "Wir werfen AVM vor, über Jahre hinweg die freie Preisbildung beim Vertrieb seiner Produkte an Endverbraucher eingeschränkt<br>
+   zu haben. Durch Abstimmungen mit Elektronikfachhändlern über Anhebungen von Endverbraucherpreisen wurde darauf<br>
+   hingewirkt, den Preiswettbewerb gegenüber den Endverbrauchern einzuschränken. Das Bundeskartellamt sendet mit den<br>
+   verhängten Bußgeldern ein klares Signal, dass Verstöße gegen das Verbot der Preisbindung nicht toleriert werden." <br>
+   Siehe [Pressemitteilung 02_07_2024_AVM des Bundeskartellamtes](https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2024/02_07_2024_AVM.html?nn=52004)<br>
+
  * __[2024-04-01](#2024-04-01)__<a id='2024-04-01'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24040` erstellt.<br>
    Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
