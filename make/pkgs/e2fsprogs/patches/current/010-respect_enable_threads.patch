@@ -1,0 +1,18 @@
+--- configure
++++ configure
+@@ -14572,6 +14572,7 @@
+ 
+ fi
+ 
++if test "${enable_threads}" != no; then
+ SEM_INIT_LIB=''
+ echo GL_THREADS_API: ${gl_threads_api}
+ if test "${gl_threads_api}" != none
+@@ -14706,6 +14707,7 @@
+ fi
+ 
+ fi
++fi
+ 
+ fi
+ 
