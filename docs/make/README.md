@@ -727,7 +727,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[usbids: usb.ids c70eea490a](usbids.md)<a id='usbids'></a>**<br>
     This package provides up-to-date version of the usb.ids file needed by many usb related packages.
 
-  * **<u>util-linux (binary only) - DEPRECATED</u><a id='util-linux'></a>**<br>
+  * **[util-linux 2.27.1 (binary only) - DEPRECATED](util-linux.md)<a id='util-linux'></a>**<br>
     Provides blkid util from util-linux project
 
 ### V
