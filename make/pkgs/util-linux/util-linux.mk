@@ -2,6 +2,10 @@ $(call PKG_INIT_BIN, 2.27.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=0a818fcdede99aec43ffe6ca5b5388bff80d162f2f7bd4541dca94fecb87a290
 $(PKG)_SITE:=@KERNEL/linux/utils/$(pkg)/v$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+### WEBSITE:=https://en.wikipedia.org/wiki/Util-linux
+### MANPAGE:=https://linux.die.net/man/8/blkid
+### CHANGES:=https://mirrors.kernel.org/pub/linux/utils/util-linux/
+### CVSREPO:=https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git
 
 $(PKG)_BINARIES:=blkid
 # Suffix to add to util-linux binaries in order to distinguish them from e2fsprogs/busybox ones
@@ -97,6 +101,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-zramctl
 $(PKG)_CONFIGURE_OPTIONS += --enable-libuuid
 $(PKG)_CONFIGURE_OPTIONS += --enable-libblkid
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -110,6 +115,7 @@ $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DEST_DIR)/sbin/%$($(PKG)_BINARIES_SUFFIX
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE1) -C $(UTIL_LINUX_DIR) clean
