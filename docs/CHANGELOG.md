@@ -52,7 +52,7 @@ Latest changes
    * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0//8.4.0/9.3.0/13.3.0/14.1.0
 
  - Host tools:
-   * ca-bundle 2024-03-11
+   * ca-bundle 2024-07-02
    * cmake 3.30.0
    * cpio 2.15
    * fakeroot 1.35
