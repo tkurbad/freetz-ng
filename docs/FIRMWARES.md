@@ -109,7 +109,7 @@ Currently supported devices and firmwares
 * __Fritz!Box 4060__
   - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
   - 261.07.59 rev113614 {ALL} [MOVE21NL2]
-  - 261.07.90 rev113797 {ALL} [Smart24 P1] (Inhaus)
+  - 261.07.90 rev114223 {ALL} [Smart24 P1] (Labor)
 
 ### Fritz!Box Fon (50xx/51xx)
 
