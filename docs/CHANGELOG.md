@@ -73,7 +73,7 @@ Latest changes
    * Various Fritzos 8.0 related changes
 
  - Packages:
-   * Apache2 2.4.59
+   * Apache2 2.4.60
    * Atop 2.10.0
    * AutoFS 5.0.5/5.1.9
    * BIND 9.11.37/9.18.27
