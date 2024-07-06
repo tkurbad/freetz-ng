@@ -253,7 +253,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### E
 
-  * **[e2fsprogs 1.42.13 (binary only) - DEPRECATED](../../docs/make/e2fsprogs.md)<a id='e2fsprogs'></a>**<br>
+  * **[E2fsprogs 1.42.13 (binary only) - DEPRECATED](../../docs/make/e2fsprogs.md)<a id='e2fsprogs'></a>**<br>
     This package contains essential ext2, ext3 and ext4 filesystem utilities which consists of e2fsck, mke2fs, debugfs, dumpe2fs, tune2fs, and most of the other core ext2 filesystem utilities. Homepage: http://e2fsprogs.sourceforge.net/
 
   * **[emailrelay: E-MailRelay 1.9 - DEPRECATED](../../docs/make/emailrelay.md)<a id='emailrelay'></a>**<br>
