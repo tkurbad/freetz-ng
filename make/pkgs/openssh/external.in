@@ -19,7 +19,7 @@ if EXTERNAL_FREETZ_PACKAGE_OPENSSH
 		default n
 		help
 			externals the following file(s):
-			 /usr/sbin/sshd-session
+			 /usr/lib/sshd-session
 
 	config EXTERNAL_FREETZ_PACKAGE_OPENSSH_ssh
 		bool "OpenSSH client (ssh)"
