@@ -13,6 +13,14 @@ if EXTERNAL_FREETZ_PACKAGE_OPENSSH
 			externals the following file(s):
 			 /usr/sbin/sshd
 
+	config EXTERNAL_FREETZ_PACKAGE_OPENSSH_sshd_session
+		bool "OpenSSH server per-session (sshd-session)"
+		depends on FREETZ_PACKAGE_OPENSSH_sshd_session
+		default n
+		help
+			externals the following file(s):
+			 /usr/sbin/sshd-session
+
 	config EXTERNAL_FREETZ_PACKAGE_OPENSSH_ssh
 		bool "OpenSSH client (ssh)"
 		depends on FREETZ_PACKAGE_OPENSSH_ssh

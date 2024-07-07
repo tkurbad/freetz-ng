@@ -46,7 +46,16 @@ if FREETZ_PACKAGE_OPENSSH
 		bool "SSH server (sshd)"
 		select FREETZ_LIB_libcrypto               if !FREETZ_PACKAGE_OPENSSH_STATIC && !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
 		select FREETZ_LIB_libz                    if !FREETZ_PACKAGE_OPENSSH_STATIC
+		select FREETZ_PACKAGE_OPENSSH_sshd_session if FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
 		default n
+
+		config FREETZ_PACKAGE_OPENSSH_sshd_session
+			bool "SSH server per-session (sshd-session)"
+			depends on FREETZ_PACKAGE_OPENSSH_sshd
+			depends on FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
+			default n
+			help
+				New binary since version 9.8.
 
 	comment "SSH client (ssh) (not available, provided by dropbear)"
 		depends on FREETZ_PACKAGE_DROPBEAR && !FREETZ_PACKAGE_DROPBEAR_SERVER_ONLY
