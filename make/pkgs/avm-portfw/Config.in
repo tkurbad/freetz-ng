@@ -5,7 +5,7 @@ config FREETZ_PACKAGE_AVM_PORTFW
 	depends on FREETZ_AVM_VERSION_06_8X_MIN && FREETZ_AVM_VERSION_07_5X_MAX
 	default n
 	help
-		For FritzOS 6.8x - 7.5x only.
+		For FritzOS 6.8x - 7.57 only (up to ar7cfg_version=24).
 		Configuration of port forwardings to the FritzBox itself
 		by using internet_forwardrules.
 		Warning:
