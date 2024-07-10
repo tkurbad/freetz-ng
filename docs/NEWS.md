@@ -1,5 +1,27 @@
 # NEWS
 
+ * __[2024-07-10](#2024-07-10)__<a id='2024-07-10'></a><br>
+   AVM wird zum 1. September 2024 ins Ausland verkauft.<br>
+   Dies wurde durch die Bundeswettbewerbsbehörde (Schweiz) bekannt.<br>
+   Die AVM-Geschäftsführer bleiben über Spree 24 Beteiligung GmbH (Deutschland) beteiligt.<br>
+   AVM wird an Rucio Investment S.à r.l. (Luxemburg) verkauft.<br>
+   Rucio gehört Imker Capital Partners (England).<br>
+   Hinter Imker steckt der "[..] Investor Rolly van Rappard von CVC".<br>
+   CVC Capital Partners (Luxemburg) ist aus der Formel-1 hinlänglich bekannt.<br>
+   AVM gibt selbst an von Imker und nicht von Rucio gekauft zu werden.<br>
+   <br>
+   Was mit den 890 Feierabendhabenden (oder arbeitet bei AVM um 19h noch jemand?) in Berlin<br>
+   wird teilt AVM nicht mit, aber dass "eine verstärkte Internationalisierung" angestrebt wird.<br>
+   <br>
+   Siehe<br>
+    - [bwb.gv.at - Zusammenschlussanmeldung Rucio Investment S.à r.l.; AVM Computersysteme Vertriebs GmbH](https://www.bwb.gv.at/zusammenschluesse/2024/6684#09)
+    - [computerbase.de - Fritz!Box-Hersteller: Imker Capital kauft AVM, Gründer behalten kleinen Anteil](https://www.computerbase.de/2024-07/fritz-box-hersteller-luxemburger-investmentgesellschaft-will-avm-kaufen/)
+    - [golem.de - AVM von Investmentfirma gekauft](https://www.golem.de/news/fritzbox-avm-von-investmentfirma-gekauft-2407-186892.htm)
+    - [deskmodder.de - Offiziell: FRITZ!Box-Hersteller AVM findet Investor für Nachfolge](https://www.deskmodder.de/blog/2024/07/10/offiziell-fritzbox-hersteller-avm-findet-investor-fuer-nachfolge/)
+    - [financefwd.com - Der neue Investor hinter SAP Fioneer](https://financefwd.com/de/sap-fioneer-dediq/)
+    - [motorsport-total.com - CVC: 370 Prozent Gewinn mit der Formel 1](https://www.motorsport-total.com/formel-1/news/cvc-370-prozent-gewinn-mit-der-formel-1-12092014)
+    - [avm.de - FRITZ!Box-Hersteller AVM regelt Nachfolge](https://avm.de/unternehmen/presse/presseinformationen/2024/07/fritzbox-hersteller-avm-regelt-nachfolge/)
+
  * __[2024-07-02](#2024-07-02)__<a id='2024-07-02'></a><br>
    AVM muss wegen Preistreiberei zum Schaden seiner eigenen Kunden knapp 16 Millionen Euro Geldbußen zahlen.<br>
    Andreas Mundt, Präsident des Bundeskartellamtes:<br>
