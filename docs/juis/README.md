@@ -81,9 +81,9 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 ### FOS-Labor
  - HWR 185: [FRITZ.Box_7490-07.59.image](http://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.59.image)
  - HWR 190: [FRITZ.Powerline_546E.118.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-546e/deutschland/fritz.os/FRITZ.Powerline_546E.118.07.15.image)
- - HWR 226: [FRITZ.Box_7590-07.90-114237-LabBETA.image](http://download.avm.de/labor/Smart24P1/7590/FRITZ.Box_7590-07.90-114237-LabBETA.image)
- - HWR 233: [FRITZ.Box_6591_Cable-07.90-114278-LabBETA.image](http://download.avm.de/labor/Smart24P1/6591Cable/FRITZ.Box_6591_Cable-07.90-114278-LabBETA.image)
- - HWR 236: [FRITZ.Box_7530-07.90-114234-LabBETA.image](http://download.avm.de/labor/Smart24P1/7530/FRITZ.Box_7530-07.90-114234-LabBETA.image)
+ - HWR 226: [FRITZ.Box_7590-07.90-114409-LabBETA.image](http://download.avm.de/labor/Smart24P1/7590/FRITZ.Box_7590-07.90-114409-LabBETA.image)
+ - HWR 233: [FRITZ.Box_6591_Cable-07.90-114394-LabBETA.image](http://download.avm.de/labor/Smart24P1/6591Cable/FRITZ.Box_6591_Cable-07.90-114394-LabBETA.image)
+ - HWR 236: [FRITZ.Box_7530-07.90-114403-LabBETA.image](http://download.avm.de/labor/Smart24P1/7530/FRITZ.Box_7530-07.90-114403-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
 
