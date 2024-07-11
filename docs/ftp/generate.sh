@@ -2,7 +2,8 @@
 # generates docs/ftp/README.md
 SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
-ping -c1 -W1 -w1 -q ftp.avm.de 2>/dev/null && SERVER="ftp.avm.de" || SERVER="download.avm.de"
+SERVER="ftp.avm.de"
+ping -c1 -W1 -w1 -q ftp.avm.de  # 2>/dev/null && SERVER="ftp.avm.de" || SERVER="download.avm.de"
 
 
 #get
