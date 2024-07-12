@@ -9,6 +9,7 @@ $(PKG)_SITE:=git_sparse@$($(PKG)_REPOSITORY),bootmanager
 ### MANPAGE:=https://github.com/PeterPawn/YourFritz/tree/main/bootmanager#readme
 ### CHANGES:=https://github.com/PeterPawn/YourFritz/commits/main/bootmanager
 ### CVSREPO:=https://github.com/PeterPawn/YourFritz/tree/main/bootmanager
+### SUPPORT:=PeterPawn
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
