@@ -2,6 +2,9 @@ $(call TOOLS_INIT, 6.4)
 $(PKG)_SOURCE:=ncurses-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
 $(PKG)_SITE:=@GNU/ncurses
+### WEBSITE:=https://invisible-island.net/ncurses/
+### MANPAGE:=https://invisible-island.net/ncurses/announce.html
+### CHANGES:=https://invisible-island.net/ncurses/NEWS.html
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
