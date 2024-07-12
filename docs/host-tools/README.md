@@ -104,7 +104,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[python2 2.7.18](python2-host.md)<a id='python2-host'></a>**<br>
 
-  * **[python3 3.11.9](python3-host.md)<a id='python3-host'></a>**<br>
+  * **[python3 3.12.4](python3-host.md)<a id='python3-host'></a>**<br>
 
 ### S
 
