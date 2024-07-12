@@ -260,7 +260,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### N
 
-  * **[ncurses (libncurses.so) 6.4](ncurses.md)<a id='ncurses'></a>**<br>
+  * **[ncurses (libncurses.so) 6.5](ncurses.md)<a id='ncurses'></a>**<br>
     ncurses is a programming library providing an API, allowing the programmer to write text user interfaces in a terminal-independent manner. It also optimizes screen changes, in order to reduce the latency experienced when using remote shells. Ncurses stands for "new curses", and is a replacement for the discontinued 4.4 BSD classic curses.
 
   * **[ncursesw (libncursesw.so) 6.4](ncursesw.md)<a id='ncursesw'></a>**<br>
