@@ -97,6 +97,7 @@ Latest changes
    * Lynx 2.9.2
    * minisatip 1.0.4/1.3.6
    * Nano 8.0
+   * ncurses 6.5
    * Nmap 4.76/5.51/7.95
    * OpenSSH 9.3p2/9.8p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.14

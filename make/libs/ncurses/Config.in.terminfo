@@ -603,17 +603,17 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_alacritty
-		bool "alacritty (3683 Bytes)"
+		bool "alacritty (3749 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_alacrittyPLUScommon
-		bool "alacritty+common (3617 Bytes)"
+		bool "alacritty+common (3683 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_alacrittyMINUSdirect
-		bool "alacritty-direct (3639 Bytes)"
+		bool "alacritty-direct (3703 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -884,6 +884,11 @@ if FREETZ_SHARE_terminfo
 
 	config FREETZ_SHARE_terminfo_ansi80x60MINUSmono
 		bool "ansi80x60-mono (1252 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_ansiPLUSapparrows
+		bool "ansi+apparrows (268 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -2632,6 +2637,21 @@ if FREETZ_SHARE_terminfo
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
+	config FREETZ_SHARE_terminfo_contour
+		bool "contour (3275 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_contourMINUSdirect
+		bool "contour-direct (3240 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_contourMINUSlatest
+		bool "contour-latest (3275 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
 	config FREETZ_SHARE_terminfo_cops
 		bool "cops (370 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
@@ -4053,7 +4073,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_domterm
-		bool "domterm (3309 Bytes)"
+		bool "domterm (3375 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -4458,17 +4478,17 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_foot
-		bool "foot (3486 Bytes)"
+		bool "foot (3617 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_footPLUSbase
-		bool "foot+base (3232 Bytes)"
+		bool "foot+base (3363 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_footMINUSdirect
-		bool "foot-direct (3465 Bytes)"
+		bool "foot-direct (3594 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -5443,12 +5463,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_hterm
-		bool "hterm (3631 Bytes)"
+		bool "hterm (3697 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_htermMINUS256color
-		bool "hterm-256color (3861 Bytes)"
+		bool "hterm-256color (3927 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -6003,17 +6023,17 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_kitty
-		bool "kitty (3409 Bytes)"
+		bool "kitty (3554 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_kittyPLUScommon
-		bool "kitty+common (3171 Bytes)"
+		bool "kitty+common (3316 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_kittyMINUSdirect
-		bool "kitty-direct (3396 Bytes)"
+		bool "kitty-direct (3539 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -6063,57 +6083,57 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_konsole
-		bool "konsole (1994 Bytes)"
+		bool "konsole (2139 Bytes)"
 		depends on FREETZ_SHARE_terminfo
 		default y
 
 	config FREETZ_SHARE_terminfo_konsoleMINUS16color
-		bool "konsole-16color (2280 Bytes)"
+		bool "konsole-16color (2425 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUS256color
-		bool "konsole-256color (2130 Bytes)"
+		bool "konsole-256color (2275 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSbase
-		bool "konsole-base (1864 Bytes)"
+		bool "konsole-base (2009 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSdirect
-		bool "konsole-direct (2170 Bytes)"
+		bool "konsole-direct (2313 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSlinux
-		bool "konsole-linux (1940 Bytes)"
+		bool "konsole-linux (2085 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSsolaris
-		bool "konsole-solaris (1950 Bytes)"
+		bool "konsole-solaris (2095 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSvt100
-		bool "konsole-vt100 (1950 Bytes)"
+		bool "konsole-vt100 (2095 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSvt420pc
-		bool "konsole-vt420pc (1944 Bytes)"
+		bool "konsole-vt420pc (2089 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSxf3x
-		bool "konsole-xf3x (1960 Bytes)"
+		bool "konsole-xf3x (2105 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_konsoleMINUSxf4x
-		bool "konsole-xf4x (2034 Bytes)"
+		bool "konsole-xf4x (2179 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -6224,6 +6244,11 @@ if FREETZ_SHARE_terminfo
 
 	config FREETZ_SHARE_terminfo_linuxPLUSdecid
 		bool "linux+decid (685 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_linuxPLUSkbs
+		bool "linux+kbs (166 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -6613,22 +6638,22 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_mintty
-		bool "mintty (3847 Bytes)"
+		bool "mintty (3992 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_minttyPLUScommon
-		bool "mintty+common (3781 Bytes)"
+		bool "mintty+common (3926 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_minttyMINUSdirect
-		bool "mintty-direct (3873 Bytes)"
+		bool "mintty-direct (4016 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_mlterm
-		bool "mlterm (3186 Bytes)"
+		bool "mlterm (3265 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -6638,17 +6663,17 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_mltermMINUS256color
-		bool "mlterm-256color (3404 Bytes)"
+		bool "mlterm-256color (3483 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_mlterm3
-		bool "mlterm3 (3192 Bytes)"
+		bool "mlterm3 (3271 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_mltermMINUSdirect
-		bool "mlterm-direct (3359 Bytes)"
+		bool "mlterm-direct (3438 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -6703,12 +6728,17 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_mosh
-		bool "mosh (3414 Bytes)"
+		bool "mosh (3480 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_moshMINUS256color
-		bool "mosh-256color (3500 Bytes)"
+		bool "mosh-256color (3566 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_mostlike
+		bool "mostlike (1539 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -6769,6 +6799,11 @@ if FREETZ_SHARE_terminfo
 
 	config FREETZ_SHARE_terminfo_msMINUSvt100PLUS
 		bool "ms-vt100+ (1653 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_msMINUSvt100MINUS16color
+		bool "ms-vt100-16color (1927 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -7218,7 +7253,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_netbsd6
-		bool "netbsd6 (1597 Bytes)"
+		bool "netbsd6 (1595 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -7894,6 +7929,11 @@ if FREETZ_SHARE_terminfo
 
 	config FREETZ_SHARE_terminfo_oldsun
 		bool "oldsun (525 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_oldxtermPLUSsmPLUS1006
+		bool "oldxterm+sm+1006 (871 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -8783,12 +8823,17 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_putty
-		bool "putty (2447 Bytes)"
+		bool "putty (2530 Bytes)"
 		depends on FREETZ_SHARE_terminfo
 		default y
 
 	config FREETZ_SHARE_terminfo_puttyMINUS256color
-		bool "putty-256color (2491 Bytes)"
+		bool "putty-256color (2574 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_puttyPLUScursor
+		bool "putty+cursor (116 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -8848,12 +8893,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_puttyMINUSnoapp
-		bool "putty-noapp (2465 Bytes)"
+		bool "putty-noapp (2548 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_puttyMINUSsco
-		bool "putty-sco (2523 Bytes)"
+		bool "putty-sco (2606 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -8863,12 +8908,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_puttyMINUSscreen
-		bool "putty-screen (2517 Bytes)"
+		bool "putty-screen (2600 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_puttyMINUSvt100
-		bool "putty-vt100 (2427 Bytes)"
+		bool "putty-vt100 (2510 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9182,6 +9227,26 @@ if FREETZ_SHARE_terminfo
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
+	config FREETZ_SHARE_terminfo_reportPLUSda2
+		bool "report+da2 (118 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_reportPLUSversion
+		bool "report+version (159 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_rio
+		bool "rio (3733 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_rioMINUSdirect
+		bool "rio-direct (3679 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
 	config FREETZ_SHARE_terminfo_rt6221
 		bool "rt6221 (816 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
@@ -9403,7 +9468,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_screenMINUSbceDOTkonsole
-		bool "screen-bce.konsole (1986 Bytes)"
+		bool "screen-bce.konsole (2125 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9423,7 +9488,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_screenMINUSbceDOTxtermMINUSnew
-		bool "screen-bce.xterm-new (3603 Bytes)"
+		bool "screen-bce.xterm-new (3669 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9448,12 +9513,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTkonsole
-		bool "screen.konsole (1978 Bytes)"
+		bool "screen.konsole (2117 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTkonsoleMINUS256color
-		bool "screen.konsole-256color (2108 Bytes)"
+		bool "screen.konsole-256color (2247 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9518,12 +9583,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTmlterm
-		bool "screen.mlterm (3148 Bytes)"
+		bool "screen.mlterm (3221 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTmltermMINUS256color
-		bool "screen.mlterm-256color (3288 Bytes)"
+		bool "screen.mlterm-256color (3361 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9533,12 +9598,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTputty
-		bool "screen.putty (2415 Bytes)"
+		bool "screen.putty (2498 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTputtyMINUS256color
-		bool "screen.putty-256color (2473 Bytes)"
+		bool "screen.putty-256color (2556 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9573,12 +9638,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTvte
-		bool "screen.vte (3508 Bytes)"
+		bool "screen.vte (3520 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTvteMINUS256color
-		bool "screen.vte-256color (3630 Bytes)"
+		bool "screen.vte-256color (3642 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9588,12 +9653,12 @@ if FREETZ_SHARE_terminfo
 		default y
 
 	config FREETZ_SHARE_terminfo_screenDOTxtermMINUS256color
-		bool "screen.xterm-256color (3585 Bytes)"
+		bool "screen.xterm-256color (3651 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTxtermMINUSnew
-		bool "screen.xterm-new (3717 Bytes)"
+		bool "screen.xterm-new (3783 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -9603,7 +9668,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_screenDOTxtermMINUSxfree86
-		bool "screen.xterm-xfree86 (3717 Bytes)"
+		bool "screen.xterm-xfree86 (3783 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -10268,7 +10333,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_terminology
-		bool "terminology (3394 Bytes)"
+		bool "terminology (3539 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -10283,7 +10348,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_terminologyMINUS1DOT8DOT1
-		bool "terminology-1.8.1 (3408 Bytes)"
+		bool "terminology-1.8.1 (3553 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -10428,17 +10493,17 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_tmux
-		bool "tmux (3171 Bytes)"
+		bool "tmux (3316 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_tmuxMINUS256color
-		bool "tmux-256color (3281 Bytes)"
+		bool "tmux-256color (3426 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_tmuxMINUSdirect
-		bool "tmux-direct (3419 Bytes)"
+		bool "tmux-direct (3562 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -11553,12 +11618,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_vscode
-		bool "vscode (3403 Bytes)"
+		bool "vscode (3469 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_vscodeMINUSdirect
-		bool "vscode-direct (3441 Bytes)"
+		bool "vscode-direct (3505 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -11634,6 +11699,16 @@ if FREETZ_SHARE_terminfo
 
 	config FREETZ_SHARE_terminfo_vt100MINUSnavMINUSw
 		bool "vt100-nav-w (1181 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_vt100PLUSnoapp
+		bool "vt100+noapp (420 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_vt100PLUSnoappPLUSpc
+		bool "vt100+noapp+pc (402 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -11972,6 +12047,11 @@ if FREETZ_SHARE_terminfo
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
+	config FREETZ_SHARE_terminfo_vt52PLUSarrows
+		bool "vt52+arrows (234 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
 	config FREETZ_SHARE_terminfo_vt52MINUSbasic
 		bool "vt52-basic (397 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
@@ -11998,7 +12078,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_vte
-		bool "vte (3534 Bytes)"
+		bool "vte (3546 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -12023,22 +12103,22 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_vteMINUS2017
-		bool "vte-2017 (3255 Bytes)"
+		bool "vte-2017 (3267 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_vteMINUS2018
-		bool "vte-2018 (3526 Bytes)"
+		bool "vte-2018 (3538 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_vteMINUS256color
-		bool "vte-256color (3754 Bytes)"
+		bool "vte-256color (3766 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_vteMINUSdirect
-		bool "vte-direct (3702 Bytes)"
+		bool "vte-direct (3714 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -12067,6 +12147,16 @@ if FREETZ_SHARE_terminfo
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
+	config FREETZ_SHARE_terminfo_wezterm
+		bool "wezterm (4003 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
+	config FREETZ_SHARE_terminfo_winconsole
+		bool "winconsole (1828 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
 	config FREETZ_SHARE_terminfo_wren
 		bool "wren (615 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
@@ -12083,12 +12173,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_wsvt25
-		bool "wsvt25 (1597 Bytes)"
+		bool "wsvt25 (1595 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_wsvt25m
-		bool "wsvt25m (1607 Bytes)"
+		bool "wsvt25m (1605 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13338,7 +13428,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xgterm
-		bool "xgterm (1566 Bytes)"
+		bool "xgterm (1572 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13613,37 +13703,32 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xterm
-		bool "xterm (3818 Bytes)"
+		bool "xterm (3977 Bytes)"
 		depends on FREETZ_SHARE_terminfo
 		default y
 
 	config FREETZ_SHARE_terminfo_xterm1
-		bool "xterm1 (3802 Bytes)"
+		bool "xterm1 (3961 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUS1002
-		bool "xterm-1002 (3848 Bytes)"
+		bool "xterm-1002 (3980 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUS1003
-		bool "xterm-1003 (3846 Bytes)"
+		bool "xterm-1003 (3978 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUS1005
-		bool "xterm-1005 (3812 Bytes)"
+		bool "xterm-1005 (3971 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUS1006
-		bool "xterm-1006 (3798 Bytes)"
-		depends on FREETZ_SHARE_terminfo_showall
-		default n
-
-	config FREETZ_SHARE_terminfo_xtermMINUS16color
-		bool "xterm-16color (4058 Bytes)"
+		bool "xterm-1006 (3957 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13658,7 +13743,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUS256color
-		bool "xterm-256color (3882 Bytes)"
+		bool "xterm-256color (4041 Bytes)"
 		depends on FREETZ_SHARE_terminfo
 		default y
 
@@ -13678,7 +13763,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUS88color
-		bool "xterm-88color (3880 Bytes)"
+		bool "xterm-88color (4039 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13717,6 +13802,11 @@ if FREETZ_SHARE_terminfo
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
+	config FREETZ_SHARE_terminfo_xtermPLUSappPLUSpc
+		bool "xterm+app+pc (398 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
 	config FREETZ_SHARE_terminfo_xtermMINUSbasic
 		bool "xterm-basic (1828 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
@@ -13737,13 +13827,18 @@ if FREETZ_SHARE_terminfo
 		depends on FREETZ_SHARE_terminfo
 		default y
 
+	config FREETZ_SHARE_terminfo_xtermPLUSdecedit
+		bool "xterm+decedit (484 Bytes)"
+		depends on FREETZ_SHARE_terminfo_showall
+		default n
+
 	config FREETZ_SHARE_terminfo_xtermPLUSdirect
 		bool "xterm+direct (1031 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSdirect
-		bool "xterm-direct (3839 Bytes)"
+		bool "xterm-direct (3996 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13753,7 +13848,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSdirect16
-		bool "xterm-direct16 (3915 Bytes)"
+		bool "xterm-direct16 (4072 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13763,17 +13858,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSdirect2
-		bool "xterm-direct2 (3829 Bytes)"
+		bool "xterm-direct2 (3986 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermPLUSdirect256
 		bool "xterm+direct256 (1153 Bytes)"
-		depends on FREETZ_SHARE_terminfo_showall
-		default n
-
-	config FREETZ_SHARE_terminfo_xtermMINUSdirect256
-		bool "xterm-direct256 (3969 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13783,12 +13873,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermPLUSfocus
-		bool "xterm+focus (93 Bytes)"
+		bool "xterm+focus (132 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUShp
-		bool "xterm-hp (2586 Bytes)"
+		bool "xterm-hp (2652 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13798,7 +13888,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermDOTjs
-		bool "xterm.js (3403 Bytes)"
+		bool "xterm.js (3469 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13828,12 +13918,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSnew
-		bool "xterm-new (3812 Bytes)"
+		bool "xterm-new (3971 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSnic
-		bool "xterm-nic (3828 Bytes)"
+		bool "xterm-nic (3987 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13848,12 +13938,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSnoapp
-		bool "xterm-noapp (3774 Bytes)"
+		bool "xterm-noapp (3933 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermPLUSnofkeys
-		bool "xterm+nofkeys (2354 Bytes)"
+		bool "xterm+nofkeys (2420 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13873,12 +13963,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSp370
-		bool "xterm-p370 (3798 Bytes)"
+		bool "xterm-p370 (3957 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSp371
-		bool "xterm-p371 (3832 Bytes)"
+		bool "xterm-p371 (3991 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13953,7 +14043,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSsco
-		bool "xterm-sco (2554 Bytes)"
+		bool "xterm-sco (2620 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13973,12 +14063,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermPLUSsmPLUS1002
-		bool "xterm+sm+1002 (891 Bytes)"
+		bool "xterm+sm+1002 (930 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermPLUSsmPLUS1003
-		bool "xterm+sm+1003 (889 Bytes)"
+		bool "xterm+sm+1003 (928 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -13993,12 +14083,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermsMINUSsun
-		bool "xterms-sun (2734 Bytes)"
+		bool "xterms-sun (2800 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSsun
-		bool "xterm-sun (2718 Bytes)"
+		bool "xterm-sun (2784 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -14018,12 +14108,12 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSutf8
-		bool "xterm-utf8 (3835 Bytes)"
+		bool "xterm-utf8 (3994 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSvt220
-		bool "xterm-vt220 (2410 Bytes)"
+		bool "xterm-vt220 (2476 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -14043,7 +14133,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSx10mouse
-		bool "xterm-x10mouse (3794 Bytes)"
+		bool "xterm-x10mouse (3953 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -14053,7 +14143,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSx11hilite
-		bool "xterm-x11hilite (3822 Bytes)"
+		bool "xterm-x11hilite (3981 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
@@ -14063,7 +14153,7 @@ if FREETZ_SHARE_terminfo
 		default n
 
 	config FREETZ_SHARE_terminfo_xtermMINUSx11mouse
-		bool "xterm-x11mouse (3806 Bytes)"
+		bool "xterm-x11mouse (3965 Bytes)"
 		depends on FREETZ_SHARE_terminfo_showall
 		default n
 
