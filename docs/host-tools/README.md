@@ -8,7 +8,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[automake 1.17](automake-host.md)<a id='automake-host'></a>**<br>
 
-  * **[avm-rle 0](avm-rle-host.md)<a id='avm-rle-host'></a>**<br>
+  * **[avm-rle 1.0](avm-rle-host.md)<a id='avm-rle-host'></a>**<br>
 
 ### B
 
@@ -38,7 +38,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[fastjar 0.98](fastjar-host.md)<a id='fastjar-host'></a>**<br>
 
-  * **[find-squashfs 0](find-squashfs-host.md)<a id='find-squashfs-host'></a>**<br>
+  * **[find-squashfs 1.0](find-squashfs-host.md)<a id='find-squashfs-host'></a>**<br>
 
 ### G
 
@@ -60,7 +60,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[lzma1 465](lzma1-host.md)<a id='lzma1-host'></a>**<br>
 
-  * **[lzma2eva 0](lzma2eva-host.md)<a id='lzma2eva-host'></a>**<br>
+  * **[lzma2eva 1.0](lzma2eva-host.md)<a id='lzma2eva-host'></a>**<br>
 
   * **[lzma2 5.4.6](lzma2-host.md)<a id='lzma2-host'></a>**<br>
 
@@ -126,7 +126,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[tar 1.35](tar-host.md)<a id='tar-host'></a>**<br>
 
-  * **[tichksum 0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
+  * **[tichksum 1.0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
 
   * **[tools 2024-07-10](tools-host.md)<a id='tools-host'></a>**<br>
 
