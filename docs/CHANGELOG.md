@@ -59,6 +59,7 @@ Latest changes
    * fakeroot 1.35
    * kconfig 6.9
    * meson 1.5.0
+   * ncurses 6.5
    * ninja 1.12.1
    * openssl 3.0.14
    * pkgconf 2.2.0
