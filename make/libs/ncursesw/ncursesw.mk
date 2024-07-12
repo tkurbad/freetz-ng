@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 6.4)
+$(call PKG_INIT_LIB, 6.5)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=ncurses-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
+$(PKG)_HASH:=136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6
 $(PKG)_SITE:=@GNU/$(pkg)
 #
 ### WEBSITE:=https://invisible-island.net/ncurses/
