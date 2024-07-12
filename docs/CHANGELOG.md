@@ -57,7 +57,7 @@ Latest changes
    * cpio 2.15
    * fakeroot 1.35
    * kconfig 6.9
-   * meson 1.4.1
+   * meson 1.5.0
    * ninja 1.12.1
    * openssl 3.0.14
    * precompiled host-tools 2024-07-10
