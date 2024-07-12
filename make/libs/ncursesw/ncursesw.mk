@@ -117,14 +117,14 @@ $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR)
 
 
 
-$(pkg)-clean: 
+$(pkg)-clean:
 	-$(SUBMAKE) -C $(NCURSESW_DIR) clean
 	$(RM) \
 		$(NCURSESW_LIBNAMES_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib%*) \
 		$(NCURSESW_LIBNAMES_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/%.pc) \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libncursesw* \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/{ncurses,ncurses_dll,term,curses,unctrl,termcap,eti,menu,form,panel}.h \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/$(NCURSESW_LIBCONFIG_SHORT)
+# shared	$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/{ncurses,ncurses_dll,term,curses,unctrl,termcap,eti,menu,form,panel}.h \
 
 
 
