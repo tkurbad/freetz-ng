@@ -96,7 +96,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[patchelf 0.14.5/0.15.0](patchelf-host.md)<a id='patchelf-host'></a>**<br>
 
-  * **[pkgconf 2.1.1](pkgconf-host.md)<a id='pkgconf-host'></a>**<br>
+  * **[pkgconf 2.2.0](pkgconf-host.md)<a id='pkgconf-host'></a>**<br>
 
   * **[prelink 20130503](prelink-host.md)<a id='prelink-host'></a>**<br>
 
