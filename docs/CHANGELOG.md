@@ -64,7 +64,7 @@ Latest changes
    * pkgconf 2.2.0
    * precompiled host-tools 2024-07-10
    * precompiled toolchains r23751
-   * python 3.11.9
+   * python 3.12.4
    * wget 1.24.5
 
  - AVM sources:
