@@ -2,6 +2,10 @@ $(call TOOLS_INIT, 3.11.9)
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=9b1e896523fc510691126c864406d9360a3d1e986acbda59cda57b5abda45b87
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
+### WEBSITE:=https://www.python.org/
+### MANPAGE:=https://docs.python.org/3/
+### CHANGES:=https://www.python.org/downloads/
+### CVSREPO:=https://github.com/python/cpython
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
 $(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))

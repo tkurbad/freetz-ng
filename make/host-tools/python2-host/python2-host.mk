@@ -2,6 +2,10 @@ $(call TOOLS_INIT, 2.7.18)
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
+### WEBSITE:=https://www.python.org/
+### MANPAGE:=https://docs.python.org/2/
+### CHANGES:=https://www.python.org/downloads/
+### CVSREPO:=https://github.com/python/cpython
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
 $(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
@@ -14,6 +18,7 @@ $(PKG)_CONFIGURE_OPTIONS += --host=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --target=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/usr
 #
+
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
