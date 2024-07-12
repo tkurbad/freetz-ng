@@ -6,7 +6,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[autoconf 2.72](autoconf-host.md)<a id='autoconf-host'></a>**<br>
 
-  * **[automake 1.16.5](automake-host.md)<a id='automake-host'></a>**<br>
+  * **[automake 1.17](automake-host.md)<a id='automake-host'></a>**<br>
 
   * **[avm-rle 0](avm-rle-host.md)<a id='avm-rle-host'></a>**<br>
 

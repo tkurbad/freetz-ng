@@ -1,4 +1,4 @@
-# automake 1.16.5
+# automake 1.17
  - Homepage: [https://www.gnu.org/software/automake/](https://www.gnu.org/software/automake/)
  - Manpage: [https://www.gnu.org/software/automake/manual/automake.html](https://www.gnu.org/software/automake/manual/automake.html)
  - Changelog: [https://ftp.gnu.org/gnu/automake/](https://ftp.gnu.org/gnu/automake/)
