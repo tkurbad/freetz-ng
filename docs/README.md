@@ -16,6 +16,7 @@ Why the [ADDONS](ADDONS.md) of the "Digitale Elite" are not supported here.
 [Libraries](libs/README.md)<br>
 [Patches](patches/README.md)<br>
 [Themes](themes/README.md)<br>
+[Host-Tools](host-tools/README.md)<br>
 
 ### Generated
 [Juis](juis/README.md) - Onlineupdate<br>
