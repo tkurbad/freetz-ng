@@ -7,6 +7,7 @@ on:
       - '.github/workflows/generate_docs.yml'
       - 'docs/generate.sh'
       - 'docs/*/generate.sh'
+      - 'make/host-tools/*/*.mk'
       - 'make/pkgs/*/Config.in'
       - 'make/pkgs/*/*.mk'
       - 'make/libs/*/Config.in'
