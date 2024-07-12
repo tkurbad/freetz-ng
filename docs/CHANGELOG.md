@@ -80,6 +80,7 @@ Latest changes
    * BIRD 1.6.8/2.15.1
    * Bftpd 6.2
    * bvi 1.4.2
+   * CA-bundle 2024-07-02
    * CCID 1.5.5
    * dtach 0.9
    * Dropbear 2024.85
