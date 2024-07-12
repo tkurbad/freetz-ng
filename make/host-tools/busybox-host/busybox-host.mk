@@ -2,6 +2,10 @@ $(call TOOLS_INIT, 1.36.1)
 $(PKG)_SOURCE:=busybox-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH:=b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314
 $(PKG)_SITE:=https://www.busybox.net/downloads
+### WEBSITE:=https://www.busybox.net/
+### MANPAGE:=https://www.busybox.net/downloads/BusyBox.html
+### CHANGES:=https://www.busybox.net/news.html
+### CVSREPO:=https://git.busybox.net/busybox/
 
 $(PKG)_DEPENDS_ON:=tar-host
 
