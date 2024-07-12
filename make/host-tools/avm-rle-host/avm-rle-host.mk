@@ -1,4 +1,4 @@
-$(call TOOLS_INIT, 0)
+$(call TOOLS_INIT, 1.0)
 
 
 $(TOOLS_LOCALSOURCE_PACKAGE)

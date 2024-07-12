@@ -1,4 +1,4 @@
-$(call TOOLS_INIT, 0)
+$(call TOOLS_INIT, 1.0)
 
 $(PKG)_BINS:=lzma2eva eva2lzma bzimage2eva eva2bzimage
 
