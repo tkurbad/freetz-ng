@@ -2,6 +2,10 @@ $(call TOOLS_INIT, 2.5.1)
 $(PKG)_SOURCE:=scons-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=0b25218ae7b46a967db42f2a53721645b3d42874a65f9552ad16ce26d30f51f2
 $(PKG)_SITE:=@SF/scons
+### WEBSITE:=https://www.scons.org/
+### MANPAGE:=https://github.com/SCons/scons/wiki
+### CHANGES:=https://github.com/SCons/scons/releases
+### CVSREPO:=https://github.com/SCons/scons
 
 $(PKG)_DEPENDS_ON+=python2-host
 

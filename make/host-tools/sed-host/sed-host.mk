@@ -2,6 +2,10 @@ $(call TOOLS_INIT, 4.9)
 $(PKG)_SOURCE:=sed-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=6e226b732e1cd739464ad6862bd1a1aba42d7982922da7a53519631d24975181
 $(PKG)_SITE:=@GNU/sed
+### WEBSITE:=https://www.gnu.org/software/sed/
+### MANPAGE:=https://sed.sourceforge.io/#docs
+### CHANGES:=https://git.savannah.gnu.org/cgit/sed.git/refs/tags
+### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=sed.git
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/sed/sed
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/sed
