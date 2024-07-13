@@ -17,11 +17,11 @@ $(PKG)_TARGET_DIRECTORY:=$(HOST_TOOLS_DIR)/usr/lib/python$(call GET_MAJOR_VERSIO
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 
-$($(PKG)_TARGET_DIRECTORY)/.installed: $($(PKG)_DIR)/.unpacked
+$($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.unpacked
 	cp -fa $(PYTHON3_PACKAGING_HOST_DIRECTORY) $(dir $(PYTHON3_PACKAGING_HOST_TARGET_DIRECTORY))
 	@touch $@
 
-$(pkg)-precompiled: $($(PKG)_TARGET_DIRECTORY)/.installed
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
