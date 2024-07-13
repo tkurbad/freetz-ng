@@ -62,6 +62,7 @@ TOOLS_CONDITIONAL+=lzma2-host
 TOOLS_CONDITIONAL+=openssl-host
 TOOLS_CONDITIONAL+=python2-host
 TOOLS_CONDITIONAL+=python3-host
+TOOLS_CONDITIONAL+=python3-packaging-host
 TOOLS_CONDITIONAL+=scons-host
 TOOLS_CONDITIONAL+=wget-host
 TOOLS_CONDITIONAL+=xdelta-host

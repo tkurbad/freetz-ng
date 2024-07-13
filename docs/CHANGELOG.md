@@ -66,6 +66,7 @@ Latest changes
    * precompiled host-tools 2024-07-12
    * precompiled toolchains r23751
    * python 3.12.4
+   * python3-packaging 24.1
    * wget 1.24.5
 
  - AVM sources:
