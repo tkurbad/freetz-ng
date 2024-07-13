@@ -63,7 +63,7 @@ Latest changes
    * ninja 1.12.1
    * openssl 3.0.14
    * pkgconf 2.2.0
-   * precompiled host-tools 2024-07-12
+   * precompiled host-tools 2024-07-13
    * precompiled toolchains r23751
    * python 3.12.4
    * python3-packaging 24.1
