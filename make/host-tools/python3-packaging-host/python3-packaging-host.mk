@@ -29,6 +29,6 @@ $(pkg)-clean:
 $(pkg)-dirclean:
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) $(PYTHON3_PACKAGING_HOST_TARGET_DIRECTORY)
+	$(RM) -r $(PYTHON3_PACKAGING_HOST_TARGET_DIRECTORY)
 
 $(TOOLS_FINISH)
