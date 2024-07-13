@@ -33,7 +33,7 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_REMOVE_WEBSRV),,etc/init.d/rc.websrv usr/bin/we
 $(PKG)_EXCLUDED += $(if $(FREETZ_BUSYBOX_TELNETD),,etc/init.d/rc.telnetd usr/lib/cgi-bin/conf.avm/10-telnetd.sh)
 $(PKG)_EXCLUDED += $(if $(or $(call not-y,$(EXTERNAL_ENABLED)),$(EXTERNAL_DOWNLOADER)),usr/lib/cgi-bin/mod/conf/40-external.sh etc/init.d/rc.external etc/external.pkg)
 $(PKG)_EXCLUDED += $(if $(EXTERNAL_ENABLED),,/usr/mww/cgi-bin/update/external.cgi /usr/mww/cgi-bin/update/do_external.cgi)
-$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_VERSION_07_8X_MIN),usr/mww/cgi-bin/update/)
+#$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_FWLAYOUT_6),usr/mww/cgi-bin/update/)
 $(PKG)_EXCLUDED += $(if $(FREETZ_ADD_UIMODS),,usr/mww/cgi-bin/uimods.cgi etc/uimods.conf usr/mww/cgi-bin/exec.d/uimods.sh)
 
 $(PKG)_EXCLUDED += $(if $(FREETZ_BUSYBOX_FEATURE_WTMP),,usr/lib/cgi-bin/mod/conf/60-utmp_wtmp.sh)
