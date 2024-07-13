@@ -124,6 +124,7 @@ Latest changes
 
  - Libraries:
    * attr 2.5.2
+   * glib2 2.32.4/2.81.0
    * harfbuzz 9.0.0
    * libidn 1.42
    * libmaxminddb 1.10.0
