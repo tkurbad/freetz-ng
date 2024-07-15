@@ -693,7 +693,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_7690-07.61.image"                                                   if FREETZ_TYPE_7690 &&                        FREETZ_TYPE_FIRMWARE_07_5X
 	#
-	default "FRITZ.Smart_Gateway-07.60-Release.image"                                      if FREETZ_TYPE_GATE &&                        FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Smart_Gateway-07.61-Release.image"                                      if FREETZ_TYPE_GATE &&                        FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "fw_Speedport_W501V_v_28.04.38.image"                                          if FREETZ_TYPE_W501V
 
