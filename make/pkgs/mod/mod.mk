@@ -45,10 +45,8 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_REMOVE_FREETZ_INFO),usr/lib/cgi-bin/mod/do_down
 $(PKG)_EXCLUDED += $(if $(FREETZ_ADD_JUIS_CHECK),,usr/mww/cgi-bin/system_juis.cgi usr/mww/cgi-bin/exec.d/juis_check.sh usr/bin/juis)
 $(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE),,usr/mww/cgi-bin/system_lfs.cgi usr/mww/cgi-bin/exec.d/linux_fs_start.sh)
 
-ifneq ($(strip $(FREETZ_TYPE_7690)),y)
-ifneq ($(strip $(FREETZ_TYPE_6000)),y)
+ifeq ($(strip $(FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN)),y)
 $(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_FWLAYOUT_5),usr/mww/cgi-bin/system_lfs.cgi usr/mww/cgi-bin/exec.d/linux_fs_start.sh)
-endif
 endif
 
 $(pkg):
