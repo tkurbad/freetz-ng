@@ -98,7 +98,7 @@ Latest changes
    * Lighttpd 1.4.76
    * Lynx 2.9.2
    * minisatip 1.0.4/1.3.6
-   * Nano 8.0
+   * Nano 8.1
    * ncurses 6.5
    * ncursesw 6.5
    * Nmap 4.76/5.51/7.95
