@@ -1,6 +1,6 @@
 --- src/openvpn/forward.c
 +++ src/openvpn/forward.c
-@@ -812,7 +812,10 @@
+@@ -860,7 +860,10 @@
  
      status = link_socket_read(c->c2.link_socket,
                                &c->c2.buf,
@@ -12,7 +12,7 @@
  
      if (socket_connection_reset(c->c2.link_socket, status))
      {
-@@ -1623,7 +1626,10 @@
+@@ -1671,7 +1674,10 @@
                  /* Send packet */
                  size = link_socket_write(c->c2.link_socket,
                                           &c->c2.to_link,
