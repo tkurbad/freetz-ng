@@ -112,7 +112,7 @@ Latest changes
    * socat 1.8.0.0
    * sslh 2.1.2
    * rsync 3.3.0
-   * strace 4.9/5.0/6.9
+   * strace 4.9/5.0/6.10
    * Sudo 1.9.15p5
    * SQLite 3.45.3
    * Tinyproxy 1.11.2
