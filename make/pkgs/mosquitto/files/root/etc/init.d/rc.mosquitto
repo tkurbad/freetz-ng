@@ -17,6 +17,7 @@ start() {
 
 case "$1" in
 	""|load)
+		modlib_add_user_and_group nobody
 		if [ ! -d /var/run/$DAEMON ]; then
 			mkdir -p /var/run/$DAEMON && chown nobody:nobody /var/run/$DAEMON
 		fi
@@ -24,7 +25,7 @@ case "$1" in
 
 		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
-                modreg file $DAEMON extra 'extra' 0 $DAEMON_extra
+		modreg file $DAEMON extra 'extra' 0 $DAEMON_extra
 
 		modlib_start $MOSQUITTO_ENABLED
 		;;
