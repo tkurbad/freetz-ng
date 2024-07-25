@@ -57,7 +57,7 @@ Latest changes
    * cmake 3.30.1
    * cpio 2.15
    * fakeroot 1.35
-   * kconfig 6.9
+   * kconfig 6.10
    * meson 1.5.0
    * ncurses 6.5
    * ninja 1.12.1

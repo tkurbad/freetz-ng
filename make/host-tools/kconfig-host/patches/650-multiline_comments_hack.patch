@@ -11,7 +11,7 @@
  				}
 --- scripts/kconfig/menu.c
 +++ scripts/kconfig/menu.c
-@@ -159,11 +159,13 @@
+@@ -180,11 +180,13 @@
  {
  	struct property *prop = menu_add_prop(type, NULL, dep);
  

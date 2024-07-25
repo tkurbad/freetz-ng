@@ -9,4 +9,4 @@ Use explicitly 'flex' as lexer - else openSuSE uses a call with 'flex -l' from a
 +LEX = flex
  
  $(obj)/lexer.lex.o: $(obj)/parser.tab.h
- HOSTCFLAGS_lexer.lex.o	:= -I $(srctree)/$(src)
+ HOSTCFLAGS_lexer.lex.o	:= -I $(src)
