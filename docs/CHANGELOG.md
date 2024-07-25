@@ -80,7 +80,7 @@ Latest changes
    * Apache2 2.4.62
    * Atop 2.10.0
    * AutoFS 5.0.5/5.1.9
-   * BIND 9.11.37/9.18.27
+   * BIND 9.11.37/9.18.28
    * BIRD 1.6.8/2.15.1
    * Bftpd 6.2
    * bvi 1.4.2
