@@ -7,5 +7,5 @@
 -	$(LDFLAGS) -o $@
 +	$(LDFLAGS) $(STATIC_LDFLAGS) -o $@
  @BUILD_UNITTESTS_TRUE@am_libcurltool_la_rpath =
- am__curl_SOURCES_DIST = slist_wc.c tool_binmode.c tool_bname.c \
- 	tool_cb_dbg.c tool_cb_hdr.c tool_cb_prg.c tool_cb_rea.c \
+ am__curl_SOURCES_DIST = slist_wc.c terminal.c tool_binmode.c \
+ 	tool_bname.c tool_cb_dbg.c tool_cb_hdr.c tool_cb_prg.c \

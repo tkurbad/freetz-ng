@@ -1,6 +1,6 @@
 --- curl-config.in
 +++ curl-config.in
-@@ -27,6 +27,7 @@
+@@ -29,6 +29,7 @@
  # Used in @libdir@
  # shellcheck disable=SC2034
  exec_prefix=@exec_prefix@
@@ -8,7 +8,7 @@
  # shellcheck disable=SC2034
  includedir=@includedir@
  cppflag_curl_staticlib=@CPPFLAG_CURL_STATICLIB@
-@@ -153,8 +154,8 @@
+@@ -155,8 +156,8 @@
      ;;
  
    --libs)
@@ -19,7 +19,7 @@
      else
        CURLLIBDIR=""
      fi
-@@ -171,7 +172,7 @@
+@@ -173,7 +174,7 @@
  
    --static-libs)
      if test "X@ENABLE_STATIC@" != "Xno" ; then
