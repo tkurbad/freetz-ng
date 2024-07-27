@@ -1,4 +1,4 @@
-# meson 1.5.0
+# meson 1.5.1
  - Homepage: [https://mesonbuild.com/](https://mesonbuild.com/)
  - Manpage: [https://mesonbuild.com/](https://mesonbuild.com/)
  - Changelog: [https://github.com/mesonbuild/meson/releases](https://github.com/mesonbuild/meson/releases)
