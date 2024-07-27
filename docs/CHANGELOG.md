@@ -132,7 +132,7 @@ Latest changes
    * libidn 1.42
    * libmaxminddb 1.10.0
    * libpng 1.6.43
-   * libxml2 2.13.1
+   * libxml2 2.13.3
    * pcre2 10.44
    * pixman 0.43.4
 
