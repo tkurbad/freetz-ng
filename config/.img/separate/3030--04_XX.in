@@ -1,16 +1,22 @@
-if FREETZ_TYPE_3170
+if FREETZ_TYPE_3030 && FREETZ_AVM_VERSION_04_XX
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box WLAN 3170"
+	default "FRITZ!Box WLAN 3030"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "49"
+	default "21"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "117"
+	default "85"
+
+config FREETZ_AVM_HAS_MULTIPLE_BRANDINGS
+	def_bool y
+
+config FREETZ_AVM_HAS_BRANDING_1und1
+	def_bool y
 
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
@@ -19,58 +25,34 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	string
 	default "/dev/ttyS0"
 
-config FREETZ_AVM_HAS_CVE_2014_9727
-	def_bool y
-
-config FREETZ_AVM_HAS_AURA_USB
-	def_bool y
-
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
 
-config FREETZ_AVM_HAS_USB_HOST_AHCI
+config FREETZ_AVM_HAS_TR069
 	def_bool y
 
-config FREETZ_AVM_HAS_USB_HOST
-	def_bool y
-
-config FREETZ_AVM_HAS_TR064
+config FREETZ_AVM_HAS_TELNETD
 	def_bool y
 
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 
-config FREETZ_AVM_HAS_SAMBA_SMBD
+config FREETZ_AVM_HAS_SHOWDSLDSTAT
 	def_bool y
 
 config FREETZ_AVM_HAS_DSLD
 	def_bool y
 
-config FREETZ_AVM_HAS_VPN
-	def_bool y
-
-config FREETZ_AVM_HAS_PRINTSERV
-	def_bool y
-
-config FREETZ_AVM_HAS_MEDIASRV
-	def_bool y
-
-config FREETZ_AVM_HAS_OPENSSL
-	def_bool y
-
-config FREETZ_AVM_HAS_OPENSSL_VERSION_0
+config FREETZ_AVM_HAS_WEBSRV
 	def_bool y
 
 config FREETZ_AVM_HAS_KIDS
 	def_bool y
 
+config FREETZ_AVM_HAS_CDROM_ISO
+	def_bool y
+
 config FREETZ_AVM_HAS_ETHERNET_OVER_USB
-	def_bool y
-
-config FREETZ_AVM_HAS_FAT_MODULE
-	def_bool y
-
-config FREETZ_AVM_HAS_NLS_MODULE
 	def_bool y
 
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_2

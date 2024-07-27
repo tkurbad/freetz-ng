@@ -1,16 +1,16 @@
-if FREETZ_TYPE_3020
+if FREETZ_TYPE_5140 && FREETZ_AVM_VERSION_04_XX
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box SL WLAN"
+	default "FRITZ!Box Fon 5140"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "09"
+	default "43"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "60"
+	default "111"
 
 config FREETZ_AVM_HAS_MULTIPLE_BRANDINGS
 	def_bool y
@@ -25,34 +25,31 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	string
 	default "/dev/ttyS0"
 
-config FREETZ_AVM_HAS_WLAN
+config FREETZ_AVM_HAS_CVE_2014_9727
+	def_bool y
+
+config FREETZ_AVM_HAS_PHONE
+	def_bool y
+
+config FREETZ_AVM_HAS_TR064
 	def_bool y
 
 config FREETZ_AVM_HAS_TR069
 	def_bool y
 
-config FREETZ_AVM_HAS_TELNETD
+config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 
-config FREETZ_AVM_HAS_SHOWDSLDSTAT
-	def_bool y
-
 config FREETZ_AVM_HAS_DSLD
 	def_bool y
 
-config FREETZ_AVM_HAS_WEBSRV
+config FREETZ_AVM_HAS_OPENSSL
 	def_bool y
 
-config FREETZ_AVM_HAS_KIDS
-	def_bool y
-
-config FREETZ_AVM_HAS_CDROM_ISO
-	def_bool y
-
-config FREETZ_AVM_HAS_ETHERNET_OVER_USB
+config FREETZ_AVM_HAS_OPENSSL_VERSION_0
 	def_bool y
 
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_2
