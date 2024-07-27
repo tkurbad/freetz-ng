@@ -58,7 +58,7 @@ Latest changes
    * cpio 2.15
    * fakeroot 1.35
    * kconfig 6.10
-   * meson 1.5.0
+   * meson 1.5.1
    * ncurses 6.5
    * ninja 1.12.1
    * openssl 3.0.14
