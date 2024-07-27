@@ -1,8 +1,8 @@
-$(call PKG_INIT_LIB, 1.52.1)
-$(PKG)_LIB_VERSION:=0.5200.1
+$(call PKG_INIT_LIB, 1.54.0)
+$(PKG)_LIB_VERSION:=0.5400.0
 $(PKG)_MAJOR_VERSION:=1.0
 $(PKG)_SOURCE:=pango-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=58728a0a2d86f60761208df9493033d18ecb2497abac80ee1a274ad0c6e55f0f
+$(PKG)_HASH:=8a9eed75021ee734d7fc0fdf3a65c3bba51dfefe4ae51a9b414a60c70b2d1ed8
 $(PKG)_SITE:=https://download.gnome.org/sources/pango/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=https://www.pango.org/
 ### MANPAGE:=https://docs.gtk.org/Pango/
@@ -17,15 +17,19 @@ $(PKG)_LIBS_TARGET_DIR  := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_TARGET_DIR)/%)
 
 $(PKG)_DEPENDS_ON += meson-host glib2 harfbuzz fribidi fontconfig freetype cairo
 
-$(PKG)_CONFIGURE_OPTIONS += -D gtk_doc=false
-$(PKG)_CONFIGURE_OPTIONS += -D introspection=disabled
-$(PKG)_CONFIGURE_OPTIONS += -D install-tests=false
-$(PKG)_CONFIGURE_OPTIONS += -D sysprof=disabled
-$(PKG)_CONFIGURE_OPTIONS += -D libthai=disabled
-$(PKG)_CONFIGURE_OPTIONS += -D xft=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D debug=false
+$(PKG)_CONFIGURE_OPTIONS += -D buildtype=release
+$(PKG)_CONFIGURE_OPTIONS += -D build-examples=false
+$(PKG)_CONFIGURE_OPTIONS += -D build-testsuite=false
+$(PKG)_CONFIGURE_OPTIONS += -D cairo=enabled
+$(PKG)_CONFIGURE_OPTIONS += -D documentation=false
 $(PKG)_CONFIGURE_OPTIONS += -D fontconfig=enabled
 $(PKG)_CONFIGURE_OPTIONS += -D freetype=enabled
-$(PKG)_CONFIGURE_OPTIONS += -D cairo=enabled
+$(PKG)_CONFIGURE_OPTIONS += -D gtk_doc=false
+$(PKG)_CONFIGURE_OPTIONS += -D introspection=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D libthai=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D sysprof=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D xft=disabled
 
 $(PKG)_EXTRA_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/glib-2.0
 $(PKG)_EXTRA_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/glib-2.0/include
