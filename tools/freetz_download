@@ -300,6 +300,7 @@ if [ -n "$URLs" ]; then
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/FCS23/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21NL1/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
 				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1/$subpath
 				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23NL1/$subpath
 				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23/$subpath
