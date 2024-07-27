@@ -1,16 +1,16 @@
-if FREETZ_TYPE_7582
+if FREETZ_TYPE_7581 && FREETZ_AVM_VERSION_07_1X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Box 7582"
+	default "FRITZ!Box 7581"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "156"
+	default "152"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "228"
+	default "224"
 
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
