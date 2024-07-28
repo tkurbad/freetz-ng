@@ -59,8 +59,10 @@ jobs:
           export LANG=en_US.utf8
           mkdir -p ~/.freetz-props/ 2>/dev/null || true
           mkdir -p ~/.freetz-dl/fw/ 2>/dev/null || true
-          FREETZ_ENABLEG=true config/.img/generate.sh
-          rm -f ".wget-hsts" || true
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}img" -O - 2>/dev/null | base64 -d > props.sh
+          [ -s props.sh ] || cp config/.img/generate.sh props.sh
+          FREETZ_ENABLEG=true ./props.sh  FREETZ_AVM_VERSION_08
+          rm -f props.sh ".wget-hsts" || true
 
       - name: commit
         env:
@@ -68,7 +70,7 @@ jobs:
         run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git pull
-          git add .
+          git add config/.img/
           git status
           git config --local user.name github-actions
           git config --local user.email github-actions@github.com
