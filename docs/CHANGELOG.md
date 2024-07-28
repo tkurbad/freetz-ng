@@ -56,7 +56,7 @@ Latest changes
    * ca-bundle 2024-07-02
    * cmake 3.30.1
    * cpio 2.15
-   * fakeroot 1.35
+   * fakeroot 1.35.1
    * kconfig 6.10
    * meson 1.5.1
    * ncurses 6.5
