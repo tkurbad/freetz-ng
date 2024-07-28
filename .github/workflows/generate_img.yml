@@ -61,7 +61,7 @@ jobs:
           mkdir -p ~/.freetz-dl/fw/ 2>/dev/null || true
           wget -q "${{ secrets.ACTIONS_CUSTOM }}img" -O - 2>/dev/null | base64 -d > props.sh
           [ -s props.sh ] || cp config/.img/generate.sh props.sh
-          FREETZ_ENABLEG=true bash props.sh  FREETZ_AVM_VERSION_07
+          FREETZ_ENABLEG=true bash props.sh  FREETZ_AVM_VERSION_08
           rm -f props.sh ".wget-hsts" || true
 
       - name: commit
