@@ -133,6 +133,7 @@ Latest changes
    * libidn 1.42
    * libmaxminddb 1.10.0
    * libpng 1.6.43
+   * libtirpc 1.3.5
    * libxml2 2.13.3
    * pango 1.54.0
    * pcre2 10.44
