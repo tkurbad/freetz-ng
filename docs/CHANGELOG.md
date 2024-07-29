@@ -67,6 +67,7 @@ Latest changes
    * precompiled toolchains r23751
    * python 3.12.4
    * python3-packaging 24.1
+   * u-boot 2024.07
    * wget 1.24.5
    * xz 5.6.2
 

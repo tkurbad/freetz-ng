@@ -1,6 +1,6 @@
 --- tools/Makefile
 +++ tools/Makefile
-@@ -174,7 +174,8 @@
+@@ -177,7 +177,8 @@
  HOSTCFLAGS_kwbimage.o += \
  	$(shell pkg-config --cflags libssl libcrypto 2> /dev/null || echo "")
  HOSTLDLIBS_mkimage += \
