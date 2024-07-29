@@ -68,6 +68,7 @@ Latest changes
    * python 3.12.4
    * python3-packaging 24.1
    * wget 1.24.5
+   * xz 5.6.2
 
  - AVM sources:
    * 7690 7.61 - 5.4.213
