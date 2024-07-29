@@ -4,5 +4,5 @@
  - Changelog: [https://ftp.gnu.org/gnu/autoconf/](https://ftp.gnu.org/gnu/autoconf/)
  - Repository: [https://git.savannah.gnu.org/gitweb/?p=autoconf.git](https://git.savannah.gnu.org/gitweb/?p=autoconf.git)
  - Host-Tool: [master/make/host-tools/autoconf-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/autoconf-host/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

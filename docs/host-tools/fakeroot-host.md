@@ -4,5 +4,5 @@
  - Changelog: [https://launchpad.net/debian/+source/fakeroot/+changelog](https://launchpad.net/debian/+source/fakeroot/+changelog)
  - Repository: [https://github.com/openwrt/openwrt/tree/master/tools/fakeroot/patches](https://github.com/openwrt/openwrt/tree/master/tools/fakeroot/patches)
  - Host-Tool: [master/make/host-tools/fakeroot-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/fakeroot-host/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

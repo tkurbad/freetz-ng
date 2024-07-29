@@ -4,5 +4,5 @@
  - Changelog: [https://github.com/Kitware/CMake/releases](https://github.com/Kitware/CMake/releases)
  - Repository: [https://gitlab.kitware.com/cmake/cmake](https://gitlab.kitware.com/cmake/cmake)
  - Host-Tool: [master/make/host-tools/cmake-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/cmake-host/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

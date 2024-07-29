@@ -4,5 +4,5 @@
  - Changelog: [https://github.com/pypa/packaging/releases](https://github.com/pypa/packaging/releases)
  - Repository: [https://github.com/pypa/packaging](https://github.com/pypa/packaging)
  - Host-Tool: [master/make/host-tools/python3-packaging-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/python3-packaging-host/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

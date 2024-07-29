@@ -4,5 +4,5 @@
  - Changelog: [https://sourceforge.net/p/swissfileknife/news/](https://sourceforge.net/p/swissfileknife/news/)
  - Repository: [https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/](https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/)
  - Host-Tool: [master/make/host-tools/sfk-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/sfk-host/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

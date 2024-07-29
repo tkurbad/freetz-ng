@@ -4,5 +4,5 @@
  - Changelog: [https://github.com/bestouff/genext2fs/tags](https://github.com/bestouff/genext2fs/tags)
  - Repository: [https://github.com/bestouff/genext2fs](https://github.com/bestouff/genext2fs)
  - Host-Tool: [master/make/host-tools/genext2fs-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/genext2fs-host/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 

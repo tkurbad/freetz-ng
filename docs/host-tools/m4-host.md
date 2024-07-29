@@ -4,5 +4,5 @@
  - Changelog: [http://ftp.gnu.org/gnu/m4/](http://ftp.gnu.org/gnu/m4/)
  - Repository: [http://git.savannah.gnu.org/gitweb/?p=m4.git](http://git.savannah.gnu.org/gitweb/?p=m4.git)
  - Host-Tool: [master/make/host-tools/m4-host/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/m4-host/)
- - Maintainer: -
+ - Maintainer: [@fda77](https://github.com/fda77)
 
