@@ -152,4 +152,4 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[yf-bootmanager 0.8.6](yf-bootmanager-host.md)<a id='yf-bootmanager-host'></a>**<br>
 
-  * **[yf-fit_tools 0.2](yf-fit_tools-host.md)<a id='yf-fit-tools-host'></a>**<br>
+  * **[yf-fit_tools 0.2 24011d3](yf-fit_tools-host.md)<a id='yf-fit-tools-host'></a>**<br>
