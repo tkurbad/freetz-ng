@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/wget
 ### MANPAGE:=https://www.gnu.org/software/wget/manual/
 ### CHANGES:=https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/wget.git/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/wget
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/wget

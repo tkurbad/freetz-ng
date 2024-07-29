@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://github.com/pypa/packaging/archive/refs/tags
 ### MANPAGE:=https://packaging.pypa.io/
 ### CHANGES:=https://github.com/pypa/packaging/releases
 ### CVSREPO:=https://github.com/pypa/packaging
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=python3-host
 

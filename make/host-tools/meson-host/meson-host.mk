@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://github.com/mesonbuild/meson/releases/download/$($(PKG)_VERS
 ### MANPAGE:=https://mesonbuild.com/
 ### CHANGES:=https://github.com/mesonbuild/meson/releases
 ### CVSREPO:=https://github.com/mesonbuild/meson
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=python3-host
 $(PKG)_DEPENDS_ON+=ninja-host

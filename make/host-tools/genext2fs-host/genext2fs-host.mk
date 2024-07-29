@@ -7,6 +7,7 @@ $(PKG)_SITE:=git@https://github.com/bestouff/genext2fs.git
 ### MANPAGE:=https://sourceforge.net/projects/genext2fs/
 ### CHANGES:=https://github.com/bestouff/genext2fs/tags
 ### CVSREPO:=https://github.com/bestouff/genext2fs
+### SUPPORT:=fda77
 
 $(PKG)_CONFIGURE_PRE_CMDS += ./autogen.sh;
 $(PKG)_CONFIGURE_OPTIONS += --program-prefix=""

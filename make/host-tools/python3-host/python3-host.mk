@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### MANPAGE:=https://docs.python.org/3/
 ### CHANGES:=https://www.python.org/downloads/
 ### CVSREPO:=https://github.com/python/cpython
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
 $(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))

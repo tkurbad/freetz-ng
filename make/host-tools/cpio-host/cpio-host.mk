@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/cpio
 ### MANPAGE:=https://www.gnu.org/software/cpio/manual/
 ### CHANGES:=https://savannah.gnu.org/projects/cpio
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/cpio.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/cpio
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/cpio

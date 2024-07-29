@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### MANPAGE:=https://www.gnu.org/software/m4/manual/index.html
 ### CHANGES:=http://ftp.gnu.org/gnu/m4/
 ### CVSREPO:=http://git.savannah.gnu.org/gitweb/?p=m4.git
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=pkgconf-host
 

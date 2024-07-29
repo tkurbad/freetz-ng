@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/tar
 ### MANPAGE:=https://www.gnu.org/software/tar/manual/
 ### CHANGES:=https://www.gnu.org/software/tar/#releases
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/tar.git
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON:=kconfig-host
 

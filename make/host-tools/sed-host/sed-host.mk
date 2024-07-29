@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/sed
 ### MANPAGE:=https://sed.sourceforge.io/#docs
 ### CHANGES:=https://git.savannah.gnu.org/cgit/sed.git/refs/tags
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=sed.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/sed/sed
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/sed

@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### MANPAGE:=https://www.gnu.org/software/libtool/manual/
 ### CHANGES:=https://ftpmirror.gnu.org/libtool/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/libtool.git
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=autoconf-host
 

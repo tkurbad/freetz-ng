@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SF/dos2unix
 ### MANPAGE:=https://waterlan.home.xs4all.nl/dos2unix/man1/dos2unix.htm
 ### CHANGES:=https://dos2unix.sourceforge.io/dos2unix/NEWS.txt
 ### CVSREPO:=https://sourceforge.net/p/dos2unix/dos2unix/ci/master/tree/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/dos2unix
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/dos2unix

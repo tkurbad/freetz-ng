@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://github.com/ninja-build/ninja/archive/refs/tags
 ### MANPAGE:=https://github.com/ninja-build/ninja/wiki
 ### CHANGES:=https://github.com/ninja-build/ninja/releases
 ### CVSREPO:=https://github.com/ninja-build/ninja
+### SUPPORT:=fda77
 
 $(PKG)_BUILD_DIR:=$($(PKG)_DIR)/builddir
 $(PKG)_BINARY:=$($(PKG)_BUILD_DIR)/ninja

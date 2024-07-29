@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.busybox.net/downloads
 ### MANPAGE:=https://www.busybox.net/downloads/BusyBox.html
 ### CHANGES:=https://www.busybox.net/news.html
 ### CVSREPO:=https://git.busybox.net/busybox/
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON:=tar-host
 

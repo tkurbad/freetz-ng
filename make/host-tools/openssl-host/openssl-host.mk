@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://www.openssl.org/source
 ### MANPAGE:=https://www.openssl.org/docs/
 ### CHANGES:=https://www.openssl.org/news/changelog.html
 ### CVSREPO:=https://github.com/openssl/openssl
+### SUPPORT:=fda77
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 

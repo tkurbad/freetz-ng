@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://distfiles.ariadne.space/pkgconf
 ### MANPAGE:=http://pkgconf.org/features.html
 ### CHANGES:=https://github.com/pkgconf/pkgconf/blob/master/NEWS
 ### CVSREPO:=https://github.com/pkgconf/pkgconf/tags
+### SUPPORT:=fda77
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 

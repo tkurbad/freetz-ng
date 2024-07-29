@@ -6,6 +6,7 @@ $(PKG)_SITE:=http://deb.debian.org/debian/pool/main/m/mklibs
 ### MANPAGE:=https://manpages.debian.org/unstable/mklibs/mklibs.1.html
 ### CHANGES:=https://salsa.debian.org/installer-team/mklibs/blob/master/debian/changelog
 ### CVSREPO:=https://github.com/openwrt/openwrt/tree/master/tools/mklibs
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=python3-host
 

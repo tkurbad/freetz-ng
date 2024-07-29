@@ -8,6 +8,7 @@ $(PKG)_SITE:=git@https://git.yoctoproject.org/git/pseudo
 ### MANPAGE:=https://manpages.debian.org/testing/pseudo/pseudo.1.en.html
 ### CHANGES:=https://git.yoctoproject.org/pseudo/log/?h=oe-core
 ### CVSREPO:=https://git.yoctoproject.org/pseudo/
+### SUPPORT:=fda77
 
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 

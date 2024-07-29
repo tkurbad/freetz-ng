@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### MANPAGE:=https://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/
 ### CHANGES:=https://ftp.gnu.org/gnu/autoconf/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=autoconf.git
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=m4-host
 

@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://deb.debian.org/debian/pool/main/n/netkit-ftp
 ### MANPAGE:=https://manpages.debian.org/bullseye/ftp/netkit-ftp.1.en.html
 ### TRACKER:=https://tracker.debian.org/pkg/netkit-ftp
 ### CHANGES:=https://launchpad.net/debian/+source/netkit-ftp/+changelog
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=cmake-host
 

@@ -7,6 +7,7 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 ### MANPAGE:=https://cmake.org/cmake/help/latest/
 ### CHANGES:=https://github.com/Kitware/CMake/releases
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=ninja-host
 

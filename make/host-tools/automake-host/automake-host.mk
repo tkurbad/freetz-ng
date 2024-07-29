@@ -7,6 +7,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### MANPAGE:=https://www.gnu.org/software/automake/manual/automake.html
 ### CHANGES:=https://ftp.gnu.org/gnu/automake/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/automake.git
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=autoconf-host
 
