@@ -7,7 +7,7 @@ Currently supported devices and firmwares
  * [Fritz!Box WLAN (3xxx)](#fritzbox-wlan-3xxx)
  * [Fritz!Box WAN (4xxx)](#fritzbox-wan-4xxx)
  * [Fritz!Box Fon (50xx/51xx)](#fritzbox-fon-50xx51xx)
- * [Fritz!Box Fiber (54xx/55xx)](#fritzbox-fiber-54xx55xx)
+ * [Fritz!Box Fiber (54xx/55xx/56xx)](#fritzbox-fiber-54xx55xx56xx)
  * [Fritz!Box Cable (64xx/65xx/66xx)](#fritzbox-cable-64xx65xx66xx)
  * [Fritz!Box LTE (68xx)](#fritzbox-lte-68xx)
  * [Fritz!Box Fon WLAN (70xx)](#fritzbox-fon-wlan-70xx)
@@ -16,6 +16,7 @@ Currently supported devices and firmwares
  * [Fritz!Box Fon WLAN (73xx)](#fritzbox-fon-wlan-73xx)
  * [Fritz!Box Fon WLAN (74xx)](#fritzbox-fon-wlan-74xx)
  * [Fritz!Box Fon WLAN (75xx)](#fritzbox-fon-wlan-75xx)
+ * [Fritz!Box Fon WLAN (76xx)](#fritzbox-fon-wlan-76xx)
  * [Fritz!Powerline](#fritzpowerline)
  * [Fritz!Repeater](#fritzrepeater)
  * [Fritz!Smart](#fritzsmart)
@@ -128,7 +129,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon 5140__
   - 43.04.67 rev13928 {GER}
 
-### Fritz!Box Fiber (54xx/55xx)
+### Fritz!Box Fiber (54xx/55xx/56xx)
 
 * __Fritz!Box 5490 Fiber__
   - 151.07.01 rev63544 {ALL}
@@ -463,6 +464,8 @@ Currently supported devices and firmwares
   - 259.07.57 rev107809 {ALL} [MOVE21NL1]
   - 259.07.81 rev113242 {ALL} [GoFiber23NL1]
   - 259.07.90 rev114020 {ALL} [Smart24 P1] (Labor)
+
+### Fritz!Box Fon WLAN (76xx)
 
 * __FRITZ!Box 7690 (UNTESTED)__
   - 285.07.61 rev113413 {ALL} [FCS23]
