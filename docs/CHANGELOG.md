@@ -124,6 +124,7 @@ Latest changes
    * usb.ids c70eea490a
    * Whois 5.5.23
    * xsltproc 1.1.41
+   * XZ 5.6.2
 
  - Libraries:
    * attr 2.5.2
