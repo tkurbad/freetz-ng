@@ -2,11 +2,9 @@ $(call TOOLS_INIT, 24011d3735c6935f81792d017438be3bbf1a39d3)
 $(PKG)_SOURCE:=yf-fit_tools-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=1aae6d570e937520f37e64c9226fc71771450318f8271465a7c73832306c77b6
 $(PKG)_SITE:=git_sparse@https://github.com/PeterPawn/YourFritz.git,fit_tools
-### VERSION:=0.2
-### WEBSITE:=https://github.com/PeterPawn/YourFritz/tree/main/fit_tools
-### MANPAGE:=https://github.com/PeterPawn/YourFritz/tree/main/fit_tools#readme
-### CHANGES:=https://github.com/PeterPawn/YourFritz/commits/main/fit_tools
-### CVSREPO:=https://github.com/PeterPawn/YourFritz/tree/main/fit_tools
+### VERSION:=0.2 24011d3
+### CHANGES:=https://github.com/PeterPawn/YourFritz/commits/fit_tools/
+### CVSREPO:=https://github.com/PeterPawn/YourFritz/tree/fit_tools/fit_tools
 ### SUPPORT:=fda77
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
