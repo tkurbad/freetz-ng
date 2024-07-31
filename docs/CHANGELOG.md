@@ -88,7 +88,7 @@ Latest changes
    * bvi 1.4.2
    * CA-bundle 2024-07-02
    * CCID 1.5.5
-   * Curl 8.9.0
+   * Curl 8.9.1
    * dtach 0.9
    * Dropbear 2024.85
    * endlessh 1.0
