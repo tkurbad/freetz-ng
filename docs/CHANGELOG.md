@@ -48,6 +48,9 @@ Latest changes
 
 ### devel
 
+ - Packages:
+   * RRDtool 1.2.30/1.9.0
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 

@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_RRDTOOL
-	bool "RRDtool 1.2.30/1.8.0 (binary only)"
+	bool "RRDtool 1.2.30/1.9.0 (binary only)"
 	select FREETZ_LIB_librrd
 	select FREETZ_LIB_libm                                 if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libz                                 if FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON
@@ -25,7 +25,7 @@ if FREETZ_PACKAGE_RRDTOOL
 				This version needs about 0,7MB (including all libs).
 
 		config FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT
-			bool "1.8.0"
+			bool "1.9.0"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 			help
 				This version needs about 3,7MB (including all libs).
