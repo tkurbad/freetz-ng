@@ -252,5 +252,5 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_WLAN_Repeater_450E-07.15.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-450e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.15.image)
    - other: [FRITZ.Box_WLAN_Repeater_450E-07.15.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-450e/other/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.15.image)
  * fritzwlan-repeater-dvb-c/
-   - deutschland: [FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.03.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.03.image)
-   - other: [FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.03.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/other/fritz.os/FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.03.image)
+   - deutschland: [FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/deutschland/fritz.os/FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image)
+   - other: [FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/other/fritz.os/FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image)
