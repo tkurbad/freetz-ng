@@ -29,7 +29,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 200: [FRITZ.Box_WLAN_Repeater_450E-07.15.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-450e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.15.image)
  - HWR 201: [FRITZ.Powerline_540E.129.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-540e/deutschland/fritz.os/FRITZ.Powerline_540E.129.07.15.image)
  - HWR 203: [FRITZ.Box_7362_SL-07.14.image](http://download.avm.de/fritzbox/fritzbox-7362-sl/deutschland/fritz.os/FRITZ.Box_7362_SL-07.14.image)
- - HWR 205: [FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.03.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.03.image)
+ - HWR 205: [FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/deutschland/fritz.os/FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image)
  - HWR 206: [FRITZ_Repeater_1750E-07.32.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/deutschland/fritz.os/FRITZ_Repeater_1750E-07.32.image)
  - HWR 209: [FRITZ.Box_7412.137.06.88.image](http://download.avm.de/fritzbox/fritzbox-7412/deutschland/fritz.os/FRITZ.Box_7412.137.06.88.image)
  - HWR 212: [FRITZ.Box_3490-07.12.image](http://download.avm.de/firmware/3490/jz76373/3754863962/deutschland/fritz.os/FRITZ.Box_3490-07.12.image)
