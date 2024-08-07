@@ -515,7 +515,6 @@ Currently supported devices and firmwares
   - 133.06.32 rev31507 {ALL}
   - 133.06.50 rev33858 {ALL}
   - 133.07.04 rev114761 {ALL}
-  - 133.07.08 rev66669 {ALL} [MESH18] (Inhaus)
   - Alien 1750E {GER} (No dvbc!)
 * __Fritz!WLAN Repeater 1750E__
   - 134.06.32 rev31507 {ALL}
