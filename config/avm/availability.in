@@ -401,7 +401,7 @@ config FREETZ_AVM_HAS_FIRMWARE_07_2X
 		))
 
 
-config FREETZ_AVM_HAS_FIRMWARE_07_5X_INHAUS
+config FREETZ_AVM_HAS_FIRMWARE_07_5X_LABOR
 	bool
 	default y
 	depends on \
