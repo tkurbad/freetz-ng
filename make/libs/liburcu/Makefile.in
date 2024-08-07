@@ -1,0 +1,4 @@
+ifeq ($(or $(strip $(FREETZ_LIB_liburcu)),$(strip $(FREETZ_LIB_liburcu_bp)),$(strip $(FREETZ_LIB_liburcu_cds)),$(strip $(FREETZ_LIB_liburcu_common)),$(strip $(FREETZ_LIB_liburcu_mb)),$(strip $(FREETZ_LIB_liburcu_memb)),$(strip $(FREETZ_LIB_liburcu_qsbr)),$(strip $(FREETZ_LIB_liburcu_signal))),y)
+LIBS+=liburcu
+endif
+

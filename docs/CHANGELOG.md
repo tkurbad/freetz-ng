@@ -56,6 +56,7 @@ Latest changes
 
  - Libraries:
    * libdeflate 1.21
+   * liburcu 0.14.0
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.

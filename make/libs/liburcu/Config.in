@@ -1,0 +1,47 @@
+menu "liburcu"
+
+	config FREETZ_LIB_liburcu
+		bool "liburcu (liburcu.so)"
+		select FREETZ_LIB_liburcu_common
+		default n
+		help
+			liburcu is a LGPLv2.1 userspace RCU (read-copy-update)
+			library. This data synchronization library provides read-side
+			access which scales linearly with the number of cores.
+
+	config FREETZ_LIB_liburcu_bp
+		bool "liburcu-bp (liburcu-bp.so)"
+		select FREETZ_LIB_liburcu_common
+		default n
+
+	config FREETZ_LIB_liburcu_cds
+		bool "liburcu-cds (liburcu-cds.so)"
+		select FREETZ_LIB_liburcu_common
+		default n
+
+	config FREETZ_LIB_liburcu_common
+		bool "liburcu-common (liburcu-common.so)"
+		default n
+
+	config FREETZ_LIB_liburcu_mb
+		bool "liburcu-mb (liburcu-mb.so)"
+		select FREETZ_LIB_liburcu_common
+		default n
+
+	config FREETZ_LIB_liburcu_memb
+		bool "liburcu-memb (liburcu-memb.so)"
+		select FREETZ_LIB_liburcu_common
+		default n
+
+	config FREETZ_LIB_liburcu_qsbr
+		bool "liburcu-qsbr (liburcu-qsbr.so)"
+		select FREETZ_LIB_liburcu_common
+		default n
+
+	config FREETZ_LIB_liburcu_signal
+		bool "liburcu-signal (liburcu-signal.so)"
+		select FREETZ_LIB_liburcu_common
+		default n
+
+endmenu ### "liburcu"
+

@@ -221,6 +221,7 @@ source "make/pkgs/slang/Config.in.libs"
 source "make/libs/libsynce/Config.in"
 source "make/libs/sysfsutils/Config.in"
 source "make/libs/libtool/Config.in"
+source "make/libs/liburcu/Config.in"
 source "make/libs/libuv/Config.in"
 source "make/libs/yaml/Config.in"
 

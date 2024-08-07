@@ -1,0 +1,66 @@
+config EXTERNAL_FREETZ_LIB_liburcu
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu
+	bool "liburcu"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu.so.8.1.0
+
+config EXTERNAL_FREETZ_LIB_liburcu_bp
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu_bp
+	bool "liburcu-bp"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu-bp.so.8.1.0
+
+
+config EXTERNAL_FREETZ_LIB_liburcu_cds
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu_cds
+	bool "liburcu-cds"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu-cds.so.8.1.0
+
+config EXTERNAL_FREETZ_LIB_liburcu_common
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu_common
+	bool "liburcu-common"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu-common.so.8.1.0
+
+config EXTERNAL_FREETZ_LIB_liburcu_mb
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu_mb
+	bool "liburcu-mb"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu-mb.so.8.1.0
+
+config EXTERNAL_FREETZ_LIB_liburcu_memb
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu_memb
+	bool "liburcu-memb"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu-memb.so.8.1.0
+
+config EXTERNAL_FREETZ_LIB_liburcu_qsbr
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu_qsbr
+	bool "liburcu-qsbr"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu-qsbr.so.8.1.0
+
+config EXTERNAL_FREETZ_LIB_liburcu_signal
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_liburcu_signal
+	bool "liburcu-signal"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/liburcu-signal.so.8.1.0
+
+
