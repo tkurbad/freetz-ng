@@ -68,6 +68,6 @@ $(pkg)-clean:
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/pango*.pc
 
 $(pkg)-uninstall:
-	$(RM) $(PANGO_TARGET_DIR)/libpango.so*
+	$(RM) $(PANGO_TARGET_DIR)/libpango*.so*
 
 $(PKG_FINISH)
