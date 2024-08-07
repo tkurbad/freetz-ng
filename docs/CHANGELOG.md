@@ -54,6 +54,9 @@ Latest changes
  - Packages:
    * RRDtool 1.2.30/1.9.0
 
+ - Libraries:
+   * libdeflate 1.21
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
