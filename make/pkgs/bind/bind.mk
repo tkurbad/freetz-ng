@@ -1,8 +1,8 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),9.11.37,9.18.28))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),9.11.37,9.20.0))
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),gz,xz)
 $(PKG)_HASH_ABANDON:=0d8efbe7ec166ada90e46add4267b7e7c934790cba9bd5af6b8380a4fbfb5aff
-$(PKG)_HASH_CURRENT:=e7cce9a165f7b619eefc4832f0a8dc16b005d29e3890aed6008c506ea286a5e7
+$(PKG)_HASH_CURRENT:=cc580998017b51f273964058e8cb3aa5482bc785243dea71e5556ec565a13347
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.isc.org/isc/bind9/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.isc.org/bind/
@@ -14,7 +14,7 @@ $(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.is
 $(PKG)_STARTLEVEL=40 # multid-wrapper may start it earlier!
 
 ifneq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)
-$(PKG)_LIBRARIES_SHORT              := bind9 dns irs isccc isccfg isc ns
+$(PKG)_LIBRARIES_SHORT              := dns isc isccc isccfg ns
 $(PKG)_LIBRARIES_FILES              := $($(PKG)_LIBRARIES_SHORT:%=lib%-$($(PKG)_LIB_VERSION).so)
 $(PKG)_LIBRARIES_BUILD_DIR          := $(join $($(PKG)_LIBRARIES_SHORT:%=$($(PKG)_DIR)/lib/%/.libs/),$($(PKG)_LIBRARIES_FILES))
 $(PKG)_LIBRARIES_TARGET_DIR         := $($(PKG)_LIBRARIES_FILES:%=$($(PKG)_TARGET_LIBDIR)/%)
@@ -46,7 +46,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_BIND_VERSION_ABANDON
 
 ifneq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)
-$(PKG)_DEPENDS_ON += libatomic libuv openssl libcap
+$(PKG)_DEPENDS_ON += libatomic libuv openssl libcap liburcu
 endif
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),abandon,current)
@@ -92,9 +92,7 @@ $(PKG)_CONFIGURE_OPTIONS += --without-readline
 $(PKG)_CONFIGURE_OPTIONS += --without-libidn2
 $(PKG)_CONFIGURE_OPTIONS += --without-cmocka
 $(PKG)_CONFIGURE_OPTIONS += --without-jemalloc
-$(PKG)_CONFIGURE_OPTIONS += --without-tuning
 $(PKG)_CONFIGURE_OPTIONS += --disable-dnsrps
-$(PKG)_CONFIGURE_OPTIONS += --with-tuning=small
 endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_BIND_VERSION_ABANDON)),y)

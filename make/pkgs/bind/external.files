@@ -5,10 +5,8 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_BIND_HOST"      == "y" ] && EXTERNAL_FILES+=" /usr/bin/host"
 [ "$EXTERNAL_FREETZ_PACKAGE_BIND_NSLOOKUP"  == "y" ] && EXTERNAL_FILES+=" /usr/bin/nslookup"
 
-ELIBVER="9.18.28"
-[ "$EXTERNAL_FREETZ_LIB_libbind9"   == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libbind9-$ELIBVER.so"
+ELIBVER="9.20.0"
 [ "$EXTERNAL_FREETZ_LIB_libdns"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libdns-$ELIBVER.so"
-[ "$EXTERNAL_FREETZ_LIB_libirs"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libirs-$ELIBVER.so"
 [ "$EXTERNAL_FREETZ_LIB_libisc"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libisc-$ELIBVER.so"
 [ "$EXTERNAL_FREETZ_LIB_libisccc"   == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libisccc-$ELIBVER.so"
 [ "$EXTERNAL_FREETZ_LIB_libisccfg"  == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libisccfg-$ELIBVER.so"
