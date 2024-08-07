@@ -48,6 +48,9 @@ Latest changes
 
 ### devel
 
+ - Host tools:
+   * cmake 3.30.2
+
  - Packages:
    * RRDtool 1.2.30/1.9.0
 
