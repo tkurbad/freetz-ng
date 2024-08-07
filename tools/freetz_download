@@ -312,6 +312,7 @@ if [ -n "$URLs" ]; then
 				sites[(( num_sites++ ))]=https://download.avm.de/archive/fritz.box/$subpath
 				sites[(( num_sites++ ))]=https://service.avm.de/downloads/downgrade/$subpath
 				sites[(( num_sites++ ))]=https://service.avm.de/downloads/zwischenupdate/$subpath
+				sites[(( num_sites++ ))]=https://service.avm.de/downloads/LaborPlus/$subpath
 				sites[(( num_sites++ ))]=https://service.avm.de/downloads/$subpath
 				sites[(( num_sites++ ))]=https://www.avm.de/de/Service/Service-Portale/$subpath
 #				sites[(( num_sites++ ))]=ftp://ftp.avm.de/fritzbox/$subpath
