@@ -1,4 +1,4 @@
-# cmake 3.30.1
+# cmake 3.30.2
  - Homepage: [https://cmake.org/](https://cmake.org/)
  - Manpage: [https://cmake.org/cmake/help/latest/](https://cmake.org/cmake/help/latest/)
  - Changelog: [https://github.com/Kitware/CMake/releases](https://github.com/Kitware/CMake/releases)
