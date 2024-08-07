@@ -295,6 +295,7 @@ if [ -n "$URLs" ]; then
 #				sites[(( num_sites++ ))]=https://download.avm.de/fritzpowerline/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/fritzdect/$subpath
 				sites[(( num_sites++ ))]=https://avm.de/$subpath
+				sites[(( num_sites++ ))]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/Smart24P1/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/GoFiber23/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/FCS23/$subpath
