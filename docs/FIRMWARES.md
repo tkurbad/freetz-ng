@@ -150,7 +150,7 @@ Currently supported devices and firmwares
   - 272.07.58 rev109907 {ALL} [MOVE21NL1]
   - 272.07.81 rev113243 {ALL} [GoFiber23NL1]
   - 272.07.90 rev114673 {ALL} [Smart24 P1] (Labor)
-* __FRITZ!Box 5690 Pro (UNTESTED)__
+* __FRITZ!Box 5690 Pro__
   - 279.07.61 rev114855 {ALL} [FCS23] (Labor)
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
