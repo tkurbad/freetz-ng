@@ -2144,8 +2144,17 @@ if [ "$DO_PACK" -gt 0 ]; then
 		# size info
 		FITIMAGE_LIMIT="$(( $FREETZ_AVM_HAS_FIT_SIZE *1024*1024 ))"
 		FITIMAGE_SIZE="$(wc -c < "$FIRMWARE_MOD_DIR/var/tmp/fit-image")"
-		let FITIMAGE_DIFF="FITIMAGE_SIZE-FITIMAGE_LIMIT"
-		echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
+		if [ -z "$FITIMAGE_LIMIT" ]; then
+			echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE)"
+		else
+			let FITIMAGE_DIFF="FITIMAGE_SIZE-FITIMAGE_LIMIT"
+			echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
+			if [ "$FITIMAGE_SIZE" -gt "$FITIMAGE_LIMIT" ]; then
+				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ]; then
+					error 1 -b "fitimg file is $FITIMAGE_DIFF bytes too big. See https://freetz-ng.github.io/freetz-ng/wiki/00_FAQ/FAQ.de.html#filesystem-image-too-big for details."
+				fi
+			fi
+		fi
 	fi
 	echo0 "packing ${img_name}"
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FIRMWARE_MOD_DIR" "$FIRMWARE_DIR"
