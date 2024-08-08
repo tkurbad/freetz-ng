@@ -125,11 +125,11 @@ config FREETZ_DL_SITE
 	default "@AVM/fritzbox-6591-cable/{deutschland,other}/fritz.os,@AVM/6591Cable"                                     if FREETZ_TYPE_6591
 	#
 	default "@AVM/firmware/6660/89746785"                                                                              if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "@AVM/fritzbox-6660-cable/{deutschland,other}/fritz.os,@AVM/6660Cable"                                     if FREETZ_TYPE_6660
+	default "@AVM/fritzbox-6660-cable/{deutschland,other}/fritz.os,@AVM/fritzbox-6660-cable,@AVM/6660Cable"            if FREETZ_TYPE_6660
 	#
 	default "@AVM/fritzbox-6670-cable/{deutschland,other}/fritz.os,@AVM/6670Cable,@AVM/6670"                           if FREETZ_TYPE_6670
 	#
-	default "@AVM/fritzbox-6690-cable/{deutschland,other}/fritz.os,@AVM/6690Cable"                                     if FREETZ_TYPE_6690
+	default "@AVM/fritzbox-6690-cable/{deutschland,other}/fritz.os,@AVM/fritzbox-6690-cable,@AVM/6690Cable"            if FREETZ_TYPE_6690
 	#
 	default "@AVM/{fritzbox-6810-lte/deutschland/fritz.os,fritzbox_6810_lte/firmware/deutsch}"                         if FREETZ_TYPE_6810 && FREETZ_TYPE_LANG_DE
 	default "@AVM/{fritzbox-6810-lte/other/fritz.os,fritzbox_6810_lte/firmware/english}"                               if FREETZ_TYPE_6810 && FREETZ_TYPE_LANG_EN
