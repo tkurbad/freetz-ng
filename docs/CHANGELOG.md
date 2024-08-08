@@ -48,6 +48,9 @@ Latest changes
 
 ### devel
 
+ - Build system:
+   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0//8.4.0/9.3.0/9.4.0/13.3.0/14.1.0
+
  - Host tools:
    * cmake 3.30.2
    * python 3.12.5
