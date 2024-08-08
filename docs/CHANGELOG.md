@@ -50,6 +50,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.30.2
+   * python 3.12.5
 
  - Packages:
    * BIND 9.11.37/9.20.0
