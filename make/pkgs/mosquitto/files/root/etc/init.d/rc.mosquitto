@@ -25,7 +25,7 @@ case "$1" in
 
 		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
 		modreg daemon $DAEMON
-		modreg file $DAEMON extra 'extra' 0 $DAEMON_extra
+		modreg file $DAEMON extra 'extra' 0 mosquitto_extra
 
 		modlib_start $MOSQUITTO_ENABLED
 		;;
