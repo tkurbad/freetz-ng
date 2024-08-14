@@ -632,6 +632,8 @@ fi
 [ ! $ISRAM ] && [ ! $ISFIT ] && [ $MAPSTART ]  && echo "Parameter '-map' is only allowed for ram-boot and fit-boot mode."  && exit 1
 [ ! $ISRAM ] && [ ! $ISFIT ] && [ $ALIBYTES ]  && echo "Parameter '-ali' is only allowed for ram-boot and fit-boot mode."  && exit 1
 
+[ ! -x "$(command -v dos2unix)" ]              && echo "Tool 'dos2unix' missing. Run 'make dos2unix-host' first."          && exit 1
+
 prepare_image
 
 # IPs
