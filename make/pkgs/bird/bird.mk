@@ -9,7 +9,6 @@ $(PKG)_SITE:=https://bird.network.cz/download,ftp://bird.network.cz/pub/bird
 ### CHANGES:=https://bird.network.cz/?o_news
 ### CVSREPO:=https://gitlab.nic.cz/labs/bird
 ### SUPPORT:=fda77
-# v2: https://gitlab.nic.cz/labs/bird/-/wikis/transition-notes-to-bird-2
 
 $(PKG)_STARTLEVEL=82
 
