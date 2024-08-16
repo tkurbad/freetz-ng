@@ -16,6 +16,7 @@ if FREETZ_PACKAGE_BIRD
 		config FREETZ_PACKAGE_BIRD_VERSION_CURRENT
 			bool "2.15.1"
 			select FREETZ_PACKAGE_BIRD_REMOVE_WEBIF
+			depends on FREETZ_KERNEL_VERSION_4_1_MIN
 			help
 				The Web interface is disabled because
 				of the not compatible option syntax.
