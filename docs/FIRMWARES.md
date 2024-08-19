@@ -98,7 +98,7 @@ Currently supported devices and firmwares
 
 * __Fritz!Box 4020__
   - 147.06.84 rev108194 {GER}
-  - 147.07.03 rev107962 {GER}
+  - 147.07.04 rev114850 {GER}
 * __Fritz!Box 4040__
   - 155.07.01 rev61489 {ALL}
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
@@ -437,9 +437,9 @@ Currently supported devices and firmwares
   - 153.07.12 rev70352 {GER} [MESH18 NL2]
   - 153.07.30 rev107863 {GER} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7581__
-  - 152.07.17 rev107894 {ALL} [WU21 MESH18]
+  - 152.07.18 rev114996 {ALL} [WU24 MESH18]
 * __Fritz!Box Fon WLAN 7582 (UNTESTED)__
-  - 156.07.17 rev107895 {ALL} [WU21 MESH18]
+  - 156.07.18 rev114997 {ALL} [WU24 MESH18]
 * __Fritz!Box Fon WLAN 7583__
   - 167.07.12 rev70707 {GER} [MESH18 NL2]
   - 167.07.15 rev75887 {INT} [MESH18 NL2]
