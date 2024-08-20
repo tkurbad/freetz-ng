@@ -768,14 +768,6 @@ choice
 		select FREETZ_AVM_VERSION_07_2X
 		depends on FREETZ_AVM_HAS_FIRMWARE_07_2X
 
-
-	config FREETZ_TYPE_FIRMWARE_07_5X_LABOR
-		bool "FRITZ!OS 07.5x Labor - UNTESTED"
-		select FREETZ_AVM_VERSION_07_5X
-		depends on FREETZ_AVM_HAS_FIRMWARE_07_5X_LABOR && FREETZ_SHOW_EXPERT
-		help
-			Enable this to use an AVM Labor firmware as base for modding.
-
 	config FREETZ_TYPE_FIRMWARE_07_5X
 		bool "FRITZ!OS 07.50+"
 		select FREETZ_AVM_VERSION_07_5X
@@ -882,7 +874,6 @@ config FREETZ_TYPE_FIRMWARE_LABOR
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_FIRMWARE_07_5X_LABOR || \
 		FREETZ_TYPE_FIRMWARE_08_0X_LABOR
 
 ###

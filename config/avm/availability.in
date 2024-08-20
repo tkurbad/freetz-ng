@@ -401,14 +401,6 @@ config FREETZ_AVM_HAS_FIRMWARE_07_2X
 		))
 
 
-config FREETZ_AVM_HAS_FIRMWARE_07_5X_LABOR
-	bool
-	default y
-	depends on \
-		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
-			FREETZ_TYPE_5690 \
-		))
-
 config FREETZ_AVM_HAS_FIRMWARE_07_5X
 	bool
 	default y
