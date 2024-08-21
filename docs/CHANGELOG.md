@@ -62,6 +62,7 @@ Latest changes
    * Atop 2.11.0
    * BIND 9.11.37/9.20.0
    * RRDtool 1.2.30/1.9.0
+   * SQLite 3.46.1
    * Unbound 1.21.0
 
  - Libraries:
