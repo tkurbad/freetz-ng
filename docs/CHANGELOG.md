@@ -53,6 +53,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.30.2
+   * fakeroot 1.36
    * python 3.12.5
 
  - Patches:

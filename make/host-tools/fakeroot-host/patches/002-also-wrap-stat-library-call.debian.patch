@@ -24,7 +24,7 @@ Forwarded: Yes
 
 --- configure.ac
 +++ configure.ac
-@@ -420,9 +420,13 @@
+@@ -424,9 +424,13 @@
  dnl Here libfakeroot should wrap only stat (statat, fstat, fstatat).
  dnl A special care should be taken to avoid the double definition.
  
@@ -40,7 +40,7 @@ Forwarded: Yes
    FOUND=
    for WRAPPED in __${PRE}x${FUNC} _${PRE}x${FUNC} __${PRE}${FUNC}13 ${PRE}${FUNC} __${PRE}${FUNC}; do
      AC_CHECK_FUNCS($WRAPPED,FOUND=$WRAPPED)
-@@ -433,8 +437,8 @@
+@@ -437,8 +441,8 @@
  dnl  for WRAPPED in _${PRE}${FUNC}; do
  dnl    FOUND=$WRAPPED
      if test -n "$FOUND"; then
@@ -51,7 +51,7 @@ Forwarded: Yes
        DEFINE_NEXT=[`echo wrap_${FOUND}| tr '[a-z]' '[A-Z]'`]
        DEFINE_ARG=[`echo wrap_${FOUND}| tr '[a-z]' '[A-Z]'`]
        AC_DEFINE_UNQUOTED(WRAP_${PF}, $FOUND)
-@@ -621,6 +625,12 @@
+@@ -625,6 +629,12 @@
  #define NEXT_STAT_NOARG  next___astat
  #undef NO_WRAP_STAT_SYMBOL
  
