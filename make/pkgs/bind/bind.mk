@@ -7,7 +7,7 @@ $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),ABANDON,C
 $(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.isc.org/isc/bind9/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.isc.org/bind/
 ### MANPAGE:=https://bind9.readthedocs.io/en/
-### CHANGES:=https://downloads.isc.org/isc/bind9/cur/9.18/
+### CHANGES:=https://downloads.isc.org/isc/bind9/cur/9.20/
 ### CVSREPO:=https://gitlab.isc.org/isc-projects/bind9/
 ### SUPPORT:=fda77
 
