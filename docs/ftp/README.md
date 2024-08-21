@@ -102,7 +102,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_Fon_WLAN_7360-06.88.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.88.image)
    - other: [FRITZ.Box_Fon_WLAN_7360-06.88.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/other/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.88.image)
  * fritzbox-7362-sl/
-   - deutschland: [FRITZ.Box_7362_SL-07.14.image](https://download.avm.de/fritzbox/fritzbox-7362-sl/deutschland/fritz.os/FRITZ.Box_7362_SL-07.14.image)
+   - deutschland: [FRITZ.Box_7362_SL-07.18.image](https://download.avm.de/fritzbox/fritzbox-7362-sl/deutschland/fritz.os/FRITZ.Box_7362_SL-07.18.image)
  * fritzbox-7369/
    - other: [FRITZ.Box_7369.en-de-es-it-fr-pl.119.06.34.image](https://download.avm.de/fritzbox/fritzbox-7369/other/fritz.os/FRITZ.Box_7369.en-de-es-it-fr-pl.119.06.34.image)
  * fritzbox-7390/
