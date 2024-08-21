@@ -55,6 +55,9 @@ Latest changes
    * cmake 3.30.2
    * python 3.12.5
 
+ - Patches:
+   * Various Fritzos 8.0 related changes
+
  - Packages:
    * BIND 9.11.37/9.20.0
    * RRDtool 1.2.30/1.9.0
