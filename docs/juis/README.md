@@ -28,7 +28,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 198: [FRITZ.Box_3272.126.06.89.image](http://download.avm.de/fritzbox/fritzbox-3272/deutschland/fritz.os/FRITZ.Box_3272.126.06.89.image)
  - HWR 200: [FRITZ.Box_WLAN_Repeater_450E-07.15.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-450e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.15.image)
  - HWR 201: [FRITZ.Powerline_540E.129.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-540e/deutschland/fritz.os/FRITZ.Powerline_540E.129.07.15.image)
- - HWR 203: [FRITZ.Box_7362_SL-07.14.image](http://download.avm.de/fritzbox/fritzbox-7362-sl/deutschland/fritz.os/FRITZ.Box_7362_SL-07.14.image)
+ - HWR 203: [FRITZ.Box_7362_SL-07.18.image](http://download.avm.de/fritzbox/fritzbox-7362-sl/deutschland/fritz.os/FRITZ.Box_7362_SL-07.18.image)
  - HWR 205: [FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/deutschland/fritz.os/FRITZ.Repeater_DVB_C.en-de-es-it-fr-pl.133.07.04.image)
  - HWR 206: [FRITZ_Repeater_1750E-07.32.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/deutschland/fritz.os/FRITZ_Repeater_1750E-07.32.image)
  - HWR 209: [FRITZ.Box_7412.137.06.88.image](http://download.avm.de/fritzbox/fritzbox-7412/deutschland/fritz.os/FRITZ.Box_7412.137.06.88.image)
@@ -81,9 +81,9 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 ### FOS-Labor
  - HWR 185: [FRITZ.Box_7490-07.59.image](http://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.59.image)
  - HWR 190: [FRITZ.Powerline_546E.118.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-546e/deutschland/fritz.os/FRITZ.Powerline_546E.118.07.15.image)
- - HWR 226: [FRITZ.Box_7590-07.90-115052-LabBETA.image](http://download.avm.de/labor/Smart24P1/7590/FRITZ.Box_7590-07.90-115052-LabBETA.image)
- - HWR 233: [FRITZ.Box_6591_Cable-07.90-115037-LabBETA.image](http://download.avm.de/labor/Smart24P1/6591Cable/FRITZ.Box_6591_Cable-07.90-115037-LabBETA.image)
- - HWR 236: [FRITZ.Box_7530-07.90-115046-LabBETA.image](http://download.avm.de/labor/Smart24P1/7530/FRITZ.Box_7530-07.90-115046-LabBETA.image)
+ - HWR 226: [FRITZ.Box_7590-07.90-115249-LabBETA.image](http://download.avm.de/labor/Smart24P1/7590/FRITZ.Box_7590-07.90-115249-LabBETA.image)
+ - HWR 233: [FRITZ.Box_6591_Cable-07.90-115250-LabBETA.image](http://download.avm.de/labor/Smart24P1/6591Cable/FRITZ.Box_6591_Cable-07.90-115250-LabBETA.image)
+ - HWR 236: [FRITZ.Box_7530-07.90-115251-LabBETA.image](http://download.avm.de/labor/Smart24P1/7530/FRITZ.Box_7530-07.90-115251-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
 
