@@ -58,7 +58,7 @@ sudo dnf -y install \
   libuuid-devel libxml2-devel libzstd-devel make ncurses ncurses-devel ncurses-term netcat net-tools \
   openssl openssl-devel patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel \
   readline-devel rpcgen rsync sharutils sqlite sqlite-devel subversion texinfo unar util-linux wget xz \
-  zlib-devel
+  zlib-ng-devel
 ```
 
  - Fedora 37/38/39 64-Bit:
