@@ -56,6 +56,9 @@ Latest changes
    * fakeroot 1.36
    * python 3.12.5
 
+ - AVM sources:
+   * 5690-pro 7.62 - 5.4.213
+
  - Patches:
    * Various Fritzos 8.0 related changes
 
