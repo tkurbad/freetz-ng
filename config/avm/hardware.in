@@ -1,6 +1,12 @@
 # system type (the same variable name as in /proc/cpuinfo)
 # and also: readelf -A usr/bin/ctlmgr
 
+config FREETZ_SYSTEM_TYPE_ALDER
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_5690
+
 config FREETZ_SYSTEM_TYPE_AR7_SANGAM
 	bool
 	default y
@@ -117,12 +123,6 @@ config FREETZ_SYSTEM_TYPE_IPQ40xx
 		FREETZ_TYPE_7521 || \
 		FREETZ_TYPE_7530
 
-config FREETZ_SYSTEM_TYPE_IPQ95xx
-	bool
-	default y
-	depends on \
-		FREETZ_TYPE_5690
-
 config FREETZ_SYSTEM_TYPE_MAPLE
 	bool
 	default y
@@ -227,6 +227,7 @@ config FREETZ_SYSTEM_TYPE_MULTICORE
 
 config FREETZ_SYSTEM_TYPE
 	string
+	default "alder"         if FREETZ_SYSTEM_TYPE_ALDER
 	default "ar7"           if FREETZ_SYSTEM_TYPE_AR7_SANGAM
 	default "ohio"          if FREETZ_SYSTEM_TYPE_AR7_OHIO
 	default "ar9"           if FREETZ_SYSTEM_TYPE_AR9
@@ -237,7 +238,6 @@ config FREETZ_SYSTEM_TYPE
 	default "grx5"          if FREETZ_SYSTEM_TYPE_GRX5
 	default "iks"           if FREETZ_SYSTEM_TYPE_IKS
 	default "ipq40xx"       if FREETZ_SYSTEM_TYPE_IPQ40xx
-	default "ipq95xx"       if FREETZ_SYSTEM_TYPE_IPQ95xx
 	default "maple"         if FREETZ_SYSTEM_TYPE_MAPLE
 	default "miami"         if FREETZ_SYSTEM_TYPE_MIAMI
 	default "puma6"         if FREETZ_SYSTEM_TYPE_PUMA6
@@ -285,7 +285,7 @@ config FREETZ_CPU_MODEL_ARM_cortex_a73
 	bool
 	default y
 	depends on \
-		FREETZ_SYSTEM_TYPE_IPQ95xx
+		FREETZ_SYSTEM_TYPE_ALDER
 
 config FREETZ_CPU_MODEL_MIPS_4KEc
 	bool

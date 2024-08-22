@@ -160,10 +160,10 @@ cat <<'EOX'
         ge ~/freetz-ng/config/avm/kernel.in  # add kernel version
         ge ~/freetz-ng/config/avm/source.in  # add "7590_07.50"
         grep KCONFIG sources/kernel/linux*/.kernelvariables  # get config name
-        ls $(dirname sources/kernel/linux*/.kernelvariables)/$(sed -n 's,.*_KCONFIG_.* = ,,p' sources/kernel/linux*/.kernelvariables)
+        realpath $(dirname sources/kernel/linux*/.kernelvariables)/$(sed -n 's,.*_KCONFIG_.* = ,,p' sources/kernel/linux*/.kernelvariables)
         add ~/freetz-ng/make/kernel/configs/freetz/config-*-7590_07.50
         add ~/freetz-ng/make/kernel/configs/avm/config-*-7590_07.50
-        ls conf/buildroot/busybox.config*
+        realpath conf/buildroot/busybox.config*
         add ~/freetz-ng/make/busybox/avm/07.50-7590--busybox.config.*
         add ~/freetz-ng/make/kernel/patches/*/7590_07.50/
         ge ~/freetz-ng/config/mod/source.in  # enable kernel (modules)
