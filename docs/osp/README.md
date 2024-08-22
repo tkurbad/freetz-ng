@@ -65,6 +65,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_4020-07.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-07.01.tar.gz)
    - [source-files-FRITZ.Box_4020-drgfly-06.84.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-drgfly-06.84.tar.gz)
    - [source-files-FRITZ.Box_4020-drgfly-07.02.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-drgfly-07.02.tar.gz)
+   - [source-files-FRITZ.Box_4020-drgfly-07.04.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-drgfly-07.04.tar.gz)
  * fritzbox-4040/
    - [source-files-FRITZ.Box_4040-07.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.00.tar.gz)
    - [source-files-FRITZ.Box_4040-07.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.01.tar.gz)
@@ -109,6 +110,9 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_5590_Fiber-qcaarmv8-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5590-fiber/source-files-FRITZ.Box_5590_Fiber-qcaarmv8-07.56.tar.gz)
    - [source-files-FRITZ.Box_5590_Fiber-qcaarmv8-07.80.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5590-fiber/source-files-FRITZ.Box_5590_Fiber-qcaarmv8-07.80.tar.gz)
    - [source-files-FRITZ.Box_5590_Fiber-qcaarmv8-07.81.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5590-fiber/source-files-FRITZ.Box_5590_Fiber-qcaarmv8-07.81.tar.gz)
+ * fritzbox-5690-pro/
+   - [source-files-FRITZ.Box_5690_Pro-alder-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-alder-07.62.tar.gz)
+   - [source-files-FRITZ.Box_5690_Pro-rtl9601-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-rtl9601-07.62.tar.gz)
  * fritzbox-6360/
    - [fritzbox6360-source-files-04.91.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6360/fritzbox6360-source-files-04.91.tar.gz)
    - [fritzbox6360-source-files-05.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6360/fritzbox6360-source-files-05.29.tar.gz)
@@ -400,8 +404,10 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_7581-06.85.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7581/source-files-FRITZ.Box_7581-06.85.tar.gz)
    - [source-files-FRITZ.Box_7581-07.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7581/source-files-FRITZ.Box_7581-07.01.tar.gz)
    - [source-files-FRITZ.Box_7581-07.13.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7581/source-files-FRITZ.Box_7581-07.13.tar.gz)
+   - [source-files-FRITZ.Box_7581-brcma9-07.18.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7581/source-files-FRITZ.Box_7581-brcma9-07.18.tar.gz)
  * fritzbox-7582/
    - [source-files-FRITZ.Box_7582-brcma9-07.15.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7582/source-files-FRITZ.Box_7582-brcma9-07.15.tar.gz)
+   - [source-files-FRITZ.Box_7582-brcma9-07.18.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7582/source-files-FRITZ.Box_7582-brcma9-07.18.tar.gz)
  * fritzbox-7583/
    - [source-files-FRITZ.Box_7583-grx5-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7583/source-files-FRITZ.Box_7583-grx5-07.50.tar.gz)
    - [source-files-FRITZ.Box_7583-grx5-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7583/source-files-FRITZ.Box_7583-grx5-07.56.tar.gz)
@@ -469,7 +475,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzwlan-repeater-450e/
    - [source-files-FRITZ.Box_WLAN_Repeater_450E-06.30.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-450e/source-files-FRITZ.Box_WLAN_Repeater_450E-06.30.tar.gz)
  * fritzwlan-repeater-dvb-c/
-   - [source-files-FRITZ.Box_WLAN_Repeater_DVB_C-06.30.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/source-files-FRITZ.Box_WLAN_Repeater_DVB_C-06.30.tar.gz)
    - [source-files-FRITZ.Box_WLAN_Repeater_DVB_C-07.01.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/source-files-FRITZ.Box_WLAN_Repeater_DVB_C-07.01.tar.gz)
+   - [source-files-FRITZ.Repeater_DVB_C-07.04.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/source-files-FRITZ.Repeater_DVB_C-07.04.tar.gz)
  * fritzwlan-repeater-ng/
    - [fritz_wlan_repeater_ng-source-files-04.87.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-ng/fritz_wlan_repeater_ng-source-files-04.87.tar.gz)
