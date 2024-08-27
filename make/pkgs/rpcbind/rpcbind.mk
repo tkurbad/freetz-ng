@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN,1.2.6)
+$(call PKG_INIT_BIN,1.2.7)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=5613746489cae5ae23a443bb85c05a11741a5f12c8f55d2bb5e83b9defeee8de
+$(PKG)_HASH:=f6edf8cdf562aedd5d53b8bf93962d61623292bfc4d47eedd3f427d84d06f37e
 $(PKG)_SITE:=@SF/rpcbind
 ### WEBSITE:=https://sourceforge.net/projects/rpcbind/
 ### MANPAGE:=https://linux.die.net/man/8/rpcbind
