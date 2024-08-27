@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 4.8.31)
+$(call PKG_INIT_BIN, 4.8.32)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=24191cf8667675b8e31fc4a9d18a0a65bdc0598c2c5c4ea092494cd13ab4ab1a
+$(PKG)_HASH:=4ddc83d1ede9af2363b3eab987f54b87cf6619324110ce2d3a0e70944d1359fe
 $(PKG)_SITE:=http://ftp.midnight-commander.org,ftp://ftp.midnight-commander.org/pub/midnightcommander
 ### WEBSITE:=http://midnight-commander.org/
 ### MANPAGE:=http://midnight-commander.org/wiki/doc

@@ -11,7 +11,7 @@
  endif
 --- doc/hlp/Makefile.in
 +++ doc/hlp/Makefile.in
-@@ -467,7 +467,8 @@
+@@ -469,7 +469,8 @@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
@@ -34,7 +34,7 @@
  endif
 --- doc/man/Makefile.in
 +++ doc/man/Makefile.in
-@@ -469,7 +469,8 @@
+@@ -473,7 +473,8 @@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
@@ -42,9 +42,9 @@
 +DIST_SUBDIRS =
 +@USE_NLS_TRUE@DIST_SUBDIRS += es hu it pl ru sr
  @USE_NLS_TRUE@SUBDIRS = $(DOC_LINGUAS)
- man_MANS = mc.1 mcedit.1 mcview.1
+ man_MANS = mc.1 mcview.1 $(am__append_1) $(am__append_2)
  CLEANFILES = $(man_MANS)
-@@ -741,7 +742,8 @@
+@@ -746,7 +747,8 @@
  	for dir in "$(DESTDIR)$(man1dir)"; do \
  	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
  	done
@@ -67,7 +67,7 @@
  EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z uc1541
 --- src/vfs/extfs/helpers/Makefile.in
 +++ src/vfs/extfs/helpers/Makefile.in
-@@ -426,7 +426,7 @@
+@@ -428,7 +428,7 @@
  extfsdir = $(libexecdir)/@PACKAGE@/extfs.d
  
  # Files to install and distribute other than extfs scripts
@@ -89,7 +89,7 @@
  shell_DATA = $(SHELL_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime
 --- src/vfs/shell/helpers/Makefile.in
 +++ src/vfs/shell/helpers/Makefile.in
-@@ -413,7 +413,7 @@
+@@ -415,7 +415,7 @@
  shelldir = $(libexecdir)/@PACKAGE@/shell
  
  # Files to install and distribute other than shell scripts
