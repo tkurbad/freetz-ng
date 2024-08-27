@@ -470,7 +470,7 @@ Currently supported devices and firmwares
 ### Fritz!Box Fon WLAN (76xx)
 
 * __FRITZ!Box 7690 (UNTESTED)__
-  - 285.07.61 rev113413 {ALL} [FCS23]
+  - 285.07.62 rev115134 {ALL} [FCS23]
 
 ### Fritz!Powerline
 
