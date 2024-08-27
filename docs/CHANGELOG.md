@@ -73,6 +73,7 @@ Latest changes
 
  - Libraries:
    * libdeflate 1.21
+   * libmaxminddb 1.11.0
    * liburcu 0.14.0
    * lz4 1.10.0
 
