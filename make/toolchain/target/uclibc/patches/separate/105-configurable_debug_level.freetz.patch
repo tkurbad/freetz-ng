@@ -1,6 +1,6 @@
 --- Rules.mak
 +++ Rules.mak
-@@ -642,7 +642,7 @@
+@@ -646,7 +646,7 @@
  endif
  
  ifeq ($(DODEBUG),y)
