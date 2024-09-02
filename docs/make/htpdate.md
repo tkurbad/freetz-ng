@@ -1,4 +1,4 @@
-# htpdate 1.3.7
+# htpdate 2.0.0
  - Homepage: [https://www.vervest.org/htp/](https://www.vervest.org/htp/)
  - Manpage: [https://www.vervest.org/htp/?FAQ](https://www.vervest.org/htp/?FAQ)
  - Changelog: [https://github.com/twekkel/htpdate/blob/master/Changelog](https://github.com/twekkel/htpdate/blob/master/Changelog)
