@@ -68,7 +68,7 @@ Latest changes
    * Atop 2.11.0
    * BIND 9.11.37/9.20.0
    * htpdate 2.0.0
-   * mc (Midnight Commander) 4.8.32
+   * mc (Midnight Commander) 4.8.31/4.8.32
    * RPCBind 1.2.7
    * RRDtool 1.2.30/1.9.0
    * S-Lang 2.3.3
