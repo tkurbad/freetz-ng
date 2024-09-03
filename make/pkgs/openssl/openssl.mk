@@ -1,14 +1,14 @@
-$(call PKG_INIT_BIN,$(if $(FREETZ_OPENSSL_VERSION_0),0.9.8zh,$(if $(FREETZ_OPENSSL_VERSION_1),1.0.2u,$(if $(FREETZ_OPENSSL_VERSION_2),1.1.1w,3.0.14))))
+$(call PKG_INIT_BIN,$(if $(FREETZ_OPENSSL_VERSION_0),0.9.8zh,$(if $(FREETZ_OPENSSL_VERSION_1),1.0.2u,$(if $(FREETZ_OPENSSL_VERSION_2),1.1.1w,3.0.15))))
 $(PKG)_LIB_VERSION:=$(call qstrip,$(FREETZ_OPENSSL_SHLIB_VERSION))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_0.9:=f1d9f3ed1b85a82ecf80d0e2d389e1fda3fca9a4dba0bf07adbf231e1a5e2fd6
 $(PKG)_HASH_1.0:=ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16
 $(PKG)_HASH_1.1:=cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8
-$(PKG)_HASH_3.0:=eeca035d4dd4e84fc25846d952da6297484afa0650a6f84c682e39df3a4123ca
+$(PKG)_HASH_3.0:=23c666d0edf20f14249b3d8f0368acaee9ab585b09e1de82107c66e1f3ec9533
 $(PKG)_HASH:=$($(PKG)_HASH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
 $(PKG)_SITE_SUFFIX_0.9:=/old/0.9.x
 $(PKG)_SITE_SUFFIX_1.0:=/old/1.0.2
-$(PKG)_SITE:=https://www.openssl.org/source$($(PKG)_SITE_SUFFIX_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
+$(PKG)_SITE:=https://www.openssl.org/source$($(PKG)_SITE_SUFFIX_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))),https://github.com/openssl/openssl/releases/download/openssl-$($(PKG)_VERSION)
 ### WEBSITE:=https://www.openssl.org/source/
 ### MANPAGE:=https://www.openssl.org/docs/
 ### CHANGES:=https://www.openssl.org/news/changelog.html
