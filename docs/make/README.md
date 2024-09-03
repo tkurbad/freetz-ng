@@ -610,7 +610,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[sispmctl 3.1 - DEPRECATED](sispmctl.md)<a id='sispmctl'></a>**<br>
     sispmctl is an application enabling the use of the GEMBIRD SiS-PM (sispm) USB-controlled power-outlet device under Linux. Note that the device is also sold under different names, i.e. as "IntelliPlug" in Germany.
 
-  * **<u>slang: S-Lang 2.3.1a (binary only) - DEPRECATED</u><a id='slang'></a>**<br>
+  * **[slang: S-Lang 2.3.3 (binary only)](slang.md)<a id='slang'></a>**<br>
     S-Lang is a powerful interpreted language that may be embedded into an application to make the application extensible. Note: at the moment this options causes only libslang to be included in the image, i.e. S-Lang shell support is disabled.
 
   * **<u>Slurm 0.3.3 (binary only) - DEPRECATED</u><a id='slurm'></a>**<br>

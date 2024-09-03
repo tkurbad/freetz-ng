@@ -817,7 +817,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Bekannte Bugs](../../docs/make/sispmctl.md#bekannte-bugs)
      - [Weitere Screenshots](../../docs/make/sispmctl.md#weitere-screenshots)
 
-  * **<u>slang: S-Lang 2.3.1a (binary only) - DEPRECATED</u><a id='slang'></a>**<br>
+  * **[slang: S-Lang 2.3.3 (binary only)](../../docs/make/slang.md)<a id='slang'></a>**<br>
     S-Lang is a powerful interpreted language that may be embedded into an application to make the application extensible. Note: at the moment this options causes only libslang to be included in the image, i.e. S-Lang shell support is disabled.
 
   * **<u>Slurm 0.3.3 (binary only) - DEPRECATED</u><a id='slurm'></a>**<br>
