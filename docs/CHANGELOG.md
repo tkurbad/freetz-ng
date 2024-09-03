@@ -76,6 +76,7 @@ Latest changes
    * Unbound 1.21.0
 
  - Libraries:
+   * glib2 2.32.4/2.81.2
    * libdeflate 1.21
    * libmaxminddb 1.11.0
    * liburcu 0.14.0
