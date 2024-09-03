@@ -56,6 +56,7 @@ Latest changes
  - Host tools:
    * cmake 3.30.3
    * fakeroot 1.36
+   * openssl 3.0.15
    * python 3.12.5
 
  - AVM sources:
