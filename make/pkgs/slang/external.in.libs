@@ -4,6 +4,6 @@ config EXTERNAL_FREETZ_LIB_libslang
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libslang.so.2.3.1
+		 ${FREETZ_LIBRARY_DIR}/libslang.so.2.3.3
 		 ${FREETZ_LIBRARY_DIR}/slang
 

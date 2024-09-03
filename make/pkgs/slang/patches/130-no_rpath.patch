@@ -1,6 +1,6 @@
 --- modules/Makefile.in
 +++ modules/Makefile.in
-@@ -85,7 +85,7 @@
+@@ -87,7 +87,7 @@
  DEST_CMAPSDIR	= $(DESTDIR)$(CMAPS_DIR)
  DEST_HELPDIR	= $(DESTDIR)$(HELP_DIR)
  # ---------------------------------------------------------------------------

@@ -71,6 +71,7 @@ Latest changes
    * mc (Midnight Commander) 4.8.32
    * RPCBind 1.2.7
    * RRDtool 1.2.30/1.9.0
+   * S-Lang 2.3.3
    * SQLite 3.46.1
    * Unbound 1.21.0
 

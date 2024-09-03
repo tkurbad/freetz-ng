@@ -1,8 +1,12 @@
-$(call PKG_INIT_BIN, 2.3.1a)
-$(PKG)_LIB_VERSION:=2.3.1
+$(call PKG_INIT_BIN, 2.3.3)
+$(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=54f0c3007fde918039c058965dffdfd6c5aec0bad0f4227192cc486021f08c36
+$(PKG)_HASH:=f9145054ae131973c61208ea82486d5dd10e3c5cdad23b7c4a0617743c8f5a18
 $(PKG)_SITE:=http://www.jedsoft.org/releases/slang
+### WEBSITE:=https://www.jedsoft.org/slang/
+### MANPAGE:=https://www.jedsoft.org/slang/docs.html
+### CHANGES:=https://www.jedsoft.org/releases/slang/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/elfobjs/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib$(pkg).so.$($(PKG)_LIB_VERSION)
@@ -29,6 +33,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-readline=slang
 
 $(PKG)_MAKE_PARAMS += MODULE_INSTALL_DIR="$(SLANG_MODULES_DIR)" STRIPPROG="$(TARGET_STRIP)"
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -54,6 +59,7 @@ endif
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $(if $(FREETZ_PACKAGE_SLANG_MODULES),$($(PKG)_MODULES_TARGET_DIR))
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(SLANG_DIR) $(SLANG_MAKE_PARAMS) clean

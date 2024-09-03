@@ -1,6 +1,6 @@
 --- modules/Makefile.in
 +++ modules/Makefile.in
-@@ -166,6 +166,7 @@
+@@ -179,6 +179,7 @@
  		echo $(INSTALL_MODULE) $(OBJDIR)/$$i $(DEST_MODULEDIR); \
  		$(INSTALL_MODULE) $(OBJDIR)/$$i $(DEST_MODULEDIR); \
  	done
@@ -8,7 +8,7 @@
  	-$(MKINSDIR) $(DEST_SLSH_DIR)
  	@for i in $(SLFILES); \
  	do \
-@@ -181,18 +182,23 @@
+@@ -194,18 +195,23 @@
  		$(INSTALL_DATA) $$i $(DEST_SLSH_DIR)/$$d/; \
  	   done; \
  	done
