@@ -733,7 +733,7 @@ config FREETZ_DL_SOURCE_CONTAINER
 	string "Downloaded container file"                                                     if FREETZ_DL_OVERRIDE
 	depends                                                                                on FREETZ_TYPE_FIRMWARE_LABOR && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
-	default "fritzbox-4040-labor-115550.zip"                                               if FREETZ_TYPE_4060
+	default "fritzbox-4040-labor-115550.zip"                                               if FREETZ_TYPE_4040
 	default "fritzbox-4060-labor-114590.zip"                                               if FREETZ_TYPE_4060
 	default "fritzbox-5530-labor-114589.zip"                                               if FREETZ_TYPE_5530
 	default "fritzbox-5590-labor-114673.zip"                                               if FREETZ_TYPE_5590
