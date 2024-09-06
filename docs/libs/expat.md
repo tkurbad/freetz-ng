@@ -1,4 +1,4 @@
-# expat: libexpat (libexpat.so) 2.6.2
+# expat: libexpat (libexpat.so) 2.6.3
  - Homepage: [https://libexpat.github.io/](https://libexpat.github.io/)
  - Manpage: [https://libexpat.github.io/doc/](https://libexpat.github.io/doc/)
  - Changelog: [https://github.com/libexpat/libexpat/blob/master/expat/Changes](https://github.com/libexpat/libexpat/blob/master/expat/Changes)
