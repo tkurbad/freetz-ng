@@ -387,7 +387,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_4040-07.14.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_4040-07.29.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_4040-07.59.image"                                                   if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_4040-07.90-114164-Inhaus.image"                                     if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_08_0X_INHAUS
+	default "FRITZ.Box_4040-07.90-115550-LabBETA.image"                                    if FREETZ_TYPE_4040 && FREETZ_TYPE_FIRMWARE_08_0X_LABOR
 	#
 	default "FRITZ.Box_4050-07.90-114548-Inhaus.image"                                     if FREETZ_TYPE_4050 && FREETZ_TYPE_FIRMWARE_08_0X_INHAUS
 	#
@@ -733,6 +733,7 @@ config FREETZ_DL_SOURCE_CONTAINER
 	string "Downloaded container file"                                                     if FREETZ_DL_OVERRIDE
 	depends                                                                                on FREETZ_TYPE_FIRMWARE_LABOR && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
+	default "fritzbox-4040-labor-115550.zip"                                               if FREETZ_TYPE_4060
 	default "fritzbox-4060-labor-114590.zip"                                               if FREETZ_TYPE_4060
 	default "fritzbox-5530-labor-114589.zip"                                               if FREETZ_TYPE_5530
 	default "fritzbox-5590-labor-114673.zip"                                               if FREETZ_TYPE_5590
