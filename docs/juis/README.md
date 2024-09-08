@@ -99,7 +99,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 256: [FRITZ.Box_7530_AX-07.90-115527-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/7530AX/FRITZ.Box_7530_AX-07.90-115527-Inhaus.image)
  - HWR 257: [FRITZ.Box_5530_Fiber-07.90-115512-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/5530Fiber/FRITZ.Box_5530_Fiber-07.90-115512-Inhaus.image)
  - HWR 258: [FRITZ.Box_6850_5G-07.90-114934-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/68505G/FRITZ.Box_6850_5G-07.90-114934-Inhaus.image)
- - HWR 259: [FRITZ.Box_7590_AX-07.90-115533-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/7590AX/FRITZ.Box_7590_AX-07.90-115533-Inhaus.image)
+ - HWR 259: [FRITZ.Box_7590_AX-07.90-115629-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/7590AX/FRITZ.Box_7590_AX-07.90-115629-Inhaus.image)
  - HWR 261: [FRITZ.Box_4060-07.90-115491-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/4060/FRITZ.Box_4060-07.90-115491-Inhaus.image)
  - HWR 262: [FRITZ.Box_6850_LTE-07.90-114939-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/6850LTE/FRITZ.Box_6850_LTE-07.90-114939-Inhaus.image)
  - HWR 263: [FRITZ.Repeater_600v2-07.57-111457-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/600v2/FRITZ.Repeater_600v2-07.57-111457-Inhaus.image)
