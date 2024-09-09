@@ -57,7 +57,7 @@ Latest changes
    * cmake 3.30.3
    * fakeroot 1.36
    * openssl 3.0.15
-   * python 3.12.5
+   * python 3.12.6
 
  - AVM sources:
    * 5690-pro 7.62 - 5.4.213
