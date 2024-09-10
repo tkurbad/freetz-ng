@@ -14,6 +14,10 @@ endif
 TOOLCHAIN_HOST_KERNEL_CFLAGS:=$(TOOLCHAIN_HOST_CFLAGS)
 TOOLCHAIN_HOST_TARGET_CFLAGS:=$(TOOLCHAIN_HOST_CFLAGS)
 
+# gcc4 compatibility with gcc14
+ifeq ($(strip $(FREETZ_KERNEL_GCC_4_MAX)),y)
+TOOLCHAIN_HOST_KERNEL_CFLAGS+=-Wno-error=incompatible-pointer-types
+endif
 # gcc5 does not like be compiled by gcc11/C++17
 ifeq ($(strip $(FREETZ_KERNEL_GCC_5_MAX)),y)
 TOOLCHAIN_HOST_KERNEL_CFLAGS+=--std=c++03
