@@ -4,5 +4,6 @@
  - Changelog: [https://code.videolan.org/videolan/libdvbcsa/blob/master/ChangeLog](https://code.videolan.org/videolan/libdvbcsa/blob/master/ChangeLog)
  - Repository: [https://code.videolan.org/videolan/libdvbcsa/](https://code.videolan.org/videolan/libdvbcsa/)
  - Library: [master/make/libs/libdvbcsa/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/libdvbcsa/)
+ - Maintainer: -
 
 libdvbcsa is a free implementation of the DVB Common Scrambling Algorithm (DVB/CSA) with encryption and decryption capabilities.

@@ -5,6 +5,7 @@ $(PKG)_SITE:=@SF/swissfileknife
 ### VERSION:=1.9.8.2
 ### WEBSITE:=http://stahlworks.com/dev/swiss-file-knife.html
 ### CHANGES:=http://stahlworks.com/dev/?tool=sfkver
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/sfk
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/sfk

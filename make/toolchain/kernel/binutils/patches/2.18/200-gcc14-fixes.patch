@@ -1,0 +1,22 @@
+--- libiberty/md5.c
++++ libiberty/md5.c
+@@ -27,7 +27,7 @@
+ 
+ #include <sys/types.h>
+ 
+-#if STDC_HEADERS || defined _LIBC
++#if STDC_HEADERS || defined _LIBC || __GNUC_PREREQ(14,0)
+ # include <stdlib.h>
+ # include <string.h>
+ #else
+--- libiberty/regex.c
++++ libiberty/regex.c
+@@ -124,7 +124,7 @@
+    even if config.h says that we can.  */
+ #  undef REL_ALLOC
+ 
+-#  if defined STDC_HEADERS || defined _LIBC
++#  if defined STDC_HEADERS || defined _LIBC || __GNUC_PREREQ(14,0)
+ #   include <stdlib.h>
+ #  else
+ char *malloc ();

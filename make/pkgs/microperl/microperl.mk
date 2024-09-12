@@ -11,6 +11,8 @@ $(PKG)_TARGET_MODULES:=$($(PKG)_TARGET_DIR)/.modules_installed
 $(PKG)_TARGET_MODULES_DIR:=$($(PKG)_DEST_DIR)/usr/lib/perl5/$($(PKG)_VERSION)
 $(PKG)_TARGET_MODS:=$(subst ",,$(FREETZ_PACKAGE_MICROPERL_MODULES))
 
+$(PKG)_DEPENDS_ON += wget-host
+
 $(PKG)_PATCH_PRE_CMDS += chmod -R u+w .;
 $(PKG)_PATCH_POST_CMDS += $(SED) -r -i -e 's|/5([.][0-9]{2}){1,2}|/$($(PKG)_VERSION)|g' uconfig.sh;
 $(PKG)_PATCH_POST_CMDS += $(SED) -r -i -e 's|/usr/local|/usr|g'                         uconfig.sh;

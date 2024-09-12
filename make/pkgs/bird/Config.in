@@ -1,10 +1,27 @@
 config FREETZ_PACKAGE_BIRD
-	bool "BIRD 1.6.8"
+	bool "BIRD 1.6.8/2.15.1"
 	default n
 	help
 		The BIRD Internet Routing Daemon
 
 if FREETZ_PACKAGE_BIRD
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_BIRD_VERSION_ABANDON
+
+		config FREETZ_PACKAGE_BIRD_VERSION_ABANDON
+			bool "1.6.8"
+
+		config FREETZ_PACKAGE_BIRD_VERSION_CURRENT
+			bool "2.15.1"
+			select FREETZ_PACKAGE_BIRD_REMOVE_WEBIF
+			depends on FREETZ_KERNEL_VERSION_4_1_MIN
+			help
+				The Web interface is disabled because
+				of the not compatible option syntax.
+
+	endchoice
 
 	config FREETZ_PACKAGE_BIRD_DEBUG
 		bool "Debugging code (recommended)"
@@ -21,6 +38,12 @@ if FREETZ_PACKAGE_BIRD
 		default n
 		help
 			birdc (command-line interface for bird)
+
+	config FREETZ_PACKAGE_BIRD_REMOVE_WEBIF
+		bool "remove webinterface"
+		default n
+		help
+			This option removes the webinterface
 
 endif # FREETZ_PACKAGE_BIRD
 

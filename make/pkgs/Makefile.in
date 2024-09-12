@@ -5,6 +5,7 @@ ifneq ($(strip $(FREETZ_VERBOSITY_LEVEL)),2)
 BUILD_FAIL_MSG += Please re-run make with verbose level set to 2 to see what's going on.
 endif
 
+SUBNINJA=cmd() { $(MAKE_ENV) $(NINJA) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
 SUBMAKE1=cmd() { $(MAKE_ENV) $(MAKE1) $(QUIET) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
 SUBMAKE=cmd() { $(MAKE_ENV) $(MAKE) $(QUIET) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
 SUBMESON=cmd() { $(MAKE_ENV) $(MESON) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
@@ -541,7 +542,8 @@ endef
 # PKG_FINISH: Finalise packages (general functionality + call to type specifics)
 define PKG_FINISH__INT
 
-$(pkg)-precompiled--int: $(pkg)-build-prereq $(TOOLCHAIN) $(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON))
+# tools dont like -precompiled postfix because of precompiled
+$(pkg)-precompiled--int: $(pkg)-build-prereq $(TOOLCHAIN)  $(patsubst %-host-precompiled,%-host,$(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON)))
 .PHONY: $(pkg)-precompiled--int
 
 $(pkg)-precompiled:

@@ -44,6 +44,7 @@ kernel-menuconfig                       Configuration of selected kernel
 kernel-precompiled                      Compiles the selected kernel
 kernel-dirclean                         Cleans everything of the selected kernel
 
+tools-push_firmware                     Builds the tools required by push_firmware (pfp)
 tools                                   Builds the tools required by current selection
 tools-all                               Builds all available tools of Freetz
 tools-allexcept-local                   Builds all non-local tools of Freetz (dl-tools)
@@ -58,7 +59,7 @@ firmware-nocompile                      Creates firmware without packages and li
 mirror                                  Downloads all selected package sources files
 release                                 Creates a release file (change .version before)
 
-push_firmware                           Calls tools/push_firmware with images/latest.image
+push_firmware                           Calls tools/push_firmware with images/latest.image (pf)
                                         For more options, run: tools/push_firmware -h
 recover                                 Calls tools/recover-eva with configured firmware
 ```

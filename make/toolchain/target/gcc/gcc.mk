@@ -1,7 +1,7 @@
 GCC_VERSION:=$(TARGET_TOOLCHAIN_GCC_VERSION)
-GCC_MAJOR_VERSION:=$(TARGET_TOOLCHAIN_GCC_MAJOR_VERSION)
+GCC_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$(call qstrip,$(FREETZ_TARGET_GCC_VERSION)),2)
 GCC_SOURCE:=gcc-$(GCC_VERSION).tar.$(if $(or $(FREETZ_TARGET_GCC_4_6),$(FREETZ_TARGET_GCC_4_7),$(FREETZ_TARGET_GCC_4_8),$(FREETZ_TARGET_GCC_4_9)),bz2,xz)
-GCC_SITE:=$(if $(FREETZ_TARGET_GCC_SNAPSHOT),ftp://gcc.gnu.org/pub/gcc/snapshots/$(GCC_VERSION),@GNU/gcc/gcc-$(GCC_VERSION))
+GCC_SITE:=@GNU/gcc/gcc-$(GCC_VERSION)
 GCC_DIR:=$(TARGET_TOOLCHAIN_DIR)/gcc-$(GCC_VERSION)
 GCC_MAKE_DIR:=$(MAKE_DIR)/toolchain/target/gcc
 
@@ -11,8 +11,11 @@ GCC_HASH_4.8.5  := 22fb1e7e0f68a63cee631d85b20461d1ea6bda162f03096350e38c8d427ec
 GCC_HASH_4.9.4  := 6c11d292cd01b294f9f84c9a59c230d80e9e4a47e5c6355f046bb36d4f358092
 GCC_HASH_5.5.0  := 530cea139d82fe542b358961130c69cfde8b3d14556370b65823d2f91f0ced87
 GCC_HASH_8.3.0  := 64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c
+GCC_HASH_8.4.0  := e30a6e52d10e1f27ed55104ad233c30bd1e99cfb5ff98ab022dc941edd1b2dd4
 GCC_HASH_9.3.0  := 71e197867611f6054aa1119b13a0c0abac12834765fe2d81f35ac57f84f742d1
-GCC_HASH_13.2.0 := e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da
+GCC_HASH_13.3.0 := 0845e9621c9543a13f484e94584a49ffc0129970e9914624235fc1d061a0c083
+GCC_HASH_13.4.0 := c95da32f440378d7751dd95533186f7fc05ceb4fb65eb5b85234e6299eb9838e
+GCC_HASH_14.2.0 := a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9
 GCC_HASH:=$(GCC_HASH_$(GCC_VERSION))
 
 GCC_ECHO_TYPE:=TTC
@@ -100,8 +103,7 @@ $(if $(strip $(1)),\
 )
 endef
 
-GCC_PATCHES_ROOT_DIR := $(GCC_MAKE_DIR)/$(GCC_MAJOR_VERSION)
-GCC_CONDITIONAL_PATCHES += $(if $(FREETZ_TARGET_GCC_SNAPSHOT),snapshot,release)
+GCC_PATCHES_ROOT_DIR := $(GCC_MAKE_DIR)/patches/$(GCC_MAJOR_VERSION)
 GCC_CONDITIONAL_PATCHES += $(if $(FREETZ_TARGET_GCC_DEFAULT_AS_NEEDED),default-as-needed)
 
 
@@ -120,6 +122,9 @@ $(GCC_DIR)/.unpacked: $(DL_DIR)/$(GCC_SOURCE) | $(TARGET_TOOLCHAIN_DIR) $(UNPACK
 	$(call APPLY_PATCHES,$(GCC_PATCHES_ROOT_DIR) $(addprefix $(GCC_PATCHES_ROOT_DIR)/,$(strip $(GCC_CONDITIONAL_PATCHES))),$(GCC_DIR))
 	for f in $$(find $(GCC_DIR) \( -name "configure" -o -name "config.rpath" \)); do $(call PKG_PREVENT_RPATH_HARDCODING1,$$f) done
 	touch $@
+
+gcc-autofix: gcc-dirclean
+	$(MAKE) AUTO_FIX_PATCHES=y gcc-unpacked
 
 ##############################################################################
 #
@@ -338,7 +343,7 @@ gcc_target-dirclean: gcc_target-clean gcc-dirclean
 gcc_target-distclean: gcc_target-dirclean
 
 
-.PHONY: gcc-source gcc-unpacked
+.PHONY: gcc-source gcc-unpacked gcc-autofix
 .PHONY: gcc_initial gcc_initial-configured gcc_initial-uninstall gcc_initial-clean gcc_initial-dirclean gcc_initial-distclean
 .PHONY: gcc         gcc-configured         gcc-uninstall         gcc-clean         gcc-dirclean         gcc-distclean
 .PHONY: gcc_target  gcc_target-configured  gcc_target-uninstall  gcc_target-clean  gcc_target-dirclean  gcc_target-distclean

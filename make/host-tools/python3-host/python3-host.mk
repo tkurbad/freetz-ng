@@ -1,7 +1,12 @@
-$(call TOOLS_INIT, 3.11.7)
+$(call TOOLS_INIT, 3.12.6)
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=18e1aa7e66ff3a58423d59ed22815a6954e53342122c45df20c96877c062b9b7
+$(PKG)_HASH:=1999658298cf2fb837dffed8ff3c033ef0c98ef20cf73c5d5f66bed5ab89697c
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
+### WEBSITE:=https://www.python.org/
+### MANPAGE:=https://docs.python.org/3/
+### CHANGES:=https://www.python.org/downloads/
+### CVSREPO:=https://github.com/python/cpython
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
 $(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))

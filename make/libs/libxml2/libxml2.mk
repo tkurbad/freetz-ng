@@ -1,12 +1,13 @@
-$(call PKG_INIT_LIB, 2.12.3)
+$(call PKG_INIT_LIB, 2.13.3)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=8c8f1092340a89ff32bc44ad5c9693aff9bc8a7a3e161bb239666e5d15ac9aaa
+$(PKG)_HASH:=0805d7c180cf09caad71666c7a458a74f041561a532902454da5047d83948138
 $(PKG)_SITE:=https://download.gnome.org/sources/libxml2/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=http://www.xmlsoft.org
 ### MANPAGE:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#html-documentation
 ### CHANGES:=https://gitlab.gnome.org/GNOME/libxml2/-/releases
 ### CVSREPO:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
+### SUPPORT:=fda77
 
 $(PKG)_LIBNAME:=$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_BINARY:=$($(PKG)_DIR)/.libs/$($(PKG)_LIBNAME)
@@ -60,13 +61,17 @@ $(PKG)_CONFIGURE_OPTIONS += --with-xpath=yes		#XPATH support
 $(PKG)_CONFIGURE_OPTIONS += --with-xptr=yes		#XPointer support
 $(PKG)_CONFIGURE_OPTIONS += --with-modules=no		#dynamic modules support, note: this requires libdl
 
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
+$(PKG)_CFLAGS += -Wno-int-conversion
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(LIBXML2_DIR)
+	$(SUBMAKE) -C $(LIBXML2_DIR) \
+		CFLAGS="$(LIBXML2_CFLAGS)"
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 	$(SUBMAKE) \

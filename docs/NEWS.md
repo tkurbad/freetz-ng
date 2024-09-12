@@ -1,5 +1,60 @@
 # NEWS
 
+ * __[2024-08-01](#2024-08-01)__<a id='2024-08-01'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24080` erstellt.<br>
+   Ein Tag sollte wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng24080](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng24080)<br>
+
+ * __[2024-07-10](#2024-07-10)__<a id='2024-07-10'></a><br>
+   AVM wird zum 1. September 2024 ins Ausland verkauft.<br>
+   Dies wurde durch die Bundeswettbewerbsbehörde (Schweiz) bekannt.<br>
+   Die AVM-Geschäftsführer bleiben über Spree 24 Beteiligung GmbH (Deutschland) beteiligt.<br>
+   AVM wird an Rucio Investment S.à r.l. (Luxemburg) verkauft.<br>
+   Rucio gehört Imker Capital Partners (England).<br>
+   Hinter Imker steckt der "[..] Investor Rolly van Rappard von CVC".<br>
+   CVC Capital Partners (Luxemburg) ist aus der Formel-1 hinlänglich bekannt.<br>
+   AVM gibt selbst an von Imker und nicht von Rucio gekauft zu werden.<br>
+   <br>
+   Was mit den 890 Feierabendhabenden (oder arbeitet bei AVM um 19h noch jemand?) in Berlin<br>
+   wird teilt AVM nicht mit, aber dass "eine verstärkte Internationalisierung" angestrebt wird.<br>
+   <br>
+   Siehe<br>
+    - [bwb.gv.at - Zusammenschlussanmeldung Rucio Investment S.à r.l.; AVM Computersysteme Vertriebs GmbH](https://www.bwb.gv.at/zusammenschluesse/2024/6684#09)
+    - [computerbase.de - Fritz!Box-Hersteller: Imker Capital kauft AVM, Gründer behalten kleinen Anteil](https://www.computerbase.de/2024-07/fritz-box-hersteller-luxemburger-investmentgesellschaft-will-avm-kaufen/)
+    - [golem.de - AVM von Investmentfirma gekauft](https://www.golem.de/news/fritzbox-avm-von-investmentfirma-gekauft-2407-186892.htm)
+    - [deskmodder.de - Offiziell: FRITZ!Box-Hersteller AVM findet Investor für Nachfolge](https://www.deskmodder.de/blog/2024/07/10/offiziell-fritzbox-hersteller-avm-findet-investor-fuer-nachfolge/)
+    - [financefwd.com - Der neue Investor hinter SAP Fioneer](https://financefwd.com/de/sap-fioneer-dediq/)
+    - [motorsport-total.com - CVC: 370 Prozent Gewinn mit der Formel 1](https://www.motorsport-total.com/formel-1/news/cvc-370-prozent-gewinn-mit-der-formel-1-12092014)
+    - [avm.de - FRITZ!Box-Hersteller AVM regelt Nachfolge](https://avm.de/unternehmen/presse/presseinformationen/2024/07/fritzbox-hersteller-avm-regelt-nachfolge/)
+
+ * __[2024-07-02](#2024-07-02)__<a id='2024-07-02'></a><br>
+   AVM muss wegen Preistreiberei zum Schaden seiner eigenen Kunden knapp 16 Millionen Euro Geldbußen zahlen.<br>
+   Andreas Mundt, Präsident des Bundeskartellamtes:<br>
+   "Wir werfen AVM vor, über Jahre hinweg die freie Preisbildung beim Vertrieb seiner Produkte an Endverbraucher eingeschränkt<br>
+   zu haben. Durch Abstimmungen mit Elektronikfachhändlern über Anhebungen von Endverbraucherpreisen wurde darauf<br>
+   hingewirkt, den Preiswettbewerb gegenüber den Endverbrauchern einzuschränken. Das Bundeskartellamt sendet mit den<br>
+   verhängten Bußgeldern ein klares Signal, dass Verstöße gegen das Verbot der Preisbindung nicht toleriert werden." <br>
+   Siehe [Pressemitteilung 02_07_2024_AVM des Bundeskartellamtes](https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2024/02_07_2024_AVM.html?nn=52004)<br>
+
+ * __[2024-04-01](#2024-04-01)__<a id='2024-04-01'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24040` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng24040](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng24040)<br>
+
+ * __[2024-03-18](#2024-03-18)__<a id='2024-03-18'></a><br>
+   UPDATE: Der Tag wurde wegen [CVE-2024-3094](https://nvd.nist.gov/vuln/detail/CVE-2024-3094) gelöscht.<br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24030` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng24030](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng24030)<br>
+
+ * __[2024-01-30](#2024-01-30)__<a id='2024-01-30'></a><br>
+   Freetz-NG gibt es nun seit 5 Jahren!<br>
+   Siehe [eaf06dbb](https://github.com/Freetz-NG/freetz-ng/commit/eaf06dbb153d8ee2eabeedb827f1c8d80e409744)<br>
+
  * __[2023-11-03](#2023-11-03)__<a id='2023-11-03'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23110` erstellt.<br>
    Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>

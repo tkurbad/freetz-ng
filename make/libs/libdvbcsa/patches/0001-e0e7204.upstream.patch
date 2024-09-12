@@ -1,0 +1,23 @@
+From e0e72049330391886adbb73c5d04e848ced68702 Mon Sep 17 00:00:00 2001
+From: Alexandre Becoulet <alexandre.becoulet@free.fr>
+Date: Mon, 20 May 2013 20:14:12 +0000
+Subject: [PATCH 02/11] removed use of deprecated AM_CONFIG_HEADER macro in
+ configure.ac
+
+
+diff --git a/configure.ac b/configure.ac
+index 533f45d..ed8a1ad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,7 +16,7 @@ AC_ARG_ENABLE(sse2, AC_HELP_STRING(--enable-sse2, [Use SSE2 for bitslice]), sse2
+ AC_ARG_ENABLE(altivec, AC_HELP_STRING(--enable-altivec, [Use AltiVec for bitslice]), altivec_debug=$enableval, enable_altivec=no)
+ 
+ AM_INIT_AUTOMAKE(libdvbcsa, 1.1.0)
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ AC_PROG_CC
+ 
+-- 
+2.43.0
+

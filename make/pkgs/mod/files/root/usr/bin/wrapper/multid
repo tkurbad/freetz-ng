@@ -5,7 +5,7 @@ log() {
 	local _log="$(cat)" # save stdin to _log
 	[ -z "$_log" ] && return
 	loglib_system "AVM-MULTID" "$_log"
-	echo "$_log" >> /var/log/mod_net.log
+	echo "$(date +'%Y-%m-%d %H:%M:%S') -- $_log" >> /var/log/mod_net.log
 }
 
 daemon_mode=start
@@ -14,6 +14,7 @@ while [ $# -gt 0 ]; do
 	[ "$1" == "-I" ] && daemon_mode="reload"
 	shift
 done
+echo "Wrapper for multid is executing: $daemon_mode" | log
 
 if [ "$daemon_mode" == "start" ]; then
 	for dns_pkg in bind dnsmasq unbound; do
@@ -29,5 +30,13 @@ if [ "$daemon_mode" == "start" ]; then
 fi
 
 #[ "$daemon_mode" == "start" -a  "$(/etc/init.d/rc.multid status)" == "running" ] && daemon_mode=reload
+
+if [ -f /lib/systemd/system/multid.service ]; then
+	# Exec makes sure the .rc-script will not become a new process, which would generate
+	# new PID and PPID. Instead it will override this process and inherit its PIDs.
+	exec /etc/init.d/rc.multid $daemon_mode
+	exit $?  # this will never be reached
+fi
+
 /etc/init.d/rc.multid $daemon_mode 2>&1 | log
 

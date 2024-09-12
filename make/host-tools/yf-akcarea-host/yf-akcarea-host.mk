@@ -1,4 +1,5 @@
 $(call TOOLS_INIT, 1.0)
+### SUPPORT:=X
 
 $(PKG)_BUILD_PREREQ += $(if $(HOST_RUN32BIT),,32bit-capable-cpu)
 $(PKG)_BUILD_PREREQ_HINT := You have to use a 32-bit capable cpu to compile this
@@ -31,6 +32,7 @@ $(pkg)-precompiled: $($(PKG)_TARGET_DIR)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(YF_AKCAREA_HOST_DIR) clean
+	-$(RM) $(YF_AKCAREA_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(YF_AKCAREA_HOST_DIR)

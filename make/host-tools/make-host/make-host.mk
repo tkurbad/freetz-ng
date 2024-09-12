@@ -6,6 +6,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### MANPAGE:=https://www.gnu.org/software/make/manual/
 ### CHANGES:=https://ftp.gnu.org/gnu/make/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/make.git
+### SUPPORT:=fda77
 
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 

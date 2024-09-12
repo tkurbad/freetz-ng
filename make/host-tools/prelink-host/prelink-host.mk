@@ -5,6 +5,7 @@ $(PKG)_SITE:=https://people.redhat.com/jakub/prelink
 ### WEBSITE:=https://people.redhat.com/jakub/prelink/
 ### MANPAGE:=https://people.redhat.com/jakub/prelink/prelink.pdf
 ### CHANGES:=https://packages.debian.org/buster/execstack
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/execstack
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/execstack

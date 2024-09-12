@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -7020,6 +7020,9 @@
+@@ -6977,6 +6977,9 @@
  else
     MISC_TERMINFO_DIRS=""
  fi
@@ -10,7 +10,7 @@
  JD_Terminfo_Dirs="$MISC_TERMINFO_DIRS \
                    /usr/lib/terminfo \
                    /usr/share/terminfo \
-@@ -7037,6 +7040,7 @@
+@@ -6995,6 +6998,7 @@
        break
     fi
  done

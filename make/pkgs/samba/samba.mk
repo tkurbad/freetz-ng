@@ -51,21 +51,22 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_SAMBA_NMBLOOKUP),,usr/bin/nmblookup)
 $(PKG)_DEPENDS_ON += popt ncurses readline
 ifeq ($(strip $(FREETZ_TARGET_UCLIBC_0_9_28)),y)
 $(PKG)_DEPENDS_ON += iconv
-$(PKG)_TARGET_LDFLAGS += -liconv
+$(PKG)_EXTRA_LDFLAGS += -liconv
 endif
 
 include $(MAKE_DIR)/pkgs/samba/samba$(if $(FREETZ_SAMBA_VERSION_3_0),30,36).mk.in
 
-$(PKG)_TARGET_CFLAGS   += -ffunction-sections -fdata-sections
-$(PKG)_TARGET_CPPFLAGS += -DMAX_DEBUG_LEVEL=$(FREETZ_PACKAGE_SAMBA_MAX_DEBUG_LEVEL)
+$(PKG)_EXTRA_CFLAGS   += -ffunction-sections -fdata-sections
+$(PKG)_EXTRA_CPPFLAGS += -DMAX_DEBUG_LEVEL=$(FREETZ_PACKAGE_SAMBA_MAX_DEBUG_LEVEL)
 # disable __location__ macro (expands to __FILE__ ":" __LINE__ per default) at debug levels -1 and 0 to reduce binary size
-$(PKG)_TARGET_CPPFLAGS += $(if $(filter -1 0,$(FREETZ_PACKAGE_SAMBA_MAX_DEBUG_LEVEL)),-D__location__=\\\"\\\")
-$(PKG)_TARGET_LDFLAGS  += -Wl,--gc-sections
+$(PKG)_EXTRA_CPPFLAGS += $(if $(filter -1 0,$(FREETZ_PACKAGE_SAMBA_MAX_DEBUG_LEVEL)),-D__location__=\\\"\\\")
+$(PKG)_EXTRA_LDFLAGS  += -Wl,--gc-sections
 
-$(PKG)_MAKE_FLAGS += EXTRA_CFLAGS="$(SAMBA_TARGET_CFLAGS)"
-$(PKG)_MAKE_FLAGS += EXTRA_CPPFLAGS="$(SAMBA_TARGET_CPPFLAGS)"
-$(PKG)_MAKE_FLAGS += EXTRA_LDFLAGS="$(SAMBA_TARGET_LDFLAGS)"
+$(PKG)_MAKE_FLAGS += EXTRA_CFLAGS="$(SAMBA_EXTRA_CFLAGS)"
+$(PKG)_MAKE_FLAGS += EXTRA_CPPFLAGS="$(SAMBA_EXTRA_CPPFLAGS)"
+$(PKG)_MAKE_FLAGS += EXTRA_LDFLAGS="$(SAMBA_EXTRA_LDFLAGS)"
 $(PKG)_MAKE_FLAGS += DYNEXP= PICFLAG=
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -96,6 +97,7 @@ $($(PKG)_CODEPAGES_TARGET_DIR): $($(PKG)_DEST_DIR)$($(PKG)_CODEPAGES_DIR)/%: $($
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARY_TARGET_DIR) $($(PKG)_CLIENT_BINARIES_TARGET_DIR) $($(PKG)_SYMLINKS_TARGET_DIR) $(if $(FREETZ_SAMBA_VERSION_3_0),,$($(PKG)_CODEPAGES_TARGET_DIR))
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(SAMBA_DIR)/$(SAMBA_BUILD_SUBDIR) clean

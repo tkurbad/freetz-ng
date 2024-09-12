@@ -4,4 +4,5 @@
  - Changelog: [https://github.com/PeterPawn/decoder/releases](https://github.com/PeterPawn/decoder/releases)
  - Repository: [https://github.com/PeterPawn/decoder/commits/master](https://github.com/PeterPawn/decoder/commits/master)
  - Package: [master/make/pkgs/decrypt-fritzos-cfg/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/decrypt-fritzos-cfg/)
+ - Maintainer: -
 

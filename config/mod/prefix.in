@@ -36,6 +36,7 @@ config FREETZ_TYPE_PREFIX
 	default "3490"              if FREETZ_TYPE_3490
 	default "4020"              if FREETZ_TYPE_4020
 	default "4040"              if FREETZ_TYPE_4040
+	default "4050"              if FREETZ_TYPE_4050
 	default "4060"              if FREETZ_TYPE_4060
 	default "5010"              if FREETZ_TYPE_5010
 	default "5050"              if FREETZ_TYPE_5050
@@ -45,12 +46,14 @@ config FREETZ_TYPE_PREFIX
 	default "5491"              if FREETZ_TYPE_5491
 	default "5530"              if FREETZ_TYPE_5530
 	default "5590"              if FREETZ_TYPE_5590
+	default "5690_Pro"          if FREETZ_TYPE_5690
 	default "6000"              if FREETZ_TYPE_6000
 	default "6430"              if FREETZ_TYPE_6430
 	default "6490"              if FREETZ_TYPE_6490
 	default "6590"              if FREETZ_TYPE_6590
 	default "6591"              if FREETZ_TYPE_6591
 	default "6660"              if FREETZ_TYPE_6660
+	default "6670"              if FREETZ_TYPE_6670
 	default "6690"              if FREETZ_TYPE_6690
 	default "6810"              if FREETZ_TYPE_6810
 	default "6820_v1"           if FREETZ_TYPE_6820_V1
@@ -101,6 +104,7 @@ config FREETZ_TYPE_PREFIX
 	default "7583_VDSL"         if FREETZ_TYPE_7584
 	default "7590"              if FREETZ_TYPE_7590
 	default "7590_AX"           if FREETZ_TYPE_7599
+	default "7690"              if FREETZ_TYPE_7690
 	default "Gateway"           if FREETZ_TYPE_GATE
 	default "W501V"             if FREETZ_TYPE_W501V
 
@@ -125,9 +129,11 @@ config FREETZ_TYPE_PREFIX_SERIES_SUBDIR
 	default "07_2X"             if FREETZ_AVM_VERSION_07_2X
 	default "07_5X"             if FREETZ_AVM_VERSION_07_5X
 	default "07_8X"             if FREETZ_AVM_VERSION_07_8X
+	default "08_0X"             if FREETZ_AVM_VERSION_08_0X
 
 config FREETZ_TYPE_PREFIX_ALIEN_HARDWARE
 	string
+	default "W504V_"            if FREETZ_TYPE_W504V_7270
 	default "W701V_"            if FREETZ_TYPE_W701V_7170
 	default "W900V_"            if FREETZ_TYPE_W900V_7170
 	default "W920V_"            if FREETZ_TYPE_W920V_7570

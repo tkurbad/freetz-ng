@@ -1,11 +1,12 @@
-$(call PKG_INIT_BIN, 1.9.14p3)
+$(call PKG_INIT_BIN, 1.9.15p5)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=a08318b1c4bc8582c004d4cd9ae2903abc549e7e46ba815e41fe81d1c0782b62
+$(PKG)_HASH:=558d10b9a1991fb3b9fa7fa7b07ec4405b7aefb5b3cb0b0871dbc81e3a88e558
 $(PKG)_SITE:=https://www.sudo.ws/dist
 ### WEBSITE:=https://www.sudo.ws/
 ### MANPAGE:=https://www.sudo.ws/docs/man/sudoers.man/
 ### CHANGES:=https://www.sudo.ws/releases/stable/
 ### CVSREPO:=https://github.com/sudo-project/sudo
+### SUPPORT:=fda77
 
 $(PKG)_BINARY_BUILD_DIR:=$($(PKG)_DIR)/src/.libs/$(pkg)
 $(PKG)_BINARY_TARGET_DIR:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)

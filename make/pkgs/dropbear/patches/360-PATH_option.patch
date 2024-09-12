@@ -7,9 +7,9 @@
 +#define DEFAULT_PATH "/usr/bin:/bin:/var/bin"
 +
  #endif
---- runopts.h
-+++ runopts.h
-@@ -145,6 +145,7 @@
+--- src/runopts.h
++++ src/runopts.h
+@@ -146,6 +146,7 @@
  
  	int pass_on_env;
  
@@ -17,9 +17,9 @@
  } svr_runopts;
  
  extern svr_runopts svr_opts;
---- svr-chansession.c
-+++ svr-chansession.c
-@@ -1012,11 +1012,7 @@
+--- src/svr-chansession.c
++++ src/svr-chansession.c
+@@ -1014,11 +1014,7 @@
  	addnewvar("LOGNAME", ses.authstate.pw_name);
  	addnewvar("HOME", ses.authstate.pw_dir);
  	addnewvar("SHELL", get_user_shell());
@@ -32,18 +32,18 @@
  	if (cp != NULL) {
  		addnewvar("LANG", cp);
  		m_free(cp);
---- svr-runopts.c
-+++ svr-runopts.c
-@@ -103,6 +103,8 @@
+--- src/svr-runopts.c
++++ src/svr-runopts.c
+@@ -104,6 +104,8 @@
  					"		(default port is %s if none specified)\n"
  					"-P PidFile	Create pid file PidFile\n"
  					"		(default %s)\n"
 +					"-x PATH		Set PATH environment variable of child processes\n"
 +					"		(default %s)\n"
- #if INETD_MODE
- 					"-i		Start for inetd\n"
- #endif
-@@ -136,6 +138,7 @@
+ #ifdef SO_BINDTODEVICE
+ 					"-l <interface>\n"
+ 					"		interface to bind on\n"
+@@ -141,6 +143,7 @@
  #endif
  					MAX_AUTH_TRIES,
  					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
@@ -51,25 +51,25 @@
  					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT);
  }
  
-@@ -180,6 +183,7 @@
+@@ -185,6 +188,7 @@
  	svr_opts.hostkey = NULL;
  	svr_opts.delay_hostkey = 0;
  	svr_opts.pidfile = expand_homedir_path(DROPBEAR_PIDFILE);
 +	svr_opts.childProcessPATH = NULL;
- #if DROPBEAR_SVR_LOCALTCPFWD
+ #if DROPBEAR_SVR_LOCALANYFWD
  	svr_opts.nolocaltcp = 0;
  #endif
-@@ -282,6 +286,9 @@
+@@ -287,6 +291,9 @@
  				case 'P':
  					next = &svr_opts.pidfile;
  					break;
 +				case 'x':
 +					next = &svr_opts.childProcessPATH;
 +					break;
- #if DO_MOTD
- 				/* motd is displayed by default, -m turns it off */
- 				case 'm':
-@@ -398,6 +405,10 @@
+ #ifdef SO_BINDTODEVICE
+ 				case 'l':
+ 					next = &svr_opts.interface;
+@@ -408,6 +415,10 @@
  	}
  #endif
  
@@ -78,5 +78,5 @@
 +	}
 +
  	if (svr_opts.bannerfile) {
- 		struct stat buf;
- 		if (stat(svr_opts.bannerfile, &buf) != 0) {
+ 		load_banner();
+ 	}

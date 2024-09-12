@@ -1,13 +1,14 @@
-$(call TOOLS_INIT, 3.0.12)
+$(call TOOLS_INIT, 3.0.15)
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=f93c9e8edde5e9166119de31755fc87b4aa34863662f67ddfcba14d0b6b69b61
-$(PKG)_SITE:=https://www.openssl.org/source
+$(PKG)_HASH:=23c666d0edf20f14249b3d8f0368acaee9ab585b09e1de82107c66e1f3ec9533
+$(PKG)_SITE:=https://www.openssl.org/source,https://github.com/openssl/openssl/releases/download/openssl-$($(PKG)_VERSION)
 ### WEBSITE:=https://www.openssl.org/source/
 ### MANPAGE:=https://www.openssl.org/docs/
 ### CHANGES:=https://www.openssl.org/news/changelog.html
 ### CVSREPO:=https://github.com/openssl/openssl
+### SUPPORT:=fda77
 
-#$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
+$(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 #$(PKG)_PKGCONFIG_SHORT       := openssl libcrypto libssl
 #$(PKG)_PKGCONFIG_TARGET_DIR  := $($(PKG)_PKGCONFIG_SHORT:%=$($(PKG)_DESTDIR)/lib*/pkgconfig/%.pc)
@@ -44,7 +45,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.compiled
 
 $(pkg)-clean:
 	-$(MAKE) -C $(OPENSSL_HOST_DIR) clean
-	-$(RM) $(OPENSSL_HOST_DIR)/.{configured,compiled,installed}
+	-$(RM) $(OPENSSL_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(OPENSSL_HOST_DIR)

@@ -6,7 +6,7 @@
 
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -244,24 +244,6 @@
+@@ -245,24 +245,6 @@
         NAMESPACE libdeflate::
         FILE libdeflate-targets.cmake)
  

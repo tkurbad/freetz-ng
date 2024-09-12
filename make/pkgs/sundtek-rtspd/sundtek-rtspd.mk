@@ -1,9 +1,11 @@
-$(call PKG_INIT_BIN, 0.0)
+$(call PKG_INIT_BIN, 1.0)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=rtspd
 $(PKG)_SOURCE:=$(if $(FREETZ_PACKAGE_SUNDTEK),sundtek-$($(PKG)_SOURCE_DOWNLOAD_NAME)-$(SUNDTEK_ARCH))
-$(PKG)_SITE:=http://sundtek.de/media/streamer/$(SUNDTEK_ARCH)
+$(PKG)_HASH:=SHIFTING
+$(PKG)_SITE:=https://sundtek.de/media/streamer/$(SUNDTEK_ARCH)
 
 $(PKG)_TARGET_PATH:=/usr/bin/sundtek-$($(PKG)_SOURCE_DOWNLOAD_NAME)
+
 
 $(if $(FREETZ_PACKAGE_SUNDTEK_RTSPD_FORCE_DOWNLOAD),.PHONY: $(DL_DIR)/$($(PKG)_SOURCE))
 
@@ -21,6 +23,7 @@ $($(PKG)_DEST_DIR)$($(PKG)_TARGET_PATH): $(DL_DIR)/$($(PKG)_SOURCE)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_DEST_DIR)$($(PKG)_TARGET_PATH)
+
 
 $(pkg)-clean:
 

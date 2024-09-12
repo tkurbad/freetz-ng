@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_KNOCK
-	bool "Knock 0.8"
+	bool "Knock 0.8 - DEPRECATED"
 	select FREETZ_LIB_libpcap
 	default n
 	help

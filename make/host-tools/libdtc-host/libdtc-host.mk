@@ -2,6 +2,7 @@ $(call TOOLS_INIT, 1.6.1)
 $(PKG)_SOURCE:=dtc-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=65cec529893659a49a89740bb362f507a3b94fc8cd791e76a8d6a2b6f3203473
 $(PKG)_SITE:=@KERNEL/software/utils/dtc
+### SUPPORT:=X
 
 $(PKG)_BUILD_PREREQ += $(if $(HOST_RUN32BIT),,32bit-capable-cpu)
 $(PKG)_BUILD_PREREQ_HINT := You have to use a 32-bit capable cpu to compile this
@@ -10,7 +11,7 @@ $(PKG)_LIBFDT_BINARY:=$($(PKG)_DIR)/libfdt/libfdt.a
 $(PKG)_BINARY:=$(HOST_TOOLS_DIR)/lib/libfdt.a
 
 
-# libdtc-host, dtc-host and fitdump using the same source
+# dtc-host and dtc using the same source, libdtc-host an older version
 ifneq ($($(PKG)_SOURCE),$(DTC_HOST_SOURCE))
 $(TOOLS_SOURCE_DOWNLOAD)
 endif

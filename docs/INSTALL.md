@@ -32,30 +32,30 @@ die Aktive kann man via [quote GETENV linux_fs_start](https://github.com/PeterPa
 ### Methoden
 Verfügbare Scripte und Tools zum Flashen über den Bootloader:
 
- * Gen 1+2: __single-boot__<a id='single'></a> / NOR<br>
+ * Gen 1: __single-boot__<a id='single'></a> / NOR<br>
    Die ersten Fritzboxen von 7050 bis 7390
     - `tools/push_firmware` von Freetz-NG
     - [push_firmware](https://www.freetz.org) vom Ur-Freetz
     - [fritzflash.py](https://fritz-tools.readthedocs.io) von Freifunk/Gluon
     - [ruKernelTool](http://rukerneltool.rainerullrich.de/) gibt es zum Glück nicht mehr
  
- * Gen 3: __ram-boot__<a id='ram'></a> / NAND / inmemory<br>
+ * Gen 2: __ram-boot__<a id='ram'></a> / NAND / inmemory<br>
    Fritzboxen nach 7390, wie 7490 & 7590
     - `tools/push_firmware` von Freetz-NG
     - [eva_tools](https://www.yourfritz.de/desc-eva) aus [YourFritz](https://github.com/PeterPawn/YourFritz/tree/main/eva_tools) für Windows/PowerShell<br>
       Vorsicht: Dieses Script kann kein Image flashen, sondern nur das soganannte <br>`inmemory`-Zwischenformat. Siehe dazu `tools/image2inmemory`
 
- * Gen 6: __fit-boot__<a id='fit'></a> / fitimg<br>
+ * Gen 5: __fit-boot__<a id='fit'></a> / fitimg<br>
    Neueste Fritzboxen wie 7530 AX & 5530
     - `tools/push_firmware` von Freetz-NG
     - [fit_tools](https://github.com/PeterPawn/YourFritz/tree/main/fit_tools) von YourFritz,
       wird in Freetz-NG für den AVM spezifische Header bzw<br>Signatur genutzt. Danach können DTC und U-Boot verwenden werden.
 
- * Gen 4: __dual-boot__<a id='dual'></a><br>
+ * Gen 3: __dual-boot__<a id='dual'></a><br>
    Alte Cable Fritzboxen mit Puma6, zb 6490 & 6590
     - `tools/push_firmware` von Freetz-NG
 
- * Gen 5: __uimg-boot__<a id='uimg'></a><br>
+ * Gen 4: __uimg-boot__<a id='uimg'></a><br>
    Neue Cable Fritzboxen mit Puma7, zb 6591 & 6660
     - `tools/push_firmware` von Freetz-NG<br>
     - [uimg-tool](https://bitbucket.org/fesc2000/uimg-tool.git) von fesc2000 zum ent-/packen, wird in Freetz-NG genutzt

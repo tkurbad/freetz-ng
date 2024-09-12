@@ -2,6 +2,11 @@ $(call TOOLS_INIT, 1.36.1)
 $(PKG)_SOURCE:=busybox-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH:=b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314
 $(PKG)_SITE:=https://www.busybox.net/downloads
+### WEBSITE:=https://www.busybox.net/
+### MANPAGE:=https://www.busybox.net/downloads/BusyBox.html
+### CHANGES:=https://www.busybox.net/news.html
+### CVSREPO:=https://git.busybox.net/busybox/
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON:=tar-host
 
@@ -19,6 +24,18 @@ endef
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_NOP)
+
+.PHONY: $(pkg)-oldconfig $(pkg)-olddefconfig $(pkg)-menuconfig
+
+$(pkg)-menuconfig: $($(PKG)_DIR)/.configured
+	cp $(BUSYBOX_HOST_CONFIG_FILE) $(BUSYBOX_HOST_DIR)/.config
+	$(TOOLS_SUBMAKE) -C $(BUSYBOX_HOST_DIR) menuconfig
+	cp $(BUSYBOX_HOST_DIR)/.config $(BUSYBOX_HOST_CONFIG_FILE)
+
+$(pkg)-oldconfig $(pkg)-olddefconfig: $($(PKG)_DIR)/.configured
+	cp $(BUSYBOX_HOST_CONFIG_FILE) $(BUSYBOX_HOST_DIR)/.config
+	$(TOOLS_SUBMAKE) -C $(BUSYBOX_HOST_DIR) oldconfig
+	cp $(BUSYBOX_HOST_DIR)/.config $(BUSYBOX_HOST_CONFIG_FILE)
 
 $($(PKG)_DIR)/.prepared: $($(PKG)_DIR)/.configured
 	cp $(BUSYBOX_HOST_CONFIG_FILE) $(BUSYBOX_HOST_DIR)/.config

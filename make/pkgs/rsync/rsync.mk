@@ -1,14 +1,17 @@
-$(call PKG_INIT_BIN, 3.2.6)
+$(call PKG_INIT_BIN, 3.3.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=fb3365bab27837d41feaf42e967c57bd3a47bc8f10765a3671efd6a3835454d3
+$(PKG)_HASH:=7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90
 $(PKG)_SITE:=@SAMBA/rsync/src
 ### WEBSITE:=https://rsync.samba.org/
 ### MANPAGE:=https://rsync.samba.org/documentation.html
 ### CHANGES:=https://download.samba.org/pub/rsync/NEWS
 ### CVSREPO:=https://git.samba.org/?p=rsync.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/rsync
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/rsync
+
+$(PKG)_EXCLUDED+=$(if $(FREETZ_PACKAGE_RSYNC_REMOVE_WEBIF),usr/lib/cgi-bin/rsync.cgi etc/default.rsync etc/init.d/rc.rsync)
 
 $(PKG)_DEPENDS_ON += popt zlib
 

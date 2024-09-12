@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://radvd.litech.org/dist,https://github.com/radvd-project/radv
 ### MANPAGE:=https://linux.die.net/man/5/radvd.conf
 ### CHANGES:=https://github.com/radvd-project/radvd/blob/master/CHANGES
 ### CVSREPO:=https://github.com/radvd-project/radvd
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/$(pkg)

@@ -1,14 +1,15 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),1.2.30,1.8.0))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),1.2.30,1.9.0))
 $(PKG)_LIB_VERSION:=$(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),2.0.15,8.3.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=3190efea410a6dd035799717948b2df09910f608d72d23ee81adad4cd0184ae9
-$(PKG)_HASH_CURRENT:=bd37614137d7a8dc523359648eb2a81631a34fd91a82ed5581916a52c08433f4
+$(PKG)_HASH_CURRENT:=5e65385e51f4a7c4b42aa09566396c20e7e1a0a30c272d569ed029a81656e56b
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/oetiker/rrdtool-1.x/releases/download/v$($(PKG)_VERSION),https://oss.oetiker.ch/rrdtool/pub/archive
 ### WEBSITE:=https://www.rrdtool.org
 ### MANPAGE:=https://oss.oetiker.ch/rrdtool/doc
 ### CHANGES:=https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES
 ### CVSREPO:=https://github.com/oetiker/rrdtool-1.x
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),abandon,current)
 
@@ -33,8 +34,8 @@ $(PKG)_CONFIGURE_ENV += rd_cv_ieee_works=yes
 
 $(PKG)_CONFIGURE_OPTIONS += --without-x
 
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libart-2.0"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/freetype2"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libart-2.0"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/freetype2"
 
 else
 $(PKG)_DEPENDS_ON += glib2 gettext libpng libxml2 harfbuzz cairo pango
@@ -50,11 +51,11 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-rrdcached
 $(PKG)_CONFIGURE_OPTIONS += --enable-rrd_graph
 $(PKG)_CONFIGURE_OPTIONS += --enable-rrd_restore
 
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/glib-2.0/include"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/glib-2.0"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/harfbuzz"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/cairo"
-$(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/pango-1.0"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/glib-2.0/include"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/glib-2.0"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/harfbuzz"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/cairo"
+$(PKG)_EXTRA_CFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/pango-1.0"
 
 $(PKG)_EXCLUDED += usr/share/rrdtool/fonts/DejaVuSansMono-Roman.ttf
 endif
@@ -79,8 +80,8 @@ $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY) $($(PKG)_LIBS_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(RRDTOOL_DIR) all \
-		LDFLAGS="$(TARGET_LDFLAGS) $(RRDTOOL_EXTRA_LDFLAGS)" \
-		CPPFLAGS="$(TARGET_CPPFLAGS) $(RRDTOOL_EXTRA_CPPFLAGS)"
+		CFLAGS="$(TARGET_CFLAGS) $(RRDTOOL_EXTRA_CFLAGS)" \
+		LDFLAGS="$(TARGET_LDFLAGS)"
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)

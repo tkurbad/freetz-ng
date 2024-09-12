@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://github.com/NixOS/patchelf/releases/download/$($(PKG)_VERSIO
 ### MANPAGE:=https://sources.debian.org/patches/patchelf/
 ### CHANGES:=https://github.com/NixOS/patchelf/releases
 ### CVSREPO:=https://github.com/NixOS/patchelf
+### VERSION:=0.14.5/0.15.0
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TOOLS_PATCHELF_VERSION_ABANDON),abandon,current)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_PATCHELF_VERSION_ABANDON

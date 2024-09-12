@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PHPXMAIL
-	bool "PHPXmail 1.5"
+	bool "PHPXmail 1.5 - DEPRECATED"
 	default n
 	select FREETZ_PACKAGE_PHP
 	select FREETZ_PACKAGE_PHP_WITH_SESSION

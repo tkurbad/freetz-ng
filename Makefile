@@ -46,7 +46,7 @@ endif
 ifeq ($(strip $(MAKECMDGOALS)),)
 	@$(MAKE) olddefconfig > /dev/null
 endif
-	@umask $(ENVIRA_UMASK) && PATH="$(ENVIRA_PATH_ABS):$(PATH):/usr/sbin" $(MAKE) $(MAKECMDGOALS) $(ENVIRA_MAKE_VARS) || kill $$$$
+	@umask $(ENVIRA_UMASK) && LANG=C PATH="$(ENVIRA_PATH_ABS):$(PATH):/usr/sbin" $(MAKE) $(MAKECMDGOALS) $(ENVIRA_MAKE_VARS) || kill $$$$
 .PHONY: envira
 
 $(MAKECMDGOALS): envira
@@ -102,6 +102,7 @@ PYTHON3=python3
 MESON=meson
 CMAKE=cmake
 NINJA=ninja
+PERL=perl
 MAKE1=make
 ifeq ($(FREETZ_JLEVEL),0)
 MAKE=make -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
@@ -410,7 +411,7 @@ package-list: package-list-clean $(PACKAGES_LIST)
 package-list-clean:
 	@$(RM) .packages
 
-firmware-nocompile: tools $(DL_IMAGE)
+firmware-nocompile: tools $(DL_IMAGE) $(DL_IMAGE2) $(DL_IMAGE3)
 ifneq ($(strip $(FREETZ_FWMOD_SKIP_ALL)),y)
 	@./fwmod \
 		$(if $(call is-y,$(FREETZ_FWMOD_SKIP_UNPACK)),,-u)                                   \
@@ -425,7 +426,7 @@ ifneq ($(strip $(FREETZ_FWMOD_SKIP_ALL)),y)
 		$(if $(filter firmware-nocompile,$(MAKECMDGOALS)),-n)                                \
 		$(if $(call is-y,$(FREETZ_FWMOD_FORCE_PACK)),-f)                                     \
 		-d $(BUILD_DIR)                                                                      \
-		$(DL_IMAGE)
+		$(if $(DL_IMAGE),"$(DL_IMAGE)") $(if $(DL_IMAGE2),"$(DL_IMAGE2)") $(if $(DL_IMAGE3),"$(DL_IMAGE3)")
 endif
 
 ifneq ($(strip $(FREETZ_FWMOD_SKIP_MODIFY)),y)
@@ -453,7 +454,7 @@ toolchain: $(DL_DIR) $(SOURCE_DIR_ROOT) $(TOOLCHAIN) tools lzma1-host
 
 libs: $(DL_DIR) $(SOURCE_DIR_ROOT) $(LIBS_PRECOMPILED)
 
-sources: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(PACKAGES_DIR_ROOT) $(DL_IMAGE) \
+sources: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(PACKAGES_DIR_ROOT) $(DL_IMAGE) $(DL_IMAGE2) $(DL_IMAGE3) \
 	$(TARGETS_SOURCE) $(PACKAGES_SOURCE) $(LIBS_SOURCE) $(TOOLCHAIN_SOURCE) $(TOOLS_SOURCE)
 
 precompiled: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) toolchain-depend \
@@ -493,9 +494,11 @@ tools-distclean-local: $(patsubst %,%-distclean,$(filter-out $(TOOLS_TARXZBUNDLE
 tools-dirclean: $(TOOLS_DIRCLEAN)
 tools-distclean: $(TOOLS_DISTCLEAN)
 
-push_firmware push-firmware:
+.PHONY: push_firmware push-firmware pf pfp tools-push_firmware
+pfp tools-push_firmware: netkit-ftp-host ncftp-host dos2unix-host tichksum-host dtc-host uimg-host
+push_firmware push-firmware pf: tools-push_firmware
 	@if [ ! -e "images/latest.image" ]; then \
-		echo "Please run 'make' first."; exit 1; \
+		echo "Please run 'make' first to build an image."; exit 1; \
 	else \
 		$(TOOLS_DIR)/push_firmware; exit $?; \
 	fi

@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 6.4)
+$(call PKG_INIT_LIB, 6.5)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
+$(PKG)_HASH:=136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6
 $(PKG)_SITE:=@GNU/$(pkg)
 # run make/libs/ncurses/generate.sh after bump
 ### WEBSITE:=https://invisible-island.net/ncurses/
@@ -57,7 +57,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-terminfo-dirs="$($(PKG)_TERMINFO_DIR)"
 $(PKG)_CONFIGURE_OPTIONS += --with-default-terminfo-dir="$($(PKG)_TERMINFO_DIR)"
 $(PKG)_CONFIGURE_OPTIONS += --with-pkg-config-libdir="$($(PKG)_PKGCONFIG_DIR)"
 
-
+$(PKG)_CONFIGURE_OPTIONS += --disable-widec
 
 
 
@@ -123,8 +123,8 @@ $(pkg)-clean: $(pkg)-terminfo-clean
 		$(NCURSES_LIBNAMES_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib%*) \
 		$(NCURSES_LIBNAMES_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/%.pc) \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libncurses* \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/{ncurses,ncurses_dll,term,curses,unctrl,termcap,eti,menu,form,panel}.h \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/$(NCURSES_LIBCONFIG_SHORT)
+# shared	$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/{ncurses,ncurses_dll,term,curses,unctrl,termcap,eti,menu,form,panel}.h \
 
 $(pkg)-terminfo-uninstall:
 	$(RM) -r $(NCURSES_TABSET_TARGET_DIR) $(NCURSES_TERMINFO_TARGET_DIR)

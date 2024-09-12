@@ -11,12 +11,14 @@ config FREETZ_TYPE_CABLE
 		FREETZ_TYPE_6590 || \
 		FREETZ_TYPE_6591 || \
 		FREETZ_TYPE_6660 || \
+		FREETZ_TYPE_6670 || \
 		FREETZ_TYPE_6690
 
 config FREETZ_TYPE_DSL
 	bool
 	default y
 	depends on \
+		FREETZ_TYPE_5690 || \
 		FREETZ_TYPE_6890 || \
 		( \
 			!FREETZ_TYPE_CABLE && \
@@ -54,7 +56,8 @@ config FREETZ_TYPE_FIBER
 		FREETZ_TYPE_5490 || \
 		FREETZ_TYPE_5491 || \
 		FREETZ_TYPE_5530 || \
-		FREETZ_TYPE_5590
+		FREETZ_TYPE_5590 || \
+		FREETZ_TYPE_5690
 
 config FREETZ_TYPE_LTE
 	bool
@@ -73,6 +76,7 @@ config FREETZ_TYPE_WAN
 	depends on \
 		FREETZ_TYPE_4020 || \
 		FREETZ_TYPE_4040 || \
+		FREETZ_TYPE_4050 || \
 		FREETZ_TYPE_4060
 
 
@@ -159,15 +163,18 @@ config FREETZ_AVM_HAS_FIT_SIZE
 	default 50 if FREETZ_TYPE_1209
 	default 50 if FREETZ_TYPE_1249
 	default 50 if FREETZ_TYPE_3009
+	default 50 if FREETZ_TYPE_4050
 	default 80 if FREETZ_TYPE_4060
 	default 50 if FREETZ_TYPE_5530
 	default 80 if FREETZ_TYPE_5590
+	default 80 if FREETZ_TYPE_5690
 	default 80 if FREETZ_TYPE_6000
 	default 50 if FREETZ_TYPE_7510
 	default 50 if FREETZ_TYPE_7539
+	default 80 if FREETZ_TYPE_7690
 	default 50 if FREETZ_TYPE_GATE
-	default 50
-	depends on FREETZ_AVM_HAS_FWLAYOUT_6
+	default 0
+	depends on FREETZ_AVM_HAS_FWLAYOUT_5
 	help
 		The maximum size (in MB) of the whole fit-image.
 
@@ -263,6 +270,15 @@ config FREETZ_AVM_HAS_JUIS_SUPPORT
 	help
 		If /var/juis_boxinfo.xml or /usr/www/$OEM/jason_boxinfo.xml exists.
 
+config FREETZ_AVM_HAS_WIREGUARD_KERNEL
+	bool
+	default y
+	depends on FREETZ_KERNEL_VERSION_5_15_MIN
+	help
+		The avm-kernel contains the wireguard module.
+		A placeholder, conditions may change!
+		Vanilla kernel got wireguard support with v5.6.
+
 # multid.leases file used by AVM uses "8 columns"-format instead of "7 columns"-one
 # Note: v2 is a Freetz internal name, it is unknown if and how AVM distinguishes the file format version.
 # TODO: check the default values, at the moment pure assumption
@@ -296,5 +312,7 @@ config FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD
 	depends on FREETZ_AVM_VERSION_07_1X_MAX
 	depends on FREETZ_AVM_VERSION_07_0X_MIN || FREETZ_AVM_HAS_USB_HOST
 	help
-		This is not used anymore since FOS 7.2X
+		This is not used anymore since FOS 7.2X because
+		of a segfault if not run with CONFIG_FON=n, see
+		https://github.com/Freetz-NG/freetz-ng/discussions/970
 

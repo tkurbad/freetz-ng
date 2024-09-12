@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -75,7 +75,7 @@
+ BASHCOMPDIR ?= $(shell $(PKG_CONFIG) --variable=completionsdir bash-completion 2>/dev/null || echo /etc/bash_completion.d)
+ 
+ ##############################################################################
+-all: Makefile.depend whois mkpasswd pos
++all: Makefile.depend whois
+ 
+ ##############################################################################
+ %.o: %.c

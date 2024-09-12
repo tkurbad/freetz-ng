@@ -1,11 +1,12 @@
-$(call TOOLS_INIT, 1.3.1)
+$(call TOOLS_INIT, 1.5.1)
 $(PKG)_SOURCE:=meson-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=6020568bdede1643d4fb41e28215be38eff5d52da28ac7d125457c59e0032ad7
+$(PKG)_HASH:=567e533adf255de73a2de35049b99923caf872a455af9ce03e01077e0d384bed
 $(PKG)_SITE:=https://github.com/mesonbuild/meson/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://mesonbuild.com/
 ### MANPAGE:=https://mesonbuild.com/
 ### CHANGES:=https://github.com/mesonbuild/meson/releases
 ### CVSREPO:=https://github.com/mesonbuild/meson
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=python3-host
 $(PKG)_DEPENDS_ON+=ninja-host

@@ -1,8 +1,12 @@
-$(call TOOLS_INIT, v6.6)
+$(call TOOLS_INIT, v6.10)
 ## patches/100-main_makefile.patch contains also the version
 $(PKG)_SOURCE:=kconfig-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=d9360d9e69ffb149174bb60f077213a40db71dfb535b0873ba44454156f7b9d2
+$(PKG)_HASH:=3643a47b3adc7c332de807eda622ca9f69c8168a62229712ddd1eb158bda8b7a
 $(PKG)_SITE:=git_archive@git://repo.or.cz/linux.git,scripts/basic,scripts/kconfig,scripts/Kbuild.include,scripts/Makefile.compiler,scripts/Makefile.build,scripts/Makefile.host,scripts/Makefile.lib,Documentation/kbuild/kconfig-language.rst,Documentation/kbuild/kconfig-macro-language.rst,Documentation/kbuild/kconfig.rst
+### MANPAGE:=https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html
+### CHANGES:=https://github.com/torvalds/linux/tags
+### CVSREPO:=https://github.com/torvalds/linux/tree/master/scripts/kconfig
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON:=
 
@@ -61,6 +65,7 @@ $(pkg)-clean:
 		$(KCONFIG_HOST_DIR)/scripts/kconfig/gconf \
 		$(KCONFIG_HOST_DIR)/scripts/kconfig/nconf \
 		$(KCONFIG_HOST_DIR)/scripts/kconfig/mconf
+	-$(RM) $(KCONFIG_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(KCONFIG_HOST_DIR)

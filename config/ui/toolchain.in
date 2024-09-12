@@ -32,36 +32,179 @@ config FREETZ_TOOLCHAIN_CCACHE
 
 config FREETZ_TOOLCHAIN_MINIMIZE_REQUIRED_GLIBC_VERSION
 #	bool "Minimize required GLIBC version" if FREETZ_BUILD_TOOLCHAIN
-	bool
-	default y
+	def_bool y
 
 
 comment "Kernel toolchain options ----------------------------------------"
 
+choice
+	prompt "Kernel version"
+	help
+		Version can NOT be changed here.
+
+
+	config FREETZ_KERNEL_VERSION_2_6_13
+		bool "kernel-2.6.13"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_13
+
+	config FREETZ_KERNEL_VERSION_2_6_19
+		bool "kernel-2.6.19"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_19
+
+	config FREETZ_KERNEL_VERSION_2_6_28
+		bool "kernel-2.6.28"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_28
+
+
+	config FREETZ_KERNEL_VERSION_2_6_32_41
+		bool "kernel-2.6.32.41"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_32_41
+
+	config FREETZ_KERNEL_VERSION_2_6_32_60
+		bool "kernel-2.6.32.60"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_32_60
+
+	config FREETZ_KERNEL_VERSION_2_6_32_61
+		bool "kernel-2.6.32.61"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_32_61
+
+
+	config FREETZ_KERNEL_VERSION_2_6_39_3
+		bool "kernel-2.6.39.3"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_39_3
+
+	config FREETZ_KERNEL_VERSION_2_6_39_4
+		bool "kernel-2.6.39.4"
+		depends on FREETZ_AVM_PROP_KERNEL_2_6_39_4
+
+
+	config FREETZ_KERNEL_VERSION_3_10_12
+		bool "kernel-3.10.12"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_12
+
+	config FREETZ_KERNEL_VERSION_3_10_73
+		bool "kernel-3.10.73"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_73
+
+	config FREETZ_KERNEL_VERSION_3_10_104
+		bool "kernel-3.10.104"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_104
+
+	config FREETZ_KERNEL_VERSION_3_10_107
+		bool "kernel-3.10.107"
+		depends on FREETZ_AVM_PROP_KERNEL_3_10_107
+
+
+	config FREETZ_KERNEL_VERSION_3_12_59
+		bool "kernel-3.12.59"
+		depends on FREETZ_AVM_PROP_KERNEL_3_12_59
+
+	config FREETZ_KERNEL_VERSION_3_12_74
+		bool "kernel-3.12.74"
+		depends on FREETZ_AVM_PROP_KERNEL_3_12_74
+
+
+	config FREETZ_KERNEL_VERSION_4_1_38
+		bool "kernel-4.1.38"
+		depends on FREETZ_AVM_PROP_KERNEL_4_1_38
+
+	config FREETZ_KERNEL_VERSION_4_1_52
+		bool "kernel-4.1.52"
+		depends on FREETZ_AVM_PROP_KERNEL_4_1_52
+
+
+	config FREETZ_KERNEL_VERSION_4_4_60
+		bool "kernel-4.4.60"
+		depends on FREETZ_AVM_PROP_KERNEL_4_4_60
+
+	config FREETZ_KERNEL_VERSION_4_4_271
+		bool "kernel-4.4.271"
+		depends on FREETZ_AVM_PROP_KERNEL_4_4_271
+
+
+	config FREETZ_KERNEL_VERSION_4_9_161
+		bool "kernel-4.9.161"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_161
+
+	config FREETZ_KERNEL_VERSION_4_9_175
+		bool "kernel-4.9.175"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_175
+
+	config FREETZ_KERNEL_VERSION_4_9_198
+		bool "kernel-4.9.198"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_198
+
+	config FREETZ_KERNEL_VERSION_4_9_199
+		bool "kernel-4.9.199"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_199
+
+	config FREETZ_KERNEL_VERSION_4_9_218
+		bool "kernel-4.9.218"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_218
+
+	config FREETZ_KERNEL_VERSION_4_9_231
+		bool "kernel-4.9.231"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_231
+
+	config FREETZ_KERNEL_VERSION_4_9_240
+		bool "kernel-4.9.240"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_240
+
+	config FREETZ_KERNEL_VERSION_4_9_250
+		bool "kernel-4.9.250"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_250
+
+	config FREETZ_KERNEL_VERSION_4_9_276
+		bool "kernel-4.9.276"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_276
+
+	config FREETZ_KERNEL_VERSION_4_9_279
+		bool "kernel-4.9.279"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_279
+
+	config FREETZ_KERNEL_VERSION_4_9_325
+		bool "kernel-4.9.325"
+		depends on FREETZ_AVM_PROP_KERNEL_4_9_325
+
+
+	config FREETZ_KERNEL_VERSION_4_19_183
+		bool "kernel-4.19.183"
+		depends on FREETZ_AVM_PROP_KERNEL_4_19_183
+
+
+	config FREETZ_KERNEL_VERSION_5_4_213
+		bool "kernel-5.4.213"
+		depends on FREETZ_AVM_PROP_KERNEL_5_4_213
+
+
+	config FREETZ_KERNEL_VERSION_5_15_111
+		bool "kernel-5.15.111"
+		depends on FREETZ_AVM_PROP_KERNEL_5_15_111
+
+	config FREETZ_KERNEL_VERSION_5_15_153
+		bool "kernel-5.15.153"
+		depends on FREETZ_AVM_PROP_KERNEL_5_15_153
+
+endchoice
+
 config FREETZ_KERNEL_BINUTILS_2_18_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_3_4_MAX
-	default y
 config FREETZ_KERNEL_BINUTILS_2_22_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_4_6_MIN && FREETZ_AVM_VERSION_06_9X_MAX && FREETZ_KERNEL_VERSION_2_6_39_MAX
-	default y
 config FREETZ_KERNEL_BINUTILS_2_24_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_4_6_MIN && FREETZ_AVM_VERSION_06_9X_MAX && FREETZ_KERNEL_VERSION_3_10_MIN
-	default y
 config FREETZ_KERNEL_BINUTILS_2_25_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_5
-	default y
 config FREETZ_KERNEL_BINUTILS_2_31_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_8
-	default y
 config FREETZ_KERNEL_BINUTILS_2_36_DEFAULT
-	bool
+	def_bool y
 	depends on FREETZ_AVM_GCC_9
-	default y
 
 choice
 	prompt "Kernel binutils"
@@ -131,9 +274,13 @@ choice
 	default FREETZ_KERNEL_GCC_4_6 if FREETZ_AVM_GCC_4_6
 	default FREETZ_KERNEL_GCC_4_7 if FREETZ_AVM_GCC_4_7
 	default FREETZ_KERNEL_GCC_4_8 if FREETZ_AVM_GCC_4_8
-	default FREETZ_KERNEL_GCC_5   if FREETZ_AVM_GCC_5
-	default FREETZ_KERNEL_GCC_8   if FREETZ_AVM_GCC_8
-	default FREETZ_KERNEL_GCC_9   if FREETZ_AVM_GCC_9
+	default FREETZ_KERNEL_GCC_5_1 if FREETZ_AVM_GCC_5_1
+	default FREETZ_KERNEL_GCC_5_4 if FREETZ_AVM_GCC_5_4
+	default FREETZ_KERNEL_GCC_5_5 if FREETZ_AVM_GCC_5_5
+	default FREETZ_KERNEL_GCC_8_3 if FREETZ_AVM_GCC_8_3
+	default FREETZ_KERNEL_GCC_8_4 if FREETZ_AVM_GCC_8_4
+	default FREETZ_KERNEL_GCC_9_3 if FREETZ_AVM_GCC_9_3
+	default FREETZ_KERNEL_GCC_9_4 if FREETZ_AVM_GCC_9_4
 
 	config FREETZ_KERNEL_GCC_3_4
 		bool "gcc-3.4.6"
@@ -151,74 +298,128 @@ choice
 		bool "gcc-4.8.5"
 		depends on FREETZ_AVM_GCC_4_8
 
-	config FREETZ_KERNEL_GCC_5
+	config FREETZ_KERNEL_GCC_5_1
+		bool "gcc-5.1"
+		depends on FREETZ_AVM_GCC_5_1
+
+	config FREETZ_KERNEL_GCC_5_4
+		bool "gcc-5.4"
+		depends on FREETZ_AVM_GCC_5_4
+
+	config FREETZ_KERNEL_GCC_5_5
 		bool "gcc-5.5"
-		depends on FREETZ_AVM_GCC_5
+		depends on FREETZ_AVM_GCC_5_5
 
-	config FREETZ_KERNEL_GCC_8
+	config FREETZ_KERNEL_GCC_8_3
 		bool "gcc-8.3"
-		depends on FREETZ_AVM_GCC_8
+		depends on FREETZ_AVM_GCC_8_3
 
-	config FREETZ_KERNEL_GCC_9
+	config FREETZ_KERNEL_GCC_8_4
+		bool "gcc-8.4"
+		depends on FREETZ_AVM_GCC_8_4
+
+	config FREETZ_KERNEL_GCC_9_3
 		bool "gcc-9.3"
-		depends on FREETZ_AVM_GCC_9
+		depends on FREETZ_AVM_GCC_9_3
+
+	config FREETZ_KERNEL_GCC_9_4
+		bool "gcc-9.4"
+		depends on FREETZ_AVM_GCC_9_4
 
 endchoice
+
+###
+### FREETZ_KERNEL_GCC_x
+###
+
+config FREETZ_KERNEL_GCC_3
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_3_4
+
+config FREETZ_KERNEL_GCC_4
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_4_6 || \
+		FREETZ_KERNEL_GCC_4_7 || \
+		FREETZ_KERNEL_GCC_4_8
+
+config FREETZ_KERNEL_GCC_5
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_5_1 || \
+		FREETZ_KERNEL_GCC_5_4 || \
+		FREETZ_KERNEL_GCC_5_5
+
+config FREETZ_KERNEL_GCC_8
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_3 || \
+		FREETZ_KERNEL_GCC_8_4
+
+config FREETZ_KERNEL_GCC_9
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_9_3 || \
+		FREETZ_KERNEL_GCC_9_4
 
 ###
 ### FREETZ_KERNEL_GCC_x_MIN
 ###
 
 config FREETZ_KERNEL_GCC_3_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_3_4
 
 config FREETZ_KERNEL_GCC_4_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_6_MIN
 
 config FREETZ_KERNEL_GCC_4_6_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_6 || \
 		FREETZ_KERNEL_GCC_4_7_MIN
 
 config FREETZ_KERNEL_GCC_4_7_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_7 || \
 		FREETZ_KERNEL_GCC_4_8_MIN
 
 config FREETZ_KERNEL_GCC_4_8_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_8 || \
 		FREETZ_KERNEL_GCC_5_MIN
 
 config FREETZ_KERNEL_GCC_5_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_5 || \
-		FREETZ_KERNEL_GCC_8_MIN
+		FREETZ_KERNEL_GCC_8_3_MIN
 
-config FREETZ_KERNEL_GCC_8_MIN
-	bool
-	default y
+config FREETZ_KERNEL_GCC_8_3_MIN
+	def_bool y
 	depends on \
-		FREETZ_KERNEL_GCC_8 || \
+		FREETZ_KERNEL_GCC_8_3 || \
+		FREETZ_KERNEL_GCC_8_4_MIN
+
+config FREETZ_KERNEL_GCC_8_4_MIN
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_4 || \
 		FREETZ_KERNEL_GCC_9_MIN
 
+config FREETZ_KERNEL_GCC_8_MIN
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_3_MIN
+
 config FREETZ_KERNEL_GCC_9_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_9
 
@@ -227,39 +428,45 @@ config FREETZ_KERNEL_GCC_9_MIN
 ###
 
 config FREETZ_KERNEL_GCC_3_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_3_4
 
 config FREETZ_KERNEL_GCC_4_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
+		FREETZ_KERNEL_GCC_3_MAX || \
 		FREETZ_KERNEL_GCC_4_6 || \
 		FREETZ_KERNEL_GCC_4_7 || \
-		FREETZ_KERNEL_GCC_4_8 || \
-		FREETZ_KERNEL_GCC_3_MAX
+		FREETZ_KERNEL_GCC_4_8
 
 config FREETZ_KERNEL_GCC_5_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_4_MAX || \
 		FREETZ_KERNEL_GCC_5
 
-config FREETZ_KERNEL_GCC_8_MAX
-	bool
-	default y
+config FREETZ_KERNEL_GCC_8_3_MAX
+	def_bool y
 	depends on \
 		FREETZ_KERNEL_GCC_5_MAX || \
-		FREETZ_KERNEL_GCC_8
+		FREETZ_KERNEL_GCC_8_3
+
+config FREETZ_KERNEL_GCC_8_4_MAX
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_3_MAX || \
+		FREETZ_KERNEL_GCC_8_4
+
+config FREETZ_KERNEL_GCC_8_MAX
+	def_bool y
+	depends on \
+		FREETZ_KERNEL_GCC_8_4_MAX
 
 config FREETZ_KERNEL_GCC_9_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_KERNEL_GCC_8_MAX || \
+		FREETZ_KERNEL_GCC_8_4_MAX || \
 		FREETZ_KERNEL_GCC_9
 
 ###
@@ -283,9 +490,13 @@ config FREETZ_KERNEL_GCC_VERSION
 	default "4.6.4" if FREETZ_KERNEL_GCC_4_6
 	default "4.7.4" if FREETZ_KERNEL_GCC_4_7
 	default "4.8.5" if FREETZ_KERNEL_GCC_4_8
-	default "5.5.0" if FREETZ_KERNEL_GCC_5
-	default "8.3.0" if FREETZ_KERNEL_GCC_8
-	default "9.3.0" if FREETZ_KERNEL_GCC_9
+	default "5.1.0" if FREETZ_KERNEL_GCC_5_1
+	default "5.4.0" if FREETZ_KERNEL_GCC_5_4
+	default "5.5.0" if FREETZ_KERNEL_GCC_5_5
+	default "8.3.0" if FREETZ_KERNEL_GCC_8_3
+	default "8.4.0" if FREETZ_KERNEL_GCC_8_4
+	default "9.3.0" if FREETZ_KERNEL_GCC_9_3
+	default "9.4.0" if FREETZ_KERNEL_GCC_9_4
 
 
 comment "Target toolchain options ----------------------------------------"
@@ -307,45 +518,46 @@ config FREETZ_SEPARATE_AVM_UCLIBC
 config FREETZ_TARGET_UNSUPPORTED_VERSIONS
 	bool "Show unsupported versions"
 	depends on FREETZ_SHOW_EXPERT
+	depends on FREETZ_BUILD_TOOLCHAIN
 	default n
 	help
 		Shows versions which are not supported.
 		Fix errors by yourself or disable this option.
 
 choice
-	prompt "Target uClibc version"
+	prompt "Target libc"
 	default FREETZ_TARGET_UCLIBC_0_9_28 if FREETZ_AVM_UCLIBC_0_9_28
 	default FREETZ_TARGET_UCLIBC_0_9_29 if FREETZ_AVM_UCLIBC_0_9_29
 	default FREETZ_TARGET_UCLIBC_0_9_32 if FREETZ_AVM_UCLIBC_0_9_32
 	default FREETZ_TARGET_UCLIBC_0_9_33 if FREETZ_AVM_UCLIBC_0_9_33
 	default FREETZ_TARGET_UCLIBC_1_0_14 if FREETZ_AVM_UCLIBC_1_0_14
-	default FREETZ_TARGET_UCLIBC_1_0_45 if FREETZ_SEPARATE_AVM_UCLIBC
+	default FREETZ_TARGET_UCLIBC_1_0_50 if FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_TARGET_UCLIBC_0_9_28
-	bool "0.9.28"
+	bool "uclibc-0.9.28"
 	depends on FREETZ_AVM_UCLIBC_0_9_28
 
 	config FREETZ_TARGET_UCLIBC_0_9_29
-	bool "0.9.29"
+	bool "uclibc-0.9.29"
 	depends on FREETZ_AVM_UCLIBC_0_9_29
 
 	config FREETZ_TARGET_UCLIBC_0_9_32
-	bool "0.9.32.1"
+	bool "uclibc-0.9.32.1"
 	depends on FREETZ_AVM_UCLIBC_0_9_32 \
 		|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && ((FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) && FREETZ_AVM_UCLIBC_0_9_29) )
 
 	config FREETZ_TARGET_UCLIBC_0_9_33
-	bool "0.9.33.2"
+	bool "uclibc-0.9.33.2"
 	depends on FREETZ_AVM_UCLIBC_0_9_33 \
 		|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_AVM_UCLIBC_0_9_32 && FREETZ_KERNEL_VERSION_2_6_32) ) \
 		|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && ((FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) && (FREETZ_AVM_UCLIBC_0_9_29 || FREETZ_AVM_UCLIBC_0_9_32)) )
 
 	config FREETZ_TARGET_UCLIBC_1_0_14
-	bool "1.0.14"
+	bool "uclibc-1.0.14"
 	depends on FREETZ_AVM_UCLIBC_1_0_14
 
-	config FREETZ_TARGET_UCLIBC_1_0_45
-	bool "1.0.45"
+	config FREETZ_TARGET_UCLIBC_1_0_50
+	bool "uclibc-1.0.50"
 	depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 endchoice
@@ -355,8 +567,7 @@ comment "CAUTION: Usage of an uClibc version higher than that used by AVM may le
 		|| (FREETZ_AVM_UCLIBC_0_9_32 && !FREETZ_TARGET_UCLIBC_0_9_32)
 
 config FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_UCLIBC_0_9_28 || \
 		FREETZ_TARGET_UCLIBC_0_9_29 || \
@@ -365,8 +576,7 @@ config FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 		FREETZ_TARGET_UCLIBC_1_0_14
 
 config FREETZ_TARGET_UCLIBC_SUPPORTS_inotify
-	bool
-	default y
+	def_bool y
 	depends on \
 		!FREETZ_TARGET_UCLIBC_0_9_28 && \
 		!FREETZ_TARGET_UCLIBC_0_9_29 && \
@@ -376,8 +586,7 @@ config FREETZ_TARGET_UCLIBC_SUPPORTS_inotify
 		Supported since uClibc 0.9.33.1 & Linux kernel 2.6.36
 
 config FREETZ_TARGET_UCLIBC_SUPPORTS_rpc
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_UCLIBC_0_9_28 || \
 		FREETZ_TARGET_UCLIBC_0_9_29 || \
@@ -425,7 +634,7 @@ config FREETZ_TARGET_BINUTILS_2_36_DEFAULT
 	depends on !FREETZ_SEPARATE_AVM_UCLIBC
 	depends on FREETZ_KERNEL_BINUTILS_2_36_DEFAULT
 	default y
-config FREETZ_TARGET_BINUTILS_2_41_DEFAULT
+config FREETZ_TARGET_BINUTILS_2_43_DEFAULT
 	bool
 	depends on FREETZ_SEPARATE_AVM_UCLIBC
 	default y
@@ -437,25 +646,25 @@ choice
 	default FREETZ_TARGET_BINUTILS_2_25 if FREETZ_TARGET_BINUTILS_2_25_DEFAULT
 	default FREETZ_TARGET_BINUTILS_2_31 if FREETZ_TARGET_BINUTILS_2_31_DEFAULT
 	default FREETZ_TARGET_BINUTILS_2_36 if FREETZ_TARGET_BINUTILS_2_36_DEFAULT
-	default FREETZ_TARGET_BINUTILS_2_41 if FREETZ_TARGET_BINUTILS_2_41_DEFAULT
+	default FREETZ_TARGET_BINUTILS_2_43 if FREETZ_TARGET_BINUTILS_2_43_DEFAULT
 
 	config FREETZ_TARGET_BINUTILS_2_22
 		bool "binutils-2.22"
-		depends on (FREETZ_TARGET_GCC_4_6 || FREETZ_TARGET_GCC_4_7 || FREETZ_TARGET_GCC_4_8 || FREETZ_TARGET_GCC_4_9)
+		depends on (FREETZ_TARGET_GCC_4)
 		depends on FREETZ_KERNEL_VERSION_2_6_39_MAX
 		depends on FREETZ_TARGET_BINUTILS_2_22_DEFAULT \
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) )
 
 	config FREETZ_TARGET_BINUTILS_2_23
 		bool "binutils-2.23.2"
-		depends on (FREETZ_TARGET_GCC_4_6 || FREETZ_TARGET_GCC_4_7 || FREETZ_TARGET_GCC_4_8 || FREETZ_TARGET_GCC_4_9)
+		depends on (FREETZ_TARGET_GCC_4)
 		depends on FREETZ_KERNEL_VERSION_2_6_39_MAX
 		depends on FREETZ_TARGET_BINUTILS_2_23_DEFAULT \
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) )
 
 	config FREETZ_TARGET_BINUTILS_2_24
 		bool "binutils-2.24"
-		depends on (FREETZ_TARGET_GCC_4_6 || FREETZ_TARGET_GCC_4_7 || FREETZ_TARGET_GCC_4_8 || FREETZ_TARGET_GCC_4_9 || FREETZ_TARGET_GCC_5)
+		depends on (FREETZ_TARGET_GCC_4 || FREETZ_TARGET_GCC_5)
 		# depends on any kernel version
 		depends on FREETZ_TARGET_BINUTILS_2_24_DEFAULT \
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) )
@@ -488,25 +697,30 @@ choice
 		depends on FREETZ_TARGET_BINUTILS_2_36_DEFAULT \
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) )
 
-	config FREETZ_TARGET_BINUTILS_2_41
-		bool "binutils-2.41"
+	config FREETZ_TARGET_BINUTILS_2_43
+		bool "binutils-2.43"
 		# depends on all gcc versions
 		# depends on any kernel version
-		depends on FREETZ_TARGET_BINUTILS_2_41_DEFAULT \
+		depends on FREETZ_TARGET_BINUTILS_2_43_DEFAULT \
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) )
 
 endchoice
 
 choice
 	prompt "Target compiler"
-	default FREETZ_TARGET_GCC_4_6 if FREETZ_AVM_GCC_4_6_MAX
-	default FREETZ_TARGET_GCC_4_7 if FREETZ_AVM_GCC_4_7
-	default FREETZ_TARGET_GCC_4_8 if FREETZ_AVM_GCC_4_8
-	default FREETZ_TARGET_GCC_4_9 if FREETZ_AVM_GCC_4_9
-	default FREETZ_TARGET_GCC_5   if FREETZ_AVM_GCC_5
-	default FREETZ_TARGET_GCC_8   if FREETZ_AVM_GCC_8
-	default FREETZ_TARGET_GCC_9   if FREETZ_AVM_GCC_9
-	default FREETZ_TARGET_GCC_13  if FREETZ_SEPARATE_AVM_UCLIBC
+	default FREETZ_TARGET_GCC_4_6   if FREETZ_AVM_GCC_4_6_MAX
+	default FREETZ_TARGET_GCC_4_7   if FREETZ_AVM_GCC_4_7
+	default FREETZ_TARGET_GCC_4_8   if FREETZ_AVM_GCC_4_8
+	default FREETZ_TARGET_GCC_4_9   if FREETZ_AVM_GCC_4_9
+	default FREETZ_TARGET_GCC_5_1   if FREETZ_AVM_GCC_5_1
+	default FREETZ_TARGET_GCC_5_4   if FREETZ_AVM_GCC_5_4
+	default FREETZ_TARGET_GCC_5_5   if FREETZ_AVM_GCC_5_5
+	default FREETZ_TARGET_GCC_8_3   if FREETZ_AVM_GCC_8_3
+	default FREETZ_TARGET_GCC_8_4   if FREETZ_AVM_GCC_8_4
+	default FREETZ_TARGET_GCC_9_3   if FREETZ_AVM_GCC_9_3
+	default FREETZ_TARGET_GCC_9_4   if FREETZ_AVM_GCC_9_4
+	default FREETZ_TARGET_GCC_14_2  if FREETZ_SEPARATE_AVM_UCLIBC
+	default FREETZ_TARGET_GCC_13_3  if FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_TARGET_GCC_4_6
 		bool "gcc-4.6.4"
@@ -531,174 +745,331 @@ choice
 		depends on FREETZ_AVM_GCC_4_9 \
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_AVM_GCC_4_9_MAX && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)) )
 
-	config FREETZ_TARGET_GCC_5
-		bool "gcc-5.5"
+	config FREETZ_TARGET_GCC_5_1
+		bool "gcc-5.1"
 		depends on !FREETZ_SEPARATE_AVM_UCLIBC
-		depends on FREETZ_AVM_GCC_5 \
+		depends on FREETZ_AVM_GCC_5_1 \
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_AVM_GCC_5_MAX   && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)) )
 
-	config FREETZ_TARGET_GCC_8
+	config FREETZ_TARGET_GCC_5_4
+		bool "gcc-5.4"
+		depends on !FREETZ_SEPARATE_AVM_UCLIBC
+		depends on FREETZ_AVM_GCC_5_4 \
+			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_AVM_GCC_5_MAX   && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)) )
+
+	config FREETZ_TARGET_GCC_5_5
+		bool "gcc-5.5"
+		depends on !FREETZ_SEPARATE_AVM_UCLIBC
+		depends on FREETZ_AVM_GCC_5_5 \
+			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_AVM_GCC_5_MAX   && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)) )
+
+	config FREETZ_TARGET_GCC_8_3
 		bool "gcc-8.3"
 		depends on !FREETZ_SEPARATE_AVM_UCLIBC
-		depends on FREETZ_AVM_GCC_8
+		depends on FREETZ_AVM_GCC_8_3 \
+			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_AVM_GCC_8       && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)) )
 
-	config FREETZ_TARGET_GCC_9
+	config FREETZ_TARGET_GCC_8_4
+		bool "gcc-8.4"
+		depends on !FREETZ_SEPARATE_AVM_UCLIBC
+		depends on FREETZ_AVM_GCC_8_4 \
+			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_AVM_GCC_8       && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)) )
+
+	config FREETZ_TARGET_GCC_9_3
 		bool "gcc-9.3"
 		depends on !FREETZ_SEPARATE_AVM_UCLIBC
-		depends on FREETZ_AVM_GCC_9
+		depends on FREETZ_AVM_GCC_9_3
 
-	config FREETZ_TARGET_GCC_13
-		bool "gcc-13.2"
+	config FREETZ_TARGET_GCC_9_4
+		bool "gcc-9.4"
+		depends on !FREETZ_SEPARATE_AVM_UCLIBC
+		depends on FREETZ_AVM_GCC_9_4
+
+	config FREETZ_TARGET_GCC_13_3
+		bool "gcc-13.3"
 		depends on FREETZ_SEPARATE_AVM_UCLIBC
 
+	config FREETZ_TARGET_GCC_14_2
+		bool "gcc-14.2"
+		depends on FREETZ_SEPARATE_AVM_UCLIBC \
+			&& ( FREETZ_TARGET_UNSUPPORTED_VERSIONS                            && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)  )
+
 endchoice
+
+###
+### FREETZ_TARGET_GCC_x_x_MIN
+###
+
+config FREETZ_TARGET_GCC_4_6_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_4_6 || \
+		FREETZ_TARGET_GCC_4_7_MIN
+
+config FREETZ_TARGET_GCC_4_7_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_4_7 || \
+		FREETZ_TARGET_GCC_4_8_MIN
+
+config FREETZ_TARGET_GCC_4_8_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_4_8 || \
+		FREETZ_TARGET_GCC_4_9_MIN
+
+config FREETZ_TARGET_GCC_4_9_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_4_9 || \
+		FREETZ_TARGET_GCC_5_1_MIN
+
+config FREETZ_TARGET_GCC_5_1_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_1 || \
+		FREETZ_TARGET_GCC_5_4_MIN
+
+config FREETZ_TARGET_GCC_5_4_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_4 || \
+		FREETZ_TARGET_GCC_5_5_MIN
+
+config FREETZ_TARGET_GCC_5_5_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_5 || \
+		FREETZ_TARGET_GCC_8_3_MIN
+
+config FREETZ_TARGET_GCC_8_3_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_8_3 || \
+		FREETZ_TARGET_GCC_8_4_MIN
+
+config FREETZ_TARGET_GCC_8_4_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_8_4 || \
+		FREETZ_TARGET_GCC_9_3_MIN
+
+config FREETZ_TARGET_GCC_9_3_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_9_3 || \
+		FREETZ_TARGET_GCC_9_4_MIN
+
+config FREETZ_TARGET_GCC_9_4_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_9_4 || \
+		FREETZ_TARGET_GCC_13_3_MIN
+
+config FREETZ_TARGET_GCC_13_3_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_13_3 || \
+		FREETZ_TARGET_GCC_14_2_MIN
+
+config FREETZ_TARGET_GCC_14_2_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_14_2
+
+###
+### FREETZ_TARGET_GCC_x
+###
+
+config FREETZ_TARGET_GCC_4
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_4_6 || \
+		FREETZ_TARGET_GCC_4_7 || \
+		FREETZ_TARGET_GCC_4_8 || \
+		FREETZ_TARGET_GCC_4_9
+
+config FREETZ_TARGET_GCC_5
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_1 || \
+		FREETZ_TARGET_GCC_5_4 || \
+		FREETZ_TARGET_GCC_5_5
+
+config FREETZ_TARGET_GCC_8
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_8_3 || \
+		FREETZ_TARGET_GCC_8_4
+
+config FREETZ_TARGET_GCC_9
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_9_3 || \
+		FREETZ_TARGET_GCC_9_4
+
+config FREETZ_TARGET_GCC_13
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_13_3
+
+config FREETZ_TARGET_GCC_14
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_14_2
 
 ###
 ### FREETZ_TARGET_GCC_x_MIN
 ###
 
 config FREETZ_TARGET_GCC_4_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_6_MIN
 
-config FREETZ_TARGET_GCC_4_6_MIN
-	bool
-	default y
-	depends on \
-		FREETZ_TARGET_GCC_4_6 || \
-		FREETZ_TARGET_GCC_4_7_MIN
-
-config FREETZ_TARGET_GCC_4_7_MIN
-	bool
-	default y
-	depends on \
-		FREETZ_TARGET_GCC_4_7 || \
-		FREETZ_TARGET_GCC_4_8_MIN
-
-config FREETZ_TARGET_GCC_4_8_MIN
-	bool
-	default y
-	depends on \
-		FREETZ_TARGET_GCC_4_8 || \
-		FREETZ_TARGET_GCC_4_9_MIN
-
-config FREETZ_TARGET_GCC_4_9_MIN
-	bool
-	default y
-	depends on \
-		FREETZ_TARGET_GCC_4_9 || \
-		FREETZ_TARGET_GCC_5_MIN
-
 config FREETZ_TARGET_GCC_5_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_5 || \
-		FREETZ_TARGET_GCC_8_MIN
+		FREETZ_TARGET_GCC_5_1_MIN
 
 config FREETZ_TARGET_GCC_8_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_8 || \
-		FREETZ_TARGET_GCC_9_MIN
+		FREETZ_TARGET_GCC_8_3_MIN
 
 config FREETZ_TARGET_GCC_9_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_9 || \
-		FREETZ_TARGET_GCC_13_MIN
+		FREETZ_TARGET_GCC_9_3_MIN
 
 config FREETZ_TARGET_GCC_13_MIN
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_13
+		FREETZ_TARGET_GCC_13_3_MIN
+
+config FREETZ_TARGET_GCC_14_MIN
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_14_2_MIN
 
 ###
-### FREETZ_TARGET_GCC_x_MAX
+### FREETZ_TARGET_GCC_x_x_MAX
 ###
 
 config FREETZ_TARGET_GCC_4_6_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_6
 
 config FREETZ_TARGET_GCC_4_7_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_6_MAX || \
 		FREETZ_TARGET_GCC_4_7
 
 config FREETZ_TARGET_GCC_4_8_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_7_MAX || \
 		FREETZ_TARGET_GCC_4_8
 
 config FREETZ_TARGET_GCC_4_9_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_8_MAX || \
 		FREETZ_TARGET_GCC_4_9
 
+config FREETZ_TARGET_GCC_5_1_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_4_9_MAX || \
+		FREETZ_TARGET_GCC_5_1
+
+config FREETZ_TARGET_GCC_5_4_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_1_MAX || \
+		FREETZ_TARGET_GCC_5_4
+
+config FREETZ_TARGET_GCC_5_5_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_4_MAX || \
+		FREETZ_TARGET_GCC_5_5
+
+config FREETZ_TARGET_GCC_8_3_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_5_5_MAX || \
+		FREETZ_TARGET_GCC_8_3
+
+config FREETZ_TARGET_GCC_8_4_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_8_3_MAX || \
+		FREETZ_TARGET_GCC_8_4
+
+config FREETZ_TARGET_GCC_9_3_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_8_4_MAX || \
+		FREETZ_TARGET_GCC_9_3
+
+config FREETZ_TARGET_GCC_9_4_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_9_3_MAX || \
+		FREETZ_TARGET_GCC_9_4
+
+config FREETZ_TARGET_GCC_13_3_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_9_4_MAX || \
+		FREETZ_TARGET_GCC_13_3
+
+config FREETZ_TARGET_GCC_14_2_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_13_3_MAX || \
+		FREETZ_TARGET_GCC_14_2
+
+###
+### FREETZ_TARGET_GCC_x_MAX
+###
 
 config FREETZ_TARGET_GCC_4_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
 		FREETZ_TARGET_GCC_4_9_MAX
 
 config FREETZ_TARGET_GCC_5_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_4_MAX || \
-		FREETZ_TARGET_GCC_5
+		FREETZ_TARGET_GCC_5_5_MAX
 
 config FREETZ_TARGET_GCC_8_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_5_MAX || \
-		FREETZ_TARGET_GCC_8
+		FREETZ_TARGET_GCC_8_4_MAX
 
 config FREETZ_TARGET_GCC_9_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_8_MAX || \
-		FREETZ_TARGET_GCC_9
+		FREETZ_TARGET_GCC_9_4_MAX
 
 config FREETZ_TARGET_GCC_13_MAX
-	bool
-	default y
+	def_bool y
 	depends on \
-		FREETZ_TARGET_GCC_9_MAX || \
-		FREETZ_TARGET_GCC_13
+		FREETZ_TARGET_GCC_13_3_MAX
+
+config FREETZ_TARGET_GCC_14_MAX
+	def_bool y
+	depends on \
+		FREETZ_TARGET_GCC_14_2_MAX
 
 ###
 ###
 ###
-
-config FREETZ_TARGET_GCC_SNAPSHOT
-	bool "Use a snapshot of gcc-major-version selected above"
-	depends on FREETZ_REAL_DEVELOPER_ONLY \
-		&& (FREETZ_TARGET_GCC_4_8 || FREETZ_TARGET_GCC_4_9) && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)
-
-config FREETZ_TARGET_GCC_SNAPSHOT_DATE
-	string "Snapshot date (in YYYYMMDD format)"
-	depends on FREETZ_TARGET_GCC_SNAPSHOT
-	default "20150611" if FREETZ_TARGET_GCC_4_8
-	default "20160727" if FREETZ_TARGET_GCC_4_9
-	default "20171003" if FREETZ_TARGET_GCC_5
 
 config FREETZ_TARGET_GCC_DEFAULT_AS_NEEDED
 	bool
@@ -715,13 +1086,11 @@ config FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 		as the implementation of the Standard C++ Library.
 
 config FREETZ_STDCXXLIB_USE_UCLIBCXX
-	bool
-	default y
+	def_bool y
 	depends on FREETZ_STDCXXLIB_USE_UCLIBCXX_CHOICE
 
 config FREETZ_STDCXXLIB_USE_GNULIBSTDCXX
-	bool
-	default y
+	def_bool y
 	depends on FREETZ_STDCXXLIB_USE_GNULIBSTDCXX_CHOICE || FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 
 choice
@@ -765,7 +1134,7 @@ config FREETZ_TARGET_UCLIBC_0
 config FREETZ_TARGET_UCLIBC_1
 	bool
 	default y           if FREETZ_TARGET_UCLIBC_1_0_14
-	default y           if FREETZ_TARGET_UCLIBC_1_0_45
+	default y           if FREETZ_TARGET_UCLIBC_1_0_50
 	default n
 
 config FREETZ_TARGET_UCLIBC_VERSION
@@ -775,7 +1144,7 @@ config FREETZ_TARGET_UCLIBC_VERSION
 	default "0.9.32.1"  if FREETZ_TARGET_UCLIBC_0_9_32
 	default "0.9.33.2"  if FREETZ_TARGET_UCLIBC_0_9_33
 	default "1.0.14"    if FREETZ_TARGET_UCLIBC_1_0_14
-	default "1.0.45"    if FREETZ_TARGET_UCLIBC_1_0_45
+	default "1.0.50"    if FREETZ_TARGET_UCLIBC_1_0_50
 
 config FREETZ_TARGET_UCLIBC_MAJOR_VERSION
 	string
@@ -790,35 +1159,23 @@ config FREETZ_TARGET_BINUTILS_VERSION
 	default "2.25.1"    if FREETZ_TARGET_BINUTILS_2_25
 	default "2.26.1"    if FREETZ_TARGET_BINUTILS_2_26
 	default "2.31.1"    if FREETZ_TARGET_BINUTILS_2_31
-	default "2.41"      if FREETZ_TARGET_BINUTILS_2_41
-
-config FREETZ_TARGET_GCC_MAJOR_VERSION
-	string
-	default "4.6"       if FREETZ_TARGET_GCC_4_6
-	default "4.7"       if FREETZ_TARGET_GCC_4_7
-	default "4.8"       if FREETZ_TARGET_GCC_4_8
-	default "4.9"       if FREETZ_TARGET_GCC_4_9
-	default "5"         if FREETZ_TARGET_GCC_5
-	default "8"         if FREETZ_TARGET_GCC_8
-	default "9"         if FREETZ_TARGET_GCC_9
-	default "13"        if FREETZ_TARGET_GCC_13
-
-config FREETZ_TARGET_GCC_MINOR_VERSION
-	depends on !FREETZ_TARGET_GCC_SNAPSHOT
-	string
-	default "4"         if FREETZ_TARGET_GCC_4_6
-	default "4"         if FREETZ_TARGET_GCC_4_7
-	default "5"         if FREETZ_TARGET_GCC_4_8
-	default "4"         if FREETZ_TARGET_GCC_4_9
-	default "5.0"       if FREETZ_TARGET_GCC_5
-	default "3.0"       if FREETZ_TARGET_GCC_8
-	default "3.0"       if FREETZ_TARGET_GCC_9
-	default "2.0"       if FREETZ_TARGET_GCC_13
+	default "2.43"      if FREETZ_TARGET_BINUTILS_2_43
 
 config FREETZ_TARGET_GCC_VERSION
 	string
-	default "${FREETZ_TARGET_GCC_MAJOR_VERSION}.${FREETZ_TARGET_GCC_MINOR_VERSION}"  if !FREETZ_TARGET_GCC_SNAPSHOT
-	default "${FREETZ_TARGET_GCC_MAJOR_VERSION}-${FREETZ_TARGET_GCC_SNAPSHOT_DATE}"  if  FREETZ_TARGET_GCC_SNAPSHOT
+	default "4.6.4"       if FREETZ_TARGET_GCC_4_6
+	default "4.7.4"       if FREETZ_TARGET_GCC_4_7
+	default "4.8.5"       if FREETZ_TARGET_GCC_4_8
+	default "4.9.4"       if FREETZ_TARGET_GCC_4_9
+	default "5.1.0"       if FREETZ_TARGET_GCC_5_1
+	default "5.4.0"       if FREETZ_TARGET_GCC_5_4
+	default "5.5.0"       if FREETZ_TARGET_GCC_5_5
+	default "8.3.0"       if FREETZ_TARGET_GCC_8_3
+	default "8.4.0"       if FREETZ_TARGET_GCC_8_4
+	default "9.3.0"       if FREETZ_TARGET_GCC_9_3
+	default "9.4.0"       if FREETZ_TARGET_GCC_9_4
+	default "13.3.0"      if FREETZ_TARGET_GCC_13_3
+	default "14.2.0"      if FREETZ_TARGET_GCC_14_2
 
 config FREETZ_GNULIBATOMIC_VERSION
 	string
@@ -826,10 +1183,15 @@ config FREETZ_GNULIBATOMIC_VERSION
 	default "0.0.0"     if FREETZ_TARGET_GCC_4_7
 	default "1.0.0"     if FREETZ_TARGET_GCC_4_8
 	default "1.0.0"     if FREETZ_TARGET_GCC_4_9
-	default "1.1.0"     if FREETZ_TARGET_GCC_5
-	default "1.2.0"     if FREETZ_TARGET_GCC_8
-	default "1.2.0"     if FREETZ_TARGET_GCC_9
-	default "1.2.0"     if FREETZ_TARGET_GCC_13
+	default "1.1.0"     if FREETZ_TARGET_GCC_5_1
+	default "1.1.0"     if FREETZ_TARGET_GCC_5_4
+	default "1.1.0"     if FREETZ_TARGET_GCC_5_5
+	default "1.2.0"     if FREETZ_TARGET_GCC_8_3
+	default "1.2.0"     if FREETZ_TARGET_GCC_8_4
+	default "1.2.0"     if FREETZ_TARGET_GCC_9_3
+	default "1.2.0"     if FREETZ_TARGET_GCC_9_4
+	default "1.2.0"     if FREETZ_TARGET_GCC_13_3
+	default "1.2.0"     if FREETZ_TARGET_GCC_14_2
 
 config FREETZ_GNULIBSTDCXX_VERSION
 	string
@@ -837,10 +1199,15 @@ config FREETZ_GNULIBSTDCXX_VERSION
 	default "6.0.17"    if FREETZ_TARGET_GCC_4_7
 	default "6.0.19"    if FREETZ_TARGET_GCC_4_8
 	default "6.0.20"    if FREETZ_TARGET_GCC_4_9
-	default "6.0.21"    if FREETZ_TARGET_GCC_5
-	default "6.0.25"    if FREETZ_TARGET_GCC_8
-	default "6.0.28"    if FREETZ_TARGET_GCC_9
-	default "6.0.32"    if FREETZ_TARGET_GCC_13
+	default "6.0.21"    if FREETZ_TARGET_GCC_5_1
+	default "6.0.21"    if FREETZ_TARGET_GCC_5_4
+	default "6.0.21"    if FREETZ_TARGET_GCC_5_5
+	default "6.0.25"    if FREETZ_TARGET_GCC_8_3
+	default "6.0.25"    if FREETZ_TARGET_GCC_8_4
+	default "6.0.28"    if FREETZ_TARGET_GCC_9_3
+	default "6.0.28"    if FREETZ_TARGET_GCC_9_4
+	default "6.0.32"    if FREETZ_TARGET_GCC_13_3
+	default "6.0.33"    if FREETZ_TARGET_GCC_14_2
 
 config FREETZ_STDCXXLIB
 	string
@@ -949,8 +1316,7 @@ config FREETZ_TARGET_UCLIBC_REDUCED_LOCALE_SET
 		This saves about 235KB in the image and at run-time.
 
 config FREETZ_TARGET_UCLIBC_PROVIDES_SSP
-	bool
-	default y
+	def_bool y
 	depends on FREETZ_TARGET_UCLIBC_1
 
 config FREETZ_TARGET_NLS
@@ -972,6 +1338,7 @@ config FREETZ_TARGET_TOOLCHAIN
 	select FREETZ_LIB_libmpfr
 	select FREETZ_LIB_libmpc
 	bool "Build binutils and gcc for target" if FREETZ_BUILD_TOOLCHAIN
+	depends on FREETZ_REAL_DEVELOPER_ONLY
 	default n
 	help
 		Build the binutils and gcc to run on the target.
@@ -981,6 +1348,7 @@ config FREETZ_TARGET_TOOLCHAIN
 comment "Host-tools options ----------------------------------"
 
 choice
+
 	prompt "Patchelf version" if !FREETZ_HOSTTOOLS_DOWNLOAD
 		default FREETZ_TOOLS_PATCHELF_VERSION_CURRENT
 
@@ -1003,8 +1371,15 @@ config FREETZ_TOOLS_UBOOT_STATIC
 	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
 	default n
 	help
-		Used for precompiled dl-tools. You need to
-		have a installed libssl.a and libctypto.a
+		Used for precompiled dl-tools with static openssl.
+
+config FREETZ_TOOLS_WGET_STATIC
+	bool "Build Wget with static OpenSSL"
+	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
+	default n
+	help
+		Used for precompiled dl-tools with static openssl.
+		Maybe you have to export SSL_CERT_DIR with ca-certs.
 
 config FREETZ_TOOLS_KCONFIG_BUTTONS
 	bool "No load+save buttons in menuconfig"

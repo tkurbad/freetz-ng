@@ -1,6 +1,9 @@
 KERNEL_MAKE_DIR:=$(MAKE_DIR)/kernel
 KERNEL_PATCHES_DIR:=$(KERNEL_MAKE_DIR)/patches/$(KERNEL_VERSION)$(SYSTEM_TYPE_CORE_SUFFIX)
 
+KERNEL_DEPENDS_ON += lzma1-host
+KERNEL_DEPENDS_ON += lzma2eva-host
+
 KERNEL_IMAGE:=vmlinux.eva_pad
 KERNEL_IMAGE_BUILD_SUBDIR:=$(if $(FREETZ_KERNEL_VERSION_3_10_MIN),/arch/$(KERNEL_ARCH)/boot)
 KERNEL_TARGET_BINARY:=kernel-$(KERNEL_ID).bin
@@ -63,7 +66,7 @@ ifeq ($(strip $(FREETZ_KERNEL_AVMDIFF_AVAILABLE)),y)
 	  [ "$$a" == "chmod" ] && chmod +x    "$(KERNEL_SOURCE_DIR)/$${b}"; \
 	  [ "$$a" == "slink" ] && ln -s "$$c" "$(KERNEL_SOURCE_DIR)/$${b}"; \
 	  [ "$$a" == "touch" ] && touch       "$(KERNEL_SOURCE_DIR)/$${b}"; \
-	done || true
+	done $(SILENT) || true
 endif
 ifneq ($(strip $(FREETZ_KERNEL_AVM_CHAOTIC_PACK)),y)
 	@echo "#kernel version specific patches: $(KERNEL_PATCHES_DIR)" $(SILENT)
@@ -169,9 +172,9 @@ $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE)
 	cp $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
 	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
-	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null
+	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null $(SILENT)
 else
-	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig
+	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig $(SILENT)
 endif
 	@cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
 
@@ -229,7 +232,7 @@ kernel-autofix: kernel-dirclean
 kernel-recompile: kernel-dirclean kernel-precompiled
 .PHONY: kernel-autofix kernel-recompile
 
-$(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE): $(KERNEL_DIR)/.prepared $(KERNEL_BUILD_DEPENDENCIES) | $(TOOLS_DIR)/lzma $(TOOLS_DIR)/lzma2eva
+$(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE): $(KERNEL_DIR)/.prepared $(KERNEL_BUILD_DEPENDENCIES) | $(KERNEL_DEPENDS_ON)
 	$(call _ECHO,image,$(KERNEL_ECHO_TYPE))
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) $(KERNEL_IMAGE)
 	touch -c $@

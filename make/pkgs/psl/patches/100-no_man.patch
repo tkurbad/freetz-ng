@@ -1,7 +1,7 @@
 --- tools/Makefile.in
 +++ tools/Makefile.in
 @@ -399,7 +399,7 @@
- top_srcdir = ..
+ top_srcdir = @top_srcdir@
  AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_builddir)/include
  LDADD = $(top_builddir)/src/libpsl.la
 -dist_man_MANS = psl.1
@@ -11,9 +11,9 @@
  
 --- src/Makefile.in
 +++ src/Makefile.in
-@@ -420,7 +420,7 @@
- # include ABI version information
+@@ -424,7 +424,7 @@
  libpsl_la_LDFLAGS = -no-undefined -version-info $(LIBPSL_SO_VERSION)
+ bin_SCRIPTS = psl-make-dafsa
  EXTRA_DIST = psl-make-dafsa LICENSE.chromium meson.build
 -dist_man_MANS = psl-make-dafsa.1
 +dist_man_MANS = 

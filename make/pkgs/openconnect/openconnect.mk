@@ -2,10 +2,13 @@ $(call PKG_INIT_BIN, 7.04)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=baac1fdf8f5f9debe1f91a2f3ca6895cf24ef0f8b2d8c2c67f5ce6789f28663b
 $(PKG)_SITE:=ftp://ftp.infradead.org/pub/$(pkg)
-$(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
-$(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/$(pkg)
+
 $(PKG)_STARTLEVEL=81
 
+$(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
+$(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/$(pkg)
+
+$(PKG)_DEPENDS_ON += wget-host
 $(PKG)_DEPENDS_ON += libxml2 openssl zlib
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION

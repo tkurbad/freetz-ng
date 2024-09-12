@@ -1,0 +1,21 @@
+--- Configure
++++ Configure
+@@ -316,6 +316,7 @@
+ $config{libdir}="";
+ my $auto_threads=1;    # enable threads automatically? true by default
+ my $default_ranlib;
++my $quiet=0;
+ 
+ # Top level directories to build
+ $config{dirs} = [ "crypto", "ssl", "engines", "apps", "util", "tools" ];
+@@ -888,6 +889,10 @@
+                         {
+                         push @{$useradd{CPPFLAGS}}, $1;
+                         }
++                elsif (/^--quiet$/)
++                        {
++                        $quiet=1
++                        }
+                 else    # common if (/^[-+]/), just pass down...
+                         {
+                         # Treat %xx as an ASCII code (e.g. replace %20 by a space character).

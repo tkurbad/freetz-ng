@@ -12,6 +12,7 @@ $(PKG)_LIBS_BUILD_DIR := $($(PKG)_DIR)/xpdf/libxpdf.so.1
 $(PKG)_LIBS_TARGET_DIR := $($(PKG)_DEST_LIBDIR)/libxpdf.so.1
 $(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)/usr/bin/%,$(filter-out $($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL)))
 
+$(PKG)_DEPENDS_ON += wget-host
 $(PKG)_DEPENDS_ON += $(STDCXXLIB)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_STDCXXLIB
 $(PKG)_REBUILD_SUBOPTS += $($(PKG)_BINARIES_ALL:%=FREETZ_PACKAGE_XPDF_%)

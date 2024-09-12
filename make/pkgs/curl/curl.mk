@@ -1,12 +1,13 @@
-$(call PKG_INIT_BIN, 8.5.0)
+$(call PKG_INIT_BIN, 8.9.1)
 $(PKG)_LIB_VERSION:=4.8.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=42ab8db9e20d8290a3b633e7fbb3cec15db34df65fd1015ef8ac1e4723750eeb
+$(PKG)_HASH:=f292f6cc051d5bbabf725ef85d432dfeacc8711dd717ea97612ae590643801e5
 $(PKG)_SITE:=https://curl.se/download,https://curl.haxx.se/download
 ### WEBSITE:=https://curl.se/
 ### MANPAGE:=https://curl.se/docs/manpage.html
 ### CHANGES:=https://curl.se/changes.html
 ### CVSREPO:=https://github.com/curl/curl
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/curl
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/curl
@@ -53,6 +54,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-nonblocking
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
 $(PKG)_CONFIGURE_OPTIONS += --disable-manual
 $(PKG)_CONFIGURE_OPTIONS += --disable-verbose
+$(PKG)_CONFIGURE_OPTIONS += --disable-docs
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-cookies
 $(PKG)_CONFIGURE_OPTIONS += --enable-crypto-auth

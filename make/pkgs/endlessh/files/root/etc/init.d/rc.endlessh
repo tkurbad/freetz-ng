@@ -1,0 +1,48 @@
+#!/bin/sh
+
+DAEMON=endlessh
+DAEMON_LONG_NAME="SSH tarpit"
+DAEMON_BIN=endlessh
+. /etc/init.d/modlibrc
+
+config() {
+	modlib_config
+	mkdir -p /tmp/$DAEMON
+}
+
+start() {
+	modlib_startdaemon start-stop-daemon -S -b -q -m -p $PID_FILE -n $DAEMON -a $DAEMON_BIN -- -f $DAEMON_CONFIG
+}
+
+case $1 in
+	""|load)
+		modreg cgi 'endlessh' 'Endlessh'
+		modreg daemon $DAEMON
+
+		modlib_start $ENDLESSH_ENABLED
+		;;
+	unload)
+		modunreg daemon $DAEMON
+		modunreg cgi 'endlessh'
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		rm -rf /tmp/$DAEMON
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|reload|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

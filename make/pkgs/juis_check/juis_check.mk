@@ -1,4 +1,6 @@
 $(call PKG_INIT_BIN, 1.3)
+### SUPPORT:=fda77
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)
 

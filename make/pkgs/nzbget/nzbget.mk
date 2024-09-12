@@ -11,6 +11,7 @@ $(PKG)_SITE:=$($(PKG)_SITE_$(if $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON),ABANDON
 ### MANPAGE:=https://nzbget-ng.github.io/documentation
 ### CHANGES:=https://github.com/nzbget-ng/nzbget/tags
 ### CVSREPO:=https://github.com/nzbget-ng/nzbget
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/$(pkg)

@@ -10,6 +10,7 @@ $(PKG)_SITE:=$(MTR_SITE_$(if $(FREETZ_PACKAGE_MTR_VERSION_ABANDON),ABANDON,CURRE
 ### MANPAGE:=https://linux.die.net/man/8/mtr
 ### CHANGES:=https://github.com/traviscross/mtr/blob/master/NEWS
 ### CVSREPO:=https://github.com/traviscross/mtr
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON += ncurses
 

@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_BLUEZ_UTILS
-	bool "bluez-utils 2.25 (binary only, incl. Pin-Change and NAP)"
+	bool "bluez-utils 2.25 (binary only, incl. Pin-Change and NAP) - DEPRECATED"
 	depends on FREETZ_REPLACE_MODULE_AVAILABLE
 	select FREETZ_LIB_libbluetooth
 	select FREETZ_MODULE_btusb    if !FREETZ_AVM_HAS_BT_HCIBTUSB_BUILTIN   && FREETZ_KERNEL_VERSION_2_6_28_MIN

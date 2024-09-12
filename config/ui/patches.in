@@ -903,15 +903,15 @@ config FREETZ_REMOVE_TR069_FWUPDATE
 	depends on !FREETZ_AVM_HAS_PLUGINS_UPDATE || FREETZ_AVMPLUGINS_INTEGRATE
 	default n
 	help
-		Removes the file /usr/bin/tr069fwupdate, needed for
-		updating the firmware of dect devices.
+		Removes the file /usr/bin/tr069fwupdate or /usr/bin/fwupdate,
+		needed for updating the firmware of dect devices.
 
 config FREETZ_REMOVE_TR069_HTTPSDL
 	bool "Remove httpsdl"
 	depends on FREETZ_REMOVE_TR069 && FREETZ_AVM_HAS_TR069_FWUPDATE && FREETZ_REMOVE_TR069_FWUPDATE
 	default y
 	help
-		Removes the file /usr/bin/httpsdl, used by:
+		Removes the file /usr/bin/httpsdl or /usr/bin/webget, used by:
 		* tr069/fwupdate, you have removed it
 		* firmware updater, with Freetz you don't want it
 		* live-pictures from door clock (TFE)
@@ -1373,11 +1373,12 @@ config FREETZ_PATCH_MODFS_ANNEX_SELECTION
 
 menuconfig FREETZ_PATCH_MODFS_BOOT_MANAGER
 	bool "Add yf-bootmanager"
+	depends on FREETZ_AVM_VERSION_07_8X_MAX
 	depends on !FREETZ_ADD_INACTIVE_SYSTEM || (FREETZ_ADD_INACTIVE_SYSTEM && FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO)
 	depends on FREETZ_AVM_VERSION_06_5X_MIN
-	depends on ( FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE && !FREETZ_AVM_HAS_FWLAYOUT_6 ) || \
-		                   ( FREETZ_AVM_HAS_FWLAYOUT_6 && (FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE) )
-	select FREETZ_MODULE_loop if FREETZ_AVM_HAS_FWLAYOUT_6 && !FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN && FREETZ_REPLACE_MODULE_AVAILABLE
+	depends on ( FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE && !FREETZ_AVM_HAS_FWLAYOUT_5 ) || \
+		                   ( FREETZ_AVM_HAS_FWLAYOUT_5 && (FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN || FREETZ_REPLACE_MODULE_AVAILABLE) )
+	select FREETZ_MODULE_loop if FREETZ_AVM_HAS_FWLAYOUT_5 && !FREETZ_AVM_HAS_BLK_DEV_LOOP_BUILTIN && FREETZ_REPLACE_MODULE_AVAILABLE
 	default n
 	help
 		Extends the "reboot" page of FRITZ!OS to select system version and branding.
@@ -1412,14 +1413,14 @@ menuconfig FREETZ_PATCH_MODFS_BOOT_MANAGER
 
 	endif # FREETZ_PATCH_MODFS_BOOT_MANAGER
 
-	if FREETZ_AVM_HAS_FWLAYOUT_6 && !FREETZ_FWMOD_SKIP_MODIFY && !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
+	if FREETZ_AVM_HAS_FWLAYOUT_5 && !FREETZ_FWMOD_SKIP_MODIFY && !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 	if FREETZ_PATCH_MODFS_BOOT_MANAGER
 		comment " WARNING WARNING WARNING WARNING WARNING WARNING WARNING"
 		comment " ## Freetz details of inactive firmware are no longer  #"
 		comment " ## available on System page if you use yf-bootmanager #"
 		comment " WARNING WARNING WARNING WARNING WARNING WARNING WARNING"
 	endif # FREETZ_PATCH_MODFS_BOOT_MANAGER
-	endif # FREETZ_AVM_HAS_FWLAYOUT_6 && !FREETZ_FWMOD_SKIP_MODIFY && !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
+	endif # FREETZ_AVM_HAS_FWLAYOUT_5 && !FREETZ_FWMOD_SKIP_MODIFY && !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 
 if FREETZ_AVM_HAS_USB_HOST
 comment "USB patches ----------------------------------------------"
@@ -1438,10 +1439,10 @@ menuconfig FREETZ_PATCH_UDEVMOUNT
 if FREETZ_PATCH_UDEVMOUNT
 
 	comment "Intern NTFS"
-		depends on FREETZ_AVM_HAS_NTFS && !FREETZ_REMOVE_NTFS
+		depends on FREETZ_AVM_HAS_ANTFS_FS_BUILTIN || (FREETZ_AVM_HAS_NTFS && !FREETZ_REMOVE_NTFS)
 	config FREETZ_UDEVMOUNT_NTFS
 		bool "Select NTFS"
-		depends on !FREETZ_AVM_HAS_NTFS || FREETZ_REMOVE_NTFS
+		depends on !FREETZ_AVM_HAS_ANTFS_FS_BUILTIN && (!FREETZ_AVM_HAS_NTFS || FREETZ_REMOVE_NTFS)
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_PACKAGE_NTFS
 		default n
@@ -1627,10 +1628,10 @@ config FREETZ_AUTOMOUNT_LUKS
 
 config FREETZ_AUTOMOUNT_NTFS
 	bool "NTFS"
-	depends on (FREETZ_AVM_HAS_NTFS && !FREETZ_REMOVE_NTFS) || FREETZ_REPLACE_MODULE_AVAILABLE
-	select FREETZ_PACKAGE_NTFS if FREETZ_REMOVE_NTFS || ! FREETZ_AVM_HAS_NTFS
+	depends on FREETZ_AVM_HAS_ANTFS_FS_BUILTIN || (FREETZ_AVM_HAS_NTFS && !FREETZ_REMOVE_NTFS) || FREETZ_REPLACE_MODULE_AVAILABLE
+	select FREETZ_PACKAGE_NTFS if !FREETZ_AVM_HAS_ANTFS_FS_BUILTIN && (FREETZ_REMOVE_NTFS || !FREETZ_AVM_HAS_NTFS)
 	select FREETZ_BUSYBOX_FEATURE_VOLUMEID_NTFS
-	default y if FREETZ_AVM_HAS_NTFS && ! FREETZ_REMOVE_NTFS
+	default y if FREETZ_AVM_HAS_ANTFS_FS_BUILTIN || (FREETZ_AVM_HAS_NTFS && !FREETZ_REMOVE_NTFS)
 	default n
 	help
 		This adds ntfs-3g mount helper to your firmware.
@@ -1794,12 +1795,14 @@ config FREETZ_REPLACE_ONLINECHANGED
 
 comment "Additional patches ---------------------------------------"
 
-config FREETZ_ADD_TELNETD
-	bool "Add telnetd"
-	depends on !FREETZ_AVM_HAS_TELNETD
+config FREETZ_ADD_ANNEX_A_FIRMWARE
+	bool "Add Annex A firmware file"
+	depends on FREETZ_TYPE_7270_V1
 	default n
 	help
-		Adds the busybox applet for telnetd, its link and the configuration webif.
+		Add lib/modules/dsp_ur8/ur8-A-dsl.bin. This costs about 400 KB of
+		uncompressed data size. But you can remove Annex B file if you
+		plan to use Annex A.
 
 config FREETZ_ADD_SWAPOPTIONS
 	bool "Add swap options"
@@ -1808,6 +1811,20 @@ config FREETZ_ADD_SWAPOPTIONS
 	select FREETZ_PACKAGE_MOD_SWAPOPTIONS
 	help
 		Add swap configuration options.
+
+config FREETZ_ADD_TELNETD
+	bool "Add telnetd"
+	depends on !FREETZ_AVM_HAS_TELNETD
+	default n
+	help
+		Adds the busybox applet for telnetd, its link and the configuration webif.
+
+config FREETZ_ADD_ETCNETCONFIG
+	bool "Add /etc/netconfig"
+	default n
+	help
+		Adds /etc/netconfig file.
+		Used eg by libtirpc and rpcbind.
 
 config FREETZ_ADD_ETCSERVICES
 	bool "Add /etc/services"
@@ -1826,21 +1843,14 @@ config FREETZ_CUSTOM_ETCSERVICES
 		Adds freetz-specific services to /etc/services.
 		Used eg by netstat to display names of IP-ports.
 
-config FREETZ_ADD_ETCNETCONFIG
-	bool "Add /etc/netconfig"
+config FREETZ_ENFORCE_TMP_PERMISSIONS
+	bool "Enforce /tmp/ permissions"
+	depends on !FREETZ_AVM_HAS_AVMCTLMGR_PRELOAD && FREETZ_AVM_VERSION_07_2X_MIN
+	select FREETZ_BUSYBOX_INOTIFYD
+	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	default n
 	help
-		Adds /etc/netconfig file.
-		Used eg by libtirpc and rpcbind.
-
-config FREETZ_ADD_ANNEX_A_FIRMWARE
-	bool "Add Annex A firmware file"
-	depends on FREETZ_TYPE_7270_V1
-	default n
-	help
-		Add lib/modules/dsp_ur8/ur8-A-dsl.bin. This costs about 400 KB of
-		uncompressed data size. But you can remove Annex B file if you
-		plan to use Annex A.
+		Changes /var/tmp/ permissions back to 1777 after AVM sets 755.
 
 config FREETZ_ENFORCE_URLADER_SETTINGS
 	bool "Enforce urlader environment"

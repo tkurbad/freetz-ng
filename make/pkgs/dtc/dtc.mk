@@ -5,6 +5,7 @@ $(PKG)_SITE:=@KERNEL/software/utils/dtc
 ### WEBSITE:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git
 ### CHANGES:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git/log/
 ### CVSREPO:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git/refs/
+### SUPPORT:=fda77
 
 $(PKG)_BINARIES            := fdtdump fdtget fdtput fitdump
 $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)
@@ -16,7 +17,7 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_DTC_fdtput)  ,,usr/bin/fdtput)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_DTC_fitdump) ,,usr/bin/fitdump)
 
 
-# dtc-host and dtc using the same source
+# dtc-host and dtc using the same source, libdtc-host an older version
 ifneq ($($(PKG)_SOURCE),$(DTC_HOST_SOURCE))
 $(PKG_SOURCE_DOWNLOAD)
 endif

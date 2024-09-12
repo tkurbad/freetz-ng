@@ -1,7 +1,12 @@
-$(call TOOLS_INIT, 1.34)
+$(call TOOLS_INIT, 1.35)
 $(PKG)_SOURCE:=tar-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=63bebd26879c5e1eea4352f0d03c991f966aeb3ddeb3c7445c902568d5411d28
+$(PKG)_HASH:=4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16
 $(PKG)_SITE:=@GNU/tar
+### WEBSITE:=https://www.gnu.org/software/tar/
+### MANPAGE:=https://www.gnu.org/software/tar/manual/
+### CHANGES:=https://www.gnu.org/software/tar/#releases
+### CVSREPO:=https://git.savannah.gnu.org/cgit/tar.git
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON:=kconfig-host
 
@@ -38,6 +43,6 @@ $(pkg)-dirclean:
 	$(RM) -r $(TAR_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) $(TAR_TARGET_BINARY)
+	$(RM) $(TAR_HOST_TARGET_BINARY)
 
 $(TOOLS_FINISH)

@@ -7,6 +7,7 @@ $(PKG)_SITE:=@SF/net-snmp
 ### MANPAGE:=http://www.net-snmp.org/docs/man/
 ### CHANGES:=http://www.net-snmp.org/download.html
 ### CVSREPO:=https://github.com/net-snmp/net-snmp
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/agent/.libs/snmpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/snmpd

@@ -171,7 +171,7 @@ TICHKSUM_TOOL="tichksum"
 MAKEDEVS_TOOL="makedevs"
 DEBUGFS_TOOL="debugfs"
 EXTERNAL_TOOL="external"
-TAR_TOOL="tar"
+TAR_BBA_TOOL="tar"
 TAR_GNU_TOOL="tar-gnu"
 MD5SUM_TOOL="md5sum"
 BUSYBOX_TOOL="busybox"
@@ -186,7 +186,7 @@ FINDSQUASHFS="${TOOLS_DIR}/${FINDSQUASHFS_TOOL}"
 TICHKSUM="${TOOLS_DIR}/${TICHKSUM_TOOL}"
 MAKEDEVS="${TOOLS_DIR}/${MAKEDEVS_TOOL}"
 MAKEDEVS_FILE="${TOOLS_DIR}/device.table"
-TAR="${TOOLS_DIR}/${TAR_TOOL}"
+TAR_BBA="${TOOLS_DIR}/${TAR_BBA_TOOL}"
 TAR_GNU="${TOOLS_DIR}/${TAR_GNU_TOOL}"
 MD5SUM="${TOOLS_DIR}/${MD5SUM_TOOL}"
 BUSYBOX="${TOOLS_DIR}/${BUSYBOX_TOOL}"
@@ -234,6 +234,8 @@ sed -nr 's/^([^=]+)=(.*)/: ${\1:=\2}/p' "$DOT_CONFIG" > "$DOT_CONFIG.fwmod"
 source "$DOT_CONFIG.fwmod"
 rm "$DOT_CONFIG.fwmod"
 
+# Verbosity level of fwmod
+FREETZ_VERBOSITY_LEVEL="$FREETZ_VERBOSITY_FWMOD"
 # Set default verbosity level, just in case none was defined in the (possibly
 # user-defined and minimal) config file
 : ${FREETZ_VERBOSITY_LEVEL:=0}
@@ -392,7 +394,7 @@ else
 			error 1 "cannot clean up directory $COPY_FS_DIR")
 		mkdir -p "$COPY_FS_DIR" ||
 			error 1 "cannot create directory $COPY_FS_DIR"
-		sudo "$TAR" -C "$COPY_FS_DIR" -xf "$rootfs_archive" ||
+		sudo "$TAR_BBA" -C "$COPY_FS_DIR" -xf "$rootfs_archive" ||
 			error 1 "cannot unpack root file system"
 		echo -e "done.\n"
 	fi
@@ -533,17 +535,6 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 	[ ! -r "${KERNEL}" ] && error 1 "cannot find kernel.image (${KERNEL})"
 	[ ! -r "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" ] && error 1 "cannot find filesystem.image (${FIRMWARE_DIR}/${FILESYSTEM_IMAGE})"
 
-	# Do we have the tool ?
-	for tool in "$UNSQUASHFS" "$FINDSQUASHFS" "$TICHKSUM"; do
-		[ ! -x $tool ] && error 1 "cannot find the tool $tool"
-	done
-
-	# Is cpio up to date ?
-	if [ "$FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO" == "y" ]; then
-		[ -z "$(cpio --version 2>/dev/null | sed -nr 's/^cpio .* 2\.([0-9]*)(\.[0-9]+)*/\1/p' | sed -r 's/^([0-9]|10|11)$//')" ] && \
-		  error 1 "cpio version 2.12 is required"
-	fi
-
 	# Remove NMI vector from SquashFS
 	if [ "$FREETZ_AVM_HAS_NMI_VECTOR" == "y" ]; then
 		echo0 "removing NMI vector from SquashFS"
@@ -560,6 +551,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		esac
 	fi
 
+	[ ! -x "$TICHKSUM" ] && error 1 "cannot find the tool $TICHKSUM"
 	"$TICHKSUM" -r "${KERNEL}" > /dev/null
 	"$TICHKSUM" -r "${FIRMWARE_DIR}/${FILESYSTEM_IMAGE}" > /dev/null
 
@@ -577,6 +569,8 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		echo "unpacking ${INNER_FS_PREFIX}filesystem image"
 		modunpack_autodetect_fs "$FILESYSTEM_DIR" "$FILESYSTEM" || error 1 "unpacking ${INNER_FS_PREFIX}filesystem image failed"
 	else
+		[ ! -x "$FINDSQUASHFS" ] && error 1 "cannot find the tool $FINDSQUASHFS"
+
 		echo "splitting kernel image"
 		( cd "$KERNEL_DIR" && "${TOOLS_DIR}/${FINDSQUASHFS_TOOL}" "../${FIRMWARE_SUBDIR}/${KERNEL_IMAGE}" > /dev/null 2>&1 )
 
@@ -700,6 +694,7 @@ HTML_MOD_DIR="${FILESYSTEM_MOD_DIR}/${HTML_SUBDIR}"
 
 
 if [ -z "$FREETZ_SQUASHFS_BLOCKSIZE" ]; then # expected to be empty only if FREETZ_SQUASHFS_BLOCKSIZE_ORIG is set
+	[ ! -x "$UNSQUASHFS"   ] && error 1 "cannot find the tool $UNSQUASHFS"
 	echo -n "determining SquashFS block size of the original firmware: "
 	FREETZ_SQUASHFS_BLOCKSIZE=$("$UNSQUASHFS" -s "$FILESYSTEM" 2>/dev/null | sed -nr 's/Block size ([0-9]+)/\1/p')
 	[ -z "$FREETZ_SQUASHFS_BLOCKSIZE" ] && error 1 "failed" || echo -e "$((FREETZ_SQUASHFS_BLOCKSIZE/1024)) kB\n"
@@ -795,7 +790,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	[ -n "$PV" ] && echo0 "preparing directory build/modified/"
 	mkdir -p "$MOD_DIR"
 	[ "$FREETZ_AVM_HAS_UDEV" == y ] || exclude_dev="--exclude=./filesystem/dev"
-	"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR" -x -C "$MOD_DIR" || error 1 "tar failed"
+	"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR_BBA" -x -C "$MOD_DIR" || error 1 "tar failed"
 
 	# Fix some permissions
 	chmod -R u+w "$FILESYSTEM_MOD_DIR"
@@ -1154,10 +1149,10 @@ if [ "$DO_MOD" -gt 0 ]; then
 		fi
 
 		echo1 "checking OpenSSL version"
-		DETECTED_OPENSSL_VER_AVM="$(find ${FILESYSTEM_DIR}/lib/libcrypto.so.* -type f  -exec strings {} \; 2>/dev/null | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
+		DETECTED_OPENSSL_VER_AVM="$(find ${FILESYSTEM_DIR}/usr/lib/ ${FILESYSTEM_DIR}/lib/ -name "libcrypto.so.*" -type f  -exec strings {} \; 2>/dev/null | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
 		echo2 "... used by AVM ...... ${DETECTED_OPENSSL_VER_AVM:-none}"
 		if [ "$FREETZ_LIB_libcrypto" == "y" ]; then
-			DETECTED_OPENSSL_VER_MOD="$(find ${FILESYSTEM_MOD_DIR}${FREETZ_LIBRARY_DIR}/libcrypto.so.* -type f  -exec strings {} \; | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
+			DETECTED_OPENSSL_VER_MOD="$(find ${FILESYSTEM_MOD_DIR}${FREETZ_LIBRARY_DIR}/ -name "libcrypto.so.*" -type f  -exec strings {} \; | sed -nr 's/^@?OpenSSL ([0-9]\.[-0-9a-z\.]*)[ \t]*/\1\t/p')"
 			echo2 "... used by Freetz ... ${DETECTED_OPENSSL_VER_MOD:-none}"
 		#	[ "$DETECTED_OPENSSL_VER_MOD" != "$DETECTED_OPENSSL_VER_AVM" ] & warn2 "Freetz and AVM OpenSSL versions do not match"
 		fi
@@ -1283,11 +1278,11 @@ if [ "$DO_MOD" -gt 0 ]; then
 		pkg_name=$(pkg_name "$pkg")
 
 		"$TAR_GNU" $(find "${PACKAGES_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
-		  -c  --owner=0 --group=0 --numeric-owner  -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+		  -c  --owner=0 --group=0 --numeric-owner  -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR_BBA" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
 		if [ -d "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
 			"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | \
-			  "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+			  "$TAR_BBA" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
 		fi
 
 		[ -r "${PACKAGES_DIR}/${pkg}/.language" ] && \
@@ -1314,14 +1309,14 @@ if [ "$DO_MOD" -gt 0 ]; then
 		if [ -e "${ADDON_DIR}/${pkg}/etc/init.d/rc.${pkg_name}" ]; then
 			echo "NOTICE: addon '$pkg' is in old-style format (no language support)." 1>&2
 			"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${ADDON_DIR}/${pkg}" . | \
-			  "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+			  "$TAR_BBA" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 		elif [ "$(echo ${pkg^^}-corrupt | sed -r 's/([^.-_-]*).*/\LfLawed-\1-Addon/' | md5sum | sed 's/ .*//')" != "80d00cf16e1a48ec11801feed60a2be7" ]; then
-			"$TAR"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') -c -C "${ADDON_DIR}/${pkg}/root" . | \
-			  "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+			"$TAR_BBA"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') -c -C "${ADDON_DIR}/${pkg}/root" . | \
+			  "$TAR_BBA" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
 			if [ -d "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
 				"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | \
-				  "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+				  "$TAR_BBA" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
 			fi
 
 			[ -r "${ADDON_DIR}/${pkg}/.language" ] && \
@@ -1930,7 +1925,7 @@ if [ "$DO_ZIP" -gt 0 ]; then
 	fi
 	echo0 "zipping root file system to $zip_name"
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FILESYSTEM_MOD_DIR" "$FILESYSTEM_DIR"
-	"$TAR" -C "$FILESYSTEM_MOD_DIR" -czf "$zip_name" .
+	"$TAR_BBA" -C "$FILESYSTEM_MOD_DIR" -czf "$zip_name" .
 	if [ $? -ne 0 ] || ! is_valid_tarball "$zip_name"; then
 		mv "${zip_name}" "${zip_name}.corrupted" 2>/dev/null
 		error 1 "zipping of root file system failed"
@@ -1943,7 +1938,6 @@ fi
 # -------------------------
 
 if [ "$DO_PACK" -gt 0 ]; then
-	[ ! -x "$MKSQUASHFS" ] && error 1 "cannot find $MKSQUASHFS"
 
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FILESYSTEM_MOD_DIR" "$FILESYSTEM_DIR"
 	if [ "$FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO" == "y" ]; then
@@ -1951,7 +1945,9 @@ if [ "$DO_PACK" -gt 0 ]; then
 
 		find $FILESYSTEM_MOD_DIR/ -mindepth 1 -printf '%P\n' | cpio -o --quiet -H newc -D $FILESYSTEM_MOD_DIR/ | gzip -9 > $ABS_BASE_DIR/${MAIN_FILESYSTEM_MOD}
 	else
-		echo0 "creating ${INNER_FS_PREFIX}filesystem image (SquashFS${FREETZ_SQUASHFS_VERSION}-${FREETZ_AVM_SQUASHFS_COMPRESSION})"
+		[ ! -x "$MKSQUASHFS" ] && error 1 "cannot find $MKSQUASHFS"
+
+		echo0 "creating ${INNER_FS_PREFIX}filesystem image (SquashFS${FREETZ_SQUASHFS_VERSION}_${FREETZ_AVM_SQUASHFS_ENDIANNESS}-${FREETZ_AVM_SQUASHFS_COMPRESSION})"
 		echo1 "SquashFS block size: $(($FREETZ_SQUASHFS_BLOCKSIZE/1024)) kB ($FREETZ_SQUASHFS_BLOCKSIZE bytes)"
 
 		rm -f $ABS_BASE_DIR/${MAIN_FILESYSTEM_MOD}
@@ -2028,7 +2024,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 				cat "$RAW_FILESYSTEM_MOD.ext2" >> "$RAW_FILESYSTEM_MOD" && \
 				rm -f "$RAW_FILESYSTEM_MOD.ext2"
 			elif [ "${FREETZ_AVM_OUTER_FILESYSTEM_TYPE}" == "SquashFS" ]; then
-				echo0 "creating outer-filesystem image (SquashFS${FREETZ_SQUASHFS_VERSION}-${FREETZ_AVM_SQUASHFS_COMPRESSION})"
+				echo0 "creating outer-filesystem image (SquashFS${FREETZ_SQUASHFS_VERSION}_${FREETZ_AVM_SQUASHFS_ENDIANNESS}-${FREETZ_AVM_SQUASHFS_COMPRESSION})"
 				"$MKSQUASHFS" ${FILESYSTEM_OUTER_MOD_DIR}/* $ABS_BASE_DIR/$RAW_FILESYSTEM_MOD $MKSQUASHFS_OPTIONS >> $MOD_DIR/filesystem.log 2>&1
 			else
 				error 1 "unknown/unsupported outer-filesystem type \"${FREETZ_AVM_OUTER_FILESYSTEM_TYPE}\""
@@ -2048,6 +2044,8 @@ if [ "$DO_PACK" -gt 0 ]; then
 			let FILESYSTEM_LIMIT="$FREETZ_FILESYSTEM_CUSTOM_MTD_SIZE*64*1024"
 		else
 			FILESYSTEM_LIMIT="$(sed -nr 's/^filesystem_size=(.*)/\1/p' ${FIRMWARE_DIR}/var/install)"
+			[ "$FREETZ_SYSTEM_TYPE_PUMA6" == "y" ] && FILESYSTEM_LIMIT="$(sed -nr 's/^ATOM_filesystem_size=(.*)/\1/p' ${FIRMWARE_DIR}/var/install)"
+			[ "$FREETZ_SYSTEM_TYPE_PUMA7" == "y" ] && FILESYSTEM_LIMIT="75496960"  # https://bitbucket.org/fesc2000/ffritz/src/6591/README-6591.md
 		#	[ -z "$FILESYSTEM_LIMIT" ] && error 1 "Can't find filesystem_size in var/install"
 		fi
 		let FILESYSTEM_SIZE="$(wc -c < "$FILESYSTEM_MOD")"
@@ -2146,8 +2144,17 @@ if [ "$DO_PACK" -gt 0 ]; then
 		# size info
 		FITIMAGE_LIMIT="$(( $FREETZ_AVM_HAS_FIT_SIZE *1024*1024 ))"
 		FITIMAGE_SIZE="$(wc -c < "$FIRMWARE_MOD_DIR/var/tmp/fit-image")"
-		let FITIMAGE_DIFF="FITIMAGE_SIZE-FITIMAGE_LIMIT"
-		echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
+		if [ -z "$FITIMAGE_LIMIT" ]; then
+			echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE)"
+		else
+			let FITIMAGE_DIFF="FITIMAGE_SIZE-FITIMAGE_LIMIT"
+			echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
+			if [ "$FITIMAGE_SIZE" -gt "$FITIMAGE_LIMIT" ]; then
+				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ]; then
+					error 1 -b "fitimg file is $FITIMAGE_DIFF bytes too big. See https://freetz-ng.github.io/freetz-ng/wiki/00_FAQ/FAQ.de.html#filesystem-image-too-big for details."
+				fi
+			fi
+		fi
 	fi
 	echo0 "packing ${img_name}"
 	[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FIRMWARE_MOD_DIR" "$FIRMWARE_DIR"
@@ -2171,7 +2178,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 			mv -f "${img_name}.signed-temp" "${img_name}"
 		else
 			openssl md5 -sign "${SIGNATURE_SUBDIR}/prv" -passin "pass:$FREETZ_FWMOD_SIGN_PASSWORD" -out "${FIRMWARE_MOD_DIR}/var/signature" "${img_name}" || \
-				error 1 "could not create signature file for firmware image"
+			  error 1 "could not create signature file for firmware image"
 			[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$FIRMWARE_MOD_DIR/var/signature" "$FIRMWARE_DIR/var/signature"
 			"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --numeric-owner  --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --append ./var/signature
 			RET=$?
@@ -2203,7 +2210,7 @@ if [ "$action_names" ]; then
 		modexternal="${FW_IMAGES_DIR:-$DIR}/${modstring}.external"
 		echo "packing ${modexternal}"
 		[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$EXTERNAL_MOD_DIR"
-		"$TAR" -C "$EXTERNAL_MOD_DIR" -cf "$modexternal" .
+		"$TAR_BBA" -C "$EXTERNAL_MOD_DIR" -cf "$modexternal" .
 		if [ $? -ne 0 ] || ! is_valid_tarball "$modexternal"; then
 			mv "${modexternal}" "${modexternal}.corrupted" 2>/dev/null
 			error 1 "packing of external tar failed"
@@ -2217,7 +2224,7 @@ if [ "$action_names" ]; then
 				pkgexternal="${FW_IMAGES_DIR:-$DIR}/${modstring}_${pkg}.external"
 				echo "packing ${pkgexternal}"
 				[ "$FREETZ_REPRODUCIBLE" == "y" ] && sync_timestamps "$EXTERNAL_MOD_DIR-${pkg}"
-				"$TAR" -C "$EXTERNAL_MOD_DIR-${pkg}" -cf "$pkgexternal" .
+				"$TAR_BBA" -C "$EXTERNAL_MOD_DIR-${pkg}" -cf "$pkgexternal" .
 				if [ $? -ne 0 ] || ! is_valid_tarball "$pkgexternal"; then
 					mv "${pkgexternal}" "${pkgexternal}.corrupted" 2>/dev/null
 					error 1 "packing of external-$pkg tar failed"

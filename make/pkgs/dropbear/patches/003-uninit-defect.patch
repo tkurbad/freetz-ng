@@ -13,9 +13,9 @@ From: Erik Hovland <erik@hovland.org>
  svr-main.c |    1 +
  2 files changed, 3 insertions(+), 1 deletions(-)
 
---- signkey.c
-+++ signkey.c
-@@ -557,7 +557,8 @@
+--- src/signkey.c
++++ src/signkey.c
+@@ -563,7 +563,8 @@
  
  	sha256_init(&hs);
  	sha256_process(&hs, keyblob, keybloblen);
@@ -25,8 +25,8 @@ From: Erik Hovland <erik@hovland.org>
  
  	/* eg "SHA256:P9szN0L2ls6KxkVv7Bppv3asnZCn03rY7Msm/c8+ZgA"
  	 * 256/6 = 42.66 => 43 base64 chars. OpenSSH discards
---- svr-main.c
-+++ svr-main.c
+--- src/svr-main.c
++++ src/svr-main.c
 @@ -143,6 +143,7 @@
  	(void)argv;
  	(void)multipath;

@@ -1,5 +1,6 @@
 menu "SquashFS options"
 	visible if FREETZ_SHOW_EXPERT
+	visible if !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 
 	comment "CAUTION: SquashFS block sizes >64 KB can cause an unstable box due to extensive memory usage"
 		depends on ! (FREETZ_SQUASHFS_BLOCKSIZE_ORIG || FREETZ_SQUASHFS_BLOCKSIZE_65536)
@@ -10,6 +11,7 @@ menu "SquashFS options"
 
 		config FREETZ_SQUASHFS_BLOCKSIZE_ORIG
 			bool "original (usually 64 KB)"
+			depends on !FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 			help
 				Block size of the root filesystem. SquashFS 2.x can use block sizes
 				up to 64 KB, SquashFS 3.x (only available for kernel 2.6.19.2 or
@@ -46,15 +48,15 @@ menu "SquashFS options"
 
 	endchoice # "SquashFS block size" #
 
-config FREETZ_SQUASHFS_BLOCKSIZE
-	int
-	default 65536    if FREETZ_SQUASHFS_BLOCKSIZE_65536
-	default 131072   if FREETZ_SQUASHFS_BLOCKSIZE_131072
-	default 262144   if FREETZ_SQUASHFS_BLOCKSIZE_262144
-	default 524288   if FREETZ_SQUASHFS_BLOCKSIZE_524288
-	default 1048576  if FREETZ_SQUASHFS_BLOCKSIZE_1048576
-	help
-		Numeric SquashFS block size in bytes
+	config FREETZ_SQUASHFS_BLOCKSIZE
+		int
+		default 65536    if FREETZ_SQUASHFS_BLOCKSIZE_65536
+		default 131072   if FREETZ_SQUASHFS_BLOCKSIZE_131072
+		default 262144   if FREETZ_SQUASHFS_BLOCKSIZE_262144
+		default 524288   if FREETZ_SQUASHFS_BLOCKSIZE_524288
+		default 1048576  if FREETZ_SQUASHFS_BLOCKSIZE_1048576
+		help
+			Numeric SquashFS block size in bytes
 
 endmenu # SquashFS options #
 

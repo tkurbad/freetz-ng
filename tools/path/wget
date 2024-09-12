@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+MYOWN="$(realpath $0)"
+TOOLS="$(dirname $(dirname $MYOWN))"
+CAC="$TOOLS/cacert.pem"
+
+file="$TOOLS/wget"
+[ -x "$file" ] && [ -s "$CAC" ] && exec "$file" --ca-certificate="$CAC" "$@"
+
+file="$(which -a 'wget' | grep -v "^$MYOWN$" | head -n1)"
+[ -x "$file" ] && exec "$file" "$@"
+
+echo "Miserable failure, no wget binary!" >&2
+exit 1

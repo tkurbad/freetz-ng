@@ -1,0 +1,33 @@
+--- libiberty/md5.c
++++ libiberty/md5.c
+@@ -27,7 +27,7 @@
+ 
+ #include <sys/types.h>
+ 
+-#if STDC_HEADERS || defined _LIBC
++#if STDC_HEADERS || defined _LIBC || __GNUC_PREREQ(14,0)
+ # include <stdlib.h>
+ # include <string.h>
+ #else
+--- libiberty/regex.c
++++ libiberty/regex.c
+@@ -126,7 +126,7 @@
+    even if config.h says that we can.  */
+ #  undef REL_ALLOC
+ 
+-#  if defined STDC_HEADERS || defined _LIBC
++#  if defined STDC_HEADERS || defined _LIBC || __GNUC_PREREQ(14,0)
+ #   include <stdlib.h>
+ #  else
+ char *malloc ();
+--- intl/configure
++++ intl/configure
+@@ -1148,7 +1148,7 @@
+ #line 1149 "configure"
+ #include "confdefs.h"
+ 
+-main(){return(0);}
++int main(){return(0);}
+ EOF
+ if { (eval echo configure:1154: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+   ac_cv_prog_cc_works=yes

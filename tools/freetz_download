@@ -21,7 +21,7 @@ FREETZ_BASE_DIR_FOUND="${FREETZ_BASE_DIR:-.}"
 DOT_CONFIG="$FREETZ_BASE_DIR_FOUND/.config"
 #SVN_INSECURE_CERT="--trust-server-cert"
 #WGET_INSECURE_HTTPS="--no-check-certificate"
-FREETZ_DL_SITE_0="https://freetz-ng.hackquest.com"
+FREETZ_DL_SITE_0="https://freetz-ng.root.sx"
 FREETZ_DL_SITE_1="https://freetz.magenbrot.net"
 #FREETZ_DL_SITE_x="http://freetz.3dfxatwork.de"
 FREETZ_DL_SITE_2="https://freetz.wirsind.info"
@@ -59,8 +59,8 @@ do_download() {
 	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"$outFile\""; rm "$outFile" 2>/dev/null; exit 1' TERM INT
 	echo 1>&11
 	[ "$DEBUG" == "1" ] && echo \
-	"wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp '${fullURL}' -O '${outFile}' 1>&11 2>&12"
-	 wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll --passive-ftp "${fullURL}" -O "${outFile}" 1>&11 2>&12
+	"wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll '${fullURL}' -O '${outFile}' 1>&11 2>&12"
+	 wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll "${fullURL}" -O "${outFile}" 1>&11 2>&12
 	wget_result=$?
 	[ "$opt_trap_delete" == y ] && trap - TERM INT
 	if [ "$wget_result" != "0" ]; then
@@ -81,8 +81,8 @@ do_check() {
 	local mode wget_output wget_result
 	for mode in --spider --output-document=/dev/null; do
 		[ "$DEBUG" == "1" ] && \
-		echo         "LC_ALL=C wget -t3 --timeout=20 --passive-ftp -S $mode '$1' 2>&1"
-		wget_output=$(LC_ALL=C wget -t3 --timeout=20 --passive-ftp -S $mode "$1" 2>&1)
+		echo         "LC_ALL=C wget -t3 --timeout=20 -S $mode '$1' 2>&1"
+		wget_output=$(LC_ALL=C wget -t3 --timeout=20 -S $mode "$1" 2>&1)
 		wget_result=$?
 		if [ "$wget_result" != "0" ]; then
 			# workaround wget spider-mode bug (false negative): known to happen with all sites
@@ -293,16 +293,25 @@ if [ -n "$URLs" ]; then
 				sites[(( num_sites++ ))]=https://download.avm.de/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/fritzwlan/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/fritzpowerline/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/fritzsmart/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/fritzdect/$subpath
 				sites[(( num_sites++ ))]=https://avm.de/$subpath
+				sites[(( num_sites++ ))]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
+#				sites[(( num_sites++ ))]=https://download.avm.de/labor/Smart24P1/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/GoFiber23/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/labor/FCS23/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21NL1/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23NL1/$subpath
 				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/FCS23/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21NL1/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/WU22PSQ19/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/testfeld/$subpath
 				sites[(( num_sites++ ))]=https://download.avm.de/archive/fritz.box/$subpath
+				sites[(( num_sites++ ))]=https://service.avm.de/downloads/LaborPlus/$subpath
 				sites[(( num_sites++ ))]=https://service.avm.de/downloads/downgrade/$subpath
 				sites[(( num_sites++ ))]=https://service.avm.de/downloads/zwischenupdate/$subpath
 				sites[(( num_sites++ ))]=https://service.avm.de/downloads/$subpath
@@ -343,6 +352,12 @@ if [ -n "$URLs" ]; then
 				sites[(( num_sites++ ))]=https://download.samba.org/pub/$subpath
 				sites[(( num_sites++ ))]=https://www.samba.org/ftp/$subpath
 				sites[(( num_sites++ ))]=https://ftp.samba.org/pub/$subpath
+			elif [ ${url:0:9} == "@SAVANNAH" ]; then
+				subpath=${url/@SAVANNAH\//}
+				sites[(( num_sites++ ))]=https://download.savannah.nongnu.org/releases/$subpath
+				sites[(( num_sites++ ))]=https://download.savannah.gnu.org/releases/$subpath
+				sites[(( num_sites++ ))]=https://ftpmirror.gnu.org/$subpath
+				sites[(( num_sites++ ))]=https://mirror.netcologne.de/savannah/$subpath
 			else
 				sites[(( num_sites++ ))]=$url
 			fi
@@ -405,6 +420,9 @@ for i in ${sites[@]}; do
 				[ ! -x "$CHECKSUM_PROG" ] && CHECKSUM_PROG="$(command -v ${CHECKSUM_ALGO}sum)"
 			else
 				calculate_full_checksum
+				[ "${CHECKSUM^^}" == "SHIFTING" ] \
+				  && echo -e "\033[0;31mValidation for shifting checksum skipped!\033[0m Downloaded file has$FULL_CHECKSUM" 1>&11 \
+				  && sleep 1 && exit 0
 				[ "${CHECKSUM^^}" == "X" ] \
 				  && echo -e "\033[1;35mERROR: No valid checksum to verify found, downloaded file has$FULL_CHECKSUM\033[0m" \
 				  || echo -e "\033[1;35mERROR: Unknown checksum algorithm for a hash length of ${#CHECKSUM}$FULL_CHECKSUM\033[0m"

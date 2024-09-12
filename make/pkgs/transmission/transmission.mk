@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),3.00,4.0.5))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),3.00,4.0.6))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2
-$(PKG)_HASH_CURRENT:=fd68ff114a479200043c30c7e69dba4c1932f7af36ca4c5b5d2edcb5866e6357
+$(PKG)_HASH_CURRENT:=2a38fe6d8a23991680b691c277a335f8875bdeca2b97c6b26b598bc9c7b0c45f
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE_ABANDON:=https://github.com/transmission/transmission-releases/raw/master
 $(PKG)_SITE_CURRENT:=https://github.com/transmission/transmission/releases/download/$($(PKG)_VERSION)
@@ -10,6 +10,7 @@ $(PKG)_SITE:=$($(PKG)_SITE_$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),A
 ### MANPAGE:=https://github.com/transmission/transmission/wiki
 ### CHANGES:=https://github.com/transmission/transmission/releases
 ### CVSREPO:=https://github.com/transmission/transmission
+### SUPPORT:=fda77
 
 $(PKG)_BINARIES_ALL_SHORT     := cli  daemon  remote  create  edit   show
 $(PKG)_BINARIES_BUILD_SUBDIRS := cli/ daemon/ utils/  utils/  utils/ utils/
@@ -19,9 +20,9 @@ $(PKG)_BINARIES               := $(addprefix transmission-,$(if $(FREETZ_PACKAGE
 $(PKG)_BINARIES_BUILD_DIR     := $(addprefix $($(PKG)_DIR)/, $(join $($(PKG)_BINARIES_BUILD_SUBDIRS),$($(PKG)_BINARIES_ALL)))
 $(PKG)_BINARIES_TARGET_DIR    := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/bin/%)
 
-$(PKG)_WEBINTERFACE_DIR:=$($(PKG)_DIR)/web
+$(PKG)_WEBINTERFACE_DIR:=$($(PKG)_DIR)/web$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),,/public_html)
 $(PKG)_TARGET_WEBINTERFACE_DIR:=$($(PKG)_DEST_DIR)/usr/share/transmission-web-home
-$(PKG)_TARGET_WEBINTERFACE_INDEX_HTML:=$($(PKG)_TARGET_WEBINTERFACE_DIR)/$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),,public_html/)index.html
+$(PKG)_TARGET_WEBINTERFACE_INDEX_HTML:=$($(PKG)_TARGET_WEBINTERFACE_DIR)/index.html
 
 $(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)/usr/bin/%,$(filter-out $($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL)))
 ifneq ($(strip $(FREETZ_PACKAGE_TRANSMISSION_WEBINTERFACE)),y)
@@ -43,6 +44,8 @@ $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),
 ifeq ($(strip $(FREETZ_PACKAGE_TRANSMISSION_WITH_FINISHDIR)),y)
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),abandon,current)/finishdir
 endif
+
+$(PKG)_PATCH_POST_CMDS += rmdir third-party/miniupnpc; ln -s miniupnp/miniupnpc third-party/miniupnpc;
 
 ifeq ($(FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON),y)
 ## OLD v3

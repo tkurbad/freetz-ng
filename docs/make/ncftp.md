@@ -1,8 +1,9 @@
-# ncftp 3.2.6 (binaries only)
+# NcFTP 3.2.7 (binaries only)
  - Homepage: [https://www.ncftp.com/ncftp/](https://www.ncftp.com/ncftp/)
  - Manpage: [https://www.ncftp.com/ncftp/doc/faq.html](https://www.ncftp.com/ncftp/doc/faq.html)
  - Changelog: [https://www.ncftp.com/ncftp/doc/changelog.html](https://www.ncftp.com/ncftp/doc/changelog.html)
  - Package: [master/make/pkgs/ncftp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ncftp/)
+ - Maintainer: [@fda77](https://github.com/fda77)
 
 *"NcFTP Client (also known as just NcFTP) is a set of FREE application
 programs implementing the File Transfer Protocol (FTP)."*

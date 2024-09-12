@@ -47,6 +47,8 @@ config FREETZ_BUSYBOX__MANDATORY
 	select FREETZ_BUSYBOX__MANDATORY_06_5X if FREETZ_AVM_VERSION_06_5X_MIN
 	select FREETZ_BUSYBOX__MANDATORY_07_0X if FREETZ_AVM_VERSION_07_0X_MIN
 	select FREETZ_BUSYBOX__MANDATORY_07_2X if FREETZ_AVM_VERSION_07_2X_MIN
+	select FREETZ_BUSYBOX__MANDATORY_07_5X if FREETZ_AVM_VERSION_07_5X_MIN
+	select FREETZ_BUSYBOX__MANDATORY_08_0X if FREETZ_AVM_VERSION_08_0X_MIN
 	select FREETZ_BUSYBOX_ADDGROUP
 	select FREETZ_BUSYBOX_ADDUSER
 	select FREETZ_BUSYBOX_ASH_ALIAS
@@ -82,7 +84,7 @@ config FREETZ_BUSYBOX__MANDATORY
 	select FREETZ_BUSYBOX_DIRNAME
 	# was selected together with hostname, thus available in all AVM firmwares, but unused
 	select FREETZ_BUSYBOX_DNSDOMAINNAME
-	select FREETZ_BUSYBOX_DMESG
+	select FREETZ_BUSYBOX_DMESG if !FREETZ_AVM_HAS_DMESG_FILE
 	select FREETZ_BUSYBOX_DU
 	select FREETZ_BUSYBOX_ECHO
 	select FREETZ_BUSYBOX_ENV
@@ -99,7 +101,7 @@ config FREETZ_BUSYBOX__MANDATORY
 	select FREETZ_BUSYBOX_FEATURE_DD_SIGNAL_HANDLING
 	select FREETZ_BUSYBOX_FEATURE_DEL_USER_FROM_GROUP
 	select FREETZ_BUSYBOX_FEATURE_DEVPTS
-	select FREETZ_BUSYBOX_FEATURE_DMESG_PRETTY
+	select FREETZ_BUSYBOX_FEATURE_DMESG_PRETTY if !FREETZ_AVM_HAS_DMESG_FILE
 	select FREETZ_BUSYBOX_FEATURE_DU_DEFAULT_BLOCKSIZE_1K
 	select FREETZ_BUSYBOX_FEATURE_EDITING_FANCY_PROMPT
 	select FREETZ_BUSYBOX_FEATURE_EDITING
@@ -395,7 +397,7 @@ config FREETZ_BUSYBOX__MANDATORY_05_2X
 	select FREETZ_BUSYBOX_NBDCLIENT
 	select FREETZ_BUSYBOX_NC
 	select FREETZ_BUSYBOX_NICE
-	select FREETZ_BUSYBOX_NSLOOKUP
+	select FREETZ_BUSYBOX_NSLOOKUP if !FREETZ_PACKAGE_BIND_NSLOOKUP
 	select FREETZ_BUSYBOX_PMAP
 	select FREETZ_BUSYBOX_PRINTENV
 	select FREETZ_BUSYBOX_PSTREE
@@ -420,7 +422,7 @@ config FREETZ_BUSYBOX__MANDATORY_05_2X
 	select FREETZ_BUSYBOX_UNZIP
 	select FREETZ_BUSYBOX_XZ
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 5.20 and up)
+		Selects everything needed to run properly with Fritz!OS 5.20 and up
 
 config FREETZ_BUSYBOX__MANDATORY_06_5X
 	bool # mandatory (since Fritz!OS 6.50)"
@@ -432,7 +434,7 @@ config FREETZ_BUSYBOX__MANDATORY_06_5X
 	select FREETZ_BUSYBOX_FEATURE_RTMINMAX
 	select FREETZ_BUSYBOX_LSOF
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 6.50 and up)
+		Selects everything needed to run properly with Fritz!OS 6.50 and up
 
 config FREETZ_BUSYBOX__MANDATORY_07_0X
 	bool # mandatory (since Fritz!OS 7.00)"
@@ -514,7 +516,7 @@ config FREETZ_BUSYBOX__MANDATORY_07_0X
 	# select FREETZ_BUSYBOX_UBIUPDATEVOL
 	#
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 7.00 and up)
+		Selects everything needed to run properly with Fritz!OS 7.00 and up
 
 config FREETZ_BUSYBOX__MANDATORY_07_2X
 	bool # mandatory (since Fritz!OS 7.20)"
@@ -541,7 +543,31 @@ config FREETZ_BUSYBOX__MANDATORY_07_2X
 	select FREETZ_BUSYBOX_TCPSVD
 	select FREETZ_BUSYBOX_TIMEOUT
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 7.20 and up)
+		Selects everything needed to run properly with Fritz!OS 7.20 and up
+
+config FREETZ_BUSYBOX__MANDATORY_07_5X
+	bool # mandatory (since Fritz!OS 7.50)"
+	depends on FREETZ_AVM_VERSION_07_5X_MIN
+	select FREETZ_BUSYBOX_BC
+	select FREETZ_BUSYBOX_DEVMEM
+	select FREETZ_BUSYBOX_I2CTRANSFER
+	select FREETZ_BUSYBOX_MICROCOM
+	select FREETZ_BUSYBOX_TFTPD
+	select FREETZ_BUSYBOX_TS
+	select FREETZ_BUSYBOX_FEATURE_SH_EMBEDDED_SCRIPTS
+	select FREETZ_BUSYBOX_NOLOGIN
+	select FREETZ_BUSYBOX_UDPSVD
+	help
+		Selects everything needed to run properly with Fritz!OS 7.50 and up
+
+config FREETZ_BUSYBOX__MANDATORY_08_0X
+	bool # mandatory (since Fritz!OS 8.00)"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	select FREETZ_BUSYBOX_SEEDRNG
+	select FREETZ_BUSYBOX_TREE
+	select FREETZ_BUSYBOX_TSORT
+	help
+		Selects everything needed to run properly with Fritz!OS 8.00 and up
 
 #config FREETZ_BUSYBOX__NOEXEC_NOFORK_OPTIMIZATIONS
 #	bool "enable NOEXEC/NOFORK performance optimizations"
@@ -618,7 +644,7 @@ config FREETZ_BUSYBOX__NETWORK
 	select FREETZ_BUSYBOX_NC
 	select FREETZ_BUSYBOX_NC_SERVER
 	select FREETZ_BUSYBOX_NTPD
-	select FREETZ_BUSYBOX_NSLOOKUP
+	select FREETZ_BUSYBOX_NSLOOKUP if !FREETZ_PACKAGE_BIND_NSLOOKUP
 	select FREETZ_BUSYBOX_RDATE
 	select FREETZ_BUSYBOX_TRACEROUTE
 	select FREETZ_BUSYBOX_TRACEROUTE6 if FREETZ_TARGET_IPV6_SUPPORT

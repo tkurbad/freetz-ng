@@ -1,0 +1,130 @@
+From d4c55e738a84fb7bed5e34f386ef439290552972 Mon Sep 17 00:00:00 2001
+From: Alexandre Becoulet <alexandre.becoulet@free.fr>
+Date: Wed, 23 Nov 2016 12:32:09 +0000
+Subject: [PATCH 09/11] added support for ARM NEON
+
+
+  80.9% src/
+diff --git a/configure.ac b/configure.ac
+index ed8a1ad..b65463d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -14,6 +14,8 @@ AC_ARG_ENABLE(uint64, AC_HELP_STRING(--enable-uint64, [Use native 64 bits intege
+ AC_ARG_ENABLE(mmx, AC_HELP_STRING(--enable-mmx, [Use MMX for bitslice]), mmx_debug=$enableval, enable_mmx=no)
+ AC_ARG_ENABLE(sse2, AC_HELP_STRING(--enable-sse2, [Use SSE2 for bitslice]), sse2_debug=$enableval, enable_sse2=no)
+ AC_ARG_ENABLE(altivec, AC_HELP_STRING(--enable-altivec, [Use AltiVec for bitslice]), altivec_debug=$enableval, enable_altivec=no)
++AC_ARG_ENABLE(neon, AC_HELP_STRING(--enable-neon, [Use ARM NEON for bitslice]),
++              enable_neon=$enableval, enable_neon=no)
+ 
+ AM_INIT_AUTOMAKE(libdvbcsa, 1.1.0)
+ AC_CONFIG_HEADERS(config.h)
+@@ -46,6 +48,16 @@ elif test "$enable_altivec" = "yes" ; then
+      AC_DEFINE(DVBCSA_USE_ALTIVEC, 1, Using AltiVec bitslice.)
+      GCC_CFLAGS="$GCC_CFLAGS -maltivec -mabi=altivec"
+ 
++elif test "$enable_neon" = "yes" ; then
++     transpose_128=yes
++     AC_DEFINE(DVBCSA_USE_NEON, 1, Using NEON 128 bits ops bitslice.)
++     CFLAGS_save="$CFLAGS"
++     CFLAGS="$CFLAGS -mfpu=neon -mfloat-abi=softfp"
++     AC_COMPILE_IFELSE([AC_LANG_PROGRAM(, return 0;)], [
++         GCC_CFLAGS="$GCC_CFLAGS -mfpu=neon -mfloat-abi=softfp"
++     ])
++     CFLAGS="$CFLAGS_save"
++
+ elif test "$enable_uint32" = "yes" ; then
+      transpose_32=yes
+      AC_DEFINE(DVBCSA_USE_UINT32, 1, Using 32 bits integer bitslice.)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index d01c14e..fa2ddbf 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -7,7 +7,7 @@ libdvbcsa_la_SOURCES = dvbcsa_algo.c dvbcsa_block.c dvbcsa_bs_algo.c	\
+ 	dvbcsa_bs_block.c dvbcsa_bs_key.c dvbcsa_bs_stream.c		\
+ 	dvbcsa_stream.c dvbcsa_bs.h dvbcsa_pv.h dvbcsa_bs_uint64.h	\
+ 	dvbcsa_bs_uint32.h dvbcsa_bs_mmx.h dvbcsa_bs_sse.h		\
+-	dvbcsa_bs_altivec.h dvbcsa_bs_transpose.c dvbcsa_key.c
++        dvbcsa_bs_neon.h dvbcsa_bs_altivec.h dvbcsa_bs_transpose.c dvbcsa_key.c
+ 
+ if TRANSPOSE_128
+ libdvbcsa_la_SOURCES += dvbcsa_bs_transpose128.c
+diff --git a/src/dvbcsa_bs.h b/src/dvbcsa_bs.h
+index 75cabc9..7145048 100644
+--- a/src/dvbcsa_bs.h
++++ b/src/dvbcsa_bs.h
+@@ -43,6 +43,9 @@
+ #elif defined(DVBCSA_USE_ALTIVEC)
+ # include "dvbcsa_bs_altivec.h"
+ 
++#elif defined(DVBCSA_USE_NEON)
++# include "dvbcsa_bs_neon.h"
++
+ #else
+ # error No dvbcsa word size defined
+ #endif
+diff --git a/src/dvbcsa_bs_neon.h b/src/dvbcsa_bs_neon.h
+new file mode 100644
+index 0000000..27389fa
+--- /dev/null
++++ b/src/dvbcsa_bs_neon.h
+@@ -0,0 +1,57 @@
++/*
++
++    This file is part of libdvbcsa.
++
++    libdvbcsa is free software; you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published
++    by the Free Software Foundation; either version 2 of the License,
++    or (at your option) any later version.
++
++    libdvbcsa is distributed in the hope that it will be useful, but
++    WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with libdvbcsa; if not, write to the Free Software
++    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
++    02111-1307 USA
++
++    (c) 2013 Alexandre Becoulet <alexandre.becoulet@free.fr>
++
++*/
++
++#ifndef DVBCSA_NEON_H_
++#define DVBCSA_NEON_H_
++
++# include <arm_neon.h>
++
++typedef uint32x4_t dvbcsa_bs_word_t __attribute__((aligned(16)));
++
++#define BS_BATCH_SIZE 128
++#define BS_BATCH_BYTES 16
++
++#define BS_VAL(n, m)	vreinterpretq_u32_u64(vcombine_u64(vcreate_u64(m), vcreate_u64(n)))
++#define BS_VAL64(n)	vreinterpretq_u32_u64(vdupq_n_u64(0x##n##ULL))
++#define BS_VAL32(n)	vdupq_n_u32(0x##n##UL)
++#define BS_VAL16(n)	BS_VAL32(n##n)
++#define BS_VAL8(n)	BS_VAL16(n##n)
++
++#define BS_AND(a, b)	vandq_u32((a), (b))
++#define BS_OR(a, b)	vorrq_u32((a), (b))
++#define BS_XOR(a, b)	veorq_u32((a), (b))
++#define BS_NOT(a)	vmvnq_u32(a)
++
++#define BS_SHL(a, n)	vreinterpretq_u32_u64(vshlq_n_u64 (vreinterpretq_u64_u32(a), n))
++#define BS_SHR(a, n)	vreinterpretq_u32_u64(vshrq_n_u64 (vreinterpretq_u64_u32(a), n))
++#define BS_SHL8(a, n)	(n == 1 ? vreinterpretq_u32_u8(vrev16q_u8(vreinterpretq_u8_u32(a))) : ( \
++                         n == 2 ? vreinterpretq_u32_u16(vrev32q_u16(vreinterpretq_u16_u32(a))) : \
++				  vrev64q_u32(a)))
++#define BS_SHR8(a, n)   BS_SHL8(a, n)
++
++#define BS_EXTRACT8(a, n) ((uint8_t*)&(a))[n]
++
++#define BS_EMPTY()
++
++#endif
++
+-- 
+2.43.0
+

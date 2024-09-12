@@ -1,11 +1,12 @@
-$(call PKG_INIT_BIN, 1.7.4.2)
+$(call PKG_INIT_BIN, 1.8.0.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=6690a9f9990457b505097a272bbf2cbf4cc35576176f76646e3524b0e91c1763
+$(PKG)_HASH:=e1de683dd22ee0e3a6c6bbff269abe18ab0c9d7eb650204f125155b9005faca7
 $(PKG)_SITE:=http://www.dest-unreach.org/socat/download
 ### WEBSITE:=http://www.dest-unreach.org/socat/
 ### MANPAGE:=http://www.dest-unreach.org/socat/doc/socat.html
-### CHANGES:=http://www.dest-unreach.org/socat/doc/CHANGES
+### CHANGES:=https://repo.or.cz/socat.git/blob_plain/refs/heads/master:/CHANGES
 ### CVSREPO:=https://repo.or.cz/socat.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/socat
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/socat

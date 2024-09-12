@@ -7,7 +7,6 @@ build-essential
 bzip2
 ccache
 cmake
-cpio
 curl
 ecj
 flex

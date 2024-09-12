@@ -1,16 +1,24 @@
-$(call PKG_INIT_BIN, 4.8.30)
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_MC_VERSION_ABANDON),4.8.31,4.8.32))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=5ebc3cb2144b970c5149fda556c4ad50b78780494696cdf2d14a53204c95c7df
+$(PKG)_HASH_ABANDON:=24191cf8667675b8e31fc4a9d18a0a65bdc0598c2c5c4ea092494cd13ab4ab1a
+$(PKG)_HASH_CURRENT:=4ddc83d1ede9af2363b3eab987f54b87cf6619324110ce2d3a0e70944d1359fe
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_MC_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=http://ftp.midnight-commander.org,ftp://ftp.midnight-commander.org/pub/midnightcommander
 ### WEBSITE:=http://midnight-commander.org/
 ### MANPAGE:=http://midnight-commander.org/wiki/doc
 ### CHANGES:=https://github.com/MidnightCommander/mc/blob/master/doc/NEWS
 ### CVSREPO:=https://github.com/MidnightCommander/mc
+### SUPPORT:=fda77
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_MC_VERSION_ABANDON),abandon,current)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/mc
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/mc
 $(PKG)_TARGET_CONS_SAVER_BINARY:=$($(PKG)_DEST_DIR)/usr/lib/mc/cons.saver
 
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_MC_VERSION_ABANDON
+
+$(PKG)_DEPENDS_ON += wget-host
 $(PKG)_DEPENDS_ON += ncurses-terminfo glib2
 
 $(PKG)_CONFIGURE_ENV += fu_cv_sys_stat_statfs2_bsize=yes

@@ -7,6 +7,7 @@ $(PKG)_SITE:=@SF/swissfileknife
 ### MANPAGE:=https://stahlworks.com/dev/swiss-file-knife.html
 ### CHANGES:=https://sourceforge.net/p/swissfileknife/news/
 ### CVSREPO:=https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/
+### SUPPORT:=fda77
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)
 

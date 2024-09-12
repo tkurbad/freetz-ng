@@ -4,6 +4,7 @@ $(PKG)_HASH:=362d412693c8fe82de00283435818d5c5def7f15e2433a07a9fe99d0518f63c0
 $(PKG)_SITE:=https://git.zx2c4.com/wireguard-linux-compat/snapshot
 ### CHANGES:=https://git.zx2c4.com/wireguard-linux-compat/log/
 ### CVSREPO:=https://git.zx2c4.com/wireguard-linux-compat/
+### SUPPORT:=fda77
 
 $(PKG)_MODULE:=$($(PKG)_DIR)/src/wireguard.ko
 $(PKG)_TARGET_MODULE:=$(KERNEL_MODULES_DIR)/drivers/net/wireguard/wireguard.ko

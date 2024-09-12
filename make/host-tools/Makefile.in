@@ -45,6 +45,8 @@ TOOLS_TARXZBUNDLE:=tools-host
 # tools not built by default
 TOOLS_CONDITIONAL:=$(TOOLS_TARXZBUNDLE)
 TOOLS_CONDITIONAL+=avm-rle-host
+TOOLS_CONDITIONAL+=ca-bundle-host
+TOOLS_CONDITIONAL+=dos2unix-host
 TOOLS_CONDITIONAL+=fastjar-host
 TOOLS_CONDITIONAL+=libdtc-host
 TOOLS_CONDITIONAL+=gmp-host
@@ -52,13 +54,17 @@ TOOLS_CONDITIONAL+=gperf-host
 TOOLS_CONDITIONAL+=meson-host
 TOOLS_CONDITIONAL+=mpc-host
 TOOLS_CONDITIONAL+=mpfr-host
+TOOLS_CONDITIONAL+=ncftp-host
+TOOLS_CONDITIONAL+=netkit-ftp-host
 TOOLS_CONDITIONAL+=ninja-host
 TOOLS_CONDITIONAL+=lzma1-host
 TOOLS_CONDITIONAL+=lzma2-host
 TOOLS_CONDITIONAL+=openssl-host
 TOOLS_CONDITIONAL+=python2-host
 TOOLS_CONDITIONAL+=python3-host
+TOOLS_CONDITIONAL+=python3-packaging-host
 TOOLS_CONDITIONAL+=scons-host
+TOOLS_CONDITIONAL+=wget-host
 TOOLS_CONDITIONAL+=xdelta-host
 TOOLS_CONDITIONAL+=$(if $(FREETZ_TOOLCHAIN_CCACHE),,cmake-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_STRIP_LIBRARIES),,mklibs-host)
@@ -67,12 +73,13 @@ TOOLS_CONDITIONAL+=$(if $(FREETZ_ROOTEMU_FAKEROOT),,fakeroot-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_ROOTEMU_PSEUDO),,pseudo-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_PROP_OUTER_FILESYSTEM_TYPE_EXT2),,e2fsprogs-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_PROP_OUTER_FILESYSTEM_TYPE_EXT2),,genext2fs-host)
+TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO),,cpio-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_SEPARATE_AVM_UCLIBC),,patchelf-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_NMI_VECTOR),,sfk-host)
-TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_5),,uimg-host)
-TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_6),,dtc-host)
-TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_6),,uboot-host)
-TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_6),,yf-fit_tools-host)
+TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_4),,uimg-host)
+TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_5),,dtc-host)
+TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_5),,uboot-host)
+TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_HAS_FWLAYOUT_5),,yf-fit_tools-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_AVM_KERNEL_CONFIG_AREA_KNOWN),,yf-akcarea-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_PATCH_MODFS_BOOT_MANAGER),,yf-bootmanager-host)
 
@@ -196,7 +203,8 @@ endef
 # Finalise tool package
 define TOOLS_FINISH__INT
 
-$(pkg)-precompiled--int: $(pkg)-build-prereq $(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON))
+# tools dont like -precompiled postfix because of precompiled
+$(pkg)-precompiled--int: $(pkg)-build-prereq  $(patsubst %-host-precompiled,%-host,$(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON)))
 .PHONY: $(pkg)-precompiled--int
 
 $(pkg)-precompiled:

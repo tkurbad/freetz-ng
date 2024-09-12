@@ -1,0 +1,10 @@
+ELIBVER="8.1.0"
+[ "$EXTERNAL_FREETZ_LIB_liburcu"          == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu.so.$ELIBVER"
+[ "$EXTERNAL_FREETZ_LIB_liburcu_bp"       == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-bp.so.$ELIBVER"
+[ "$EXTERNAL_FREETZ_LIB_liburcu_cds"      == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-cds.so.$ELIBVER"
+[ "$EXTERNAL_FREETZ_LIB_liburcu_common"   == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-common.so.$ELIBVER"
+[ "$EXTERNAL_FREETZ_LIB_liburcu_mb"       == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-mb.so.$ELIBVER"
+[ "$EXTERNAL_FREETZ_LIB_liburcu_memb"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-memb.so.$ELIBVER"
+[ "$EXTERNAL_FREETZ_LIB_liburcu_qsbr"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-qsbr.so.$ELIBVER"
+[ "$EXTERNAL_FREETZ_LIB_liburcu_signal"   == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-signal.so.$ELIBVER"
+

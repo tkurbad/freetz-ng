@@ -1,4 +1,5 @@
-$(call TOOLS_INIT, 0)
+$(call TOOLS_INIT, 1.0)
+### SUPPORT:=X
 
 $(PKG)_BINS:=lzma2eva eva2lzma bzimage2eva eva2bzimage
 
@@ -17,6 +18,7 @@ $(pkg)-precompiled: $($(PKG)_BINS:%=$(TOOLS_DIR)/%)
 
 $(pkg)-clean:
 	-$(MAKE) -C $(LZMA2EVA_HOST_DIR) clean
+	-$(RM) $(LZMA2EVA_HOST_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(LZMA2EVA_HOST_DIR)

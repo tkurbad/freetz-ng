@@ -6,7 +6,7 @@ $(PKG)_SITE:=https://www.corpit.ru/mjt/$(pkg)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/lib$(pkg).so.$($(PKG)_LIB_VERSION)
-$(PKG)_TARGET_BINARY:=$($(PKG)_DEST_LIB)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
+$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_LIBNAME_SHORT := lib$(pkg)
 
@@ -34,11 +34,12 @@ $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
+
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(UDNS_DIR) clean
 	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/lib/$(UDNS_LIBNAME_SHORT)*
 
 $(pkg)-uninstall:
-	$(RM) $(UDNS_DEST_LIB)/$(UDNS_LIBNAME_SHORT).so*
+	$(RM) $(UDNS_TARGET_DIR)/$(UDNS_LIBNAME_SHORT).so*
 
 $(PKG_FINISH)

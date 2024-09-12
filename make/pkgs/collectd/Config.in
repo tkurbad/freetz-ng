@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_COLLECTD
-	bool "Collectd 4.10.3"
+	bool "Collectd 4.10.3 - DEPRECATED"
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libltdl
 	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -17,63 +17,63 @@ menuconfig FREETZ_PACKAGE_COLLECTD
 
 if FREETZ_PACKAGE_COLLECTD
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_apache
-	bool "apache"
-	select FREETZ_LIB_libcurl
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_apache
+		bool "apache"
+		select FREETZ_LIB_libcurl
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_contextswitch
-	bool "contextswitch"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_contextswitch
+		bool "contextswitch"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_cpu
-	bool "cpu"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_cpu
+		bool "cpu"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_csv
-	bool "csv"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_csv
+		bool "csv"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_df
-	bool "df"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_df
+		bool "df"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_disk
-	bool "disk"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_disk
+		bool "disk"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_entropy
-	bool "entropy"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_entropy
+		bool "entropy"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_exec
-	bool "exec"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_exec
+		bool "exec"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_fritzbox
-	bool "fritzbox"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_fritzbox
+		bool "fritzbox"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_interface
-	bool "interface"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_interface
+		bool "interface"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_irq
-	bool "irq"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_irq
+		bool "irq"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_load
-	bool "load"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_load
+		bool "load"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_memory
-	bool "memory"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_memory
+		bool "memory"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_network
-	bool "network"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_network
+		bool "network"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_ping
-	bool "ping"
-	select FREETZ_LIB_liboping
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_ping
+		bool "ping"
+		select FREETZ_LIB_liboping
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_rrdtool
-	bool "rrdtool"
-	select FREETZ_LIB_librrd_th if FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON
-	select FREETZ_PACKAGE_RRDTOOL
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_rrdtool
+		bool "rrdtool"
+		select FREETZ_LIB_librrd_th if FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON
+		select FREETZ_PACKAGE_RRDTOOL
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_syslog
-	bool "syslog"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_syslog
+		bool "syslog"
 
-config FREETZ_PACKAGE_COLLECTD_PLUGIN_uptime
-	bool "uptime"
+	config FREETZ_PACKAGE_COLLECTD_PLUGIN_uptime
+		bool "uptime"
 
 endif # FREETZ_PACKAGE_COLLECTD
 

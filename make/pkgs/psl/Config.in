@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PSL
-	bool "psl 0.21.2 (binary only)"
+	bool "psl 0.21.5 (binary only)"
 	select FREETZ_LIB_libpsl
 	default n
 	help

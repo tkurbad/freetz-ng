@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 3.4.4)
-$(PKG)_LIB_VERSION:=8.1.2
+$(call PKG_INIT_LIB, 3.4.6)
+$(PKG)_LIB_VERSION:=8.1.4
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
+$(PKG)_HASH:=b0dea9df23c863a7a50e825440f3ebffabd65df1497108e5d437747843895a4e
 $(PKG)_SITE:=https://github.com/libffi/libffi/releases/download/v$($(PKG)_VERSION),ftp://sourceware.org/pub/libffi
 ### WEBSITE:=http://sourceware.org/libffi
 ### CHANGES:=https://github.com/libffi/libffi/releases
@@ -10,6 +10,8 @@ $(PKG)_SITE:=https://github.com/libffi/libffi/releases/download/v$($(PKG)_VERSIO
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT)-$(FREETZ_TARGET_TRIPLET_VENDOR)-linux-gnu/.libs/libffi.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libffi.so.$($(PKG)_LIB_VERSION)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libffi.so.$($(PKG)_LIB_VERSION)
+
+$(PKG)_DEPENDS_ON += wget-host
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static

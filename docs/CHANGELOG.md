@@ -4,6 +4,8 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng24080](#ng24080)
+  * [ng24040](#ng24040)
   * [ng23110](#ng23110)
   * [ng23080](#ng23080)
   * [ng23050](#ng23050)
@@ -47,46 +49,241 @@ Latest changes
 ### devel
 
  - Build system:
-   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.45
+   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.43.x
+   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0//8.4.0/9.3.0/9.4.0/13.3.0/14.2.0
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.50
 
  - Host tools:
-   * cmake 3.27.9
-   * fakeroot 1.32.2
-   * meson 1.3.1
-   * precompiled host-tools 2023-12-05
-   * precompiled toolchains r22972
-   * python 3.11.7
+   * cmake 3.30.3
+   * fakeroot 1.36
+   * openssl 3.0.15
+   * python 3.12.6
+
+ - AVM sources:
+   * 5690-pro 7.62 - 5.4.213
+
+ - Patches:
+   * Various Fritzos 8.0 related changes
 
  - Packages:
-   * BIND 9.11.37/9.16.45
-   * CA-bundle 2023-12-12
-   * CCID 1.5.4
-   * Curl 8.5.0
-   * Git 2.43.0
-   * Lua 5.1.5/5.4.6
-   * minicom 2.9
-   * OpenSSH 9.3p2/9.6p1
-   * OpenVPN 2.4.12/2.5.9/2.6.8
-   * PCSC-lite 2.0.1
-   * pyLoad 0.4.20/78162d75
-   * SQLite 3.44.2
-   * Tor 0.4.8.10
-   * Transmission 3.00/4.0.5
-   * Unbound 1.19.0
-   * Vim 9.1.0000
-   * xsltproc 1.1.39
+   * Atop 2.11.0
+   * BIND 9.11.37/9.20.0
+   * htpdate 2.0.0
+   * mc (Midnight Commander) 4.8.31/4.8.32
+   * Nano 8.2
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.15
+   * RPCBind 1.2.7
+   * RRDtool 1.2.30/1.9.0
+   * S-Lang 2.3.3
+   * SQLite 3.46.1
+   * Unbound 1.21.0
 
  - Libraries:
-   * cairo 1.18.0
-   * harfbuzz 8.3.0
-   * libmaxminddb 1.8.0
-   * libtirpc 1.3.4
-   * libuv 1.44.2/1.47.0
-   * libxml2 2.12.3
-   * mbedTLS 2.7.19/2.28.6
+   * expat 2.6.3
+   * FreeType 2.13.3
+   * glib2 2.32.4/2.81.2
+   * libdeflate 1.21
+   * libmaxminddb 1.11.0
+   * liburcu 0.14.0
+   * lz4 1.10.0
+   * mbedTLS 2.7.19/2.28.9
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng24080
+
+ - Build system:
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.49
+   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0//8.4.0/9.3.0/13.3.0/14.1.0
+
+ - Host tools:
+   * automake 1.17
+   * ca-bundle 2024-07-02
+   * cmake 3.30.1
+   * cpio 2.15
+   * fakeroot 1.35.1
+   * kconfig 6.10
+   * meson 1.5.1
+   * ncurses 6.5
+   * ninja 1.12.1
+   * openssl 3.0.14
+   * pkgconf 2.2.0
+   * precompiled host-tools 2024-07-29
+   * precompiled toolchains r23751
+   * python 3.12.4
+   * python3-packaging 24.1
+   * u-boot 2024.07
+   * wget 1.24.5
+   * xz 5.6.2
+
+ - AVM sources:
+   * 7690 7.61 - 5.4.213
+
+ - Patches:
+   * Enforce /tmp/ permissions: Changes /var/tmp/ permissions back to 1777 after AVM sets 755.
+   * Various Fritzos 8.0 related changes
+
+ - Packages:
+   * Apache2 2.4.62
+   * Atop 2.10.0
+   * AutoFS 5.0.5/5.1.9
+   * BIND 9.11.37/9.18.28
+   * BIRD 1.6.8/2.15.1
+   * Bftpd 6.2
+   * bvi 1.4.2
+   * CA-bundle 2024-07-02
+   * CCID 1.5.5
+   * Curl 8.9.1
+   * dtach 0.9
+   * Dropbear 2024.85
+   * endlessh 1.0
+   * FFmpeg 5.1.4
+   * Fontconfig 2.15.0
+   * Git 2.45.2
+   * HAProxy 2.6.17
+   * ImageMagick 7.1.1-34
+   * iPerf3 3.3/3.17.1
+   * Lighttpd 1.4.76
+   * Lynx 2.9.2
+   * minisatip 1.0.4/1.3.6
+   * Mosquitto 2.0.18
+   * Nano 8.1
+   * ncurses 6.5
+   * ncursesw 6.5
+   * Nmap 4.76/5.51/7.95
+   * OpenSSH 9.3p2/9.8p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.14
+   * OpenVPN 2.4.12/2.5.11/2.6.12
+   * PCP client 1c783fb 
+   * PCSC-lite 1.9.5/2.1.0
+   * psl 0.21.5
+   * socat 1.8.0.0
+   * sslh 2.1.2
+   * rsync 3.3.0
+   * strace 4.9/5.0/6.10
+   * Sudo 1.9.15p5
+   * SQLite 3.45.3
+   * Tinyproxy 1.11.2
+   * Tor 0.4.8.12
+   * Transmission 3.00/4.0.6
+   * Unbound 1.20.0
+   * UnRAR 6.1.7/7.0.9
+   * usb.ids c70eea490a
+   * Whois 5.5.23
+   * xsltproc 1.1.41
+   * XZ 5.6.2
+
+ - Libraries:
+   * attr 2.5.2
+   * fribidi 1.0.15
+   * glib2 2.32.4/2.81.0
+   * harfbuzz 9.0.0
+   * libidn 1.42
+   * libmaxminddb 1.10.0
+   * libpng 1.6.43
+   * libtirpc 1.3.5
+   * libxml2 2.13.3
+   * pango 1.54.0
+   * pcre2 10.44
+   * pixman 0.43.4
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng24080/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+
+### ng24040
+
+ - Build system:
+   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.42.x
+   * Ccache 4.9.1
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.47
+
+ - Host tools:
+   * autoconf 2.72
+   * cmake 3.29.0
+   * dos2unix 7.5.2
+   * fakeroot 1.34
+   * kconfig 6.8
+   * meson 1.4.0
+   * ncftp 3.2.7
+   * netkit-ftp 0.17-35
+   * openssl 3.0.13
+   * pkgconf 2.1.1
+   * precompiled host-tools 2024-03-29
+   * precompiled toolchains r23270
+   * python 3.11.8
+   * tar 1.35
+   * u-boot 2024.01
+   * xz 5.4.6
+
+ - AVM sources:
+   * 6670 7.61 - 5.15.111
+
+ - Packages:
+   * BIND 9.11.37/9.16.48
+   * BIRD 1.6.8/2.15
+   * CA-bundle 2024-03-11
+   * CCID 1.5.4
+   * Curl 8.8.0
+   * Dnsmasq 2.80/2.90
+   * Git 2.44.0
+   * HAProxy 2.6.16
+   * htop 1.0.3/3.3.0
+   * iPerf3 3.3/3.16
+   * iptables 1.4.11.1/1.4.21/1.6.2/1.8.10
+   * jpeg 9f
+   * jq 1.7.1
+   * LCD4linux 3fce054e
+   * Lighttpd 1.4.75
+   * Lua 5.1.5/5.4.6
+   * Lynx 2.9.0
+   * mc (Midnight Commander) 4.8.31
+   * minicom 2.9
+   * minisatip 1.0.4/1.3.4
+   * NcFTP 3.2.7
+   * OpenSSH 9.3p2/9.7p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.13
+   * OpenVPN 2.4.12/2.5.10/2.6.10
+   * PCSC-lite 1.9.5/2.0.1
+   * ProxyChains-NG 4.17
+   * pyLoad 0.4.20/78162d75
+   * socat 1.7.4.4
+   * Stunnel 5.72
+   * Subversion 1.9.12/1.14.3
+   * SQLite 3.45.2
+   * strace 4.9/5.0/6.8
+   * tmux 3.4
+   * Tor 0.4.8.10
+   * Transmission 3.00/4.0.5
+   * Unbound 1.19.3
+   * UnRAR 6.1.7/7.0.7
+   * vermagic D1W0U
+   * Vim 9.1.0181
+   * Wget 1.24.5
+   * xsltproc 1.1.39
+   * XZ Utils 5.4.6
+
+ - Libraries:
+   * cairo 1.18.0
+   * expat 2.6.2
+   * harfbuzz 8.4.0
+   * libdeflate 1.20
+   * libffi 3.4.6
+   * libid3tag 0.16.3
+   * libmaxminddb 1.9.1
+   * libonig 6.9.9
+   * libpng 1.6.42
+   * libtirpc 1.3.4
+   * libusb1 1.0.23/1.0.27
+   * libuv 1.44.2/1.48.0
+   * libxml2 2.12.6
+   * mbedTLS 2.7.19/2.28.8
+   * pango 1.52.1
+   * pcre2 10.43
+   * zlib 1.3.1
+
+ - Firmware updates:
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng24040/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23110
 
@@ -364,7 +561,7 @@ Latest changes
    * getdns 1.7.3
    * Git 2.40.0
    * HAProxy 2.6.9
-   * htop 1.0.3/2.3.2
+   * htop 1.0.3/3.2.2
    * htpdate 1.3.7
    * IGMPproxy 0.4
    * ImageMagick 7.1.0-57
@@ -516,7 +713,7 @@ Latest changes
    * Git 2.37.0
    * HAProxy 2.6.1
    * htpdate 1.3.4
-   * htop 1.0.3/2.3.1
+   * htop 1.0.3/3.2.1
    * juis_check 1.2
    * libcap 2.49/2.64
    * libgcrypt 1.10.1

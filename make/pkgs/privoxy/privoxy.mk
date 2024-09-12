@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SF/ijbswa
 ### MANPAGE:=https://www.privoxy.org/user-manual/
 ### CHANGES:=https://www.privoxy.org/gitweb/?p=privoxy.git;a=blob;f=ChangeLog
 ### CVSREPO:=https://www.privoxy.org/gitweb/?p=privoxy.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/privoxy
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/privoxy

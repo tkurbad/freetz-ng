@@ -1,12 +1,13 @@
-$(call PKG_INIT_BIN, 2022.83)
+$(call PKG_INIT_BIN, 2024.85)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=bc5a121ffbc94b5171ad5ebe01be42746d50aa797c9549a4639894a16749443b
+$(PKG)_HASH:=86b036c433a69d89ce51ebae335d65c47738ccf90d13e5eb0fea832e556da502
 $(PKG)_SITE:=https://matt.ucc.asn.au/dropbear/releases,https://dropbear.nl/mirror/releases
 #$(PKG)_SITE:=hg@https://secure.ucc.asn.au/hg/dropbear
 ### WEBSITE:=https://matt.ucc.asn.au/dropbear/dropbear.html
 ### MANPAGE:=https://linux.die.net/man/8/dropbear
 ### CHANGES:=https://matt.ucc.asn.au/dropbear/CHANGES
 ### CVSREPO:=https://hg.ucc.asn.au/dropbear/file/tip
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/dropbearmulti
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/dropbearmulti
@@ -81,7 +82,7 @@ $(PKG_CONFIGURED_CONFIGURE)
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(DROPBEAR_DIR) \
 		$(DROPBEAR_MAKE_OPTIONS) \
-		EXTRA_CFLAGS="-ffunction-sections -fdata-sections" \
+		EXTRA_CFLAGS="-ffunction-sections -fdata-sections -Wno-undef" \
 		EXTRA_CPPFLAGS="$(DROPBEAR_CPPFLAGS)" \
 		EXTRA_LDFLAGS="-Wl,--gc-sections"
 

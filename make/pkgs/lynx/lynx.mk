@@ -1,10 +1,11 @@
-$(call PKG_INIT_BIN, 2.8.9rel.1)
+$(call PKG_INIT_BIN, 2.9.2)
 $(PKG)_SOURCE:=$(pkg)$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=387f193d7792f9cfada14c60b0e5c0bff18f227d9257a39483e14fa1aaf79595
+$(PKG)_HASH:=7374b89936d991669e101f4e97f2c9592036e1e8cdaa7bafc259a77ab6fb07ce
 $(PKG)_SITE:=https://invisible-mirror.net/archives/lynx/tarballs,ftp://ftp.invisible-island.net/lynx/tarballs
 ### WEBSITE:=https://lynx.invisible-island.net/
 ### MANPAGE:=https://lynx.invisible-island.net/lynx_help/lynx_help_main.html
 ### CHANGES:=https://lynx.invisible-island.net/current/CHANGES.html
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)
@@ -12,6 +13,8 @@ $(PKG)_CFG:=$($(PKG)_DIR)/$(pkg).cfg
 $(PKG)_TARGET_CFG:=$($(PKG)_DEST_DIR)/etc/$(pkg).cfg
 $(PKG)_LSS:=$($(PKG)_DIR)/samples/$(pkg).lss
 $(PKG)_TARGET_LSS:=$($(PKG)_DEST_DIR)/etc/$(pkg).lss
+
+$(PKG)_DEPENDS_ON += wget-host
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LYNX_WITH_SSL $(if $(FREETZ_PACKAGE_LYNX_WITH_SSL),FREETZ_OPENSSL_SHLIB_VERSION)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_LYNX_WITH_ZLIB

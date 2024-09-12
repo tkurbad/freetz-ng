@@ -351,7 +351,7 @@ determine_() {
 		*_ar10_*)			CPU="MIPS_34Kc"			&& X="AR10" ;;
 		*_grx5_*)			CPU="MIPS_interAptiv"		&& X="GRX5" ;;
 		*_2GB_*_kabel_*)		CPU="X86_ATOM"			&& X="PUMA6_X86" ;;
-		*_4GB_*_kabel_*)		CPU="X86_ATOM"			&& X="PUMA7_X86" ;;
+		*_4GB_*_kabel_*|*_57450)	CPU="X86_ATOM"			&& X="PUMA7_X86" ;;
 		*_cortexa9_*)			CPU="ARM_cortex_a9"		&& X="IPQ40xx" ;;
 		brcm_*)				CPU="ARM_cortex_a9"		&& X="BCM63138" ;;
 		*_qcaarmv8_*)			CPU="ARM_cortex_a53"		&& X="QCAARMv8" ;;
@@ -535,6 +535,7 @@ determine_() {
 	#INETD
 	P=INETD
 	X="$(sed -rn "s/^export CONFIG_$P=\"?([^\"])\"?.*$/\1/p" "$unpacked/etc/init.d/rc.conf" | head -n1)"
+	[ "$X" != "y" ] && [ -e "$unpacked/usr/sbin/inetd" ] && X="y"
 	[ "$X" != "y" ] && X="%" || X="available"
 	[ "$X" == "available" ] && in_b "FREETZ_AVM_HAS_${P^^}"
 	[ $DOSHOW -ge 2 ] && outp "${P,,}" "$X"
@@ -600,7 +601,7 @@ determine_() {
 
 	#TR069_FWUPDATE
 	X="%"
-	[ -e "$unpacked/usr/bin/tr069fwupdate" ] && X="available" && in_b "FREETZ_AVM_HAS_TR069_FWUPDATE"
+	[ -e "$unpacked/usr/bin/fwupdate" -o -e "$unpacked/usr/bin/tr069fwupdate" ] && X="available" && in_b "FREETZ_AVM_HAS_TR069_FWUPDATE"
 	[ $DOSHOW -ge 2 ] && outp "tr069fwu" "$X"
 
 
@@ -792,13 +793,13 @@ determine_() {
 
 	#LIBFUSE
 	X="%"
-	[ -e "$unpacked/lib/libfuse.so" -o -L "$unpacked/lib/libfuse.so" ] && X="available" && in_b "FREETZ_AVM_HAS_LIBFUSE"
+	[ -e "$unpacked/usr/lib/libfuse.so" -o -e "$unpacked/lib/libfuse.so" -o -L "$unpacked/lib/libfuse.so" ] && X="available" && in_b "FREETZ_AVM_HAS_LIBFUSE"
 	[ $DOSHOW -ge 2 ] && outp "libfuse" "$X"
 
 
 	#OPENSSL
 	#X="$([ -e "$unpacked/lib/libssl.so" ] && realpath "$unpacked/lib/libssl.so" 2>/dev/null | sed 's/.*\/lib\/libssl\.so\.//')"
-	X="$( strings "${unpacked}/lib/libssl.so" 2>/dev/null | sed -nr 's/^@?(Open)?SSL ([013]\.[0-9a-z\.]*).*/\2/p' )"
+	X="$( strings "${unpacked}/usr/lib/libssl.so" "${unpacked}/lib/libssl.so" 2>/dev/null | sed -nr 's/^@?(Open)?SSL ([013]\.[0-9a-z\.]*).*/\2/p' )"
 	[ -z "$X" ] && X="%"
 	[ $DOSHOW -ge 2 ] && outp "openssl" "$X"
 	if [ "$X" != "%" ]; then
@@ -896,6 +897,13 @@ determine_() {
 	in_b "FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_${X^^}"
 	[ $DOSHOW -ge 1 ] && outp "SquashC" "${X/:/.}"
 
+	#SQEND
+	X="$(sed -rn "s/^(.).* endian squashfs signature found at [0-9]*$/\1/p" "$unpacked.nfo")"
+	[ "$X" != "L" -a "$X" != "B" ] && echo "ERROR-24" 1>&2 && X=ERROR
+	[ "$X" == "B" ] && X=BE || X=LE
+	in_b "FREETZ_AVM_PROP_SQUASHFS_ENDIANN_${X}"
+	[ $DOSHOW -ge 1 ] && outp "SquashE" "${X}"
+
 	fi
 
 
@@ -909,9 +917,9 @@ determine_() {
 	#LAYOUT
 	X="$(sed -rn 's/^firmware layout v([0-9])/\1/p' "$unpacked.nfo")"
 	[ -z "$X" ] && echo "ERROR-14" 1>&2 && X=ERROR
-	[ "$X" == "3" -o "$X" == "4" -o "$X" == "5" -o "$X" == "6" ] && in_b "FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE"
-	[ "$X" == "5" -o "$X" == "6" ] && in_b "FREETZ_AVM_HAS_FWLAYOUT_$X"
-	X="$(echo $X | sed 's/1/&-old/;s/2/&-most/;s/3/&-nand/;s/4/&-docsis/;s/5/&-uimg/;s/6/&-fit/')"
+	[ "$X" == "2" -o "$X" == "3" -o "$X" == "4" -o "$X" == "5" ] && in_b "FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE"
+	in_b "FREETZ_AVM_HAS_FWLAYOUT_$X"  # 4+5 are mandatory
+	X="$(echo $X | sed 's/1/&-single/;s/2/&-ram/;s/3/&-dual/;s/4/&-uimg/;s/5/&-fit/')"
 	[ $DOSHOW -ge 1 ] && outp "layout" "v$X"
 
 	#RAMSIZE

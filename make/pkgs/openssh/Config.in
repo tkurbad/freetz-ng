@@ -2,7 +2,7 @@ comment "OpenSSH (not available, needs OpenSSL 1.0 or newer)"
 	depends on !FREETZ_OPENSSL_VERSION_1_MIN
 
 config FREETZ_PACKAGE_OPENSSH
-	bool "OpenSSH 9.3p2/9.6p1"
+	bool "OpenSSH 9.3p2/9.8p1"
 	depends on FREETZ_OPENSSL_VERSION_1_MIN
 	select FREETZ_LIB_libcrypto_WITH_EC       if !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
 	select FREETZ_LIB_libcrypt                if !FREETZ_PACKAGE_OPENSSH_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -23,13 +23,13 @@ if FREETZ_PACKAGE_OPENSSH
 
 		config FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON
 			bool "9.3p2"
-			depends on FREETZ_PACKAGE_OPENSSL_VERSION_0 || FREETZ_PACKAGE_OPENSSL_VERSION_1
+			depends on FREETZ_OPENSSL_VERSION_0 || FREETZ_OPENSSL_VERSION_1
 			help
 				Version 9.3p2 is the last with support for OpenSSL 1.0.2.
 
 		config FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
-			bool "9.6p1"
-			depends on !FREETZ_PACKAGE_OPENSSL_VERSION_0 && !FREETZ_PACKAGE_OPENSSL_VERSION_1
+			bool "9.8p1"
+			depends on !FREETZ_OPENSSL_VERSION_0 && !FREETZ_OPENSSL_VERSION_1
 
 	endchoice
 
@@ -46,7 +46,16 @@ if FREETZ_PACKAGE_OPENSSH
 		bool "SSH server (sshd)"
 		select FREETZ_LIB_libcrypto               if !FREETZ_PACKAGE_OPENSSH_STATIC && !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
 		select FREETZ_LIB_libz                    if !FREETZ_PACKAGE_OPENSSH_STATIC
+		select FREETZ_PACKAGE_OPENSSH_sshd_session if FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
 		default n
+
+		config FREETZ_PACKAGE_OPENSSH_sshd_session
+			bool "SSH server per-session (sshd-session)"
+			depends on FREETZ_PACKAGE_OPENSSH_sshd
+			depends on FREETZ_PACKAGE_OPENSSH_VERSION_CURRENT
+			default n
+			help
+				New binary since version 9.8.
 
 	comment "SSH client (ssh) (not available, provided by dropbear)"
 		depends on FREETZ_PACKAGE_DROPBEAR && !FREETZ_PACKAGE_DROPBEAR_SERVER_ONLY

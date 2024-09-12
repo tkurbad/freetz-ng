@@ -12,6 +12,9 @@ $(PKG)_SITE:=@MIRROR/
 $(PKG)_HEADER:=$($(PKG)_DIR)/$(pkg).h
 $(PKG)_STAGING_HEADER:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/$(pkg)/$(pkg).h
 
+$(PKG)_DEPENDS_ON += wget-host
+
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)

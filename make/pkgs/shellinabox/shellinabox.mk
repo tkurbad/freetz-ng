@@ -5,6 +5,7 @@ $(PKG)_SITE:=git@https://github.com/shellinabox/shellinabox.git
 ### WEBSITE:=https://code.google.com/archive/p/shellinabox/
 ### CHANGES:=https://github.com/shellinabox/shellinabox/releases
 ### CVSREPO:=https://github.com/shellinabox/shellinabox
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)d
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)d

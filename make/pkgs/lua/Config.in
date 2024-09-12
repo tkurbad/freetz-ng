@@ -33,6 +33,12 @@ if FREETZ_PACKAGE_LUA
 
 	endchoice
 
+	comment "Use float instead double: OFF (default)"
+		depends on !FREETZ_PACKAGE_LUA_FLOAT
+
+	comment "Use float instead double: SELECTED"
+		depends on FREETZ_PACKAGE_LUA_FLOAT
+
 	config FREETZ_PACKAGE_LUA_READLINE
 		bool "Build with readline support"
 		default y

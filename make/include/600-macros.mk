@@ -46,12 +46,13 @@ $(DL_DIR)/$($(PKG)_SOURCE): | $(DL_DIR)
 	else \
 		[ -z "$(strip $($(PKG)_HASH))" ] && echo "no checksum is set, abort." && exit 1; \
 		$(DL_TOOL) \
+			$(if $($(PKG)_SOURCE_DOWNLOAD_NAME),--out-file $($(PKG)_SOURCE)) \
 			$(DL_DIR) \
 			$(if $($(PKG)_SOURCE_DOWNLOAD_NAME),$($(PKG)_SOURCE_DOWNLOAD_NAME),$($(PKG)_SOURCE)) \
 			$($(PKG)_SITE) \
 			$($(PKG)_HASH) \
 			$(SILENT) \
-			$(if $($(PKG)_SOURCE_DOWNLOAD_NAME),&& mv -f $(DL_DIR)/$($(PKG)_SOURCE_DOWNLOAD_NAME) $(DL_DIR)/$($(PKG)_SOURCE)); \
+			; \
 	fi
 
 $(pkg)-download: $(DL_DIR)/$($(PKG)_SOURCE)
@@ -62,12 +63,13 @@ $(MIRROR_DIR)/$($(PKG)_SOURCE): | $(MIRROR_DIR)
 		ln $(DL_DIR)/$($(PKG)_SOURCE) $(MIRROR_DIR); \
 	else \
 		$(DL_TOOL) \
+			$(if $($(PKG)_SOURCE_DOWNLOAD_NAME),--out-file $($(PKG)_SOURCE)) \
 			$(MIRROR_DIR) \
 			$(if $($(PKG)_SOURCE_DOWNLOAD_NAME),$($(PKG)_SOURCE_DOWNLOAD_NAME),$($(PKG)_SOURCE)) \
 			$($(PKG)_SITE) \
 			$($(PKG)_HASH) \
 			$(SILENT) \
-			$(if $($(PKG)_SOURCE_DOWNLOAD_NAME),&& mv -f $(DL_DIR)/$($(PKG)_SOURCE_DOWNLOAD_NAME) $(DL_DIR)/$($(PKG)_SOURCE)); \
+			; \
 	fi
 
 $(pkg)-download-mirror: $(MIRROR_DIR)/$($(PKG)_SOURCE)

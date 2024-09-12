@@ -5,6 +5,7 @@ $(PKG)_SITE:=@SAMBA/linux-cifs/cifs-utils
 ### WEBSITE:=https://wiki.samba.org/index.php/LinuxCIFS_utils
 ### CHANGES:=https://wiki.samba.org/index.php/LinuxCIFS_utils#News
 ### CVSREPO:=https://git.samba.org/?p=cifs-utils.git;a=summary
+### SUPPORT:=fda77
 
 $(PKG)_STARTLEVEL=50
 

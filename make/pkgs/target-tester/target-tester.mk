@@ -1,4 +1,5 @@
 $(call PKG_INIT_BIN, 0.1)
+### SUPPORT:=X
 
 $(PKG)_BINARY_NAME_LFS:=target-tester-lfs
 $(PKG)_BINARY_LFS:=$($(PKG)_DIR)/$($(PKG)_BINARY_NAME_LFS)

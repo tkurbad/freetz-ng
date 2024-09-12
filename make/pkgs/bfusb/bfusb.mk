@@ -6,6 +6,8 @@ $(PKG)_SITE:=ftp://ftp.in-berlin.de/pub/capi4linux/firmware/bluefusb/$($(PKG)_VE
 $(PKG)_BINARY:=$(DL_DIR)/$($(PKG)_SOURCE)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/lib/firmware/$($(PKG)_SOURCE)
 
+$(PKG)_DEPENDS_ON += wget-host
+
 $(PKG_SOURCE_DOWNLOAD)
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)

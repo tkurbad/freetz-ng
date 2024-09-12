@@ -1,14 +1,15 @@
-$(call PKG_INIT_BIN, 7.1.1-20)
+$(call PKG_INIT_BIN, 7.1.1-34)
 $(PKG)_LIB_VERSION:=10.0.1
 $(PKG)_ABI_SUFFIX:=Q16
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
 $(PKG)_SOURCE:=ImageMagick-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=f82478f2fef516b1f52736011255aa32a7197c8f56c02963850d8d4baa08514d
+$(PKG)_HASH:=abab52de4b8f0356c05ddee3d3398c147fd9f6c099760f2cb15f3b8168a776c7
 $(PKG)_SITE:=https://download.imagemagick.org/archive,http://www.imagemagick.org/download,https://www.imagemagick.org/archive,@SF/$(pkg)
 ### WEBSITE:=https://www.imagemagick.org/
 ### MANPAGE:=https://www.imagemagick.org/Usage/
 ### CHANGES:=https://github.com/ImageMagick/ImageMagick/releases
 ### CVSREPO:=https://github.com/ImageMagick/ImageMagick
+### SUPPORT:=fda77
 
 $(PKG)_BINARY := magick
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_BINARY:%=$($(PKG)_DIR)/utilities/$(if $(FREETZ_PACKAGE_IMAGEMAGICK_STATIC),,.libs/)%)

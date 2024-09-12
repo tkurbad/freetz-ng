@@ -1,11 +1,12 @@
-$(call PKG_INIT_BIN, 1.21.4)
+$(call PKG_INIT_BIN, 1.24.5)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.lz
-$(PKG)_HASH:=3683619a5f50edcbccb1720a79006fa37bf9b9a255a8c5b48048bc3c7a874bd9
+$(PKG)_HASH:=57a107151e4ef94fdf94affecfac598963f372f13293ed9c74032105390b36ee
 $(PKG)_SITE:=@GNU/$(pkg)
 ### WEBSITE:=https://www.gnu.org/software/wget/
 ### MANPAGE:=https://www.gnu.org/software/wget/manual/
 ### CHANGES:=https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/wget.git/
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/wget
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/wget-gnu
@@ -51,7 +52,9 @@ endif
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
 $(PKG)_CONFIGURE_OPTIONS += --disable-iri
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre
+$(PKG)_CONFIGURE_OPTIONS += --disable-pcre2
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
+$(PKG)_CONFIGURE_OPTIONS += --without-libpsl
 $(PKG)_CONFIGURE_OPTIONS += --without-libuuid
 $(PKG)_CONFIGURE_OPTIONS += --without-zlib # is only required for compressing warc files
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),,--disable-ipv6)

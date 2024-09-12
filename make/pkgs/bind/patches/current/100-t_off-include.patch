@@ -1,0 +1,10 @@
+--- lib/isc/include/isc/log.h
++++ lib/isc/include/isc/log.h
+@@ -18,6 +18,7 @@
+ #include <stdarg.h>
+ #include <stdbool.h>
+ #include <stdio.h>
++#include <sys/types.h>
+ #include <syslog.h> /* XXXDCL NT */
+ 
+ #include <isc/formatcheck.h>

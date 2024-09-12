@@ -1,12 +1,14 @@
-$(call PKG_INIT_BIN, 1ac45e08d4)
+$(call PKG_INIT_BIN, 617f27ff06)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=479e49c10b92e65ae1a8aa72724218878576eb0d02d06dc26d72823f855f8079
-$(PKG)_SITE:=git@https://github.com/D1W0U/vermagic
+$(PKG)_HASH:=3bf8aa5eefb77eeec85059dc237b1f34316e9de5990126602651bcff0ff535d5
+$(PKG)_SITE:=git@https://github.com/fanfuqiang/vc.git
+#$(PKG)_SITE:=git@https://github.com/D1W0U/vermagic
 
-$(PKG)_SOURCE_FILE:=$($(PKG)_DIR)/$(pkg).c
+$(PKG)_CATEGORY:=Debug helpers
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)
-$(PKG)_CATEGORY:=Debug helpers
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -16,8 +18,9 @@ $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(TARGET_CONFIGURE_ENV) $(FREETZ_LD_RUN_PATH) \
 		$(TARGET_CC) \
 		$(TARGET_CFLAGS) \
+		$(TARGET_LDFLAGS) \
 		-DUCLIBC_RUNTIME_PREFIX=\"/\" \
-		$(VERMAGIC_SOURCE_FILE) -o $@
+		$(VERMAGIC_DIR)/vc.c -o $@
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)
@@ -25,6 +28,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	$(RM) $(VERMAGIC_DIR)$(VERMAGIC_BINARY)

@@ -1,0 +1,153 @@
+From 9aa24e4c90ba04636aedb09eeb3ca160b3414c98 Mon Sep 17 00:00:00 2001
+From: Eric Botcazou <ebotcazou@gcc.gnu.org>
+Date: Fri, 13 Mar 2020 09:58:44 +0100
+Subject: [PATCH] Fix incorrect filling of delay slots in branchy code at -O2
+
+The issue is that relax_delay_slots can streamline the CFG in some cases,
+in particular remove BARRIERs, but removing BARRIERs changes the way the
+instructions are associated with (basic) blocks by the liveness analysis
+code in resource.c (find_basic_block) and thus can cause entries in the
+cache maintained by resource.c to become outdated, thus producing wrong
+answers downstream.
+
+The fix is to invalidate the cache entries affected by the removal of
+BARRIERs in relax_delay_slots, i.e. for the instructions down to the
+next BARRIER.
+
+	PR rtl-optimization/94119
+	* resource.h (clear_hashed_info_until_next_barrier): Declare.
+	* resource.c (clear_hashed_info_until_next_barrier): New function.
+	* reorg.c (add_to_delay_list): Fix formatting.
+	(relax_delay_slots): Call clear_hashed_info_until_next_barrier on
+	the next instruction after removing a BARRIER.
+---
+ gcc/ChangeLog  |  9 +++++++++
+ gcc/reorg.c    | 26 +++++++++++++++++++-------
+ gcc/resource.c | 21 ++++++++++++++++++++-
+ gcc/resource.h |  1 +
+ 4 files changed, 49 insertions(+), 8 deletions(-)
+
+diff --git a/gcc/ChangeLog b/gcc/ChangeLog
+--- a/gcc/ChangeLog	2020-03-04 09:30:30.000000000 +0100
++++ b/gcc/ChangeLog	2021-07-12 17:00:59.880466869 +0200
+@@ -1,4 +1,13 @@
+-2020-03-04  Release Manager
++2019-03-13  Eric Botcazou  <ebotcazou@adacore.com>
++
++	PR rtl-optimization/94119
++	* resource.h (clear_hashed_info_until_next_barrier): Declare.
++	* resource.c (clear_hashed_info_until_next_barrier): New function.
++	* reorg.c (add_to_delay_list): Fix formatting.
++	(relax_delay_slots): Call clear_hashed_info_until_next_barrier on
++	the next instruction after removing a BARRIER.
++
++2019-03-04  Release Manager
+ 
+ 	* GCC 8.4.0 released.
+
+diff --git a/gcc/reorg.c b/gcc/reorg.c
+index 904d91ec9e8b..f4d39b8dd6ea 100644
+--- a/gcc/reorg.c
++++ b/gcc/reorg.c
+@@ -563,8 +563,9 @@ add_to_delay_list (rtx_insn *insn, vec<rtx_insn *> *delay_list)
+ {
+   /* If INSN has its block number recorded, clear it since we may
+      be moving the insn to a new block.  */
+-      clear_hashed_info_for_insn (insn);
+-      delay_list->safe_push (insn);
++  clear_hashed_info_for_insn (insn);
++
++  delay_list->safe_push (insn);
+ }
+ 
+ /* Delete INSN from the delay slot of the insn that it is in, which may
+@@ -3200,7 +3201,14 @@ relax_delay_slots (rtx_insn *first)
+ 
+ 	      if (invert_jump (jump_insn, label, 1))
+ 		{
+-		  delete_related_insns (next);
++		  rtx_insn *from = delete_related_insns (next);
++
++		  /* We have just removed a BARRIER, which means that the block
++		     number of the next insns has effectively been changed (see
++		     find_basic_block in resource.c), so clear it.  */
++		  if (from)
++		    clear_hashed_info_until_next_barrier (from);
++
+ 		  next = jump_insn;
+ 		}
+ 
+@@ -3473,18 +3481,22 @@ relax_delay_slots (rtx_insn *first)
+ 
+ 	      if (invert_jump (delay_jump_insn, label, 1))
+ 		{
+-		  int i;
+-
+ 		  /* Must update the INSN_FROM_TARGET_P bits now that
+ 		     the branch is reversed, so that mark_target_live_regs
+ 		     will handle the delay slot insn correctly.  */
+-		  for (i = 1; i < XVECLEN (PATTERN (insn), 0); i++)
++		  for (int i = 1; i < XVECLEN (PATTERN (insn), 0); i++)
+ 		    {
+ 		      rtx slot = XVECEXP (PATTERN (insn), 0, i);
+ 		      INSN_FROM_TARGET_P (slot) = ! INSN_FROM_TARGET_P (slot);
+ 		    }
+ 
+-		  delete_related_insns (next);
++		  /* We have just removed a BARRIER, which means that the block
++		     number of the next insns has effectively been changed (see
++		     find_basic_block in resource.c), so clear it.  */
++		  rtx_insn *from = delete_related_insns (next);
++		  if (from)
++		    clear_hashed_info_until_next_barrier (from);
++
+ 		  next = insn;
+ 		}
+ 
+diff --git a/gcc/resource.c b/gcc/resource.c
+index 0822daebde72..54fded5f65c6 100644
+--- a/gcc/resource.c
++++ b/gcc/resource.c
+@@ -1293,7 +1293,26 @@ clear_hashed_info_for_insn (rtx_insn *insn)
+ 	tinfo->block = -1;
+     }
+ }
+-
++
++/* Clear any hashed information that we have stored for instructions
++   between INSN and the next BARRIER that follow a JUMP or a LABEL.  */
++
++void
++clear_hashed_info_until_next_barrier (rtx_insn *insn)
++{
++  while (insn && !BARRIER_P (insn))
++    {
++      if (JUMP_P (insn) || LABEL_P (insn))
++	{
++	  rtx_insn *next = next_active_insn (insn);
++	  if (next)
++	    clear_hashed_info_for_insn (next);
++	}
++
++      insn = next_nonnote_insn (insn);
++    }
++}
++
+ /* Increment the tick count for the basic block that contains INSN.  */
+ 
+ void
+diff --git a/gcc/resource.h b/gcc/resource.h
+index d9c66d42c26b..0aa78a31411f 100644
+--- a/gcc/resource.h
++++ b/gcc/resource.h
+@@ -46,6 +46,7 @@ extern void mark_set_resources (rtx, struct resources *, int,
+ 				enum mark_resource_type);
+ extern void mark_referenced_resources (rtx, struct resources *, bool);
+ extern void clear_hashed_info_for_insn (rtx_insn *);
++extern void clear_hashed_info_until_next_barrier (rtx_insn *);
+ extern void incr_ticks_for_insn (rtx_insn *);
+ extern void mark_end_of_function_resources (rtx, bool);
+ extern void init_resource_info (rtx_insn *);
+-- 
+2.25.1
+

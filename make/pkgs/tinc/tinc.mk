@@ -8,6 +8,7 @@ $(PKG)_SITE:=https://www.tinc-vpn.org/packages
 ### MANPAGE:=https://www.tinc-vpn.org/docs/
 ### CHANGES:=https://www.tinc-vpn.org/news/
 ### CVSREPO:=https://www.tinc-vpn.org/git/browse?p=tinc
+### SUPPORT:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_TINC_VERSION_1_1),1.1,1.0)
 

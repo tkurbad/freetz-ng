@@ -1,16 +1,17 @@
-$(call TOOLS_INIT, 3.27.9)
+$(call TOOLS_INIT, 3.30.3)
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=609a9b98572a6a5ea477f912cffb973109ed4d0a6a6b3f9e2353d2cdc048708e
+$(PKG)_HASH:=6d5de15b6715091df7f5441007425264bdd477809f80333fdf95f846aaff88e4
 $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://cmake.org/
 ### MANPAGE:=https://cmake.org/cmake/help/latest/
 ### CHANGES:=https://github.com/Kitware/CMake/releases
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
+### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=ninja-host
 
-$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
+$(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 $(PKG)_BINARIES            := ccmake cmake cpack ctest
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
@@ -46,7 +47,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
-	-$(NINJA) -C $(CMAKE_HOST_DIR) uninstall
+	-$(NINJA) -C $(CMAKE_HOST_DIR) clean
 	-$(RM) $(CMAKE_HOST_DIR)/.{configured,compiled,installed}
 
 $(pkg)-dirclean:

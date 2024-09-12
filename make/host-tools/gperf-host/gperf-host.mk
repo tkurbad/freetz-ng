@@ -6,6 +6,7 @@ $(PKG)_SITE:=https://ftp.gnu.org/pub/gnu/gperf/
 ### MANPAGE:=https://linux.die.net/man/1/gperf
 ### CHANGES:=http://savannah.gnu.org/projects/gperf/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=gperf.git
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/gperf
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/gperf

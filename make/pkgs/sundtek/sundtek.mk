@@ -1,4 +1,4 @@
-SUNDTEK_SITE:=http://www.sundtek.de/media
+SUNDTEK_SITE:=https://sundtek.de/media
 
 define sundtek-get-latest-version
 $(shell ver=$$(wget -q $(SUNDTEK_SITE)/latest.phtml -O - 2>/dev/null | sed -rn 's/.*sundtek_installer_([0-9\.]*)\.sh.*/\1/p'); echo "$${ver:-FAILED_TO_DETERMINE_LATEST_VERSION}")
@@ -29,6 +29,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_SUNDTEK_VERSION_2017
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_SUNDTEK_VERSION_2021
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_SUNDTEK_VERSION_LATEST
 
+
 define $(PKG)_CUSTOM_UNPACK
 	mkdir -p $($(PKG)_DIR); \
 	payload="$$$$(cat $(1) | sed -rn 's!^_SIZE=(.*)!\1!p')"; \
@@ -53,6 +54,7 @@ $($(PKG)_LIBS_TARGET_DIR): $($(PKG)_DEST_DIR)/usr/lib/libsundtek%: $($(PKG)_DIR)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_LIBS_TARGET_DIR)
+
 
 $(pkg)-clean:
 

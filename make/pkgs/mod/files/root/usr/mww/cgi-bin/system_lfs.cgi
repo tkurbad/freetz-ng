@@ -128,7 +128,7 @@ resunm() {
 
 # SWITCHABLE="y"
 if [ -x "$(which bootslotctl)" ]; then
-	. /var/env.mod.daemon  # CONFIG_ENVIRONMENT_PATH
+	. /bin/env.mod.rcconf avm  # CONFIG_ENVIRONMENT_PATH
 	LFS_LIVE="$(bootslotctl get_active)"
 	LFS_DEAD="$(bootslotctl get_other)"
 	NEXT="$LFS_LIVE"

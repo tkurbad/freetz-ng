@@ -2,12 +2,13 @@ $(call TOOLS_INIT, cc1f6167cb5065daba1462056e2dce8ff72aa855)
 $(PKG)_SOURCE:=pseudo-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=47d501e5fb5b0e22d2bf435e225db44bbcaac226e4c718fd6bc7c061afc979a8
 $(PKG)_SITE:=git@https://git.yoctoproject.org/git/pseudo
-#$(PKG)_SITE:=http://downloads.yoctoproject.org/releases/pseudo/
+#$(PKG)_SITE:=https://downloads.yoctoproject.org/releases/pseudo/
 ### VERSION:=1.9.0 oe-core cc1f616
 ### WEBSITE:=https://www.yoctoproject.org/software-item/pseudo/
 ### MANPAGE:=https://manpages.debian.org/testing/pseudo/pseudo.1.en.html
-### CHANGES:=http://git.yoctoproject.org/cgit.cgi/pseudo/log/?h=oe-core
-### CVSREPO:=http://git.yoctoproject.org/cgit.cgi/pseudo/
+### CHANGES:=https://git.yoctoproject.org/pseudo/log/?h=oe-core
+### CVSREPO:=https://git.yoctoproject.org/pseudo/
+### SUPPORT:=fda77
 
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 
@@ -89,6 +90,9 @@ $(pkg)-precompiled: $($(PKG)_TARGET_MAINARCH_LIB) $(if $(HOST_BIARCH),$($(PKG)_T
 $(pkg)-clean:
 	-$(MAKE) -C $(PSEUDO_HOST_MAINARCH_DIR) clean
 	-$(MAKE) -C $(PSEUDO_HOST_BIARCH_DIR) clean
+	-$(RM) $(PSEUDO_HOST_DIR)/.{compiled}
+	-$(RM) $(PSEUDO_HOST_MAINARCH_DIR)/.{configured,compiled}
+	-$(RM) $(PSEUDO_HOST_BIARCH_DIR)/.{configured,compiled}
 
 $(pkg)-dirclean:
 	$(RM) -r $(PSEUDO_HOST_DIR)

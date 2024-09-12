@@ -1,0 +1,43 @@
+--- avm/config-alder-5690_07.62
++++ freetz/config-alder-5690_07.62
+@@ -4,12 +4,11 @@
+ #
+ 
+ #
+-# Compiler: arm-buildroot-linux-musleabi-gcc.br_real (Buildroot 2020.02.1-gf277c724) 8.4.0
++# Compiler: arm-unknown-linux-gnueabi-gcc (GCC) 8.4.0
+ #
+ CONFIG_CC_IS_GCC=y
+ CONFIG_GCC_VERSION=80400
+ CONFIG_CLANG_VERSION=0
+-CONFIG_CC_CAN_LINK=y
+ CONFIG_CC_HAS_ASM_GOTO=y
+ CONFIG_CC_HAS_ASM_INLINE=y
+ CONFIG_IRQ_WORK=y
+@@ -105,6 +104,7 @@
+ CONFIG_SHOW_NOTIFIER_IF_OOPS=y
+ # CONFIG_QCA_NSS_AVM_FRITZ_BOX is not set
+ CONFIG_QCA_PPE_AVM_FRITZ_BOX=y
++# CONFIG_QCA_PPE_AVM_QCA838X_FRITZ_BOX is not set
+ 
+ #
+ # CPU/Task time and stats accounting
+@@ -680,8 +680,9 @@
+ CONFIG_ARCH_HAS_GCOV_PROFILE_ALL=y
+ # end of GCOV-based kernel profiling
+ 
+-CONFIG_PLUGIN_HOSTCC=""
++CONFIG_PLUGIN_HOSTCC="g++"
+ CONFIG_HAVE_GCC_PLUGINS=y
++# CONFIG_GCC_PLUGINS is not set
+ # end of General architecture-dependent options
+ 
+ CONFIG_RT_MUTEXES=y
+@@ -2597,6 +2598,7 @@
+ CONFIG_AVM_CORE_DEBUG=m
+ CONFIG_AVM_CORE_DEBUG_WASTE_TIME=y
+ CONFIG_AVM_CORE_DEBUG_ALLOC_STRESS=y
++CONFIG_AVM_CORE_DEBUG_FIQ_COMMANDS=y
+ # end of AVM Sammeltreiber
+ 
+ CONFIG_AVM_NET_TRACE=y

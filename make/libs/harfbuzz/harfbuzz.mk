@@ -1,16 +1,17 @@
-$(call PKG_INIT_LIB, 8.3.0)
-$(PKG)_LIB_VERSION:=0.60830.0
+$(call PKG_INIT_LIB, 9.0.0)
+$(PKG)_LIB_VERSION:=0.60900.0
 $(PKG)_SOURCE:=harfbuzz-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=109501eaeb8bde3eadb25fab4164e993fbace29c3d775bcaa1c1e58e2f15f847
+$(PKG)_HASH:=a41b272ceeb920c57263ec851604542d9ec85ee3030506d94662067c7b6ab89e
 $(PKG)_SITE:=https://github.com/harfbuzz/harfbuzz/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://harfbuzz.github.io/
 ### MANPAGE:=https://github.com/harfbuzz/harfbuzz/wiki
 ### CHANGES:=https://github.com/harfbuzz/harfbuzz/releases
 ### CVSREPO:=https://github.com/harfbuzz/harfbuzz
+### SUPPORT:=fda77
 
 $(PKG)_LIBNAME_SHORT:=$(pkg)
 $(PKG)_LIBNAME_LONG:=$($(PKG)_LIBNAME_SHORT:%=lib%.so.$($(PKG)_LIB_VERSION))
-$(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/$($(PKG)_LIBNAME_LONG)
+$(PKG)_BINARY:=$($(PKG)_DIR)/builddir/src/$($(PKG)_LIBNAME_LONG)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME_LONG)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME_LONG)
 
@@ -64,8 +65,8 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 
 $(pkg)-clean:
-	-$(SUBMAKE) -C $(HARFBUZZ_DIR) clean
-	$(RM) \
+	-$(SUBNINJA) -C $(HARFBUZZ_DIR)/builddir/ clean
+	$(RM) -r \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/harfbuzz/ \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz*.pc

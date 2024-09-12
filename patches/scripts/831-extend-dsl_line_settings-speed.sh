@@ -4,7 +4,9 @@ echo1 "patching dsl settings"
 # allow applying patch
 decrip_file "${HTML_LANG_MOD_DIR}/css/default/dsl_line_settings.css"
 
-if [ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ] ; then
+if [ "$FREETZ_AVM_VERSION_08_0X_MIN" == "y" ] ; then
+	PVER="08_0X"
+elif [ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ] ; then
 	PVER="07_5X"
 elif [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ] ; then
 	PVER="07_2X"

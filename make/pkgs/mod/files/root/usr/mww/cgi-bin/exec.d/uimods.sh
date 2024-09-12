@@ -24,13 +24,14 @@ if [ -z "$M" -o -z "$K" ] ; then
 	echo "Miserable failure, mod and/or key could not be empty."
 	echo "abort."
 else
-	. /var/env.mod.daemon
+	. /bin/env.mod.rcconf avm
 
 	old="$(ctlmgr_ctl r "$M" "$X")"
 	echo "old --> $old"
 
 	echo "new --> $V"
-	ack="$(ctlmgr_ctl w "$M" "$X" -- "$V")"
+	[ "$V" != "${V#-}" ] && SEP='--' || SEP=''
+	ack="$(ctlmgr_ctl w "$M" "$X" $SEP "$V")"
 	echo "ack --> $ack"
 
 	chk="$(ctlmgr_ctl r "$M" "$X")"

@@ -1,5 +1,8 @@
 if FREETZ_AVM_SOURCE_6591_07_04
 
+config FREETZ_AVM_HAS_ANTFS_FS_BUILTIN
+	def_bool y
+
 config FREETZ_AVM_HAS_AUTOFS4_FS_BUILTIN
 	def_bool y
 

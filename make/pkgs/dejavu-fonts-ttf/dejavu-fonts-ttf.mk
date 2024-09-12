@@ -6,6 +6,7 @@ $(PKG)_SITE:=@SF/dejavu,https://github.com/dejavu-fonts/dejavu-fonts/releases/do
 ### MANPAGE:=https://dejavu-fonts.org/
 ### CHANGES:=https://dejavu-fonts.github.io/Download.html
 ### CVSREPO:=https://github.com/dejavu-fonts/dejavu-fonts
+### SUPPORT:=fda77
 
 $(PKG)_FONTS_ALL += DejaVuMathTeXGyre
 $(PKG)_FONTS_ALL += DejaVuSans-BoldOblique

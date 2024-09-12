@@ -47,6 +47,11 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
+ - Fedora 40 64-Bit:
+```
+sudo dnf -y install %%Fedora40%%
+```
+
  - Fedora 37/38/39 64-Bit:
 ```
 sudo dnf -y install %%Fedora37%%
@@ -124,7 +129,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 23 64-Bit:
+ - Ubuntu 23/24 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu23%%
 ```

@@ -1,6 +1,6 @@
 --- modules/Makefile.in
 +++ modules/Makefile.in
-@@ -180,7 +180,7 @@
+@@ -193,7 +193,7 @@
  		echo $(INSTALL_DATA) $$i $(DEST_SLSH_DIR)/$$d/; \
  		$(INSTALL_DATA) $$i $(DEST_SLSH_DIR)/$$d/; \
  	   done; \

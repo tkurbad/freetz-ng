@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_MINI_FO
-	bool "mini_fo 0.3"
+	bool "mini_fo 0.3 - DEPRECATED"
 	depends on FREETZ_REPLACE_MODULE_AVAILABLE
 	select FREETZ_MODULE_mini_fo if !FREETZ_AVM_HAS_MINI_FO_BUILTIN
 	default n

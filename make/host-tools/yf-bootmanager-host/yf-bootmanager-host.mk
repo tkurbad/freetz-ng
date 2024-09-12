@@ -9,6 +9,9 @@ $(PKG)_SITE:=git_sparse@$($(PKG)_REPOSITORY),bootmanager
 ### MANPAGE:=https://github.com/PeterPawn/YourFritz/tree/main/bootmanager#readme
 ### CHANGES:=https://github.com/PeterPawn/YourFritz/commits/main/bootmanager
 ### CVSREPO:=https://github.com/PeterPawn/YourFritz/tree/main/bootmanager
+### SUPPORT:=PeterPawn
+
+$(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PATCH_MODFS_BOOT_MANAGER_tested
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PATCH_MODFS_BOOT_MANAGER_latest
@@ -28,6 +31,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
+	-$(RM) $(YF_BOOTMANAGER_HOST_DIR)/.{configured,compiled,installed}
 
 $(pkg)-dirclean:
 	$(RM) -r $(YF_BOOTMANAGER_HOST_DIR)
