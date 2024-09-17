@@ -73,14 +73,14 @@ endmenu # "Hardware series"
 choice
 	prompt "Hardware type"
 		default FREETZ_TYPE_7690
-		default FREETZ_TYPE_7690 if FREETZ_SERIES_6
+		default FREETZ_TYPE_7690    if FREETZ_SERIES_6
 		default FREETZ_TYPE_7590_W5 if FREETZ_SERIES_5
-		default FREETZ_TYPE_7490 if FREETZ_SERIES_4
-		default FREETZ_TYPE_7390 if FREETZ_SERIES_3
-		default FREETZ_TYPE_7272 if FREETZ_SERIES_2
-		default FREETZ_TYPE_7170 if FREETZ_SERIES_1
-		default FREETZ_TYPE_7050 if FREETZ_SERIES_0
-		default FREETZ_TYPE_1200 if FREETZ_SERIES_X
+		default FREETZ_TYPE_7490    if FREETZ_SERIES_4
+		default FREETZ_TYPE_7390    if FREETZ_SERIES_3
+		default FREETZ_TYPE_7272    if FREETZ_SERIES_2
+		default FREETZ_TYPE_7170    if FREETZ_SERIES_1
+		default FREETZ_TYPE_7050    if FREETZ_SERIES_0
+		default FREETZ_TYPE_1200    if FREETZ_SERIES_X
 		help
 			Select your box type here.
 
