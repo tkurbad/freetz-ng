@@ -70,6 +70,7 @@ Latest changes
  - Packages:
    * Atop 2.11.0
    * BIND 9.11.37/9.20.0
+   * Curl 8.10.0
    * htpdate 2.0.0
    * mc (Midnight Commander) 4.8.31/4.8.32
    * Nano 8.2

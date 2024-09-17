@@ -1,7 +1,7 @@
 --- configure
 +++ configure
-@@ -25138,7 +25138,9 @@
-      darwin*)
+@@ -25169,7 +25169,9 @@
+     darwin*)
        if test "$cross_compiling" = yes
  then :
 +     if test "${curl_cv_writable_argv+set}" != set; then :
