@@ -1,4 +1,4 @@
-[ "$FREETZ_TYPE_7530_W6" == "y" ] || return 0
+[ "$FREETZ_TYPE_7530_W6_V1" == "y" ] || return 0
 [ "$FREETZ_AVM_VERSION_07_2X_MAX" == "y" ] || return 0
 echo1 "fixing busybox syntax"
 
