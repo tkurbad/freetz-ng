@@ -698,7 +698,7 @@ choice
 			|| ( FREETZ_TARGET_UNSUPPORTED_VERSIONS && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE) )
 
 	config FREETZ_TARGET_BINUTILS_2_43
-		bool "binutils-2.43"
+		bool "binutils-2.43.1"
 		# depends on all gcc versions
 		# depends on any kernel version
 		depends on FREETZ_TARGET_BINUTILS_2_43_DEFAULT \
@@ -1159,7 +1159,7 @@ config FREETZ_TARGET_BINUTILS_VERSION
 	default "2.25.1"    if FREETZ_TARGET_BINUTILS_2_25
 	default "2.26.1"    if FREETZ_TARGET_BINUTILS_2_26
 	default "2.31.1"    if FREETZ_TARGET_BINUTILS_2_31
-	default "2.43"      if FREETZ_TARGET_BINUTILS_2_43
+	default "2.43.1"    if FREETZ_TARGET_BINUTILS_2_43
 
 config FREETZ_TARGET_GCC_VERSION
 	string
