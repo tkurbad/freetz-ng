@@ -94,7 +94,7 @@ config FREETZ_TYPE_PREFIX
 	default "7520"              if FREETZ_TYPE_7520_V1
 	default "7520_B"            if FREETZ_TYPE_7520_V2
 	default "7530"              if FREETZ_TYPE_7530_W5
-	default "7530_AX"           if FREETZ_TYPE_7530_W6
+	default "7530_AX"           if FREETZ_TYPE_7530_W6_V1
 	default "7560"              if FREETZ_TYPE_7560
 	default "7570"              if FREETZ_TYPE_7570
 	default "7580"              if FREETZ_TYPE_7580
