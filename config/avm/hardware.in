@@ -182,7 +182,7 @@ config FREETZ_SYSTEM_TYPE_QCA956x
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_2400 || \
+		FREETZ_TYPE_2400_W5 || \
 		FREETZ_TYPE_4020
 
 config FREETZ_SYSTEM_TYPE_QCAARMv8

@@ -45,7 +45,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzbox.2170/firmware/deutsch"                                                                      if FREETZ_TYPE_2170
 	#
-	default "@AVM/fritzwlan/fritzrepeater-2400/{other,deutschland}/fritz.os"                                           if FREETZ_TYPE_2400
+	default "@AVM/fritzwlan/fritzrepeater-2400/{other,deutschland}/fritz.os"                                           if FREETZ_TYPE_2400_W5
 	#
 	default "@AVM/fritzwlan/fritzrepeater-3000/{other,deutschland}/fritz.os,@AVM/3000"                                 if FREETZ_TYPE_3000
 	#
@@ -323,9 +323,9 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_2170.51.04.57.image"                                                if FREETZ_TYPE_2170 && FREETZ_TYPE_FIRMWARE_04_XX
 	#
-	default "FRITZ.Repeater_2400-07.12.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "FRITZ.Repeater_2400-07.29.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Repeater_2400-07.58.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Repeater_2400-07.12.image"                                              if FREETZ_TYPE_2400_W5 && FREETZ_TYPE_FIRMWARE_07_1X
+	default "FRITZ.Repeater_2400-07.29.image"                                              if FREETZ_TYPE_2400_W5 && FREETZ_TYPE_FIRMWARE_07_2X
+	default "FRITZ.Repeater_2400-07.58.image"                                              if FREETZ_TYPE_2400_W5 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "fritz.box_sl_wlan.09.04.34.image"                                             if FREETZ_TYPE_3020 && FREETZ_TYPE_FIRMWARE_04_XX
 	#
