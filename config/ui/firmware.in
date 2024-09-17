@@ -1193,7 +1193,7 @@ choice
 		help
 			Enable this to compile an alien image for FritzBox 7412 based on a 7430 image.
 
-	config FREETZ_TYPE_7520_7530
+	config FREETZ_TYPE_7520_V1_7530_W5
 		bool "7520"
 		depends on FREETZ_TYPE_7530_W5
 		help
