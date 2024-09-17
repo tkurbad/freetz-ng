@@ -5,7 +5,7 @@ config FREETZ_SYSTEM_TYPE_ALDER
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_5690
+		FREETZ_TYPE_5690_PRO
 
 config FREETZ_SYSTEM_TYPE_AR7_SANGAM
 	bool
