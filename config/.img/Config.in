@@ -20157,6 +20157,8 @@ config FREETZ_AVM_HAS_WIREGUARD
 	def_bool y
 config FREETZ_AVM_HAS_AVMCOUNTERD
 	def_bool y
+config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
 config FREETZ_AVM_HAS_DTRACE
 	def_bool y
 config FREETZ_AVM_HAS_PRINTSERV
