@@ -68,6 +68,7 @@ Latest changes
    * Various Fritzos 8.0 related changes
 
  - Packages:
+   * ACME.sh 3.0.8
    * Atop 2.11.0
    * BIND 9.11.37/9.20.0
    * Curl 8.10.0
