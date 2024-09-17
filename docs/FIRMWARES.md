@@ -226,7 +226,7 @@ Currently supported devices and firmwares
 * __Fritz!Box 6850 5G (UNTESTED)__
   - 258.07.30 rev94600 {ALL} [PSQ19P2NL4]
   - 258.07.59 rev114650 {ALL} [MOVE21NL2]
-  - 258.07.90 rev112170 {ALL} [Smart24 P1] (Inhaus)
+  - 258.07.90 rev114965 {ALL} [Smart24 P1] (Labor)
 
 * __Fritz!Box 6890 LTE__
   - 162.06.87 rev59283 {ALL}
