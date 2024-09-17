@@ -1,6 +1,6 @@
 --- Makefile
 +++ Makefile
-@@ -614,7 +614,7 @@
+@@ -617,7 +617,7 @@
  gitwebstaticdir = $(gitwebdir)/static
  perllibdir = $(sharedir)/perl5
  localedir = $(sharedir)/locale
