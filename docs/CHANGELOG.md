@@ -80,6 +80,7 @@ Latest changes
    * RPCBind 1.2.7
    * RRDtool 1.2.30/1.9.0
    * S-Lang 2.3.3
+   * strace 4.9/5.0/6.11
    * SQLite 3.46.1
    * Unbound 1.21.0
 
