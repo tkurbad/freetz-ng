@@ -17039,7 +17039,7 @@ config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_X86
 	def_bool y
-config FREETZ_AVM_PROP_GCC_9_3
+config FREETZ_AVM_PROP_GCC_9_4
 	def_bool y
 config FREETZ_AVM_PROP_LIBC_GLIBC
 	def_bool y
