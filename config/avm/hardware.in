@@ -128,7 +128,7 @@ config FREETZ_SYSTEM_TYPE_MAPLE
 	default y
 	depends on \
 		FREETZ_TYPE_1209 || \
-		FREETZ_TYPE_1249 || \
+		FREETZ_TYPE_1240_W6 || \
 		FREETZ_TYPE_3009 || \
 		FREETZ_TYPE_4050 || \
 		FREETZ_TYPE_7510 || \
