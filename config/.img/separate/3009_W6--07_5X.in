@@ -1,16 +1,16 @@
-if FREETZ_TYPE_3000 && FREETZ_AVM_VERSION_07_0X
+if FREETZ_TYPE_3009_W6 && FREETZ_AVM_VERSION_07_5X
 
 config FREETZ_AVM_PROP_NAME
 	string
-	default "FRITZ!Repeater 3000"
+	default "FRITZ!Repeater 3000 AX"
 
 config FREETZ_AVM_PROP_MAJOR
 	string
-	default "174"
+	default "270"
 
 config FREETZ_AVM_PROP_HWREV
 	string
-	default "246"
+	default "270"
 
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
@@ -45,6 +45,9 @@ config FREETZ_AVM_HAS_LANGUAGE_fr
 config FREETZ_AVM_HAS_LANGUAGE_it
 	def_bool y
 
+config FREETZ_AVM_HAS_LANGUAGE_nl
+	def_bool y
+
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
 
@@ -56,9 +59,6 @@ config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 
 config FREETZ_AVM_HAS_IP_BINARY
-	def_bool y
-
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 
 config FREETZ_AVM_HAS_WLAN
@@ -77,6 +77,12 @@ config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 
 config FREETZ_AVM_HAS_LEDPAGE
+	def_bool y
+
+config FREETZ_AVM_HAS_KMOD
+	def_bool y
+
+config FREETZ_AVM_HAS_SVCTL
 	def_bool y
 
 config FREETZ_AVM_HAS_DMESG_FILE
@@ -100,7 +106,7 @@ config FREETZ_AVM_HAS_NEXUS
 config FREETZ_AVM_HAS_MESHD
 	def_bool y
 
-config FREETZ_AVM_HAS_NSSWITCH
+config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 
 config FREETZ_AVM_HAS_OPENSSL
@@ -121,13 +127,13 @@ config FREETZ_AVM_PROP_SQUASHFS_ENDIANN_LE
 config FREETZ_AVM_PROP_SEPARATE_FILESYSTEM_IMAGE
 	def_bool y
 
-config FREETZ_AVM_HAS_FWLAYOUT_2
+config FREETZ_AVM_HAS_FWLAYOUT_5
 	def_bool y
 
-config FREETZ_AVM_PROP_KERNEL_4_4_60
+config FREETZ_AVM_PROP_KERNEL_4_4_271
 	def_bool y
 
-config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_128
+config FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
 	def_bool y
 
 config FREETZ_AVM_PROP_ARCH_LE
@@ -136,16 +142,13 @@ config FREETZ_AVM_PROP_ARCH_LE
 config FREETZ_AVM_PROP_ARCH_ARM
 	def_bool y
 
-config FREETZ_AVM_PROP_GCC_5_4
+config FREETZ_AVM_PROP_GCC_5_5
 	def_bool y
 
-config FREETZ_AVM_PROP_LIBC_UCLIBC
+config FREETZ_AVM_PROP_LIBC_MUSL
 	def_bool y
 
-config FREETZ_AVM_PROP_UCLIBC_1_0_14
-	def_bool y
-
-config FREETZ_AVM_PROP_UCLIBC_XLOCALE
+config FREETZ_AVM_PROP_UCLIBC_SEPARATE
 	def_bool y
 
 endif
