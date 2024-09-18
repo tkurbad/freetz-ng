@@ -71,7 +71,7 @@ Latest changes
    * ACME.sh 3.0.8
    * Atop 2.11.0
    * BIND 9.11.37/9.20.1
-   * Curl 8.10.0
+   * Curl 8.10.1
    * Git 2.46.1
    * htpdate 2.0.0
    * mc (Midnight Commander) 4.8.31/4.8.32
