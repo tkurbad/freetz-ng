@@ -104,13 +104,13 @@ Currently supported devices and firmwares
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
   - 155.07.29 rev92647 {ALL} [PSQ19P2NL4]
   - 155.07.59 rev113615 {ALL} [MOVE21NL2]
-  - 155.07.90 rev115550 {ALL} [Smart24 P1] (Labor)
+  - 155.07.90 rev115637 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box 4050 (UNTESTED)__
   - 287.07.90 rev115691 {ALL} [Smart24 P1 FCS] (Labor)
 * __Fritz!Box 4060__
   - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
   - 261.07.59 rev113614 {ALL} [MOVE21NL2]
-  - 261.07.90 rev114590 {ALL} [Smart24 P1] (Labor)
+  - 261.07.90 rev115640 {ALL} [Smart24 P1] (Labor)
 
 ### Fritz!Box Fon (50xx/51xx)
 
@@ -144,12 +144,12 @@ Currently supported devices and firmwares
   - 257.07.30 rev99334 {ALL} [PSQ19P2NL4]
   - 257.07.58 rev108018 {ALL} [MOVE21NL1]
   - 257.07.81 rev113241 {ALL} [GoFiber23NL1]
-  - 257.07.90 rev114589 {ALL} [Smart24 P1] (Labor)
+  - 257.07.90 rev115661 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.58 rev109907 {ALL} [MOVE21NL1]
   - 272.07.81 rev113243 {ALL} [GoFiber23NL1]
-  - 272.07.90 rev114673 {ALL} [Smart24 P1] (Labor)
+  - 272.07.90 rev115658 {ALL} [Smart24 P1] (Labor)
 * __FRITZ!Box 5690 Pro__
   - 279.07.62 rev115017 {ALL} [FCS23]
   - 279.07.90 rev114928 {ALL} [Smart24 P1 FCS] (Inhaus)
@@ -176,19 +176,19 @@ Currently supported devices and firmwares
   - 161.07.13 rev75441 {GER} [MESH18 NL3]
   - 161.07.29 rev92035 {GER} [PSQ19P2NL4]
   - 161.07.57 rev107841 {GER} [MOVE21NL1]
-  - 161.07.90 rev114785 {GER} [Smart24 P1] (Labor)
+  - 161.07.90 rev115655 {GER} [Smart24 P1] (Labor)
 * __Fritz!Box 6660 Cable__
   - 252.07.15 rev78740 {GER} [6660 FCS]
   - 252.07.29 rev92037 {GER} [PSQ19P2NL4]
   - 252.07.57 rev107842 {GER} [MOVE21NL1]
-  - 252.07.90 rev114782 {GER} [Smart24 P1] (Labor)
+  - 252.07.90 rev115652 {GER} [Smart24 P1] (Labor)
 * __Fritz!Box 6670 Cable (UNTESTED)__
   - 284.07.63 rev113732 {GER} [FCS23]
-  - 284.07.90 rev114817 {GER} [Smart24 P1 FCS] (Labor)
+  - 284.07.90 rev115727 {GER} [Smart24 P1 FCS] (Labor)
 * __Fritz!Box 6690 Cable__
   - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
   - 267.07.57 rev109915 {GER} [MOVE21NL1]
-  - 267.07.90 rev114779 {GER} [Smart24 P1] (Labor)
+  - 267.07.90 rev115649 {GER} [Smart24 P1] (Labor)
 
 ### Fritz!Box LTE (68xx)
 
@@ -417,12 +417,12 @@ Currently supported devices and firmwares
   - 164.07.13 rev75481 {INT} [MESH18 NL3]
   - 164.07.29 rev92062 {ALL} [PSQ19P2NL4]
   - 164.07.59 rev113249 {ALL} [MOVE21NL2]
-  - 164.07.90 rev114794 {ALL} [Smart24 P1] (Labor)
+  - 164.07.90 rev115673 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
   - 256.07.57 rev109901 {ALL} [MOVE21NL1]
   - 256.07.81 rev113240 {ALL} [GoFiber23NL1]
-  - 256.07.90 rev114682 {ALL} [Smart24 P1] (Labor)
+  - 256.07.90 rev115676 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box Fon WLAN 7530 AX B__
   - 278.07.90 rev115731 {ALL} [Smart24 P1 FCS] (Inhaus)
 * __Fritz!Box Fon WLAN 7560__
@@ -465,7 +465,7 @@ Currently supported devices and firmwares
   - 154.07.13 rev74390 {INT} [MESH18 NL3]
   - 154.07.29 rev92051 {ALL} [PSQ19P2NL4]
   - 154.07.59 rev113250 {ALL} [MOVE21NL2]
-  - 154.07.90 rev114800 {ALL} [Smart24 P1] (Labor)
+  - 154.07.90 rev115685 {ALL} [Smart24 P1] (Labor)
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.57 rev107809 {ALL} [MOVE21NL1]
