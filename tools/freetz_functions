@@ -807,6 +807,7 @@ image_details() {
 	local AVM_FW_LABOR
 	#AVM_FW_REVISION
 	local AVM_FW_DATE
+	local AVM_FW_TYPE
 	local AVM_FW_CYCLE
 	local AVM_FM_REGION
 	#SOURCE_IMAGE_DETAILS
@@ -836,6 +837,10 @@ image_details() {
 	stat "${FILESYSTEM_DIR}"/etc/version --printf="%Y\n%W\n" | sort -u | wc -l | grep -q '^1$' && \
 	 AVM_FW_DATE="$(date -d"$(stat -c '%y' "${FIRMWARE_DIR}/var/content" 2>/dev/null)" "+%d.%m.%Y %H:%M:%S" 2>/dev/null)" # cpio packed fs
 	[ -z "$AVM_FW_DATE" ] && AVM_FW_DATE="$(date -d"$(stat -c '%y' "${FILESYSTEM_DIR}"/etc/version)" "+%d.%m.%Y %H:%M:%S")" # newer firmware
+	AVM_FW_TYPE="$(sed -rn 's/^Type=//p' "${FIRMWARE_DIR}/var/content" 2>/dev/null)"
+	[ -n "$AVM_FW_TYPE" ] && AVM_FW_LABOR=""
+	[ "$AVM_FW_TYPE" == "Release" ] && AVM_FW_TYPE=""
+	[ -n "$AVM_FW_TYPE" ] && AVM_FW_TYPE=" ($AVM_FW_TYPE)"
 	AVM_FW_CYCLE="$(sed -rn 's/^Releasecycle=//p' "${FIRMWARE_DIR}/var/content" 2>/dev/null)"
 	[ -n "$AVM_FW_CYCLE" ] && AVM_FW_CYCLE=" [$AVM_FW_CYCLE]"
 	[ -d "${FILESYSTEM_DIR}"/etc/default.*/avm/ ]                                                && AVM_FM_REGION='GER'
@@ -844,7 +849,7 @@ image_details() {
 	[ "$FREETZ_TYPE_LANG_IT" == "y" ]                                                            && AVM_FM_REGION='ITA'
 	[ "$FREETZ_TYPE_LANG_A_CH" == "y" ]                                                          && AVM_FM_REGION='ACH'
 	#
-	SOURCE_IMAGE_DETAILS="${AVM_FW_PRODUCT/ /-}${AVM_FW_LANGUAGE} ${AVM_FW_MAJOR}.${AVM_FW_VERSION}${AVM_FW_LABOR} rev${AVM_FW_REVISION} {${AVM_FM_REGION}}${AVM_FW_CYCLE} (${AVM_FW_DATE})"
+	SOURCE_IMAGE_DETAILS="${AVM_FW_PRODUCT/ /-}${AVM_FW_LANGUAGE} ${AVM_FW_MAJOR}.${AVM_FW_VERSION}${AVM_FW_LABOR} rev${AVM_FW_REVISION} {${AVM_FM_REGION}}${AVM_FW_CYCLE}${AVM_FW_TYPE} <${AVM_FW_DATE}>"
 }
 
 #
