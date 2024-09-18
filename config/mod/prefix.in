@@ -11,7 +11,7 @@ config FREETZ_TYPE_PREFIX
 	default "450E"              if FREETZ_TYPE_0450
 	default "540E"              if FREETZ_TYPE_0540
 	default "546E"              if FREETZ_TYPE_0546
-	default "1200"              if FREETZ_TYPE_1200
+	default "1200"              if FREETZ_TYPE_1200_W5
 	default "1200_AX"           if FREETZ_TYPE_1209
 	default "1240E"             if FREETZ_TYPE_1240_W5
 	default "1240_AX"           if FREETZ_TYPE_1240_W6

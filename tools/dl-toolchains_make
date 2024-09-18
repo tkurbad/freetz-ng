@@ -122,7 +122,7 @@ esac
 
 #ARM
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_4040        FREETZ_TYPE_FIRMWARE_07_0X"
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_1200        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_1200_W5     FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7690        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_5590        FREETZ_TYPE_FIRMWARE_08_0X_LABOR"  # SEPARATE
 
