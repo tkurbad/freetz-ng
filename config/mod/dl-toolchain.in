@@ -35,6 +35,7 @@ config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 	default "13a66c14432e4699f40b25f56621d912e1ba594c200fa68164fea93777ca842a"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_8_3
 	default "d13e711c213928b7d8a1cf3f7befaf2abc14e2ae94f21e16894d6c8018aa2fdf"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_8_4
 	default "ed6709d51a6f6fba6243f90c3c98e2f22fe5feb10291c85b7d793ae608d7b262"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_9_3
+	default "8bacfa57d03953df899ebb94f8801cee09bdc747bd12c921bbb8aced5d455cb8"    if FREETZ_TARGET_ARCH_X86                           && FREETZ_KERNEL_GCC_9_4
 	#
 	default "X"
 
