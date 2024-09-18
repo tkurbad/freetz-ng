@@ -1,5 +1,10 @@
 # NEWS
 
+ * __[2024-09-18](#2024-09-18)__<a id='2024-09-18'></a><br>
+   Diese Woche wurden die internen Namen viele Geräte geändert um die ganzen Wifi 5/6/7 Modelle,<br>
+   B-Typen, XGS/PRO und andere Variationen besser handhaben zu können. Daher sollte nach einem<br>
+   Update des Checkouts sichergestellt werden dass noch das gewünschte Gerät ausgewählt ist.<br>
+
  * __[2024-08-01](#2024-08-01)__<a id='2024-08-01'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24080` erstellt.<br>
    Ein Tag sollte wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
