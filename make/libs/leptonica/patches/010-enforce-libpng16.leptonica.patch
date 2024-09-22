@@ -6,14 +6,14 @@
  if test "x$with_libpng" != xno; then :
 -  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for png_read_png in -lpng" >&5
 -$as_echo_n "checking for png_read_png in -lpng... " >&6; }
-+  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for png_read_png in -lpng12" >&5
-+$as_echo_n "checking for png_read_png in -lpng12... " >&6; }
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for png_read_png in -lpng16" >&5
++$as_echo_n "checking for png_read_png in -lpng16... " >&6; }
  if test "${ac_cv_lib_png_png_read_png+set}" = set; then :
    $as_echo_n "(cached) " >&6
  else
    ac_check_lib_save_LIBS=$LIBS
 -LIBS="-lpng  $LIBS"
-+LIBS="-lpng12  $LIBS"
++LIBS="-lpng16  $LIBS"
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  
@@ -22,7 +22,7 @@
  
  $as_echo "#define HAVE_LIBPNG 1" >>confdefs.h
 - LIBPNG_LIBS=-lpng
-+ LIBPNG_LIBS=-lpng12
++ LIBPNG_LIBS=-lpng16
  
  else
    if test "x$with_libpng" = xyes; then :
