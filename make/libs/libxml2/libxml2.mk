@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 2.13.3)
+$(call PKG_INIT_LIB, 2.13.4)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=0805d7c180cf09caad71666c7a458a74f041561a532902454da5047d83948138
+$(PKG)_HASH:=65d042e1c8010243e617efb02afda20b85c2160acdbfbcb5b26b80cec6515650
 $(PKG)_SITE:=https://download.gnome.org/sources/libxml2/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=http://www.xmlsoft.org
 ### MANPAGE:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#html-documentation
