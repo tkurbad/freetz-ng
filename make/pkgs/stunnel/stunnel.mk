@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 5.72)
+$(call PKG_INIT_BIN, 5.73)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=3d532941281ae353319735144e4adb9ae489a10b7e309c58a48157f08f42e949
+$(PKG)_HASH:=bc917c3bcd943a4d632360c067977a31e85e385f5f4845f69749bce88183cb38
 $(PKG)_SITE:=https://www.stunnel.org/downloads/archive/5.x
 ### WEBSITE:=https://www.stunnel.org/
 ### MANPAGE:=https://www.stunnel.org/static/stunnel.html

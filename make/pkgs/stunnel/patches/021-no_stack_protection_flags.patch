@@ -1,11 +1,11 @@
---- configure
-+++ configure
-@@ -7094,7 +7094,7 @@
+--- configure_org	2024-09-22 10:12:32.685642378 +0200
++++ configure		2024-09-22 10:15:04.129628433 +0200
+@@ -7173,7 +7173,7 @@
  
  
  
--for flag in -fstack-protector; do
-+false && for flag in -fstack-protector; do
+-for flag in -fstack-protector-strong; do
++false && for flag in -fstack-protector-strong; do
    as_CACHEVAR=`printf "%s\n" "ax_cv_check_cflags__$flag" | $as_tr_sh`
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether C compiler accepts $flag" >&5
  printf %s "checking whether C compiler accepts $flag... " >&6; }

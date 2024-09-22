@@ -81,6 +81,7 @@ Latest changes
    * RRDtool 1.2.30/1.9.0
    * S-Lang 2.3.3
    * strace 4.9/5.0/6.11
+   * Stunnel 5.73
    * SQLite 3.40.1/3.46.1
    * Unbound 1.21.0
 
