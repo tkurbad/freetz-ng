@@ -1,11 +1,11 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_TARGET_GCC_5_MAX),1.44.2,1.48.0))
+$(call PKG_INIT_LIB, $(if $(FREETZ_TARGET_GCC_5_MAX),1.44.2,1.49.0))
 $(PKG)_SHLIB_VERSION:=1.0.0
 $(PKG)_SOURCE:=$(pkg)-v$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=ccfcdc968c55673c6526d8270a9c8655a806ea92468afcbcabc2b16040f03cb4
-$(PKG)_HASH_CURRENT:=7f1db8ac368d89d1baf163bac1ea5fe5120697a73910c8ae6b2fffb3551d59fb
+$(PKG)_HASH_CURRENT:=17e6463bb51c7956430f04ec722ae638402402b5cca669ea90dab2907d10091a
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_TARGET_GCC_5_MAX),ABANDON,CURRENT))
 $(PKG)_SITE:=https://dist.libuv.org/dist/v$($(PKG)_VERSION)
-### VERSION:=1.44.2/1.48.0
+### VERSION:=1.44.2/1.49.0
 ### WEBSITE:=https://libuv.org/
 ### MANPAGE:=https://docs.libuv.org/en/v1.x/
 ### CHANGES:=https://github.com/libuv/libuv/releases

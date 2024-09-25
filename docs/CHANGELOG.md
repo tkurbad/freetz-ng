@@ -96,6 +96,7 @@ Latest changes
    * libdeflate 1.21
    * libmaxminddb 1.11.0
    * liburcu 0.14.0
+   * libuv 1.44.2/1.49.0
    * libxml2 2.13.4
    * lz4 1.10.0
    * mbedTLS 2.7.19/2.28.9
