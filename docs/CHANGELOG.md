@@ -59,6 +59,7 @@ Latest changes
  - Host tools:
    * cmake 3.30.3
    * fakeroot 1.36
+   * meson 1.5.2
    * openssl 3.0.15
    * python 3.12.6
 
