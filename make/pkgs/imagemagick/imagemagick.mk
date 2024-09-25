@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, 7.1.1-34)
+$(call PKG_INIT_BIN, 7.1.1-38)
 $(PKG)_LIB_VERSION:=10.0.1
 $(PKG)_ABI_SUFFIX:=Q16
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
 $(PKG)_SOURCE:=ImageMagick-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=abab52de4b8f0356c05ddee3d3398c147fd9f6c099760f2cb15f3b8168a776c7
+$(PKG)_HASH:=48de548d4977fc226c982ca03b9d6ad8001b47d8dc142b49fdca69333bc4ad82
 $(PKG)_SITE:=https://download.imagemagick.org/archive,http://www.imagemagick.org/download,https://www.imagemagick.org/archive,@SF/$(pkg)
 ### WEBSITE:=https://www.imagemagick.org/
 ### MANPAGE:=https://www.imagemagick.org/Usage/

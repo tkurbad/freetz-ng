@@ -76,6 +76,7 @@ Latest changes
    * Curl 8.10.1
    * Git 2.46.2
    * htpdate 2.0.0
+   * ImageMagick 7.1.1-38
    * mc (Midnight Commander) 4.8.31/4.8.32
    * Nano 8.2
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.15
