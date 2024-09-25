@@ -93,6 +93,7 @@ Latest changes
    * expat 2.6.3
    * FreeType 2.13.3
    * glib2 2.32.4/2.81.2
+   * harfbuzz 10.0.1
    * libdeflate 1.21
    * libmaxminddb 1.11.0
    * liburcu 0.14.0
