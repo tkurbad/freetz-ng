@@ -72,7 +72,7 @@ Latest changes
  - Packages:
    * ACME.sh 3.0.9
    * Atop 2.11.0
-   * BIND 9.11.37/9.20.1
+   * BIND 9.11.37/9.20.2
    * CA-bundle 2024-09-24
    * Curl 8.10.1
    * Git 2.46.2
