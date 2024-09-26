@@ -6,7 +6,7 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 cgi --id=freetz
 
-# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'McBane87\nTobjasR\nL3P3\nhermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' 
+# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'Er4twXz\nMcBane87\nTobjasR\nL3P3\nhermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' 
 cgi_begin "$(lang de:"&Uuml;ber" en:"About")"
 cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <center>
@@ -15,10 +15,12 @@ cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <h1>Supporters</h1>
 abraXxl
 aholler
+AldoB.
 Alex
 asmcc
 berndy2001
 Bodenseematze
+BojanSofronievski
 buehmann
 BugReporter-ilKY
 cawidtu
@@ -31,6 +33,7 @@ dionysius
 Dirk
 e6e7e8
 er13
+Er4twXz
 f-666
 feedzapper
 fesc2000
@@ -41,6 +44,7 @@ FriederBluemle
 Greg57070
 GregoryAUZANNEAU
 Grische
+GulDukat
 Hadis
 harryboo
 HerbertNowak
