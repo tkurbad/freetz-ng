@@ -101,6 +101,7 @@ Latest changes
    * libxml2 2.13.4
    * lz4 1.10.0
    * mbedTLS 2.7.19/2.28.9
+   * libnettle 3.10
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.

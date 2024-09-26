@@ -1,18 +1,20 @@
 --- configure
 +++ configure
-@@ -5571,6 +5571,7 @@
+@@ -6461,7 +6461,8 @@
+ printf "%s\n" "#define SIZEOF_SIZE_T $ac_cv_sizeof_size_t" >>confdefs.h
  
  
- 
-+if test "$enable_openssl" = yes; then
- for ac_header in openssl/evp.h openssl/ecdsa.h
+-
++if test ${enable_openssl+y}
++then :
+        for ac_header in openssl/evp.h openssl/ec.h openssl/rsa.h
  do :
-   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
-@@ -5586,6 +5587,7 @@
+   as_ac_Header=`printf "%s\n" "ac_cv_header_$ac_header" | $as_tr_sh`
+@@ -6478,6 +6479,7 @@
  fi
  
  done
 +fi
  
- 
  # For use by the testsuite
+ ac_fn_c_check_header_compile "$LINENO" "valgrind/memcheck.h" "ac_cv_header_valgrind_memcheck_h" "$ac_includes_default"
