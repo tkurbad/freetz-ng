@@ -1,4 +1,4 @@
-# libcap-ng (libcap-ng.so) 0.8.3
+# libcap-ng (libcap-ng.so) 0.8.5
  - Homepage: [https://people.redhat.com/sgrubb/libcap-ng/](https://people.redhat.com/sgrubb/libcap-ng/)
  - Changelog: [https://people.redhat.com/sgrubb/libcap-ng/ChangeLog](https://people.redhat.com/sgrubb/libcap-ng/ChangeLog)
  - Repository: [https://github.com/stevegrubb/libcap-ng](https://github.com/stevegrubb/libcap-ng)
