@@ -88,6 +88,7 @@ Latest changes
    * Stunnel 5.73
    * SQLite 3.40.1/3.46.1
    * Unbound 1.21.0
+   * UnRAR 6.1.7/6.2.12/7.0.9
 
  - Libraries:
    * expat 2.6.3
@@ -98,12 +99,12 @@ Latest changes
    * libcap-ng 0.8.5
    * libdeflate 1.21
    * libmaxminddb 1.11.0
+   * libnettle 3.10
    * liburcu 0.14.0
    * libuv 1.44.2/1.49.0
    * libxml2 2.13.4
    * lz4 1.10.0
    * mbedTLS 2.7.19/2.28.9
-   * libnettle 3.10
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
