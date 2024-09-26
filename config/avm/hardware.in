@@ -127,7 +127,7 @@ config FREETZ_SYSTEM_TYPE_MAPLE
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_1209_W6 || \
+		FREETZ_TYPE_1200_W6 || \
 		FREETZ_TYPE_1240_W6 || \
 		FREETZ_TYPE_3000_W6 || \
 		FREETZ_TYPE_4050 || \

@@ -29,7 +29,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzwlan/fritzrepeater-1200/{other,deutschland}/fritz.os,@AVM/1200"                                 if FREETZ_TYPE_1200_W5
 	#
-	default "@AVM/fritzwlan/fritzrepeater-1200-ax/{other,deutschland}/fritz.os,@AVM/firmware/1200AX"                   if FREETZ_TYPE_1209_W6
+	default "@AVM/fritzwlan/fritzrepeater-1200-ax/{other,deutschland}/fritz.os,@AVM/firmware/1200AX"                   if FREETZ_TYPE_1200_W6
 	#
 	default "@AVM/fritzpowerline/fritzpowerline-1240e/{other,deutschland}/fritz.os"                                    if FREETZ_TYPE_1240_W5
 	#
@@ -296,8 +296,8 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Repeater_1200-07.29.image"                                              if FREETZ_TYPE_1200_W5 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Repeater_1200-07.58.image"                                              if FREETZ_TYPE_1200_W5 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
-	default "FRITZ.Repeater_1200_AX-07.31.image"                                           if FREETZ_TYPE_1209_W6 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Repeater_1200_AX-07.58.image"                                           if FREETZ_TYPE_1209_W6 && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Repeater_1200_AX-07.31.image"                                           if FREETZ_TYPE_1200_W6 && FREETZ_TYPE_FIRMWARE_07_2X
+	default "FRITZ.Repeater_1200_AX-07.58.image"                                           if FREETZ_TYPE_1200_W6 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Powerline_1240E.06.92.image"                                            if FREETZ_TYPE_1240_W5 && FREETZ_TYPE_FIRMWARE_06_9X
 	default "FRITZ.Powerline_1240E.150.07.01.image"                                        if FREETZ_TYPE_1240_W5 && FREETZ_TYPE_FIRMWARE_07_0X
