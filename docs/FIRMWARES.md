@@ -421,7 +421,6 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
   - 256.07.57 rev109901 {ALL} [MOVE21NL1]
-  - 256.07.81 rev113240 {ALL} [GoFiber23NL1]
   - 256.08.00 rev116010 {ALL} [Smart24 P1]
 * __Fritz!Box Fon WLAN 7530 AX B__
   - 278.07.90 rev115731 {ALL} [Smart24 P1 FCS] (Inhaus)
