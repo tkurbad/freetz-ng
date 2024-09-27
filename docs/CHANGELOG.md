@@ -61,6 +61,7 @@ Latest changes
    * fakeroot 1.36
    * meson 1.5.2
    * openssl 3.0.15
+   * precompiled host-tools 2024-09-27
    * python 3.12.6
 
  - AVM sources:
