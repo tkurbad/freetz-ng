@@ -469,7 +469,6 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.57 rev107809 {ALL} [MOVE21NL1]
-  - 259.07.81 rev113242 {ALL} [GoFiber23NL1]
   - 259.08.00 rev115746 {ALL} [Smart24 P1]
 
 ### Fritz!Box Fon WLAN (76xx)
