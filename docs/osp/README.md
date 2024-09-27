@@ -389,6 +389,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_7530_AX-07.81.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7530-ax/source-files-FRITZ.Box_7530_AX-07.81.tar.gz)
    - [source-files-FRITZ.Box_7530_AX-brcma9-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7530-ax/source-files-FRITZ.Box_7530_AX-brcma9-07.56.tar.gz)
    - [source-files-FRITZ.Box_7530_AX-brcma9-07.80.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7530-ax/source-files-FRITZ.Box_7530_AX-brcma9-07.80.tar.gz)
+   - [source-files-FRITZ.Box_7530_AX-brcma9-08.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7530-ax/source-files-FRITZ.Box_7530_AX-brcma9-08.00.tar.gz)
+   - [source-files-FRITZ.Box_7590_AX-grx5-08.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7530-ax/source-files-FRITZ.Box_7590_AX-grx5-08.00.tar.gz)
  * fritzbox-7560/
    - [source-files-FRITZ.Box_7560-07.11.tar](https://osp.avm.de/fritzbox/fritzbox-7560/source-files-FRITZ.Box_7560-07.11.tar)
    - [source-files-FRITZ.Box_7560-07.12.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7560/source-files-FRITZ.Box_7560-07.12.tar.gz)
@@ -426,6 +428,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_7590_AX-grx5-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7590-ax/source-files-FRITZ.Box_7590_AX-grx5-07.56.tar.gz)
    - [source-files-FRITZ.Box_7590_AX-grx5-07.80.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7590-ax/source-files-FRITZ.Box_7590_AX-grx5-07.80.tar.gz)
    - [source-files-FRITZ.Box_7590_AX-grx5-07.81.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7590-ax/source-files-FRITZ.Box_7590_AX-grx5-07.81.tar.gz)
+   - [source-files-FRITZ.Box_7590_AX-grx5-08.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7590-ax/source-files-FRITZ.Box_7590_AX-grx5-08.00.tar.gz)
  * fritzbox-7690/
    - [source-files-FRITZ.Box_7690-miami-07.61.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7690/source-files-FRITZ.Box_7690-miami-07.61.tar.gz)
    - [source-files-FRITZ.Box_7690-miami-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7690/source-files-FRITZ.Box_7690-miami-07.62.tar.gz)
