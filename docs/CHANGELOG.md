@@ -64,7 +64,8 @@ Latest changes
    * python 3.12.6
 
  - AVM sources:
-   * 5690-pro 7.62 - 5.4.213
+   * 5690 pro 7.62 - 5.4.213
+   * 7590 ax  8.00 - 4.9.325
 
  - Patches:
    * Various Fritzos 8.0 related changes
