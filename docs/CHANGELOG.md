@@ -88,6 +88,7 @@ Latest changes
    * strace 4.9/5.0/6.11
    * Stunnel 5.73
    * SQLite 3.40.1/3.46.1
+   * tmux 3.5
    * Unbound 1.21.0
    * UnRAR 6.1.7/6.2.12/7.0.9
 

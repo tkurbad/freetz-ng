@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_TMUX
-	bool "tmux 3.4 (binary only)"
+	bool "tmux 3.5 (binary only)"
 	select FREETZ_LIB_libutil     if ! FREETZ_PACKAGE_TMUX_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libncurses  if ! FREETZ_PACKAGE_TMUX_STATIC
 	select FREETZ_LIB_libevent    if ! FREETZ_PACKAGE_TMUX_STATIC
@@ -9,10 +9,13 @@ config FREETZ_PACKAGE_TMUX
 		tmux, a BSD-licensed alternative to GNU screen.
 		Uses ncurses.
 
-config FREETZ_PACKAGE_TMUX_STATIC
-	bool "Link statically"
-	depends on FREETZ_PACKAGE_TMUX
-	default n
-	help
-		TMUX will be linked statically to run without libraries
+if FREETZ_PACKAGE_TMUX
+
+	config FREETZ_PACKAGE_TMUX_STATIC
+		bool "Link statically"
+		default n
+		help
+			TMUX will be linked statically to run without libraries
+
+endif # FREETZ_PACKAGE_TMUX
 
