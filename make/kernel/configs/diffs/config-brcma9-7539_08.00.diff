@@ -1,0 +1,11 @@
+--- avm/config-brcma9-7539_08.00
++++ freetz/config-brcma9-7539_08.00
+@@ -4,7 +4,7 @@
+ #
+ 
+ #
+-# Compiler: arm-buildroot-linux-gnueabi-gcc.br_real (Buildroot 2020.02.1-g3ef93f8b) 9.3.0
++# Compiler: arm-unknown-linux-gnueabi-gcc (GCC) 9.3.0
+ #
+ CONFIG_CC_IS_GCC=y
+ CONFIG_GCC_VERSION=90300
