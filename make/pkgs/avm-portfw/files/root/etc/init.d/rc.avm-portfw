@@ -52,8 +52,17 @@ apply() {
 	echo "Applying $DAEMON_LONG_NAME ... done."
 }
 
+compat_check() {
+	local ar7cfg_version="$(sed -rn 's/ *ar7cfg_version *= *(.*);/\1/p' /var/flash/ar7.cfg)"
+	[ "$ar7cfg_version" -gt 24 ] 2>/dev/null || return
+	echo "$DAEMON_LONG_NAME is incompatible with ar7cfg_version=$ar7cfg_version ... failed."
+	exit 1
+}
+
 case $1 in
 	""|load)
+		compat_check
+
 		modreg cgi $DAEMON $DAEMON_LONG_NAME
 		modreg daemon --hide $DAEMON
 
