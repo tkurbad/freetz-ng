@@ -85,6 +85,7 @@ Latest changes
    * ImageMagick 7.1.1-38
    * mc (Midnight Commander) 4.8.31/4.8.32
    * Nano 8.2
+   * OpenSSH 9.3p2/9.9p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.15
    * RPCBind 1.2.7
    * RRDtool 1.2.30/1.9.0
