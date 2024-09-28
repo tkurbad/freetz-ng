@@ -18,7 +18,7 @@ for dir in $(find "$INPWD" -maxdepth 1 -mindepth 1 -type d | sort); do
 	anc="${tool//_/-}"
 	echo -e "\n  * **[$itm]($tool.md)<a id='${anc%-cgi}'></a>**<br>"
 
-	echo > "$MDPWD/$tool.md"
+	touch "$MDPWD/$tool.md"
 	while [ "0$(awk 'END{print NR}' "$MDPWD/$tool.md" 2>/dev/null)" -lt 2 ]; do echo >> "$MDPWD/$tool.md"; done
 	sed "1c# $itm" -i "$MDPWD/$tool.md"
 
