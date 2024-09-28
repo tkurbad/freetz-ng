@@ -67,8 +67,8 @@ Signed-off-by: Eugene Rudoy <gene.devel@gmail.com>
  	smallint quiet = 0;
  	IF_NOT_FEATURE_UNZIP_CDF(const) smallint verbose = 0;
  	enum { O_PROMPT, O_NEVER, O_ALWAYS };
-@@ -561,7 +576,7 @@
- 
+@@ -566,7 +581,7 @@
+ // -X	restore user:group ownership
  	opts = 0;
  	/* '-' makes getopt return 1 for non-options */
 -	while ((i = getopt(argc, argv, "-d:lnotpqxjvK")) != -1) {
@@ -76,7 +76,7 @@ Signed-off-by: Eugene Rudoy <gene.devel@gmail.com>
  		switch (i) {
  		case 'd':  /* Extract to base directory */
  			base_dir = optarg;
-@@ -608,6 +623,13 @@
+@@ -614,6 +629,13 @@
  			opts |= OPT_K;
  			break;
  
@@ -90,7 +90,7 @@ Signed-off-by: Eugene Rudoy <gene.devel@gmail.com>
  		case 1:
  			if (!src_fn) {
  				/* The zip file */
-@@ -925,6 +947,36 @@
+@@ -932,6 +954,36 @@
  		/* Strip paths (after -l: unzip -lj a.zip lists full names) */
  		if (opts & OPT_j)
  			overlapping_strcpy(dst_fn, bb_basename(dst_fn));

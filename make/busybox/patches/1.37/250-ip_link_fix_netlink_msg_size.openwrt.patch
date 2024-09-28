@@ -1,6 +1,6 @@
 --- networking/libiproute/iplink.c
 +++ networking/libiproute/iplink.c
-@@ -683,7 +683,7 @@
+@@ -953,7 +953,7 @@
  	}
  	xrtnl_open(&rth);
  	ll_init_map(&rth);

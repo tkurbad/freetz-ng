@@ -1,6 +1,6 @@
 --- ./Makefile.flags
 +++ ./Makefile.flags
-@@ -129,7 +129,7 @@
+@@ -130,7 +130,7 @@
  endif
  
  ifeq ($(CONFIG_PIE),y)
