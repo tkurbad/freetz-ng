@@ -8,18 +8,17 @@ config FREETZ_PACKAGE_UNRAR
 
 if FREETZ_PACKAGE_UNRAR
 
-
 	choice
 		prompt "Version"
 			default FREETZ_PACKAGE_UNRAR_VERSION_CURRENT
 
 		config FREETZ_PACKAGE_UNRAR_VERSION_ABANDON
 			bool "6.1.7"
-			depends on !FREETZ_TARGET_GCC_4_8_MIN
+			depends on FREETZ_TARGET_GCC_5_MAX
 
 		config FREETZ_PACKAGE_UNRAR_VERSION_CURRENT
 			bool "7.0.9"
-			depends on FREETZ_TARGET_GCC_4_8_MIN
+			depends on !FREETZ_TARGET_GCC_5_MAX
 
 	endchoice
 
