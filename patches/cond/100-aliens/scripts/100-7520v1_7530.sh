@@ -1,11 +1,11 @@
-isFreetzType 7520_7530 || return 0
+isFreetzType 7520_V1_7530_W5 || return 0
 
 if [ -z "$FIRMWARE2" ]; then
 	echo "ERROR: no tk firmware" 1>&2
 	exit 1
 fi
 
-echo1 "adapt firmware for 7520"
+echo1 "adapt firmware for 7520v1"
 
 files=""
 files+=" css/rd/illustrations/box.gif"    # 7.1x / 7.0x
