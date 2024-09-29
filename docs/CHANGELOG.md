@@ -67,8 +67,8 @@ Latest changes
 
  - AVM sources:
    * 5690 pro 7.62 - 5.4.213
-   * 7530 ax  8.00 - 4.19.183
-   * 7590 ax  8.00 - 4.9.325
+   * 7530 ax  8.00 - 4.19.183 (corrupt)
+   * 7590 ax  8.00 - 4.9.325 (corrupt)
 
  - Patches:
    * Various Fritzos 8.0 related changes
