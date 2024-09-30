@@ -1401,7 +1401,11 @@ if [ "$DO_MOD" -gt 0 ]; then
 			kos_missing=y
 		done
 		[ "$FIRMWARE_NOCOMPILE" != "1" -a -n "$kos_missing" ] && error 1 "Enable missing with 'make kernel-menuconfig' as (M)odule (and push a pull request). Use '/' to search in menuconfig."
+	fi
 
+	echo0 "processing modules"
+
+	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
 		echo1 "generating modules.dep"
 		DEPMOD_TEMP="$(mktemp)"
 		if [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ]; then
