@@ -1,4 +1,4 @@
-# kconfig 6.10
+# kconfig 6.11
  - Manpage: [https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html](https://www.kernel.org/doc/html/next/kbuild/kconfig-language.html)
  - Changelog: [https://github.com/torvalds/linux/tags](https://github.com/torvalds/linux/tags)
  - Repository: [https://github.com/torvalds/linux/tree/master/scripts/kconfig](https://github.com/torvalds/linux/tree/master/scripts/kconfig)
