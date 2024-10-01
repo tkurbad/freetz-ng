@@ -60,6 +60,7 @@ Latest changes
    * busybox 1.37.0
    * cmake 3.30.4
    * fakeroot 1.36
+   * kconfig 6.11
    * meson 1.5.2
    * openssl 3.0.15
    * precompiled host-tools 2024-09-28
