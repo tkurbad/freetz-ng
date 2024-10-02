@@ -97,6 +97,7 @@ Latest changes
    * SQLite 3.40.1/3.46.1
    * tmux 3.5
    * Unbound 1.21.0
+   * XZ 5.6.3
 
  - Libraries:
    * expat 2.6.3
