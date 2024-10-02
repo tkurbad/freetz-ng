@@ -1,4 +1,4 @@
-# lzma2 5.6.2
+# lzma2 5.6.3
  - Homepage: [https://tukaani.org/xz/](https://tukaani.org/xz/)
  - Changelog: [https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS;hb=HEAD](https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS;hb=HEAD)
  - Repository: [https://git.tukaani.org/?p=xz.git](https://git.tukaani.org/?p=xz.git)
