@@ -1,5 +1,11 @@
 # NEWS
 
+ * __[2024-09-30](#2024-09-30)__<a id='2024-09-30'></a><br>
+   Jan Oetjen ist seit heute CEO von AVM. Er kennt sich unter anderem mit bei Kunden äusserst<br>
+   beliebten Abomodellen für Software, E-Mails und Hotelreisen aus.<br>
+   Immehin ist es nicht Smudo geworden ;-)<br>
+   Siehe [Deskmodder.de - Führungswechsel bei AVM](https://www.deskmodder.de/blog/2024/09/27/fuehrungswechsel-bei-avm-jan-oetjen-uebernimmt-ceo-posten/)<br>
+
  * __[2024-09-18](#2024-09-18)__<a id='2024-09-18'></a><br>
    Diese Woche wurden die internen Namen viele Geräte geändert um die ganzen Wifi 5/6/7 Modelle,<br>
    B-Typen, XGS/PRO und andere Variationen besser handhaben zu können. Daher sollte nach einem<br>
