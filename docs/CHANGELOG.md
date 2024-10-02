@@ -64,7 +64,7 @@ Latest changes
    * meson 1.5.2
    * openssl 3.0.15
    * precompiled host-tools 2024-09-28
-   * python 3.12.6
+   * python 3.12.7
 
  - AVM sources:
    * 5690 pro 7.62 - 5.4.213
