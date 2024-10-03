@@ -1369,6 +1369,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			warn2 "Freetz and AVM kernel versions do not match. Wrong kernel version\nconfiguration in Freetz or no sources matching firmware version provided by AVM?$gplnag"
 		fi
 	fi
+	echo1 "using kernel source-id: ${FREETZ_AVM_SOURCE_ID:-vanilla}"
 
 	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
 		[ "$FREETZ_STRIP_MODULES_FREETZ" == "y" ] && strip_output=" and stripping"
