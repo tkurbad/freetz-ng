@@ -474,7 +474,7 @@ trap cleanup EXIT SIGTERM SIGINT
 usage() {
 cat << EOX
 
-Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram <mb> ] [ -lfs <0|1|9> ] [ -cmd <ftp|ncftp> ] [ -hn ]
+Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem <mb> ] [ -lfs <0|1|9> ] [ -cmd <ftp|ncftp> ] [ -hn ]
 
 [image]           When no 'image' file is given, images/latest.image will be tried.
 -f                Disable safety prompt, force instant flash.
@@ -484,7 +484,7 @@ Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram
 -map <hex>        Only ram-boot and fit-boot mode: Start of mapped memory (PHYS_OFFSET).
 -ali <kb>         Only ram-boot and fit-boot mode: Alignment in kB of the uploaded file.
                     Without this parameter, the default for fit-boot is 64 and ram-boot 0.
--ram <mb>         Only ram-boot and fit-boot mode: Usable ram size in MB of your device.
+-mem <mb>         Only ram-boot and fit-boot mode: Usable ram size in MB of your device.
                     Without this parameter, the default of 208 MB (FIT: 384) will be used.
                     Use '0' to detect and use all available ram.
 -lfs <0|1|9>      Not single- and fit-boot mode: Set linux_fs_start to 0 or 1 and flash this.
@@ -497,8 +497,8 @@ Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram
 This scipt supports currently single-, ram-, dual-, uimg- and fit-boot modes, for more
 infomations see https://freetz-ng.github.io/freetz-ng/INSTALL#methoden
 If flashing ram-boot/nand/inmemory does not work...
-For ram-boot mode you may need to set a larger '-ram' value then the default of '208' MB.
-You could use '-ram 0' to detect the size and use the maximum. The value AVM uses is
+For ram-boot mode you may need to set a larger '-mem' value then the default of '208' MB.
+You could use '-mem 0' to detect the size and use the maximum. The value AVM uses is
 hardcoded into the recovery file and does not always use all available memory. A smaller
 value is okay as long as the image in the ram has enough ram to boot and flash itsef.
 
@@ -540,7 +540,7 @@ while [ $# -ge 1 ]; do
 			[ -z "$ALIBYTES" ] && echo "Invalid value for alignment" && usage
 			shift
 			;;
-		(-ram)
+		(-mem)
 			[ -z "$2" -o "$2" != "${2#\-}" ] && usage
 			[ "$2" -ge 0 ] 2>/dev/null && FULLSIZE="0x$(printf '%.8x' "$(( $2 * 1048576 ))")"
 			[ -z "$FULLSIZE" ] && echo "Invalid value for ram size" && usage
@@ -624,7 +624,7 @@ fi
 [ ! $ISFIT ]    && [ $NOAFU ]                    && echo "Parameter '-afu' is only allowed for fit-boot mode."               && exit 1
 [ $ISFIT ]      && [ $LFS ]                      && echo "Parameter '-lfs' is not allowed for fit-boot mode."                && exit 1
 [ $ISFIT ]      && [ ! $LFS ]                    && LFS="9"
-[ ! $ISRAM ] && [ ! $ISFIT ] && [ $FULLSIZE ]    && echo "Parameter '-ram' is only allowed for ram-boot and fit-boot mode."  && exit 1
+[ ! $ISRAM ] && [ ! $ISFIT ] && [ $FULLSIZE ]    && echo "Parameter '-mem' is only allowed for ram-boot and fit-boot mode."  && exit 1
 [ ! $ISRAM ] && [ ! $ISFIT ] && [ $MAPSTART ]    && echo "Parameter '-map' is only allowed for ram-boot and fit-boot mode."  && exit 1
 [ ! $ISRAM ] && [ ! $ISFIT ] && [ $ALIBYTES ]    && echo "Parameter '-ali' is only allowed for ram-boot and fit-boot mode."  && exit 1
 [ $ISUIMG ]     && [ ! -x $UIMG_TOOL ]           && echo "File $UIMG_TOOL missing. Run 'make uimg-host' first."              && exit 1
@@ -701,7 +701,7 @@ if [ -z "$FOUND_NCFTP" -a -z "$FOUND_FTP" ]; then
 	exit 1
 fi
 if [ -z "$FOUND_FTP" ]; then
-	[ -n "$ISRAM$ISFIT" ] && [ "${FULLSIZE//0/}" == "x" ] && echo "Parameter '-ram' has to be bigger than 0 if you have no 'ftp' installed."  && exit 1
+	[ -n "$ISRAM$ISFIT" ] && [ "${FULLSIZE//0/}" == "x" ] && echo "Parameter '-mem' has to be bigger than 0 if you have no 'ftp' installed."  && exit 1
 	[ ! $ISSINGLE ]       && [ -z "$LFS" ]                && echo "Parameter '-lfs' is mandatory if you have no 'ftp' installed."             && exit 1
 	[ $ISDUAL ]           && [ "$LFS" == "9" ]            && echo "Parameter '-lfs' with 0 or 1 is mandatory if you have no 'ftp' installed." && exit 1
 	[ $ISUIMG ]           && [ "$LFS" == "9" ]            && echo "Parameter '-lfs' with 0 or 1 is mandatory if you have no 'ftp' installed." && exit 1
