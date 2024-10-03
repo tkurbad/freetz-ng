@@ -97,7 +97,7 @@ Latest changes
    * Stunnel 5.73
    * SQLite 3.40.1/3.46.1
    * tmux 3.5
-   * Unbound 1.21.0
+   * Unbound 1.21.1
    * XZ 5.6.3
 
  - Libraries:
