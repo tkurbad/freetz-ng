@@ -1,5 +1,8 @@
 # lsof 4.89 (binary only) - DEPRECATED
  - Homepage: [https://people.freebsd.org/~abe/](https://people.freebsd.org/~abe/)
+ - Manpage: [https://lsof.readthedocs.io/](https://lsof.readthedocs.io/)
+ - Changelog: [https://github.com/lsof-org/lsof/releases](https://github.com/lsof-org/lsof/releases)
+ - Repository: [https://github.com/lsof-org/lsof](https://github.com/lsof-org/lsof)
  - Package: [master/make/pkgs/lsof/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lsof/)
  - Maintainer: -
 
