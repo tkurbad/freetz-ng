@@ -29,8 +29,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_5491-07.31.image](https://download.avm.de/fritzbox/fritzbox-5491/deutschland/fritz.os/FRITZ.Box_5491-07.31.image)
    - other: [FRITZ.Box_5491-07.31.image](https://download.avm.de/fritzbox/fritzbox-5491/other/fritz.os/FRITZ.Box_5491-07.31.image)
  * fritzbox-5530-fiber/
-   - deutschland: [FRITZ.Box_5530_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530_Fiber-07.81.image)
-   - other: [FRITZ.Box_5530_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/other/fritz.os/FRITZ.Box_5530_Fiber-07.81.image)
+   - deutschland: [FRITZ.Box_5530_Fiber-08.00.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530_Fiber-08.00.image)
+   - other: [FRITZ.Box_5530_Fiber-08.00.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/other/fritz.os/FRITZ.Box_5530_Fiber-08.00.image)
  * fritzbox-5590-fiber/
    - deutschland: [FRITZ.Box_5590_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-07.81.image)
    - other: [FRITZ.Box_5590_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/other/fritz.os/FRITZ.Box_5590_Fiber-07.81.image)
