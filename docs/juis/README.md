@@ -82,7 +82,6 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 185: [FRITZ.Box_7490-07.59.image](http://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.59.image)
  - HWR 190: [FRITZ.Powerline_546E.118.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-546e/deutschland/fritz.os/FRITZ.Powerline_546E.118.07.15.image)
  - HWR 226: [FRITZ.Box_7590-07.90-116347-LabBETA.image](http://download.avm.de/labor/Smart24P1/7590/FRITZ.Box_7590-07.90-116347-LabBETA.image)
- - HWR 227: [FRITZ.Box_4040-07.90-116321-LabBETA.image](http://download.avm.de/labor/Smart24P1/4040/FRITZ.Box_4040-07.90-116321-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
 
@@ -136,8 +135,6 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 ### Dect-Labor
  - MHW 05.01: [05.01.04.88.avm.de.upd](http://download.avm.de/dect/0501/move21/05.01.04.88.avm.de.upd)
  - MHW 06.04: [06.04.03.54.avm.de.upd](http://download.avm.de/dect/0604/p15/06.04.03.54.avm.de.upd)
- - MHW 06.06: [06.06.05.21.avm.de.upd](http://download.avm.de/dect/0606/Smart24/06.06.05.21.avm.de.upd)
- - MHW 06.07: [06.07.05.21.avm.de.upd](http://download.avm.de/dect/0607/Smart24/06.07.05.21.avm.de.upd)
  - MHW 07.02: [07.02.04.26.avm.de.upd](http://download.avm.de/dect/0702/move21/07.02.04.26.avm.de.upd)
  - MHW 07.03: [07.03.04.25.avm.de.upd](http://download.avm.de/dect/0703/move21/07.03.04.25.avm.de.upd)
  - MHW 07.04: [07.04.04.25.avm.de.upd](http://download.avm.de/dect/0704/move21/07.04.04.25.avm.de.upd)
