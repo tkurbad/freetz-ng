@@ -58,7 +58,7 @@ Latest changes
 
  - Host tools:
    * busybox 1.37.0
-   * cmake 3.30.4
+   * cmake 3.30.5
    * fakeroot 1.36
    * kconfig 6.11
    * lzma2 5.6.3
