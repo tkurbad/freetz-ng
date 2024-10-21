@@ -3,8 +3,6 @@ echo1 "patching dsl overview"
 
 if [ "$FREETZ_AVM_VERSION_08_0X_MIN" == "y" ] ; then
 	PVER="08_0X"
-elif [ "$FREETZ_AVM_VERSION_07_8X_MIN" == "y" ] ; then
-	PVER="07_8X"
 elif [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ] ; then
 	PVER="07_2X"
 elif [ "$FREETZ_AVM_VERSION_07_0X_MIN" == "y" ] ; then

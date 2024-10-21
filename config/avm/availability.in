@@ -452,16 +452,6 @@ config FREETZ_AVM_HAS_FIRMWARE_07_5X
 		))
 
 
-config FREETZ_AVM_HAS_FIRMWARE_07_8X
-	bool
-	default y
-	depends on \
-		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
-			FREETZ_TYPE_5530 || \
-			FREETZ_TYPE_5590 \
-		))
-
-
 config FREETZ_AVM_HAS_FIRMWARE_08_0X_INHAUS
 	bool
 	default y
