@@ -88,7 +88,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 ### FOS-Inhaus
  - HWR 185: [FRITZ.Box_7490-07.57-113062-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL2/7490/FRITZ.Box_7490-07.57-113062-Inhaus.image)
  - HWR 206: [FRITZ.Box_WLAN_Repeater_1750E-07.31-111633-Inhaus.image](http://download.avm.de/inhaus/WU22PSQ19/1750E/FRITZ.Box_WLAN_Repeater_1750E-07.31-111633-Inhaus.image)
- - HWR 226: [FRITZ.Box_7590-07.90-116345-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/7590/FRITZ.Box_7590-07.90-116345-Inhaus.image)
+ - HWR 226: [FRITZ.Box_7590-07.90-116471-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/7590/FRITZ.Box_7590-07.90-116471-Inhaus.image)
  - HWR 227: [FRITZ.Box_4040-07.90-116319-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/4040/FRITZ.Box_4040-07.90-116319-Inhaus.image)
  - HWR 236: [FRITZ.Box_7530-07.90-116105-Inhaus.image](http://download.avm.de/inhaus/Smart24P1/7530/FRITZ.Box_7530-07.90-116105-Inhaus.image)
  - HWR 240: [FRITZ.Repeater_600-07.57-111452-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/600/FRITZ.Repeater_600-07.57-111452-Inhaus.image)
