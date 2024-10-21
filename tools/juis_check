@@ -206,7 +206,7 @@ fi
 	if [ -z "${Flag// /}" ]; then
 		Flag="$(echo 'null mesh_master mesh_master_no_trusted mesh_repeater mesh_repeater_no_trusted' | sed 's/ /\n/g' | shuf | head -n1)"
 		Flag="$Flag $(echo 'null medium_lan medium_dsl' | sed 's/ /\n/g' | shuf | head -n1)"
-		Flag="$Flag $(echo 'null null crashreport myfritz_letsencrypt botnet_detection avm_acs prov_acs' | sed 's/ /\n/g' | shuf | head -n3)"
+		Flag="$Flag $(echo 'null null crashreport myfritz_letsencrypt botnet_detection avm_acs prov_acs 2nd_factor_disabled' | sed 's/ /\n/g' | shuf | head -n3)"
 		[ -n "$docsis" ] && Flag="$Flag cable_retail"
 		[ -z "${Flag// /}" ] && Flag='empty'
 	fi
