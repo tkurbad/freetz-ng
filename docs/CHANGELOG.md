@@ -70,6 +70,7 @@ Latest changes
  - AVM sources:
    * 5690 pro 7.62 - 5.4.213
    * 6591     8.00 - 5.15.153 (corrupt)
+   * 5530     8.00 - 4.9.276
    * 7530 ax  8.00 - 4.19.183 (corrupt)
    * 7590 ax  8.00 - 4.9.325 (corrupt)
 
