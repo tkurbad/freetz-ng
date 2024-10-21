@@ -391,7 +391,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_4040-07.59.image"                                                          if FREETZ_TYPE_4040                            && FREETZ_TYPE_FIRMWARE_07_5X
 	default "FRITZ.Box_4040-07.90-115637-LabBETA.image"                                           if FREETZ_TYPE_4040                            && FREETZ_TYPE_FIRMWARE_08_0X_LABOR
 	#
-	default "FRITZ.Box_4050-07.90-115691-LabBETA.image"                                           if FREETZ_TYPE_4050                            && FREETZ_TYPE_FIRMWARE_08_0X_LABOR
+	default "FRITZ.Box_4050-07.58.image"                                                          if FREETZ_TYPE_4050                            && FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_4060-07.30.image"                                                          if FREETZ_TYPE_4060                            && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_4060-07.59.image"                                                          if FREETZ_TYPE_4060                            && FREETZ_TYPE_FIRMWARE_07_5X
@@ -738,7 +738,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	depends                                                                                       on FREETZ_TYPE_FIRMWARE_LABOR && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
 	default "fritzbox-4040-labor-115637.zip"                                                      if FREETZ_TYPE_4040
-	default "fritzbox-4050-labor-115691.zip"                                                      if FREETZ_TYPE_4050
 	default "fritzbox-4060-labor-115640.zip"                                                      if FREETZ_TYPE_4060
 	default "fritzbox-5590-labor-115658.zip"                                                      if FREETZ_TYPE_5590
 	default "fritzbox-6591-labor-115655.zip"                                                      if FREETZ_TYPE_6591
