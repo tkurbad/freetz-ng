@@ -11,7 +11,7 @@ files=""
 files+=" css/rd/illustrations/box.gif"    # 7.1x / 7.0x
 files+=" css/rd/illustrations/box.svg"    # 7.2x
 files+=" assets/illustrations/box.svg"    # 7.5x
-files+=" assets/illustrations/box3d.svg"  # 7.5x
+files+=" assets/illustrations/box3d.svg"  # 7.5x / 8.0x
 for i in $files; do
 	[ ! -e "${FILESYSTEM_TK_DIR}/usr/www/avm/$i" ] && continue
 	echo2 "replacing $i"
