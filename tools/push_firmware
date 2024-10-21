@@ -127,7 +127,7 @@ function push_fw() {
 		echo "Error, ProductID of image ($HWR_IMG) does not match device ($HWR_ENV)!"
 		echo -n "Type 'c' to ignore and continue: "
 		read -n1 -t9 c
-		[ "$?" != "0" ] && echo -e "¿\nTimeout" && exit 1
+		[ "$?" != "0" ] && echo -e "\nTimeout" && exit 1
 		[ "$c" != "c" ] && echo -e "\nAborted" && exit 1
 		echo -e "\n"
 	fi
