@@ -476,7 +476,6 @@ config FREETZ_AVM_HAS_FIRMWARE_08_0X_LABOR
 		)) \
 		|| \
 		( FREETZ_TYPE_LANG_DE && ( \
-			FREETZ_TYPE_6660 || \
 			FREETZ_TYPE_6670 || \
 			FREETZ_TYPE_6690 \
 		))
@@ -497,7 +496,8 @@ config FREETZ_AVM_HAS_FIRMWARE_08_0X
 		)) \
 		|| \
 		( FREETZ_TYPE_LANG_DE && ( \
-			FREETZ_TYPE_6591 \
+			FREETZ_TYPE_6591 || \
+			FREETZ_TYPE_6660 \
 		))
 
 
