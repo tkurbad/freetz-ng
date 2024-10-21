@@ -104,7 +104,7 @@ Currently supported devices and firmwares
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
   - 155.07.29 rev92647 {ALL} [PSQ19P2NL4]
   - 155.07.59 rev113615 {ALL} [MOVE21NL2]
-  - 155.07.90 rev115637 {ALL} [Smart24 P1] (Labor)
+  - 155.08.00 rev116372 {ALL} [Smart24 P1]
 * __Fritz!Box 4050 (UNTESTED)__
   - 287.07.58 rev115740 {ALL} [MOVE21NL1]
 * __Fritz!Box 4060__
