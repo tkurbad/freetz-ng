@@ -1360,7 +1360,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	echo0 "processing kernel"
 	echo1 "checking kernel version"
 	echo2 "... used by AVM ...... ${MODULES_SUBDIR##*/}"
-	echo2 "... used by Freetz ... ${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}"
+	echo2 "... used by Freetz ... ${FREETZ_KERNEL_VERSION_MODULES_SUBDIR} (${FREETZ_AVM_SOURCE_ID:-vanilla})"
 	if [ "lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}" != "$MODULES_SUBDIR" ]; then
 		gplnag="\nAre GPL sources for YOUR device and firware version released at http://osp.avm.de/ yet?\nHave YOU asked fritzbox_info@avm.de for sources?"
 		if [ "$FREETZ_REPLACE_MODULE_AVAILABLE" == "y" ]; then
@@ -1369,7 +1369,6 @@ if [ "$DO_MOD" -gt 0 ]; then
 			warn2 "Freetz and AVM kernel versions do not match. Wrong kernel version\nconfiguration in Freetz or no sources matching firmware version provided by AVM?$gplnag"
 		fi
 	fi
-	echo1 "using kernel source-id: ${FREETZ_AVM_SOURCE_ID:-vanilla}"
 
 	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
 		[ "$FREETZ_STRIP_MODULES_FREETZ" == "y" ] && strip_output=" and stripping"
