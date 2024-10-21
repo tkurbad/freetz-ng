@@ -478,7 +478,7 @@ trap cleanup EXIT SIGTERM SIGINT
 usage() {
 cat << EOX
 
-Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem <mb> ] [ -lfs <0|1|9> ] [ -cmd <ftp|ncftp> ] [ -hn ]
+Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem <mb> ] [ -lfs <0|1|9> ] [ -prg <ftp|ncftp> ] [ -hn ]
 
 [image]           When no 'image' file is given, images/latest.image will be tried.
 -f                Disable safety prompt, force instant flash.
@@ -495,7 +495,7 @@ Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem
                     Without this parameter, the inactive linux_fs_start will be used.
                     Use '9' for the currently active linux_fs_start.
 -afu              Only fit-boot: No avm_fwupdate, run system from ram without flash it.
--cmd <ftp|ncftp>  Force the prefered usage of ncftp (buggy) or ftp command for upload.
+-prg <ftp|ncftp>  Force the prefered usage of ncftp (buggy) or ftp command for upload.
 -hn               Only single-boot mode: Flash to an 'Alice/HanseNet' version of 7570.
 
 This scipt supports currently single-, ram-, dual-, uimg- and fit-boot modes, for more
@@ -559,7 +559,7 @@ while [ $# -ge 1 ]; do
 			NOAFU=true
 			shift
 			;;
-		(-cmd)
+		(-prg)
 			[ "$2" != "ftp" -a "$2" != "ncftp" ] && echo "Invalid command value" && usage
 			CMD=$2
 			shift
