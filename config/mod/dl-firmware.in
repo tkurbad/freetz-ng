@@ -628,7 +628,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7520-07.14.image"                                                          if FREETZ_TYPE_7520_V1  && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_7520-07.29.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7520-07.59.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_7520-07.90-115667-LabBETA.image"                                           if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_08_0X_LABOR
+	default "FRITZ.Box_7520-08.00.image"                                                          if FREETZ_TYPE_7520_V1                         && FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_7520_B-07.31.image"                                                        if FREETZ_TYPE_7520_V2                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7520_B-07.59.image"                                                        if FREETZ_TYPE_7520_V2                         && FREETZ_TYPE_FIRMWARE_07_5X
@@ -746,7 +746,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	default "fritzbox-6850_lte-labor-114968.zip"                                                  if FREETZ_TYPE_6850_V1
 	default "fritzbox-6850_5g-labor-114965.zip"                                                   if FREETZ_TYPE_6850_V2
 	default "fritzbox-7510-labor-115664.zip"                                                      if FREETZ_TYPE_7510
-	default "fritzbox-7520-labor-115667.zip"                                                      if FREETZ_TYPE_7520_V1
 	default "fritzbox-7530-labor-115673.zip"                                                      if FREETZ_TYPE_7530_W5
 	default "fritzbox-7530 AX-labor-115676.zip"                                                   if FREETZ_TYPE_7530_W6_V1
 	default "fritzbox-7590-labor-115685.zip"                                                      if FREETZ_TYPE_7590_W5
