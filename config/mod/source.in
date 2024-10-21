@@ -29,7 +29,8 @@ config FREETZ_REPLACE_KERNEL_AVAILABLE
 # "kernel version used by Freetz" == "kernel version used by AVM"
 config FREETZ_REPLACE_MODULE_AVAILABLE
 	bool
-	depends on FREETZ_KERNEL_AVMDIFF_AVAILABLE && !FREETZ_TYPE_FIRMWARE_UNTESTED
+	depends on FREETZ_KERNEL_AVMDIFF_AVAILABLE
+	depends on !FREETZ_TYPE_FIRMWARE_UNTESTED # nobody ever used this device
 	depends on !FREETZ_AVM_SOURCE_7539_07_56  # 07_5X-final 7539 (corrupt)
 	depends on !FREETZ_AVM_SOURCE_7539_08_00  # 08_0X-final 7539 (corrupt)
 	depends on !FREETZ_AVM_SOURCE_7599_08_00  # 08_0X-final 7590/7599 (corrupt)
