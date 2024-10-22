@@ -1,6 +1,6 @@
 --- Makefile
 +++ Makefile
-@@ -2633,7 +2633,7 @@
+@@ -2682,7 +2682,7 @@
  		   autoconf -o configure configure.ac+ && \
  		   $(RM) configure.ac+
  

@@ -86,7 +86,7 @@ Latest changes
    * CA-bundle 2024-09-24
    * Curl 8.10.1
    * Dropbear 2024.86
-   * Git 2.46.2
+   * Git 2.47.0
    * htpdate 2.0.0
    * ImageMagick 7.1.1-38
    * mc (Midnight Commander) 4.8.31/4.8.32
