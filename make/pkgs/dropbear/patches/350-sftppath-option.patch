@@ -13,7 +13,7 @@
  	int forkbg;
 --- src/svr-chansession.c
 +++ src/svr-chansession.c
-@@ -687,7 +687,7 @@
+@@ -684,7 +684,7 @@
  			if ((cmdlen == 4) && strncmp(chansess->cmd, "sftp", 4) == 0) {
  				char *expand_path = expand_homedir_path(SFTPSERVER_PATH);
  				m_free(chansess->cmd);

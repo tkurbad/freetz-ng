@@ -40,7 +40,7 @@
  					next = &svr_opts.restrict_group;
 --- src/svr-auth.c
 +++ src/svr-auth.c
-@@ -303,6 +303,14 @@
+@@ -304,6 +304,14 @@
  	}
  #endif /* HAVE_GETGROUPLIST */
  

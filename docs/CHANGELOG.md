@@ -85,6 +85,7 @@ Latest changes
    * BusyBox 1.27.2/1.37.0
    * CA-bundle 2024-09-24
    * Curl 8.10.1
+   * Dropbear 2024.86
    * Git 2.46.2
    * htpdate 2.0.0
    * ImageMagick 7.1.1-38

@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2024.85)
+$(call PKG_INIT_BIN, 2024.86)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=86b036c433a69d89ce51ebae335d65c47738ccf90d13e5eb0fea832e556da502
+$(PKG)_HASH:=e78936dffc395f2e0db099321d6be659190966b99712b55c530dd0a1822e0a5e
 $(PKG)_SITE:=https://matt.ucc.asn.au/dropbear/releases,https://dropbear.nl/mirror/releases
 #$(PKG)_SITE:=hg@https://secure.ucc.asn.au/hg/dropbear
 ### WEBSITE:=https://matt.ucc.asn.au/dropbear/dropbear.html
