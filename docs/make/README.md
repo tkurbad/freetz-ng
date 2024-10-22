@@ -498,7 +498,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[pptp 1.10.0](pptp.md)<a id='pptp'></a>**<br>
     Linux and FreeBSD client for the proprietary Microsoft Point-to-Point tunneling protocol, PPTP, sponsored by HP.
 
-  * **[pptpd 1.4.0](pptpd.md)<a id='pptpd'></a>**<br>
+  * **[pptpd 1.4.0 - DEPRECATED](pptpd.md)<a id='pptpd'></a>**<br>
     Poptop is an open source implementation of a PPTP server. Running under x86 or embedded Motorola ColdFire architectures Poptop provides full interoperability with the Microsoft PPTP VPN client.
 
   * **<u>privatekeypassword 0.7-git</u><a id='privatekeypassword'></a>**<br>

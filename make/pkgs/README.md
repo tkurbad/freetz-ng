@@ -666,7 +666,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [PPTP Konfiguration](../../docs/make/pptp.md#pptp-konfiguration)
      - [IP Routing](../../docs/make/pptp.md#ip-routing)
 
-  * **[pptpd 1.4.0](../../docs/make/pptpd.md)<a id='pptpd'></a>**<br>
+  * **[pptpd 1.4.0 - DEPRECATED](../../docs/make/pptpd.md)<a id='pptpd'></a>**<br>
     Poptop is an open source implementation of a PPTP server. Running under x86 or embedded Motorola ColdFire architectures Poptop provides full interoperability with the Microsoft PPTP VPN client.
      - [Portweiterleitung](../../docs/make/pptpd.md#portweiterleitung)
      - [Konfiguration](../../docs/make/pptpd.md#konfiguration)
