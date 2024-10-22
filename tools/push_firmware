@@ -142,7 +142,10 @@ function push_fw() {
 
 		[ $ISRAM ] && FILESIZE="$(stat --printf='%s' "$mtdram1")"
 		[ $ISFIT ] && FILESIZE="$(stat --printf='%s' "$fitimage")"
-		[ "$ALIBYTES" != "0" ] && ALIBYTES="$(( $ALIBYTES - ( $FILESIZE % $ALIBYTES ) ))"
+		if [ "$ALIBYTES" != "0" ]; then
+			[ "$(( $FILESIZE % $ALIBYTES ))" == "0" ] && ALIBYTES=0 || ALIBYTES="$(( $ALIBYTES - ( $FILESIZE % $ALIBYTES ) ))"
+		fi
+
 		FILESIZE="0x$(printf '%.8x' $(( $FILESIZE )) )"
 		ALIBYTES="0x$(printf '%.8x' $(( $ALIBYTES )) )"
 		[ $ISFIT ] && \
