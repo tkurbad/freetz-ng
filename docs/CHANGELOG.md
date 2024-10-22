@@ -110,7 +110,7 @@ Latest changes
    * harfbuzz 10.0.1
    * libcap 2.49/2.70
    * libcap-ng 0.8.5
-   * libdeflate 1.21
+   * libdeflate 1.22
    * libmaxminddb 1.11.0
    * libnettle 3.10
    * libpng 1.6.44
