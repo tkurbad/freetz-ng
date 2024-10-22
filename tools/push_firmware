@@ -384,8 +384,12 @@ prepare_image() {
 		fitimage="$tmpdir/fitboot.flash"
 		if tar -C $tmpdir/ -xf $file --wildcards '*/fit-image' >/dev/null 2>&1; then
 			if [ -s "$tmpdir/var/tmp/fit-image" ]; then
-				mv "$tmpdir/var/tmp/fit-image" "$fitimage"
-			fi
+				cat "$tmpdir/var/tmp/fit-image"
+				# fill last 256bytes with 0xFF
+				local byte="$(stat --printf='%s' "$fitimage")"
+				local fill="$(( ( 256 - $byte % 256 ) % 256 ))"
+				[ "$fill" != "0" ] && head /dev/zero -c $fill | LC_ALL=C tr "\000" "\377"
+			fi > "$fitimage"
 		fi
 		if [ ! -s "$fitimage" ]; then
 			echo -e "Error: file is not a valid fit-boot image to be written to the device.\n" >&2
