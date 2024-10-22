@@ -58,6 +58,7 @@ $(PKG)_CONFIGURE_OPTIONS += --without-kerberos5
 $(PKG)_CONFIGURE_OPTIONS += --without-pie
 
 $(PKG)_EXTRA_CFLAGS  += -ffunction-sections -fdata-sections
+$(PKG)_EXTRA_CFLAGS  += $(if $(FREETZ_TARGET_GCC_4_MAX),-std=c99)
 $(PKG)_EXTRA_LDFLAGS += -Wl,--gc-sections
 $(PKG)_EXTRA_LDFLAGS += $(if $(FREETZ_PACKAGE_OPENSSH_STATIC),-static)
 
