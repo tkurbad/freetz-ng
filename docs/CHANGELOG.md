@@ -88,7 +88,7 @@ Latest changes
    * Dropbear 2024.86
    * Git 2.47.0
    * htpdate 2.0.0
-   * ImageMagick 7.1.1-38
+   * ImageMagick 7.1.1-39
    * mc (Midnight Commander) 4.8.31/4.8.32
    * Nano 8.2
    * OpenSSH 9.3p2/9.9p1
