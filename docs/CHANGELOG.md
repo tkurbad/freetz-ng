@@ -99,7 +99,7 @@ Latest changes
    * strace 4.9/5.0/6.11
    * Stunnel 5.73
    * SQLite 3.40.1/3.46.1
-   * tmux 3.5
+   * tmux 3.5a
    * Unbound 1.21.1
    * XZ 5.6.3
 

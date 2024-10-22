@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 3.5)
+$(call PKG_INIT_BIN, 3.5a)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=2fe01942e7e7d93f524a22f2c883822c06bc258a4d61dba4b407353d7081950f
+$(PKG)_HASH:=16216bd0877170dfcc64157085ba9013610b12b082548c7c9542cc0103198951
 $(PKG)_SITE:=https://github.com/$(pkg)/$(pkg)/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://tmux.github.io
 ### MANPAGE:=http://man.openbsd.org/OpenBSD-current/man1/tmux.1
