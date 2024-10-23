@@ -1323,6 +1323,13 @@ config FREETZ_PATCH_COCKPIT_UNSECURE
 	help
 		Hides the "not secure settings" message from cock pit.
 
+config FREETZ_PATCH_COCKPIT_INTERNET
+	bool "Patch cockpit internet connection"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "needless huge internet info" from cock pit.
+
 
 config FREETZ_MODIFY_DSL_WARNING
 	bool "Patch DSL modified message"
