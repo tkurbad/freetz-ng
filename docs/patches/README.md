@@ -519,6 +519,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>PATCH_BETA_ATTRIBUTES: Patch Beta/Labor attributes</u><a id='patch-beta-attributes'></a>**<br>
     This patch removes Beta/Labor attributes from some (older) firmwares AVM released only as Betas so far.
 
+  * **<u>Patch cockpit internet connection</u><a id='patch-cockpit-internet'></a>**<br>
+    Hides the "needless huge internet info" from cock pit.
+
   * **<u>Patch cockpit unsecure settings</u><a id='patch-cockpit-unsecure'></a>**<br>
     Hides the "not secure settings" message from cock pit.
 
