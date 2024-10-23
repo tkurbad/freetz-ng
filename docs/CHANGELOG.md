@@ -77,6 +77,8 @@ Latest changes
 
  - Patches:
    * Various Fritzos 8.0 related changes
+   * New Patch: Hide unsecure settings from cockpit
+   * New Patch: Hide internet connection from cockpit
 
  - Packages:
    * ACME.sh 3.0.9
