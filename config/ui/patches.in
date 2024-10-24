@@ -1323,12 +1323,33 @@ config FREETZ_PATCH_COCKPIT_UNSECURE
 	help
 		Hides the "not secure settings" message from cock pit.
 
-config FREETZ_PATCH_COCKPIT_INTERNET
-	bool "Patch cockpit internet connection"
+config FREETZ_PATCH_COCKPIT_GRAPHICS
+	bool "Patch cockpit connection graphics"
 	depends on FREETZ_AVM_VERSION_08_0X_MIN
 	default n
 	help
-		Hides the "needless huge internet info" from cock pit.
+		Hides the "needless huge internet visualisation" images from cock pit.
+
+config FREETZ_PATCH_COCKPIT_INTERNET
+	bool "Patch cockpit internet info"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "internet details" on the left from cock pit.
+
+config FREETZ_PATCH_COCKPIT_HOMENET
+	bool "Patch cockpit homenet info"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "homenet details" on the right from cock pit.
+
+config FREETZ_PATCH_COCKPIT_UPDATE
+	bool "Patch cockpit update link"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "check for updates" link from cock pit.
 
 
 config FREETZ_MODIFY_DSL_WARNING
