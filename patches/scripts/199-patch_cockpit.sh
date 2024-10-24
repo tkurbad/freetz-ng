@@ -4,7 +4,7 @@ if [ "$FREETZ_PATCH_COCKPIT_UNSECURE" == "y" ]; then
 	cockpit_pruner "osInformations"
 fi
 
-if [ "$FREETZ_PATCH_COCKPIT_GRAPHICS" == "y" ]; then
+if [ "$FREETZ_PATCH_COCKPIT_CONNECTION" == "y" ]; then
 	echo1 "applying cockpit connection graphics patch"
 	cockpit_pruner "cockpit__visualization-container"
 fi

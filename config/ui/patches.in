@@ -1323,7 +1323,7 @@ config FREETZ_PATCH_COCKPIT_UNSECURE
 	help
 		Hides the "not secure settings" message from cock pit.
 
-config FREETZ_PATCH_COCKPIT_GRAPHICS
+config FREETZ_PATCH_COCKPIT_CONNECTION
 	bool "Patch cockpit connection graphics"
 	depends on FREETZ_AVM_VERSION_08_0X_MIN
 	default n
