@@ -742,7 +742,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	default "fritzbox-6690-labor-115649.zip"                                                      if FREETZ_TYPE_6690
 	default "fritzbox-6850_lte-labor-114968.zip"                                                  if FREETZ_TYPE_6850_V1
 	default "fritzbox-6850_5g-labor-114965.zip"                                                   if FREETZ_TYPE_6850_V2
-	default "fritzbox-7530 AX-labor-115676.zip"                                                   if FREETZ_TYPE_7530_W6_V1
 	default "fritzbox-7590-labor-115685.zip"                                                      if FREETZ_TYPE_7590_W5
 	default "fritzbox-7690-labor-115840.zip"                                                      if FREETZ_TYPE_7690
 #	default "xxxxxxxxxxxxxxxxxxxxxxxxx.zip"                                                       if FREETZ_TYPE_xxxx
