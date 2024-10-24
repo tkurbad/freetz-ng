@@ -1359,8 +1359,9 @@ if [ "$DO_MOD" -gt 0 ]; then
 	# modules directory / correctly configured kernel version
 	echo0 "processing kernel"
 	echo1 "checking kernel version"
+	[ "$FREETZ_KERNEL_AVMDIFF_AVAILABLE" == "y" ] && KERNELADID="$FREETZ_AVM_SOURCE_ID" || KERNELADID="vanilla"
 	echo2 "... used by AVM ...... ${MODULES_SUBDIR##*/}"
-	echo2 "... used by Freetz ... ${FREETZ_KERNEL_VERSION_MODULES_SUBDIR} (${FREETZ_AVM_SOURCE_ID:-vanilla})"
+	echo2 "... used by Freetz ... ${FREETZ_KERNEL_VERSION_MODULES_SUBDIR} ($KERNELADID)"
 	if [ "lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}" != "$MODULES_SUBDIR" ]; then
 		gplnag="\nAre GPL sources for YOUR device and firware version released at http://osp.avm.de/ yet?\nHave YOU asked fritzbox_info@avm.de for sources?"
 		if [ "$FREETZ_REPLACE_MODULE_AVAILABLE" == "y" ]; then
