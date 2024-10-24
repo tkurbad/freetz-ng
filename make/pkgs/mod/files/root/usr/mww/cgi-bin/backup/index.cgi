@@ -4,6 +4,7 @@
 
 cgi --id=backup_restore
 cgi_begin "$(lang de:"Konfiguration sichern/wiederherstellen" en:"Backup/restore configuration")"
+[ -x "$(which fwupdate)"      ] && UPDATER_FOUND=y || UPDATER_FOUND=n
 [ -x "$(which tr069fwupdate)" ] && TR069FU_FOUND=y || TR069FU_FOUND=n
 [ -x "$(which openssl)"       ] && OPENSSL_FOUND=y || OPENSSL_FOUND=n
 [ -x "$(which decoder)"       ] && DECODER_FOUND=y || DECODER_FOUND=n
@@ -21,7 +22,7 @@ cat << EOF
 	</p>
 EOF
 
-if [ "$TR069FU_FOUND" == "y" ]; then
+if [ "$TR069FU_FOUND" == "y" -o "$UPDATER_FOUND" == "y" ]; then
 cat << EOF
 	<p>
 	<input type=checkbox name="do_export" id="do_export" >

@@ -31,7 +31,8 @@ mkdir -p "$INNER_DIR" || fail "$(lang de:"Fehler beim Erstellen des Verzeichniss
 # Create additional files
 sort /proc/sys/urlader/environment | sed -rn "s/^(SerialNumber|maca|tr069_passphrase|wlan_key)[ \t]*//p" | md5sum | sed 's/ .*//' > "$OUTER_DIR/identity.md5" \
   || fail "$(lang de:"Fehler beim Erstellen der Identit&auml;t" en:"Erron on creating identity")"
-[ "$DOEXP" == "on" ] && tr069fwupdate configexport $SICPW | sed -n "/^\*\*\*\* FRITZ/,\$p" | gzip > "$OUTER_DIR/export.avm.gz"
+[ -x "$(which tr069fwupdate)" ] && FWUBIN='tr069fwupdate' || FWUBIN='fwupdate'
+[ "$DOEXP" == "on" ] && $FWUBIN configexport $SICPW | sed -n "/^\*\*\*\* FRITZ/,\$p" | gzip > "$OUTER_DIR/export.avm.gz"
 cat << EOF > "$OUTER_DIR/contents.txt"
 This file contains a settings backup by Freetz-NG
 $fname
