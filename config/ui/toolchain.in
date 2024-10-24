@@ -1349,12 +1349,13 @@ comment "Host-tools options ----------------------------------"
 
 choice
 
-	prompt "Patchelf version" if !FREETZ_HOSTTOOLS_DOWNLOAD
+	prompt "Patchelf version"
 		default FREETZ_TOOLS_PATCHELF_VERSION_CURRENT
+		depends on !FREETZ_HOSTTOOLS_DOWNLOAD
 
 	config FREETZ_TOOLS_PATCHELF_VERSION_ABANDON
 		bool "old"
-		depends on !FREETZ_HOSTTOOLS_DOWNLOAD
+		depends on FREETZ_ANCIENT_SYSTEM
 		help
 			For usage with old Ubuntu 14
 
