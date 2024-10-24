@@ -519,7 +519,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>PATCH_BETA_ATTRIBUTES: Patch Beta/Labor attributes</u><a id='patch-beta-attributes'></a>**<br>
     This patch removes Beta/Labor attributes from some (older) firmwares AVM released only as Betas so far.
 
-  * **<u>PATCH_COCKPIT_GRAPHICS: Patch cockpit connection graphics</u><a id='patch-cockpit-graphics'></a>**<br>
+  * **<u>Patch cockpit connection graphics</u><a id='patch-cockpit-connection'></a>**<br>
     Hides the "needless huge internet visualisation" images from cock pit.
 
   * **<u>Patch cockpit homenet info</u><a id='patch-cockpit-homenet'></a>**<br>
