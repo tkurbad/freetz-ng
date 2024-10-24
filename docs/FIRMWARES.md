@@ -147,7 +147,7 @@ Currently supported devices and firmwares
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.58 rev109907 {ALL} [MOVE21NL1]
-  - 272.07.90 rev115658 {ALL} [Smart24 P1] (Labor)
+  - 272.08.00 rev116429 {ALL} [Smart24 P1]
 * __FRITZ!Box 5690 Pro__
   - 279.07.62 rev115017 {ALL} [FCS23]
   - 279.07.90 rev114928 {ALL} [Smart24 P1 FCS] (Inhaus)
