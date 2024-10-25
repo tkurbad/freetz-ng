@@ -110,6 +110,7 @@ Latest changes
    * Stunnel 5.73
    * SQLite 3.40.1/3.46.1
    * tmux 3.5a
+   * Tor 0.4.8.13
    * Unbound 1.22.0
    * XZ 5.6.3
 

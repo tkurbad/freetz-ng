@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 0.4.8.12)
+$(call PKG_INIT_BIN, 0.4.8.13)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=ca7cc735d98e3747b58f2f3cc14f804dd789fa0fb333a84dcb6bd70adbb8c874
+$(PKG)_HASH:=9b28a6d01395ff924a91e30f80b0f2c5c0db8e61b2163c43e415b4fe0cca7843
 $(PKG)_SITE:=https://www.torproject.org/dist
 ### WEBSITE:=https://www.torproject.org/download/tor/
 ### MANPAGE:=https://trac.torproject.org/projects/tor/wiki/
@@ -20,6 +20,8 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_TOR_GEOIP_V4),,$(if $(FREETZ_PACKAGE_TO
 
 
 $(PKG)_DEPENDS_ON += zlib openssl libevent
+
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 
 $(PKG)_CONFIGURE_ENV += tor_cv_malloc_zero_works=no
 $(PKG)_CONFIGURE_ENV += tor_cv_null_is_zero=yes
@@ -43,6 +45,11 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-tool-name-check
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
 $(PKG)_CONFIGURE_OPTIONS += --with-libevent-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"
 $(PKG)_CONFIGURE_OPTIONS += --disable-unittests
+$(PKG)_CONFIGURE_OPTIONS += --disable-nss
+$(PKG)_CONFIGURE_OPTIONS += --disable-seccomp
+$(PKG)_CONFIGURE_OPTIONS += --disable-systemd
+$(PKG)_CONFIGURE_OPTIONS += --disable-lzma
+$(PKG)_CONFIGURE_OPTIONS += --disable-zstd
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_TOR_STATIC
