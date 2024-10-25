@@ -145,4 +145,4 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 08.03: [08.03.04.94.avm.de.upd](http://download.avm.de/dect/0803/move21/08.03.04.94.avm.de.upd)
 
 ### BPjM
- - CRC 723dad4b: [bpjm_20240930_bpjm-modul_10_24.txt.data](http://download.avm.de/bpjm/256342/bpjm_20240930_bpjm-modul_10_24.txt.data)
+ - CRC 7fee56c2: [bpjm_20241025_bpjm-modul_11_24.txt.data](http://download.avm.de/bpjm/257563/bpjm_20241025_bpjm-modul_11_24.txt.data)
