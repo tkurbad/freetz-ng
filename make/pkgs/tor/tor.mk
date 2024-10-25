@@ -21,8 +21,6 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_TOR_GEOIP_V4),,$(if $(FREETZ_PACKAGE_TO
 
 $(PKG)_DEPENDS_ON += zlib openssl libevent
 
-$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
-
 $(PKG)_CONFIGURE_ENV += tor_cv_malloc_zero_works=no
 $(PKG)_CONFIGURE_ENV += tor_cv_null_is_zero=yes
 $(PKG)_CONFIGURE_ENV += tor_cv_sign_extend=yes
