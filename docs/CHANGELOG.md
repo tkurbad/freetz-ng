@@ -125,7 +125,7 @@ Latest changes
    * libmaxminddb 1.11.0
    * libnettle 3.10
    * libpng 1.6.44
-   * liburcu 0.14.0
+   * liburcu 0.14.1
    * libuv 1.44.2/1.49.2
    * libxml2 2.13.4
    * lz4 1.10.0
