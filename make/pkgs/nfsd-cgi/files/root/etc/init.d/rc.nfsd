@@ -36,7 +36,7 @@ start() {
 	# rpcbind needs this for xdr
 	if [ "$RPCPROG" == 'rpcbind' ]; then
 		mkdir -p /var/run/rpcbind
-		chown -R nobody.nobody /var/run/rpcbind
+		chown -R nobody:nobody /var/run/rpcbind
 	fi
 
 	[ -z "$RPCPROG" ] && true || "$RPCPROG"
