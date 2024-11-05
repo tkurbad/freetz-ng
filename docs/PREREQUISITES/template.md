@@ -8,6 +8,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
  - [Debian](#debian)
  - [Devuan](#devuan)
  - [Ubuntu](#ubuntu)
+ - [Mint](#mint)
  - [Kali](#kali)
  - sonst keine
 
@@ -202,6 +203,9 @@ sudo apt-get -y install %%Ubuntu10%%
 ```
 sudo apt-get -y install %%Ubuntu09%%
 ```
+
+### Mint
+Mint wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
 
 ### Kali
 Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
