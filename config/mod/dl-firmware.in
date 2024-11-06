@@ -788,8 +788,8 @@ config FREETZ_DL_SITE2
 	default "@AVM/fritzwlan/fritzwlan-repeater-dvb-c/{other,deutschland}/fritz.os"                if FREETZ_TYPE_1759_1750
 	#
 	default "@AVM/fritzbox.wlan_3170/firmware/deutsch"                                            if FREETZ_TYPE_3170_7170
-	default "@AVM/{fritzbox-3490/deutschland/fritz.os,fritzbox.3490/firmware/deutsch}"                                 if FREETZ_TYPE_3490_7490 && FREETZ_TYPE_LANG_DE
-	default "@AVM/{fritzbox-3490/{other,belgium}/fritz.os,fritzbox.3490/firmware/{english,belgium}}"                   if FREETZ_TYPE_3490_7490 && FREETZ_TYPE_LANG_EN
+	default "@AVM/fritzbox-3490/deutschland/fritz.os"                                             if FREETZ_TYPE_3490_7490 && FREETZ_TYPE_LANG_DE
+	default "@AVM/fritzbox-3490/{other,belgium}/fritz.os"                                         if FREETZ_TYPE_3490_7490 && FREETZ_TYPE_LANG_EN
 	default "@AVM/fritzbox.fon_wlan_7112/firmware/deutsch,@1&1/7112"                              if FREETZ_TYPE_7112_7170
 	default "@AVM/fritzbox.fon_wlan_7113/firmware/deutsch,@1&1/7113"                              if FREETZ_TYPE_7113_7170
 	default "@AVM/fritzbox.fon_wlan_7140/firmware/deutsch"                                        if FREETZ_TYPE_7140_7170
