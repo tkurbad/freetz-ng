@@ -1,30 +1,30 @@
 --- curl-config.in
 +++ curl-config.in
 @@ -29,6 +29,7 @@
- # Used in @libdir@
+ # Used in 'libdir'
  # shellcheck disable=SC2034
- exec_prefix=@exec_prefix@
+ exec_prefix="@exec_prefix@"
 +libdir=@libdir@
  # shellcheck disable=SC2034
- includedir=@includedir@
- cppflag_curl_staticlib=@LIBCURL_PC_CFLAGS@
+ includedir="@includedir@"
+ cppflag_curl_staticlib='@LIBCURL_PC_CFLAGS@'
 @@ -155,8 +156,8 @@
      ;;
  
    --libs)
--    if test "X@libdir@" != "X/usr/lib" -a "X@libdir@" != "X/usr/lib64"; then
+-    if test "X@libdir@" != 'X/usr/lib' -a "X@libdir@" != 'X/usr/lib64'; then
 -      CURLLIBDIR="-L@libdir@ "
-+    if test "X${libdir}" != "X/usr/lib" -a "X${libdir}" != "X/usr/lib64"; then
++    if test "X${libdir}" != 'X/usr/lib' -a "X${libdir}" != 'X/usr/lib64'; then
 +      CURLLIBDIR="-L${libdir} "
      else
-       CURLLIBDIR=""
+       CURLLIBDIR=''
      fi
 @@ -173,7 +174,7 @@
  
    --static-libs)
-     if test "X@ENABLE_STATIC@" != "Xno" ; then
--      echo "@libdir@/libcurl.@libext@" @LDFLAGS@ @LIBCURL_PC_LIBS_PRIVATE@
-+      echo "${libdir}/libcurl.@libext@" @LDFLAGS@ @LIBCURL_PC_LIBS_PRIVATE@
+     if test 'X@ENABLE_STATIC@' != 'Xno'; then
+-      echo "@libdir@/libcurl.@libext@ @LDFLAGS@ @LIBCURL_PC_LIBS_PRIVATE@"
++      echo "${libdir}/libcurl.@libext@ @LDFLAGS@ @LIBCURL_PC_LIBS_PRIVATE@"
      else
        echo 'curl was built with static libraries disabled' >&2
        exit 1
