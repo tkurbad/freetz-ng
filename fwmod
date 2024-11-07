@@ -978,6 +978,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	echo1 -l "patches applied"
 
 	# remove oems
+	echo1 -l  "original oem: $oems"
 	echo1 -ln "removing oem:"
 	oem_removed=0
 	oem_kept=0
