@@ -1191,6 +1191,8 @@ choice
 		depends on FREETZ_TYPE_7490 && FREETZ_AVM_VERSION_07_5X
 		select FREETZ_REMOVE_BRANDING
 		select FREETZ_REMOVE_BRANDING_1und1
+		select FREETZ_REMOVE_DECT
+		select FREETZ_REMOVE_AHA
 		help
 			Enable this to compile an alien image for FritzBox 3490 based
 			on a 7490 image.

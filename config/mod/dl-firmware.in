@@ -824,7 +824,7 @@ config FREETZ_DL_SOURCE2
 	#
 	default "fritz.box_wlan_3170.49.04.58.image"                                                  if FREETZ_TYPE_3170_7170
 	#
-	default "FRITZ.Box_3490-07.31.image"                                                          if FREETZ_TYPE_3490_7490       &&  FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Box_3490-07.31.image"                                                          if FREETZ_TYPE_3490_7490
 	#
 	default "FRITZ.Box_Fon_WLAN_7112.87.04.88.image"                                              if FREETZ_TYPE_7112_7170
 	default "FRITZ.Box_Fon_WLAN_7113.60.04.68.image"                                              if FREETZ_TYPE_7113_7170
