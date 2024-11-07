@@ -876,8 +876,9 @@ config FREETZ_REMOVE_PUBKEY_INHAUS
 		Removes /etc/avm_firmware_public_key4 or
 		/etc/avm_firmware_public_key3, just 266 bytes.
 
-		Some inhaus firmwares use another file for signature validation,
-		*key4 for router and *key3 for powerline & repeater devices.
+		Some inhaus firmwares use another file for signature validation:
+		 - *key4 for devices with dect (router)
+		 - *key3 for devices without dect (powerline & repeater, except gateway)
 
 config FREETZ_REMOVE_TR069
 	bool "Remove tr069" if FREETZ_SHOW_EXPERT
