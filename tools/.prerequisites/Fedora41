@@ -38,6 +38,7 @@ netcat
 net-tools
 openssl
 openssl-devel
+openssl-devel-engine
 patch
 patchutils
 perl
@@ -58,5 +59,3 @@ util-linux
 wget
 xz
 zlib-ng-devel
-openssl-devel-engine
-
