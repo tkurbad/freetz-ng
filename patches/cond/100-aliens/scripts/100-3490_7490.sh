@@ -16,14 +16,6 @@ echo2 "moving default config dir"
 mv ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW185 \
    ${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212
 
-echo2 "creating missing oem symlinks"
-if isFreetzType LANG_EN; then
-	ln -sf avm "${FILESYSTEM_MOD_DIR}/etc/default.Fritz_Box_HW212/avme"
-	ln -sf all "${FILESYSTEM_MOD_DIR}/usr/www/avm"
-else
-	ln -sf all "${FILESYSTEM_MOD_DIR}/usr/www/avme"
-fi
-
 echo2 "patching rc.S and rc.conf"
 # Telephony
 modsed 's/CONFIG_AB_COUNT=.*$/CONFIG_AB_COUNT="0"/g' "${FILESYSTEM_MOD_DIR}/etc/init.d/rc.conf"
