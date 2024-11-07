@@ -52,8 +52,6 @@ for i in \
   /bin/supportdata.aha \
   /bin/supportdata.dect \
   /etc/avm_firmware_public_key3 \
-  /etc/default.049/fx_lcr.1und1 \
-  /etc/default.Fritz_Box_HW212/1und1 \
   /etc/init.d/S78-aha \
   /etc/templates/fax_rcv_message* \
   /etc/templates/fax_send_message* \
@@ -76,9 +74,6 @@ for i in \
   /usr/share/configd/dectmediadefault.xml \
   /usr/share/ctlmgr/libdect.so \
   /usr/share/telefon/fax-test.pdf \
-  /usr/www.myfritz/1und1 \
-  /usr/www.nas/1und1 \
-  /usr/www/1und1 \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$i"
 done
