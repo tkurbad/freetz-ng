@@ -64,7 +64,7 @@ Latest changes
    * lzma2 5.6.3
    * meson 1.6.0
    * openssl 3.0.15
-   * precompiled host-tools 2024-09-28
+   * precompiled host-tools 2024-11-08
    * python 3.12.7
 
  - AVM sources:
