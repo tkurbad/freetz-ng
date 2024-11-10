@@ -133,14 +133,11 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 07.02: [07.02.04.26.avm.de.upd](http://download.avm.de/dect/0702/move21/07.02.04.26.avm.de.upd)
  - MHW 07.03: [07.03.04.25.avm.de.upd](http://download.avm.de/dect/0703/move21/07.03.04.25.avm.de.upd)
  - MHW 07.04: [07.04.04.25.avm.de.upd](http://download.avm.de/dect/0704/move21/07.04.04.25.avm.de.upd)
- - MHW 08.01: [08.01.05.08.avm.de.upd](http://download.avm.de/dect/0801/labor1/08.01.05.08.avm.de.upd)
- - MHW 08.02: [08.02.05.08.avm.de.upd](http://download.avm.de/dect/0802/labor1/08.02.05.08.avm.de.upd)
- - MHW 08.03: [08.03.05.08.avm.de.upd](http://download.avm.de/dect/0803/labor1/08.03.05.08.avm.de.upd)
-
-### Dect-Inhaus
  - MHW 08.01: [08.01.04.93.avm.de.upd](http://download.avm.de/dect/0801/move21/08.01.04.93.avm.de.upd)
  - MHW 08.02: [08.02.04.94.avm.de.upd](http://download.avm.de/dect/0802/move21/08.02.04.94.avm.de.upd)
  - MHW 08.03: [08.03.04.94.avm.de.upd](http://download.avm.de/dect/0803/move21/08.03.04.94.avm.de.upd)
+
+### Dect-Inhaus
 
 ### BPjM
  - CRC 7fee56c2: [bpjm_20241025_bpjm-modul_11_24.txt.data](http://download.avm.de/bpjm/257563/bpjm_20241025_bpjm-modul_11_24.txt.data)
