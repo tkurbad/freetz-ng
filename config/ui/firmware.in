@@ -800,6 +800,14 @@ choice
 		select FREETZ_AVM_VERSION_08_0X
 		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X
 
+	config FREETZ_TYPE_FIRMWARE_08_0X_PLUS
+		bool "FRITZ!OS 08.00+ Plus"
+		select FREETZ_AVM_VERSION_08_0X
+		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X_PLUS && FREETZ_SHOW_EXPERT
+		help
+			Enable this to use an AVM Plus firmware as base for modding.
+			These contains fixes for buggy "stable" releases.
+
 
 endchoice # "Firmware version" #
 
@@ -874,6 +882,12 @@ config FREETZ_TYPE_FIRMWARE_LABOR
 	default y
 	depends on \
 		FREETZ_TYPE_FIRMWARE_08_0X_LABOR
+
+config FREETZ_TYPE_FIRMWARE_PLUS
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_FIRMWARE_08_0X_PLUS
 
 ###
 ### Warning messages

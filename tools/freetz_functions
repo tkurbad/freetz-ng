@@ -854,7 +854,9 @@ image_details() {
 	[ -z "$AVM_FW_DATE" ] && AVM_FW_DATE="$(date -d"$(stat -c '%y' "${FILESYSTEM_DIR}"/etc/version)" "+%d.%m.%Y %H:%M:%S")" # newer firmware
 	AVM_FW_TYPE="$(sed -rn 's/^Type=//p' "${FIRMWARE_DIR}/var/content" 2>/dev/null)"
 	[ -n "$AVM_FW_TYPE" ] && AVM_FW_LABOR=""
+	[ "$AVM_FW_TYPE" == "LabBETA" ] && AVM_FW_TYPE="Labor"
 	[ "$AVM_FW_TYPE" == "Release" ] && AVM_FW_TYPE=""
+	[ "$AVM_FW_TYPE" == "LabPLUS" ] && AVM_FW_TYPE="Plus"
 	[ -n "$AVM_FW_TYPE" ] && AVM_FW_TYPE=" ($AVM_FW_TYPE)"
 	AVM_FW_CYCLE="$(sed -rn 's/^Releasecycle=//p' "${FIRMWARE_DIR}/var/content" 2>/dev/null)"
 	[ -n "$AVM_FW_CYCLE" ] && AVM_FW_CYCLE=" [$AVM_FW_CYCLE]"
