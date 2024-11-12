@@ -858,23 +858,12 @@ config FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 ### Release aliases
 ###
 
-config FREETZ_TYPE_FIRMWARE_NONPLUS
-	bool
-	default y
-	depends on \
-		FREETZ_TYPE_FIRMWARE_FINAL && \
-		!FREETZ_TYPE_FIRMWARE_PLUS
-	help
-		Stable releases without critical "plus" bug fixes.
-
 config FREETZ_TYPE_FIRMWARE_FINAL
 	bool
 	default y
 	depends on \
 		!FREETZ_TYPE_FIRMWARE_LABOR && \
 		!FREETZ_TYPE_FIRMWARE_INHAUS
-	help
-		All stable releases including "plus" bugfixes etc.
 
 config FREETZ_AVM_HAS_FIRMWARE_LABOR
 	bool
