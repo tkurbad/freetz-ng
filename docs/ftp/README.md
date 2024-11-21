@@ -58,8 +58,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_6670_Cable-07.63.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/deutschland/fritz.os/FRITZ.Box_6670_Cable-07.63.image)
    - other: [FRITZ.Box_6670_Cable-07.63.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/other/fritz.os/FRITZ.Box_6670_Cable-07.63.image)
  * fritzbox-6690-cable/
-   - deutschland: [FRITZ.Box_6690_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
-   - other: [FRITZ.Box_6690_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/other/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
+   - deutschland: [FRITZ.Box_6690_Cable-08.00.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-08.00.image)
+   - other: [FRITZ.Box_6690_Cable-08.00.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/other/fritz.os/FRITZ.Box_6690_Cable-08.00.image)
  * fritzbox-6810-lte/
    - deutschland: [FRITZ.Box_6810_LTE.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/deutschland/fritz.os/FRITZ.Box_6810_LTE.108.06.35.image)
    - other: [FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/other/fritz.os/FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image)
