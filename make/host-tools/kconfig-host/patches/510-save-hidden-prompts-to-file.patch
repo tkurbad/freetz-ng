@@ -37,8 +37,8 @@ Signed-off-by: Michal Marek <mmarek@suse.cz>
  	/* Apply all upper menus' visibilities to actual prompts. */
  	if (type == P_PROMPT) {
  		struct menu *menu = current_entry;
-@@ -210,6 +211,7 @@
- 							    dup_expr);
+@@ -200,6 +201,7 @@
+ 							    menu->visibility);
  		}
  	}
 +#endif

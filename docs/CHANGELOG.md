@@ -60,7 +60,7 @@ Latest changes
    * busybox 1.37.0
    * cmake 3.31.1
    * fakeroot 1.36
-   * kconfig 6.11
+   * kconfig 6.12
    * lzma2 5.6.3
    * meson 1.6.0
    * openssl 3.0.15
