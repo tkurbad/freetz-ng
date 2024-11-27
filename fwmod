@@ -1425,7 +1425,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			  2>&1 | tee "$DEPMOD_TEMP"
 		fi
 		if grep -qE "(unresolved|unknown) symbol" "$DEPMOD_TEMP"; then
-			warn "Unresolved symbols detected, not all AVM-features may work.\nNo current sources by AVM? Error in kernel's .config? Ask fritzbox_info@avm.de for sources!"
+			warn "Unresolved symbols detected, not all AVM-features may work.\nApropriate sources by AVM not used or not available? Error in kernel's .config? Ask fritzbox_info@avm.de for sources!"
 		fi
 		rm -f "$DEPMOD_TEMP"
 		# add plugin kernel modules for 7270v1 if plugins are not enabled
