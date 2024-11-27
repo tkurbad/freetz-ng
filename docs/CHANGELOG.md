@@ -107,7 +107,7 @@ Latest changes
    * RPCBind 1.2.7
    * RRDtool 1.2.30/1.9.0
    * S-Lang 2.3.3
-   * SQLite 3.40.1/3.47.0
+   * SQLite 3.40.1/3.47.1
    * strace 4.9/5.0/6.12
    * Stunnel 5.73
    * Subversion 1.9.12/1.14.3
