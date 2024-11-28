@@ -89,7 +89,7 @@ Latest changes
    * New Patch: Hide update check from cockpit
 
  - Packages:
-   * ACME.sh 3.0.9
+   * ACME.sh 3.1.0
    * Atop 2.11.0
    * BIND 9.11.37/9.20.3
    * BusyBox 1.27.2/1.37.0
