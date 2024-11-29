@@ -67,11 +67,14 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/deutschland/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
    - other: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/other/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
  * fritzbox-6820-lte-v2/
-   - deutschland: [FRITZ.Box_6820_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/deutschland/fritz.os/FRITZ.Box_6820_LTE-07.59.image)
-   - other: [FRITZ.Box_6820_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/other/fritz.os/FRITZ.Box_6820_LTE-07.59.image)
+   - deutschland: [FRITZ.Box_6820v2_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/deutschland/fritz.os/FRITZ.Box_6820v2_LTE-07.59.image)
+   - other: [FRITZ.Box_6820v2_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/other/fritz.os/FRITZ.Box_6820v2_LTE-07.59.image)
  * fritzbox-6820-lte-v3/
    - deutschland: [FRITZ.Box_6820v3_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.59.image)
    - other: [FRITZ.Box_6820v3_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/other/fritz.os/FRITZ.Box_6820v3_LTE-07.59.image)
+ * fritzbox-6820v4-lte/
+   - deutschland: [FRITZ.Box_6820v4_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820v4-lte/deutschland/fritz.os/FRITZ.Box_6820v4_LTE-07.59.image)
+   - other: [FRITZ.Box_6820v4_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820v4-lte/other/fritz.os/FRITZ.Box_6820v4_LTE-07.59.image)
  * fritzbox-6840-lte/
    - deutschland: [FRITZ.Box_6840_LTE.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/deutschland/fritz.os/FRITZ.Box_6840_LTE.105.06.88.image)
    - other: [FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/other/fritz.os/FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image)
