@@ -118,6 +118,7 @@ Latest changes
    * XZ 5.6.3
 
  - Libraries:
+   * cairo 1.18.2
    * expat 2.6.4
    * FreeType 2.13.3
    * glib2 2.32.4/2.81.2
