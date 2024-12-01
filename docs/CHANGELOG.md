@@ -51,7 +51,6 @@ Latest changes
  - Build system:
    * binutils (kernel) 2.18/2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1
    * binutils (target) 2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1/2.43.1
-   * ca-bundle 2024-11-26
    * Ccache 4.10.2
    * gcc (kernel) 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/8.4.0/9.3.0/9.4.0
    * gcc (target) 4.6.4/4.7.4/4.8.5/4.9.4/5.5.0/8.3.0/8.4.0/9.3.0/13.3.0/13.4.0/14.2.0
@@ -59,6 +58,7 @@ Latest changes
 
  - Host tools:
    * busybox 1.37.0
+   * ca-bundle 2024-11-26
    * cmake 3.31.1
    * fakeroot 1.36
    * kconfig 6.12
