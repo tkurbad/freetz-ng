@@ -5,7 +5,7 @@ CAC="$TOOLS/cacert.pem"
 
 [ -s "$CAC" ] && export CURL_CA_BUNDLE="$CAC"
 
-file="$TOOLS/../build/bin/cmake"
+file="$TOOLS/build/bin/cmake"
 [ -x "$file" ] && exec "$file" "$@"
 
 file="$(which -a 'cmake' | grep -v "^$MYOWN$" | head -n1)"
