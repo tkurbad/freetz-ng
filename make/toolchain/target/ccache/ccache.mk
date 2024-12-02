@@ -43,6 +43,8 @@ $(CCACHE_DIR)/.configured: $(CCACHE_DIR)/.unpacked
 		-DENABLE_DOCUMENTATION=OFF \
 		-DENABLE_TESTING=OFF \
 		-DREDIS_STORAGE_BACKEND=OFF \
+		-DDEPS=DOWNLOAD \
+		-Wno-dev \
 		$(QUIETCMAKE) \
 		$(SILENT) \
 	);
