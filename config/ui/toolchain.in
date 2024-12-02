@@ -1347,6 +1347,52 @@ config FREETZ_TARGET_TOOLCHAIN
 
 comment "Host-tools options ----------------------------------"
 
+config FREETZ_HOSTTOOLS_DOWNLOAD
+	bool "Use precompiled x86_64 host-tools"
+	depends on !FREETZ_ANCIENT_SYSTEM
+	default y
+	help
+		Download and use precompiled binaries files. Not
+		every tool is included, see $(TOOLS_BUILD_LOCAL).
+
+config FREETZ_HOSTTOOLS_BUILD
+	bool
+	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
+	default y
+
+choice
+	prompt "Root emulator"
+	default FREETZ_ROOTEMU_PSEUDO
+
+	config FREETZ_ROOTEMU_FAKEROOT
+		bool "Use fakeroot"
+
+	config FREETZ_ROOTEMU_PSEUDO
+		bool "Use pseudo"
+
+endchoice # "Root emulator" #
+
+config FREETZ_TOOLS_KCONFIG_BUTTONS
+	bool "No load+save buttons in menuconfig"
+	default n
+	help
+		Only select+exit+help buttons at bottom.
+
+config FREETZ_TOOLS_UBOOT_STATIC
+	bool "Build U-Boot with static OpenSSL"
+	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
+	default n
+	help
+		Used for precompiled dl-tools with static openssl.
+
+config FREETZ_TOOLS_WGET_STATIC
+	bool "Build Wget with static OpenSSL"
+	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
+	default n
+	help
+		Used for precompiled dl-tools with static openssl.
+		Maybe you have to export SSL_CERT_DIR with ca-certs.
+
 choice
 
 	prompt "Patchelf version"
@@ -1366,52 +1412,6 @@ choice
 			Requires at least gcc v7
 
 endchoice
-
-config FREETZ_TOOLS_UBOOT_STATIC
-	bool "Build U-Boot with static OpenSSL"
-	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
-	default n
-	help
-		Used for precompiled dl-tools with static openssl.
-
-config FREETZ_TOOLS_WGET_STATIC
-	bool "Build Wget with static OpenSSL"
-	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
-	default n
-	help
-		Used for precompiled dl-tools with static openssl.
-		Maybe you have to export SSL_CERT_DIR with ca-certs.
-
-config FREETZ_TOOLS_KCONFIG_BUTTONS
-	bool "No load+save buttons in menuconfig"
-	default n
-	help
-		Only select+exit+help buttons at bottom.
-
-choice
-	prompt "Root emulator"
-	default FREETZ_ROOTEMU_PSEUDO
-
-	config FREETZ_ROOTEMU_FAKEROOT
-		bool "Use fakeroot"
-
-	config FREETZ_ROOTEMU_PSEUDO
-		bool "Use pseudo"
-
-endchoice # "Root emulator" #
-
-config FREETZ_HOSTTOOLS_DOWNLOAD
-	bool "Use precompiled x86_64 host-tools"
-	depends on !FREETZ_ANCIENT_SYSTEM
-	default y
-	help
-		Download and use precompiled binaries files. Not
-		every tool is included, see $(TOOLS_BUILD_LOCAL).
-
-config FREETZ_HOSTTOOLS_BUILD
-	bool
-	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
-	default y
 
 endmenu # "Toolchain options" #
 
