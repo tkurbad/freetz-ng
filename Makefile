@@ -316,8 +316,13 @@ include $(MAKE_DIR)/include/400-host.mk
 include $(MAKE_DIR)/include/500-echo.mk
 include $(MAKE_DIR)/include/600-macros.mk
 
+# include by other packages used variables of packages first
+TOOLS_LIBS:=ca-bundle openssl
+TOOLS_LIB_MKFILES:=$(foreach x, ${TOOLS_LIBS}, $(patsubst %, $(MAKE_DIR)/host-tools/${x}-host/${x}-host.mk, ${x}))
+TOOLS_PKG_MKFILES:=$(filter-out $(TOOLS_LIB_MKFILES),$(call sorted-wildcard,$(MAKE_DIR)/host-tools/*-host/*-host.mk))
 include $(MAKE_DIR)/host-tools/Makefile.in
-include $(call sorted-wildcard,$(MAKE_DIR)/host-tools/*/*.mk)
+include $(TOOLS_LIB_MKFILES)
+include $(TOOLS_PKG_MKFILES)
 
 TOOLS_CACHECLEAN:=$(patsubst %,%-cacheclean,$(TOOLS))
 TOOLS_CLEAN:=$(patsubst %,%-clean,$(TOOLS))
