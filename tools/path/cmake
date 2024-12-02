@@ -3,7 +3,7 @@ MYOWN="$(realpath $0)"
 TOOLS="$(dirname $(dirname $MYOWN))"
 CAC="$TOOLS/cacert.pem"
 
-[ -s "$CAC" ] && export CURL_CA_BUNDLE="$CAC"
+[ -s "$CAC" ] && export SSL_CERT_DIR="$CAC"
 
 file="$TOOLS/build/bin/cmake"
 [ -x "$file" ] && exec "$file" "$@"
