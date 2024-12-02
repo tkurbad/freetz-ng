@@ -1,1 +1,15 @@
-../build/bin/cmake
+#! /usr/bin/env bash
+MYOWN="$(realpath $0)"
+TOOLS="$(dirname $(dirname $MYOWN))"
+CAC="$TOOLS/cacert.pem"
+
+[ -s "$CAC" ] && export CURL_CA_BUNDLE="$CAC"
+
+file="$TOOLS/../build/bin/cmake"
+[ -x "$file" ] && exec "$file" "$@"
+
+file="$(which -a 'cmake' | grep -v "^$MYOWN$" | head -n1)"
+[ -x "$file" ] && exec "$file" "$@"
+
+echo "Miserable failure, no cmake binary!" >&2
+exit 1

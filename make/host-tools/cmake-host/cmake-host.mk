@@ -10,6 +10,7 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 ### SUPPORT:=fda77
 
 $(PKG)_DEPENDS_ON+=ninja-host
+$(PKG)_DEPENDS_ON+=ca-bundle-host
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
