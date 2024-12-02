@@ -13,6 +13,8 @@ $(PKG)_BUILD_DIR:=$($(PKG)_DIR)/builddir
 $(PKG)_BINARY:=$($(PKG)_BUILD_DIR)/ninja
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/ninja
 
+$(PKG)_DEPENDS_ON+=cmake-host
+
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
