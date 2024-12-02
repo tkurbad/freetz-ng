@@ -9,7 +9,6 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
 ### SUPPORT:=fda77
 
-$(PKG)_DEPENDS_ON+=ninja-host
 $(PKG)_DEPENDS_ON+=ca-bundle-host
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
@@ -21,9 +20,10 @@ $(PKG)_DOC_TARGET_DIR      := $($(PKG)_DESTDIR)/doc/$(pkg_short)-$($(PKG)_MAJOR_
 
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(CMAKE_HOST_DESTDIR)
-$(PKG)_CONFIGURE_OPTIONS += --generator=Ninja
+$(PKG)_CONFIGURE_OPTIONS += --generator='Unix Makefiles'
 $(PKG)_CONFIGURE_OPTIONS += --enable-ccache
 $(PKG)_CONFIGURE_OPTIONS += --no-qt-gui
+$(PKG)_CONFIGURE_OPTIONS += --no-debugger
 $(PKG)_CONFIGURE_OPTIONS += --no-system-libs
 $(PKG)_CONFIGURE_OPTIONS += --
 $(PKG)_CONFIGURE_OPTIONS += -DCMAKE_USE_OPENSSL=OFF
@@ -35,11 +35,11 @@ $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBNINJA) -C $(CMAKE_HOST_DIR) all
+	$(TOOLS_SUBMAKE) -C $(CMAKE_HOST_DIR) all
 	@touch $@
 
 $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
-	$(TOOLS_SUBNINJA) -C $(CMAKE_HOST_DIR) install
+	$(TOOLS_SUBMAKE) -C $(CMAKE_HOST_DIR) install
 	@$(RM) -r "$(CMAKE_HOST_DOC_TARGET_DIR)"
 	@rmdir "$(dir $(CMAKE_HOST_DOC_TARGET_DIR))" || true
 	@touch $@
@@ -48,7 +48,7 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
-	-$(NINJA) -C $(CMAKE_HOST_DIR) clean
+	-$(MAKE) -C $(CMAKE_HOST_DIR) clean
 	-$(RM) $(CMAKE_HOST_DIR)/.{configured,compiled,installed}
 
 $(pkg)-dirclean:
