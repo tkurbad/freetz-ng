@@ -206,9 +206,11 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - [source-files-FRITZ.Box_6670_Cable-armp7-07.61.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-07.61.tar.gz)
    - [source-files-FRITZ.Box_6670_Cable-armp7-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-07.62.tar.gz)
    - [source-files-FRITZ.Box_6670_Cable-armp7-07.63.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-07.63.tar.gz)
+   - [source-files-FRITZ.Box_6670_Cable-armp7-08.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-armp7-08.01.tar.gz)
    - [source-files-FRITZ.Box_6670_Cable-atomp7-07.61.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-07.61.tar.gz)
    - [source-files-FRITZ.Box_6670_Cable-atomp7-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-07.62.tar.gz)
    - [source-files-FRITZ.Box_6670_Cable-atomp7-07.63.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-07.63.tar.gz)
+   - [source-files-FRITZ.Box_6670_Cable-atomp7-08.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6670-cable/source-files-FRITZ.Box_6670_Cable-atomp7-08.01.tar.gz)
  * fritzbox-6690-cable/
    - [source-files-FRITZ.Box_6690_Cable-armp7-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-07.29.tar.gz)
    - [source-files-FRITZ.Box_6690_Cable-armp7-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6690-cable/source-files-FRITZ.Box_6690_Cable-armp7-07.50.tar.gz)
