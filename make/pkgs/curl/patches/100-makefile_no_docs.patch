@@ -28,7 +28,7 @@
  	@echo "generating a fresh ca-bundle.crt"
 --- Makefile.in
 +++ Makefile.in
-@@ -635,8 +635,8 @@
+@@ -636,8 +636,8 @@
  
  DISTCLEANFILES = buildinfo.txt
  bin_SCRIPTS = curl-config
@@ -39,7 +39,7 @@
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
  LIB_VAUTH_CFILES = \
-@@ -1786,13 +1786,10 @@
+@@ -1787,13 +1787,10 @@
  @BUILD_DOCS_TRUE@	(cd docs/libcurl && $(MAKE) install)
  @BUILD_DOCS_FALSE@install-data-hook:
  @BUILD_DOCS_FALSE@	(cd include && $(MAKE) install)
