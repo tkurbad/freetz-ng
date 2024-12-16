@@ -1,0 +1,11 @@
+--- linux-4.4/GNUmakefile
++++ linux-4.4/GNUmakefile
+@@ -239,6 +239,8 @@
+ 	)
+ 
+ modules_install: $(_modlib)/build/$(project).symvers
++else
++modules_install:
+ endif
+ 
+ .PHONY: FORCE
