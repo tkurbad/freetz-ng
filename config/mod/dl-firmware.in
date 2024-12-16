@@ -744,8 +744,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	depends                                                                                       on (FREETZ_TYPE_FIRMWARE_LABOR || FREETZ_TYPE_FIRMWARE_PLUS) && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
 	default "fritzbox-4060-labor-115640.zip"                                                      if FREETZ_TYPE_4060
-	default "fritzbox-5690-Pro-labor-116864.zip"                                                  if FREETZ_TYPE_5690_PRO
-	default "fritzbox-6670-labor-115727.zip"                                                      if FREETZ_TYPE_6670
 	default "fritzbox-6850_lte-labor-114968.zip"                                                  if FREETZ_TYPE_6850_V1
 	default "fritzbox-6850_5g-labor-114965.zip"                                                   if FREETZ_TYPE_6850_V2
 	default "FRITZ.Box_7530-08.00-116930-LabPLUS.zip"                                             if FREETZ_TYPE_7530_W5
