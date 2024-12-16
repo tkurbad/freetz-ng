@@ -453,7 +453,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_6660_Cable-07.15.image"                                                    if FREETZ_TYPE_6660                            && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_6660_Cable-07.29.image"                                                    if FREETZ_TYPE_6660                            && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6660_Cable-07.57.image"                                                    if FREETZ_TYPE_6660                            && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_6660_Cable-08.00.image"                                                    if FREETZ_TYPE_6660                            && FREETZ_TYPE_FIRMWARE_08_0X
+	default "FRITZ.Box_6660_Cable-08.01.image"                                                    if FREETZ_TYPE_6660                            && FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_6670_Cable-07.63.image"                                                    if FREETZ_TYPE_6670                            && FREETZ_TYPE_FIRMWARE_07_5X
 	default "FRITZ.Box_6670_Cable-08.01.image"                                                    if FREETZ_TYPE_6670                            && FREETZ_TYPE_FIRMWARE_08_0X
