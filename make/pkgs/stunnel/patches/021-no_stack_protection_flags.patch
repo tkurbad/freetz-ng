@@ -1,11 +1,11 @@
---- configure_org	2024-09-22 10:12:32.685642378 +0200
-+++ configure		2024-09-22 10:15:04.129628433 +0200
-@@ -7173,7 +7173,7 @@
+--- configure.org	2024-09-09 19:25:24.000000000 +0200
++++ configure	2024-12-16 18:51:18.578767800 +0100
+@@ -7305,7 +7305,7 @@
  
  
  
 -for flag in -fstack-protector-strong; do
 +false && for flag in -fstack-protector-strong; do
-   as_CACHEVAR=`printf "%s\n" "ax_cv_check_cflags__$flag" | $as_tr_sh`
+   as_CACHEVAR=`printf "%s\n" "ax_cv_check_cflags__$flag" | sed "$as_sed_sh"`
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether C compiler accepts $flag" >&5
  printf %s "checking whether C compiler accepts $flag... " >&6; }

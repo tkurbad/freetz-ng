@@ -110,7 +110,7 @@ Latest changes
    * S-Lang 2.3.3
    * SQLite 3.40.1/3.47.1
    * strace 4.9/5.0/6.12
-   * Stunnel 5.73
+   * Stunnel 5.74
    * Subversion 1.9.12/1.14.3
    * tmux 3.5a
    * Tor 0.4.8.13
