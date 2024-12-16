@@ -478,7 +478,7 @@ Currently supported devices and firmwares
 
 * __FRITZ!Box 7690__
   - 285.07.62 rev115134 {ALL} [FCS23]
-  - 285.07.90 rev115840 {ALL} [Smart24 P1 FCS] (Labor)
+  - 285.08.01 rev117690 {ALL} [Smart24 P1 FCS]
 
 ### Fritz!Powerline
 
