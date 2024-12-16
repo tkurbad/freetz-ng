@@ -74,6 +74,11 @@ $(MIRROR_DIR)/$($(PKG)_SOURCE): | $(MIRROR_DIR)
 
 $(pkg)-download-mirror: $(MIRROR_DIR)/$($(PKG)_SOURCE)
 
+$(pkg)-show-download: $(DL_DIR)/$($(PKG)_SOURCE)
+	@echo "FILE:=$($(PKG)_SOURCE)"
+	@echo -n "HASH:="
+	@$(TOOLS_DIR)/sha256sum $(DL_DIR)/$($(PKG)_SOURCE) | sed 's/ .*//g'
+
 $(pkg)-check-download:
 	@echo -n "Checking download for package $(pkg)..."
 	@if $(DL_TOOL) check $($(PKG)_SOURCE) $($(PKG)_SITE); then \
@@ -82,7 +87,7 @@ $(pkg)-check-download:
 		echo "ERROR: NOT FOUND!"; \
 	fi
 
-.PHONY: $(pkg)-download $(pkg)-check-download $(pkg)-download-mirror
+.PHONY: $(pkg)-download $(pkg)-download-mirror $(pkg)-show-download $(pkg)-check-download
 endef
 
 
