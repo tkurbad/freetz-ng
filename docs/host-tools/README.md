@@ -70,7 +70,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[make 4.4.1](make-host.md)<a id='make-host'></a>**<br>
 
-  * **[meson 1.6.0](meson-host.md)<a id='meson-host'></a>**<br>
+  * **[meson 1.6.1](meson-host.md)<a id='meson-host'></a>**<br>
 
   * **[mklibs 0.1.45](mklibs-host.md)<a id='mklibs-host'></a>**<br>
 
