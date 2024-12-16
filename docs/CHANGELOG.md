@@ -99,6 +99,7 @@ Latest changes
    * Git 2.47.0
    * htpdate 2.0.0
    * ImageMagick 7.1.1-39
+   * iPerf3 3.3/3.18
    * mc (Midnight Commander) 4.8.31/4.8.32
    * Mosquitto 2.0.20
    * Nano 8.2
