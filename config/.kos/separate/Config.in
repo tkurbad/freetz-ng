@@ -1,4 +1,5 @@
 source "config/.kos/separate/config-alder-5690_07.62.in"
+source "config/.kos/separate/config-alder-5690_08.01.in"
 source "config/.kos/separate/config-ar10-3272_06.86.in"
 source "config/.kos/separate/config-ar10-7272_06.20.in"
 source "config/.kos/separate/config-ar10-7272_06.87.in"
