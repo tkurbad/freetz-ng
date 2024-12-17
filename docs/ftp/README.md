@@ -160,13 +160,16 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-7590-ax/
    - deutschland: [FRITZ.Box_7590_AX-08.00.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/deutschland/fritz.os/FRITZ.Box_7590_AX-08.00.image)
    - other: [FRITZ.Box_7590_AX-08.00.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/other/fritz.os/FRITZ.Box_7590_AX-08.00.image)
+ * fritzbox-7682/
+   - deutschland: [FRITZ.Box_7682-08.01.image](https://download.avm.de/fritzbox/fritzbox-7682/deutschland/fritz.os/FRITZ.Box_7682-08.01.image)
+   - other: [FRITZ.Box_7682-08.01.image](https://download.avm.de/fritzbox/fritzbox-7682/other/fritz.os/FRITZ.Box_7682-08.01.image)
  * fritzbox-7690/
    - deutschland: [FRITZ.Box_7690-08.01.image](https://download.avm.de/fritzbox/fritzbox-7690/deutschland/fritz.os/FRITZ.Box_7690-08.01.image)
    - other: [FRITZ.Box_7690-08.01.image](https://download.avm.de/fritzbox/fritzbox-7690/other/fritz.os/FRITZ.Box_7690-08.01.image)
 
 ### FritzDect
  * fritzsmart-gateway/
-   - deutschland: [FRITZ.Smart_Gateway-07.63-Release.image](https://download.avm.de/fritzdect/fritzsmart-gateway/deutschland/fritz.os/FRITZ.Smart_Gateway-07.63-Release.image)
+   - deutschland: [FRITZ.Smart_Gateway-08.01-Release.image](https://download.avm.de/fritzdect/fritzsmart-gateway/deutschland/fritz.os/FRITZ.Smart_Gateway-08.01-Release.image)
 
 ### FritzPowerline
  * fritzpowerline-1000e/
