@@ -559,6 +559,7 @@ Currently supported devices and firmwares
 
 * __Fritz!Smart Gateway__
   - 265.07.63 rev116265 {ALL} [MOVE21NL1]
+  - 265.08.01 rev117753 {ALL} [Smart24 P1 NL1]
 
 ### T-Com derivatives
 
