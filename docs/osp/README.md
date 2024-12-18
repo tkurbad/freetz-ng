@@ -227,9 +227,11 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-6820-lte/
    - [source-files-FRITZ.Box_6820_LTE-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte/source-files-FRITZ.Box_6820_LTE-07.29.tar.gz)
  * fritzbox-6820-lte-v2/
-   - [source-files-FRITZ.Box_6820_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v2/source-files-FRITZ.Box_6820_LTE-07.56.tar.gz)
+   - [source-files-FRITZ.Box_6820v2_LTE-scrpn-07.59.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v2/source-files-FRITZ.Box_6820v2_LTE-scrpn-07.59.tar.gz)
  * fritzbox-6820-lte-v3/
-   - [source-files-FRITZ.Box_6820v3_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v3/source-files-FRITZ.Box_6820v3_LTE-07.56.tar.gz)
+   - [source-files-FRITZ.Box_6820v3_LTE-scrpn-07.59.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v3/source-files-FRITZ.Box_6820v3_LTE-scrpn-07.59.tar.gz)
+ * fritzbox-6820-lte-v4/
+   - [source-files-FRITZ.Box_6820v4_LTE-scrpn-07.59.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v4/source-files-FRITZ.Box_6820v4_LTE-scrpn-07.59.tar.gz)
  * fritzbox-6840-lte/
    - [source-files-FRITZ.Box_6840_LTE-06.85.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/source-files-FRITZ.Box_6840_LTE-06.85.tar.gz)
  * fritzbox-6842-lte/
