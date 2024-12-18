@@ -81,6 +81,7 @@ Latest changes
    * 7530     8.00 - 4.4.271
    * 7530 ax  8.00 - 4.19.183 (corrupt)
    * 7590 ax  8.00 - 4.9.325
+   * 7690     8.01 - 5.4.213
 
  - Patches:
    * Various Fritzos 8.0 related changes
