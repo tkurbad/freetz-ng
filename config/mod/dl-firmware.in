@@ -494,7 +494,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_6850_5G-07.30.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6850_5G-07.59.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_6850_5G-07.90-114965-LabBETA.image"                                        if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_08_0X_LABOR
+	default "FRITZ.Box_6850_5G-08.00.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.06.87.image"                             if FREETZ_TYPE_6890                            && FREETZ_TYPE_FIRMWARE_06_8X
 	default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.07.03.image"                             if FREETZ_TYPE_6890                            && FREETZ_TYPE_FIRMWARE_07_0X
@@ -745,7 +745,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	depends                                                                                       on (FREETZ_TYPE_FIRMWARE_LABOR || FREETZ_TYPE_FIRMWARE_PLUS) && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
 	default "fritzbox-4060-labor-115640.zip"                                                      if FREETZ_TYPE_4060
-	default "fritzbox-6850_5g-labor-114965.zip"                                                   if FREETZ_TYPE_6850_V2
 	default "FRITZ.Box_7530-08.00-116930-LabPLUS.zip"                                             if FREETZ_TYPE_7530_W5
 #	default "xxxxxxxxxxxxxxxxxxxxxxxxx.zip"                                                       if FREETZ_TYPE_xxxx
 	#
