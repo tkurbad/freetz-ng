@@ -458,7 +458,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
 
 ### FritzDect
  * fritzsmart-gateway/
-   - [source-files-FRITZ.Smart_Gateway-07.63.tar.gz](https://osp.avm.de/fritzdect/fritzsmart-gateway/source-files-FRITZ.Smart_Gateway-07.63.tar.gz)
+   - [source-files-FRITZ.Smart_Gateway-08.01.tar.gz](https://osp.avm.de/fritzdect/fritzsmart-gateway/source-files-FRITZ.Smart_Gateway-08.01.tar.gz)
 
 ### FritzPowerline
  * fritzpowerline-1240-ax/
