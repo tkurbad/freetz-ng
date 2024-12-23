@@ -1,4 +1,4 @@
-# python3 3.12.7
+# python3 3.12.8
  - Homepage: [https://www.python.org/](https://www.python.org/)
  - Manpage: [https://docs.python.org/3/](https://docs.python.org/3/)
  - Changelog: [https://www.python.org/downloads/](https://www.python.org/downloads/)
