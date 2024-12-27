@@ -1,4 +1,4 @@
-# liburcu (liburcu.so) 0.14.1
+# liburcu (liburcu.so) 0.15.0
  - Homepage: [https://www.liburcu.org/](https://www.liburcu.org/)
  - Changelog: [https://github.com/urcu/userspace-rcu/tags](https://github.com/urcu/userspace-rcu/tags)
  - Repository: [https://git.liburcu.org/?p=userspace-rcu.git;a=summary](https://git.liburcu.org/?p=userspace-rcu.git;a=summary)
