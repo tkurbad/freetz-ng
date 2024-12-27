@@ -39,10 +39,5 @@ menu "liburcu"
 		select FREETZ_LIB_liburcu_common
 		default n
 
-	config FREETZ_LIB_liburcu_signal
-		bool "liburcu-signal (liburcu-signal.so)"
-		select FREETZ_LIB_liburcu_common
-		default n
-
 endmenu ### "liburcu"
 

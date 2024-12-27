@@ -7,7 +7,7 @@ $(PKG)_SITE:=https://lttng.org/files/urcu
 ### CHANGES:=https://github.com/urcu/userspace-rcu/tags
 ### CVSREPO:=https://git.liburcu.org/?p=userspace-rcu.git;a=summary
 
-$(PKG)_LIBNAMES_SHORT   := liburcu-bp liburcu-cds liburcu-common liburcu-mb liburcu-memb liburcu-qsbr liburcu-signal liburcu
+$(PKG)_LIBNAMES_SHORT   := liburcu-bp liburcu-cds liburcu-common liburcu-mb liburcu-memb liburcu-qsbr liburcu
 $(PKG)_LIBNAMES_LONG    := $($(PKG)_LIBNAMES_SHORT:%=%.so.$($(PKG)_SHLIB_VERSION))
 $(PKG)_LIBS_BUILD_DIR   := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_DIR)/src/.libs/%)
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
