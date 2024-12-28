@@ -120,7 +120,6 @@ Latest changes
    * Tor 0.4.8.13
    * Unbound 1.22.0
    * VLMCSD 1113
-   * VLMCSD-Setup 0.0.1
    * xsltproc 1.1.42
    * XZ 5.6.3
 
