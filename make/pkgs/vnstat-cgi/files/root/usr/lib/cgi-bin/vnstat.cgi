@@ -22,7 +22,7 @@ sec_begin "$(lang de:"Einstellungen" en:"Settings")"
 
 cat << EOF
 <p>
-$(lang de:"Datenbankverzeichnis" en:"Databse directory"):&nbsp;
+$(lang de:"Datenbankverzeichnis" en:"Database directory"):&nbsp;
 <input type="text" name="dbdir" size="42" maxlength="255" value="$(html "$VNSTAT_DBDIR")">
 </p>
 <p>
