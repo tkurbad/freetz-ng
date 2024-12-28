@@ -1371,7 +1371,7 @@ endchoice # "Root emulator" #
 
 config FREETZ_TOOLS_KCONFIG_BUTTONS
 	bool "No load+save buttons in menuconfig"
-	default n
+	default y
 	help
 		Only select+exit+help buttons at bottom.
 
