@@ -1,5 +1,6 @@
 config FREETZ_PACKAGE_VLMCSD
 	bool "VLMCSD svn1113"
+	select FREETZ_PACKAGE_VLMCSD_vlmcsd
 	default n
 	help
 		vlmcsd is a fully Microsoft compatible KMS server hat provides
@@ -8,4 +9,16 @@ config FREETZ_PACKAGE_VLMCSD
 		Only requirements are a basic C library with a BSD-style
 		sockets API and either fork(2) or pthreads(7). That allows it
 		to run on most embedded systems like routers, NASes, etc.
+
+if FREETZ_PACKAGE_VLMCSD
+
+	config FREETZ_PACKAGE_VLMCSD_vlmcs
+		bool "client (binary only)"
+		default n
+
+	config FREETZ_PACKAGE_VLMCSD_vlmcsd
+		bool "server"
+		default y
+
+endif # FREETZ_PACKAGE_VLMCSD
 

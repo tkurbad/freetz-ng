@@ -7,32 +7,35 @@ $(PKG)_SITE:=https://github.com/Wind4/vlmcsd/archive/refs/tags/
 ### CVSREPO:=https://github.com/Wind4/vlmcsd
 ### SUPPORT:=manfred-mueller
 
-$(PKG)_BINARY:=$($(PKG)_DIR)/bin/vlmcsd
-$(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/vlmcsd
+$(PKG)_BINARIES_ALL := vlmcs vlmcsd
+$(PKG)_BINARIES := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))
+$(PKG)_BINARIES_BUILD_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
+$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/bin/%)
+
+$(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)/usr/bin/%,$(filter-out $($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL)))
 
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
-$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
+$($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(VLMCSD_DIR) \
 		CC="$(TARGET_CC)" \
 		CFLAGS="$(TARGET_CFLAGS)"
 
-$($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
+$($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DEST_DIR)/usr/bin/%: $($(PKG)_DIR)/bin/%
 	$(INSTALL_BINARY_STRIP)
 
 $(pkg):
 
-$(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
 
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(VLMCSD_DIR) clean
-	$(RM) $(VLMCSD_DIR)/.configured
 
 $(pkg)-uninstall:
-	$(RM) $(VLMCSD_TARGET_BINARY)
+	$(RM) $(VLMCSD_BINARIES_ALL:%=$(VLMCSD_DEST_DIR)/usr/bin/%)
 
 $(PKG_FINISH)
