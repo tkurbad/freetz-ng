@@ -984,6 +984,12 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Vim 9.1.0181 (binary only)](../../docs/make/vim.md)<a id='vim'></a>**<br>
     An improved version of VI
 
+  * **<u>VLMCSD 1113 (binary only)</u><a id='vlmcsd'></a>**<br>
+    product activation services to clients. It is designed to run on POSIX compatible operating systens. Only requirements are a basic C library with a BSD-style sockets API and either fork(2) or pthreads(7). That allows it to run on most embedded systems like routers, NASes, etc.
+
+  * **<u>vlmcsdsetup: VLMCSD-Setup 0.0.1 (binary only)</u><a id='vlmcsdsetup'></a>**<br>
+    A utility to make the setup of vlmcsd easier.
+
   * **[vnStat 1.18 (binary only) - DEPRECATED](../../docs/make/vnstat.md)<a id='vnstat'></a>**<br>
     vnStat is a console-based network traffic monitor. It keeps a log of hourly, daily and monthly network traffic for the selected interface(s). However, it isn't a packet sniffer. The traffic information is analyzed from the proc(5) filesystem. That way vnStat can be used even without root permissions.
 
