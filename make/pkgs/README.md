@@ -984,7 +984,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Vim 9.1.0181 (binary only)](../../docs/make/vim.md)<a id='vim'></a>**<br>
     An improved version of VI
 
-  * **[VLMCSD 1113 (binary only)](../../docs/make/vlmcsd.md)<a id='vlmcsd'></a>**<br>
+  * **[VLMCSD svn1113](../../docs/make/vlmcsd.md)<a id='vlmcsd'></a>**<br>
     vlmcsd is a fully Microsoft compatible KMS server hat provides product activation services to clients. It is designed to run on POSIX compatible operating systens. Only requirements are a basic C library with a BSD-style sockets API and either fork(2) or pthreads(7). That allows it to run on most embedded systems like routers, NASes, etc.
 
   * **[vnStat 1.18 (binary only) - DEPRECATED](../../docs/make/vnstat.md)<a id='vnstat'></a>**<br>
