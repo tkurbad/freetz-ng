@@ -1,36 +1,38 @@
 #!/bin/sh
 
 DAEMON=vlmcsd
+DAEMON_LONG_NAME="VLMCSD"
+DAEMON_CFGFILE="/tmp/flash/$DAEMON/$DAEMON.ini"
 . /etc/init.d/modlibrc
-if [ -r ../default.$DAEMON/$DAEMON.cfg ]; then
-     . ../default.$DAEMON/$DAEMON.cfg
-fi
 
 start() {
-	modlib_startdaemon $DAEMON -L $VLMCSD_IP -P $VLMCSD_PORT -R $VLMCSD_RENEW -A $VLMCSD_RETRY
+	modlib_startdaemon $DAEMON_BIN -p $PID_FILE -i $DAEMON_CFGFILE $VLMCSD_CMDLINE
 }
 
 case $1 in
 	""|load)
-		modreg cgi 'vlmcsd' 'Microsoft KMS-Server'
-		modreg daemon $DAEMON
-		modlib_start
-		;;
-	start)
-		modlib_start
-		;;
+		modlib_defaults $DAEMON_CFGFILE
 
-	stop)
-		modlib_stop
+		modreg cgi $DAEMON "$DAEMON_LONG_NAME"
+		modreg daemon $DAEMON
+		modreg file $DAEMON vlmcsd_ini 'vlmcsd.ini' 0 "vlmcsd_ini"
+
+		modlib_start $VLMCSD_ENABLED
 		;;
 	unload)
+		modunreg file $DAEMON
 		modunreg daemon $DAEMON
 		modunreg cgi $DAEMON
 		modlib_stop
 		;;
-	restart)
-		modlib_stop
+	start)
 		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
 		;;
 	status)
 		modlib_status

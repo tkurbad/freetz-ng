@@ -1,12 +1,15 @@
 $(call PKG_INIT_BIN, svn1113)
-$(PKG)_SOURCE:=$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE_DOWNLOAD_NAME:=$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=f73b801d56ec7f5e06a306bfb0a6e22b531617ca
 $(PKG)_SITE:=https://github.com/Wind4/vlmcsd/archive/refs/tags/
-$(PKG)_BINARY:=$($(PKG)_DIR)/bin/vlmcsd
-$(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/vlmcsd
 ### CHANGES:=https://github.com/Wind4/vlmcsd/releases
 ### CVSREPO:=https://github.com/Wind4/vlmcsd
 ### SUPPORT:=manfred-mueller
+
+$(PKG)_BINARY:=$($(PKG)_DIR)/bin/vlmcsd
+$(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/vlmcsd
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -23,6 +26,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(VLMCSD_DIR) clean

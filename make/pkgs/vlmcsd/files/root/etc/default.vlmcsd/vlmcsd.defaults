@@ -1,0 +1,13 @@
+;KmsData = /tmp/flash/vlmcsd/vlmcsd.kmd
+
+;Listen = 0.0.0.0:1688
+;Listen = [::]:1688
+;PublicIPProtectionLevel = 3
+
+;LogFile = /var/log/vlmcsd.log
+;LogDateAndTime = false
+;LogVerbose = true
+
+;ActivationInterval = 2h
+;RenewalInterval = 7d
+

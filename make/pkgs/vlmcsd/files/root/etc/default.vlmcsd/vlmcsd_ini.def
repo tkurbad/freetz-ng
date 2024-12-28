@@ -1,0 +1,9 @@
+CAPTION='KMS-Server: vlmcsd.ini'
+DESCRIPTION="$(lang de:"Dokumentation" en:"Documentation"): <a target=blank href=https://github.com/Wind4/vlmcsd/blob/master/etc/vlmcsd.ini>https://github.com/Wind4/vlmcsd/blob/master/etc/vlmcsd.ini</a>"
+
+CONFIG_FILE='/tmp/flash/vlmcsd/vlmcsd.ini'
+CONFIG_SAVE='modsave flash; if pidof vlmcsd > /dev/null; then /mod/etc/init.d/rc.vlmcsd restart; fi'
+CONFIG_TYPE='text'
+
+TEXT_ROWS=30
+

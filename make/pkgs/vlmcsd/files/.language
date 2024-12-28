@@ -4,7 +4,7 @@ default
 { en }
 files
 {
-	etc/default.vlmcsd/vlmcsd.cfg
+	etc/default.vlmcsd/vlmcsd_*.def
 	etc/init.d/rc.vlmcsd
 	usr/lib/cgi-bin/vlmcsd.cgi
 }
