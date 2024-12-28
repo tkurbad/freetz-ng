@@ -4,6 +4,9 @@ $(PKG)_HASH:=c8443079b7ecbcd36629213f3d49d8b24269fbaeb895639d058e07a44594232a
 $(PKG)_SITE:=https://github.com/manfred-mueller/vlmcsdsetup/archive/refs/tags/
 $(PKG)_BINARY:=$($(PKG)_DIR)/vlmcsdsetup
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/vlmcsdsetup
+### CHANGES:=https://github.com/manfred-mueller/vlmcsdsetup/releases
+### CVSREPO:=https://github.com/manfred-mueller/vlmcsdsetup
+### SUPPORT:=manfred-mueller
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
