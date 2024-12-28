@@ -1,4 +1,4 @@
-CAPTION='KMS-Server: vlmcsd.ini'
+CAPTION='VLMCSD: vlmcsd.ini'
 DESCRIPTION="$(lang de:"Dokumentation" en:"Documentation"): <a target=blank href=https://github.com/Wind4/vlmcsd/blob/master/etc/vlmcsd.ini>https://github.com/Wind4/vlmcsd/blob/master/etc/vlmcsd.ini</a>"
 
 CONFIG_FILE='/tmp/flash/vlmcsd/vlmcsd.ini'
