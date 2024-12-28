@@ -104,7 +104,7 @@ main() {
 	fi
 	[ -z "$Name"      ] &&      Name="$(js $info 'Name')"
 	[ -z "$HW"        ] &&        HW="$(js $info 'HW')"
-	case "$HW" in 175|176|182|187|213|220|231|233|252|267) docsis='y' ;; esac
+	case "$HW" in 175|176|182|187|213|220|231|233|252|267|284) docsis='y' ;; esac
 	[ -z "$OEM"       ] &&       OEM="$(js $info 'OEM')"
 	[ -z "$OEM"       ] &&       OEM="avm"
 	[ -z "$Lang"      ] &&      Lang="$(js $info 'Lang')"
