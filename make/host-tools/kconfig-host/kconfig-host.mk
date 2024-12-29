@@ -19,8 +19,8 @@ $(PKG)_TARGET_PRG := conf   mconf      nconf   gconf   gconf.glade qconf
 $(PKG)_TARGET_ARG := config menuconfig nconfig gconfig gconfig     xconfig
 $(PKG)_TARGET_ALL := $(join $(KCONFIG_HOST_TARGET_ARG),$(patsubst %,--%,$(KCONFIG_HOST_TARGET_PRG)))
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TOOLS_KCONFIG_BUTTONS),buttons)
-$(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_KCONFIG_BUTTONS
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TOOLS_KCONFIG_OLDSCHOOL),,buttons)
+$(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_KCONFIG_OLDSCHOOL
 
 
 define $(PKG)_CUSTOM_UNPACK
