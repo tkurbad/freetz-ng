@@ -1,5 +1,13 @@
-config EXTERNAL_FREETZ_PACKAGE_VLMCSD
-	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_VLMCSD
+config EXTERNAL_FREETZ_PACKAGE_VLMCSD_vlmcs
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_VLMCSD_vlmcs
+	bool "vlmcs"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/vlmcs
+
+config EXTERNAL_FREETZ_PACKAGE_VLMCSD_vlmcsd
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_VLMCSD_vlmcsd
 	bool "vlmcsd"
 	default n
 	help

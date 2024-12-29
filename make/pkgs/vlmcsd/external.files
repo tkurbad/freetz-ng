@@ -1,1 +1,3 @@
-[ "$EXTERNAL_FREETZ_PACKAGE_VLMCSD" == "y" ] && EXTERNAL_FILES+=" /usr/bin/vlmcsd"
+[ "$EXTERNAL_FREETZ_PACKAGE_VLMCSD_vlmcs"  == "y" ] && EXTERNAL_FILES+=" /usr/bin/vlmcs"
+[ "$EXTERNAL_FREETZ_PACKAGE_VLMCSD_vlmcsd" == "y" ] && EXTERNAL_FILES+=" /usr/bin/vlmcsd"
+
