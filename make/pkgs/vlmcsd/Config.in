@@ -1,6 +1,6 @@
 config FREETZ_PACKAGE_VLMCSD
 	bool "VLMCSD svn1113"
-	select FREETZ_PACKAGE_VLMCSD_vlmcsd
+	select FREETZ_PACKAGE_VLMCSD_vlmcsd if !FREETZ_PACKAGE_VLMCSD_vlmcs
 	default n
 	help
 		vlmcsd is a fully Microsoft compatible KMS server hat provides
@@ -13,12 +13,16 @@ config FREETZ_PACKAGE_VLMCSD
 if FREETZ_PACKAGE_VLMCSD
 
 	config FREETZ_PACKAGE_VLMCSD_vlmcs
-		bool "client (binary only)"
+		bool "vlmcs (binary only)"
 		default n
+		help
+			Client binary only.
 
 	config FREETZ_PACKAGE_VLMCSD_vlmcsd
-		bool "server"
-		default y
+		bool "vlmcsd"
+		default n
+		help
+			Server with webif.
 
 endif # FREETZ_PACKAGE_VLMCSD
 
