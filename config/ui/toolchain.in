@@ -1371,6 +1371,7 @@ endchoice # "Root emulator" #
 
 config FREETZ_TOOLS_KCONFIG_OLDSCHOOL
 	bool "Additional load+save buttons in menuconfig"
+	depends on FREETZ_SHOW_EXPERT
 	default n
 	help
 		Not only select+exit+help buttons at bottom
