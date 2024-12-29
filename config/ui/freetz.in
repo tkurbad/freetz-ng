@@ -361,7 +361,7 @@ menu "Additional informations"
 			default n
 			help
 				Adds the build type.
-				Values: release/labor/beta/inhaus
+				Values: plus/release/labor/inhaus
 
 		config FREETZ_IMAGE_NAME_BRANDINGS
 			bool "Brandings"
