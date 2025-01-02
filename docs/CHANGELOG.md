@@ -57,7 +57,7 @@ Latest changes
 
  - Host tools:
    * busybox 1.37.0
-   * ca-bundle 2024-11-26
+   * ca-bundle 2024-12-31
    * cmake 3.31.3
    * fakeroot 1.36.2
    * kconfig 6.12
