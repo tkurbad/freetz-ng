@@ -557,7 +557,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### R
 
-  * **[radvd 1.9.3/2.19](radvd.md)<a id='radvd'></a>**<br>
+  * **[radvd 1.9.3/2.20](radvd.md)<a id='radvd'></a>**<br>
     The "router advertisement daemon" (radvd) is used for host autoconfiguration in ipv6 networks.
 
   * **<u>Rcapid 0.1 - DEPRECATED</u><a id='rcapid'></a>**<br>
