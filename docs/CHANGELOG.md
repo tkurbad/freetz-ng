@@ -66,6 +66,7 @@ Latest changes
    * openssl 3.0.15
    * precompiled host-tools 2024-11-08
    * python 3.12.8
+   * u-boot 2024.10
 
  - AVM sources:
    * 3000 ax  7.41 - 4.4.271

@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 2024.07)
+$(call TOOLS_INIT, 2024.10)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=b7f6137acc89e4a939075600de3a04cc3a8602fa936194c27bd9a14005bc61fd
+$(PKG)_HASH:=6c99df5f9402d05b5a5cfc60f941f0a584d0d9355fce46261bef008487a0f6c4
 $(PKG)_SITE:=https://github.com/u-boot/u-boot/archive/refs/tags
 ### CHANGES:=https://github.com/u-boot/u-boot/tags
 ### CVSREPO:=https://github.com/u-boot/u-boot
