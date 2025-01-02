@@ -64,7 +64,7 @@ Latest changes
    * lzma2 5.6.3
    * meson 1.6.1
    * openssl 3.0.15
-   * precompiled host-tools 2024-11-08
+   * precompiled host-tools 2025-01-02
    * python 3.12.8
    * u-boot 2024.10
 
