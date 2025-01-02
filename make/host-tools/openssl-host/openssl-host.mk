@@ -32,11 +32,15 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(OPENSSL_HOST_DIR) install_sw
 	@mkdir -p $(OPENSSL_HOST_DESTDIR)/
 	cp -a $(OPENSSL_HOST_DIR)/{libcrypto,libssl}.so.3 $(OPENSSL_HOST_DESTDIR)/
-	@$(PATCHELF) --replace-needed libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libssl.so.3
+	$(call OPENSSL_HOST_FIXHARDCODED)
 	@touch $@
 
-$(pkg)-fixhardcoded:
+define $(PKG)_FIXHARDCODED
 	@$(PATCHELF) --replace-needed libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libssl.so.3
+endef
+
+$(pkg)-fixhardcoded:
+	$(call OPENSSL_HOST_FIXHARDCODED)
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
