@@ -49,7 +49,7 @@ define $(PKG)_FIXHARDCODED
 endef
 
 $(pkg)-fixhardcoded:
-	$(call UBOOT_HOST_FIXHARDCODED,$(TOOLS_HARDCODED_DIR)/lib/)
+	$(call UBOOT_HOST_FIXHARDCODED,$(TOOLS_HARDCODED_DIR)/freetz/)
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
