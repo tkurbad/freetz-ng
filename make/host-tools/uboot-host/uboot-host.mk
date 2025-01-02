@@ -9,17 +9,15 @@ $(PKG)_SITE:=https://github.com/u-boot/u-boot/archive/refs/tags
 
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/fit
 
-$(PKG)_DEPENDS_ON+=$(if $(FREETZ_TOOLS_UBOOT_STATIC),openssl-host)
+$(PKG)_DEPENDS_ON+=patchelf-host
+$(PKG)_DEPENDS_ON+=openssl-host
 
 $(PKG)_BINARIES            := dumpimage fdtgrep mkimage
 $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/tools/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/%)
 
-$(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_UBOOT_STATIC
-ifeq ($(FREETZ_TOOLS_UBOOT_STATIC),y)
-$(PKG)_CONDITIONAL_PATCHES+=static_openssl
-$(PKG)_MAKE_VARS += HOSTLDFLAGS="-Wl,-L$(OPENSSL_HOST_DIR)"
-endif
+$(PKG)_MAKE_VARS += HOSTCFLAGS="-I$(OPENSSL_HOST_INSTALLDIR)/include"
+$(PKG)_MAKE_VARS += HOSTLDFLAGS="-Wl,-L$(OPENSSL_HOST_INSTALLDIR)/lib"
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
@@ -38,12 +36,27 @@ $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
 $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DESTDIR)/%: $($(PKG)_DIR)/tools/%
 	$(INSTALL_FILE)
 
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
+$($(PKG)_DIR)/.installed: $($(PKG)_BINARIES_TARGET_DIR)
+	$(call UBOOT_HOST_FIXHARDCODED)
+	@touch $@
+
+define $(PKG)_FIXHARDCODED
+	@for binfile in $(UBOOT_HOST_BINARIES_TARGET_DIR); do \
+	for libfile in libcrypto libssl; do \
+	$(PATCHELF) --replace-needed $${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $${binfile} ;\
+	done ;\
+	done ;
+endef
+
+$(pkg)-fixhardcoded:
+	$(call UBOOT_HOST_FIXHARDCODED)
+
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
 	-$(MAKE) -C $(UBOOT_HOST_DIR) clean
-	-$(RM) $(UBOOT_HOST_DIR)/.{configured,compiled}
+	$(RM) $(UBOOT_HOST_DIR)/.{configured,compiled,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(UBOOT_HOST_DIR)
