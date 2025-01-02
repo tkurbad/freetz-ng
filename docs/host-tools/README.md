@@ -98,7 +98,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[pkgconf 2.2.0](pkgconf-host.md)<a id='pkgconf-host'></a>**<br>
 
-  * **[prelink 20130503](prelink-host.md)<a id='prelink-host'></a>**<br>
+  * **[prelink 20131005](prelink-host.md)<a id='prelink-host'></a>**<br>
 
   * **[pseudo 1.9.0 oe-core cc1f616](pseudo-host.md)<a id='pseudo-host'></a>**<br>
 
