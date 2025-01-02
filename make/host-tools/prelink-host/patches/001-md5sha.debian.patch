@@ -5,7 +5,7 @@ Index: b/doc/prelink.8
 ===================================================================
 --- a/doc/prelink.8
 +++ b/doc/prelink.8
-@@ -179,7 +179,7 @@
+@@ -182,7 +182,7 @@
  improbable case of modified file and original file having the same digest
  or checksum).
  .TP
@@ -14,7 +14,7 @@ Index: b/doc/prelink.8
  This is similar to
  .I \-\-verify
  option, except instead of outputting the content of the binary or library
-@@ -187,7 +187,7 @@
+@@ -190,7 +190,7 @@
  See
  .BR md5sum (1).
  .TP
