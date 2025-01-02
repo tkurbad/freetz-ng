@@ -51,13 +51,13 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 define $(PKG)_FIXHARDCODED
 	@for binfile in $(CMAKE_HOST_BINARIES); do \
 	for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(CMAKE_HOST_DESTDIR)/bin/$${binfile} ;\
+	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(CMAKE_HOST_DESTDIR)/bin/$${binfile} ;\
 	done ;\
 	done ;
 endef
 
 $(pkg)-fixhardcoded:
-	$(call CMAKE_HOST_FIXHARDCODED)
+	$(call CMAKE_HOST_FIXHARDCODED,$(TOOLS_HARDCODED_DIR)/lib/)
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 

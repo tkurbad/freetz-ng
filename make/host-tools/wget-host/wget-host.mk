@@ -49,12 +49,12 @@ $($(PKG)_DIR)/.installed: $($(PKG)_TARGET_BINARY)
 
 define $(PKG)_FIXHARDCODED
 	@for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(WGET_HOST_TARGET_BINARY) ;\
+	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(WGET_HOST_TARGET_BINARY) ;\
 	done ;
 endef
 
 $(pkg)-fixhardcoded:
-	$(call WGET_HOST_FIXHARDCODED)
+	$(call WGET_HOST_FIXHARDCODED,$(TOOLS_HARDCODED_DIR)/lib/)
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 

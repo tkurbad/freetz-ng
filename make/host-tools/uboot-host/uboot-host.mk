@@ -43,13 +43,13 @@ $($(PKG)_DIR)/.installed: $($(PKG)_BINARIES_TARGET_DIR)
 define $(PKG)_FIXHARDCODED
 	@for binfile in $(UBOOT_HOST_BINARIES_TARGET_DIR); do \
 	for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $${binfile} ;\
+	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $${binfile} ;\
 	done ;\
 	done ;
 endef
 
 $(pkg)-fixhardcoded:
-	$(call UBOOT_HOST_FIXHARDCODED)
+	$(call UBOOT_HOST_FIXHARDCODED,$(TOOLS_HARDCODED_DIR)/lib/)
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 

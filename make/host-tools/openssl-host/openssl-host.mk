@@ -37,11 +37,11 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	@touch $@
 
 define $(PKG)_FIXHARDCODED
-	@$(PATCHELF) --replace-needed libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libssl.so.3
+	@$(PATCHELF) --replace-needed $(1)libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libssl.so.3
 endef
 
 $(pkg)-fixhardcoded:
-	$(call OPENSSL_HOST_FIXHARDCODED)
+	$(call OPENSSL_HOST_FIXHARDCODED,$(TOOLS_HARDCODED_DIR)/lib/)
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
