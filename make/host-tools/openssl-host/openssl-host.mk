@@ -30,6 +30,7 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 
 $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(OPENSSL_HOST_DIR) install_sw
+	@[ -d $(OPENSSL_HOST_INSTALLDIR)/lib ] || ln -sf lib64 $(OPENSSL_HOST_INSTALLDIR)/lib
 	@mkdir -p $(OPENSSL_HOST_DESTDIR)/
 	cp -a $(OPENSSL_HOST_DIR)/{libcrypto,libssl}.so.3 $(OPENSSL_HOST_DESTDIR)/
 	$(call OPENSSL_HOST_FIXHARDCODED)
