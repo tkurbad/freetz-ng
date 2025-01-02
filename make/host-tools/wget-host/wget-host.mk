@@ -11,10 +11,9 @@ $(PKG)_SITE:=@GNU/wget
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/wget
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/wget
 
-$(PKG)_DEPENDS_ON+=$(if $(FREETZ_TOOLS_WGET_STATIC),openssl-host)
+$(PKG)_DEPENDS_ON+=patchelf-host
+$(PKG)_DEPENDS_ON+=openssl-host
 $(PKG)_DEPENDS_ON+=ca-bundle-host
-
-$(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_WGET_STATIC
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/usr
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
@@ -25,15 +24,11 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
 $(PKG)_CONFIGURE_OPTIONS += --without-libuuid
 $(PKG)_CONFIGURE_OPTIONS += --without-libpsl
 $(PKG)_CONFIGURE_OPTIONS += --without-zlib
-
-ifeq ($(strip $(FREETZ_TOOLS_WGET_STATIC)),y)
 $(PKG)_CONFIGURE_OPTIONS += --with-included-libunistring
-$(PKG)_CONFIGURE_OPTIONS += --with-ssl=openssl
 $(PKG)_CONFIGURE_OPTIONS += --without-libgnutls-prefix
-$(PKG)_CONFIGURE_ENV += OPENSSL_CFLAGS="-I$(OPENSSL_HOST_DIR)/include"
-$(PKG)_CONFIGURE_ENV += OPENSSL_LIBS="-L$(OPENSSL_HOST_DIR)  -Wl,-Bstatic -l:libssl.a -l:libcrypto.a  -Wl,-Bdynamic -ldl -pthread"
-#$(PKG)_CONFIGURE_ENV += LDFLAGS="-static  -lssl -lcrypto"
-endif
+$(PKG)_CONFIGURE_OPTIONS += --with-ssl=openssl
+$(PKG)_CONFIGURE_ENV += OPENSSL_CFLAGS="-I$(OPENSSL_HOST_INSTALLDIR)/include"
+$(PKG)_CONFIGURE_ENV += OPENSSL_LDFLAGS="-L$(OPENSSL_HOST_INSTALLDIR)/lib"
 
 
 ifneq ($($(PKG)_SOURCE),$(WGET_HOST_SOURCE))
@@ -43,17 +38,30 @@ $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(WGET_HOST_DIR) \
-		all
+	$(TOOLS_SUBMAKE) -C $(WGET_HOST_DIR) all
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_FILE)
 
-$(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+$($(PKG)_DIR)/.installed: $($(PKG)_TARGET_BINARY)
+	$(call WGET_HOST_FIXHARDCODED)
+	@touch $@
+
+define $(PKG)_FIXHARDCODED
+	@for libfile in libcrypto libssl; do \
+	$(PATCHELF) --replace-needed $${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(WGET_HOST_TARGET_BINARY) ;\
+	done ;
+endef
+
+$(pkg)-fixhardcoded:
+	$(call WGET_HOST_FIXHARDCODED)
+
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
 	-$(MAKE) -C $(WGET_HOST_DIR) clean
+	$(RM) $(WGET_HOST_DIR)/.{configured,compiled,installed,fixhardcoded}
 
 $(pkg)-dirclean:
 	$(RM) -r $(WGET_HOST_DIR)
