@@ -27,8 +27,8 @@ $(PKG)_CONFIGURE_OPTIONS += --without-zlib
 $(PKG)_CONFIGURE_OPTIONS += --with-included-libunistring
 $(PKG)_CONFIGURE_OPTIONS += --without-libgnutls-prefix
 $(PKG)_CONFIGURE_OPTIONS += --with-ssl=openssl
-$(PKG)_CONFIGURE_ENV += OPENSSL_CFLAGS="-I$(OPENSSL_HOST_INSTALLDIR)/include"
-$(PKG)_CONFIGURE_ENV += OPENSSL_LDFLAGS="-L$(OPENSSL_HOST_INSTALLDIR)/lib"
+
+$(PKG)_CONFIGURE_ENV += PKG_CONFIG_PATH="$(OPENSSL_HOST_INSTALLDIR)/lib/pkgconfig/"
 
 
 ifneq ($($(PKG)_SOURCE),$(WGET_HOST_SOURCE))
