@@ -162,9 +162,13 @@ main() {
 		avmca="$MYPWD/avm-rootca.pem"
 		[ -e "/etc/avm_root_ca.pem"     ] && avmca="/etc/avm_root_ca.pem"
 		[ -e "/etc/jasonii_root_ca.pem" ] && avmca="/etc/jasonii_root_ca.pem"
-		host="jws.avm.de"      # https-cert matches hostname
+		host="jws.avm.de"              # https-cert matches hostname
 	else
-		host="$HW.jws.avm.de"  # no wirldcard certificate
+		if [ "$HW" -lt 269 ] 2>/dev/null ; then
+			host="$HW.jws.avm.de"  # no wirldcard certificate
+		else                           # https://github.com/PeterPawn/YourFritz/issues/66
+			host="jws.avm.de"      # since 7690 avm does not use hostnames anymore
+		fi
 	fi
 
 	#old: /Jason/UpdateCheck
