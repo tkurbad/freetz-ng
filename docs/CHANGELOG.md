@@ -139,6 +139,7 @@ Latest changes
    * libnettle 3.10
    * libpng 1.6.44
    * libssh2 1.11.1
+   * libtirpc 1.3.6
    * liburcu 0.15.0
    * libuv 1.44.2/1.49.2
    * libxml2 2.13.5
