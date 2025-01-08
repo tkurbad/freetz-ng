@@ -591,7 +591,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     ipphone_from_outside does not trigger the message.
 
   * **[PATCH_SIGNED: Patch web menu signed message](PATCH_SIGNED.md)<a id='patch-signed'></a>**<br>
-    Hides the "unsupported changes" message from the web interface.
+    Hides the "unsupported changes" message from the web interface. Known reasons are NOT_SIGNED, TELNET, DEBUGCFG and IMPORT. Run "echo clear_id 87 > /proc/tffs" to reset the fw_attrib flag.
 
   * **<u>PATCH_START_WLAN_IF_ON_BOOT: Start wlan interface on boot</u><a id='patch-start-wlan-if-on-boot'></a>**<br>
     Runs "ifconfig wlan up" on system start to enable ip assignment etc, which fails on some devices with installed Freetz. This is a workaround! The cause of this problem is still unknown.
