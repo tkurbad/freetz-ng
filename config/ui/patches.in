@@ -1274,9 +1274,15 @@ config FREETZ_PATCH_WEBIF_FEATURES
 
 config FREETZ_PATCH_SIGNED
 	bool "Patch web menu signed message"
+	depends on \
+		FREETZ_AVM_VERSION_06_2X_MAX || \
+		FREETZ_AVM_HAS_TELNETD || FREETZ_ADD_TELNETD || \
+		FREETZ_AVM_HAS_DEBUG_CFG_SUPPORT || FREETZ_RESTORE_DEBUG_CFG_SUPPORT
 	default n
 	help
 		Hides the "unsupported changes" message from the web interface.
+		Known reasons are NOT_SIGNED, TELNET, DEBUGCFG and IMPORT.
+		Run "echo clear_id 87 > /proc/tffs" to reset the fw_attrib flag.
 
 config FREETZ_PATCH_SECURE
 	bool "Patch web menu secure message"
