@@ -108,6 +108,7 @@ Currently supported devices and firmwares
   - 155.08.00 rev116372 {ALL} [Smart24 P1]
 * __Fritz!Box 4050 (UNTESTED)__
   - 287.07.58 rev115740 {ALL} [MOVE21NL1]
+  - 287.08.02 rev118032 {ALL} [Smart24 P1 FCS]
 * __Fritz!Box 4060__
   - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
   - 261.07.59 rev113614 {ALL} [MOVE21NL2]
