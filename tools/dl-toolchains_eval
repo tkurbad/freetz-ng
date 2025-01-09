@@ -26,7 +26,7 @@ evalconfig() {
 }
 
 case "$2" in
-	g|gen)		ver="gen" ;; # 2024: About 11ooo iterations!
+	g|gen)		ver="gen" ;; # 2024: About 11ooo iterations, 7h!
 	a|all|"")	ver=""    ;;
 	o|old)		ver="old" ;;
 	n|new)		ver="new" ;;
