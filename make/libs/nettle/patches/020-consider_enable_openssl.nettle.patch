@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -6461,7 +6461,8 @@
+@@ -6468,7 +6468,8 @@
  printf "%s\n" "#define SIZEOF_SIZE_T $ac_cv_sizeof_size_t" >>confdefs.h
  
  
@@ -10,7 +10,7 @@
         for ac_header in openssl/evp.h openssl/ec.h openssl/rsa.h
  do :
    as_ac_Header=`printf "%s\n" "ac_cv_header_$ac_header" | $as_tr_sh`
-@@ -6478,6 +6479,7 @@
+@@ -6485,6 +6486,7 @@
  fi
  
  done

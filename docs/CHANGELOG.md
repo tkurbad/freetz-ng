@@ -137,7 +137,7 @@ Latest changes
    * libcap-ng 0.8.5
    * libdeflate 1.23
    * libmaxminddb 1.11.0
-   * libnettle 3.10
+   * libnettle 3.10.1
    * libpng 1.6.44
    * libssh2 1.11.1
    * libtirpc 1.3.6
