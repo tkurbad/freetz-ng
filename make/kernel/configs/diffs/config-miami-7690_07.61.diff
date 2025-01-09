@@ -14,14 +14,3 @@
  CONFIG_CC_HAS_ASM_GOTO=y
  CONFIG_CC_HAS_ASM_INLINE=y
  CONFIG_IRQ_WORK=y
-@@ -693,8 +692,9 @@
- CONFIG_ARCH_HAS_GCOV_PROFILE_ALL=y
- # end of GCOV-based kernel profiling
- 
--CONFIG_PLUGIN_HOSTCC=""
-+CONFIG_PLUGIN_HOSTCC="g++"
- CONFIG_HAVE_GCC_PLUGINS=y
-+# CONFIG_GCC_PLUGINS is not set
- # end of General architecture-dependent options
- 
- CONFIG_RT_MUTEXES=y
