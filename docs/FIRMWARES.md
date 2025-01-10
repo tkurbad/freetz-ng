@@ -145,11 +145,11 @@ Currently supported devices and firmwares
 * __Fritz!Box 5530 Fiber (DEVELOPER, No fiber!)__
   - 257.07.30 rev99334 {ALL} [PSQ19P2NL4]
   - 257.07.58 rev108018 {ALL} [MOVE21NL1]
-  - 257.08.00 rev116146 {ALL} [Smart24 P1]
+  - 257.08.02 rev117982 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.58 rev109907 {ALL} [MOVE21NL1]
-  - 272.08.00 rev116429 {ALL} [Smart24 P1]
+  - 272.08.02 rev117989 {ALL} [Smart24 P1 NL1]
 * __FRITZ!Box 5690 Pro__
   - 279.07.62 rev115017 {ALL} [FCS23]
   - 279.08.01 rev117705 {ALL} [Smart24 P1 FCS]
@@ -176,19 +176,19 @@ Currently supported devices and firmwares
   - 161.07.13 rev75441 {GER} [MESH18 NL3]
   - 161.07.29 rev92035 {GER} [PSQ19P2NL4]
   - 161.07.57 rev107841 {GER} [MOVE21NL1]
-  - 161.08.01 rev117719 {GER} [Smart24 P1 NL1]
+  - 161.08.02 rev117977 {GER} [Smart24 P1 NL1]
 * __Fritz!Box 6660 Cable__
   - 252.07.15 rev78740 {GER} [6660 FCS]
   - 252.07.29 rev92037 {GER} [PSQ19P2NL4]
   - 252.07.57 rev107842 {GER} [MOVE21NL1]
-  - 252.08.01 rev117720 {GER} [Smart24 P1 NL1]
+  - 252.08.02 rev117980 {GER} [Smart24 P1 NL1]
 * __Fritz!Box 6670 Cable (UNTESTED)__
   - 284.07.63 rev113732 {GER} [FCS23]
-  - 284.08.01 rev117514 {GER} [Smart24 P1 FCS]
+  - 284.08.02 rev117970 {GER} [Smart24 P1 FCS]
 * __Fritz!Box 6690 Cable__
   - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
   - 267.07.57 rev109915 {GER} [MOVE21NL1]
-  - 267.08.01 rev117721 {GER} [Smart24 P1 NL1]
+  - 267.08.02 rev117987 {GER} [Smart24 P1 NL1]
 
 ### Fritz!Box LTE (68xx)
 
@@ -424,7 +424,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
   - 256.07.57 rev109901 {ALL} [MOVE21NL1]
-  - 256.08.00 rev116010 {ALL} [Smart24 P1]
+  - 256.08.02 rev117981 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7530 AX B__
   - 278.07.90 rev115731 {ALL} [Smart24 P1 FCS] (Inhaus)
 * __Fritz!Box Fon WLAN 7560__
@@ -473,7 +473,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.57 rev107809 {ALL} [MOVE21NL1]
-  - 259.08.00 rev115746 {ALL} [Smart24 P1]
+  - 259.08.02 rev117984 {ALL} [Smart24 P1 NL1]
 
 ### Fritz!Box Fon WLAN (76xx)
 
