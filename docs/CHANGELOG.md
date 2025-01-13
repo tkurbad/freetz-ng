@@ -133,7 +133,7 @@ Latest changes
    * expat 2.6.4
    * FreeType 2.13.3
    * glib2 2.32.4/2.81.2
-   * harfbuzz 10.1.0
+   * harfbuzz 10.2.0
    * libcap 2.49/2.73
    * libcap-ng 0.8.5
    * libdeflate 1.23
