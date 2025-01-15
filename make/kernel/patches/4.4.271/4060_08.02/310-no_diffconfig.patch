@@ -1,6 +1,6 @@
 --- linux-4.4/GNUmakefile
 +++ linux-4.4/GNUmakefile
-@@ -197,17 +197,8 @@
+@@ -195,17 +195,8 @@
  		@rm -f .kernelvariables .kernelvariables.old)
  	+@$(call __kbuild,$(and $(MAKECMDGOALS),$@))
  
