@@ -69,7 +69,7 @@ fi
 
 #
 # the following syscalls are supported by 2.6.32 but not by 2.6.28 (mips arch)
-# s. http://freetz.org/attachment/ticket/2519/2.6.28-vs-2.6.32-syscall-comparison.diff for details
+# s. http://freetz_org/attachment/ticket/2519/2.6.28-vs-2.6.32-syscall-comparison.diff for details
 #
 # preadv             not used/supported by uClibc (as of 0.9.33.x)
 # pwritev            not used/supported by uClibc (as of 0.9.33.x)

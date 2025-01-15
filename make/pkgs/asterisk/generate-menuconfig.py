@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 #
-# Copyright (c) 2013 freetz.org
+# Copyright (c) 2013 freetz_org
 #
 
 def menuselect2kconfig(menuselectFilename):

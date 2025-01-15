@@ -35,9 +35,9 @@ Verfügbare Scripte und Tools zum Flashen über den Bootloader:
  * Gen 1: __single-boot__<a id='single'></a> / NOR<br>
    Die ersten Fritzboxen von 7050 bis 7390
     - `tools/push_firmware` von Freetz-NG
-    - [push_firmware](https://www.freetz.org) vom Ur-Freetz
+    - [push_firmware](https://freetz.github.io) vom Ur-Freetz
     - [fritzflash.py](https://fritz-tools.readthedocs.io) von Freifunk/Gluon
-    - [ruKernelTool](http://rukerneltool.rainerullrich.de/) gibt es zum Glück nicht mehr
+    - [ruKernelTool](http://rukerneltool.rainerullrich.de) gibt es nicht mehr
  
  * Gen 2: __ram-boot__<a id='ram'></a> / NAND / inmemory<br>
    Fritzboxen nach 7390, wie 7490 & 7590

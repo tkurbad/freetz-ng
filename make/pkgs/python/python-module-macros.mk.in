@@ -1,7 +1,7 @@
 #
 # Copyright (C) 2007 OpenWrt.org
 #
-# Copyright (C) 2013 freetz.org
+# Copyright (C) 2013 freetz_org
 #
 
 PYTHON_STAGING_DIR:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr

@@ -1,5 +1,5 @@
 From f9a7766bc1c26180cc72306f0a1a3f829e7625fe Mon Sep 17 00:00:00 2001
-From: Oliver Metz <oliver@freetz.org>
+From: Oliver Metz <oliver@freetz_org>
 Date: Sat, 13 Jul 2013 15:37:43 +0200
 Subject: [PATCH] Activate havege random generator needed by rtmpdump
 

@@ -1,7 +1,7 @@
 #!/bin/busybox sh
 
 #
-# (c) 2014 freetz.org
+# (c) 2014 freetz_org
 #
 
 GETOPT="busybox getopt"

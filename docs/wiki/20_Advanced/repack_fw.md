@@ -122,17 +122,17 @@ lassen kann. Konkret gehe man wie folgt vor:
     sich weiterhin die Option "Sign image" (ebenfalls unter "Firmware
     packaging (fwmod) options" zu finden) zu aktivieren (s. dazu den
     [Signieren von
-    Firmware](http://trac.freetz.org/wiki/help/howtos/development/sign_image)-Artikel).
+    Firmware](http://trac_freetz_org/wiki/help/howtos/development/sign_image)-Artikel).
 2.  Die eigenen Mods der Firmware sind in dem Script
-    [fwmod_custom](http://trac.freetz.org/browser/trunk/fwmod_custom)
+    [fwmod_custom](http://trac_freetz_org/browser/trunk/fwmod_custom)
     in der Funktion
-    [all_no_freetz](http://trac.freetz.org/browser/trunk/fwmod_custom?rev=13796#L14)
+    [all_no_freetz](http://trac_freetz_org/browser/trunk/fwmod_custom?rev=13796#L14)
     zu implementieren. Das entpackte Root-Dateisystem steht dabei unter
     `./filesystem` zur Verfügung. fwmod_custom enthält bereits einige
     auskommentierte Beispiele: [restore telnet
-    support](http://trac.freetz.org/browser/trunk/fwmod_custom?rev=13796#L17),
+    support](http://trac_freetz_org/browser/trunk/fwmod_custom?rev=13796#L17),
     [restore debug.cfg
-    support](http://trac.freetz.org/browser/trunk/fwmod_custom?rev=13796#L25).
+    support](http://trac_freetz_org/browser/trunk/fwmod_custom?rev=13796#L25).
 3.  Anschließend rufe man `make` auf. Das entpackte,
     fwmod_custom-modifizierte, wieder zusammengepackte und ggf.
     signierte Image ist unter `images/` zu finden.

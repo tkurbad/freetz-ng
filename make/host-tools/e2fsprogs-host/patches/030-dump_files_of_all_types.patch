@@ -1,7 +1,7 @@
 
  Add support for dumping device files and FIFOs
 
- Signed-off-by: gene@freetz.org
+ Signed-off-by: gene@freetz_org
 
 --- debugfs/dump.c
 +++ debugfs/dump.c

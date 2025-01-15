@@ -36,7 +36,7 @@ Zum Einbinden der aktuellsten Version aus der Entwicklerversion in
 Freetz 1.2 kann man so vorgehen (im Wurzelverzeichnis von Freetz):
 
 ```
-svn switch http://svn.freetz.org/trunk/make/callmonitor/callmonitor.mk make/callmonitor/callmonitor.mk
+svn switch http://svn_freetz_org/trunk/make/callmonitor/callmonitor.mk make/callmonitor/callmonitor.mk
 ```
 
 ## Weiterführende Links

@@ -1,10 +1,10 @@
 This is a patch for Pygments 1.4 (Debian package 'python-pygments').
 Tested with Ubuntu Oneiric (11.10), package version 1.4+dfsg-1ubuntu1.
-Tested in Trac 0.12.3dev-r10806 on freetz.org (2011-10-28)
+Tested in Trac 0.12.3dev-r10806 on freetz_org (2011-10-28)
 
 (C) 2011 Alexander Kriegisch (http://scrum-master.de)
 
-Purpose: enable Pygments (and our freetz.org Trac system, respectively) to
+Purpose: enable Pygments (and our freetz_org Trac system, respectively) to
 syntax-highlight Kconfig files. More details are in the Python code comments
 within the patch itself.
 
@@ -54,7 +54,7 @@ How to test:
     ...
     }}}
 
-This patch was initially developed for the Freetz project (http://freetz.org)
+This patch was initially developed for the Freetz project (http://freetz_org)
 
 
 --- /usr/share/pyshared/pygments/lexers/other.py	2011-01-03 16:57:54.000000000 +0100

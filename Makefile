@@ -2,7 +2,7 @@
 #
 # Copyright (C) 1999-2004 by Erik Andersen <andersen@codepoet.org>
 # Copyright (C) 2005-2006 by Daniel Eiband <eiband@online.de>
-# Copyright (C) 2006-2018 by the Freetz developers (http://freetz.org)
+# Copyright (C) 2006-2018 by the Freetz developers (http://freetz_org)
 # Copyright (C) 2019 by Freetz developers (https://freetz-ng.github.io/ and https://freetz.github.io)
 #
 # Licensed under the GPL v2, see the file COPYING in this tarball.
