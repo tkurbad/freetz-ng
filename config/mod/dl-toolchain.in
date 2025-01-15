@@ -12,8 +12,8 @@ config FREETZ_DL_TOOLCHAIN_SITE
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_VERSION
 	string "Kernel toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default "r25157"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
-	default "r25112"
+	default "rLOCAL"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
+	default "rLOCAL"
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 	string "Kernel toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
@@ -40,8 +40,8 @@ config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 
 config FREETZ_DL_TARGET_TOOLCHAIN_VERSION
 	string "Target toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default "r25157"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
-	default "r25112"
+	default "rLOCAL"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
+	default "rLOCAL"
 
 config FREETZ_DL_TARGET_TOOLCHAIN_HASH
 	string "Target toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
