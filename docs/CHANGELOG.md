@@ -66,7 +66,7 @@ Latest changes
    * meson 1.6.1
    * openssl 3.0.15
    * precompiled host-tools 2025-01-13
-   * precompiled toolchains r25112
+   * precompiled toolchains r25112/r25157
    * prelink 20131005
    * python 3.12.8
    * u-boot 2025.01
