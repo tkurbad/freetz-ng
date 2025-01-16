@@ -1444,7 +1444,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			rm -f "$MODULES_DIR/modules.dep.reproducible"
 		fi
 	else
-		[ "$FREETZ_MODULES_TEST" == "y" ] && error 1 "The kernel was not built."
+		[ "$FREETZ_MODULES_TEST" == "y" ] && error 1 "The kernel was not built (UNTESTED=${FREETZ_TYPE_FIRMWARE_UNTESTED:-n})."
 	fi
 
 	kolinecnt="$(cat "$MODULES_DIR/modules.dep" | wc -l)"
