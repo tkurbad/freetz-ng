@@ -1446,7 +1446,12 @@ if [ "$DO_MOD" -gt 0 ]; then
 			rm -f "$MODULES_DIR/modules.dep.reproducible"
 		fi
 	else
-		[ "$FREETZ_MODULES_TEST" == "y" ] && error 1 "The kernel was not built (UNTESTED=${FREETZ_TYPE_FIRMWARE_UNTESTED:-n})."
+		if [ "$FREETZ_MODULES_TEST" == "y" ]; then
+			[ "$FREETZ_TYPE_FIRMWARE_UNTESTED"   == "y" ] && error 1 "The kernel was not built, this device is UNTESTED."
+			[ "$FREETZ_KERNEL_AVMDIFF_AVAILABLE" != "y" ] && error 1 "The kernel was not built, no KERNEL_AVMDIFF available."
+			[ "$FREETZ_REPLACE_MODULE_AVAILABLE" != "y" ] && error 1 "The kernel was not built, no REPLACE_MODULE available."
+			                                                 error 1 "The kernel was not built."
+		fi
 	fi
 
 	kolinecnt="$(cat "$MODULES_DIR/modules.dep" | wc -l)"
