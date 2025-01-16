@@ -476,7 +476,7 @@ Currently supported devices and firmwares
 
 ### Fritz!Box Fon WLAN (76xx)
 
-* __FRITZ!Box 7682__
+* __FRITZ!Box 7682 (UNTESTED)__
   - 286.08.01 rev117722 {ALL} [Smart24 P1 FCS]
 * __FRITZ!Box 7690__
   - 285.07.62 rev115134 {ALL} [FCS23]
