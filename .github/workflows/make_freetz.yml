@@ -72,6 +72,7 @@ jobs:
           echo 'FREETZ_VERBOSITY_LEVEL_0=y'                                                           >> .config
           echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
           echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
+          echo '# FREETZ_MODULES_TEST in not set'                                                     >> .config
           echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
           echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
