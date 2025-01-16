@@ -1425,6 +1425,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			  2>&1 | tee "$DEPMOD_TEMP"
 		fi
 		if grep -qE "(unresolved|unknown) symbol" "$DEPMOD_TEMP"; then
+			[ "$FREETZ_MODULES_TEST" == "y" ] && error 1 "Unresolved symbols detected."
 			warn "Unresolved symbols detected, not all AVM-features may work.\nApropriate sources by AVM not used or not available? Error in kernel's .config? Ask fritzbox_info@avm.de for sources!"
 		fi
 		rm -f "$DEPMOD_TEMP"
@@ -1442,6 +1443,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 			cat "$MODULES_DIR/modules.dep.reproducible" > "$MODULES_DIR/modules.dep"
 			rm -f "$MODULES_DIR/modules.dep.reproducible"
 		fi
+	else
+		[ "$FREETZ_MODULES_TEST" == "y" ] && error 1 "The kernel was not built."
 	fi
 
 	kolinecnt="$(cat "$MODULES_DIR/modules.dep" | wc -l)"

@@ -109,5 +109,12 @@ menu "Build system options"
 			 - Squashfs is reproducible since 4.4,
 			   so v2+v3+v4.3 needs to be backported
 
+	config FREETZ_MODULES_TEST
+		bool "Enable kernel modules test - DEVELOPER"
+		depends on FREETZ_SHOW_DEVELOPER
+		default n
+		help
+			Abort build on any problem with kernel modules.
+
 endmenu # "Build system options" #
 
