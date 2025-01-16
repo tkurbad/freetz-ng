@@ -72,7 +72,7 @@ jobs:
           echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
           echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
           echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
-          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                      >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
           echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
           echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
           wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
