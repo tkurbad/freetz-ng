@@ -115,7 +115,7 @@ Latest changes
    * OpenSSH 9.3p2/9.9p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.15
    * radvd 1.9.3/2.20
-   * rsync 3.4.0
+   * rsync 3.4.1
    * RPCBind 1.2.7
    * RRDtool 1.2.30/1.9.0
    * S-Lang 2.3.3
