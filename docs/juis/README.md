@@ -43,7 +43,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 222: [FRITZ.Powerline_1240E.150.07.16.image](http://download.avm.de/fritzpowerline/fritzpowerline-1240e/deutschland/fritz.os/FRITZ.Powerline_1240E.150.07.16.image)
  - HWR 223: [FRITZ.Box_5490-07.31.image](http://download.avm.de/fritzbox/fritzbox-5490/other/fritz.os/FRITZ.Box_5490-07.31.image)
  - HWR 225: [FRITZ.Box_7580-07.30.image](http://download.avm.de/fritzbox/fritzbox-7580/deutschland/fritz.os/FRITZ.Box_7580-07.30.image)
- - HWR 226: [FRITZ.Box_7590-08.00.image](http://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-08.00.image)
+ - HWR 226: [FRITZ.Box_7590-08.02.image](http://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-08.02.image)
  - HWR 227: [FRITZ.Box_4040-08.00.image](http://download.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-08.00.image)
  - HWR 228: [FRITZ.Box_7582-07.18.image](http://download.avm.de/fritzbox/fritzbox-7582/other/fritz.os/FRITZ.Box_7582-07.18.image)
  - HWR 229: [FRITZ.Powerline_1260E.157.07.58.image](http://download.avm.de/fritzpowerline/fritzpowerline-1260e/deutschland/fritz.os/FRITZ.Powerline_1260E.157.07.58.image)
