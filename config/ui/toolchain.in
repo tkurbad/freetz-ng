@@ -31,6 +31,27 @@ config FREETZ_TOOLCHAIN_MINIMIZE_REQUIRED_GLIBC_VERSION
 #	bool "Minimize required GLIBC version" if FREETZ_BUILD_TOOLCHAIN
 	def_bool y
 
+menu "Own precompiled toolchains"
+	visible if FREETZ_REAL_DEVELOPER_ONLY
+
+	config FREETZ_REAL_DEVELOPER_ONLY__DLTCS
+		bool "Use own precompiled toolchains"
+		default n
+
+	config FREETZ_REAL_DEVELOPER_ONLY__DLKTC
+		string "Version of own precompiled kernel toolchains"
+		default ""
+
+	config FREETZ_REAL_DEVELOPER_ONLY__DLTTC
+		string "Version of own precompiled target toolchains"
+		default ""
+
+	config FREETZ_REAL_DEVELOPER_ONLY__DLURL
+		string "Download URL of own precompiled toolchains"
+		default ""
+
+endmenu
+
 
 comment "Kernel toolchain options ----------------------------------------"
 
