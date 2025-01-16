@@ -367,18 +367,20 @@ else
 	if [ "$FREETZ_ROOTEMU_FAKEROOT" != 'y' ]; then
 		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -B  &>/dev/null  #scan
 		FWMOD_RECURSIVE="$$" PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR" PSEUDO_DEBUG="0" "$TOOLS_DIR/build/bin/pseudo" '--' "${CMDLINE_ORIG[@]}"
+			retval=$?
 		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -S  &>/dev/null  #halt
 	else
 		# Has current combination of firmware already been unpacked?
 		if [ "$(cat "$UNPACKED_FILE" 2>/dev/null)" == "$FIRMWARE_MD5" ]; then
 			# Yes -> use existing cache and firmwares (no unpack necessary)
 			NON_FAKEROOT_USERNAME=$(id -u -n) FWMOD_RECURSIVE=$$ $TOOLS_DIR/build/bin/fakeroot -i "$FAKEROOT_CACHE_DB" -s "$FAKEROOT_CACHE_DB" '--' "${CMDLINE_ORIG[@]}"
+			retval=$?
 		else
 			# No -> create new fakeroot cache and unpack firmwares
 			NON_FAKEROOT_USERNAME=$(id -u -n) FWMOD_RECURSIVE=$$ $TOOLS_DIR/build/bin/fakeroot                         -s "$FAKEROOT_CACHE_DB" '--' "${CMDLINE_ORIG[@]}"
+			retval=$?
 		fi
 	fi
-	retval=$?
 	[ $retval -eq 0 ] || exit $retval
 
 	# ------------------------------------------------------------------
