@@ -35,7 +35,8 @@ $($(PKG)_TARGET_PRG:%=$($(PKG)_DIR)/scripts/kconfig/%): $($(PKG)_DIR)/.unpacked
 	$(TOOLS_SUBMAKE) -C $(KCONFIG_HOST_DIR) \
 		HOST_EXTRACFLAGS="-Iscripts/include" \
 		HOSTPKG_CONFIG="pkgconf" \
-		$(subst --$(notdir $@),,$(filter %--$(notdir $@),$(KCONFIG_HOST_TARGET_ALL)))
+		$(subst --$(notdir $@),,$(filter %--$(notdir $@),$(KCONFIG_HOST_TARGET_ALL))) \
+		$(SILENT)
 
 $(patsubst %,$($(PKG)_TARGET_DIR)/%,$($(PKG)_TARGET_PRG)): $($(PKG)_TARGET_DIR)/% : $($(PKG)_DIR)/scripts/kconfig/%
 	$(INSTALL_FILE)
