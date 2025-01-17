@@ -115,6 +115,7 @@ main() {
 			des_generic)			koon  CRYPTO_DES			 ;;
 			cmac)				koon  CRYPTO_CMAC			 ;;
 			ecb)				koon  CRYPTO_ECB			 ;;
+			ecc)				koon  CRYPTO_ECC			 ;;
 			ecdh_generic)			koon  CRYPTO_ECDH			 ;;
 			hmac)				koon  CRYPTO_HMAC			 ;;
 			md4)				koon  CRYPTO_MD4			 ;;
