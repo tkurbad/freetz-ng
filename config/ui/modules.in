@@ -139,6 +139,11 @@ config FREETZ_MODULE_cryptomgr
 	select FREETZ_MODULE_pcompress        if !FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN     && FREETZ_KERNEL_VERSION_2_6_32_MIN
 	default n
 
+config FREETZ_MODULE_ecdh_generic
+	bool "ecdh_generic.ko"
+	depends on !FREETZ_AVM_HAS_CRYPTO_ECDH_BUILTIN && FREETZ_KERNEL_VERSION_3_10_MIN
+	default n
+
 config FREETZ_MODULE_pcompress
 	bool "pcompress.ko"
 	depends on !FREETZ_AVM_HAS_CRYPTO_PCOMP_BUILTIN && FREETZ_KERNEL_VERSION_2_6_32_MIN
@@ -798,6 +803,7 @@ comment " bt"
 config FREETZ_MODULE_bluetooth
 	bool "bluetooth.ko"
 	depends on !FREETZ_AVM_HAS_BT_BUILTIN
+	select FREETZ_MODULE_ecdh_generic if !FREETZ_AVM_HAS_CRYPTO_ECDH_BUILTIN && FREETZ_KERNEL_VERSION_3_10_MIN
 	default n
 
 config FREETZ_MODULE_bnep
