@@ -7,7 +7,7 @@
 #  $(1) Suffix
 define DEFINE_DL_SOURCE_VARS
 ifneq ($(strip $(FREETZ_DL_SOURCE$(1))),)
-DL_SITE$(1):=$(call qstrip,$(FREETZ_DL_SITE$(1)))
+DL_SITE$(1):=$(if $(call qstrip,$(FREETZ_REAL_DEVELOPER_ONLY__DLIMG)),$(call qstrip,$(FREETZ_REAL_DEVELOPER_ONLY__DLIMG)),$(call qstrip,$(FREETZ_DL_SITE$(1))))
 DL_SOURCE$(1):=$(call qstrip,$(FREETZ_DL_SOURCE$(1)))
 DL_SOURCE$(1)_LOCAL:=$(call GET_STRING_COMPONENT,$(call qstrip,$(FREETZ_DL_SOURCE$(1))),/,1)
 DL_SOURCE$(1)_REMOTE:=$(call GET_STRING_COMPONENT,$(call qstrip,$(FREETZ_DL_SOURCE$(1))),/,2)
