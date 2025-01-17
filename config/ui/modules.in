@@ -573,7 +573,16 @@ config FREETZ_MODULE_reiserfs
 config FREETZ_MODULE_udf
 	bool "udf.ko"
 	depends on !FREETZ_AVM_HAS_UDF_FS_BUILTIN
+	select FREETZ_MODULE_crc_itu_t if !FREETZ_AVM_HAS_CRC_ITU_T_BUILTIN && FREETZ_KERNEL_VERSION_2_6_19_MIN
 	default n
+
+config FREETZ_MODULE_crc_itu_t
+	bool "crc-itu-t.ko"
+	depends on !FREETZ_AVM_HAS_CRC_ITU_T_BUILTIN && FREETZ_KERNEL_VERSION_2_6_19_MIN
+	depends on FREETZ_MODULE_udf
+	default n
+	help
+		Exists since kernel version 2.6.22.
 
 config FREETZ_MODULE_unionfs
 	bool "unionfs.ko"

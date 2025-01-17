@@ -108,6 +108,7 @@ main() {
 			msdos)				koon  MSDOS_FS				 ;;
 			reiserfs)			koon  REISERFS_FS			 ;;
 			udf)				koon  UDF_FS				 ;;
+			crc_itu_t)			koon  CRC_ITU_T				 ;;
 			unionfs)			koon  UNION_FS				 ;;
 
 			autofs4)			koon  AUTOFS4_FS			 ;;
