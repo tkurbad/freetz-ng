@@ -165,7 +165,7 @@ jobs:
         with:
           path: |
             dl/*
-            !dl/fw/*
+            !dl/fw/*.zip
           key: ${{ env.CACHE_KEY }}
 
 
