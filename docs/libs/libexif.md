@@ -1,4 +1,4 @@
-# libexif: EXIF library (libexif.so) 0.6.24
+# libexif: EXIF library (libexif.so) 0.6.25
  - Homepage: [https://libexif.github.io/](https://libexif.github.io/)
  - Changelog: [https://github.com/libexif/libexif/releases](https://github.com/libexif/libexif/releases)
  - Repository: [https://github.com/libexif/libexif](https://github.com/libexif/libexif)
