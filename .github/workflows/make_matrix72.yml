@@ -5,8 +5,8 @@ on:
 #   branches: [ master ]
 #   paths:
 #     - '.github/workflows/make_matrix72.yml'
-  schedule:
-    - cron: '00 16 1 * *'
+# schedule:
+#   - cron: '00 16 1 * *'
   workflow_dispatch:
 
 jobs:
