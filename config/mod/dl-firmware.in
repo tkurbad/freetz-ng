@@ -869,9 +869,14 @@ config FREETZ_DL_SOURCE2_HASH
 	default "e31d455299d2c7bda0b262d28fd02bb5f4b96f2d127b5ddb5a749d422fe330a9"                    if FREETZ_TYPE_7150_7170
 	default "49807f1aa040a88402d5db48f7d745940eebea3006e7ba1dd7e22bdc488c346b"                    if FREETZ_TYPE_W501V
 
-config FREETZ_REAL_DEVELOPER_ONLY__DLIMG
-	string "Custom download URL of avm firmware files"                                            if FREETZ_REAL_DEVELOPER_ONLY
-	default ""
-	help
-		The last character has to be a comma as it gets prepended to the existing sites.
+menu "Custom download URL of avm firmware files"
+	visible if FREETZ_REAL_DEVELOPER_ONLY
+
+	config FREETZ_REAL_DEVELOPER_ONLY__DLIMG
+		string "Custom download URL of avm firmware files"
+		default ""
+		help
+			The last character has to be a comma as it gets prepended to the existing sites.
+
+endmenu
 
