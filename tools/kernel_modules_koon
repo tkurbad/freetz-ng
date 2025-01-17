@@ -116,8 +116,6 @@ main() {
 			des_generic)			koon  CRYPTO_DES			 ;;
 			cmac)				koon  CRYPTO_CMAC			 ;;
 			ecb)				koon  CRYPTO_ECB			 ;;
-			ecc)				koon  CRYPTO_ECC			 ;;
-			ecdh_generic)			koon  CRYPTO_ECDH			 ;;
 			hmac)				koon  CRYPTO_HMAC			 ;;
 			md4)				koon  CRYPTO_MD4			 ;;
 			md5)				koon  CRYPTO_MD5			 ;;
@@ -143,6 +141,8 @@ main() {
 			lzo_decompress)			koon  CRYPTO_LZO			 ;;
 
 			bluetooth)			koon  BT				 ;;
+			ecdh_generic)			koon  CRYPTO_ECDH			 ;;
+			ecc)				koon  CRYPTO_ECC			 ;;
 			bnep)				koon  BT_BNEP				BT_BREDR=y ;;
 			l2cap)				koon  BT_L2CAP				 ;;
 			rfcomm)				koon  BT_RFCOMM				BT_BREDR=y ;;
