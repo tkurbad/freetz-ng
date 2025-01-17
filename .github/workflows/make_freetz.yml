@@ -81,8 +81,8 @@ jobs:
           echo '# FREETZ_MODULES_TEST in not set'                                                     >> .config
           echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
-          echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
-          echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
+          echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'                                               >> .config
+          echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config
           wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
           grep -q '^FREETZ_TYPE_' .config || echo 'FREETZ_TYPE_7530_W6_V1=y'                          >> .config
           grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo 'FREETZ_TYPE_FIRMWARE_08_0X_LABOR=y'       >> .config
