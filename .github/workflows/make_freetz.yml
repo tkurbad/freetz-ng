@@ -20,7 +20,7 @@ jobs:
 #     matrix:
 #       fritz: [ 4040,4050,4060,5530,5590,5690_PRO,6591,6660,6670,6690,6850_V1,6850_V2,7510,7520_V1,7520_V2,7530_W5,7530_W6_V1,7583_V1,7583_V2,7590_W5,7590_W6,7682,7690,GATE ]
     runs-on: ubuntu-latest
-    if: github.repository == 'freetz-ng/freetz-ng'
+#   if: github.repository == 'freetz-ng/freetz-ng'
 
     env:
       CACHE_KEY: "${{ github.workflow }}"
@@ -76,6 +76,7 @@ jobs:
           echo 'FREETZ_VERBOSITY_FWMOD_2=y'                                                           >> .config
           echo 'FREETZ_VERBOSITY_LEVEL_0=y'                                                           >> .config
           echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
+          echo 'FREETZ_SERIES_ALL=y'                                                                  >> .config
           echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
           echo '# FREETZ_MODULES_TEST in not set'                                                     >> .config
           echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
@@ -84,6 +85,7 @@ jobs:
           echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
           wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
           grep -q '^FREETZ_TYPE_' .config || echo 'FREETZ_TYPE_7530_W6_V1=y'                          >> .config
+          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo 'FREETZ_TYPE_FIRMWARE_08_0X_LABOR=y'       >> .config
           echo "################################################################" && du .config && wc -l .config
 
       - name: addon
