@@ -1,0 +1,170 @@
+name: make_matrix72
+
+on:
+# push:
+#   branches: [ master ]
+#   paths:
+#     - '.github/workflows/make_matrix72.yml'
+  schedule:
+    - cron: '00 16 1 * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/firmware
+      image: ghcr.io/freetz-ng/firmware
+    strategy:
+      fail-fast: false
+      matrix:
+        fritz: [ 1200_W5,1200_W6,1260_V1,1260_V2,1750,2400_W5,3000_W5,3000_W6,3490,4040,4060,5490,5491,5530,5590,6000,6850_V1,6850_V2,6890,7430,7490,7510,7520_V1,7520_V2,7530_W5,7530_W6_V1,7560,7583_V1,7583_V2,7590_W5,7590_W6,6430,6490,6590,6591,6660,6690,6820_V1,6820_V3,7580,6820_V2 ]
+    runs-on: ubuntu-latest
+#   if: github.repository == 'freetz-ng/freetz-ng'
+
+    env:
+      CACHE_KEY: "${{ github.workflow }}--${{ matrix.fritz }}"
+    steps:
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           locales \
+#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
+#           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
+#           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+      - name: myips
+        run: |
+          echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
+#         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
+#         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+
+      - name: cache_load
+        uses: actions/cache/restore@v4
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/fw/*
+          key: ${{ env.CACHE_KEY }}
+
+      - name: config
+        run: |
+          truncate -s0 .config
+          for x in  ftdi_sio  usbserial                               ; do echo "FREETZ_MODULE_$x=y"  >> .config; done
+          for x in  DROPBEAR                              ; do echo "# FREETZ_PACKAGE_$x is not set"  >> .config; done
+          for x in  LDD                                              ; do echo "FREETZ_PACKAGE_$x=y"  >> .config; done
+          for x in  COMPRESSED  UNCOMPRESSED                        ; do echo "FREETZ_SIZEINFO_$x=y"  >> .config; done
+          echo '# FREETZ_TOOLCHAIN_CCACHE is not set'                                                 >> .config
+          echo 'FREETZ_VERBOSITY_FWMOD_2=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL_0=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
+          echo 'FREETZ_SERIES_ALL=y'                                                                  >> .config
+          echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
+          echo 'FREETZ_MODULES_TEST=y'                                                                >> .config
+          echo 'FREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"'   >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
+          echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
+          echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
+          grep -q '^FREETZ_TYPE_' .config || echo 'FREETZ_TYPE_${{ matrix.fritz }}=y'                 >> .config
+          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo 'FREETZ_TYPE_FIRMWARE_07_2X=y'             >> .config
+          echo "################################################################" && du .config && wc -l .config
+
+      - name: addon
+        run: |
+          echo "################################################################"
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}add" -O - 2>/dev/null | tar xj 2>/dev/null && echo Done || echo Null
+
+      - name: signature
+        run: |
+          mkdir -p .signature/ 2>/dev/null || true
+          for x in prv pub; do wget -q "${{ secrets.ACTIONS_CUSTOM }}$x" -O .signature/$x >/dev/null 2>&1 || rm -f .signature/$x; done
+          echo "################################################################" && ls -l .signature/
+
+      - name: generate
+        run: |
+          mkdir -p dl/ 2>/dev/null || true
+          useradd freetz -s $(which bash) -d $(pwd) -M && chown freetz . -R
+          su freetz -c "umask 0022 && make olddefconfig && make && rm -f images/latest.image"
+
+      - name: result
+        run: |
+          echo "################################################################"
+          ls -l images/
+          sha256sum images/*
+
+      - name: vars
+        id: vars
+        run: |
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          LAST="$(ls images/*.image | sed 's,.*/,,;s,\.image$,,')"
+          NAME="$(ls images/*.image | sed 's,.*/,,;s,_[0-9].*,,')"
+          [ -n "$LINK" ] && echo "link=$LINK" >> $GITHUB_OUTPUT
+          [ -n "$LAST" ] && echo "last=$LAST" >> $GITHUB_OUTPUT
+          [ -n "$NAME" ] && echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "################################################################"
+          echo "LINK=$LINK"
+          echo "LAST=$LAST"
+          echo "NAME=$NAME"
+          test -n "$NAME"
+
+#     - name: cleanup
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         ACTIONS_NAME: ${{ steps.vars.outputs.name }}
+#       run: |
+#         git config --global --add safe.directory $GITHUB_WORKSPACE
+#         git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
+#         git tag -d $ACTIONS_NAME && git push --delete origin $ACTIONS_NAME || true
+#     - name: release
+#       uses: ncipollo/release-action@v1
+#       with:
+#         tag: ${{ steps.vars.outputs.name }}
+#         name: ${{ steps.vars.outputs.name }}
+#         body: |
+#           ${{ steps.vars.outputs.last }}
+#           ${{ steps.vars.outputs.link }}
+#         prerelease: false
+#         allowUpdates: true
+#         removeArtifacts: false
+#         artifacts: "images/*"
+#         token: ${{ secrets.GITHUB_TOKEN }}
+#         replacesArtifacts: false
+#         artifactErrorsFailBuild: true
+#         draft: true
+
+      - name: cache_clear
+        env:
+          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+        run: |
+          ASSETS="$(curl -s  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches")"
+          ASSID="$(echo "$ASSETS" | grep -B7 "\"key\": *\"${{ env.CACHE_KEY }}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
+          curl -sL -X DELETE -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches/$ASSID" && echo "Deleted ASSID=$ASSID ..." || true
+      - name: cache_save
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/fw/*
+          key: ${{ env.CACHE_KEY }}
+
+
