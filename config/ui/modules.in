@@ -599,7 +599,7 @@ config FREETZ_MODULE_cifs_arc4
 		This kernel-menuconfig symbol does not exist but the .ko-file which is built by smbfs.
 
 config FREETZ_MODULE_cifs_md4
-	bool "cifs_md.ko"
+	bool "cifs_md4.ko"
 	depends on FREETZ_MODULE_cifs && !FREETZ_AVM_HAS_CIFS_BUILTIN && FREETZ_KERNEL_VERSION_5_15_MIN
 	help
 		This kernel-menuconfig symbol does not exist but the .ko-file which is built by smbfs.
