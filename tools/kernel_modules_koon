@@ -29,7 +29,7 @@ main() {
 			block2mtd)			koon  MTD_BLOCK2MTD			MTD ;;
 
 			aead)				koon  CRYPTO_AEAD			 ;;
-			arc4)				koon  CRYPTO_ARC4			 ;;
+			arc4)				koon  CRYPTO_ARC4			CRYPTO_USER_API_HASH CRYPTO_USER_API_ENABLE_OBSOLETE=y ;;
 			aes)				koon  CRYPTO_AES			 ;;
 			cbc)				koon  CRYPTO_CBC			 ;;
 			crypto_blkcipher)		koon  CRYPTO_BLKCIPHER			 ;;
