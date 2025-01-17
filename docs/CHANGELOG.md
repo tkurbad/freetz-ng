@@ -127,6 +127,7 @@ Latest changes
    * Subversion 1.9.12/1.14.5
    * tmux 3.5a
    * Tor 0.4.8.13
+   * Tree 1.8.0/2.2.1
    * Unbound 1.22.0
    * VLMCSD svn1113
    * xsltproc 1.1.42
