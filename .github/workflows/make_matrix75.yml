@@ -6,7 +6,7 @@ on:
 #   paths:
 #     - '.github/workflows/make_matrix75.yml'
 # schedule:
-#   - cron: '00 14 28 * *'
+#   - cron: '00 15 28 * *'
   workflow_dispatch:
 
 jobs:
