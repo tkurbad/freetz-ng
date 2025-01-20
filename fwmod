@@ -1401,6 +1401,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 		done
 		for ko in $(set | sed -rn 's/^FREETZ_MODULE_(.*)=y$/\1/p') $FREETZ_MODULES_OWN; do
 			echo "$found_kos " | tr '\-+' '_x' | grep -q " $ko.ko " && continue
+			[ "$ko" == "freetz" ] && [ "$FREETZ_MODULES_TEST" == "y" ] && continue
 			warn "File of kernel module not found: $ko.ko"
 			kos_missing=y
 		done
