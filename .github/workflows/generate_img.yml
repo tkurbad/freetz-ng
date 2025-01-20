@@ -55,7 +55,7 @@ jobs:
       - name: generate
         env:
           ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
-          ACTIONS_FWDLURL: ${{ secrets.ACTIONS_FWDLURL }}
+          ACTIONS_IMAGE: ${{ secrets.ACTIONS_IMAGE }}
         run: |
           export LANG=en_US.utf8
           mkdir -p ~/.freetz-props/ 2>/dev/null || true
