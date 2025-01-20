@@ -1,7 +1,8 @@
 [ "$FREETZ_TYPE_EXTENDER" == "y" ] || return 0
 [ "$FREETZ_AVM_VERSION_06_5X_MAX" == "y" ] || return 0
-[ "$FREETZ_TYPE_0546" == "y" -a "$FREETZ_AVM_VERSION_06_5X" == "y" ] && return 0
 [ "$FREETZ_TYPE_0300" == "y" ] && return 0
+[ "$FREETZ_TYPE_0546" == "y" -a "$FREETZ_AVM_VERSION_06_5X" == "y" ] && return 0
+[ "$FREETZ_TYPE_1750" == "y" -a "$FREETZ_AVM_VERSION_06_2X" == "y" ] && return 0
 [ "$FREETZ_TYPE_1759" == "y" ] && return 0
 echo1 "enabling network config"
 
