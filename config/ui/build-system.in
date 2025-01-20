@@ -114,7 +114,8 @@ menu "Build system options"
 		depends on FREETZ_SHOW_DEVELOPER
 		default n
 		help
-			Abort build on any problem with kernel modules.
+			Abort build on any problem with kernel modules
+			and ignores problems like image-to-big errors.
 
 endmenu # "Build system options" #
 
