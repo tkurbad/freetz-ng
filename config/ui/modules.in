@@ -20,6 +20,7 @@ config FREETZ_MODULES_KOON
 
 config FREETZ_MODULES_OWN
 	string "Own Modules"
+	default "freetz" if FREETZ_MODULES_TEST
 	default ""
 	help
 		You can list here modules which should be include in
