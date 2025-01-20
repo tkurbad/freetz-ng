@@ -875,8 +875,6 @@ menu "Custom download URL of avm firmware files"
 	config FREETZ_REAL_DEVELOPER_ONLY__DLIMG
 		string "Custom download URL of avm firmware files"
 		default ""
-		help
-			The last character has to be a comma as it gets prepended to the existing sites.
 
 endmenu
 
