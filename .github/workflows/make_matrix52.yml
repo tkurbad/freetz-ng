@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        fritz: [ 7270_V2,7340,7390 ]
+        fritz: [ "7270_V2","7340","7390" ]
     runs-on: ubuntu-latest
 #   if: github.repository == 'freetz-ng/freetz-ng'
 
