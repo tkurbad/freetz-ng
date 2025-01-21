@@ -1,0 +1,14 @@
+--- miscutils/seedrng.c
++++ miscutils/seedrng.c
+@@ -39,6 +39,11 @@
+ //usage:	"\n	-d DIR	Use seed files in DIR (default: /var/lib/seedrng)"
+ //usage:	"\n	-n	Do not credit randomness, even if creditable"
+ 
++// #include <time.h>
++#ifndef CLOCK_BOOTTIME
++#define CLOCK_BOOTTIME 7
++#endif
++
+ #include "libbb.h"
+ 
+ #include <linux/random.h>
