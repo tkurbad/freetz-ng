@@ -401,7 +401,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7510__
   - 271.07.30 rev94120 {ALL} [PSQ19P2NL4]
   - 271.07.59 rev113715 {ALL} [MOVE21NL2]
-  - 271.08.00 rev116375 {ALL} [Smart24 P1]
+  - 271.08.02 rev117988 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7520__
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
   - 175.07.29 rev92061 {ALL} [PSQ19P2NL4]
