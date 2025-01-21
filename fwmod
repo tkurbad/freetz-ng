@@ -1421,11 +1421,11 @@ if [ "$DO_MOD" -gt 0 ]; then
 			LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
 			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
 			  $FREETZ_KERNEL_VERSION \
-			  2>&1 | tee "$DEPMOD_TEMP"
+			  2>&1 | tee "$DEPMOD_TEMP" | sed "s@ ${ABS_BASE_DIR}/@ @g"
 		else
 			NM=$NM ${TOOLS_DIR}/depmod.pl -e -b "$MODULES_DIR" \
 			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
-			  2>&1 | tee "$DEPMOD_TEMP"
+			  2>&1 | tee "$DEPMOD_TEMP"| sed "s@ file @ file ${FILESYSTEM_MOD_DIR}@g"
 		fi
 		if grep -qE "(unresolved|unknown) symbol" "$DEPMOD_TEMP"; then
 			[ "$FREETZ_MODULES_TEST" == "y" ] && error 1 "Unresolved symbols detected."
