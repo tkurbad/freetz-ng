@@ -145,7 +145,7 @@ Latest changes
    * libexif 0.6.25
    * libmaxminddb-1.12.2
    * libnettle 3.10.1
-   * libpng 1.6.44
+   * libpng 1.6.45
    * libssh2 1.11.1
    * libtirpc 1.3.6
    * liburcu 0.15.0
