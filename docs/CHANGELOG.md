@@ -105,6 +105,7 @@ Latest changes
    * CA-bundle 2024-12-31
    * Curl 8.11.1
    * Dropbear 2024.86
+   * Fontconfig 2.16.0
    * Git 2.47.0
    * htpdate 2.0.0
    * ImageMagick 7.1.1-43
