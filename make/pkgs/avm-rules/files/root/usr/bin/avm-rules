@@ -1,0 +1,59 @@
+#!/bin/sh
+. /etc/init.d/loglibrc
+
+[ -r /var/mod/etc/conf/avm-rules.cfg ] && . /var/mod/etc/conf/avm-rules.cfg
+
+dstip='169.254.1.1'
+stats='/proc/kdsld/dsliface/internet/ipmasq/pcp44'
+
+log() {
+	[ "$AVM_RULES_LOGGING" == "yes" ] || return
+	local _log="$(cat)" # save stdin to _log
+	loglib_system "AVM-RULES" "$_log"
+	echo "$(date +'%Y-%m-%d %H:%M:%S') -- $_log" >> /var/log/avm-rules.log
+}
+
+start() {
+	echo "Starting daemon script" | log
+	while true; do
+		[ -r /var/mod/etc/conf/avm-rules.cfg ] && . /var/mod/etc/conf/avm-rules.cfg
+		[ -z "$AVM_RULES_TCP" ] && [ -z "$AVM_RULES_UDP" ] && echo "Error, can not start without any configured ports." && exit 1
+		[ "$AVM_RULES_SECONDS" -le 120 ] 2>/dev/null || AVM_RULES_SECONDS="120"  # check input
+
+		for x in $AVM_RULES_TCP; do pcplisten tcp $dstip $x $AVM_RULES_SECONDS FREETZ-tcp-$x | log; done
+		for x in $AVM_RULES_UDP; do pcplisten udp $dstip $x $AVM_RULES_SECONDS FREETZ-udp-$x | log; done
+		timeout="$(sed -nr "s/^MAP .* \[${dstip}\]:.* expire in ([0-9]+) secs/\1/p" $stats | sort -n)"
+
+		if [ -n "$timeout" ]; then
+			tiny=""
+			for x in $timeout; do [ -z "$tiny" ] && tiny=$x; huge=$x; done
+			diff="$(( $huge - $tiny ))"
+			[ "$diff" != "0" ] && echo "Wasting $diff additional seconds" | log
+			timeout=$huge
+		else
+			echo "Settle down waiting mode" | log
+			[ "$AVM_RULES_INITIAL" -le 300 ] 2>/dev/null || AVM_RULES_INITIAL="300"  # check input
+			timeout="$AVM_RULES_INITIAL"  # initial, no internet
+		fi
+
+		echo "Waiting $timeout seconds" | log
+		sleep $timeout
+	done
+}
+
+stats() {
+	echo "Currently opened ports:"
+	grep "^MAP .* \[${dstip}\]" $stats | sort
+}
+usage() {
+	echo "Usage: $0 [start|stats]"
+}
+
+case "$1" in
+	start)	start ;;
+	stats)	stats ;;
+	*)	usage ;;
+esac
+
+exit 0
+
