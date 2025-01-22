@@ -153,6 +153,7 @@ Latest changes
    * libxml2 2.13.5
    * lz4 1.10.0
    * mbedTLS 2.7.19/2.28.9
+   * pango 1.56.1
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
