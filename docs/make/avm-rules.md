@@ -1,4 +1,4 @@
-# AVM-rules - DEVELOPER
+# AVM-rules
  - Package: [master/make/pkgs/avm-rules/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/avm-rules/)
  - Maintainer: -
 
