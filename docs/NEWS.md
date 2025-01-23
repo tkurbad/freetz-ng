@@ -1,5 +1,11 @@
 # NEWS
 
+ * __[2025-01-23](#2025-01-23)__<a id='2025-01-23'></a><br>
+   Mit dem Package [AVM-rules](https://freetz-ng.github.io/freetz-ng/make/#avm-rules) können IPv4-Ports der Fritzbox aus dem Internet geöffnet werden.<br>
+   Es wird Fritzos ab 7.5x unterstützt. Älteres Fritzos das `pcplisten` enthält sollte auch<br>
+   funktionieren, wurden aber bislang nicht getestet.<br>
+   Siehe [9ea054e0](https://github.com/Freetz-NG/freetz-ng/commit/9ea054e0e8877dd53083db7c738847e37b0895f4)<br>
+
  * __[2024-09-30](#2024-09-30)__<a id='2024-09-30'></a><br>
    Jan Oetjen ist seit heute CEO von AVM. Er kennt sich unter anderem mit bei Kunden äusserst<br>
    beliebten Abomodellen für Software, E-Mails und Hotelreisen aus.<br>
