@@ -6,6 +6,11 @@ sec_begin "$(lang de:"Starttyp" en:"Start type")"
 cgi_print_radiogroup_service_starttype "enabled" "$AVM_RULES_ENABLED" "" "" 0
 sec_end
 
+sec_begin "$(lang de:"Informationen" en:"Informations")"
+echo -n '<pre><FONT SIZE=-1>'
+avm-rules stats 2>&1 | html
+echo '</FONT></pre>'
+sec_end
 
 sec_begin "$(lang de:"Einstellungen" en:"Settings")"
 
