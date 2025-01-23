@@ -1209,7 +1209,6 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[AVM-rules](../../docs/make/avm-rules.md)<a id='avm-rules'></a>**<br>
     For FritzOS since v7.5x only. Configuration of port forwardings to the FritzBox itself by using pcplisten. This avm tool can open ports for not more than 120 seconds. The steady renewal is managed by this package.
-     - [Deprecated?](../../docs/make/avm-rules.md#deprecated)
 
   * **<u>Cpmaccfg CGI</u><a id='cpmaccfg'></a>**<br>
     Configuration front-end to cpmaccfg This frontend shows the current settings of the LAN ports and gives a very simple way to set VLAN, portmode and WLAN assigment. Additional to this, you can set IP addresses for the VLAN interfaces eth0-eth3 if needed.
