@@ -20,8 +20,8 @@ start() {
 		[ -z "$AVM_RULES_TCP" ] && [ -z "$AVM_RULES_UDP" ] && echo "Error, can not start without any configured ports." && exit 1
 		[ "$AVM_RULES_SECONDS" -le 120 ] 2>/dev/null || AVM_RULES_SECONDS="120"  # check input
 
-		for x in $AVM_RULES_TCP; do pcplisten tcp $dstip $x $AVM_RULES_SECONDS FREETZ-tcp-$x | log; done
-		for x in $AVM_RULES_UDP; do pcplisten udp $dstip $x $AVM_RULES_SECONDS FREETZ-udp-$x | log; done
+		for x in $AVM_RULES_TCP; do [ "$x" -le 65535 ] 2>/dev/null && pcplisten tcp $dstip $x $AVM_RULES_SECONDS FREETZ-tcp-$x | log; done
+		for x in $AVM_RULES_UDP; do [ "$x" -le 65535 ] 2>/dev/null && pcplisten udp $dstip $x $AVM_RULES_SECONDS FREETZ-udp-$x | log; done
 		timeout="$(sed -nr "s/^MAP .* \[${dstip}\]:.* expire in ([0-9]+) secs/\1/p" $stats | sort -n)"
 
 		if [ -n "$timeout" ]; then
