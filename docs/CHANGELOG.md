@@ -134,7 +134,7 @@ Latest changes
    * Unbound 1.22.0
    * VLMCSD svn1113
    * xsltproc 1.1.42
-   * XZ 5.6.3
+   * XZ 5.6.4
 
  - Libraries:
    * cairo 1.18.2
