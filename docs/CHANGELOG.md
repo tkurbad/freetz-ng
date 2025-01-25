@@ -98,6 +98,7 @@ Latest changes
    * New Patch: Hide update check from cockpit
 
  - Packages:
+   * Apache2 2.4.62
    * ACME.sh 3.1.0
    * Atop 2.11.0
    * AVM-rules 1.00
