@@ -62,7 +62,7 @@ Latest changes
    * cmake 3.31.4
    * fakeroot 1.36.2
    * kconfig 6.12
-   * lzma2 5.6.3
+   * lzma2 5.6.4
    * meson 1.6.1
    * openssl 3.0.15
    * precompiled host-tools 2025-01-13
