@@ -60,7 +60,7 @@ Latest changes
    * ca-bundle 2024-12-31
    * Ccache 4.10.2
    * cmake 3.31.5
-   * fakeroot 1.36.2
+   * fakeroot 1.37
    * kconfig 6.12
    * lzma2 5.6.4
    * meson 1.6.1
