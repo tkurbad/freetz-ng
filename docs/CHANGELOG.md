@@ -125,6 +125,7 @@ Latest changes
    * S-Lang 2.3.3
    * Screen 4.9.1/5.0.0
    * SQLite 3.40.1/3.47.1
+   * sslh 2.1.4
    * strace 4.9/5.0/6.13
    * Stunnel 5.74
    * Subversion 1.9.12/1.14.5
