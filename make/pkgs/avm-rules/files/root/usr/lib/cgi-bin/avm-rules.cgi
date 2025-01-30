@@ -26,7 +26,7 @@ cgi_print_textline_p "seconds" "$AVM_RULES_SECONDS" 5/3 "$(lang de:"Timeout der 
 
 cgi_print_textline_p "initial" "$AVM_RULES_INITIAL" 5/3 "$(lang de:"Timeout ohne Internetverbindung [Sekunden]" en:"Timeout without internet connection [seconds]"): "
 
-cgi_print_checkbox_p "logging" "$AVM_RULES_LOGGING" "$(lang de:"Logdatei anlegen (debug)" en:"Create log file (debug)") "
+cgi_print_checkbox_p "logging" "$AVM_RULES_LOGGING" "$(lang de:"Debug-Log in Datei und Syslog" en:"Debug logging to file and syslog"). "
 
 cat << EOF
 <ul>
