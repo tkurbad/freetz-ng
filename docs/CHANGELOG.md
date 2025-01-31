@@ -132,7 +132,7 @@ Latest changes
    * tmux 3.5a
    * Tor 0.4.8.13
    * Tree 1.8.0/2.2.1
-   * uMurmur 0.3.0
+   * uMurmur 0.2.20/0.3.0
    * Unbound 1.22.0
    * VLMCSD svn1113
    * xsltproc 1.1.42

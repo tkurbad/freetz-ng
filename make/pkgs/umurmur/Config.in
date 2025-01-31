@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_UMURMUR
-	bool "uMurmur 0.3.0"
+	bool "uMurmur 0.2.20/0.3.0"
 	select FREETZ_LIB_libconfig
 	select FREETZ_LIB_libprotobuf_c
 	default n
@@ -15,22 +15,48 @@ config FREETZ_PACKAGE_UMURMUR
 		umurmur supports a subset of the features of Murmur.
 		https://github.com/umurmur/umurmur
 
-choice
-	depends on FREETZ_PACKAGE_UMURMUR
-	prompt "SSL library"
-	default FREETZ_PACKAGE_UMURMUR_OPENSSL
+if FREETZ_PACKAGE_UMURMUR
 
-	config FREETZ_PACKAGE_UMURMUR_OPENSSL
-		bool "OpenSSL"
-		select FREETZ_LIB_libcrypto
-		select FREETZ_LIB_libcrypto_WITH_EC
-		select FREETZ_LIB_libssl
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_UMURMUR_VERSION_CURRENT
 
-	config FREETZ_PACKAGE_UMURMUR_MBEDTLS
-		bool "mbedTLS"
-		select FREETZ_LIB_libmbedcrypto
-		select FREETZ_LIB_libmbedcrypto_WITH_GENRSA
-		select FREETZ_LIB_libmbedtls
-		select FREETZ_LIB_libmbedx509
-endchoice
+		config FREETZ_PACKAGE_UMURMUR_VERSION_ABANDON
+			bool "0.2.20"
+			help
+				Needs Openssl 1.x or mbedTLS v2.x
 
+		config FREETZ_PACKAGE_UMURMUR_VERSION_CURRENT
+			bool "0.3.0"
+			help
+				Needs Openssl 3.x or mbedTLS v3.x
+
+	endchoice
+
+	comment "Required: Openssl 3.x or mbedTLS v3.x"
+		depends on FREETZ_PACKAGE_UMURMUR_VERSION_CURRENT
+
+	comment "Unsupported: Openssl 3.x or mbedTLS v3.x"
+		depends on FREETZ_PACKAGE_UMURMUR_VERSION_ABANDON
+
+	choice
+		prompt "SSL library"
+			default FREETZ_PACKAGE_UMURMUR_OPENSSL
+
+		config FREETZ_PACKAGE_UMURMUR_OPENSSL
+			bool "OpenSSL"
+			select FREETZ_LIB_libcrypto
+			select FREETZ_LIB_libcrypto_WITH_EC
+			select FREETZ_LIB_libssl
+
+		config FREETZ_PACKAGE_UMURMUR_MBEDTLS
+			bool "mbedTLS"
+			depends on FREETZ_PACKAGE_UMURMUR_VERSION_ABANDON
+			select FREETZ_LIB_libmbedcrypto
+			select FREETZ_LIB_libmbedcrypto_WITH_GENRSA
+			select FREETZ_LIB_libmbedtls
+			select FREETZ_LIB_libmbedx509
+
+	endchoice
+
+endif # FREETZ_PACKAGE_UMURMUR
