@@ -17,8 +17,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - italy: [FRITZ.Box_4020.147.06.84.image](https://download.avm.de/fritzbox/fritzbox-4020/italy/fritz.os/FRITZ.Box_4020.147.06.84.image)
    - other: [FRITZ.Box_4020.07.04.image](https://download.avm.de/fritzbox/fritzbox-4020/other/fritz.os/FRITZ.Box_4020.07.04.image)
  * fritzbox-4040/
-   - deutschland: [FRITZ.Box_4040-08.00.image](https://download.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-08.00.image)
-   - other: [FRITZ.Box_4040-08.00.image](https://download.avm.de/fritzbox/fritzbox-4040/other/fritz.os/FRITZ.Box_4040-08.00.image)
+   - deutschland: [FRITZ.Box_4040-08.02.image](https://download.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-08.02.image)
+   - other: [FRITZ.Box_4040-08.02.image](https://download.avm.de/fritzbox/fritzbox-4040/other/fritz.os/FRITZ.Box_4040-08.02.image)
  * fritzbox-4050/
    - deutschland: [FRITZ.Box_4050-08.02.image](https://download.avm.de/fritzbox/fritzbox-4050/deutschland/fritz.os/FRITZ.Box_4050-08.02.image)
    - other: [FRITZ.Box_4050-08.02.image](https://download.avm.de/fritzbox/fritzbox-4050/other/fritz.os/FRITZ.Box_4050-08.02.image)
