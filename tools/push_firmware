@@ -779,7 +779,7 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW223*)	FULLSIZE=0x10000000 ;;  # 5490      (256 MB)
 			Fritz_Box_HW224*)	FULLSIZE=0x20000000 ;;  # 7581 BCM  (512 MB)
 #			Fritz_Box_HW225*)	FULLSIZE=0x??000000 ;;  # 7580      (??? MB)
-#			Fritz_Box_HW226*)	FULLSIZE=0x??000000 ;;  # 7590      (??? MB)
+			Fritz_Box_HW226*)	FULLSIZE=0x20000000 ;;  # 7590      (512 MB)
 			Fritz_Box_HW228*)	FULLSIZE=0x20000000 ;;  # 7582 BCM  (512 MB)
 			Fritz_Box_HW234*)	FULLSIZE=0x0C000000 ;;  # 6890      (192 MB)
 			Fritz_Box_HW236*)	FULLSIZE=0x10000000 ;;  # 7530      (256 MB)
