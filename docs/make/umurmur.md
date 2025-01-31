@@ -1,4 +1,4 @@
-# uMurmur 0.3.0
+# uMurmur 0.2.20/0.3.0
  - Homepage: [https://umurmur.net/](https://umurmur.net/)
  - Manpage: [https://github.com/umurmur/umurmur/wiki](https://github.com/umurmur/umurmur/wiki)
  - Changelog: [https://github.com/umurmur/umurmur/releases](https://github.com/umurmur/umurmur/releases)
