@@ -1,7 +1,13 @@
-$(call PKG_INIT_BIN, 0.2.20)
-$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=X
-$(PKG)_SITE:=git@https://github.com/umurmur/umurmur
+$(call PKG_INIT_BIN, 0.3.0)
+$(PKG)_SOURCE_DOWNLOAD_NAME:=$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=6c055e8893a87b9291e87de5e1e8e5c1d16c172a4aba6faec5a1b59dadca05d8
+$(PKG)_SITE:=https://github.com/umurmur/umurmur/archive/refs/tags
+### WEBSITE:=https://umurmur.net/
+### MANPAGE:=https://github.com/umurmur/umurmur/wiki
+### CHANGES:=https://github.com/umurmur/umurmur/releases
+### CVSREPO:=https://github.com/umurmur/umurmur
+### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/$(pkg)d
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)d
@@ -22,6 +28,7 @@ $(PKG)_DEPENDS_ON += mbedtls
 $(PKG)_CONFIGURE_OPTIONS += --with-ssl=mbedtls
 endif
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -35,6 +42,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(UMURMUR_DIR) clean
