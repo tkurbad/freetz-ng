@@ -61,7 +61,7 @@ Latest changes
    * Ccache 4.10.2
    * cmake 3.31.5
    * fakeroot 1.37
-   * kconfig 6.12
+   * kconfig 6.13
    * lzma2 5.6.4
    * meson 1.7.0
    * openssl 3.0.15

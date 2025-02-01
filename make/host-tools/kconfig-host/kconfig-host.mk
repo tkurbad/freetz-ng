@@ -1,4 +1,4 @@
-$(call TOOLS_INIT, v6.12)
+$(call TOOLS_INIT, v6.13)
 ## patches/100-main_makefile.patch contains also the version
 $(PKG)_SOURCE:=kconfig-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=aa97ad5d882ca0dab6fb9fd079b32356ffcec2fed2e7d0f9f22241ea214d698c
