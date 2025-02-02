@@ -2,12 +2,13 @@ This patch replaces the main Linux kernel makefile, removing lots of clutter
 which keep kconfig from being built stand-alone. It was taken from
 https://github.com/lacombar/kconfig/blob/kconfig-sa-2.6.39/Makefile
 
-The only manual change: -DCONFIG_=\"\" was added to HOSTCFLAGS because we need
-it that way for Freetz.
+The only manual changes:
+ - -DCONFIG_=\"\" was added to HOSTCFLAGS because we need it that way for Freetz.
+ - added variable "srcroot", new since version 6.13
 
 --- Makefile
 +++ Makefile
-@@ -0,0 +1,100 @@
+@@ -0,0 +1,101 @@
 +VERSION = 6
 +PATCHLEVEL = 13
 +SUBLEVEL = 0
@@ -24,10 +25,11 @@ it that way for Freetz.
 +  KBUILD_VERBOSE = 0
 +endif
 +
++srcroot		:= $(CURDIR)
 +srctree		:= $(if $(KBUILD_SRC),$(KBUILD_SRC),$(CURDIR))
 +objtree		:= $(CURDIR)
 +
-+export srctree objtree
++export srcroot srctree objtree
 +
 +CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 +	  else if [ -x "$(command -v bash)" ]; then command -v bash; \
