@@ -130,7 +130,7 @@ Latest changes
    * Stunnel 5.74
    * Subversion 1.9.12/1.14.5
    * tmux 3.5a
-   * Tor 0.4.8.13
+   * Tor 0.4.8.14
    * Tree 1.8.0/2.2.1
    * uMurmur 0.2.20/0.3.0
    * Unbound 1.22.0
