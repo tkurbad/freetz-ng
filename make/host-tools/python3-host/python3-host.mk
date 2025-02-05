@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 3.12.8)
+$(call TOOLS_INIT, 3.12.9)
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=c909157bb25ec114e5869124cc2a9c4a4d4c1e957ca4ff553f1edc692101154e
+$(PKG)_HASH:=7220835d9f90b37c006e9842a8dff4580aaca4318674f947302b8d28f3f81112
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.python.org/
 ### MANPAGE:=https://docs.python.org/3/

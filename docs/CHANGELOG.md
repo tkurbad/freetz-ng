@@ -68,7 +68,7 @@ Latest changes
    * precompiled host-tools 2025-01-26
    * precompiled toolchains r25112/r25157
    * prelink 20131005
-   * python 3.12.8
+   * python 3.12.9
    * u-boot 2025.01
 
  - AVM sources:
