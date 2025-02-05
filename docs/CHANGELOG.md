@@ -102,7 +102,7 @@ Latest changes
    * ACME.sh 3.1.0
    * Atop 2.11.0
    * AVM-rules 1.00
-   * BIND 9.11.37/9.20.4
+   * BIND 9.11.37/9.20.5
    * BusyBox 1.27.2/1.37.0
    * CA-bundle 2024-12-31
    * Curl 8.11.1
