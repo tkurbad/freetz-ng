@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -25316,7 +25316,9 @@
+@@ -24853,7 +24853,9 @@
      *-apple-*)
        if test "$cross_compiling" = yes
  then :

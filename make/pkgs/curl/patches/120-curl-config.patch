@@ -7,19 +7,19 @@
 +libdir=@libdir@
  # shellcheck disable=SC2034
  includedir="@includedir@"
- cppflag_curl_staticlib='@LIBCURL_PC_CFLAGS@'
-@@ -155,8 +156,8 @@
+ 
+@@ -149,8 +150,8 @@
      ;;
  
    --libs)
 -    if test "X@libdir@" != 'X/usr/lib' -a "X@libdir@" != 'X/usr/lib64'; then
--      CURLLIBDIR="-L@libdir@ "
+-      curllibdir="-L@libdir@ "
 +    if test "X${libdir}" != 'X/usr/lib' -a "X${libdir}" != 'X/usr/lib64'; then
-+      CURLLIBDIR="-L${libdir} "
++      curllibdir="-L${libdir} "
      else
-       CURLLIBDIR=''
+       curllibdir=''
      fi
-@@ -173,7 +174,7 @@
+@@ -167,7 +168,7 @@
  
    --static-libs)
      if test 'X@ENABLE_STATIC@' != 'Xno'; then

@@ -105,7 +105,7 @@ Latest changes
    * BIND 9.11.37/9.20.5
    * BusyBox 1.27.2/1.37.0
    * CA-bundle 2024-12-31
-   * Curl 8.11.1
+   * Curl 8.12.0
    * Dropbear 2024.86
    * Fontconfig 2.16.0
    * Git 2.47.0
