@@ -38,8 +38,9 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_5590_Fiber-08.02.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-08.02.image)
    - other: [FRITZ.Box_5590_Fiber-08.02.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/other/fritz.os/FRITZ.Box_5590_Fiber-08.02.image)
  * fritzbox-5690-pro/
-   - deutschland: [FRITZ.Box_5690_Pro-08.01.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/deutschland/fritz.os/FRITZ.Box_5690_Pro-08.01.image)
+   - deutschland: [FRITZ.Box_5690_Pro-08.03.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/deutschland/fritz.os/FRITZ.Box_5690_Pro-08.03.image)
    - other: [FRITZ.Box_5690_Pro-08.01.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/other/fritz.os/FRITZ.Box_5690_Pro-08.01.image)
+   - other: [FRITZ.Box_5690_Pro-08.03.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/other/fritz.os/FRITZ.Box_5690_Pro-08.03.image)
  * fritzbox-6430-cable/
    - deutschland: [FRITZ.Box_6430_Cable-07.30.image](https://download.avm.de/fritzbox/fritzbox-6430-cable/deutschland/fritz.os/FRITZ.Box_6430_Cable-07.30.image)
  * fritzbox-6490-cable/
