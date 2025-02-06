@@ -22,6 +22,7 @@ maxsessions = 10
 ;it changes to this user after ports have been bound in startup
 ;You need to create a suitable (normal, non-privileged) user/group and change name here
 runasuser = uvncrep
+;DO NOT CHANGE THE USER!
 
 ;Allowed modes for repeater
 ;0=None, 1=Only Mode 1, 2=Only Mode 2, 3=Both modes
@@ -34,7 +35,7 @@ runasuser = uvncrep
 ;1 = 0 + Important messages + Connections opened / closed
 ;2 = 1 + Ini values + exceptions in logic flow
 ;3 = 2 + Everything else (very detailed and exhaustive logging == BIG log files)
-;logginglevel = 3              
+;logginglevel = 3
 
 
 [mode1]
@@ -44,7 +45,7 @@ runasuser = uvncrep
 ;0=Allow connections to all server addressess,
 ;1=Require that server address (or range of addresses) is listed in 
 ;srvListAllow[0]...srvListAllow[SERVERS_LIST_SIZE-1]
-;requirelistedserver = 0             
+;requirelistedserver = 0
 
 ;List of allowed server addresses / ranges
 ;Ranges can be defined by setting corresponding number to 0, e.g. 10.0.0.0 allows all addresses 10.x.x.x
@@ -67,14 +68,14 @@ runasuser = uvncrep
 
 [mode2]
 ;0=Allow all IDs, 1=Allow only IDs listed in idList[0]...idList[ID_LIST_SIZE-1]
-;requirelistedid = 0             
+;requirelistedid = 0
 
 ;List of allowed ID: numbers
 ;Value 0 means "this authenticates negatively"
 ;If value is not listed, default is 0
 ;Values should be between [1...LONG_MAX-1]
 ;There can be max ID_LIST_SIZE (default 100) idList lines
-;idlist0 = 1111                  
+;idlist0 = 1111
 ;idlist1 = 2222
 ;idlist2 = 0
 ;idlist3 = 0
@@ -99,5 +100,4 @@ runasuser = uvncrep
 ;Make HTTP/1.0 GET request to event listener (instead of normal write dump)
 ;Somebody wanted this for making a PHP event listener
 ;usehttp = true
-
 

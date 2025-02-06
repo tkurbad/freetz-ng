@@ -4,7 +4,6 @@ default
 { en }
 files
 {
-	etc/default.vlmcsd/uvncrepeater*.def
-	etc/init.d/rc.uvncrepeater
+	etc/default.uvncrepeater/uvncrepeater*.def
 	usr/lib/cgi-bin/uvncrepeater.cgi
 }

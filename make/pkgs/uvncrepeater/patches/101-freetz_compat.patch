@@ -62,7 +62,8 @@
      //Startup event
 @@ -1995,10 +2035,37 @@
      
-     fprintf(stderr, "UltraVnc Linux Repeater version %s\n", REPEATER_VERSION);
+-    fprintf(stderr, "UltraVnc Linux Repeater version %s\n", REPEATER_VERSION);
++//  fprintf(stderr, "UltraVnc Linux Repeater version %s\n", REPEATER_VERSION);
      
 -    //Read parameters from ini file
 -    strlcpy(tmpBuf, (argc >= 2) ? argv[1] : defaultIniFilePathAndName, MAX_PATH);
