@@ -813,8 +813,9 @@ if [ -n "$ISRAM$ISFIT" ]; then
 #			Fritz_Box_HW287*)	FULLSIZE=0x??000000 ;;  # 4050      (??? MB)
 			# defaults
 			*)
-				[ $ISRAM ] &&   FULLSIZE=0x0D000000     #           (208 MB)
-				[ $ISFIT ] &&   FULLSIZE=0x18000000     #           (384 MB)
+#				[ $ISRAM ] &&   FULLSIZE=0x0D000000     #           (208 MB)
+#				[ $ISFIT ] &&   FULLSIZE=0x18000000     #           (384 MB)
+				FULLSIZE=x
 			;;
 		esac
 	fi
