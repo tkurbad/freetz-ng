@@ -979,8 +979,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[util-linux 2.27.1 (binary only) - DEPRECATED](../../docs/make/util-linux.md)<a id='util-linux'></a>**<br>
     Provides blkid util from util-linux project
 
-  * **[uvncrepeater: UVNC IPv4 repeater 014 (binary only)](../../docs/make/uvncrepeater.md)<a id='uvncrepeater'></a>**<br>
-    A IPv4 only linux port of the UltraVNC Repeater. The Repeater acts like a proxy, sitting in the middle between the UltraVNC Server and Viewer. All data for the session is passed through the UltraVNC Repeater meaning that the UltraVNC Viewer and UltraVNC Server can both be behind a NAT firewall, without having to worry about forwarding ports or anything else (providing the Repeater is visible to both UltraVNC Viewer and UltraVNC Server).
+  * **[uvncrepeater: UltraVNC Repeater 014 - DEPRECATED](../../docs/make/uvncrepeater.md)<a id='uvncrepeater'></a>**<br>
+    UltraVNC Repeater has two unique functions: Mode 1: Allows for connection to multiple servers (in listen mode), using only one port. All connection data flows through the repeater, allowing connection to multiple servers through a single port forward or tunnel. Mode 2: Allows both a Viewer and Server to connect together using the repeater as a PROXY. All connection data flows through the repeater, allowing both the server and viewer to be behind firewalls or routers.
 
 ### V
 
