@@ -65,7 +65,7 @@ Latest changes
    * lzma2 5.6.4
    * meson 1.7.0
    * openssl 3.0.15
-   * precompiled host-tools 2025-01-26
+   * precompiled host-tools 2025-02-06
    * precompiled toolchains r25112/r25157
    * prelink 20131005
    * python 3.12.9
