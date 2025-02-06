@@ -643,6 +643,7 @@ fi
 [ $ISFIT ]      && [ ! -x $FDTD_TOOL ]           && echo "File $FDTD_TOOL missing. Run 'make dtc-host' first."               && exit 1
 [ ! -x "$(command -v dos2unix)" ]                && echo "Tool 'dos2unix' missing. Run 'make dos2unix-host' first."          && exit 1
 [ ! -x "$(command -v telnet)" ] && [ $ISALICE ]  && echo "Tool 'telnet' missing. Run 'make busybox-host' first."             && exit 1
+[ ! -x "$(command -v ftp)" ]                     && echo "Tool 'ftp' missing. Run 'make netkit-ftp-host' first."             && exit 1
 
 prepare_image
 
