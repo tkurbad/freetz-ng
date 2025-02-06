@@ -152,7 +152,7 @@ Currently supported devices and firmwares
   - 272.08.02 rev117989 {ALL} [Smart24 P1 NL1]
 * __FRITZ!Box 5690 Pro__
   - 279.07.62 rev115017 {ALL} [FCS23]
-  - 279.08.01 rev117705 {ALL} [Smart24 P1 FCS]
+  - 279.08.03 rev118508 {ALL} [Smart24 P1 FCS]
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
 
