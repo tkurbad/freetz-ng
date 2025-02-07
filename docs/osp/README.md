@@ -123,8 +123,10 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-5690-pro/
    - [source-files-FRITZ.Box_5690_Pro-alder-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-alder-07.62.tar.gz)
    - [source-files-FRITZ.Box_5690_Pro-alder-08.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-alder-08.01.tar.gz)
+   - [source-files-FRITZ.Box_5690_Pro-alder-08.03.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-alder-08.03.tar.gz)
    - [source-files-FRITZ.Box_5690_Pro-rtl9601-07.62.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-rtl9601-07.62.tar.gz)
    - [source-files-FRITZ.Box_5690_Pro-rtl9601-08.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-rtl9601-08.01.tar.gz)
+   - [source-files-FRITZ.Box_5690_Pro-rtl9601-08.03.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5690-pro/source-files-FRITZ.Box_5690_Pro-rtl9601-08.03.tar.gz)
  * fritzbox-6360/
    - [fritzbox6360-source-files-04.91.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6360/fritzbox6360-source-files-04.91.tar.gz)
    - [fritzbox6360-source-files-05.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6360/fritzbox6360-source-files-05.29.tar.gz)
