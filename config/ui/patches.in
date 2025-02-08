@@ -1117,7 +1117,7 @@ config FREETZ_PATCH_ATA
 
 config FREETZ_ENABLE_VLAN
 	bool "Enable VLAN"
-	depends on FREETZ_TYPE_CABLE || FREETZ_TYPE_LTE
+	depends on FREETZ_TYPE_CABLE || FREETZ_TYPE_CELL
 	depends on FREETZ_AVM_VERSION_07_2X_MIN
 	default n
 	help
