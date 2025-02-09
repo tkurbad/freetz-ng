@@ -1105,7 +1105,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **<u>axtlswrap: axTLS wrapper 2.1.3 (binary only) - DEPRECATED</u><a id='axtlswrap'></a>**<br>
 
-  * **<u>Collectd 4.10.3 - DEPRECATED</u><a id='collectd'></a>**<br>
+  * **[Collectd 4.10.3 - DEPRECATED](../../docs/make/collectd.md)<a id='collectd'></a>**<br>
     Collectd collects information about the system it is running on and stores this information. The information can then be used to do find current performance bottlenecks (i. e. performance analysis) and predict future system load (i. e. capacity planning). Or if you just want pretty graphs of your private server and are fed up with some homegrown solution you're at the right place, too.
 
   * **<u>gptfdisk 1.0.1 - DEPRECATED</u><a id='gptfdisk'></a>**<br>
