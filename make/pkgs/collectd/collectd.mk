@@ -2,6 +2,10 @@ $(call PKG_INIT_BIN, 4.10.3)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH:=ffd1959273301b302c144057baf68128e62c42bcff156ba941336e7389439b65
 $(PKG)_SITE:=http://collectd.org/files
+### WEBSITE:=https://www.collectd.org/
+### MANPAGE:=https://www.collectd.org/documentation/
+### CHANGES:=https://github.com/collectd/collectd/releases
+### CVSREPO:=https://github.com/collectd/collectd
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)
@@ -85,6 +89,7 @@ $(PKG)_PLUGINS_TARGET_DIR := $($(PKG)_PLUGINS_ENABLED:%=$($(PKG)_DEST_DIR)$($(PK
 
 $(PKG)_REBUILD_SUBOPTS += $(foreach plugin,$($(PKG)_PLUGINS_SUPPORTED),FREETZ_PACKAGE_COLLECTD_PLUGIN_$(plugin))
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -104,6 +109,7 @@ $($(PKG)_TARGET_TYPES_DB): $($(PKG)_TYPES_DB)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_TARGET_TYPES_DB) $($(PKG)_PLUGINS_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(COLLECTD_DIR) clean
