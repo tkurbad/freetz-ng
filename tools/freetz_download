@@ -252,18 +252,26 @@ else
 	exec 12>&2
 fi
 
-# Array 'sites' will be filled with all download server URLs
-num_sites=0
-
 # User defined mirror(s) always and at very first (if any)
-if [ -n "$FREETZ_DL_SITE_USER" -o -n "$FREETZ_DL_SITE_CUSTOM" ]; then
+enumerate_mirrors_private() {
+	local sites
+	local num_sites=0
+	unset mirrors_private
+
 	for user_site in $FREETZ_DL_SITE_USER $FREETZ_DL_SITE_CUSTOM; do
 		sites[(( num_sites++ ))]="$user_site"
 	done
-fi
+
+	mirrors_private=("${sites[@]}")
+}
 
 # Primary site and package specific mirrors (if specified)
-if [ -n "$URLs" ]; then
+enumerate_mirrors_official() {
+	local sites
+	local num_sites=0
+	unset mirrors_official
+
+	[ -n "$URLs" ] || return
 	# check if URLs contains magic sequence corresponding to one of the supported VCSs
 	supportedVCSs="cvs|svn|git|git_no_submodules|git_archive|git_sparse|bzr|hg|darcs"
 	VCS="$(echo "${URLs}" | sed -nr -e "s,^(${supportedVCSs})(@|://).*,\1,p")"
@@ -359,10 +367,16 @@ if [ -n "$URLs" ]; then
 			fi
 		done
 	fi
-fi
+
+	mirrors_official=("${sites[@]}")
+}
 
 # Add all mirrors to 'sites' array (if not invalid checksum (=repo only) and not an image)
-if [ "$CHECKSUM" != "X" -a "$opt_append_servers" != "n" ]; then
+enumerate_mirrors_public() {
+	local sites
+	local num_sites=0
+	unset mirrors_public
+
 	# Get Freetz mirror sites in an array
 	FREETZ_SITES=( $(
 		for (( i=0; i < $FREETZ_DL_SITES_COUNT ; i++ )); do
@@ -383,7 +397,27 @@ if [ "$CHECKSUM" != "X" -a "$opt_append_servers" != "n" ]; then
 	for (( n=$(( ${FREETZ_DL_SITES_COUNT} - ${FREETZ_DL_SITES_NORND_LAST} )); n < ${FREETZ_DL_SITES_COUNT}; n++ )); do
 		sites[(( num_sites++ ))]="${FREETZ_SITES[$n]}"
 	done
+
+	mirrors_public=("${sites[@]}")
+}
+
+enumerate_mirrors_private
+enumerate_mirrors_public
+enumerate_mirrors_official
+
+if [ -n "$FREETZ_DL_SITE_USER" -o -n "$FREETZ_DL_SITE_CUSTOM" ]; then
+	sites+=("${mirrors_private[@]}")
 fi
+
+if [ -n "$URLs" ]; then
+	sites+=("${mirrors_official[@]}")
+fi
+
+# Add all mirrors to 'sites' array (if not invalid checksum (=repo only) and not an image)
+if [ "$CHECKSUM" != "X" -a "$opt_append_servers" != "n" ]; then
+	sites+=("${mirrors_public[@]}")
+fi
+
 
 calculate_full_checksum() {
 	local CHECKSUM_ALGO="${CHECKSUM_ALGOS[64]}"
