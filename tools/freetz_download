@@ -34,7 +34,7 @@ helpmsg() {
 cat << 'EOF'
 freetz_download - download Freetz packages
 
-Usage: freetz_download (-?|--help) | [--delete-on-trap] [--no-append-servers] [--checksum-optional] ( (<download-dir> | check) <filename> [<main-url>,<mirror1>,<mirror2>,...] [<checksum>] )
+Usage: freetz_download (-?|--help) | [-d|--delete-on-trap] [-n|--no-append-servers] [-c|--checksum-optional] [-o|--out-file file] ( (<download-dir> | check) <filename> [<main-url>,<mirror1>,<mirror2>,...] [<checksum>] )
     check         - check download
     download-dir  - target directory for download file
     filename      - download file name
@@ -195,20 +195,20 @@ opt_append_servers=y
 opt_needs_checksum=y
 while [ $# -gt 1 ]; do
 	case "$1" in
-		--out-file)
+		-o|--out-file)
 			shift
 			opt_out_file="$1"
 			shift
 			;;
-		--delete-on-trap)
+		-d|--delete-on-trap)
 			opt_trap_delete=y
 			shift
 			;;
-		--no-append-servers)
+		-n|--no-append-servers)
 			opt_append_servers=n
 			shift
 			;;
-		--checksum-optional)
+		-c|--checksum-optional)
 			opt_needs_checksum=n
 			shift
 			;;
