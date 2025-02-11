@@ -288,7 +288,14 @@ enumerate_mirrors_official() {
 
 		for url in $(eval echo "{${URLs},}"); do # wrap URLs with curly-braces to apply brace-expansion
 			if [ ${url:0:7} == "@MIRROR" ]; then
-				: # file is only on mirrors available
+				if [ "${#url}" -le 8 ]; then
+					# file is only on mirrors
+				else
+					# special mirror handling
+					for x in "${single_mirror[@]}"; do
+						sites[(( num_sites++ ))]=${single_mirror}/${url:8}
+					done
+				fi
 			elif [ ${url:0:3} == "@SF" ]; then
 				# give sourceforge a few more tries, because it redirects to different mirrors
 				subpath=${url/@SF\//}
