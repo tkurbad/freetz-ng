@@ -289,10 +289,10 @@ enumerate_mirrors_official() {
 		for url in $(eval echo "{${URLs},}"); do # wrap URLs with curly-braces to apply brace-expansion
 			if [ ${url:0:7} == "@MIRROR" ]; then
 				if [ "${#url}" -le 8 ]; then
-					# file is only on mirrors
+					: # file is only on mirrors
 				else
 					# special mirror handling
-					for x in "${single_mirror[@]}"; do
+					for single_mirror in "${mirrors_public[@]}"; do
 						sites[(( num_sites++ ))]=${single_mirror}/${url:8}
 					done
 				fi
