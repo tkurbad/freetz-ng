@@ -64,7 +64,7 @@ Latest changes
    * kconfig 6.13
    * lzma2 5.6.4
    * meson 1.7.0
-   * openssl 3.0.15
+   * openssl 3.0.16
    * precompiled host-tools 2025-02-06
    * precompiled toolchains r25112/r25157
    * prelink 20131005
