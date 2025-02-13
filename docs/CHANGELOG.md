@@ -150,6 +150,7 @@ Latest changes
    * libcap-ng 0.8.5
    * libdeflate 1.23
    * libexif 0.6.25
+   * libffi 3.4.7
    * libmaxminddb-1.12.2
    * libnettle 3.10.1
    * libpng 1.6.46
