@@ -149,11 +149,11 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-7582/
    - other: [FRITZ.Box_7582-07.18.image](https://download.avm.de/fritzbox/fritzbox-7582/other/fritz.os/FRITZ.Box_7582-07.18.image)
  * fritzbox-7583/
-   - deutschland: [FRITZ.Box_7583-08.00.image](https://download.avm.de/fritzbox/fritzbox-7583/deutschland/fritz.os/FRITZ.Box_7583-08.00.image)
-   - other: [FRITZ.Box_7583-08.00.image](https://download.avm.de/fritzbox/fritzbox-7583/other/fritz.os/FRITZ.Box_7583-08.00.image)
+   - deutschland: [FRITZ.Box_7583-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583/deutschland/fritz.os/FRITZ.Box_7583-08.03.image)
+   - other: [FRITZ.Box_7583-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583/other/fritz.os/FRITZ.Box_7583-08.03.image)
  * fritzbox-7583-vdsl/
-   - deutschland: [FRITZ.Box_7583_VDSL-08.00.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/deutschland/fritz.os/FRITZ.Box_7583_VDSL-08.00.image)
-   - other: [FRITZ.Box_7583_VDSL-08.00.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/other/fritz.os/FRITZ.Box_7583_VDSL-08.00.image)
+   - deutschland: [FRITZ.Box_7583_VDSL-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/deutschland/fritz.os/FRITZ.Box_7583_VDSL-08.03.image)
+   - other: [FRITZ.Box_7583_VDSL-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/other/fritz.os/FRITZ.Box_7583_VDSL-08.03.image)
  * fritzbox-7590/
    - belgium: [FRITZ.Box_7590-07.59.image](https://download.avm.de/fritzbox/fritzbox-7590/belgium/fritz.os/FRITZ.Box_7590-07.59.image)
    - deutschland: [FRITZ.Box_7590-08.02.image](https://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-08.02.image)
