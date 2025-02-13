@@ -1,4 +1,4 @@
-# libffi (libffi.so) 3.4.6
+# libffi (libffi.so) 3.4.7
  - Homepage: [http://sourceware.org/libffi](http://sourceware.org/libffi)
  - Changelog: [https://github.com/libffi/libffi/releases](https://github.com/libffi/libffi/releases)
  - Repository: [https://github.com/libffi/libffi](https://github.com/libffi/libffi)
