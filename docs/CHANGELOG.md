@@ -117,7 +117,7 @@ Latest changes
    * Mosquitto 2.0.20
    * Nano 8.3
    * OpenSSH 9.3p2/9.9p1
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.15
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.16
    * radvd 1.9.3/2.20
    * rsync 3.4.1
    * RPCBind 1.2.7
