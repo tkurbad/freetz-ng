@@ -84,6 +84,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
 
 ### FOS-Inhaus
+ - HWR 226: [FRITZ.Box_7590-08.10-118669-Inhaus.image](http://download.avm.de/inhaus/Smart24P2/7590/FRITZ.Box_7590-08.10-118669-Inhaus.image)
  - HWR 227: [FRITZ.Box_4040-08.00-117598-Inhaus.image](http://download.avm.de/inhaus/Smart24P1NL1/4040/FRITZ.Box_4040-08.00-117598-Inhaus.image)
  - HWR 236: [FRITZ.Box_7530-08.01-117936-Inhaus.image](http://download.avm.de/inhaus/Smart24P1NL1/7530/FRITZ.Box_7530-08.01-117936-Inhaus.image)
  - HWR 240: [FRITZ.Repeater_600-07.57-111452-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/600/FRITZ.Repeater_600-07.57-111452-Inhaus.image)
