@@ -528,6 +528,39 @@ config FREETZ_AVM_HAS_FIRMWARE_08_0X_PLUS
 		))
 
 
+config FREETZ_AVM_HAS_FIRMWARE_08_2X_INHAUS
+	bool
+	default y
+	depends on \
+		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_xxxx \
+		))
+
+config FREETZ_AVM_HAS_FIRMWARE_08_2X_LABOR
+	bool
+	default y
+	depends on \
+		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_xxxx \
+		))
+
+config FREETZ_AVM_HAS_FIRMWARE_08_2X
+	bool
+	default y
+	depends on \
+		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_xxxx \
+		))
+
+config FREETZ_AVM_HAS_FIRMWARE_08_2X_PLUS
+	bool
+	default y
+	depends on \
+		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_xxxx \
+		))
+
+
 ###
 ### Languages
 ###
