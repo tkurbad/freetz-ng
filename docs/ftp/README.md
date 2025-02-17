@@ -49,6 +49,18 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-6590-cable/
    - deutschland: [FRITZ.Box_6590_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.57.image)
    - other: [FRITZ.Box_6590_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6590-cable/other/fritz.os/FRITZ.Box_6590_Cable-07.57.image)
+ * fritzbox-6591-cable/
+   - deutschland: [FRITZ.Box_6591_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6591-cable/deutschland/fritz.os/FRITZ.Box_6591_Cable-08.03.image)
+   - other: [FRITZ.Box_6591_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6591-cable/other/fritz.os/FRITZ.Box_6591_Cable-08.03.image)
+ * fritzbox-6660-cable/
+   - deutschland: [FRITZ.Box_6660_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6660-cable/deutschland/fritz.os/FRITZ.Box_6660_Cable-08.03.image)
+   - other: [FRITZ.Box_6660_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6660-cable/other/fritz.os/FRITZ.Box_6660_Cable-08.03.image)
+ * fritzbox-6670-cable/
+   - deutschland: [FRITZ.Box_6670_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/deutschland/fritz.os/FRITZ.Box_6670_Cable-08.03.image)
+   - other: [FRITZ.Box_6670_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/other/fritz.os/FRITZ.Box_6670_Cable-08.03.image)
+ * fritzbox-6690-cable/
+   - deutschland: [FRITZ.Box_6690_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-08.03.image)
+   - other: [FRITZ.Box_6690_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/other/fritz.os/FRITZ.Box_6690_Cable-08.03.image)
  * fritzbox-6810-lte/
    - deutschland: [FRITZ.Box_6810_LTE.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/deutschland/fritz.os/FRITZ.Box_6810_LTE.108.06.35.image)
    - other: [FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/other/fritz.os/FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image)
