@@ -43,7 +43,6 @@ define $(PKG)_FIXHARDCODED
 	@for libfile in libcrypto libssl; do \
 	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(OPENSSL_HOST_TARGET_BINARY) ;\
 	done ;
-
 endef
 
 $(pkg)-fixhardcoded:
