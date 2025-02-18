@@ -5,7 +5,7 @@
  # %skipdir there for further explanations.
  
 -SUBDIRS=crypto ssl apps util tools      providers doc
-+SUBDIRS=crypto ssl      util            providers doc
++SUBDIRS=crypto ssl apps util            providers doc
  IF[{- !$disabled{'deprecated-3.0'} -}]
    SUBDIRS=engines
  ENDIF

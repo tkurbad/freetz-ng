@@ -10,6 +10,7 @@ $(PKG)_SITE:=https://www.openssl.org/source,https://github.com/openssl/openssl/r
 
 $(PKG)_DEPENDS_ON+=patchelf-host
 
+$(PKG)_TARGET_BINARY      := $(TOOLS_DIR)/openssl
 $(PKG)_DESTDIR            := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)/freetz
 $(PKG)_INSTALLDIR         := $(OPENSSL_HOST_DIR)/installdir
 
@@ -33,11 +34,16 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	@[ -d $(OPENSSL_HOST_INSTALLDIR)/lib ] || ln -sf lib64 $(OPENSSL_HOST_INSTALLDIR)/lib
 	@mkdir -p $(OPENSSL_HOST_DESTDIR)/
 	cp -a $(OPENSSL_HOST_DIR)/{libcrypto,libssl}.so.3 $(OPENSSL_HOST_DESTDIR)/
+	cp -a $(OPENSSL_HOST_DIR)/apps/openssl $(OPENSSL_HOST_TARGET_BINARY)
 	$(call OPENSSL_HOST_FIXHARDCODED)
 	@touch $@
 
 define $(PKG)_FIXHARDCODED
 	@$(PATCHELF) --replace-needed $(1)libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libssl.so.3
+	@for libfile in libcrypto libssl; do \
+	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(OPENSSL_HOST_TARGET_BINARY) ;\
+	done ;
+
 endef
 
 $(pkg)-fixhardcoded:
@@ -54,6 +60,6 @@ $(pkg)-dirclean:
 	$(RM) -r $(OPENSSL_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) $(OPENSSL_HOST_DESTDIR)/{libcrypto,libssl}.so.3
+	$(RM) $(OPENSSL_HOST_DESTDIR)/{libcrypto,libssl}.so.3 $(OPENSSL_HOST_TARGET_BINARY)
 
 $(TOOLS_FINISH)
