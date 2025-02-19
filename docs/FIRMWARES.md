@@ -142,7 +142,7 @@ Currently supported devices and firmwares
   - 171.07.12 rev71193 {ALL} [MESH18 NL2]
   - 171.07.31 rev107858 {ALL} [PSQ19P2NL4]
 
-* __Fritz!Box 5530 Fiber (DEVELOPER, No fiber!)__
+* __Fritz!Box 5530 Fiber (No fiber!)__
   - 257.07.30 rev99334 {ALL} [PSQ19P2NL4]
   - 257.07.58 rev108018 {ALL} [MOVE21NL1]
   - 257.08.02 rev117982 {ALL} [Smart24 P1 NL1]

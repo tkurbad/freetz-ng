@@ -236,8 +236,7 @@ choice
 	config FREETZ_TYPE_5530
 		depends on FREETZ_SERIES_5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
-		bool "5530 - DEVELOPER"
-		depends on FREETZ_SHOW_DEVELOPER
+		bool "5530 - No fiber!"
 		select FREETZ_REMOVE_UNTRUSTEDD
 		help
 			See https://github.com/Freetz-NG/freetz-ng/issues/559
