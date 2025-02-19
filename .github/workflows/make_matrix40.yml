@@ -44,7 +44,7 @@ jobs:
 
       - name: sleep
         run: |
-          SLEEP="$((1 + $(od -A n -t d -N 2 /dev/urandom | tr -d ' ') % 60))"
+          SLEEP="$((1 + $(od -A n -t d -N 2 /dev/urandom | tr -d ' ') % 9))"
           echo "Sleeping $SLEEP seconds ..."
           sleep $SLEEP
 
