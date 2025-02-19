@@ -75,6 +75,7 @@ jobs:
         run: |
           truncate -s0 .config
           echo 'FREETZ_MODULES_OWN="freetz"'                                                          >> .config
+          for x in  UDEVMOUNT                               ; do echo "# FREETZ_PATCH_$x is not set"  >> .config; done
           for x in  dummy loop usbserial                   ; do echo "# FREETZ_MODULE_$x is not set"  >> .config; done
           for x in  DROPBEAR                              ; do echo "# FREETZ_PACKAGE_$x is not set"  >> .config; done
           for x in  LDD                                              ; do echo "FREETZ_PACKAGE_$x=y"  >> .config; done
