@@ -606,7 +606,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Adds volume counter support removed by AVM for some (probably marketing) reasons.
 
   * **[PATCH_W920V_LED_MODULE: Change LED semantics to W920V](PATCH_W920V_LED_MODULE.md)<a id='patch-w920v-led-module'></a>**<br>
-    If Y is choosen, this changes the semantics of the LEDs on the front panel of your 7570/W920V box fitting the descriptions of the W920V.
+    If Y is chosen, this changes the semantics of the LEDs on the front panel of your 7570/W920V box fitting the descriptions of the W920V.
 
   * **<u>Patch webif features</u><a id='patch-webif-features'></a>**<br>
     This enables the scripts in patches/cond/800-webif_features/ which patch some webif features, currently 210-patch_hostname.sh 811-show_tr069_config.sh 812-show_update_config.sh 821-show_network_repeater.sh 822-show_dvb_services.sh
