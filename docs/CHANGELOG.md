@@ -116,7 +116,7 @@ Latest changes
    * mc (Midnight Commander) 4.8.31/4.8.32
    * Mosquitto 2.0.20
    * Nano 8.3
-   * OpenSSH 9.3p2/9.9p1
+   * OpenSSH 9.3p2/9.9p2
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.16
    * radvd 1.9.3/2.20
    * rsync 3.4.1
