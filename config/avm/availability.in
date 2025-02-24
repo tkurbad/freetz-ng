@@ -490,6 +490,7 @@ config FREETZ_AVM_HAS_FIRMWARE_08_0X
 	default y
 	depends on \
 		( (FREETZ_TYPE_LANG_DE||FREETZ_TYPE_LANG_EN) && ( \
+			FREETZ_TYPE_3000_W6 || \
 			FREETZ_TYPE_4040 || \
 			FREETZ_TYPE_4050 || \
 			FREETZ_TYPE_4060 || \
