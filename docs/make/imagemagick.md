@@ -1,4 +1,4 @@
-# ImageMagick 7.1.1-43 (binary only)
+# ImageMagick 7.1.1-44 (binary only)
  - Homepage: [https://www.imagemagick.org/](https://www.imagemagick.org/)
  - Manpage: [https://www.imagemagick.org/Usage/](https://www.imagemagick.org/Usage/)
  - Changelog: [https://github.com/ImageMagick/ImageMagick/releases](https://github.com/ImageMagick/ImageMagick/releases)
