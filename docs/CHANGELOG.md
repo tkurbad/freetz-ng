@@ -59,7 +59,7 @@ Latest changes
    * busybox 1.37.0
    * ca-bundle 2024-12-31
    * Ccache 4.10.2
-   * cmake 3.31.5
+   * cmake 3.31.6
    * fakeroot 1.37
    * kconfig 6.13
    * lzma2 5.6.4
