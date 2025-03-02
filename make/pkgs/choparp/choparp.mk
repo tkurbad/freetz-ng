@@ -1,5 +1,6 @@
 $(call PKG_INIT_BIN, 20150613)
-$(PKG)_SOURCE:=$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE_DOWNLOAD_NAME:=$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=141cad384dc42f094d0c9a1fd49440adc1bf7f19c1cce122091374d8ca261f19
 $(PKG)_SITE:=https://github.com/quinot/choparp/archive/refs/tags/release
 ### WEBSITE:=https://github.com/quinot/choparp

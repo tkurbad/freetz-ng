@@ -5,7 +5,7 @@ DAEMON_LONG_NAME="Choparp"
 . /etc/init.d/modlibrc
 
 start() {
-        modlib_startdaemon $DAEMON_BIN -p $PID_FILE $CHOPARP_CMDLINE
+	modlib_startdaemon $DAEMON_BIN -p $PID_FILE $CHOPARP_CMDLINE
 }
 
 case $1 in

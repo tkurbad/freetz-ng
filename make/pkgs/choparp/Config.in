@@ -1,6 +1,7 @@
 config FREETZ_PACKAGE_CHOPARP
 	bool "Choparp 20150613 - DEPRECATED"
 	default n
+	select FREETZ_LIB_libpcap
 	help
 		Choparp is an easy-to-use proxy arp daemon. It watches arp request
 		packets visible on the interface specified by the argument if_name
