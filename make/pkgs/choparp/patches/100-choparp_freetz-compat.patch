@@ -1,5 +1,5 @@
---- /dev/null	2025-02-22 08:43:03.264793300 +0100
-+++ Makefile	2025-03-02 11:40:37.355497908 +0100
+--- Makefile
++++ Makefile
 @@ -0,0 +1,14 @@
 +CC = gcc
 +CFLAGS = -Wall -O2
@@ -15,8 +15,8 @@
 +
 +clean:
 +	rm -f $(TARGET)
---- src/choparp.c	2015-06-13 17:32:38.000000000 +0200
-+++ src/choparp.c_patched	2025-03-02 16:13:37.160417165 +0100
+--- src/choparp.c
++++ src/choparp.c
 @@ -260,7 +260,18 @@
  }
  
