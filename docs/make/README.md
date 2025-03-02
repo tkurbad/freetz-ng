@@ -86,6 +86,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Checkmaild 0.4.7 - DEPRECATED](checkmaild.md)<a id='checkmaild'></a>**<br>
     Checkmaild checks pop3/smtp mail accounts for new mails on a given interval. A configurable shell script starts the desired actions when new mails arrive.
 
+  * **[Choparp 20150613 - DEPRECATED](choparp.md)<a id='choparp'></a>**<br>
+    Choparp is an easy-to-use proxy arp daemon. It watches arp request packets visible on the interface specified by the argument if_name and sends proxy arp reply to the sender if the arp request queries the MAC address (ethernet hardware address) for the network speci- fied by net_addr and net_mask.
+
   * **[Cifsmount 7.0](cifsmount.md)<a id='cifsmount'></a>**<br>
     User space helper for mounting remote CIFS shares + CGI web interface for easy configuration of up to three mounts incl. (auto-) start/stop. CIFS is an extended version of SMB, the well-known protocol used by MS Windows and Samba for sharing folders, files and printers. Thus, cifsmount is a replacement for smbmount, having the advantage of being significantly smaller than smbmount. So if you want to mount Windows or Samba shares from your router box, this package is for you. If this does not work, enable replace-kernel!
 
