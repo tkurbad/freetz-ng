@@ -227,7 +227,7 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
 
 ### FritzWlan
  * fritzmesh-set-4200/
-   - other: [FRITZ.Repeater_3000_AX-08.01.image](https://download.avm.de/fritzwlan/fritzmesh-set-4200/other/fritz.os/FRITZ.Repeater_3000_AX-08.01.image)
+   - other: [FRITZ.Repeater_3000_AX-08.02.image](https://download.avm.de/fritzwlan/fritzmesh-set-4200/other/fritz.os/FRITZ.Repeater_3000_AX-08.02.image)
  * fritzrepeater-1200/
    - deutschland: [FRITZ.Repeater_1200-07.58.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/deutschland/fritz.os/FRITZ.Repeater_1200-07.58.image)
    - other: [FRITZ.Repeater_1200-07.58.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/other/fritz.os/FRITZ.Repeater_1200-07.58.image)
