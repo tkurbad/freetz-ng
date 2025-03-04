@@ -562,7 +562,7 @@ Currently supported devices and firmwares
 * __Fritz!Repeater 3000 AX (UNTESTED)__
   - 270.07.42 rev108161 {ALL} [MOVE21]
   - 270.07.58 rev113013 {ALL} [MOVE21NL1]
-  - 270.08.01 rev119042 {ALL} [Smart24 P1 FCS]
+  - 270.08.02 rev119211 {ALL} [Smart24 P1 FCS]
 * __Fritz!Repeater 6000__
   - 253.07.31 rev109964 {ALL} [PSQ19P2NL4]
   - 253.07.58 rev113014 {ALL} [MOVE21NL1]
