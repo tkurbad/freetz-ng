@@ -16,7 +16,6 @@ case $1 in
 		modlib_start $CHOPARP_ENABLED
 		;;
 	unload)
-		modunreg file $DAEMON
 		modunreg daemon $DAEMON
 		modunreg cgi $DAEMON
 		modlib_stop
