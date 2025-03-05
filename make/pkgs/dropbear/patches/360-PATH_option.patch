@@ -9,7 +9,7 @@
  #endif
 --- src/runopts.h
 +++ src/runopts.h
-@@ -146,6 +146,7 @@
+@@ -143,6 +143,7 @@
  
  	int pass_on_env;
  
@@ -34,7 +34,7 @@
  		m_free(cp);
 --- src/svr-runopts.c
 +++ src/svr-runopts.c
-@@ -104,6 +104,8 @@
+@@ -107,6 +107,8 @@
  					"		(default port is %s if none specified)\n"
  					"-P PidFile	Create pid file PidFile\n"
  					"		(default %s)\n"
@@ -43,7 +43,7 @@
  #ifdef SO_BINDTODEVICE
  					"-l <interface>\n"
  					"		interface to bind on\n"
-@@ -141,6 +143,7 @@
+@@ -144,6 +146,7 @@
  #endif
  					MAX_AUTH_TRIES,
  					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
@@ -51,15 +51,15 @@
  					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT);
  }
  
-@@ -185,6 +188,7 @@
- 	svr_opts.hostkey = NULL;
+@@ -189,6 +192,7 @@
  	svr_opts.delay_hostkey = 0;
  	svr_opts.pidfile = expand_homedir_path(DROPBEAR_PIDFILE);
+ 	svr_opts.authorized_keys_dir = "~/.ssh";
 +	svr_opts.childProcessPATH = NULL;
  #if DROPBEAR_SVR_LOCALANYFWD
  	svr_opts.nolocaltcp = 0;
  #endif
-@@ -287,6 +291,9 @@
+@@ -296,6 +300,9 @@
  				case 'P':
  					next = &svr_opts.pidfile;
  					break;
@@ -69,7 +69,7 @@
  #ifdef SO_BINDTODEVICE
  				case 'l':
  					next = &svr_opts.interface;
-@@ -408,6 +415,10 @@
+@@ -417,6 +424,10 @@
  	}
  #endif
  

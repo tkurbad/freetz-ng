@@ -1,6 +1,6 @@
 --- src/runopts.h
 +++ src/runopts.h
-@@ -69,6 +69,10 @@
+@@ -64,6 +64,10 @@
  
  typedef struct svr_runopts {
  
@@ -24,7 +24,7 @@
  #endif
 --- src/svr-runopts.c
 +++ src/svr-runopts.c
-@@ -64,6 +64,10 @@
+@@ -67,6 +67,10 @@
  #if DROPBEAR_DELAY_HOSTKEY
  					"-R		Create hostkeys as required\n" 
  #endif
@@ -35,7 +35,7 @@
  					"-F		Don't fork into background\n"
  					"-e		Pass on server process environment to child process\n"
  #ifdef DISABLE_SYSLOG
-@@ -132,6 +136,9 @@
+@@ -135,6 +139,9 @@
  #if DROPBEAR_ED25519
  					ED25519_PRIV_FILENAME,
  #endif
@@ -45,7 +45,7 @@
  					MAX_AUTH_TRIES,
  					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
  					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT);
-@@ -155,6 +162,9 @@
+@@ -158,6 +165,9 @@
  
  
  	/* see printhelp() for options */
@@ -55,7 +55,7 @@
  	svr_opts.bannerfile = NULL;
  	svr_opts.banner = NULL;
  	svr_opts.forced_command = NULL;
-@@ -230,6 +240,11 @@
+@@ -239,6 +249,11 @@
  				case 'R':
  					svr_opts.delay_hostkey = 1;
  					break;
@@ -67,7 +67,7 @@
  				case 'F':
  					svr_opts.forkbg = 0;
  					break;
-@@ -387,6 +402,12 @@
+@@ -396,6 +411,12 @@
  		svr_opts.portcount = 1;
  	}
  

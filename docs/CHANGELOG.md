@@ -106,7 +106,7 @@ Latest changes
    * BusyBox 1.27.2/1.37.0
    * CA-bundle 2024-12-31
    * Curl 8.12.1
-   * Dropbear 2024.86
+   * Dropbear 2025.87
    * Fontconfig 2.16.0
    * Git 2.47.0
    * htpdate 2.0.0
