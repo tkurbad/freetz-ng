@@ -38,9 +38,10 @@
     Für interne Speichermedien ist es in Freetz immer aktiviert!
   * Befehle beim Neustart ausführen?<br>
     Lege dein ausführbares Skript hier ab: ```/tmp/flash/mod/shutdown```
-  * Schreibgeschützte Dateien (oder Verzeichnisse) bearbeiten?<br>
-    1) Datei kopieren: ```cp /some/path/to/file /tmp/file```<br>
-    2) Mounten: ```mount -o bind /tmp/file /some/path/to/file```
+  * Schreibgeschützte Dateien bearbeiten?<br>
+    Es gibt Wrapper-Scripte namens ```vix```, ```vimx``` and ```nanox```<br>
+  * Schreibgeschützte Verzeichnisse bearbeiten?<br>
+    Es gibt ein kleines Script welches das Verzeichnis ins RAM kopiert und schreibbar mountet: ```araw /irgend/ein/verzeichnis/```<br>
   * motd ändern?<br>
     Du kannst dein eigenes \*Skript\* hier ablegen: ```/tmp/flash/mod/motd```
     Die motd wird einmal beim Booten generiert. Um sie regelmäßig zu aktualisieren,
