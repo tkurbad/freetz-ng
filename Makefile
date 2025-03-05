@@ -706,6 +706,7 @@ check-dot-config-uptodateness: $(CONFIG_IN_CACHE)
 
 help:
 	@sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.en.md
+
 hilfe:
 	@sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.de.md
 
