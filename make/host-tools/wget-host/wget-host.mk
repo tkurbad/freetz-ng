@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 1.24.5)
+$(call TOOLS_INIT, 1.25.0)
 $(PKG)_SOURCE:=wget-$($(PKG)_VERSION).tar.lz
-$(PKG)_HASH:=57a107151e4ef94fdf94affecfac598963f372f13293ed9c74032105390b36ee
+$(PKG)_HASH:=19225cc756b0a088fc81148dc6a40a0c8f329af7fd8483f1c7b2fe50f4e08a1f
 $(PKG)_SITE:=@GNU/wget
 ### WEBSITE:=https://www.gnu.org/software/wget/
 ### MANPAGE:=https://www.gnu.org/software/wget/manual/

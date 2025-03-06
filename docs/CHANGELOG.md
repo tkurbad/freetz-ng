@@ -70,6 +70,7 @@ Latest changes
    * prelink 20131005
    * python 3.12.9
    * u-boot 2025.01
+   * wget 1.25.0
 
  - AVM sources:
    * 3000 ax  7.41 - 4.4.271
