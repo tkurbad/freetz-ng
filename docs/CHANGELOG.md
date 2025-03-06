@@ -136,6 +136,7 @@ Latest changes
    * uMurmur 0.2.20/0.3.0
    * Unbound 1.22.0
    * VLMCSD svn1113
+   * Wget 1.25.0
    * xsltproc 1.1.42
    * XZ 5.6.4
 
