@@ -500,8 +500,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_6850_LTE-07.29.image"                                                      if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6850_LTE-07.59.image"                                                      if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_6850_LTE-08.00.image"                                                      if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_08_0X
-	default "FRITZ.Box_6850_LTE-08.02-118587-LabBETA.image"                                       if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_08_0X_LABOR
+	default "FRITZ.Box_6850_LTE-08.03.image"                                                      if FREETZ_TYPE_6850_V1                         && FREETZ_TYPE_FIRMWARE_08_0X
 	#
 	default "FRITZ.Box_6850_5G-07.30.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6850_5G-07.59.image"                                                       if FREETZ_TYPE_6850_V2                         && FREETZ_TYPE_FIRMWARE_07_5X
@@ -759,7 +758,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	string "Downloaded container file"                                                            if FREETZ_DL_OVERRIDE
 	depends                                                                                       on (FREETZ_TYPE_FIRMWARE_LABOR || FREETZ_TYPE_FIRMWARE_PLUS) && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
-	default "fritzbox-6850_lte-labor-118587.zip"                                                  if FREETZ_TYPE_6850_V1
 	default "fritzbox-6850_5g-labor-118585.zip"                                                   if FREETZ_TYPE_6850_V2
 	default "fritzbox-6860_5g-labor-118586.zip"                                                   if FREETZ_TYPE_6860
 #	default "xxxxxxxxxxxxxxxxxxxxxxxxx.zip"                                                       if FREETZ_TYPE_xxxx
