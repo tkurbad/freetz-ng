@@ -232,8 +232,7 @@ Currently supported devices and firmwares
 * __Fritz!Box 6850 5G (UNTESTED)__
   - 258.07.30 rev94600 {ALL} [PSQ19P2NL4]
   - 258.07.59 rev114650 {ALL} [MOVE21NL2]
-  - 258.08.00 rev117815 {ALL} [Smart24 P1 NL1]
-  - 258.08.02 rev118585 {ALL} [Smart24 P1 NL1] (Labor)
+  - 258.08.03 rev119185 {ALL} [Smart24 P1 NL1]
 
 * __Fritz!Box 6860 5G (UNTESTED)__
   - 277.08.02 rev118586 {ALL} [Smart24 P1 FCS] (Labor)
