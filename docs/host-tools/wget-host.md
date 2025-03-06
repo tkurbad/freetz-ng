@@ -1,4 +1,4 @@
-# wget 1.24.5
+# wget 1.25.0
  - Homepage: [https://www.gnu.org/software/wget/](https://www.gnu.org/software/wget/)
  - Manpage: [https://www.gnu.org/software/wget/manual/](https://www.gnu.org/software/wget/manual/)
  - Changelog: [https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS](https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS)

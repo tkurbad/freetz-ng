@@ -140,7 +140,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### W
 
-  * **[wget 1.24.5](wget-host.md)<a id='wget-host'></a>**<br>
+  * **[wget 1.25.0](wget-host.md)<a id='wget-host'></a>**<br>
 
 ### X
 
