@@ -1,5 +1,10 @@
 # NEWS
 
+ * __[2025-06-03](#2025-06-03)__<a id='2025-06-03'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng25030` erstellt.<br>
+   Ein Tag sollte wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng25030](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng25030)<br>
+
  * __[2025-02-28](#2025-02-28)__<a id='2025-02-28'></a><br>
    Das Deutsches Telekom wird das Fernmeldegeheimnis ignorieren und anlasslos in allen SMS herumschnüffeln.<br>
    Kein Treppenwitz, ab 1. April ~~1984~~ 2025 geht es los! Das Deutsches Telekom wird ein sogenanntes "SMS-Firewall" ohne<br>
