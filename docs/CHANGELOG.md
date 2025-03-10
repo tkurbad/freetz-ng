@@ -59,6 +59,7 @@ Latest changes
  - Patches:
 
  - Packages:
+   * BIND 9.11.37/9.20.6
    * htop 1.0.3/3.4.0
    * ImageMagick 7.1.1-45
 
