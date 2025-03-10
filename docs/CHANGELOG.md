@@ -53,6 +53,7 @@ Latest changes
    * Ccache 4.11
 
  - Host tools:
+   * ca-bundle 2025-02-25
 
  - AVM sources:
 
