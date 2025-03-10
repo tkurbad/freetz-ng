@@ -60,6 +60,7 @@ Latest changes
 
  - Packages:
    * htop 1.0.3/3.4.0
+   * ImageMagick 7.1.1-45
 
  - Libraries:
 
