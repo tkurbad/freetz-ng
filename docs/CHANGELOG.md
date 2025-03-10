@@ -50,6 +50,7 @@ Latest changes
 ### devel
 
  - Build system:
+   * Ccache 4.11
 
  - Host tools:
 
