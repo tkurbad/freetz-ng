@@ -1,4 +1,4 @@
-# Cifsmount 7.0
+# Cifsmount 7.2
  - Homepage: [https://wiki.samba.org/index.php/LinuxCIFS_utils](https://wiki.samba.org/index.php/LinuxCIFS_utils)
  - Changelog: [https://wiki.samba.org/index.php/LinuxCIFS_utils#News](https://wiki.samba.org/index.php/LinuxCIFS_utils#News)
  - Repository: [https://git.samba.org/?p=cifs-utils.git;a=summary](https://git.samba.org/?p=cifs-utils.git;a=summary)
