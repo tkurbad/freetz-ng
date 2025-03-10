@@ -1,4 +1,4 @@
-# Dante 1.4.3
+# Dante 1.4.4
  - Homepage: [https://www.inet.no/dante/](https://www.inet.no/dante/)
  - Manpage: [https://www.inet.no/dante/doc/1.4.x/index.html](https://www.inet.no/dante/doc/1.4.x/index.html)
  - Changelog: [https://www.inet.no/dante/index.html#Recent](https://www.inet.no/dante/index.html#Recent)

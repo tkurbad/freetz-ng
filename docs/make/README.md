@@ -118,7 +118,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### D
 
-  * **[Dante 1.4.3](dante.md)<a id='dante'></a>**<br>
+  * **[Dante 1.4.4](dante.md)<a id='dante'></a>**<br>
     A free SOCKS server
 
   * **[davfs2: davfs 1.5.2/1.7.0](davfs2.md)<a id='davfs2'></a>**<br>
