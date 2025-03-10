@@ -59,6 +59,7 @@ Latest changes
  - Patches:
 
  - Packages:
+   * htop 1.0.3/3.4.0
 
  - Libraries:
 
