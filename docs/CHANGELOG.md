@@ -69,6 +69,7 @@ Latest changes
    * Git 2.48.1
    * htop 1.0.3/3.4.0
    * ImageMagick 7.1.1-45
+   * iptables 1.4.11.1/1.4.21/1.6.2/1.8.11
    * Lua 5.1.5/5.4.7
    * Minicom 2.10
    * Mosquitto 2.0.21

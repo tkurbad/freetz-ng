@@ -15,7 +15,7 @@ comment "Iptables (not available, needs kernel modules)"
 	depends on !FREETZ_PACKAGE_IPTABLES_IS_SELECTABLE
 
 config FREETZ_PACKAGE_IPTABLES
-	bool "Iptables 1.4.11.1/1.4.21/1.6.2/1.8.10 (binary only)"
+	bool "Iptables 1.4.11.1/1.4.21/1.6.2/1.8.11 (binary only)"
 	depends on FREETZ_PACKAGE_IPTABLES_IS_SELECTABLE
 	select FREETZ_PACKAGE_IPTABLES_KERNEL_MODULES
 	select FREETZ_PACKAGE_IPTABLES_SHARED_LIBS if !FREETZ_PACKAGE_IPTABLES_STATIC
@@ -56,7 +56,7 @@ if FREETZ_PACKAGE_IPTABLES
 			depends on FREETZ_KERNEL_VERSION_4
 
 		config FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL5
-			bool "1.8.10"
+			bool "1.8.11"
 			depends on FREETZ_KERNEL_VERSION_5_MIN
 
 	endchoice
