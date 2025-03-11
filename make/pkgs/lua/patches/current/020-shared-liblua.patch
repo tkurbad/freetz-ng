@@ -6,7 +6,7 @@
  
 +# Lua version and release.
 +export V=5.4
-+export R=$V.6
++export R=$V.7
 +
  # What to install.
  TO_BIN= lua luac
@@ -18,7 +18,7 @@
  
 -# Lua version and release.
 -V= 5.4
--R= $V.6
+-R= $V.7
 -
  # Targets start here.
  all:	$(PLAT)
