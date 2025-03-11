@@ -73,6 +73,7 @@ Latest changes
    * Minicom 2.10
    * Mosquitto 2.0.21
    * socat 1.8.0.3
+   * tcpdump 4.1.1/4.99.4
 
  - Libraries:
 
