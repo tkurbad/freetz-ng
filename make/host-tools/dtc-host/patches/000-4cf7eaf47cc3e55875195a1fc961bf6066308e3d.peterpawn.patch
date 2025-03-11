@@ -105,7 +105,7 @@ vidar:/home/GitHub/YourFritz/fit_tools/fit-images/FB5590 $
 
 --- .gitignore
 +++ .gitignore
-@@ -11,6 +11,7 @@
+@@ -12,6 +12,7 @@
  .*.swp
  /dtc
  /fdtdump
@@ -115,7 +115,7 @@ vidar:/home/GitHub/YourFritz/fit_tools/fit-images/FB5590 $
  /fdtget
 --- Makefile
 +++ Makefile
-@@ -148,6 +148,7 @@
+@@ -149,6 +149,7 @@
  BIN += fdtget
  BIN += fdtput
  BIN += fdtoverlay
@@ -123,7 +123,7 @@ vidar:/home/GitHub/YourFritz/fit_tools/fit-images/FB5590 $
  
  SCRIPTS = dtdiff
  
-@@ -181,6 +182,7 @@
+@@ -182,6 +183,7 @@
  -include $(DTC_OBJS:%.o=%.d)
  -include $(CONVERT_OBJS:%.o=%.d)
  -include $(FDTDUMP_OBJS:%.o=%.d)
@@ -131,7 +131,7 @@ vidar:/home/GitHub/YourFritz/fit_tools/fit-images/FB5590 $
  -include $(FDTGET_OBJS:%.o=%.d)
  -include $(FDTPUT_OBJS:%.o=%.d)
  -include $(FDTOVERLAY_OBJS:%.o=%.d)
-@@ -268,6 +270,8 @@
+@@ -270,6 +272,8 @@
  
  fdtdump:	$(FDTDUMP_OBJS)
  

@@ -64,6 +64,7 @@ Latest changes
    * CA-bundle 2025-02-25
    * Cifsmount 7.2
    * Dante 1.4.4
+   * dtc 1.7.2
    * htop 1.0.3/3.4.0
    * ImageMagick 7.1.1-45
 

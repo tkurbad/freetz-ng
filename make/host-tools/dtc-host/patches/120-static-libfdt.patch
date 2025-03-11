@@ -1,6 +1,6 @@
 --- Makefile
 +++ Makefile
-@@ -272,11 +272,11 @@
+@@ -274,11 +274,11 @@
  
  fitdump:	$(FITDUMP_OBJS)
  
