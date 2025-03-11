@@ -16,6 +16,9 @@ $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/tar-gnu
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/
 $(PKG)_CONFIGURE_OPTIONS += --without-selinux
 $(PKG)_CONFIGURE_OPTIONS += --disable-acl
+ifeq ($(strip $(FREETZ_ANCIENT_SYSTEM)),y)
+$(PKG)_CONFIGURE_OPTIONS += --disable-year2038
+endif
 
 
 define $(PKG)_CUSTOM_UNPACK
