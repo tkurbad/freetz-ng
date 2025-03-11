@@ -2,7 +2,7 @@
 +++ lib/thread_mosq.c
 @@ -44,7 +44,9 @@
  	mosq->threaded = mosq_ts_self;
- 	if(!pthread_create(&mosq->thread_id, NULL, mosquitto__thread_main, mosq)){
+ 	if(!COMPAT_pthread_create(&mosq->thread_id, NULL, mosquitto__thread_main, mosq)){
  #if defined(__linux__)
 +#if ((__GLIBC__ > 2) || ((__GLIBC__ == 2) && (__GLIBC_MINOR__ >= 12)))
  		pthread_setname_np(mosq->thread_id, "mosquitto loop");
