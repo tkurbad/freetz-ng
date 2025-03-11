@@ -63,7 +63,6 @@ Latest changes
  - Packages:
    * BIND 9.11.37/9.20.6
    * CA-bundle 2025-02-25
-   * Cifsmount 7.2
    * Dante 1.4.4
    * dtc 1.7.2
    * Git 2.48.1
