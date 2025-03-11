@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_MC_VERSION_ABANDON),4.8.31,4.8.32))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_MC_VERSION_ABANDON),4.8.31,4.8.33))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=24191cf8667675b8e31fc4a9d18a0a65bdc0598c2c5c4ea092494cd13ab4ab1a
-$(PKG)_HASH_CURRENT:=4ddc83d1ede9af2363b3eab987f54b87cf6619324110ce2d3a0e70944d1359fe
+$(PKG)_HASH_CURRENT:=cae149d42f844e5185d8c81d7db3913a8fa214c65f852200a9d896b468af164c
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_MC_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=http://ftp.midnight-commander.org,ftp://ftp.midnight-commander.org/pub/midnightcommander
 ### WEBSITE:=http://midnight-commander.org/
