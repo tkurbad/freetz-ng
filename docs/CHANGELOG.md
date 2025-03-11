@@ -66,6 +66,7 @@ Latest changes
    * Cifsmount 7.2
    * Dante 1.4.4
    * dtc 1.7.2
+   * Git 2.48.1
    * htop 1.0.3/3.4.0
    * ImageMagick 7.1.1-45
 
