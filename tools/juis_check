@@ -104,7 +104,7 @@ main() {
 	fi
 	[ -z "$Name"      ] &&      Name="$(js $info 'Name')"
 	[ -z "$HW"        ] &&        HW="$(js $info 'HW')"
-	case "$HW" in 175|176|182|187|213|220|231|233|252|267) docsis='y' ;; esac
+	case "$HW" in 175|176|182|187|213|220|231|233|252|267|284) docsis='y' ;; esac
 	[ -z "$OEM"       ] &&       OEM="$(js $info 'OEM')"
 	[ -z "$OEM"       ] &&       OEM="avm"
 	[ -z "$Lang"      ] &&      Lang="$(js $info 'Lang')"
@@ -162,9 +162,13 @@ main() {
 		avmca="$MYPWD/avm-rootca.pem"
 		[ -e "/etc/avm_root_ca.pem"     ] && avmca="/etc/avm_root_ca.pem"
 		[ -e "/etc/jasonii_root_ca.pem" ] && avmca="/etc/jasonii_root_ca.pem"
-		host="jws.avm.de"      # https-cert matches hostname
+		host="jws.avm.de"              # https-cert matches hostname
 	else
-		host="$HW.jws.avm.de"  # no wirldcard certificate
+		if [ "$HW" -lt 269 ] 2>/dev/null ; then
+			host="$HW.jws.avm.de"  # no wirldcard certificate
+		else                           # https://github.com/PeterPawn/YourFritz/issues/66
+			host="jws.avm.de"      # since 7690 avm does not use hostnames anymore
+		fi
 	fi
 
 	#old: /Jason/UpdateCheck
@@ -206,7 +210,7 @@ fi
 	if [ -z "${Flag// /}" ]; then
 		Flag="$(echo 'null mesh_master mesh_master_no_trusted mesh_repeater mesh_repeater_no_trusted' | sed 's/ /\n/g' | shuf | head -n1)"
 		Flag="$Flag $(echo 'null medium_lan medium_dsl' | sed 's/ /\n/g' | shuf | head -n1)"
-		Flag="$Flag $(echo 'null null crashreport myfritz_letsencrypt botnet_detection avm_acs prov_acs' | sed 's/ /\n/g' | shuf | head -n3)"
+		Flag="$Flag $(echo 'null null crashreport myfritz_letsencrypt botnet_detection avm_acs prov_acs 2nd_factor_disabled' | sed 's/ /\n/g' | shuf | head -n3)"
 		[ -n "$docsis" ] && Flag="$Flag cable_retail"
 		[ -z "${Flag// /}" ] && Flag='empty'
 	fi

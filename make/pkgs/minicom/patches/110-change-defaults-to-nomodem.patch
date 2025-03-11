@@ -1,6 +1,6 @@
 --- src/rwconf.c
 +++ src/rwconf.c
-@@ -120,7 +120,7 @@
+@@ -118,7 +118,7 @@
    { "BUSY",		0,   "mnocon2" },
    { "NO DIALTONE",	0,   "mnocon3" },
    { "VOICE",		0,   "mnocon4" },

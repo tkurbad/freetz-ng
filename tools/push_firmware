@@ -78,12 +78,12 @@ quit
 
 	local count=0
 	while true; do
-		sleep 0.2
+		sleep 1
 		let count++
 #		grep -q "^ProductID" "$tmpenv" && break
 #		grep -q "^226 " "$tmpout" && break  # Transfer complete
 		grep -q "^221 " "$tmpout" && break  # Thank you for using the FTP service on ADAM2
-		[ $count -gt 15 ] && echo "Timeout!!!!!!!!!!!!!!!!!!" && break
+		[ $count -gt 5 ] && echo "Timeout!!!!!!!!!!!!!!!!!!" && break
 	done
 	kill $log_pid >/dev/null 2>&1  # cant get (simply) correct ftp/ppid in pipe if using tee
 	kill $ftp_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
@@ -124,10 +124,10 @@ function push_fw() {
 	local HWR_ENV="$( echo "$env_ProductID" | sed -nr 's/.*_HW(...).*/\1/p')"
 	local HWR_IMG="$( echo "$PRODUCT"       | sed -nr 's/.*_HW(...).*/\1/p')"
 	if [ -n "$PRODUCT" ] && [ "$HWR_IMG" != "$HWR_ENV" ]; then
-		echo "Error, ProductID of image ($HWR_IMG) does not match device ($HWR_ENV)!"
+		echo "Error, ProductID of image (HWR$HWR_IMG) does not match device (HWR$HWR_ENV)!"
 		echo -n "Type 'c' to ignore and continue: "
 		read -n1 -t9 c
-		[ "$?" != "0" ] && echo -e "¿\nTimeout" && exit 1
+		[ "$?" != "0" ] && echo -e "\nTimeout" && exit 1
 		[ "$c" != "c" ] && echo -e "\nAborted" && exit 1
 		echo -e "\n"
 	fi
@@ -142,9 +142,14 @@ function push_fw() {
 
 		[ $ISRAM ] && FILESIZE="$(stat --printf='%s' "$mtdram1")"
 		[ $ISFIT ] && FILESIZE="$(stat --printf='%s' "$fitimage")"
-		[ "$ALIBYTES" != "0" ] && ALIBYTES="$(( $ALIBYTES - ( $FILESIZE % $ALIBYTES ) ))"
+		if [ "$ALIBYTES" != "0" ]; then
+			[ "$(( $FILESIZE % $ALIBYTES ))" == "0" ] && ALIBYTES=0 || ALIBYTES="$(( $ALIBYTES - ( $FILESIZE % $ALIBYTES ) ))"
+		fi
+
 		FILESIZE="0x$(printf '%.8x' $(( $FILESIZE )) )"
 		ALIBYTES="0x$(printf '%.8x' $(( $ALIBYTES )) )"
+		[ $ISFIT ] && \
+		FILLSIZE="0x$(printf '%.8x' $(( $FILESIZE + $ALIBYTES )) )"
 		MAPSTART="0x$(printf '%.8x' $(( $MAPSTART )) )"
 		MAPLIMIT="0x$(printf '%.8x' $(( $MAPSTART + $FULLSIZE                         )) )"
 		FREESIZE="0x$(printf '%.8x' $((             $FULLSIZE - $FILESIZE - $ALIBYTES )) )"
@@ -155,6 +160,8 @@ function push_fw() {
 		echo -e " * MAPLIMIT=$MAPLIMIT"
 		echo -e " * FILESIZE=$FILESIZE\t (~$(($FILESIZE/1024/1024)) MB)"
 		echo -e " * ALIBYTES=$ALIBYTES\t (~$(($ALIBYTES/1024     )) kB)"
+		[ $ISFIT ] && \
+		echo -e " * FILLSIZE=$FILLSIZE\t (~$(($FILLSIZE/1024/1024)) MB)"
 		echo -e " * FREESIZE=$FREESIZE\t (~$(($FREESIZE/1024/1024)) MB)"
 		echo -e " * MTDSTART=$MTDSTART"
 		echo -e
@@ -233,7 +240,7 @@ function push_fw() {
 				-o doNotGetStartCWD=1,useFEAT=0,useHELP_SITE=0,useCLNT=0,useSIZE=0,useMDTM=0 \
 				-W "quote MEDIA SDRAM" \
 				-W "quote SETENV memsize ${FREESIZE}" \
-				-W "quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILESIZE}@0x0(fit-image)\"" \
+				-W "quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILLSIZE}@0x0(fit-image)\"" \
 				-Y "quote QUIT" \
 				$ip ${fitimage} "${MTDSTART} ${MAPLIMIT}" || exit $?
 		elif [ $ISRAM ]; then
@@ -303,7 +310,7 @@ debug
 bin
 quote MEDIA SDRAM
 quote SETENV memsize ${FREESIZE}
-quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILESIZE}@0x0(fit-image)\"
+quote SETENV kernel_args_tmp \"${AFU}mtdram1=${MTDSTART},${MAPLIMIT} mtdparts_ext=update-image.0:${FILLSIZE}@0x0(fit-image)\"
 put ${fitimage} "${MTDSTART} ${MAPLIMIT}"
 quit
 EOT
@@ -377,8 +384,12 @@ prepare_image() {
 		fitimage="$tmpdir/fitboot.flash"
 		if tar -C $tmpdir/ -xf $file --wildcards '*/fit-image' >/dev/null 2>&1; then
 			if [ -s "$tmpdir/var/tmp/fit-image" ]; then
-				mv "$tmpdir/var/tmp/fit-image" "$fitimage"
-			fi
+				cat "$tmpdir/var/tmp/fit-image"
+				# fill last 256bytes with 0xFF
+				local byte="$(stat --printf='%s' "$fitimage")"
+				local fill="$(( ( 256 - $byte % 256 ) % 256 ))"
+				[ "$fill" != "0" ] && head /dev/zero -c $fill | LC_ALL=C tr "\000" "\377"
+			fi > "$fitimage"
 		fi
 		if [ ! -s "$fitimage" ]; then
 			echo -e "Error: file is not a valid fit-boot image to be written to the device.\n" >&2
@@ -474,7 +485,7 @@ trap cleanup EXIT SIGTERM SIGINT
 usage() {
 cat << EOX
 
-Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram <mb> ] [ -lfs <0|1|9> ] [ -cmd <ftp|ncftp> ] [ -hn ]
+Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -mem <mb> ] [ -lfs <0|1|9> ] [ -prg <ftp|ncftp> ] [ -hn ]
 
 [image]           When no 'image' file is given, images/latest.image will be tried.
 -f                Disable safety prompt, force instant flash.
@@ -484,21 +495,21 @@ Usage: $0 [image] [ -f ] [ -w ] [ -ip <ip> ] [ -map <hex> ] [ -ali <kb> ] [ -ram
 -map <hex>        Only ram-boot and fit-boot mode: Start of mapped memory (PHYS_OFFSET).
 -ali <kb>         Only ram-boot and fit-boot mode: Alignment in kB of the uploaded file.
                     Without this parameter, the default for fit-boot is 64 and ram-boot 0.
--ram <mb>         Only ram-boot and fit-boot mode: Usable ram size in MB of your device.
+-mem <mb>         Only ram-boot and fit-boot mode: Usable ram size in MB of your device.
                     Without this parameter, the default of 208 MB (FIT: 384) will be used.
                     Use '0' to detect and use all available ram.
 -lfs <0|1|9>      Not single- and fit-boot mode: Set linux_fs_start to 0 or 1 and flash this.
                     Without this parameter, the inactive linux_fs_start will be used.
                     Use '9' for the currently active linux_fs_start.
 -afu              Only fit-boot: No avm_fwupdate, run system from ram without flash it.
--cmd <ftp|ncftp>  Force the prefered usage of ncftp (buggy) or ftp command for upload.
+-prg <ftp|ncftp>  Force the prefered usage of ncftp (buggy) or ftp command for upload.
 -hn               Only single-boot mode: Flash to an 'Alice/HanseNet' version of 7570.
 
 This scipt supports currently single-, ram-, dual-, uimg- and fit-boot modes, for more
 infomations see https://freetz-ng.github.io/freetz-ng/INSTALL#methoden
 If flashing ram-boot/nand/inmemory does not work...
-For ram-boot mode you may need to set a larger '-ram' value then the default of '208' MB.
-You could use '-ram 0' to detect the size and use the maximum. The value AVM uses is
+For ram-boot mode you may need to set a larger '-mem' value then the default of '208' MB.
+You could use '-mem 0' to detect the size and use the maximum. The value AVM uses is
 hardcoded into the recovery file and does not always use all available memory. A smaller
 value is okay as long as the image in the ram has enough ram to boot and flash itsef.
 
@@ -540,7 +551,7 @@ while [ $# -ge 1 ]; do
 			[ -z "$ALIBYTES" ] && echo "Invalid value for alignment" && usage
 			shift
 			;;
-		(-ram)
+		(-mem)
 			[ -z "$2" -o "$2" != "${2#\-}" ] && usage
 			[ "$2" -ge 0 ] 2>/dev/null && FULLSIZE="0x$(printf '%.8x' "$(( $2 * 1048576 ))")"
 			[ -z "$FULLSIZE" ] && echo "Invalid value for ram size" && usage
@@ -555,7 +566,7 @@ while [ $# -ge 1 ]; do
 			NOAFU=true
 			shift
 			;;
-		(-cmd)
+		(-prg)
 			[ "$2" != "ftp" -a "$2" != "ncftp" ] && echo "Invalid command value" && usage
 			CMD=$2
 			shift
@@ -624,7 +635,7 @@ fi
 [ ! $ISFIT ]    && [ $NOAFU ]                    && echo "Parameter '-afu' is only allowed for fit-boot mode."               && exit 1
 [ $ISFIT ]      && [ $LFS ]                      && echo "Parameter '-lfs' is not allowed for fit-boot mode."                && exit 1
 [ $ISFIT ]      && [ ! $LFS ]                    && LFS="9"
-[ ! $ISRAM ] && [ ! $ISFIT ] && [ $FULLSIZE ]    && echo "Parameter '-ram' is only allowed for ram-boot and fit-boot mode."  && exit 1
+[ ! $ISRAM ] && [ ! $ISFIT ] && [ $FULLSIZE ]    && echo "Parameter '-mem' is only allowed for ram-boot and fit-boot mode."  && exit 1
 [ ! $ISRAM ] && [ ! $ISFIT ] && [ $MAPSTART ]    && echo "Parameter '-map' is only allowed for ram-boot and fit-boot mode."  && exit 1
 [ ! $ISRAM ] && [ ! $ISFIT ] && [ $ALIBYTES ]    && echo "Parameter '-ali' is only allowed for ram-boot and fit-boot mode."  && exit 1
 [ $ISUIMG ]     && [ ! -x $UIMG_TOOL ]           && echo "File $UIMG_TOOL missing. Run 'make uimg-host' first."              && exit 1
@@ -632,6 +643,7 @@ fi
 [ $ISFIT ]      && [ ! -x $FDTD_TOOL ]           && echo "File $FDTD_TOOL missing. Run 'make dtc-host' first."               && exit 1
 [ ! -x "$(command -v dos2unix)" ]                && echo "Tool 'dos2unix' missing. Run 'make dos2unix-host' first."          && exit 1
 [ ! -x "$(command -v telnet)" ] && [ $ISALICE ]  && echo "Tool 'telnet' missing. Run 'make busybox-host' first."             && exit 1
+[ ! -x "$(command -v ftp)" ]                     && echo "Tool 'ftp' missing. Run 'make netkit-ftp-host' first."             && exit 1
 
 prepare_image
 
@@ -701,7 +713,7 @@ if [ -z "$FOUND_NCFTP" -a -z "$FOUND_FTP" ]; then
 	exit 1
 fi
 if [ -z "$FOUND_FTP" ]; then
-	[ -n "$ISRAM$ISFIT" ] && [ "${FULLSIZE//0/}" == "x" ] && echo "Parameter '-ram' has to be bigger than 0 if you have no 'ftp' installed."  && exit 1
+	[ -n "$ISRAM$ISFIT" ] && [ "${FULLSIZE//0/}" == "x" ] && echo "Parameter '-mem' has to be bigger than 0 if you have no 'ftp' installed."  && exit 1
 	[ ! $ISSINGLE ]       && [ -z "$LFS" ]                && echo "Parameter '-lfs' is mandatory if you have no 'ftp' installed."             && exit 1
 	[ $ISDUAL ]           && [ "$LFS" == "9" ]            && echo "Parameter '-lfs' with 0 or 1 is mandatory if you have no 'ftp' installed." && exit 1
 	[ $ISUIMG ]           && [ "$LFS" == "9" ]            && echo "Parameter '-lfs' with 0 or 1 is mandatory if you have no 'ftp' installed." && exit 1
@@ -761,14 +773,14 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW198*)	FULLSIZE=0x08000000 ;;  # 3272      (128 MB of 128 MB)
 			Fritz_Box_HW203*)	FULLSIZE=0x08000000 ;;  # 7362      (128 MB of 128 MB)
 			Fritz_Box_HW209*)	FULLSIZE=0x08000000 ;;  # 7412      (128 MB of 128 MB)
-#			Fritz_Box_HW212*)	FULLSIZE=0x??000000 ;;  # 3490      (??? MB)
+			Fritz_Box_HW212*)	FULLSIZE=0x10000000 ;;  # 3490      (256 MB of 256 MB)
 			Fritz_Box_HW214*)	FULLSIZE=0x08000000 ;;  # 6820 LTE  (128 MB of 128 MB)
 			Fritz_Box_HW218*)	FULLSIZE=0x08000000 ;;  # 7430      (128 MB of 128 MB)
 #			Fritz_Box_HW221*)	FULLSIZE=0x??000000 ;;  # 7560      (??? MB)
 			Fritz_Box_HW223*)	FULLSIZE=0x10000000 ;;  # 5490      (256 MB)
 			Fritz_Box_HW224*)	FULLSIZE=0x20000000 ;;  # 7581 BCM  (512 MB)
 #			Fritz_Box_HW225*)	FULLSIZE=0x??000000 ;;  # 7580      (??? MB)
-#			Fritz_Box_HW226*)	FULLSIZE=0x??000000 ;;  # 7590      (??? MB)
+			Fritz_Box_HW226*)	FULLSIZE=0x20000000 ;;  # 7590      (512 MB of 512 MB)
 			Fritz_Box_HW228*)	FULLSIZE=0x20000000 ;;  # 7582 BCM  (512 MB)
 			Fritz_Box_HW234*)	FULLSIZE=0x0C000000 ;;  # 6890      (192 MB)
 			Fritz_Box_HW236*)	FULLSIZE=0x10000000 ;;  # 7530      (256 MB)
@@ -780,8 +792,8 @@ if [ -n "$ISRAM$ISFIT" ]; then
 #			Fritz_Box_HW249*)	FULLSIZE=0x??000000 ;;  # 1260 V2   (??? MB)
 			Fritz_Box_HW254*)	FULLSIZE=0x08000000 ;;  # 6820 V3   (128 MB of 128 MB)
 			Fritz_Box_HW258*)	FULLSIZE=0x20000000 ;;  # 6850 5G   (512 MB)
-			Fritz_Box_HW259*)	FULLSIZE=0x0C000000 ;;  # 7590 AX   (192 MB of 512 MB)
-#			Fritz_Box_HW260*)	FULLSIZE=0x??000000 ;;  # 7583 VDSL (??? MB)
+#			Fritz_Box_HW259*)	FULLSIZE=0x0C000000 ;;  # 7590 AX   (192 MB of 512 MB)
+#			Fritz_Box_HW260*)	FULLSIZE=0x08000000 ;;  # 7583 VDSL (??? MB of 512 MB)
 			Fritz_Box_HW262*)	FULLSIZE=0x20000000 ;;  # 6850 LTE  (512 MB)
 			Fritz_Box_HW276*)	FULLSIZE=0x10000000 ;;  # 7520 B    (256 MB)
 			# FIT
@@ -795,13 +807,17 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW271*)	FULLSIZE=0x20000000 ;;  # 7510      (512 MB)
 			Fritz_Box_HW272*)	FULLSIZE=0x40000000 ;;  # 5590      (1.0 GB)
 			Fritz_Box_HW275*)	FULLSIZE=0x10000000 ;;  # 1240 AX   (256 MB)
+#			Fritz_Box_HW277*)	FULLSIZE=0x??000000 ;;  # 6860 5G   (??? MB)
 			Fritz_Box_HW279*)	FULLSIZE=0x80000000 ;;  # 5690 Pro  (2.0 GB)
 			Fritz_Box_HW285*)	FULLSIZE=0x40000000 ;;  # 7690      (1.0 GB)
+#			Fritz_Box_HW286*)	FULLSIZE=0x??000000 ;;  # 7682      (??? MB)
 #			Fritz_Box_HW287*)	FULLSIZE=0x??000000 ;;  # 4050      (??? MB)
+#			Fritz_Box_HW291*)	FULLSIZE=0x??000000 ;;  # 4690      (??? MB)
 			# defaults
 			*)
-				[ $ISRAM ] &&   FULLSIZE=0x0D000000     #           (208 MB)
-				[ $ISFIT ] &&   FULLSIZE=0x18000000     #           (384 MB)
+#				[ $ISRAM ] &&   FULLSIZE=0x0D000000     #           (208 MB)
+#				[ $ISFIT ] &&   FULLSIZE=0x18000000     #           (384 MB)
+				FULLSIZE=x
 			;;
 		esac
 	fi
@@ -821,9 +837,12 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW271*)	MAPSTART=0x40000000 ;;  # 7510
 			Fritz_Box_HW272*)	MAPSTART=0x40000000 ;;  # 5590
 			Fritz_Box_HW275*)	MAPSTART=0x40000000 ;;  # 1240 AX
+#			Fritz_Box_HW277*)	MAPSTART=0x?0000000 ;;  # 6860 5G
 			Fritz_Box_HW279*)	MAPSTART=0x40000000 ;;  # 5690 Pro
 			Fritz_Box_HW285*)	MAPSTART=0x40000000 ;;  # 7690
+#			Fritz_Box_HW286*)	MAPSTART=0x?0000000 ;;  # 7682
 #			Fritz_Box_HW287*)	MAPSTART=0x?0000000 ;;  # 4050
+#			Fritz_Box_HW291*)	MAPSTART=0x?0000000 ;;  # 4690
 			*)
 				[ $ISRAM ] &&   MAPSTART=0x80000000
 				[ $ISFIT ] &&   MAPSTART=0x40000000

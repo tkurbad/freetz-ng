@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/generate_img.yml'
       - 'config/.img/generate.sh'
+      - 'config/mod/dl-firmware.in'
       - 'docs/FIRMWARES.md'
   workflow_dispatch:
 
@@ -54,12 +55,12 @@ jobs:
       - name: generate
         env:
           ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
-          ACTIONS_FWDLURL: ${{ secrets.ACTIONS_FWDLURL }}
+          ACTIONS_IMAGE: ${{ secrets.ACTIONS_IMAGE }}
         run: |
           export LANG=en_US.utf8
           mkdir -p ~/.freetz-props/ 2>/dev/null || true
           mkdir -p ~/.freetz-dl/fw/ 2>/dev/null || true
-          wget -q "${{ secrets.ACTIONS_CUSTOM }}img" -O - 2>/dev/null | base64 -d > props.sh
+          wget -q "${{ secrets.ACTIONS_CUSTOM }}img" -O - 2>/dev/null > props.sh
           [ -s props.sh ] || cp config/.img/generate.sh props.sh
           FREETZ_ENABLEG=true bash props.sh
           rm -f props.sh ".wget-hsts" || true

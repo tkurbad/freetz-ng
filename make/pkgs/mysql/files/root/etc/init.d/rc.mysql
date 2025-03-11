@@ -21,7 +21,7 @@ startdaemon_pre() {
 	fi
 
 	touch $PID_FILE
-	chown $DAEMON.$DAEMON $PID_FILE
+	chown $DAEMON:$DAEMON $PID_FILE
 }
 
 start() {
@@ -39,7 +39,7 @@ setup() {
 	else
 		echo "Default tables not installed, missing in image."
 	fi
-	chown $DAEMON.$DAEMON $MYSQL_DIR -R
+	chown $DAEMON:$DAEMON $MYSQL_DIR -R
 	echo "Default directories and tables created, done."
 }
 

@@ -1,4 +1,4 @@
-# busybox 1.36.1
+# busybox 1.37.0
  - Homepage: [https://www.busybox.net/](https://www.busybox.net/)
  - Manpage: [https://www.busybox.net/downloads/BusyBox.html](https://www.busybox.net/downloads/BusyBox.html)
  - Changelog: [https://www.busybox.net/news.html](https://www.busybox.net/news.html)

@@ -123,7 +123,7 @@ config FREETZ_REMOVE_DSLD
 	select FREETZ_REMOVE_KIDS if FREETZ_AVM_HAS_KIDS
 	help
 		Remove DSL daemon (dsld), if you are planning to use your box as a simple
-		IP client ("Internet mitbenuten") without routing.
+		IP client ("Internet mitbenutzen") without routing.
 		ATA ("via Lan1") and DSL mode will not work anymore.
 
 		ATTENTION: You won't be able to use your box as a modem nor a router anymore.
@@ -264,7 +264,7 @@ config FREETZ_REMOVE_ASSISTANT_SIP
 
 config FREETZ_REMOVE_UNTRUSTEDD
 	bool "Remove UNTRUSTEDD - DEVELOPER"
-	depends on FREETZ_SHOW_DEVELOPER
+	depends on FREETZ_SHOW_DEVELOPER || FREETZ_TYPE_5530
 	depends on FREETZ_AVM_HAS_UNTRUSTEDD
 	default y if FREETZ_TYPE_5530
 	default n
@@ -606,7 +606,7 @@ config FREETZ_REMOVE_CAPIOVERTCP
 	help
 		Remove CAPIoverTCP (capiotcp_server). Use this if you don't want to use
 		Fritz!Fax or any other program that uses AVM's CAPIoverTCP. This is similar
-		to rcapid, but independant.
+		to rcapid, but independent.
 		This will save about 15kB uncompressed size.
 
 config FREETZ_REMOVE_CHRONYD
@@ -876,8 +876,9 @@ config FREETZ_REMOVE_PUBKEY_INHAUS
 		Removes /etc/avm_firmware_public_key4 or
 		/etc/avm_firmware_public_key3, just 266 bytes.
 
-		Some inhaus firmwares use another file for signature validation,
-		*key4 for router and *key3 for powerline & repeater devices.
+		Some inhaus firmwares use another file for signature validation:
+		 - *key4 for devices with dect (router)
+		 - *key3 for devices without dect (powerline & repeater, except gateway)
 
 config FREETZ_REMOVE_TR069
 	bool "Remove tr069" if FREETZ_SHOW_EXPERT
@@ -1116,7 +1117,7 @@ config FREETZ_PATCH_ATA
 
 config FREETZ_ENABLE_VLAN
 	bool "Enable VLAN"
-	depends on FREETZ_TYPE_CABLE || FREETZ_TYPE_LTE
+	depends on FREETZ_TYPE_CABLE || FREETZ_TYPE_CELL
 	depends on FREETZ_AVM_VERSION_07_2X_MIN
 	default n
 	help
@@ -1273,14 +1274,20 @@ config FREETZ_PATCH_WEBIF_FEATURES
 
 config FREETZ_PATCH_SIGNED
 	bool "Patch web menu signed message"
+	depends on \
+		FREETZ_AVM_VERSION_06_2X_MAX || \
+		FREETZ_AVM_HAS_TELNETD || FREETZ_ADD_TELNETD || \
+		FREETZ_AVM_HAS_DEBUG_CFG_SUPPORT || FREETZ_RESTORE_DEBUG_CFG_SUPPORT
 	default n
 	help
 		Hides the "unsupported changes" message from the web interface.
+		Known reasons are NOT_SIGNED, TELNET, DEBUGCFG and IMPORT.
+		Run "echo clear_id 87 > /proc/tffs" to reset the fw_attrib flag.
 
 config FREETZ_PATCH_SECURE
 	bool "Patch web menu secure message"
-	depends on !FREETZ_TYPE_EXTENDER && FREETZ_AVM_VERSION_07_2X_MIN
-	select FREETZ_PATCH_SECURE_2fa if !FREETZ_PATCH_SECURE_sip
+	depends on !FREETZ_TYPE_EXTENDER && FREETZ_AVM_VERSION_07_2X_MIN && FREETZ_AVM_VERSION_07_5X_MAX
+	select FREETZ_PATCH_SECURE_2fa if !(FREETZ_PATCH_SECURE_sip || FREETZ_PATCH_SECURE_nau || FREETZ_PATCH_SECURE_nus)
 	default n
 	help
 		Hides the "unsecure settings" message from the web interface.
@@ -1301,19 +1308,56 @@ if FREETZ_PATCH_SECURE
 
 	config FREETZ_PATCH_SECURE_nau
 		bool "Caused by noAutoupdate"
-		depends on FREETZ_AVM_VERSION_07_8X_MIN
+		depends on FREETZ_AVM_VERSION_08_0X_MIN
 		default y
 		help
 			noAutoupdate does not trigger the message.
 
 	config FREETZ_PATCH_SECURE_nus
 		bool "Caused by noUpdateSearch"
-		depends on FREETZ_AVM_VERSION_07_8X_MIN
+		depends on FREETZ_AVM_VERSION_08_0X_MIN
 		default n
 		help
 			noUpdateSearch does not trigger the message.
 
 endif # FREETZ_PATCH_SECURE
+
+
+config FREETZ_PATCH_COCKPIT_UNSECURE
+	bool "Patch cockpit unsecure settings"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "not secure settings" message from cock pit.
+
+config FREETZ_PATCH_COCKPIT_CONNECTION
+	bool "Patch cockpit connection graphics"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "needless huge internet visualisation" images from cock pit.
+
+config FREETZ_PATCH_COCKPIT_INTERNET
+	bool "Patch cockpit internet info"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "internet details" on the left from cock pit.
+
+config FREETZ_PATCH_COCKPIT_HOMENET
+	bool "Patch cockpit homenet info"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "homenet details" on the right from cock pit.
+
+config FREETZ_PATCH_COCKPIT_UPDATE
+	bool "Patch cockpit update link"
+	depends on FREETZ_AVM_VERSION_08_0X_MIN
+	default n
+	help
+		Hides the "check for updates" link from cock pit.
+
 
 config FREETZ_MODIFY_DSL_WARNING
 	bool "Patch DSL modified message"
@@ -1373,7 +1417,7 @@ config FREETZ_PATCH_MODFS_ANNEX_SELECTION
 
 menuconfig FREETZ_PATCH_MODFS_BOOT_MANAGER
 	bool "Add yf-bootmanager"
-	depends on FREETZ_AVM_VERSION_07_8X_MAX
+	depends on FREETZ_AVM_VERSION_07_5X_MAX
 	depends on !FREETZ_ADD_INACTIVE_SYSTEM || (FREETZ_ADD_INACTIVE_SYSTEM && FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO)
 	depends on FREETZ_AVM_VERSION_06_5X_MIN
 	depends on ( FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE && !FREETZ_AVM_HAS_FWLAYOUT_5 ) || \
@@ -1473,9 +1517,11 @@ if FREETZ_PATCH_UDEVMOUNT
 			This adds ext2 module to your firmware.
 
 	comment "Intern Ext3"
+		depends on FREETZ_KERNEL_VERSION_4_1_MAX
 		depends on FREETZ_AVM_HAS_EXT3_FS_BUILTIN || (FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 	config FREETZ_UDEVMOUNT_EXT3
 		bool "Select Ext3"
+		depends on FREETZ_KERNEL_VERSION_4_1_MAX
 		depends on !FREETZ_AVM_HAS_EXT3_FS_BUILTIN && !(FREETZ_AVM_HAS_EXT4_FS_BUILTIN && FREETZ_AVM_HAS_EXT4_USE_FOR_EXT23_BUILTIN)
 		depends on FREETZ_REPLACE_MODULE_AVAILABLE
 		select FREETZ_MODULE_ext3
@@ -2010,7 +2056,7 @@ config FREETZ_PATCH_W920V_LED_MODULE
 	default y
 	depends on FREETZ_TYPE_W920V_7570 && FREETZ_AVM_VERSION_04_XX
 	help
-		If Y is choosen, this changes the semantics of the LEDs on the front
+		If Y is chosen, this changes the semantics of the LEDs on the front
 		panel of your 7570/W920V box fitting the descriptions of the W920V.
 
 config FREETZ_DISABLE_SERIAL_CONSOLE

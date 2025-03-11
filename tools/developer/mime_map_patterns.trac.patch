@@ -1,6 +1,6 @@
 This is a patch for Trac 0.12.2 (Debian package 'trac').
 Tested with Ubuntu Oneiric (11.10), package version 0.12.2-1
-Also tested in Trac 0.12.3dev-r10806 on freetz.org (2011-10-30)
+Also tested in Trac 0.12.3dev-r10806 on freetz_org (2011-10-30)
 
 (C) 2011 Alexander Kriegisch (http://scrum-master.de)
 
@@ -26,7 +26,7 @@ How to test:
   - Check in a web browser if your new repository file is correctly highlighted
     as a Python file
 
-This patch was initially developed for the Freetz project (http://freetz.org)
+This patch was initially developed for the Freetz project (http://freetz_org)
 in order to enable its Trac system to easier highlight Kconfig files by adding
 this to trac.ini in connection with a Pygments patch (Kconfig lexer):
 

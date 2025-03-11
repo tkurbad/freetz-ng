@@ -1,0 +1,9 @@
+--- linux-4.1/Kconfig.bcm
++++ linux-4.1/Kconfig.bcm
+@@ -1364,6 +1364,5 @@
+ 	depends on BCM963138
+ 
+ menu "Autodetected Drivers"
+-source "../../bcmdrivers/Kconfig.autogen"
+ endmenu
+ 

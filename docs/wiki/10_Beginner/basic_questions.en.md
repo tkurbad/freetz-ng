@@ -38,9 +38,10 @@
     For internal storages, it is enabled always with Freetz!
   * Execute commands on reboot?<br>
     Put your executable script here: ```/tmp/flash/mod/shutdown```
-  * Edit read-only files (or directories)?<br>
-    1) Copy the file: ```cp /some/path/to/file /tmp/file```<br>
-    2) Mount it: ```mount -o bind /tmp/file /some/path/to/file```
+  * Edit read-only files?<br>
+    There are wrapper scripts called ```vix```, ```vimx``` and ```nanox```<br>
+  * Make read-only directories writable?<br>
+    There is a small script which copies the directory to ram and mounts it writable: ```araw /some/random/path/```<br>
   * Change motd?<br>
     You could put your own \*script\* here: ```/tmp/flash/mod/motd```
     The motd will be generated 1 time at boot. To update it

@@ -79,7 +79,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 ### C
 
   * **[Remove CAPIoverTCP](REMOVE_CAPIOVERTCP.md)<a id='remove-capiovertcp'></a>**<br>
-    Remove CAPIoverTCP (capiotcp_server). Use this if you don't want to use Fritz!Fax or any other program that uses AVM's CAPIoverTCP. This is similar to rcapid, but independant. This will save about 15kB uncompressed size.
+    Remove CAPIoverTCP (capiotcp_server). Use this if you don't want to use Fritz!Fax or any other program that uses AVM's CAPIoverTCP. This is similar to rcapid, but independent. This will save about 15kB uncompressed size.
 
   * **[REMOVE_CDROM_ISO: Remove cdrom.iso](REMOVE_CDROM_ISO.md)<a id='remove-cdrom-iso'></a>**<br>
     Removes the file /lib/modules/cdrom.iso to save 270kB uncompressed space.
@@ -102,7 +102,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Removes /usr/sbin/dsl_control. This saves about 540-669 KB of uncompressed data size. Select this only if you don't use the the DSL modem. See https://web.archive.org/20200701000000/wehavemorefun.de/fritzbox/Dsl_control
 
   * **[Remove dsld](REMOVE_DSLD.md)<a id='remove-dsld'></a>**<br>
-    Remove DSL daemon (dsld), if you are planning to use your box as a simple IP client ("Internet mitbenuten") without routing. ATA ("via Lan1") and DSL mode will not work anymore. ATTENTION: You won't be able to use your box as a modem nor a router anymore. As well do *not* use this option if your ATA mode box uses PPPoE passthrough, because in this case dsld is still needed! Furthermore, selecting this patch also selects the UPnP patch, because UPnP must be deactivated anyway for IP clients, otherwise dsld will be used again. You can find the UPnP settings in the German web UI under Einstellungen System Netzwerkeinstellungen Statusinformationen ueber UPnP uebertragen (empfohlen) Thirdly, the usermand patch will also be selected if you activate this option, because kernel module userman.ko always depends on kdsldmod.ko which is stripped by this patch.
+    Remove DSL daemon (dsld), if you are planning to use your box as a simple IP client ("Internet mitbenutzen") without routing. ATA ("via Lan1") and DSL mode will not work anymore. ATTENTION: You won't be able to use your box as a modem nor a router anymore. As well do *not* use this option if your ATA mode box uses PPPoE passthrough, because in this case dsld is still needed! Furthermore, selecting this patch also selects the UPnP patch, because UPnP must be deactivated anyway for IP clients, otherwise dsld will be used again. You can find the UPnP settings in the German web UI under Einstellungen System Netzwerkeinstellungen Statusinformationen ueber UPnP uebertragen (empfohlen) Thirdly, the usermand patch will also be selected if you activate this option, because kernel module userman.ko always depends on kdsldmod.ko which is stripped by this patch.
 
   * **<u>Remove dtrace</u><a id='remove-dtrace'></a>**<br>
     Remove /usr/bin/dtrace. This utility is only needed to trace ISDN D-channel. This will save about 87kB uncompressed size.
@@ -242,7 +242,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Removes /etc/avm_firmware_public_key1, just 266 bytes. Because the signature validation will fail on update: - You can't flash firmware from AVM with the AVM Webinterface anymore. - Online-Update can't install updates automatically anymore, but is still able to detect and inform you about new firmware versions. - Most important: No more "spontaneous self updates". There are several reports on the web, that AVM is sometimes disrespecting your update settings to not automatically install new versions. Such a spontaneous self update would remove Freetz. Beside that, it's still possible to flash any firmware by bootloader or Freetz. Updates for Dect devices are not affected by this patch because they are handled by *key2 on routers.
 
   * **<u>REMOVE_PUBKEY_INHAUS: Remove inhaus firmware key</u><a id='remove-pubkey-inhaus'></a>**<br>
-    Removes /etc/avm_firmware_public_key4 or /etc/avm_firmware_public_key3, just 266 bytes. Some inhaus firmwares use another file for signature validation, *key4 for router and *key3 for powerline & repeater devices.
+    Removes /etc/avm_firmware_public_key4 or /etc/avm_firmware_public_key3, just 266 bytes. Some inhaus firmwares use another file for signature validation: - *key4 for devices with dect (router) - *key3 for devices without dect (powerline & repeater, except gateway)
 
 ### Q
 
@@ -519,6 +519,21 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>PATCH_BETA_ATTRIBUTES: Patch Beta/Labor attributes</u><a id='patch-beta-attributes'></a>**<br>
     This patch removes Beta/Labor attributes from some (older) firmwares AVM released only as Betas so far.
 
+  * **<u>Patch cockpit connection graphics</u><a id='patch-cockpit-connection'></a>**<br>
+    Hides the "needless huge internet visualisation" images from cock pit.
+
+  * **<u>Patch cockpit homenet info</u><a id='patch-cockpit-homenet'></a>**<br>
+    Hides the "homenet details" on the right from cock pit.
+
+  * **<u>Patch cockpit internet info</u><a id='patch-cockpit-internet'></a>**<br>
+    Hides the "internet details" on the left from cock pit.
+
+  * **<u>Patch cockpit unsecure settings</u><a id='patch-cockpit-unsecure'></a>**<br>
+    Hides the "not secure settings" message from cock pit.
+
+  * **<u>Patch cockpit update link</u><a id='patch-cockpit-update'></a>**<br>
+    Hides the "check for updates" link from cock pit.
+
   * **<u>PATCH_DISABLE_AVM_WATCHDOG: Disable AVM watchdog - DEVELOPER</u><a id='patch-disable-avm-watchdog'></a>**<br>
     This disables the AVM watchdog on system start. The AVM watchdog reboots the device if - system start takes longer than 2, 4 or 8 minutes - some defined AVM daemon crashes
 
@@ -576,7 +591,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     ipphone_from_outside does not trigger the message.
 
   * **[PATCH_SIGNED: Patch web menu signed message](PATCH_SIGNED.md)<a id='patch-signed'></a>**<br>
-    Hides the "unsupported changes" message from the web interface.
+    Hides the "unsupported changes" message from the web interface. Known reasons are NOT_SIGNED, TELNET, DEBUGCFG and IMPORT. Run "echo clear_id 87 > /proc/tffs" to reset the fw_attrib flag.
 
   * **<u>PATCH_START_WLAN_IF_ON_BOOT: Start wlan interface on boot</u><a id='patch-start-wlan-if-on-boot'></a>**<br>
     Runs "ifconfig wlan up" on system start to enable ip assignment etc, which fails on some devices with installed Freetz. This is a workaround! The cause of this problem is still unknown.
@@ -591,7 +606,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Adds volume counter support removed by AVM for some (probably marketing) reasons.
 
   * **[PATCH_W920V_LED_MODULE: Change LED semantics to W920V](PATCH_W920V_LED_MODULE.md)<a id='patch-w920v-led-module'></a>**<br>
-    If Y is choosen, this changes the semantics of the LEDs on the front panel of your 7570/W920V box fitting the descriptions of the W920V.
+    If Y is chosen, this changes the semantics of the LEDs on the front panel of your 7570/W920V box fitting the descriptions of the W920V.
 
   * **<u>Patch webif features</u><a id='patch-webif-features'></a>**<br>
     This enables the scripts in patches/cond/800-webif_features/ which patch some webif features, currently 210-patch_hostname.sh 811-show_tr069_config.sh 812-show_update_config.sh 821-show_network_repeater.sh 822-show_dvb_services.sh

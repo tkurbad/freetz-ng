@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,9.8p1))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,9.9p2))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=200ebe147f6cb3f101fd0cdf9e02442af7ddca298dffd9f456878e7ccac676e8
-$(PKG)_HASH_CURRENT:=dd8bd002a379b5d499dfb050dd1fa9af8029e80461f4bb6c523c49973f5a39f3
+$(PKG)_HASH_CURRENT:=91aadb603e08cc285eddf965e1199d02585fa94d994d6cae5b41e1721e215673
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable,ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable
 ### WEBSITE:=https://www.openssh.com/
@@ -58,6 +58,7 @@ $(PKG)_CONFIGURE_OPTIONS += --without-kerberos5
 $(PKG)_CONFIGURE_OPTIONS += --without-pie
 
 $(PKG)_EXTRA_CFLAGS  += -ffunction-sections -fdata-sections
+$(PKG)_EXTRA_CFLAGS  += $(if $(FREETZ_TARGET_GCC_4_MAX),-std=c99)
 $(PKG)_EXTRA_LDFLAGS += -Wl,--gc-sections
 $(PKG)_EXTRA_LDFLAGS += $(if $(FREETZ_PACKAGE_OPENSSH_STATIC),-static)
 

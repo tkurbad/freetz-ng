@@ -1,5 +1,51 @@
 # NEWS
 
+ * __[2025-06-03](#2025-06-03)__<a id='2025-06-03'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng25030` erstellt.<br>
+   Ein Tag sollte wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng25030](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng25030)<br>
+
+ * __[2025-02-28](#2025-02-28)__<a id='2025-02-28'></a><br>
+   Das Deutsches Telekom wird das Fernmeldegeheimnis ignorieren und anlasslos in allen SMS herumschnüffeln.<br>
+   Kein Treppenwitz, ab 1. April ~~1984~~ 2025 geht es los! Das Deutsches Telekom wird ein sogenanntes "SMS-Firewall" ohne<br>
+   Zustimmung zwangsaktivieren. Dies bedeutet daß SMS nur noch zugestellt werden wenn Absender, Inhalt, Uhrzeit etc<br>
+   dem Deutsches Telekom gefallen und keinen "Verdacht" erwecken. Die exakten Kriteren für "Verdacht" sind aktuell etwas<br>
+   schwammig formuliert.<br>
+   Das Deutsches Telekom führt dazu selbst aus daß es nichts "gewährleisten" und "nur das Risiko verringern" könne, trotzdem<br>
+   aber schnüffeln werde. Auch legt das Deutsches Telekom besonderen Wert darauf daß ein "SMS-Firewall" nicht nur eine<br>
+   "technische Spielerei" sei, sondern durch schnüffeln die "Privatsphäre wahrt", also "unverzichtbar". Weiter führt das Deutsches<br>
+   Telekom aus, daß Nachrichten mitgelesen werden um "vertrauenswürdige" Kommunikation zu gewährleisten. ;-)<br>
+   Falls das alles nicht hilft, schnüffelt das Deutsches Telekom wegen der "Integrität der Netze oder Telekommunikationsanlagen",<br>
+   irgend ein Grund zum schnüffeln wird schon passen.<br>
+   Beamtentypischer Zirkelschluss: Diesem Gebaren darf nicht widersprochen werden, da ein Widerspruch von dem Deutsches<br>
+   Telekom nicht vorgesehen ist. Wer mit dieser Bevormundung nicht einverstanden ist, muss somit wohl in ein besseres<br>
+   Mobilfunknetz wechseln.<br>
+   Das Deutsches Telekom konnte in der Vergangenheit im Schnüffeln bereits Erfahrung sammeln, zum Beispiel beim Durchleuchten<br>
+   von 140.000 Mitarbeitern sowie deren Familienmitgliedern - wohlgemerkt lediglich zu "Testzwecken".<br>
+   Siehe<br>
+    - [www.gesetze-im-internet.de: Grundgesetz Artikel 10](https://www.gesetze-im-internet.de/gg/art_10.html)
+    - [www.telekom.de: Informationsseite zur SMS-Sicherheit](https://www.telekom.de/hilfe/sms-sicherheit)
+    - [www.telekom.de: Leistungsbeschreibung Mobilfunk](https://www.telekom.de/agb#/agbid/2787)
+    - [www.telekom.de: Leistungsbeschreibung Mobilfunk Version 2 vom 17. bzw 18.2.2025: Stand 03.01.2025](https://www.telekom.de/agb/downloads/53982.pdf)
+    - [www.sueddeutsche.de: Schnüffeln ohne Halt](https://www.sueddeutsche.de/wirtschaft/deutsche-telekom-schnueffeln-ohne-halt-1.502406)
+    - [www.berliner-zeitung.de: Neuer Spitzelskandal bei der Telekom](https://www.berliner-zeitung.de/archiv/staatskonzern-schnueffelt-140-000-daten-von-mitarbeitern-aus-bahn-bestaetigt-weitere-ueberpruefung-datenschutzbeauftragter-schaar-warnt-vor-firmenselbstjustiz-neuer-spitzelskandal-bei-der-telekom-li.1265688)
+
+ * __[2025-01-23](#2025-01-23)__<a id='2025-01-23'></a><br>
+   Mit dem Package [AVM-rules](https://freetz-ng.github.io/freetz-ng/make/#avm-rules) können IPv4-Ports der Fritzbox aus dem Internet geöffnet werden.<br>
+   Es wird Fritzos ab 7.5x unterstützt. Älteres Fritzos das `pcplisten` enthält sollte auch<br>
+   funktionieren, wurden aber bislang nicht getestet.<br>
+   Siehe [9ea054e0](https://github.com/Freetz-NG/freetz-ng/commit/9ea054e0e8877dd53083db7c738847e37b0895f4)<br>
+
+ * __[2024-09-30](#2024-09-30)__<a id='2024-09-30'></a><br>
+   Jan Oetjen ist seit heute CEO von AVM. Er kennt sich unter anderem mit bei Kunden äusserst<br>
+   beliebten Abomodellen für Software, E-Mails und Hotelreisen aus.<br>
+   Siehe [Deskmodder.de - Führungswechsel bei AVM](https://www.deskmodder.de/blog/2024/09/27/fuehrungswechsel-bei-avm-jan-oetjen-uebernimmt-ceo-posten/)<br>
+
+ * __[2024-09-18](#2024-09-18)__<a id='2024-09-18'></a><br>
+   Diese Woche wurden die internen Namen viele Geräte geändert um die ganzen Wifi 5/6/7 Modelle,<br>
+   B-Typen, XGS/PRO und andere Variationen besser handhaben zu können. Daher sollte nach einem<br>
+   Update des Checkouts sichergestellt werden dass noch das gewünschte Gerät ausgewählt ist.<br>
+
  * __[2024-08-01](#2024-08-01)__<a id='2024-08-01'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng24080` erstellt.<br>
    Ein Tag sollte wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>

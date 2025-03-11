@@ -12,13 +12,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### B
 
-  * **[busybox 1.36.1](busybox-host.md)<a id='busybox-host'></a>**<br>
+  * **[busybox 1.37.0](busybox-host.md)<a id='busybox-host'></a>**<br>
 
 ### C
 
-  * **[ca-bundle 2024-07-02](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
+  * **[ca-bundle 2025-02-25](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
 
-  * **[cmake 3.30.3](cmake-host.md)<a id='cmake-host'></a>**<br>
+  * **[cmake 3.31.6](cmake-host.md)<a id='cmake-host'></a>**<br>
 
   * **[cpio 2.15](cpio-host.md)<a id='cpio-host'></a>**<br>
 
@@ -26,7 +26,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[dos2unix 7.5.2](dos2unix-host.md)<a id='dos2unix-host'></a>**<br>
 
-  * **[dtc 1.7.0](dtc-host.md)<a id='dtc-host'></a>**<br>
+  * **[dtc 1.7.2](dtc-host.md)<a id='dtc-host'></a>**<br>
 
 ### E
 
@@ -34,7 +34,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### F
 
-  * **[fakeroot 1.36](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
+  * **[fakeroot 1.37](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
 
   * **[fastjar 0.98](fastjar-host.md)<a id='fastjar-host'></a>**<br>
 
@@ -50,7 +50,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### K
 
-  * **[kconfig 6.10](kconfig-host.md)<a id='kconfig-host'></a>**<br>
+  * **[kconfig 6.13](kconfig-host.md)<a id='kconfig-host'></a>**<br>
 
 ### L
 
@@ -62,7 +62,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[lzma2eva 1.0](lzma2eva-host.md)<a id='lzma2eva-host'></a>**<br>
 
-  * **[lzma2 5.6.2](lzma2-host.md)<a id='lzma2-host'></a>**<br>
+  * **[lzma2 5.6.4](lzma2-host.md)<a id='lzma2-host'></a>**<br>
 
 ### M
 
@@ -70,7 +70,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[make 4.4.1](make-host.md)<a id='make-host'></a>**<br>
 
-  * **[meson 1.5.1](meson-host.md)<a id='meson-host'></a>**<br>
+  * **[meson 1.7.0](meson-host.md)<a id='meson-host'></a>**<br>
 
   * **[mklibs 0.1.45](mklibs-host.md)<a id='mklibs-host'></a>**<br>
 
@@ -90,7 +90,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### O
 
-  * **[openssl 3.0.15](openssl-host.md)<a id='openssl-host'></a>**<br>
+  * **[openssl 3.0.16](openssl-host.md)<a id='openssl-host'></a>**<br>
 
 ### P
 
@@ -98,13 +98,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[pkgconf 2.2.0](pkgconf-host.md)<a id='pkgconf-host'></a>**<br>
 
-  * **[prelink 20130503](prelink-host.md)<a id='prelink-host'></a>**<br>
+  * **[prelink 20131005](prelink-host.md)<a id='prelink-host'></a>**<br>
 
   * **[pseudo 1.9.0 oe-core cc1f616](pseudo-host.md)<a id='pseudo-host'></a>**<br>
 
   * **[python2 2.7.18](python2-host.md)<a id='python2-host'></a>**<br>
 
-  * **[python3 3.12.6](python3-host.md)<a id='python3-host'></a>**<br>
+  * **[python3 3.12.9](python3-host.md)<a id='python3-host'></a>**<br>
 
   * **[python3-packaging 24.1](python3-packaging-host.md)<a id='python3-packaging-host'></a>**<br>
 
@@ -130,17 +130,17 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[tichksum 1.0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
 
-  * **[tools 2024-07-29](tools-host.md)<a id='tools-host'></a>**<br>
+  * **[tools 2025-03-06](tools-host.md)<a id='tools-host'></a>**<br>
 
 ### U
 
-  * **[uboot 2024.07](uboot-host.md)<a id='uboot-host'></a>**<br>
+  * **[uboot 2025.01](uboot-host.md)<a id='uboot-host'></a>**<br>
 
   * **[uimg 871930d](uimg-host.md)<a id='uimg-host'></a>**<br>
 
 ### W
 
-  * **[wget 1.24.5](wget-host.md)<a id='wget-host'></a>**<br>
+  * **[wget 1.25.0](wget-host.md)<a id='wget-host'></a>**<br>
 
 ### X
 

@@ -1,0 +1,32 @@
+--- linux-4.4/GNUmakefile
++++ linux-4.4/GNUmakefile
+@@ -42,29 +42,6 @@
+ 	$(shell find $(patsubst $(CURDIR)/%/.,%,$(wildcard $(CURDIR)/*/.)) -type f -regex '.*/avm/conf/compat$$'))
+ export AVM_SUBPROJECTS_PATHS = $(avm-subprojects)
+ 
+-## Detect and auto-remove symlinks in include/linux/ pointing into
+-## LiSI-compliant subproject
+-## TODO: move all this creapy search/find/replace stuff into a seperate script
+-
+-# find all symlinks below include/linux/
+-symlinks-in-include = $(strip \
+-	$(patsubst $(CURDIR)/%,%,\
+-		$(shell find include/linux/ include/uapi/linux/ -type l | \
+-			awk '{printf $$1 " "; system("readlink -m " $$1)}' | \
+-			awk '{print $$2 ":" $$1}')))
+-
+-# filter all symlinks pointing into LiSI compliant
+-obsolete-symlinks-in-include := \
+-	$(foreach pair,$(filter $(addsuffix /%,$(avm-subprojects)),$(symlinks-in-include)),\
+-		$(word 2,$(subst :, ,$(pair))))
+-ifneq (,$(obsolete-symlinks-in-include))
+-$(warning Removing obsolete symlinks below include/linux/:)
+-$(foreach link,$(obsolete-symlinks-in-include),\
+-	$(info REMOVE $(link))$(shell rm -f $(link)))
+-$(warning There had been obsolete symlinks, which are now removed)
+-$(error Please re-start the kernel build.  Good luck..)
+-endif
+-
+ USERINCLUDE_AVM_SUBPROJECTS = \
+ 	$(foreach path,$(avm-subprojects),\
+ 		-I$(path)/include/uapi \

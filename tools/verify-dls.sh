@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 #
-# (c) freetz.org
+# (c) freetz_org
 #
 # a simple script to verify (firmware) download-URLs
 #

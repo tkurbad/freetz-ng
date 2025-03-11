@@ -93,24 +93,30 @@ Currently supported devices and firmwares
   - 140.07.01 rev61726 {INT}
   - 140.07.12 rev70430 {INT} [MESH18 NL2]
   - 140.07.31 rev107855 {ALL} [PSQ19P2NL4]
+  - Alien 7490 07.60 {ALL}
 
 ### Fritz!Box WAN (4xxx)
 
 * __Fritz!Box 4020__
   - 147.06.84 rev108194 {GER}
   - 147.07.04 rev114850 {GER}
+
 * __Fritz!Box 4040__
   - 155.07.01 rev61489 {ALL}
   - 155.07.14 rev73181 {ALL} [MESH18 NL4]
   - 155.07.29 rev92647 {ALL} [PSQ19P2NL4]
   - 155.07.59 rev113615 {ALL} [MOVE21NL2]
-  - 155.07.90 rev115550 {ALL} [Smart24 P1] (Labor)
+  - 155.08.02 rev118220 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box 4050 (UNTESTED)__
-  - 287.07.90 rev114548 {ALL} [Smart24 P1 FCS] (Inhaus)
+  - 287.07.58 rev115740 {ALL} [MOVE21NL1]
+  - 287.08.02 rev118032 {ALL} [Smart24 P1 FCS]
+
 * __Fritz!Box 4060__
   - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
   - 261.07.59 rev113614 {ALL} [MOVE21NL2]
-  - 261.07.90 rev114590 {ALL} [Smart24 P1] (Labor)
+  - 261.08.02 rev118033 {ALL} [Smart24 P1 NL1]
+* __Fritz!Box 4690 (UNTESTED)__
+  - 291.08.03 rev118786 {ALL} [Smart24 P1 FCS]
 
 ### Fritz!Box Fon (50xx/51xx)
 
@@ -140,19 +146,17 @@ Currently supported devices and firmwares
   - 171.07.12 rev71193 {ALL} [MESH18 NL2]
   - 171.07.31 rev107858 {ALL} [PSQ19P2NL4]
 
-* __Fritz!Box 5530 Fiber (DEVELOPER, No fiber!)__
+* __Fritz!Box 5530 Fiber (No fiber!)__
   - 257.07.30 rev99334 {ALL} [PSQ19P2NL4]
   - 257.07.58 rev108018 {ALL} [MOVE21NL1]
-  - 257.07.81 rev113241 {ALL} [GoFiber23NL1]
-  - 257.07.90 rev114589 {ALL} [Smart24 P1] (Labor)
+  - 257.08.02 rev117982 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.58 rev109907 {ALL} [MOVE21NL1]
-  - 272.07.81 rev113243 {ALL} [GoFiber23NL1]
-  - 272.07.90 rev114673 {ALL} [Smart24 P1] (Labor)
+  - 272.08.02 rev117989 {ALL} [Smart24 P1 NL1]
 * __FRITZ!Box 5690 Pro__
   - 279.07.62 rev115017 {ALL} [FCS23]
-  - 279.07.90 rev114928 {ALL} [Smart24 P1 FCS] (Inhaus)
+  - 279.08.03 rev118508 {ALL} [Smart24 P1 FCS]
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
 
@@ -176,19 +180,19 @@ Currently supported devices and firmwares
   - 161.07.13 rev75441 {GER} [MESH18 NL3]
   - 161.07.29 rev92035 {GER} [PSQ19P2NL4]
   - 161.07.57 rev107841 {GER} [MOVE21NL1]
-  - 161.07.90 rev114785 {GER} [Smart24 P1] (Labor)
+  - 161.08.03 rev118553 {GER} [Smart24 P1 NL1]
 * __Fritz!Box 6660 Cable__
   - 252.07.15 rev78740 {GER} [6660 FCS]
   - 252.07.29 rev92037 {GER} [PSQ19P2NL4]
   - 252.07.57 rev107842 {GER} [MOVE21NL1]
-  - 252.07.90 rev114782 {GER} [Smart24 P1] (Labor)
+  - 252.08.03 rev118554 {GER} [Smart24 P1 NL1]
 * __Fritz!Box 6670 Cable (UNTESTED)__
   - 284.07.63 rev113732 {GER} [FCS23]
-  - 284.07.90 rev114817 {GER} [Smart24 P1 FCS] (Labor)
+  - 284.08.03 rev118552 {GER} [Smart24 P1 FCS]
 * __Fritz!Box 6690 Cable__
   - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
   - 267.07.57 rev109915 {GER} [MOVE21NL1]
-  - 267.07.90 rev114779 {GER} [Smart24 P1] (Labor)
+  - 267.08.03 rev118555 {GER} [Smart24 P1 NL1]
 
 ### Fritz!Box LTE (68xx)
 
@@ -196,18 +200,20 @@ Currently supported devices and firmwares
   - 108.06.35 rev38809 {GER}
   - 108.06.35 rev38807 {INT}
 
-* __Fritz!Box 6820 v1 LTE__
+* __Fritz!Box 6820 LTE v1__
   - 142.06.83 rev43648 {ALL}
   - 142.07.01 rev63482 {GER}
   - 142.07.13 rev73673 {GER} [MESH18 NL3]
   - 142.07.30 rev107859 {GER} [PSQ19P2NL4]
-* __Fritz!Box 6820 v2 LTE__
+* __Fritz!Box 6820 LTE v2__
   - 142.07.13 rev73674 {INT} [MESH18 NL3]
   - 142.07.29 rev92405 {INT} [PSQ19P2NL4]
-  - 142.07.57 rev107909 {INT} [MOVE21NL1]
-* __Fritz!Box 6820 v3 LTE (UNTESTED)__
+  - 142.07.59 rev116427 {INT} [MOVE21NL2]
+* __Fritz!Box 6820 LTE v3 (UNTESTED)__
   - 254.07.29 rev92400 {GER} [PSQ19P2NL4]
-  - 254.07.57 rev107913 {GER} [MOVE21NL1]
+  - 254.07.59 rev116421 {GER} [MOVE21NL2]
+* __Fritz!Box 6820 LTE v4__
+  - 142.07.59 rev116427 {INT} [MOVE21NL2]
 
 * __Fritz!Box 6840 LTE__
   - 105.06.30 rev31187 {GER}
@@ -222,11 +228,14 @@ Currently supported devices and firmwares
 * __Fritz!Box 6850 LTE__
   - 262.07.29 rev92911 {ALL} [PSQ19P2NL4]
   - 262.07.59 rev114651 {ALL} [MOVE21NL2]
-  - 262.07.90 rev112171 {ALL} [Smart24 P1] (Inhaus)
+  - 262.08.03 rev119186 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box 6850 5G (UNTESTED)__
   - 258.07.30 rev94600 {ALL} [PSQ19P2NL4]
   - 258.07.59 rev114650 {ALL} [MOVE21NL2]
-  - 258.07.90 rev112170 {ALL} [Smart24 P1] (Inhaus)
+  - 258.08.03 rev119185 {ALL} [Smart24 P1 NL1]
+
+* __Fritz!Box 6860 5G (UNTESTED)__
+  - 277.08.03 rev119187 {ALL} [Smart24 P1 FCS]
 
 * __Fritz!Box 6890 LTE__
   - 162.06.87 rev59283 {ALL}
@@ -388,7 +397,7 @@ Currently supported devices and firmwares
   - 113.07.01 rev61484 {INT}
   - 113.07.12 rev70401 {INT} [MESH18 NL2]
   - 113.07.29 rev92201 {ALL} [PSQ19P2NL4]
-  - 113.07.59 rev113248 {ALL} [MOVE21NL2]
+  - 113.07.60 rev118285 {ALL} [MOVE21NL2]
 
 ### Fritz!Box Fon WLAN (75xx)
 
@@ -399,14 +408,17 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7510__
   - 271.07.30 rev94120 {ALL} [PSQ19P2NL4]
   - 271.07.59 rev113715 {ALL} [MOVE21NL2]
+  - 271.08.02 rev117988 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7520__
   - 175.07.14 rev73182 {GER} [MESH18 NL4]
   - 175.07.29 rev92061 {ALL} [PSQ19P2NL4]
   - 175.07.59 rev113612 {ALL} [MOVE21NL2]
+  - 175.08.02 rev118102 {ALL} [Smart24 P1 NL1]
   - Alien 7530 {GER}
 * __Fritz!Box Fon WLAN 7520 B (UNTESTED)__
   - 276.07.31 rev98652 {ALL} [PSQ19P2NL4]
   - 276.07.59 rev113613 {ALL} [MOVE21NL2]
+  - 276.08.02 rev118103 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7530__
   - 164.07.02 rev62311 {GER}
   - 164.07.14 rev73183 {GER} [MESH18 NL4]
@@ -414,12 +426,13 @@ Currently supported devices and firmwares
   - 164.07.13 rev75481 {INT} [MESH18 NL3]
   - 164.07.29 rev92062 {ALL} [PSQ19P2NL4]
   - 164.07.59 rev113249 {ALL} [MOVE21NL2]
-  - 164.07.90 rev114794 {ALL} [Smart24 P1] (Labor)
+  - 164.08.02 rev117978 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
   - 256.07.57 rev109901 {ALL} [MOVE21NL1]
-  - 256.07.81 rev113240 {ALL} [GoFiber23NL1]
-  - 256.07.90 rev114682 {ALL} [Smart24 P1] (Labor)
+  - 256.08.02 rev117981 {ALL} [Smart24 P1 NL1]
+* __Fritz!Box Fon WLAN 7530 AX B__
+  - 278.07.90 rev115731 {ALL} [Smart24 P1 FCS] (Inhaus)
 * __Fritz!Box Fon WLAN 7560__
   - 149.06.53 rev41227 {GER}
   - 149.06.83 rev43670 {GER}
@@ -439,16 +452,18 @@ Currently supported devices and firmwares
   - 153.07.30 rev107863 {GER} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7581__
   - 152.07.18 rev114996 {ALL} [WU24 MESH18]
-* __Fritz!Box Fon WLAN 7582 (UNTESTED)__
+* __Fritz!Box Fon WLAN 7582__
   - 156.07.18 rev114997 {ALL} [WU24 MESH18]
 * __Fritz!Box Fon WLAN 7583__
   - 167.07.12 rev70707 {GER} [MESH18 NL2]
   - 167.07.15 rev75887 {INT} [MESH18 NL2]
   - 167.07.31 rev95687 {ALL} [PSQ19P2NL4]
   - 167.07.59 rev113714 {ALL} [MOVE21NL2]
+  - 167.08.03 rev118395 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7583 VDSL (UNTESTED)__
   - 260.07.31 rev95688 {ALL} [PSQ19P2NL4]
   - 260.07.59 rev113700 {ALL} [MOVE21NL2]
+  - 260.08.03 rev118396 {ALL} [Smart24 P1 NL1]
 
 * __Fritz!Box Fon WLAN 7590__
   - 154.06.86 rev45533 {GER}
@@ -460,17 +475,19 @@ Currently supported devices and firmwares
   - 154.07.13 rev74390 {INT} [MESH18 NL3]
   - 154.07.29 rev92051 {ALL} [PSQ19P2NL4]
   - 154.07.59 rev113250 {ALL} [MOVE21NL2]
-  - 154.07.90 rev114800 {ALL} [Smart24 P1] (Labor)
+  - 154.08.02 rev117975 {ALL} [Smart24 P1 NL1]
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.57 rev107809 {ALL} [MOVE21NL1]
-  - 259.07.81 rev113242 {ALL} [GoFiber23NL1]
-  - 259.07.90 rev114803 {ALL} [Smart24 P1] (Labor)
+  - 259.08.02 rev117984 {ALL} [Smart24 P1 NL1]
 
 ### Fritz!Box Fon WLAN (76xx)
 
+* __FRITZ!Box 7682 (UNTESTED)__
+  - 286.08.03 rev118255 {ALL} [Smart24 P1 FCS]
 * __FRITZ!Box 7690__
   - 285.07.62 rev115134 {ALL} [FCS23]
+  - 285.08.02 rev117971 {ALL} [Smart24 P1 FCS]
 
 ### Fritz!Powerline
 
@@ -543,6 +560,7 @@ Currently supported devices and firmwares
 * __Fritz!Repeater 3000 AX (UNTESTED)__
   - 270.07.42 rev108161 {ALL} [MOVE21]
   - 270.07.58 rev113013 {ALL} [MOVE21NL1]
+  - 270.08.02 rev119211 {ALL} [Smart24 P1 FCS]
 * __Fritz!Repeater 6000__
   - 253.07.31 rev109964 {ALL} [PSQ19P2NL4]
   - 253.07.58 rev113014 {ALL} [MOVE21NL1]
@@ -550,7 +568,8 @@ Currently supported devices and firmwares
 ### Fritz!Smart
 
 * __Fritz!Smart Gateway__
-  - 265.07.61 rev114342 {ALL} [MOVE21NL1]
+  - 265.07.63 rev116265 {ALL} [MOVE21NL1]
+  - 265.08.01 rev117753 {ALL} [Smart24 P1 NL1]
 
 ### T-Com derivatives
 

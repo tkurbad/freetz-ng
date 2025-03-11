@@ -1,6 +1,6 @@
 --- acinclude.m4
 +++ acinclude.m4
-@@ -782,6 +782,13 @@
+@@ -865,6 +865,13 @@
    ])
  ],
  
@@ -12,5 +12,5 @@
 +    fi
 +
  [wolfssl], [
-   if test "${with_libwolfssl_prefix+set}" = set; then
-     CPPFLAGS="$CPPFLAGS${CPPFLAGS:+ }-I${with_libwolfssl_prefix}/include/wolfssl"
+   LIBSSH2_LIB_HAVE_LINKFLAGS([wolfssl], [], [#include <wolfssl/options.h>], [
+     AC_DEFINE(LIBSSH2_WOLFSSL, 1, [Use $1])

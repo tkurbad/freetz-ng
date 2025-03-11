@@ -119,7 +119,7 @@ unpack_() {
 		[ -n "$ASSID" ] && curl -sLo "$image"  -H "Accept: application/octet-stream"     -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/Freetz-NG/images/releases/assets/$ASSID"
 		rmdl='y'
 	fi
-	[ ! -s "${image}" ] && [ -n "$ACTIONS_FWDLURL" ] && echo "SAVING       $file" && wget -q "${ACTIONS_FWDLURL}$file" -O $image >/dev/null 2>&1 && rmdl='y'
+	[ ! -s "${image}" ] && [ -n "$ACTIONS_IMAGE" ] && echo "SAVING       $file" && wget -q "$ACTIONS_IMAGE/$file" -O $image >/dev/null 2>&1 && rmdl='y'
 	[ ! -s "${image}" ] && image="$HOME/Desktop/$file"
 	[ ! -s "${image}" ] && echo "MISSED       ${image##*/}" && die && return 1
 	dirname="$UNPACK/${line%.image*}"

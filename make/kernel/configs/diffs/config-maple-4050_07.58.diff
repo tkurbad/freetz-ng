@@ -1,0 +1,63 @@
+--- avm/config-maple-4050_07.58
++++ freetz/config-maple-4050_07.58
+@@ -498,15 +498,6 @@
+ # CONFIG_PCIE_ALTERA is not set
+ CONFIG_PCIE_QCOM=y
+ # CONFIG_PCIEPORTBUS is not set
+-# CONFIG_PCIEAER is not set
+-# CONFIG_PCIE_ECRC is not set
+-# CONFIG_PCIEAER_INJECT is not set
+-# CONFIG_PCIEASPM is not set
+-# CONFIG_PCIEASPM_DEBUG is not set
+-# CONFIG_PCIEASPM_DEFAULT is not set
+-# CONFIG_PCIEASPM_POWERSAVE is not set
+-# CONFIG_PCIEASPM_PERFORMANCE is not set
+-# CONFIG_PCIE_PME is not set
+ # CONFIG_PCCARD is not set
+ 
+ #
+@@ -1143,7 +1134,6 @@
+ CONFIG_QRTR=y
+ CONFIG_QRTR_SMD=y
+ # CONFIG_QRTR_TUN is not set
+-CONFIG_QRTR_MHI=y
+ # CONFIG_QRTR_USB is not set
+ # CONFIG_QRTR_FIFO is not set
+ CONFIG_RPS=y
+@@ -1260,20 +1250,14 @@
+ # CONFIG_BRCMSTB_GISB_ARB is not set
+ # CONFIG_VEXPRESS_CONFIG is not set
+ # CONFIG_MHI_BUS is not set
+-# CONFIG_MHI_DEBUG is not set
+-# CONFIG_MHI_BUS_TEST is not set
+ 
+ #
+ # MHI controllers
+ #
+-# CONFIG_MHI_QTI is not set
+ 
+ #
+ # MHI device support
+ #
+-# CONFIG_MHI_NETDEV is not set
+-# CONFIG_MHI_UCI is not set
+-# CONFIG_MHI_SATELLITE is not set
+ # CONFIG_CONNECTOR is not set
+ CONFIG_MTD=y
+ 
+@@ -2154,7 +2138,6 @@
+ #
+ # HSIC/SMUX support for DIAG
+ #
+-CONFIG_DIAGFWD_BRIDGE_CODE=y
+ # CONFIG_TTY_PRINTK is not set
+ # CONFIG_HVC_DCC is not set
+ # CONFIG_VIRTIO_CONSOLE is not set
+@@ -3791,7 +3774,6 @@
+ CONFIG_QCOM_TZ_LOG=y
+ CONFIG_QCOM_MDT_LOADER=y
+ CONFIG_QCOM_QMI_HELPERS=y
+-# CONFIG_RMNET_CTL is not set
+ CONFIG_QCOM_GLINK_SSR=y
+ # CONFIG_QTI_BT_TTY is not set
+ # CONFIG_SUNXI_SRAM is not set

@@ -1,6 +1,6 @@
 --- src/algo_xxhash.h
 +++ src/algo_xxhash.h
-@@ -2177,7 +2177,7 @@
+@@ -2513,7 +2513,7 @@
  
  /* note: use after variable declarations */
  #ifndef XXH_STATIC_ASSERT

@@ -6,7 +6,6 @@ $(PKG)_SITE:=https://www.sudo.ws/dist
 ### MANPAGE:=https://www.sudo.ws/docs/man/sudoers.man/
 ### CHANGES:=https://www.sudo.ws/releases/stable/
 ### CVSREPO:=https://github.com/sudo-project/sudo
-### SUPPORT:=fda77
 
 $(PKG)_BINARY_BUILD_DIR:=$($(PKG)_DIR)/src/.libs/$(pkg)
 $(PKG)_BINARY_TARGET_DIR:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)

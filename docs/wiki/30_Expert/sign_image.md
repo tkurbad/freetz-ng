@@ -97,7 +97,7 @@ Stelle seien stichwortartig mögliche Lösungen angedeutet:
     eines der AVM-Schlüssel temporär durch den eigenen ersetzt werden.
 -   Bei NOR-Boxen kann ein den öffentlichen Schlüssel enthaltendes Image
     mittels
-    [push_firmware](http://trac.freetz.org/browser/trunk/tools/push_firmware)
+    [push_firmware](http://trac_freetz_org/browser/trunk/tools/push_firmware)
     auf die Box gebracht werden.
 -   Bei NAND-Boxen kann ein den öffentlichen Schlüssel enthaltendes
     Image mittels der

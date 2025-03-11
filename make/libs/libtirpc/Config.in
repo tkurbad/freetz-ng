@@ -5,5 +5,5 @@ config FREETZ_LIB_libtirpc
 	select FREETZ_ADD_ETCNETCONFIG
 	help
 		Libtirpc is a port of Suns Transport-Independent RPC library to
-		Linux. It's being developed by the Bull GNU/Linux NFSv4 project. 
+		Linux. It's being developed by the Bull GNU/Linux NFSv4 project.
 

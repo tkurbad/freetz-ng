@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -6900,7 +6900,7 @@
+@@ -6913,7 +6913,7 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $found_b64_ntop" >&5
  $as_echo "$found_b64_ntop" >&6; }
  OLD_LIBS="$LIBS"
@@ -11,7 +11,7 @@
  	LIBS="$OLD_LIBS -lresolv"
 --- configure.ac
 +++ configure.ac
-@@ -477,7 +477,7 @@
+@@ -478,7 +478,7 @@
  )
  AC_MSG_RESULT($found_b64_ntop)
  OLD_LIBS="$LIBS"

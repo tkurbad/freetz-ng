@@ -26,7 +26,6 @@ program     lsdiff                 FREETZ_SHOW_DEVELOPER
 program     md5sum
 program     mktemp
 program     nc                     FREETZ_TYPE_FIRMWARE_DETECT_LATEST
-program     openssl             or FREETZ_FWMOD_VALIDATE FREETZ_FWMOD_SIGN
 program     patch
 program     perl
 program     pkg-config
@@ -55,7 +54,6 @@ header      zlib.h
 header      sys/acl.h
 header      sys/capability.h
 header      uuid/uuid.h            FREETZ_AVM_HAS_FWLAYOUT_5 FREETZ_HOSTTOOLS_BUILD
-header      openssl/evp.h          FREETZ_AVM_HAS_FWLAYOUT_5 FREETZ_HOSTTOOLS_BUILD
 header      gnutls/gnutls.h        FREETZ_AVM_HAS_FWLAYOUT_5 FREETZ_HOSTTOOLS_BUILD
 header      readline/readline.h    FREETZ_PACKAGE_GDB_HOST
 header      sqlite3.h              FREETZ_ROOTEMU_PSEUDO

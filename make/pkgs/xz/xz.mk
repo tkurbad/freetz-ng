@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 5.6.2)
+$(call PKG_INIT_BIN, 5.6.4)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=a9db3bb3d64e248a0fae963f8fb6ba851a26ba1822e504dc0efd18a80c626caf
+$(PKG)_HASH:=829ccfe79d769748f7557e7a4429a64d06858e27e1e362e25d01ab7b931d9c95
 $(PKG)_SITE:=https://github.com/tukaani-project/xz/releases/download/v$($(PKG)_VERSION),https://tukaani.org/xz
 ### WEBSITE:=https://tukaani.org/xz/
 ### CHANGES:=https://git.tukaani.org/?p=xz.git;a=blob_plain;f=NEWS;hb=HEAD

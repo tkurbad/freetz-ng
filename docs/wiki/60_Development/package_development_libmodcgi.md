@@ -37,7 +37,7 @@ Die Optionen sind im Einzelnen:
 > Ein Pfad (beginnend mit "/"), der die Hilfe-Seite zu der aktuellen
 > Seite angibt. (Für das Haupt-Freetz-Interface wird dieser Pfad
 > momentan an
-> [http://trac.freetz.org/wiki](http://trac.freetz.org/wiki)
+> [http://trac_freetz_org/wiki](http://trac_freetz_org/wiki)
 > angehängt.)
 
 ### cgi_begin

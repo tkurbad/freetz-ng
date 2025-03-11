@@ -8,7 +8,6 @@ $(PKG)_SITE:=git@https://github.com/catalinii/minisatip
 ### MANPAGE:=https://github.com/catalinii/minisatip/wiki
 ### CHANGES:=https://github.com/catalinii/minisatip/releases
 ### CVSREPO:=https://github.com/catalinii/minisatip
-### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)

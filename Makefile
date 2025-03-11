@@ -2,7 +2,7 @@
 #
 # Copyright (C) 1999-2004 by Erik Andersen <andersen@codepoet.org>
 # Copyright (C) 2005-2006 by Daniel Eiband <eiband@online.de>
-# Copyright (C) 2006-2018 by the Freetz developers (http://freetz.org)
+# Copyright (C) 2006-2018 by the Freetz developers (http://freetz_org)
 # Copyright (C) 2019 by Freetz developers (https://freetz-ng.github.io/ and https://freetz.github.io)
 #
 # Licensed under the GPL v2, see the file COPYING in this tarball.
@@ -26,7 +26,9 @@ ENVIRA_LAST_REV:=.envira.log
 ENVIRA_REV_TOOL:=tools/freetz_revision
 ENVIRA_PATH_REL:=tools/path
 ENVIRA_PATH_ABS:=$(shell realpath $(ENVIRA_PATH_REL))
+ENVIRA_SYS_LANG:=$(shell locale | sed -n 's/^LANG=//p')
 ENVIRA_MAKE_VARS:=$(ENVIRA_MARK)=y
+ENVIRA_MAKE_VARS+=SYS_LANG=$(ENVIRA_SYS_LANG)
 
 envira:
 ifneq ($(shell umask),$(ENVIRA_UMASK))
@@ -316,8 +318,13 @@ include $(MAKE_DIR)/include/400-host.mk
 include $(MAKE_DIR)/include/500-echo.mk
 include $(MAKE_DIR)/include/600-macros.mk
 
+# include by other packages used variables of packages first
+TOOLS_LIBS:=openssl
+TOOLS_LIB_MKFILES:=$(foreach x, ${TOOLS_LIBS}, $(patsubst %, $(MAKE_DIR)/host-tools/${x}-host/${x}-host.mk, ${x}))
+TOOLS_PKG_MKFILES:=$(filter-out $(TOOLS_LIB_MKFILES),$(call sorted-wildcard,$(MAKE_DIR)/host-tools/*-host/*-host.mk))
 include $(MAKE_DIR)/host-tools/Makefile.in
-include $(call sorted-wildcard,$(MAKE_DIR)/host-tools/*/*.mk)
+include $(TOOLS_LIB_MKFILES)
+include $(TOOLS_PKG_MKFILES)
 
 TOOLS_CACHECLEAN:=$(patsubst %,%-cacheclean,$(TOOLS))
 TOOLS_CLEAN:=$(patsubst %,%-clean,$(TOOLS))
@@ -700,13 +707,15 @@ check-dot-config-uptodateness: $(CONFIG_IN_CACHE)
 	fi
 
 help:
-	@sed 's/^# /\n/;/```/d' docs/wiki/20_Advanced/make_targets.en.md
+	@lang=$$(echo $(SYS_LANG) | sed 's/[-\.].*//;s/_.*//' ) ;\
+	[ -e "docs/wiki/20_Advanced/make_targets.$${lang}.md" ] || lang="en" ;\
+	sed 's/^# /\n/;/```/d' "docs/wiki/20_Advanced/make_targets.$${lang}.md"
 
 .PHONY: all world step $(KCONFIG_TARGETS) config-flush-invalid config-cache config-cache-clean config-cache-refresh tools recover \
 	config-clean-deps-modules config-clean-deps-libs config-clean-deps-busybox config-clean-deps-terminfo config-clean-deps config-clean-deps-keep-busybox \
 	cacheclean clean dirclean distclean common-cacheclean common-clean common-dirclean common-distclean release \
 	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) $(TOOLS_RECOMPILE) $(TOOLS_FIXHARDCODED) $(TOOLS_AUTOFIX) \
-	clear-echo-temporary check-dot-config-uptodateness
+	clear-echo-temporary check-dot-config-uptodateness help
 
 endif # Envira
 

@@ -1,0 +1,17 @@
+[general]
+viewerport = 5900
+serverport = 5500
+ownipaddress = 0.0.0.0
+maxsessions = 10
+allowedmodes = 2  
+logginglevel = 0
+
+[mode1]
+allowedmode1serverport = 0
+requirelistedserver = 0
+
+[mode2]
+requirelistedid = 0
+
+[eventinterface]
+useeventinterface = false

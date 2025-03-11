@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.4.3)
+$(call PKG_INIT_BIN, 1.4.4)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=418a065fe1a4b8ace8fbf77c2da269a98f376e7115902e76cda7e741e4846a5d
+$(PKG)_HASH:=1973c7732f1f9f0a4c0ccf2c1ce462c7c25060b25643ea90f9b98f53a813faec
 $(PKG)_SITE:=https://www.inet.no/dante/files
 ### WEBSITE:=https://www.inet.no/dante/
 ### MANPAGE:=https://www.inet.no/dante/doc/1.4.x/index.html

@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 3.3.0)
+$(call PKG_INIT_BIN, 3.4.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=7399e9a6708c32d678a72a63219e96f23be0be2336e50fd1348498d07041df90
+$(PKG)_HASH:=2924bcb3a1ed8b551fc101f740b9f0fe0a202b115027647cf69850d65fd88c52
 $(PKG)_SITE:=@SAMBA/rsync/src
 ### WEBSITE:=https://rsync.samba.org/
 ### MANPAGE:=https://rsync.samba.org/documentation.html

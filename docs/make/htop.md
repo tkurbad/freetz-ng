@@ -1,4 +1,4 @@
-# htop 1.0.3/3.3.0 (binary only)
+# htop 1.0.3/3.4.0 (binary only)
  - Homepage: [https://htop.dev/](https://htop.dev/)
  - Manpage: [https://linux.die.net/man/1/htop](https://linux.die.net/man/1/htop)
  - Changelog: [https://github.com/htop-dev/htop/blob/main/ChangeLog](https://github.com/htop-dev/htop/blob/main/ChangeLog)

@@ -11,7 +11,7 @@
  endif
 --- doc/hlp/Makefile.in
 +++ doc/hlp/Makefile.in
-@@ -469,7 +469,8 @@
+@@ -471,7 +471,8 @@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
@@ -34,7 +34,7 @@
  endif
 --- doc/man/Makefile.in
 +++ doc/man/Makefile.in
-@@ -473,7 +473,8 @@
+@@ -475,7 +475,8 @@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
@@ -44,7 +44,7 @@
  @USE_NLS_TRUE@SUBDIRS = $(DOC_LINGUAS)
  man_MANS = mc.1 mcview.1 $(am__append_1) $(am__append_2)
  CLEANFILES = $(man_MANS)
-@@ -746,7 +747,8 @@
+@@ -748,7 +749,8 @@
  	for dir in "$(DESTDIR)$(man1dir)"; do \
  	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
  	done
@@ -57,25 +57,25 @@
 --- src/vfs/extfs/helpers/Makefile.am
 +++ src/vfs/extfs/helpers/Makefile.am
 @@ -1,7 +1,7 @@
- extfsdir = $(libexecdir)/@PACKAGE@/extfs.d
+ extfsdir = $(EXTFSHELPERSDIR)
  
  # Files to install and distribute other than extfs scripts
 -EXTFS_MISC  = README README.extfs
 +EXTFS_MISC  =
  
  # Scripts hat don't need adaptation to the local system
- EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z uc1541
+ EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z
 --- src/vfs/extfs/helpers/Makefile.in
 +++ src/vfs/extfs/helpers/Makefile.in
-@@ -428,7 +428,7 @@
- extfsdir = $(libexecdir)/@PACKAGE@/extfs.d
+@@ -431,7 +431,7 @@
+ extfsdir = $(EXTFSHELPERSDIR)
  
  # Files to install and distribute other than extfs scripts
 -EXTFS_MISC = README README.extfs
 +EXTFS_MISC =
  
  # Scripts hat don't need adaptation to the local system
- EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z uc1541
+ EXTFS_CONST = bpp changesetfs gitfs+ patchsetfs rpm trpm u7z
 --- src/vfs/shell/helpers/Makefile.am
 +++ src/vfs/shell/helpers/Makefile.am
 @@ -1,7 +1,7 @@
@@ -89,7 +89,7 @@
  shell_DATA = $(SHELL_MISC) ls mkdir fexists unlink chown chmod rmdir ln mv hardlink get send append info utime
 --- src/vfs/shell/helpers/Makefile.in
 +++ src/vfs/shell/helpers/Makefile.in
-@@ -415,7 +415,7 @@
+@@ -417,7 +417,7 @@
  shelldir = $(libexecdir)/@PACKAGE@/shell
  
  # Files to install and distribute other than shell scripts

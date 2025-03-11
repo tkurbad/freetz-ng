@@ -14,10 +14,10 @@ CRAP_FILTER="5382169925"
 
 #rel
 echo -e '\n### FOS-Release ################################################'
-for x in $(seq 150 300); do  env - $TOOLS/juis_check        HW=$x                                     -a; done | tee fos-rel
+for x in $(seq 150 333); do  env - $TOOLS/juis_check        HW=$x                                     -a; done | tee fos-rel
 #dwn
 echo -e '\n### FOS-Downgrade ##############################################'
-for x in $(seq 150 300); do  env - $TOOLS/juis_check --down HW=$x                                     -a; done | tee fos-dwn
+for x in $(seq 150 333); do  env - $TOOLS/juis_check --down HW=$x                                     -a; done | tee fos-dwn
 #add
 cat fos-dwn fos-rel | sort -u > fos-xxx
 #( cat fos-rel ; cat fos-dwn | while read -s x; do grep -q "^${x%=*}=" fos-rel || echo $x; done ) | sort -u > fos-xxx
@@ -25,13 +25,15 @@ cat fos-dwn fos-rel | sort -u > fos-xxx
 
 #lab
 echo -e '\n### FOS-Labor ##################################################'
-for x in $(seq 150 300); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
+for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab
-for x in $(seq 150 300); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.90-111000"
+for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.90-111000"
+                             env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab -a
+for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.08.00-115000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab -a
 #inh
 echo -e '\n### FOS-Inhaus #################################################'
-for x in $(seq 150 300); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
+for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1000  Version=$m  -a; done | tee fos-inh
 #sub
 cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; done
@@ -41,15 +43,19 @@ cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; d
 #dect-rel
 echo -e '\n### Dect-Release ###############################################'
 for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";
-                             env - $TOOLS/juis_check --dect HW=252 DHW=$x                             -a; done | tee dect-rel
+                             env - $TOOLS/juis_check --dect HW=154 DHW=$x                             -a; done | tee dect-rel
 #dect-lab
 echo -e '\n### Dect-Labor #################################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="252.07.50-100000"
-                             env - $TOOLS/juis_check --dect HW=252 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab
+for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
+                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab
+for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
+                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab -a
 #dect-inh
 echo -e '\n### Dect-Inhaus ################################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="252.07.50-100000"
-                             env - $TOOLS/juis_check --dect HW=252 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh
+for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
+                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh
+for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
+                             env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh -a
 #dect-sub
 cat dect-rel | while read -s x; do sed "/\/${x##*/}$/d" -i dect-lab dect-inh; done
 cat dect-lab | while read -s x; do sed "/\/${x##*/}$/d" -i          dect-inh; done
@@ -57,7 +63,7 @@ cat dect-lab | while read -s x; do sed "/\/${x##*/}$/d" -i          dect-inh; do
 
 #bpjm
 echo -e '\n### BPjM #######################################################'
-                             env - $TOOLS/juis_check --bpjm HW=252                                    -a       | tee bpjm
+                             env - $TOOLS/juis_check --bpjm HW=259                                    -a       | tee bpjm
 [ ! -s bpjm ] || curl -sS "$(sed -n 's/.*=//p' bpjm)" -o bpjm.out
 read="$(head -c4 bpjm.out | $XXD -p)"
 calc="$($CRC32 <( tail -c +$((1 + 4)) bpjm.out ))"

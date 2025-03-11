@@ -1,0 +1,14 @@
+config FREETZ_PACKAGE_UVNCREPEATER
+	bool "UltraVNC Repeater 014 - DEPRECATED"
+	default n
+	help
+		UltraVNC Repeater has two unique functions:
+		Mode 1:
+		Allows for connection to multiple servers (in listen mode), using only
+		one port. All connection data flows through the repeater, allowing
+		connection to multiple servers through a single port forward or tunnel.
+		Mode 2: 
+		Allows both a Viewer and Server to connect together using the repeater
+		as a PROXY. All connection data flows through the repeater, allowing
+		both the server and viewer to be behind firewalls or routers.
+

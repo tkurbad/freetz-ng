@@ -1,4 +1,4 @@
-# libssh2 (libssh2.so) 1.11.0
+# libssh2 (libssh2.so) 1.11.1
  - Homepage: [https://www.libssh2.org/](https://www.libssh2.org/)
  - Manpage: [https://www.libssh2.org/docs.html](https://www.libssh2.org/docs.html)
  - Changelog: [https://github.com/libssh2/libssh2/releases](https://github.com/libssh2/libssh2/releases)

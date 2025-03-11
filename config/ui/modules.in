@@ -1,5 +1,7 @@
 comment " Kernel modules (not available, ask fritzbox_info@avm.de)"
 	depends on !FREETZ_REPLACE_MODULE_AVAILABLE && !FREETZ_TYPE_FIRMWARE_UNTESTED
+comment " Kernel modules (not available, this device is UNTESTED)"
+	depends on !FREETZ_REPLACE_MODULE_AVAILABLE &&  FREETZ_TYPE_FIRMWARE_UNTESTED
 
 
 menu "Kernel modules"
@@ -18,6 +20,7 @@ config FREETZ_MODULES_KOON
 
 config FREETZ_MODULES_OWN
 	string "Own Modules"
+	default "freetz" if FREETZ_MODULES_TEST
 	default ""
 	help
 		You can list here modules which should be include in
@@ -461,10 +464,14 @@ config FREETZ_MODULE_ext2
 
 config FREETZ_MODULE_ext3
 	bool "ext3.ko"
-	depends on ! FREETZ_AVM_HAS_EXT3_FS_BUILTIN
+	depends on ! FREETZ_AVM_HAS_EXT3_FS_BUILTIN && FREETZ_KERNEL_VERSION_4_1_MAX
 	select FREETZ_MODULE_jbd if !FREETZ_AVM_HAS_JBD_BUILTIN && FREETZ_KERNEL_VERSION_2_6_19_MAX
 	select FREETZ_MODULE_mbcache if !FREETZ_AVM_HAS_FS_MBCACHE_BUILTIN
 	default n
+	help
+		A .ko file up to kernel version 4.2, later:
+		 This config option is here only for backward compatibility.
+		 ext3 filesystem is now handled by the ext4 driver.
 
 config FREETZ_MODULE_jbd
 	bool "jbd.ko"
@@ -558,7 +565,16 @@ config FREETZ_MODULE_reiserfs
 config FREETZ_MODULE_udf
 	bool "udf.ko"
 	depends on !FREETZ_AVM_HAS_UDF_FS_BUILTIN
+	select FREETZ_MODULE_crc_itu_t if !FREETZ_AVM_HAS_CRC_ITU_T_BUILTIN && FREETZ_KERNEL_VERSION_2_6_19_MIN
 	default n
+
+config FREETZ_MODULE_crc_itu_t
+	bool "crc-itu-t.ko"
+	depends on !FREETZ_AVM_HAS_CRC_ITU_T_BUILTIN && FREETZ_KERNEL_VERSION_2_6_19_MIN
+	depends on FREETZ_MODULE_udf
+	default n
+	help
+		Exists since kernel version 2.6.22.
 
 config FREETZ_MODULE_unionfs
 	bool "unionfs.ko"
@@ -577,16 +593,30 @@ config FREETZ_MODULE_autofs4
 config FREETZ_MODULE_cifs
 	bool "cifs.ko"
 	depends on !FREETZ_AVM_HAS_CIFS_BUILTIN
+	select FREETZ_MODULE_cifs_md4         if !FREETZ_AVM_HAS_CIFS_BUILTIN             && FREETZ_KERNEL_VERSION_5_15_MIN
+	select FREETZ_MODULE_cifs_arc4        if !FREETZ_AVM_HAS_CIFS_BUILTIN             && FREETZ_KERNEL_VERSION_5_15_MIN
 	select FREETZ_MODULE_crypto_algapi    if !FREETZ_AVM_HAS_CRYPTO_ALGAPI_BUILTIN    && FREETZ_KERNEL_VERSION_2_6_19_MIN
-	select FREETZ_MODULE_arc4             if !FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN
+	select FREETZ_MODULE_arc4             if !FREETZ_AVM_HAS_CRYPTO_ARC4_BUILTIN      && !FREETZ_KERNEL_VERSION_5_15_MIN
 	select FREETZ_MODULE_cmac             if !FREETZ_AVM_HAS_CRYPTO_CMAC_BUILTIN      && !FREETZ_KERNEL_VERSION_2
 	select FREETZ_MODULE_des_generic      if !FREETZ_AVM_HAS_CRYPTO_DES_BUILTIN
 	select FREETZ_MODULE_ecb              if !FREETZ_AVM_HAS_CRYPTO_ECB_BUILTIN
 	select FREETZ_MODULE_hmac             if !FREETZ_AVM_HAS_CRYPTO_HMAC_BUILTIN
-	select FREETZ_MODULE_md4              if !FREETZ_AVM_HAS_CRYPTO_MD4_BUILTIN
+	select FREETZ_MODULE_md4              if !FREETZ_AVM_HAS_CRYPTO_MD4_BUILTIN       && !FREETZ_KERNEL_VERSION_5_15_MIN
 	select FREETZ_MODULE_md5              if !FREETZ_AVM_HAS_CRYPTO_MD5_BUILTIN
 	select FREETZ_MODULE_sha256_generic   if !FREETZ_AVM_HAS_CRYPTO_SHA256_BUILTIN    && FREETZ_KERNEL_VERSION_2_6_28_MIN && !FREETZ_KERNEL_VERSION_2_6_39
 	default n
+
+config FREETZ_MODULE_cifs_arc4
+	bool "cifs_arc4.ko"
+	depends on FREETZ_MODULE_cifs && !FREETZ_AVM_HAS_CIFS_BUILTIN && FREETZ_KERNEL_VERSION_5_15_MIN
+	help
+		This kernel-menuconfig symbol does not exist but the .ko-file which is built by smbfs.
+
+config FREETZ_MODULE_cifs_md4
+	bool "cifs_md4.ko"
+	depends on FREETZ_MODULE_cifs && !FREETZ_AVM_HAS_CIFS_BUILTIN && FREETZ_KERNEL_VERSION_5_15_MIN
+	help
+		This kernel-menuconfig symbol does not exist but the .ko-file which is built by smbfs.
 
 config FREETZ_MODULE_cmac
 	bool "cmac.ko"
@@ -782,7 +812,23 @@ comment " bt"
 config FREETZ_MODULE_bluetooth
 	bool "bluetooth.ko"
 	depends on !FREETZ_AVM_HAS_BT_BUILTIN
+	select FREETZ_MODULE_ecdh_generic if !FREETZ_AVM_HAS_CRYPTO_ECDH_BUILTIN && FREETZ_KERNEL_VERSION_3_10_MIN
 	default n
+
+config FREETZ_MODULE_ecdh_generic
+	bool "ecdh_generic.ko"
+	depends on !FREETZ_AVM_HAS_CRYPTO_ECDH_BUILTIN && FREETZ_KERNEL_VERSION_3_10_MIN
+	depends on FREETZ_MODULE_bluetooth
+	select FREETZ_MODULE_ecc if !FREETZ_AVM_HAS_CRYPTO_ECC_BUILTIN && FREETZ_KERNEL_VERSION_4_19_MIN
+	default n
+
+config FREETZ_MODULE_ecc
+	bool "ecc.ko"
+	depends on !FREETZ_AVM_HAS_CRYPTO_ECC_BUILTIN && FREETZ_KERNEL_VERSION_4_19_MIN
+	depends on FREETZ_MODULE_ecdh_generic
+	default n
+	help
+		Exists since kernel version 4.14.326.
 
 config FREETZ_MODULE_bnep
 	bool "bnep.ko"

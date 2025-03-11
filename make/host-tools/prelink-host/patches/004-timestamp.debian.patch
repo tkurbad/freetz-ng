@@ -4,7 +4,7 @@ Index: prelink-0.0.20130503/doc/prelink.8
 ===================================================================
 --- prelink-0.0.20130503.orig/doc/prelink.8	2013-12-28 19:41:52.000000000 -0800
 +++ prelink-0.0.20130503/doc/prelink.8	2013-12-28 20:26:47.136677003 -0800
-@@ -147,6 +147,9 @@
+@@ -150,6 +150,9 @@
  When processing command line directory arguments, limit directory tree walk
  to a single file system.
  .TP

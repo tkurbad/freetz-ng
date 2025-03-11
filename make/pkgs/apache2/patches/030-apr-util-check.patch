@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -7992,7 +7992,7 @@
+@@ -7983,7 +7983,7 @@
  
  
  ap_ckver_CPPFLAGS="$CPPFLAGS"

@@ -1,0 +1,39 @@
+--- Makefile
++++ Makefile
+@@ -0,0 +1,14 @@
++CC = gcc
++CFLAGS = -Wall -O2
++LDFLAGS = -lpcap
++
++TARGET = choparp
++SRC = src/choparp.c
++
++all: $(TARGET)
++
++$(TARGET): $(SRC)
++	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
++
++clean:
++	rm -f $(TARGET)
+--- src/choparp.c
++++ src/choparp.c
+@@ -260,7 +260,18 @@
+ }
+ 
+ int
+-main(int argc, char **argv){
++main(int argc, char **argv) {
++  // change to the "/" directory
++  int nochdir = 0;
++
++  // redirect standard input, output and error to /dev/null
++  // this is equivalent to "closing the file descriptors"
++  int noclose = 0;
++
++  // glibc call to daemonize this process without a double fork
++  if(daemon(nochdir, noclose))
++    perror("daemon");
++
+     int pidf, opt;
+     char *ifname;
+     char *filter, *targets_filter, *excludes_filter;

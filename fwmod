@@ -3,7 +3,7 @@
 # Freetz script to modify AVM FRITZ!Box and OEM firmware images
 #
 # Copyright (C) 2005-2006 Daniel Eiband <eiband@online.de>
-# Copyright (C) 2006-2018 by the Freetz developers (http://freetz.org)
+# Copyright (C) 2006-2018 by the Freetz developers (http://freetz_org)
 # Copyright (C) 2019 by Freetz developers (https://freetz-ng.github.io/ and https://freetz.github.io)
 #
 # Licensed under the GPL v2, see the file COPYING in this tarball.
@@ -367,18 +367,20 @@ else
 	if [ "$FREETZ_ROOTEMU_FAKEROOT" != 'y' ]; then
 		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -B  &>/dev/null  #scan
 		FWMOD_RECURSIVE="$$" PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR" PSEUDO_DEBUG="0" "$TOOLS_DIR/build/bin/pseudo" '--' "${CMDLINE_ORIG[@]}"
+			retval=$?
 		                     PSEUDO_PREFIX="$TOOLS_DIR/build" PSEUDO_LOCALSTATEDIR="$FAKEROOT_CACHE_DIR"                  "$TOOLS_DIR/build/bin/pseudo"  -S  &>/dev/null  #halt
 	else
 		# Has current combination of firmware already been unpacked?
 		if [ "$(cat "$UNPACKED_FILE" 2>/dev/null)" == "$FIRMWARE_MD5" ]; then
 			# Yes -> use existing cache and firmwares (no unpack necessary)
 			NON_FAKEROOT_USERNAME=$(id -u -n) FWMOD_RECURSIVE=$$ $TOOLS_DIR/build/bin/fakeroot -i "$FAKEROOT_CACHE_DB" -s "$FAKEROOT_CACHE_DB" '--' "${CMDLINE_ORIG[@]}"
+			retval=$?
 		else
 			# No -> create new fakeroot cache and unpack firmwares
 			NON_FAKEROOT_USERNAME=$(id -u -n) FWMOD_RECURSIVE=$$ $TOOLS_DIR/build/bin/fakeroot                         -s "$FAKEROOT_CACHE_DB" '--' "${CMDLINE_ORIG[@]}"
+			retval=$?
 		fi
 	fi
-	retval=$?
 	[ $retval -eq 0 ] || exit $retval
 
 	# ------------------------------------------------------------------
@@ -793,7 +795,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR_BBA" -x -C "$MOD_DIR" || error 1 "tar failed"
 
 	# Fix some permissions
-	chmod -R u+w "$FILESYSTEM_MOD_DIR"
+	find "${FILESYSTEM_MOD_DIR}" ! -type l -exec chmod u+w {} '+'
 	find "${FILESYSTEM_MOD_DIR}" "${VARTAR_MOD_DIR}" -type d -exec chmod 755 {} '+'
 	# Give all users write permissions to /var/tmp to allow it to be used as a temp-directory.
 	# Set sticky bit to prevent users from deleting/renaming files they are not the owners of.
@@ -978,6 +980,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	echo1 -l "patches applied"
 
 	# remove oems
+	echo1 -l  "original oem: $oems"
 	echo1 -ln "removing oem:"
 	oem_removed=0
 	oem_kept=0
@@ -1359,8 +1362,9 @@ if [ "$DO_MOD" -gt 0 ]; then
 	# modules directory / correctly configured kernel version
 	echo0 "processing kernel"
 	echo1 "checking kernel version"
+	[ "$FREETZ_KERNEL_AVMDIFF_AVAILABLE" == "y" ] && KERNELADID="$FREETZ_AVM_SOURCE_ID" || KERNELADID="vanilla"
 	echo2 "... used by AVM ...... ${MODULES_SUBDIR##*/}"
-	echo2 "... used by Freetz ... ${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}"
+	echo2 "... used by Freetz ... ${FREETZ_KERNEL_VERSION_MODULES_SUBDIR} ($KERNELADID)"
 	if [ "lib/modules/${FREETZ_KERNEL_VERSION_MODULES_SUBDIR}" != "$MODULES_SUBDIR" ]; then
 		gplnag="\nAre GPL sources for YOUR device and firware version released at http://osp.avm.de/ yet?\nHave YOU asked fritzbox_info@avm.de for sources?"
 		if [ "$FREETZ_REPLACE_MODULE_AVAILABLE" == "y" ]; then
@@ -1397,11 +1401,16 @@ if [ "$DO_MOD" -gt 0 ]; then
 		done
 		for ko in $(set | sed -rn 's/^FREETZ_MODULE_(.*)=y$/\1/p') $FREETZ_MODULES_OWN; do
 			echo "$found_kos " | tr '\-+' '_x' | grep -q " $ko.ko " && continue
+			[ "$ko" == "freetz" ] && [ "$FREETZ_MODULES_TEST" == "y" ] && continue
 			warn "File of kernel module not found: $ko.ko"
 			kos_missing=y
 		done
 		[ "$FIRMWARE_NOCOMPILE" != "1" -a -n "$kos_missing" ] && error 1 "Enable missing with 'make kernel-menuconfig' as (M)odule (and push a pull request). Use '/' to search in menuconfig."
+	fi
 
+	echo0 "processing modules"
+
+	if [ "$FREETZ_REPLACE_KERNEL" == "y" -o -n "$(set|grep ^FREETZ_MODULE_.*=y)" -o -n "$FREETZ_MODULES_OWN" ]; then
 		echo1 "generating modules.dep"
 		DEPMOD_TEMP="$(mktemp)"
 		if [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ]; then
@@ -1412,14 +1421,15 @@ if [ "$DO_MOD" -gt 0 ]; then
 			LANG=C depmod -e -b "$FILESYSTEM_MOD_DIR" \
 			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
 			  $FREETZ_KERNEL_VERSION \
-			  2>&1 | tee "$DEPMOD_TEMP"
+			  2>&1 | tee "$DEPMOD_TEMP" | sed "s@ ${ABS_BASE_DIR}/@ @g"
 		else
 			NM=$NM ${TOOLS_DIR}/depmod.pl -e -b "$MODULES_DIR" \
 			  -F ${KERNEL_REP_DIR}/System-${KERNEL_ID}.map \
-			  2>&1 | tee "$DEPMOD_TEMP"
+			  2>&1 | tee "$DEPMOD_TEMP"| sed "s@ file @ file ${FILESYSTEM_MOD_DIR}@g"
 		fi
 		if grep -qE "(unresolved|unknown) symbol" "$DEPMOD_TEMP"; then
-			warn "Unresolved symbols detected, not all AVM-features may work.\nNo current sources by AVM? Error in kernel's .config? Ask fritzbox_info@avm.de for sources!"
+			[ "$FREETZ_MODULES_TEST" == "y" ] && error 1 "Unresolved symbols detected."
+			warn "Unresolved symbols detected, not all AVM-features may work.\nApropriate sources by AVM not used or not available? Error in kernel's .config? Ask fritzbox_info@avm.de for sources!"
 		fi
 		rm -f "$DEPMOD_TEMP"
 		# add plugin kernel modules for 7270v1 if plugins are not enabled
@@ -1435,6 +1445,13 @@ if [ "$DO_MOD" -gt 0 ]; then
 			done > "$MODULES_DIR/modules.dep.reproducible"
 			cat "$MODULES_DIR/modules.dep.reproducible" > "$MODULES_DIR/modules.dep"
 			rm -f "$MODULES_DIR/modules.dep.reproducible"
+		fi
+	else
+		if [ "$FREETZ_MODULES_TEST" == "y" ]; then
+			[ "$FREETZ_TYPE_FIRMWARE_UNTESTED"   == "y" ] && error 1 "The kernel was not built, this device is UNTESTED."
+			[ "$FREETZ_KERNEL_AVMDIFF_AVAILABLE" != "y" ] && error 1 "The kernel was not built, no KERNEL_AVMDIFF available."
+			[ "$FREETZ_REPLACE_MODULE_AVAILABLE" != "y" ] && error 1 "The kernel was not built, no REPLACE_MODULE available."
+			                                                 error 1 "The kernel was not built."
 		fi
 	fi
 
@@ -1991,7 +2008,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 			if [ "${FREETZ_AVM_HAS_SEPARATE_FILESYSTEM_IMAGE}" == "y" ]; then
 					error 1 -b "kernel image is $KERNEL_DIFF bytes too big. See https://freetz-ng.github.io/freetz-ng/wiki/00_FAQ/FAQ.de.html#filesystem-image-too-big for details."
 			else
-				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ]; then
+				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ] && [ "$FREETZ_MODULES_TEST" != "y" ]; then
 					error 1 -b "combined kernel+filesystem image is $KERNEL_DIFF bytes too big. See https://freetz-ng.github.io/freetz-ng/wiki/00_FAQ/FAQ.de.html#filesystem-image-too-big for details."
 				fi
 				if [ "$FORCE_PACK" -gt 0 -a "$DO_ZIP" -eq 0 ]; then
@@ -2057,7 +2074,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 			let FILESYSTEM_DIFF="FILESYSTEM_SIZE-FILESYSTEM_LIMIT"
 			echo1 "filesystem image size: $(byte_to_mb $FILESYSTEM_SIZE), max $(byte_to_mb $FILESYSTEM_LIMIT), free $(byte_to_mb $((-FILESYSTEM_DIFF))) ($((-FILESYSTEM_DIFF)) bytes)"
 			if [ "$FILESYSTEM_SIZE" -gt "$FILESYSTEM_LIMIT" ]; then
-				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ]; then
+				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ] && [ "$FREETZ_MODULES_TEST" != "y" ]; then
 					error 1 -b "filesystem image is $FILESYSTEM_DIFF bytes too big. See https://freetz-ng.github.io/freetz-ng/wiki/00_FAQ/FAQ.de.html#filesystem-image-too-big for details."
 				fi
 				if [ "$FORCE_PACK" -ne 0 -o "$DO_ZIP" -ne 0 ]; then
@@ -2150,7 +2167,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 			let FITIMAGE_DIFF="FITIMAGE_SIZE-FITIMAGE_LIMIT"
 			echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
 			if [ "$FITIMAGE_SIZE" -gt "$FITIMAGE_LIMIT" ]; then
-				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ]; then
+				if [ "$FORCE_PACK" -eq 0 -a "$DO_ZIP" -eq 0 ] && [ "$FREETZ_MODULES_TEST" != "y" ]; then
 					error 1 -b "fitimg file is $FITIMAGE_DIFF bytes too big. See https://freetz-ng.github.io/freetz-ng/wiki/00_FAQ/FAQ.de.html#filesystem-image-too-big for details."
 				fi
 			fi

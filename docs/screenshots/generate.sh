@@ -8,7 +8,7 @@ for file in $MYPWD/*.???; do
 	[ "${dst/_md_md./}" != "$dst" ] && continue
 	[ -e "$MYPWD/$dst" ] && continue
 	echo "$src -> $dst"
-	convert "$MYPWD/$src" -resize x333 "$MYPWD/$dst"
+	magick "$MYPWD/$src" -resize x333 "$MYPWD/$dst"
 	chmod -x "$MYPWD/$src" "$MYPWD/$dst"
 done
 

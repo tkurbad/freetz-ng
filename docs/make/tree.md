@@ -1,4 +1,4 @@
-# Tree 1.8.0/2.1.1 (binary only)
+# Tree 1.8.0/2.2.1 (binary only)
  - Homepage: [http://mama.indstate.edu/users/ice/tree/](http://mama.indstate.edu/users/ice/tree/)
  - Manpage: [https://linux.die.net/man/1/tree](https://linux.die.net/man/1/tree)
  - Changelog: [https://gitlab.com/OldManProgrammer/unix-tree/tags](https://gitlab.com/OldManProgrammer/unix-tree/tags)

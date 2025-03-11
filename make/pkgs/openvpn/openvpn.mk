@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.11,2.6.12)))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.11,2.6.13)))
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_24:=66952d9c95490e5875f04c9f8fa313b5e816d1b7b4d6cda3fb2ff749ad405dee
 $(PKG)_HASH_25:=7e2672119bd4639819d560f332a8b9b7e28f562425c77899f36d419fe4265f56
-$(PKG)_HASH_26:=1c610fddeb686e34f1367c347e027e418e07523a10f4d8ce4a2c2af2f61a1929
+$(PKG)_HASH_26:=1af10b86922bd7c99827cc0f151dfe9684337b8e5ebdb397539172841ac24a6a
 $(PKG)_HASH:=$($(PKG)_HASH_$(subst .,,$($(PKG)_MAJOR_VERSION)))
 $(PKG)_SITE:=https://swupdate.openvpn.net/community/releases,https://build.openvpn.net/downloads/releases
 ### WEBSITE:=https://openvpn.net/community-downloads/

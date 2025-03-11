@@ -1,0 +1,11 @@
+--- m4/libelf.m4
++++ m4/libelf.m4
+@@ -111,7 +111,7 @@
+     }
+   exit (8);
+ }
+-    ],,[AC_MSG_ERROR([libelf does not properly convert Elf64_Sxword quantities.
++    ],,[AC_MSG_WARN([libelf does not properly convert Elf64_Sxword quantities.
+ If you are using libelf-0.7.0, please use patches/libelf-0.7.0.patch.])],
+ [AC_MSG_WARN([Could not test whether libelf properly converts Elf64_Sxword quantities.
+ If you are using libelf-0.7.0 and your libelf is buggy, please use

@@ -1,8 +1,8 @@
-$(call PKG_INIT_LIB, 1.54.0)
-$(PKG)_LIB_VERSION:=0.5400.0
+$(call PKG_INIT_LIB, 1.56.1)
+$(PKG)_LIB_VERSION:=0.5600.1
 $(PKG)_MAJOR_VERSION:=1.0
 $(PKG)_SOURCE:=pango-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=8a9eed75021ee734d7fc0fdf3a65c3bba51dfefe4ae51a9b414a60c70b2d1ed8
+$(PKG)_HASH:=426be66460c98b8378573e7f6b0b2ab450f6bb6d2ec7cecc33ae81178f246480
 $(PKG)_SITE:=https://download.gnome.org/sources/pango/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=https://www.pango.org/
 ### MANPAGE:=https://docs.gtk.org/Pango/

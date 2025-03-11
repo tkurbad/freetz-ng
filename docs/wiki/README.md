@@ -8,6 +8,7 @@
 
 ### [Beginner](10_Beginner/README.md)
  - [Addon Paket installieren](10_Beginner/addon.md)
+ - [Grundlegende Fragen [DE]](10_Beginner/basic_questions.de.md)
  - [Basic questions [EN]](10_Beginner/basic_questions.en.md)
  - [Wie baue ich meinen ersten trunk?](10_Beginner/first_trunk.md)
  - [Freetz Linux](10_Beginner/freetz_linux.md)
@@ -26,6 +27,7 @@
  - [External](20_Advanced/external.md)
  - [Eigene Dateien in die Firmware integrieren](20_Advanced/integrate_own_files.md)
  - [Kernel konfigurieren und kompilieren](20_Advanced/make_kernel.md)
+ - [Targets von Freetz's "make" [DE]](20_Advanced/make_targets.de.md)
  - [Targets of Freetz's "make" [EN]](20_Advanced/make_targets.en.md)
  - [Entpacken und Packen von Firmware-Images](20_Advanced/repack_fw.md)
  - [Rechner im Netz herunterfahren](20_Advanced/shutdown.md)

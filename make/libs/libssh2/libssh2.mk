@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.11.0)
+$(call PKG_INIT_LIB, 1.11.1)
 $(PKG)_LIB_VERSION:=1.0.1
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461
+$(PKG)_HASH:=d9ec76cbe34db98eec3539fe2c899d26b0c837cb3eb466a56b0f109cabf658f7
 $(PKG)_SITE:=https://www.libssh2.org/download
 ### WEBSITE:=https://www.libssh2.org/
 ### MANPAGE:=https://www.libssh2.org/docs.html

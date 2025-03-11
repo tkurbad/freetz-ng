@@ -1,13 +1,13 @@
-$(call PKG_INIT_LIB, 0.14.0)
+$(call PKG_INIT_LIB, 0.15.1)
 $(PKG)_SHLIB_VERSION:=8.1.0
 $(PKG)_SOURCE:=userspace-rcu-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=ca43bf261d4d392cff20dfae440836603bf009fce24fdc9b2697d837a2239d4f
+$(PKG)_HASH:=98d66cc12f2c5881879b976f0c55d10d311401513be254e3bd28cf3811fb50c8
 $(PKG)_SITE:=https://lttng.org/files/urcu
 ### WEBSITE:=https://www.liburcu.org/
 ### CHANGES:=https://github.com/urcu/userspace-rcu/tags
 ### CVSREPO:=https://git.liburcu.org/?p=userspace-rcu.git;a=summary
 
-$(PKG)_LIBNAMES_SHORT   := liburcu-bp liburcu-cds liburcu-common liburcu-mb liburcu-memb liburcu-qsbr liburcu-signal liburcu
+$(PKG)_LIBNAMES_SHORT   := liburcu-bp liburcu-cds liburcu-common liburcu-mb liburcu-memb liburcu-qsbr liburcu
 $(PKG)_LIBNAMES_LONG    := $($(PKG)_LIBNAMES_SHORT:%=%.so.$($(PKG)_SHLIB_VERSION))
 $(PKG)_LIBS_BUILD_DIR   := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_DIR)/src/.libs/%)
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)

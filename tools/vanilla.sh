@@ -148,24 +148,29 @@ cat <<'EOX'
         vanilla4avm - creates avmdiff file from vanilla kernel 4 avm sources
         generate_vanilla - initial used to create avmdiff from tiny kernel pack files
 
-        Add kernel source, create avmdiff (example: 7590 07.50):
+        Add kernel source, create avmdiff (example: 7590 FOS 08.00):
         Unpack avm sources
+        #
         mkdir -p ~/vanilla
         rm -rf ~/vanilla/avm
         ln -sf $(realpath sources/kernel) ~/vanilla/avm
-        ~/freetz-ng/tools/vanilla.sh vanilla4avm "" "" "7590_07.50"  # generate ad
+        ~/freetz-ng/tools/vanilla.sh vanilla4avm "" "" "7590_08.00"  # generate avm-diff
+        #
         ge ~/freetz-ng/config/mod/dl-kernel.in  # add hash
         ls ~/vanilla/pxz/*.patch.xz  # upload file
         ge ~/freetz-ng/docs/CHANGELOG.md  # AVM sources
         ge ~/freetz-ng/config/avm/kernel.in  # add kernel version
-        ge ~/freetz-ng/config/avm/source.in  # add "7590_07.50"
-        grep KCONFIG sources/kernel/linux*/.kernelvariables  # get config name
+        ge ~/freetz-ng/config/avm/source.in  # add avm-source
+        #
+        #grep KCONFIG sources/kernel/linux*/.kernelvariables  # get config name
         realpath $(dirname sources/kernel/linux*/.kernelvariables)/$(sed -n 's,.*_KCONFIG_.* = ,,p' sources/kernel/linux*/.kernelvariables)
-        add ~/freetz-ng/make/kernel/configs/freetz/config-*-7590_07.50
-        add ~/freetz-ng/make/kernel/configs/avm/config-*-7590_07.50
+        add ~/freetz-ng/make/kernel/configs/freetz/config-*-7590_*
+        add ~/freetz-ng/make/kernel/configs/avm/config-*-7590_*
+        #
         realpath conf/buildroot/busybox.config*
-        add ~/freetz-ng/make/busybox/avm/07.50-7590--busybox.config.*
-        add ~/freetz-ng/make/kernel/patches/*/7590_07.50/
+        add ~/freetz-ng/make/busybox/avm/*-7590--busybox.config.*
+        #
+        add ~/freetz-ng/make/kernel/patches/*/7590_*/
         ge ~/freetz-ng/config/mod/source.in  # enable kernel (modules)
         ge ~/freetz-ng/make/pkgs/wireguard-linux-compat/Config.in  # verify skb_put_data
         check if avms .config matches with provided sources (unlikely)

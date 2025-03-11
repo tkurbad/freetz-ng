@@ -6,5 +6,4 @@ ELIBVER="8.1.0"
 [ "$EXTERNAL_FREETZ_LIB_liburcu_mb"       == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-mb.so.$ELIBVER"
 [ "$EXTERNAL_FREETZ_LIB_liburcu_memb"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-memb.so.$ELIBVER"
 [ "$EXTERNAL_FREETZ_LIB_liburcu_qsbr"     == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-qsbr.so.$ELIBVER"
-[ "$EXTERNAL_FREETZ_LIB_liburcu_signal"   == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/liburcu-signal.so.$ELIBVER"
 

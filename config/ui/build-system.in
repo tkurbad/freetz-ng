@@ -2,7 +2,7 @@ menu "Build system options"
 	visible if FREETZ_SHOW_EXPERT
 
 	config FREETZ_ANCIENT_SYSTEM
-		bool "My linux got not updates since many years"
+		bool "My linux got no updates since many years"
 		default n
 		help
 			Your linux system is older than your turtle? You like ancient
@@ -108,6 +108,14 @@ menu "Build system options"
 			 - Only a few packages are tested
 			 - Squashfs is reproducible since 4.4,
 			   so v2+v3+v4.3 needs to be backported
+
+	config FREETZ_MODULES_TEST
+		bool "Enable kernel modules test - DEVELOPER"
+		depends on FREETZ_SHOW_DEVELOPER
+		default n
+		help
+			Abort build on any problem with kernel modules
+			and ignores problems like image-to-big errors.
 
 endmenu # "Build system options" #
 

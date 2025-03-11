@@ -1,6 +1,6 @@
 --- src/Makefile.in
 +++ src/Makefile.in
-@@ -463,7 +463,7 @@
+@@ -464,7 +464,7 @@
  
  minicom$(EXEEXT): $(minicom_OBJECTS) $(minicom_DEPENDENCIES) $(EXTRA_minicom_DEPENDENCIES) 
  	@rm -f minicom$(EXEEXT)

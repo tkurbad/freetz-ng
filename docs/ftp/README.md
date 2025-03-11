@@ -17,11 +17,17 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - italy: [FRITZ.Box_4020.147.06.84.image](https://download.avm.de/fritzbox/fritzbox-4020/italy/fritz.os/FRITZ.Box_4020.147.06.84.image)
    - other: [FRITZ.Box_4020.07.04.image](https://download.avm.de/fritzbox/fritzbox-4020/other/fritz.os/FRITZ.Box_4020.07.04.image)
  * fritzbox-4040/
-   - deutschland: [FRITZ.Box_4040-07.59.image](https://download.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-07.59.image)
-   - other: [FRITZ.Box_4040-07.59.image](https://download.avm.de/fritzbox/fritzbox-4040/other/fritz.os/FRITZ.Box_4040-07.59.image)
+   - deutschland: [FRITZ.Box_4040-08.02.image](https://download.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-08.02.image)
+   - other: [FRITZ.Box_4040-08.02.image](https://download.avm.de/fritzbox/fritzbox-4040/other/fritz.os/FRITZ.Box_4040-08.02.image)
+ * fritzbox-4050/
+   - deutschland: [FRITZ.Box_4050-08.02.image](https://download.avm.de/fritzbox/fritzbox-4050/deutschland/fritz.os/FRITZ.Box_4050-08.02.image)
+   - other: [FRITZ.Box_4050-08.02.image](https://download.avm.de/fritzbox/fritzbox-4050/other/fritz.os/FRITZ.Box_4050-08.02.image)
  * fritzbox-4060/
-   - deutschland: [FRITZ.Box_4060-07.59.image](https://download.avm.de/fritzbox/fritzbox-4060/deutschland/fritz.os/FRITZ.Box_4060-07.59.image)
-   - other: [FRITZ.Box_4060-07.59.image](https://download.avm.de/fritzbox/fritzbox-4060/other/fritz.os/FRITZ.Box_4060-07.59.image)
+   - deutschland: [FRITZ.Box_4060-08.02.image](https://download.avm.de/fritzbox/fritzbox-4060/deutschland/fritz.os/FRITZ.Box_4060-08.02.image)
+   - other: [FRITZ.Box_4060-08.02.image](https://download.avm.de/fritzbox/fritzbox-4060/other/fritz.os/FRITZ.Box_4060-08.02.image)
+ * fritzbox-4690/
+   - deutschland: [FRITZ.Box_4690-08.03.image](https://download.avm.de/fritzbox/fritzbox-4690/deutschland/fritz.os/FRITZ.Box_4690-08.03.image)
+   - other: [FRITZ.Box_4690-08.03.image](https://download.avm.de/fritzbox/fritzbox-4690/other/fritz.os/FRITZ.Box_4690-08.03.image)
  * fritzbox-5490/
    - deutschland: [FRITZ.Box_5490-07.31.image](https://download.avm.de/fritzbox/fritzbox-5490/deutschland/fritz.os/FRITZ.Box_5490-07.31.image)
    - other: [FRITZ.Box_5490-07.31.image](https://download.avm.de/fritzbox/fritzbox-5490/other/fritz.os/FRITZ.Box_5490-07.31.image)
@@ -29,14 +35,15 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_5491-07.31.image](https://download.avm.de/fritzbox/fritzbox-5491/deutschland/fritz.os/FRITZ.Box_5491-07.31.image)
    - other: [FRITZ.Box_5491-07.31.image](https://download.avm.de/fritzbox/fritzbox-5491/other/fritz.os/FRITZ.Box_5491-07.31.image)
  * fritzbox-5530-fiber/
-   - deutschland: [FRITZ.Box_5530_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530_Fiber-07.81.image)
-   - other: [FRITZ.Box_5530_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/other/fritz.os/FRITZ.Box_5530_Fiber-07.81.image)
+   - deutschland: [FRITZ.Box_5530_Fiber-08.02.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530_Fiber-08.02.image)
+   - other: [FRITZ.Box_5530_Fiber-08.02.image](https://download.avm.de/fritzbox/fritzbox-5530-fiber/other/fritz.os/FRITZ.Box_5530_Fiber-08.02.image)
  * fritzbox-5590-fiber/
-   - deutschland: [FRITZ.Box_5590_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-07.81.image)
-   - other: [FRITZ.Box_5590_Fiber-07.81.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/other/fritz.os/FRITZ.Box_5590_Fiber-07.81.image)
+   - deutschland: [FRITZ.Box_5590_Fiber-08.02.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-08.02.image)
+   - other: [FRITZ.Box_5590_Fiber-08.02.image](https://download.avm.de/fritzbox/fritzbox-5590-fiber/other/fritz.os/FRITZ.Box_5590_Fiber-08.02.image)
  * fritzbox-5690-pro/
-   - deutschland: [FRITZ.Box_5690_Pro-07.62.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/deutschland/fritz.os/FRITZ.Box_5690_Pro-07.62.image)
-   - other: [FRITZ.Box_5690_Pro-07.62.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/other/fritz.os/FRITZ.Box_5690_Pro-07.62.image)
+   - deutschland: [FRITZ.Box_5690_Pro-08.03.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/deutschland/fritz.os/FRITZ.Box_5690_Pro-08.03.image)
+   - other: [FRITZ.Box_5690_Pro-08.01.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/other/fritz.os/FRITZ.Box_5690_Pro-08.01.image)
+   - other: [FRITZ.Box_5690_Pro-08.03.image](https://download.avm.de/fritzbox/fritzbox-5690-pro/other/fritz.os/FRITZ.Box_5690_Pro-08.03.image)
  * fritzbox-6430-cable/
    - deutschland: [FRITZ.Box_6430_Cable-07.30.image](https://download.avm.de/fritzbox/fritzbox-6430-cable/deutschland/fritz.os/FRITZ.Box_6430_Cable-07.30.image)
  * fritzbox-6490-cable/
@@ -46,17 +53,17 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_6590_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.57.image)
    - other: [FRITZ.Box_6590_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6590-cable/other/fritz.os/FRITZ.Box_6590_Cable-07.57.image)
  * fritzbox-6591-cable/
-   - deutschland: [FRITZ.Box_6591_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6591-cable/deutschland/fritz.os/FRITZ.Box_6591_Cable-07.57.image)
-   - other: [FRITZ.Box_6591_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6591-cable/other/fritz.os/FRITZ.Box_6591_Cable-07.57.image)
+   - deutschland: [FRITZ.Box_6591_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6591-cable/deutschland/fritz.os/FRITZ.Box_6591_Cable-08.03.image)
+   - other: [FRITZ.Box_6591_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6591-cable/other/fritz.os/FRITZ.Box_6591_Cable-08.03.image)
  * fritzbox-6660-cable/
-   - deutschland: [FRITZ.Box_6660_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6660-cable/deutschland/fritz.os/FRITZ.Box_6660_Cable-07.57.image)
-   - other: [FRITZ.Box_6660_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6660-cable/other/fritz.os/FRITZ.Box_6660_Cable-07.57.image)
+   - deutschland: [FRITZ.Box_6660_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6660-cable/deutschland/fritz.os/FRITZ.Box_6660_Cable-08.03.image)
+   - other: [FRITZ.Box_6660_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6660-cable/other/fritz.os/FRITZ.Box_6660_Cable-08.03.image)
  * fritzbox-6670-cable/
-   - deutschland: [FRITZ.Box_6670_Cable-07.63.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/deutschland/fritz.os/FRITZ.Box_6670_Cable-07.63.image)
-   - other: [FRITZ.Box_6670_Cable-07.63.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/other/fritz.os/FRITZ.Box_6670_Cable-07.63.image)
+   - deutschland: [FRITZ.Box_6670_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/deutschland/fritz.os/FRITZ.Box_6670_Cable-08.03.image)
+   - other: [FRITZ.Box_6670_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6670-cable/other/fritz.os/FRITZ.Box_6670_Cable-08.03.image)
  * fritzbox-6690-cable/
-   - deutschland: [FRITZ.Box_6690_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
-   - other: [FRITZ.Box_6690_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/other/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
+   - deutschland: [FRITZ.Box_6690_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-08.03.image)
+   - other: [FRITZ.Box_6690_Cable-08.03.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/other/fritz.os/FRITZ.Box_6690_Cable-08.03.image)
  * fritzbox-6810-lte/
    - deutschland: [FRITZ.Box_6810_LTE.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/deutschland/fritz.os/FRITZ.Box_6810_LTE.108.06.35.image)
    - other: [FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/other/fritz.os/FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image)
@@ -64,22 +71,28 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/deutschland/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
    - other: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/other/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
  * fritzbox-6820-lte-v2/
-   - deutschland: [FRITZ.Box_6820v2_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/deutschland/fritz.os/FRITZ.Box_6820v2_LTE-07.57.image)
-   - other: [FRITZ.Box_6820v2_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/other/fritz.os/FRITZ.Box_6820v2_LTE-07.57.image)
+   - deutschland: [FRITZ.Box_6820v2_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/deutschland/fritz.os/FRITZ.Box_6820v2_LTE-07.59.image)
+   - other: [FRITZ.Box_6820v2_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/other/fritz.os/FRITZ.Box_6820v2_LTE-07.59.image)
  * fritzbox-6820-lte-v3/
-   - deutschland: [FRITZ.Box_6820v3_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.57.image)
-   - other: [FRITZ.Box_6820v3_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/other/fritz.os/FRITZ.Box_6820v3_LTE-07.57.image)
+   - deutschland: [FRITZ.Box_6820v3_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.59.image)
+   - other: [FRITZ.Box_6820v3_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/other/fritz.os/FRITZ.Box_6820v3_LTE-07.59.image)
+ * fritzbox-6820-lte-v4/
+   - deutschland: [FRITZ.Box_6820v4_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v4/deutschland/fritz.os/FRITZ.Box_6820v4_LTE-07.59.image)
+   - other: [FRITZ.Box_6820v4_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v4/other/fritz.os/FRITZ.Box_6820v4_LTE-07.59.image)
  * fritzbox-6840-lte/
    - deutschland: [FRITZ.Box_6840_LTE.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/deutschland/fritz.os/FRITZ.Box_6840_LTE.105.06.88.image)
    - other: [FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/other/fritz.os/FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image)
  * fritzbox-6842-lte/
    - deutschland: [FRITZ.Box_6842_LTE.123.06.35.image](https://download.avm.de/fritzbox/fritzbox-6842-lte/deutschland/fritz.os/FRITZ.Box_6842_LTE.123.06.35.image)
  * fritzbox-6850-5g/
-   - deutschland: [FRITZ.Box_6850_5G-07.59.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/deutschland/fritz.os/FRITZ.Box_6850_5G-07.59.image)
-   - other: [FRITZ.Box_6850_5G-07.59.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/other/fritz.os/FRITZ.Box_6850_5G-07.59.image)
+   - deutschland: [FRITZ.Box_6850_5G-08.03.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/deutschland/fritz.os/FRITZ.Box_6850_5G-08.03.image)
+   - other: [FRITZ.Box_6850_5G-08.03.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/other/fritz.os/FRITZ.Box_6850_5G-08.03.image)
  * fritzbox-6850-lte/
-   - deutschland: [FRITZ.Box_6850_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/deutschland/fritz.os/FRITZ.Box_6850_LTE-07.59.image)
-   - other: [FRITZ.Box_6850_LTE-07.59.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/other/fritz.os/FRITZ.Box_6850_LTE-07.59.image)
+   - deutschland: [FRITZ.Box_6850_LTE-08.03.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/deutschland/fritz.os/FRITZ.Box_6850_LTE-08.03.image)
+   - other: [FRITZ.Box_6850_LTE-08.03.image](https://download.avm.de/fritzbox/fritzbox-6850-lte/other/fritz.os/FRITZ.Box_6850_LTE-08.03.image)
+ * fritzbox-6860-5g/
+   - deutschland: [FRITZ.Box_6860_5G-08.03.image](https://download.avm.de/fritzbox/fritzbox-6860-5g/deutschland/fritz.os/FRITZ.Box_6860_5G-08.03.image)
+   - other: [FRITZ.Box_6860_5G-08.03.image](https://download.avm.de/fritzbox/fritzbox-6860-5g/other/fritz.os/FRITZ.Box_6860_5G-08.03.image)
  * fritzbox-6890-lte/
    - belgium: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/belgium/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
    - deutschland: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/deutschland/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
@@ -115,23 +128,23 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - deutschland: [FRITZ.Box_7430-07.31.image](https://download.avm.de/fritzbox/fritzbox-7430/deutschland/fritz.os/FRITZ.Box_7430-07.31.image)
    - other: [FRITZ.Box_7430-07.31.image](https://download.avm.de/fritzbox/fritzbox-7430/other/fritz.os/FRITZ.Box_7430-07.31.image)
  * fritzbox-7490/
-   - belgium: [FRITZ.Box_7490-07.59.image](https://download.avm.de/fritzbox/fritzbox-7490/belgium/fritz.os/FRITZ.Box_7490-07.59.image)
-   - deutschland: [FRITZ.Box_7490-07.59.image](https://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.59.image)
-   - other: [FRITZ.Box_7490-07.59.image](https://download.avm.de/fritzbox/fritzbox-7490/other/fritz.os/FRITZ.Box_7490-07.59.image)
+   - belgium: [FRITZ.Box_7490-07.60.image](https://download.avm.de/fritzbox/fritzbox-7490/belgium/fritz.os/FRITZ.Box_7490-07.60.image)
+   - deutschland: [FRITZ.Box_7490-07.60.image](https://download.avm.de/fritzbox/fritzbox-7490/deutschland/fritz.os/FRITZ.Box_7490-07.60.image)
+   - other: [FRITZ.Box_7490-07.60.image](https://download.avm.de/fritzbox/fritzbox-7490/other/fritz.os/FRITZ.Box_7490-07.60.image)
  * fritzbox-7510/
-   - deutschland: [FRITZ.Box_7510-07.59.image](https://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-07.59.image)
-   - other: [FRITZ.Box_7510-07.59.image](https://download.avm.de/fritzbox/fritzbox-7510/other/fritz.os/FRITZ.Box_7510-07.59.image)
+   - deutschland: [FRITZ.Box_7510-08.02.image](https://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-08.02.image)
+   - other: [FRITZ.Box_7510-08.02.image](https://download.avm.de/fritzbox/fritzbox-7510/other/fritz.os/FRITZ.Box_7510-08.02.image)
  * fritzbox-7520/
-   - deutschland: [FRITZ.Box_7520-07.59.image](https://download.avm.de/fritzbox/fritzbox-7520/deutschland/fritz.os/FRITZ.Box_7520-07.59.image)
+   - deutschland: [FRITZ.Box_7520-08.02.image](https://download.avm.de/fritzbox/fritzbox-7520/deutschland/fritz.os/FRITZ.Box_7520-08.02.image)
  * fritzbox-7520-B/
-   - deutschland: [FRITZ.Box_7520_B-07.59.image](https://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-07.59.image)
+   - deutschland: [FRITZ.Box_7520_B-08.02.image](https://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-08.02.image)
  * fritzbox-7530/
-   - belgium: [FRITZ.Box_7530-07.59.image](https://download.avm.de/fritzbox/fritzbox-7530/belgium/fritz.os/FRITZ.Box_7530-07.59.image)
-   - deutschland: [FRITZ.Box_7530-07.59.image](https://download.avm.de/fritzbox/fritzbox-7530/deutschland/fritz.os/FRITZ.Box_7530-07.59.image)
-   - other: [FRITZ.Box_7530-07.59.image](https://download.avm.de/fritzbox/fritzbox-7530/other/fritz.os/FRITZ.Box_7530-07.59.image)
+   - belgium: [FRITZ.Box_7530-08.02.image](https://download.avm.de/fritzbox/fritzbox-7530/belgium/fritz.os/FRITZ.Box_7530-08.02.image)
+   - deutschland: [FRITZ.Box_7530-08.02.image](https://download.avm.de/fritzbox/fritzbox-7530/deutschland/fritz.os/FRITZ.Box_7530-08.02.image)
+   - other: [FRITZ.Box_7530-08.02.image](https://download.avm.de/fritzbox/fritzbox-7530/other/fritz.os/FRITZ.Box_7530-08.02.image)
  * fritzbox-7530-ax/
-   - deutschland: [FRITZ.Box_7530_AX-07.81.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/deutschland/fritz.os/FRITZ.Box_7530_AX-07.81.image)
-   - other: [FRITZ.Box_7530_AX-07.81.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/other/fritz.os/FRITZ.Box_7530_AX-07.81.image)
+   - deutschland: [FRITZ.Box_7530_AX-08.02.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/deutschland/fritz.os/FRITZ.Box_7530_AX-08.02.image)
+   - other: [FRITZ.Box_7530_AX-08.02.image](https://download.avm.de/fritzbox/fritzbox-7530-ax/other/fritz.os/FRITZ.Box_7530_AX-08.02.image)
  * fritzbox-7560/
    - deutschland: [FRITZ.Box_7560-07.30.image](https://download.avm.de/fritzbox/fritzbox-7560/deutschland/fritz.os/FRITZ.Box_7560-07.30.image)
    - other: [FRITZ.Box_7560-07.30.image](https://download.avm.de/fritzbox/fritzbox-7560/other/fritz.os/FRITZ.Box_7560-07.30.image)
@@ -142,24 +155,28 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
  * fritzbox-7582/
    - other: [FRITZ.Box_7582-07.18.image](https://download.avm.de/fritzbox/fritzbox-7582/other/fritz.os/FRITZ.Box_7582-07.18.image)
  * fritzbox-7583/
-   - deutschland: [FRITZ.Box_7583-07.59.image](https://download.avm.de/fritzbox/fritzbox-7583/deutschland/fritz.os/FRITZ.Box_7583-07.59.image)
-   - other: [FRITZ.Box_7583-07.59.image](https://download.avm.de/fritzbox/fritzbox-7583/other/fritz.os/FRITZ.Box_7583-07.59.image)
+   - deutschland: [FRITZ.Box_7583-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583/deutschland/fritz.os/FRITZ.Box_7583-08.03.image)
+   - other: [FRITZ.Box_7583-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583/other/fritz.os/FRITZ.Box_7583-08.03.image)
  * fritzbox-7583-vdsl/
-   - deutschland: [FRITZ.Box_7583_VDSL-07.59.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/deutschland/fritz.os/FRITZ.Box_7583_VDSL-07.59.image)
-   - other: [FRITZ.Box_7583_VDSL-07.59.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/other/fritz.os/FRITZ.Box_7583_VDSL-07.59.image)
+   - deutschland: [FRITZ.Box_7583_VDSL-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/deutschland/fritz.os/FRITZ.Box_7583_VDSL-08.03.image)
+   - other: [FRITZ.Box_7583_VDSL-08.03.image](https://download.avm.de/fritzbox/fritzbox-7583-vdsl/other/fritz.os/FRITZ.Box_7583_VDSL-08.03.image)
  * fritzbox-7590/
    - belgium: [FRITZ.Box_7590-07.59.image](https://download.avm.de/fritzbox/fritzbox-7590/belgium/fritz.os/FRITZ.Box_7590-07.59.image)
-   - deutschland: [FRITZ.Box_7590-07.59.image](https://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-07.59.image)
-   - other: [FRITZ.Box_7590-07.59.image](https://download.avm.de/fritzbox/fritzbox-7590/other/fritz.os/FRITZ.Box_7590-07.59.image)
+   - deutschland: [FRITZ.Box_7590-08.02.image](https://download.avm.de/fritzbox/fritzbox-7590/deutschland/fritz.os/FRITZ.Box_7590-08.02.image)
+   - other: [FRITZ.Box_7590-08.02.image](https://download.avm.de/fritzbox/fritzbox-7590/other/fritz.os/FRITZ.Box_7590-08.02.image)
  * fritzbox-7590-ax/
-   - deutschland: [FRITZ.Box_7590_AX-07.81.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/deutschland/fritz.os/FRITZ.Box_7590_AX-07.81.image)
-   - other: [FRITZ.Box_7590_AX-07.81.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/other/fritz.os/FRITZ.Box_7590_AX-07.81.image)
+   - deutschland: [FRITZ.Box_7590_AX-08.02.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/deutschland/fritz.os/FRITZ.Box_7590_AX-08.02.image)
+   - other: [FRITZ.Box_7590_AX-08.02.image](https://download.avm.de/fritzbox/fritzbox-7590-ax/other/fritz.os/FRITZ.Box_7590_AX-08.02.image)
+ * fritzbox-7682/
+   - deutschland: [FRITZ.Box_7682-08.03.image](https://download.avm.de/fritzbox/fritzbox-7682/deutschland/fritz.os/FRITZ.Box_7682-08.03.image)
+   - other: [FRITZ.Box_7682-08.03.image](https://download.avm.de/fritzbox/fritzbox-7682/other/fritz.os/FRITZ.Box_7682-08.03.image)
  * fritzbox-7690/
-   - deutschland: [FRITZ.Box_7690-07.62.image](https://download.avm.de/fritzbox/fritzbox-7690/deutschland/fritz.os/FRITZ.Box_7690-07.62.image)
+   - deutschland: [FRITZ.Box_7690-08.02.image](https://download.avm.de/fritzbox/fritzbox-7690/deutschland/fritz.os/FRITZ.Box_7690-08.02.image)
+   - other: [FRITZ.Box_7690-08.02.image](https://download.avm.de/fritzbox/fritzbox-7690/other/fritz.os/FRITZ.Box_7690-08.02.image)
 
 ### FritzDect
  * fritzsmart-gateway/
-   - deutschland: [FRITZ.Smart_Gateway-07.61-Release.image](https://download.avm.de/fritzdect/fritzsmart-gateway/deutschland/fritz.os/FRITZ.Smart_Gateway-07.61-Release.image)
+   - deutschland: [FRITZ.Smart_Gateway-08.01-Release.image](https://download.avm.de/fritzdect/fritzsmart-gateway/deutschland/fritz.os/FRITZ.Smart_Gateway-08.01-Release.image)
 
 ### FritzPowerline
  * fritzpowerline-1000e/
@@ -212,6 +229,8 @@ Content: [FritzBox](#fritzbox) - [FritzDect](#fritzdect) - [FritzPowerline](#fri
    - other: [FRITZ.Powerline_546E-07.15.image](https://download.avm.de/fritzpowerline/fritzpowerline-546e/other/fritz.os/FRITZ.Powerline_546E-07.15.image)
 
 ### FritzWlan
+ * fritzmesh-set-4200/
+   - other: [FRITZ.Repeater_3000_AX-08.02.image](https://download.avm.de/fritzwlan/fritzmesh-set-4200/other/fritz.os/FRITZ.Repeater_3000_AX-08.02.image)
  * fritzrepeater-1200/
    - deutschland: [FRITZ.Repeater_1200-07.58.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/deutschland/fritz.os/FRITZ.Repeater_1200-07.58.image)
    - other: [FRITZ.Repeater_1200-07.58.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/other/fritz.os/FRITZ.Repeater_1200-07.58.image)

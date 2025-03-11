@@ -1,12 +1,12 @@
 --- libssh2.pc.in
 +++ libssh2.pc.in
-@@ -11,7 +11,6 @@
- URL: https://www.libssh2.org/
+@@ -14,8 +14,6 @@
+ URL: https://libssh2.org/
  Description: Library for SSH-based communication
- Version: @LIBSSH2VER@
--Requires.private: @LIBSREQUIRED@
--Libs: -L${libdir} -lssh2 @LIBS@
--Libs.private: @LIBS@
-+Requires: @LIBSREQUIRED@
+ Version: @LIBSSH2_VERSION@
+ Requires: @LIBSSH2_PC_REQUIRES@
+-Requires.private: @LIBSSH2_PC_REQUIRES_PRIVATE@
+-Libs: -L${libdir} -lssh2 @LIBSSH2_PC_LIBS@
+-Libs.private: @LIBSSH2_PC_LIBS_PRIVATE@
 +Libs: -L${libdir} -lssh2 @LIBGCRYPT@ @LIBMBEDCRYPTO@
  Cflags: -I${includedir}

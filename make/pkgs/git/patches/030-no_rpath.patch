@@ -18,10 +18,12 @@
    for ac_prog in gar ar
 --- shared.mak
 +++ shared.mak
-@@ -114,5 +114,5 @@
+@@ -114,7 +114,7 @@
  ## With CC_LD_DYNPATH set to either an empty string or to "-L", the
  ## the directory is not shown the second time.
  define libpath_template
 --L$(1) $(if $(filter-out -L,$(CC_LD_DYNPATH)),$(CC_LD_DYNPATH)$(1))
 +-L$(1)
  endef
+ 
+ # Populate build information into a file via GIT-VERSION-GEN. Requires the

@@ -1,4 +1,4 @@
-# radvd 1.9.3/2.19
+# radvd 1.9.3/2.20
  - Homepage: [https://radvd.litech.org/](https://radvd.litech.org/)
  - Manpage: [https://linux.die.net/man/5/radvd.conf](https://linux.die.net/man/5/radvd.conf)
  - Changelog: [https://github.com/radvd-project/radvd/blob/master/CHANGES](https://github.com/radvd-project/radvd/blob/master/CHANGES)

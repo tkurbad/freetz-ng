@@ -23,10 +23,10 @@ DOT_CONFIG="$FREETZ_BASE_DIR_FOUND/.config"
 #WGET_INSECURE_HTTPS="--no-check-certificate"
 FREETZ_DL_SITE_0="https://freetz-ng.root.sx"
 FREETZ_DL_SITE_1="https://freetz.magenbrot.net"
-#FREETZ_DL_SITE_x="http://freetz.3dfxatwork.de"
-FREETZ_DL_SITE_2="https://freetz.wirsind.info"
-FREETZ_DL_SITE_3="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"
-FREETZ_DL_SITES_COUNT=4
+FREETZ_DL_SITE_2="http://freetz.3dfxatwork.de"
+FREETZ_DL_SITE_3="https://freetz.wirsind.info"
+FREETZ_DL_SITE_4="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"
+FREETZ_DL_SITES_COUNT=5
 FREETZ_DL_SITES_NORND_FIRST=1
 FREETZ_DL_SITES_NORND_LAST=1
 
@@ -34,7 +34,7 @@ helpmsg() {
 cat << 'EOF'
 freetz_download - download Freetz packages
 
-Usage: freetz_download (-?|--help) | [--delete-on-trap] [--no-append-servers] [--checksum-optional] ( (<download-dir> | check) <filename> [<main-url>,<mirror1>,<mirror2>,...] [<checksum>] )
+Usage: freetz_download (-?|--help) | [-d|--delete-on-trap] [-n|--no-append-servers] [-c|--checksum-optional] [-o|--out-file file] ( (<download-dir> | check) <filename> [<main-url>,<mirror1>,<mirror2>,...] [<checksum>] )
     check         - check download
     download-dir  - target directory for download file
     filename      - download file name
@@ -195,20 +195,20 @@ opt_append_servers=y
 opt_needs_checksum=y
 while [ $# -gt 1 ]; do
 	case "$1" in
-		--out-file)
+		-o|--out-file)
 			shift
 			opt_out_file="$1"
 			shift
 			;;
-		--delete-on-trap)
+		-d|--delete-on-trap)
 			opt_trap_delete=y
 			shift
 			;;
-		--no-append-servers)
+		-n|--no-append-servers)
 			opt_append_servers=n
 			shift
 			;;
-		--checksum-optional)
+		-c|--checksum-optional)
 			opt_needs_checksum=n
 			shift
 			;;
@@ -252,18 +252,26 @@ else
 	exec 12>&2
 fi
 
-# Array 'sites' will be filled with all download server URLs
-num_sites=0
-
 # User defined mirror(s) always and at very first (if any)
-if [ -n "$FREETZ_DL_SITE_USER" -o -n "$FREETZ_DL_SITE_CUSTOM" ]; then
+enumerate_mirrors_private() {
+	local sites
+	local num_sites=0
+	unset mirrors_private
+
 	for user_site in $FREETZ_DL_SITE_USER $FREETZ_DL_SITE_CUSTOM; do
 		sites[(( num_sites++ ))]="$user_site"
 	done
-fi
+
+	mirrors_private=("${sites[@]}")
+}
 
 # Primary site and package specific mirrors (if specified)
-if [ -n "$URLs" ]; then
+enumerate_mirrors_official() {
+	local sites
+	local num_sites=0
+	unset mirrors_official
+
+	[ -n "$URLs" ] || return
 	# check if URLs contains magic sequence corresponding to one of the supported VCSs
 	supportedVCSs="cvs|svn|git|git_no_submodules|git_archive|git_sparse|bzr|hg|darcs"
 	VCS="$(echo "${URLs}" | sed -nr -e "s,^(${supportedVCSs})(@|://).*,\1,p")"
@@ -280,7 +288,14 @@ if [ -n "$URLs" ]; then
 
 		for url in $(eval echo "{${URLs},}"); do # wrap URLs with curly-braces to apply brace-expansion
 			if [ ${url:0:7} == "@MIRROR" ]; then
-				: # file is only on mirrors available
+				if [ "${#url}" -le 8 ]; then
+					: # file is only on mirrors
+				else
+					# special mirror handling
+					for single_mirror in "${mirrors_public[@]}"; do
+						sites[(( num_sites++ ))]=${single_mirror}/${url:8}
+					done
+				fi
 			elif [ ${url:0:3} == "@SF" ]; then
 				# give sourceforge a few more tries, because it redirects to different mirrors
 				subpath=${url/@SF\//}
@@ -296,16 +311,13 @@ if [ -n "$URLs" ]; then
 #				sites[(( num_sites++ ))]=https://download.avm.de/fritzdect/$subpath
 				sites[(( num_sites++ ))]=https://avm.de/$subpath
 				sites[(( num_sites++ ))]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
-#				sites[(( num_sites++ ))]=https://download.avm.de/labor/Smart24P1/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/labor/GoFiber23/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/labor/FCS23/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21NL1/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23NL1/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/FCS23/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P2/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1NL1/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23NL1/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/FCS23/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21NL1/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21/$subpath
 #				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/WU22PSQ19/$subpath
@@ -363,10 +375,16 @@ if [ -n "$URLs" ]; then
 			fi
 		done
 	fi
-fi
+
+	mirrors_official=("${sites[@]}")
+}
 
 # Add all mirrors to 'sites' array (if not invalid checksum (=repo only) and not an image)
-if [ "$CHECKSUM" != "X" -a "$opt_append_servers" != "n" ]; then
+enumerate_mirrors_public() {
+	local sites
+	local num_sites=0
+	unset mirrors_public
+
 	# Get Freetz mirror sites in an array
 	FREETZ_SITES=( $(
 		for (( i=0; i < $FREETZ_DL_SITES_COUNT ; i++ )); do
@@ -387,7 +405,27 @@ if [ "$CHECKSUM" != "X" -a "$opt_append_servers" != "n" ]; then
 	for (( n=$(( ${FREETZ_DL_SITES_COUNT} - ${FREETZ_DL_SITES_NORND_LAST} )); n < ${FREETZ_DL_SITES_COUNT}; n++ )); do
 		sites[(( num_sites++ ))]="${FREETZ_SITES[$n]}"
 	done
+
+	mirrors_public=("${sites[@]}")
+}
+
+enumerate_mirrors_private
+enumerate_mirrors_public
+enumerate_mirrors_official
+
+if [ -n "$FREETZ_DL_SITE_USER" -o -n "$FREETZ_DL_SITE_CUSTOM" ]; then
+	sites+=("${mirrors_private[@]}")
 fi
+
+if [ -n "$URLs" ]; then
+	sites+=("${mirrors_official[@]}")
+fi
+
+# Add all mirrors to 'sites' array (if not invalid checksum (=repo only) and not an image)
+if [ "$CHECKSUM" != "X" -a "$opt_append_servers" != "n" ]; then
+	sites+=("${mirrors_public[@]}")
+fi
+
 
 calculate_full_checksum() {
 	local CHECKSUM_ALGO="${CHECKSUM_ALGOS[64]}"

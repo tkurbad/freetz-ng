@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 1.7.0)
+$(call TOOLS_INIT, 1.7.2)
 $(PKG)_SOURCE:=dtc-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=29edce3d302a15563d8663198bbc398c5a0554765c83830d0d4c0409d21a16c4
+$(PKG)_HASH:=92d8ca769805ae1f176204230438fe52808f4e1c7944053c9eec0e649b237539
 $(PKG)_SITE:=@KERNEL/software/utils/dtc
 ### WEBSITE:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git
 ### CHANGES:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git/log/

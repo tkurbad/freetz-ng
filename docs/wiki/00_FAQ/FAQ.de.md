@@ -150,26 +150,26 @@ Zukünftig wird das dann der Tag 2.0 werden.\
 Auschecken einer stabilen Version:
 
 ```
-	svn co http://svn.freetz.org/branches/freetz-stable-2.0 freetz-stable-2.0
+	svn co http://svn_freetz_org/branches/freetz-stable-2.0 freetz-stable-2.0
 ```
 
 Auschecken eines Tags:
 
 ```
-	svn co http://svn.freetz.org/tags/freetz-1.2 freetz-1.2
+	svn co http://svn_freetz_org/tags/freetz-1.2 freetz-1.2
 ```
 
 Nach Erscheinen des neuen Tag 2.0 wird dieser dann wie folgt
 ausgecheckt:
 
 ```
-	svn co http://svn.freetz.org/tags/freetz-2.0 freetz-2.0
+	svn co http://svn_freetz_org/tags/freetz-2.0 freetz-2.0
 ```
 
 Auschecken einer Entwicklerversion (trunk):
 
 ```
-	svn co http://svn.freetz.org/trunk freetz-trunk
+	svn co http://svn_freetz_org/trunk freetz-trunk
 ```
 
 Achtung! Die Entwicklerversion (trunk) ist nur für fortgeschrittene

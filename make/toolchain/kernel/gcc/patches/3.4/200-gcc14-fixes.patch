@@ -5,7 +5,7 @@
  #include <sys/types.h>
  
 -#if STDC_HEADERS || defined _LIBC
-+#if STDC_HEADERS || defined _LIBC || __GNUC_PREREQ(14,0)
++#if STDC_HEADERS || defined _LIBC || __GNUC__>=14
  # include <stdlib.h>
  # include <string.h>
  #else
@@ -16,7 +16,7 @@
  #  undef REL_ALLOC
  
 -#  if defined STDC_HEADERS || defined _LIBC
-+#  if defined STDC_HEADERS || defined _LIBC || __GNUC_PREREQ(14,0)
++#  if defined STDC_HEADERS || defined _LIBC || __GNUC__>=14
  #   include <stdlib.h>
  #  else
  char *malloc ();

@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 0.8.3)
+$(call PKG_INIT_LIB, 0.8.5)
 $(PKG)_LIB_VERSION:=0.0.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=bed6f6848e22bb2f83b5f764b2aef0ed393054e803a8e3a8711cb2a39e6b492d
+$(PKG)_HASH:=3ba5294d1cbdfa98afaacfbc00b6af9ed2b83e8a21817185dfd844cc8c7ac6ff
 $(PKG)_SITE:=https://people.redhat.com/sgrubb/libcap-ng
 ### WEBSITE:=https://people.redhat.com/sgrubb/libcap-ng/
 ### CHANGES:=https://people.redhat.com/sgrubb/libcap-ng/ChangeLog

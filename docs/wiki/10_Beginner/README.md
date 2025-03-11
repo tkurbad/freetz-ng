@@ -3,6 +3,8 @@
 # Beginner
  - [Addon Paket installieren](addon.md)
     * [Erweiterung ab r15856 / 3dda64565e](addon.md#erweiterung-ab-r15856--3dda64565e)
+ - [Grundlegende Fragen [DE]](basic_questions.de.md)
+    * [Gut zu wissen](basic_questions.de.md#gut-zu-wissen)
  - [Basic questions [EN]](basic_questions.en.md)
     * [Good to know](basic_questions.en.md#good-to-know)
  - [Wie baue ich meinen ersten trunk?](first_trunk.md)

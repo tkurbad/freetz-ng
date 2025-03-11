@@ -68,12 +68,14 @@ ifeq ($(strip $(FREETZ_KERNEL_AVMDIFF_AVAILABLE)),y)
 	  [ "$$a" == "touch" ] && touch       "$(KERNEL_SOURCE_DIR)/$${b}"; \
 	done $(SILENT) || true
 endif
-ifneq ($(strip $(FREETZ_KERNEL_AVM_CHAOTIC_PACK)),y)
+	@if [ -e "$(KERNEL_SOURCE_DIR)/scripts/kconfig/lxdialog/check-lxdialog.sh" ]; then \
+		echo "#fixing ncurses detection bug" $(SILENT); \
+		$(SED) 's/^main()/int &/' -i $(KERNEL_SOURCE_DIR)/scripts/kconfig/lxdialog/check-lxdialog.sh; \
+	fi;
 	@echo "#kernel version specific patches: $(KERNEL_PATCHES_DIR)" $(SILENT)
 	@$(call APPLY_PATCHES,$(KERNEL_PATCHES_DIR),$(KERNEL_DIR))
 	@echo "#firmware version specific patches: $(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID)" $(SILENT)
 	@$(call APPLY_PATCHES,$(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID),$(KERNEL_DIR))
-endif
 	@echo "#additional generic fixes" $(SILENT)
 	@for i in $(KERNEL_LINKING_FILES); do \
 		f="$${i%%,*}"; symlink_location="$${i##*,}"; \

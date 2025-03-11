@@ -5,7 +5,6 @@ $(PKG)_SITE:=@SF/poptop
 ### WEBSITE:=https://sourceforge.net/projects/poptop/
 ### CHANGES:=https://sourceforge.net/projects/poptop/files/pptpd/
 ### CVSREPO:=https://sourceforge.net/p/poptop/git/ci/master/tree/
-### SUPPORT:=fda77
 
 $(PKG)_BINARIES:=bcrelay pptpctrl pptpd
 $(PKG)_BINARIES_BUILD_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)

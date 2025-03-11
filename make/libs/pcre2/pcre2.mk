@@ -1,8 +1,8 @@
-$(call PKG_INIT_LIB, 10.44)
-$(PKG)_LIB_VERSION:=0.13.0
-$(PKG)_POSIX_LIB_VERSION:=3.0.5
+$(call PKG_INIT_LIB, 10.45)
+$(PKG)_LIB_VERSION:=0.14.0
+$(PKG)_POSIX_LIB_VERSION:=3.0.6
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=d34f02e113cf7193a1ebf2770d3ac527088d485d4e047ed10e5d217c6ef5de96
+$(PKG)_HASH:=21547f3516120c75597e5b30a992e27a592a31950b5140e7b8bfde3f192033c4
 $(PKG)_SITE:=https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$($(PKG)_VERSION)
 ### WEBSITE:=https://www.pcre.org/
 ### MANPAGE:=https://www.pcre.org/current/doc/html/

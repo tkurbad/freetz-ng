@@ -10,6 +10,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
  - [Debian](#debian)
  - [Devuan](#devuan)
  - [Ubuntu](#ubuntu)
+ - [Mint](#mint)
  - [Kali](#kali)
  - sonst keine
 
@@ -47,6 +48,18 @@ aarch64
  - System aktualisieren:
 ```
 sudo dnf -y update && sudo systemctl daemon-reload
+```
+
+ - Fedora 41 64-Bit:
+```
+sudo dnf -y install \
+  bc binutils bison bzip2 ccache cmake curl ecj elfutils-libelf-devel flex gcc gcc-c++ gettext \
+  git glib2-devel glibc-devel gnutls-devel ImageMagick inkscape javapackages-tools kmod \
+  libacl-devel libattr-devel libcap-devel libgcc libglade2-devel libstdc++-devel libtool \
+  libuuid-devel libxml2-devel libzstd-devel make ncurses ncurses-devel ncurses-term netcat net-tools \
+  openssl openssl-devel openssl-devel-engine patch patchutils perl perl-String-CRC32 pkgconfig pv \
+  qt5-qtbase-devel readline-devel rpcgen rsync sharutils sqlite sqlite-devel subversion texinfo unar \
+  util-linux wget xz zlib-ng-devel
 ```
 
  - Fedora 40 64-Bit:
@@ -184,7 +197,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 23/24 64-Bit:
+ - Ubuntu 23/24/25 64-Bit:
 ```
 sudo apt-get -y install \
   autopoint bc binutils bison bsdmainutils bzip2 ccache cmake curl ecj flex ftp g++ gawk gcc \
@@ -307,6 +320,9 @@ sudo apt-get -y install \
   libncurses5-dev libreadline-dev libstring-crc32-perl libtool libusb-dev make patch perl pkg-config \
   python realpath subversion texinfo tofrodos unzip xz-utils zlib1g-dev
 ```
+
+### Mint
+Mint wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.
 
 ### Kali
 Kali rolling wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Ubuntu vorgeschlagen werden.

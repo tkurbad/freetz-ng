@@ -29,7 +29,7 @@ main() {
 			block2mtd)			koon  MTD_BLOCK2MTD			MTD ;;
 
 			aead)				koon  CRYPTO_AEAD			 ;;
-			arc4)				koon  CRYPTO_ARC4			 ;;
+			arc4)				koon  CRYPTO_ARC4			CRYPTO_USER_API_HASH CRYPTO_USER_API_ENABLE_OBSOLETE=y ;;
 			aes)				koon  CRYPTO_AES			 ;;
 			cbc)				koon  CRYPTO_CBC			 ;;
 			crypto_blkcipher)		koon  CRYPTO_BLKCIPHER			 ;;
@@ -108,6 +108,7 @@ main() {
 			msdos)				koon  MSDOS_FS				 ;;
 			reiserfs)			koon  REISERFS_FS			 ;;
 			udf)				koon  UDF_FS				 ;;
+			crc_itu_t)			koon  CRC_ITU_T				 ;;
 			unionfs)			koon  UNION_FS				 ;;
 
 			autofs4)			koon  AUTOFS4_FS			 ;;
@@ -140,6 +141,8 @@ main() {
 			lzo_decompress)			koon  CRYPTO_LZO			 ;;
 
 			bluetooth)			koon  BT				 ;;
+			ecdh_generic)			koon  CRYPTO_ECDH			 ;;
+			ecc)				koon  CRYPTO_ECC			 ;;
 			bnep)				koon  BT_BNEP				BT_BREDR=y ;;
 			l2cap)				koon  BT_L2CAP				 ;;
 			rfcomm)				koon  BT_RFCOMM				BT_BREDR=y ;;
