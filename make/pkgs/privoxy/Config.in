@@ -22,13 +22,27 @@ if FREETZ_PACKAGE_PRIVOXY
 			This option enables automatic filter list downloads from adblock.org.
 			Requires and selects GNU wget (busybox wget does not support https).
 
-	config FREETZ_PACKAGE_PRIVOXY_WITH_SHARED_PCRE
-		bool "With shared libpcre"
-		select FREETZ_LIB_libpcre
-		select FREETZ_LIB_libpcreposix
-		default y
-		help
-			Causes libpcre to be linked in dynamically.
+	choice
+		prompt "pcre"
+			default FREETZ_PACKAGE_PRIVOXY_WITH_PCRE_SHARED_V2
+
+#		config FREETZ_PACKAGE_PRIVOXY_WITH_PCRE_STATIC_BI
+#			bool "static built-in"
+#			help
+#				Does not work with v4:
+#				configure: error: Detected neither pcre2 nor pcre library.
+
+		config FREETZ_PACKAGE_PRIVOXY_WITH_PCRE_SHARED_V1
+			bool "shared v1"
+			select FREETZ_LIB_libpcre
+			select FREETZ_LIB_libpcreposix
+
+		config FREETZ_PACKAGE_PRIVOXY_WITH_PCRE_SHARED_V2
+			bool "shared v2"
+			select FREETZ_LIB_libpcre2
+			select FREETZ_LIB_libpcre2_posix
+
+	endchoice
 
 	config FREETZ_PACKAGE_PRIVOXY_WITH_ZLIB
 		bool "With zlib Compression"
