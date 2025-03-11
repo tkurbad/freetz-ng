@@ -76,6 +76,7 @@ Latest changes
    * tcpdump 4.1.1/4.99.4
 
  - Libraries:
+   * libpcap 1.1.1/1.10.5
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
