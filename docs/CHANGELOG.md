@@ -74,6 +74,7 @@ Latest changes
    * Mosquitto 2.0.21
    * socat 1.8.0.3
    * tcpdump 4.1.1/4.99.4
+   * UnRAR 6.1.7/7.1.5
 
  - Libraries:
    * libpcap 1.1.1/1.10.5
