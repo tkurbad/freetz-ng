@@ -26,7 +26,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[dos2unix 7.5.2](dos2unix-host.md)<a id='dos2unix-host'></a>**<br>
 
-  * **[dtc 1.7.0](dtc-host.md)<a id='dtc-host'></a>**<br>
+  * **[dtc 1.7.2](dtc-host.md)<a id='dtc-host'></a>**<br>
 
 ### E
 
