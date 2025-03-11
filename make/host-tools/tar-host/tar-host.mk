@@ -20,6 +20,8 @@ ifeq ($(strip $(FREETZ_ANCIENT_SYSTEM)),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-year2038
 endif
 
+$(PKG)_REBUILD_SUBOPTS += FREETZ_ANCIENT_SYSTEM
+
 
 define $(PKG)_CUSTOM_UNPACK
 	tar -C $(TOOLS_SOURCE_DIR) $(VERBOSE) -xf $(DL_DIR)/$($(PKG)_SOURCE)
