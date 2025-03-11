@@ -70,6 +70,7 @@ Latest changes
    * htop 1.0.3/3.4.0
    * ImageMagick 7.1.1-45
    * Lua 5.1.5/5.4.7
+   * Minicom 2.10
 
  - Libraries:
 
