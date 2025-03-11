@@ -460,7 +460,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[madplay 0.15.2b (binary only) - DEPRECATED](../../docs/make/madplay.md)<a id='madplay'></a>**<br>
     MAD is a high-quality fixed-point MPEG audio decoder with 24-bit output. The implementation is entirely new, based on the ISO/IEC standards, and performs especially well on systems without native floating-point support.
 
-  * **[mc (Midnight Commander) 4.8.31/4.8.32 (binary only)](../../docs/make/mc.md)<a id='mc'></a>**<br>
+  * **[mc (Midnight Commander) 4.8.31/4.8.33 (binary only)](../../docs/make/mc.md)<a id='mc'></a>**<br>
     For devices with older glib2.
 
   * **[mcabber 0.9.9 - DEPRECATED](../../docs/make/mcabber.md)<a id='mcabber'></a>**<br>
