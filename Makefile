@@ -26,7 +26,9 @@ ENVIRA_LAST_REV:=.envira.log
 ENVIRA_REV_TOOL:=tools/freetz_revision
 ENVIRA_PATH_REL:=tools/path
 ENVIRA_PATH_ABS:=$(shell realpath $(ENVIRA_PATH_REL))
+ENVIRA_SYS_LANG:=$(shell locale | sed -n 's/^LANG=//p')
 ENVIRA_MAKE_VARS:=$(ENVIRA_MARK)=y
+ENVIRA_MAKE_VARS+=SYS_LANG=$(ENVIRA_SYS_LANG)
 
 envira:
 ifneq ($(shell umask),$(ENVIRA_UMASK))
