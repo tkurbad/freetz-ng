@@ -1,0 +1,10 @@
+--- avm/config-grx5-7590_08.20
++++ freetz/config-grx5-7590_08.20
+@@ -1860,7 +1860,6 @@
+ CONFIG_TFFS_PANIC_LOG=y
+ CONFIG_TFFS_PANIC_LOG_ID=96
+ CONFIG_TFFS_USER_LOG=y
+-# CONFIG_TFFS_DEBUGFS is not set
+ 
+ #
+ # AVM Sammeltreiber

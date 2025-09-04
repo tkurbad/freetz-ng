@@ -1,5 +1,5 @@
-config EXTERNAL_FREETZ_LIB_libuClibc__
-	depends on EXTERNAL_ENABLED && FREETZ_LIB_libuClibc__
+config EXTERNAL_FREETZ_LIB_libuClibcxx
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libuClibcxx
 	bool "libuClibc++"
 	default n
 	help

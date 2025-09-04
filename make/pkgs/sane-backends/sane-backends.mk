@@ -1,8 +1,9 @@
 $(call PKG_INIT_BIN,1.0.27)
 $(PKG)_LIB_VERSION:=1.0.27
 $(PKG)_SOURCE:=$(pkg)_$($(PKG)_VERSION).orig.tar.gz
+$(PKG)_SOURCE_DOWNLOAD_NAME:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=293747bf37275c424ebb2c833f8588601a60b2f9653945d5a3194875355e36c9
-$(PKG)_SITE:=http://ftp.de.debian.org/debian/pool/main/s/$(pkg)
+$(PKG)_SITE:=https://gitlab.com/sane-project/backends/uploads/6ca779fc5ae2e825efbac91ad7bc75fb
 
 # saned
 $(PKG)_TARGET_saned:=$($(PKG)_DEST_DIR)/usr/sbin/saned

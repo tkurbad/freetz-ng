@@ -1,4 +1,5 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_OPENSSH_sshd"         == "y" ] && EXTERNAL_FILES+=" /usr/sbin/sshd"
+[ "$EXTERNAL_FREETZ_PACKAGE_OPENSSH_sshd_auth"    == "y" ] && EXTERNAL_FILES+=" /usr/lib/sshd-auth"
 [ "$EXTERNAL_FREETZ_PACKAGE_OPENSSH_sshd_session" == "y" ] && EXTERNAL_FILES+=" /usr/lib/sshd-session"
 [ "$EXTERNAL_FREETZ_PACKAGE_OPENSSH_ssh"          == "y" ] && EXTERNAL_FILES+=" /usr/bin/ssh"
 [ "$EXTERNAL_FREETZ_PACKAGE_OPENSSH_scp"          == "y" ] && EXTERNAL_FILES+=" /usr/bin/scp"

@@ -2,7 +2,7 @@ comment "Dropbear (not available, needs replace kernel for pty-support)"
 	depends on !FREETZ_REPLACE_KERNEL && !FREETZ_AVM_HAS_PTY_SUPPORT && !FREETZ_SHOW_EXPERT
 
 config FREETZ_PACKAGE_DROPBEAR
-	bool "Dropbear 2025.87"
+	bool "Dropbear 2025.88"
 	depends on FREETZ_REPLACE_KERNEL || FREETZ_AVM_HAS_PTY_SUPPORT || FREETZ_SHOW_EXPERT
 	select FREETZ_LIB_libutil if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default y
@@ -36,7 +36,7 @@ if FREETZ_PACKAGE_DROPBEAR
 
 	config FREETZ_PACKAGE_DROPBEAR_SFTP_SERVER
 		bool "Add SFTP support"
-		depends on FREETZ_OPENSSL_VERSION_1_MIN
+		depends on FREETZ_OPENSSL_VERSION_10_MIN
 		select FREETZ_PACKAGE_OPENSSH
 		select FREETZ_PACKAGE_OPENSSH_sftp_server
 		default n

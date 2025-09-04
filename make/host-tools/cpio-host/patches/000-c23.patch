@@ -1,0 +1,28 @@
+
+  https://github.com/openwrt/openwrt/commit/c5041094ba06b3cdfb9458f1cb5acb00a9cbacd3
+  https://savannah.gnu.org/bugs/?66297
+  https://file.savannah.gnu.org/file/cpio-c23.patch?file_id=56478
+
+--- cpio-2.15/src/extern.h	2024-01-14 05:42:18.000000000 -0600
++++ cpio-2.15-works/src/extern.h	2024-10-05 14:58:21.634841118 -0600
+@@ -97,7 +97,8 @@
+ extern char output_is_special;
+ extern char input_is_seekable;
+ extern char output_is_seekable;
+-extern int (*xstat) ();
++//void not good enough
++extern int (*xstat) (const char * restrict,  struct stat * restrict);
+ extern void (*copy_function) ();
+ extern char *change_directory_option;
+ 
+--- cpio-2.15/src/global.c	2024-01-14 05:42:18.000000000 -0600
++++ cpio-2.15-works/src/global.c	2024-10-05 14:58:56.790838455 -0600
+@@ -185,7 +185,7 @@
+ 
+ /* A pointer to either lstat or stat, depending on whether
+    dereferencing of symlinks is done for input files.  */
+-int (*xstat) ();
++int (*xstat) (const char * restrict,  struct stat * restrict);
+ 
+ /* Which copy operation to perform. (-i, -o, -p) */
+ void (*copy_function) () = 0;

@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 2.13.6)
-$(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
+$(call PKG_INIT_LIB, 2.14.5)
+$(PKG)_LIB_VERSION:=16.0.5
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=f453480307524968f7a04ec65e64f2a83a825973bcd260a2e7691be82ae70c96
+$(PKG)_HASH:=03d006f3537616833c16c53addcdc32a0eb20e55443cba4038307e3fa7d8d44b
 $(PKG)_SITE:=https://download.gnome.org/sources/libxml2/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=http://www.xmlsoft.org
 ### MANPAGE:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#html-documentation
@@ -21,27 +21,25 @@ $(PKG)_DEPENDS_ON += iconv
 endif
 $(PKG)_DEPENDS_ON += zlib
 
+$(PKG)_CONFIGURE_ENV += ac_cv_have_decl_getentropy=no
+
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 
-$(PKG)_CONFIGURE_OPTIONS += --enable-rebuild-docs=no
 $(PKG)_CONFIGURE_OPTIONS += --with-debug=no
-$(PKG)_CONFIGURE_OPTIONS += --with-run-debug=no
 $(PKG)_CONFIGURE_OPTIONS += --with-python=no
 
 $(PKG)_CONFIGURE_OPTIONS += --with-iso8859x=no
 $(PKG)_CONFIGURE_OPTIONS += --with-iconv=yes
 
 $(PKG)_CONFIGURE_OPTIONS += --with-threads=yes
-$(PKG)_CONFIGURE_OPTIONS += --with-zlib=yes
+$(PKG)_CONFIGURE_OPTIONS += --with-zlib="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 $(PKG)_CONFIGURE_OPTIONS += --with-readline=no
 
 $(PKG)_CONFIGURE_OPTIONS += --with-minimum=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-http=yes
-$(PKG)_CONFIGURE_OPTIONS += --with-ftp=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-c14n=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-catalog=no
-$(PKG)_CONFIGURE_OPTIONS += --with-docbook=no
 $(PKG)_CONFIGURE_OPTIONS += --with-html=$(if $(FREETZ_LIB_libxml2_WITH_HTML),yes,no)
 $(PKG)_CONFIGURE_OPTIONS += --with-legacy=no		#deprecated APIs for compatibility
 $(PKG)_CONFIGURE_OPTIONS += --with-lzma=no
@@ -53,7 +51,6 @@ $(PKG)_CONFIGURE_OPTIONS += --with-regexps=yes		#Regular Expressions support
 $(PKG)_CONFIGURE_OPTIONS += --with-sax1=yes		#old SAX1 interface
 $(PKG)_CONFIGURE_OPTIONS += --with-schemas=yes		#Relax-NG and Schemas support
 $(PKG)_CONFIGURE_OPTIONS += --with-schematron=no	#Schematron support
-$(PKG)_CONFIGURE_OPTIONS += --with-tree=yes		#DOM like tree manipulation APIs
 $(PKG)_CONFIGURE_OPTIONS += --with-valid=yes		#DTD validation support
 $(PKG)_CONFIGURE_OPTIONS += --with-writer=yes		#xmlWriter saving interface
 $(PKG)_CONFIGURE_OPTIONS += --with-xinclude=yes		#XInclude support
@@ -94,7 +91,7 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBXML2_DIR) clean
 	$(RM) -r \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libxml2* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libxml2.* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/xml2-config \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libxml* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libxml-2.0.pc

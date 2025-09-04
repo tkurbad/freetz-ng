@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 3.12.9)
+$(call TOOLS_INIT, 3.13.7)
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=7220835d9f90b37c006e9842a8dff4580aaca4318674f947302b8d28f3f81112
+$(PKG)_HASH:=5462f9099dfd30e238def83c71d91897d8caa5ff6ebc7a50f14d4802cdaaa79a
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.python.org/
 ### MANPAGE:=https://docs.python.org/3/
@@ -8,8 +8,12 @@ $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### CVSREPO:=https://github.com/python/cpython
 ### SUPPORT:=fda77
 
+$(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+$(PKG)_MAJOR_VERSION_1:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
+$(PKG)_SITE_PACKAGES:=$(HOST_TOOLS_DIR)/usr/lib/python$($(PKG)_MAJOR_VERSION)/site-packages
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
-$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$($(PKG)_MAJOR_VERSION)
 
 # python quirk: CFLAGS and OPT flags passed here are then used while cross-compiling -> use some target neutral flags
 $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
@@ -21,6 +25,9 @@ $(PKG)_CONFIGURE_OPTIONS += --prefix=/usr
 $(PKG)_CONFIGURE_OPTIONS += --enable-optimizations
 $(PKG)_CONFIGURE_OPTIONS += --disable-test-modules
 
+$(PKG)_CFLAGS := $(TOOLS_CFLAGS)
+#
+
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
@@ -29,6 +36,7 @@ $(TOOLS_CONFIGURED_CONFIGURE)
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	(PATH=$(TARGET_PATH); \
 		$(TOOLS_SUBMAKE) -C $(PYTHON3_HOST_DIR) \
+		CFLAGS="$(PYTHON3_HOST_CFLAGS)" \
 		all )
 	@touch -c $@
 

@@ -3,13 +3,21 @@ $(PKG)_SOURCE:=xdelta$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=750ab5f9e0b8f5f85c396f5005439503cc4b7f7d006e6c30814064d64dd3a494
 $(PKG)_SITE:=http://xdelta.googlecode.com/files
 
+$(PKG)_CFLAGS := $(TOOLS_CFLAGS)
+$(PKG)_CFLAGS += -std=gnu17
+
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_NOP)
 
 $($(PKG)_DIR)/xdelta3: $($(PKG)_DIR)/.unpacked
-	$(TOOLS_SUBMAKE) CC="$(TOOLS_CC)" CXX="$(TOOLS_CXX)" CFLAGS="$(TOOLS_CFLAGS)" LDFLAGS="$(TOOLS_LDFLAGS)" -C $(XDELTA_HOST_DIR) xdelta3
+	$(TOOLS_SUBMAKE) -C $(XDELTA_HOST_DIR) \
+		CC="$(TOOLS_CC)" \
+		CXX="$(TOOLS_CXX)" \
+		CFLAGS="$(XDELTA_HOST_CFLAGS)" \
+		LDFLAGS="$(TOOLS_LDFLAGS)" \
+		xdelta3
 
 $(TOOLS_DIR)/xdelta3: $($(PKG)_DIR)/xdelta3
 	$(INSTALL_FILE)

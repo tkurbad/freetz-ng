@@ -1,11 +1,11 @@
 config FREETZ_LIB_libpcre
-	bool "libpcre (libpcre.so)"
+	bool "libpcre (libpcre.so) - DEPRECATED"
 	default n
 	help
 		A Perl Compatible Regular Expression library
 
 config FREETZ_LIB_libpcreposix
-	bool "libpcreposix (libpcreposix.so)"
+	bool "libpcreposix (libpcreposix.so) - DEPRECATED"
 	select FREETZ_LIB_libpcre
 	default n
 	help

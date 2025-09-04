@@ -231,6 +231,9 @@ pre.log {
 	border: 1px solid #dddddd;
 	padding: 1ex;
 }
+pre.log.unlimited {
+	max-height: none;
+}
 pre.log.full {
 	max-height: none;
 }

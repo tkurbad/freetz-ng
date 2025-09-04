@@ -29,7 +29,7 @@ Signed-off-by: Michal Marek <mmarek@suse.cz>
 
 --- scripts/kconfig/menu.c
 +++ scripts/kconfig/menu.c
-@@ -188,6 +188,7 @@
+@@ -189,6 +189,7 @@
  	if (current_entry->prompt)
  		prop_warn(prop, "prompt redefined");
  
@@ -37,7 +37,7 @@ Signed-off-by: Michal Marek <mmarek@suse.cz>
  	/* Apply all upper menus' visibilities to actual prompts. */
  	if (type == P_PROMPT) {
  		struct menu *menu = current_entry;
-@@ -200,6 +201,7 @@
+@@ -201,6 +202,7 @@
  							    menu->visibility);
  		}
  	}

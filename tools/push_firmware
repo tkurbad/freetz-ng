@@ -811,8 +811,9 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW279*)	FULLSIZE=0x80000000 ;;  # 5690 Pro  (2.0 GB)
 			Fritz_Box_HW285*)	FULLSIZE=0x40000000 ;;  # 7690      (1.0 GB)
 #			Fritz_Box_HW286*)	FULLSIZE=0x??000000 ;;  # 7682      (??? MB)
-#			Fritz_Box_HW287*)	FULLSIZE=0x??000000 ;;  # 4050      (??? MB)
+			Fritz_Box_HW287*)	FULLSIZE=0x20000000 ;;  # 4050      (512 MB)
 #			Fritz_Box_HW291*)	FULLSIZE=0x??000000 ;;  # 4690      (??? MB)
+#			Fritz_Box_HW298*)	FULLSIZE=0x??000000 ;;  # 5690      (??? GB)
 			# defaults
 			*)
 #				[ $ISRAM ] &&   FULLSIZE=0x0D000000     #           (208 MB)
@@ -841,8 +842,9 @@ if [ -n "$ISRAM$ISFIT" ]; then
 			Fritz_Box_HW279*)	MAPSTART=0x40000000 ;;  # 5690 Pro
 			Fritz_Box_HW285*)	MAPSTART=0x40000000 ;;  # 7690
 #			Fritz_Box_HW286*)	MAPSTART=0x?0000000 ;;  # 7682
-#			Fritz_Box_HW287*)	MAPSTART=0x?0000000 ;;  # 4050
+			Fritz_Box_HW287*)	MAPSTART=0x40000000 ;;  # 4050
 #			Fritz_Box_HW291*)	MAPSTART=0x?0000000 ;;  # 4690
+#			Fritz_Box_HW298*)	MAPSTART=0x?0000000 ;;  # 5690
 			*)
 				[ $ISRAM ] &&   MAPSTART=0x80000000
 				[ $ISFIT ] &&   MAPSTART=0x40000000

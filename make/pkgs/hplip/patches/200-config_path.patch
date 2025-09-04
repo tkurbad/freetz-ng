@@ -6,8 +6,8 @@
  INCLUDES = -Iip -Iio/hpmud -Iscan/sane -Iprnt/hpijs -Icommon/
 -CFLAGS+= -DCONFDIR=\"$(hplip_confdir)\"
 -CXXFLAGS+= -DCONFDIR=\"$(hplip_confdir)\"
-+CFLAGS+= -DCONFDIR=\"/mod/etc/default.hplip\"
-+CXXFLAGS+= -DCONFDIR=\"/mod/etc/default.hplip\"
++CFLAGS+= -DCONFDIR=\"/mod/etc/default.hplip\" -fcommon
++CXXFLAGS+= -DCONFDIR=\"/mod/etc/default.hplip\" -fcommon
  
  hplipdir = $(datadir)/hplip
  

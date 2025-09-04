@@ -1,0 +1,10 @@
+--- src/iperf_api.h
++++ src/iperf_api.h
+@@ -35,6 +35,7 @@
+ #ifdef __cplusplus
+ extern "C" { /* open extern "C" */
+ #endif
++#include <stdarg.h>
+ 
+ /*
+  * Atomic types highly desired, but if not, we approximate what we need

@@ -1,6 +1,6 @@
 --- setup.py
 +++ setup.py
-@@ -352,16 +352,16 @@
+@@ -391,17 +391,17 @@
                    "Crypto.Random",
                    "Crypto.Random.Fortuna",
                    "Crypto.Random.OSRNG",
@@ -14,6 +14,7 @@
 -                  "Crypto.SelfTest.Random.OSRNG",
 -                  "Crypto.SelfTest.Util",
 -                  "Crypto.SelfTest.Signature",
+-                  "Crypto.SelfTest.IO",
 +#                  "Crypto.SelfTest",
 +#                  "Crypto.SelfTest.Cipher",
 +#                  "Crypto.SelfTest.Hash",
@@ -24,6 +25,7 @@
 +#                  "Crypto.SelfTest.Random.OSRNG",
 +#                  "Crypto.SelfTest.Util",
 +#                  "Crypto.SelfTest.Signature",
++#                  "Crypto.SelfTest.IO",
                    "Crypto.Protocol",
                    "Crypto.PublicKey",
-                   "Crypto.Signature"],
+                   "Crypto.Signature",

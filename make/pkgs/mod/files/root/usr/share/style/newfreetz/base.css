@@ -48,6 +48,9 @@ pre.plain {
 	padding: 0px;
 }
 
+pre.log.unlimited {
+	max-height: none;
+}
 pre.log.full {
 	min-height: 550px;
 	max-height: 550px;

@@ -1,0 +1,11 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+@@ -1,6 +1,8 @@
+ cmake_minimum_required(VERSION 3.7)
+ project(netkit-ftp)
+ 
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu17")
++
+ set(BIN_DIR "${CMAKE_INSTALL_PREFIX}/bin")
+ set(MAN_DIR "${CMAKE_INSTALL_PREFIX}/share/man")
+ 

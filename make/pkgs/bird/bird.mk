@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),1.6.8,2.15.1))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),1.6.8,2.17.1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=6c61ab5d2ef59d2559a8735b8252b5a0238013b43e5fb8a96c5d9d06e7bc00b2
-$(PKG)_HASH_CURRENT:=48e85c622de164756c132ea77ad1a8a95cc9fd0137ffd0d882746589ce75c75d
+$(PKG)_HASH_CURRENT:=bfd718dfa596819b3801688783212514b467163329aec9bbcd0fa3dee03e10e9
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://bird.network.cz/download,https://bird.network.cz/download/1.6,ftp://bird.network.cz/pub/bird,ftp://bird.network.cz/pub/bird/1.6
 ### WEBSITE:=https://bird.network.cz/
@@ -38,7 +38,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_BIRDC),--enable-client,--disable-client)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_BIRD_DEBUG),--enable-debug,--disable-debug)
 $(PKG)_CONFIGURE_OPTIONS += --disable-memcheck
-ifeq ($(FREETZ_PACKAGE_BIRD_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_PACKAGE_BIRD_VERSION_ABANDON)),y)
 #$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 else
 #$(PKG)_CONFIGURE_OPTIONS += --disable-pthreads

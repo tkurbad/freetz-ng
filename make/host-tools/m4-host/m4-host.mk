@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 1.4.19)
+$(call TOOLS_INIT, 1.4.20)
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=63aede5c6d33b6d9b13511cd0be2cac046f2e70fd0a07aa9573a04a82783af96
+$(PKG)_HASH:=e236ea3a1ccf5f6c270b1c4bb60726f371fa49459a8eaaebc90b216b328daf2b
 $(PKG)_SITE:=@GNU/$(pkg_short)
 ### WEBSITE:=https://www.gnu.org/software/m4/
 ### MANPAGE:=https://www.gnu.org/software/m4/manual/index.html
@@ -13,13 +13,18 @@ $(PKG)_DEPENDS_ON+=pkgconf-host
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/m4
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/build/bin/m4
 
+$(PKG)_CFLAGS := $(TOOLS_CFLAGS)
+$(PKG)_CFLAGS += -std=gnu17
+
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(M4_HOST_DIR) all
+	$(TOOLS_SUBMAKE) -C $(M4_HOST_DIR) \
+		CFLAGS="$(M4_HOST_CFLAGS)" \
+		all
 	touch -c $@
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)

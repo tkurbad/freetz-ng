@@ -1,10 +1,11 @@
 $(call PKG_INIT_BIN, 7.43.0)
+# Since version 7.43.0.6 only Python3 is supported!
 $(PKG)_SOURCE:=pycurl-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=aa975c19b79b6aa6c0518c0cc2ae33528900478f0b500531dbcdbf05beec584c
 $(PKG)_SITE:=https://pypi.python.org/packages/source/p/pycurl
 ### WEBSITE:=http://pycurl.io/
 ### MANPAGE:=http://pycurl.io/docs/latest/index.html
-### CHANGES:=https://pypi.org/project/pycurl/#files
+### CHANGES:=https://pypi.org/project/pycurl/#history
 ### CVSREPO:=https://github.com/pycurl/pycurl
 
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/pycurl.so

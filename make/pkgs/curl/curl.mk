@@ -1,13 +1,17 @@
-$(call PKG_INIT_BIN, 8.12.1)
+$(call PKG_INIT_BIN, $(if $(FREETZ_LIB_libcurl_WITH_VERSION_ABANDON),8.12.1,8.15.0))
 $(PKG)_LIB_VERSION:=4.8.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=0341f1ed97a26c811abaebd37d62b833956792b7607ea3f15d001613c76de202
+$(PKG)_HASH_ABANDON:=0341f1ed97a26c811abaebd37d62b833956792b7607ea3f15d001613c76de202
+$(PKG)_HASH_CURRENT:=6cd0a8a5b126ddfda61c94dc2c3fc53481ba7a35461cf7c5ab66aa9d6775b609
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libcurl_WITH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://curl.se/download,https://curl.haxx.se/download
 ### WEBSITE:=https://curl.se/
 ### MANPAGE:=https://curl.se/docs/manpage.html
 ### CHANGES:=https://curl.se/changes.html
 ### CVSREPO:=https://github.com/curl/curl
 ### SUPPORT:=fda77
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libcurl_WITH_VERSION_ABANDON),abandon,current)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/curl
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/curl
@@ -16,7 +20,7 @@ $(PKG)_LIB_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcurl.so.$(
 $(PKG)_LIB_TARGET_BINARY:=$($(PKG)_TARGET_LIBDIR)/libcurl.so.$($(PKG)_LIB_VERSION)
 
 ifeq ($(strip $(FREETZ_LIB_libcurl_WITH_OPENSSL)),y)
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
 $(PKG)_DEPENDS_ON += openssl
 endif
 ifeq ($(strip $(FREETZ_LIB_libcurl_WITH_MBEDTLS)),y)
@@ -29,6 +33,7 @@ ifeq ($(strip $(FREETZ_LIB_libcurl_WITH_ZLIB)),y)
 $(PKG)_DEPENDS_ON += zlib
 endif
 
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libcurl_WITH_VERSION_ABANDON
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libcurl_WITH_SSL
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libcurl_WITH_OPENSSL
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libcurl_WITH_MBEDTLS

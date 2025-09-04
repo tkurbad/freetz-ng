@@ -1,4 +1,4 @@
-config FREETZ_LIB_libstdc__
+config FREETZ_LIB_libstdcxx
 	bool "libstdc++ (libstdc++-6.0.x.so)"
 	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n

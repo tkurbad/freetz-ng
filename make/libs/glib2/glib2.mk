@@ -22,7 +22,7 @@ $(PKG)_DEPENDS_ON += wget-host
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 
-ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
 $(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/%/.libs/),$($(PKG)_LIBNAMES_LONG))
 $(PKG)_DEPENDS_ON += pcre libffi zlib
 
@@ -102,7 +102,7 @@ $(PKG_UNPACKED)
 $(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),$(PKG_CONFIGURED_CONFIGURE),$(PKG_CONFIGURED_MESON))
 
 $($(PKG)_LIBS_BUILD_DIR): $($(PKG)_DIR)/.configured
-ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
 	$(SUBMAKE) -C $(GLIB2_DIR) \
 		all
 else
@@ -111,7 +111,7 @@ else
 endif
 
 $($(PKG)_LIBS_STAGING_DIR): $($(PKG)_LIBS_BUILD_DIR)
-ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
 	$(SUBMAKE) -C $(GLIB2_DIR) \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
@@ -135,7 +135,7 @@ $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR)
 
 
 $(pkg)-clean:
-ifeq ($(FREETZ_LIB_libglib_2_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
 	-$(SUBMAKE) -C $(GLIB2_DIR) clean
 else
 	-$(SUBNINJA) -C $(GLIB2_DIR)/builddir/ clean

@@ -6,6 +6,6 @@
  
 -SUBDIRS=crypto ssl apps util tools      providers doc
 +SUBDIRS=crypto ssl apps util            providers doc
- IF[{- !$disabled{'deprecated-3.0'} -}]
-   SUBDIRS=engines
+ IF[{- !$disabled{demos} -}]
+   SUBDIRS=demos
  ENDIF

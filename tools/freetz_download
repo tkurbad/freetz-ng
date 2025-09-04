@@ -160,7 +160,7 @@ do_checkout_git_archive() {
 #    path - a path to any file or directory within the repository
 # Not much more than path will be transmitted saving both bandwidth and processing power.
 do_checkout_git_sparse() {
-	git clone 2>&1 | grep -q '\-\-filter ' || exit 1
+	git clone 2>&1 | grep -q '\--filter ' || exit 1
 	local repo="${1%%,*}"
 	local sdir="${1##*,}"
 	git clone --no-checkout --depth 1 --filter=blob:none --sparse "$repo" "$2" 1>&11 2>&12 \
@@ -255,11 +255,10 @@ fi
 # User defined mirror(s) always and at very first (if any)
 enumerate_mirrors_private() {
 	local sites
-	local num_sites=0
 	unset mirrors_private
 
 	for user_site in $FREETZ_DL_SITE_USER $FREETZ_DL_SITE_CUSTOM; do
-		sites[(( num_sites++ ))]="$user_site"
+		sites[${#sites[@]}]="$user_site"
 	done
 
 	mirrors_private=("${sites[@]}")
@@ -268,7 +267,6 @@ enumerate_mirrors_private() {
 # Primary site and package specific mirrors (if specified)
 enumerate_mirrors_official() {
 	local sites
-	local num_sites=0
 	unset mirrors_official
 
 	[ -n "$URLs" ] || return
@@ -293,96 +291,97 @@ enumerate_mirrors_official() {
 				else
 					# special mirror handling
 					for single_mirror in "${mirrors_public[@]}"; do
-						sites[(( num_sites++ ))]=${single_mirror}/${url:8}
+						sites[${#sites[@]}]=${single_mirror}/${url:8}
 					done
 				fi
 			elif [ ${url:0:3} == "@SF" ]; then
 				# give sourceforge a few more tries, because it redirects to different mirrors
 				subpath=${url/@SF\//}
 				for (( n=0; n < 5; n++ )); do
-					sites[(( num_sites++ ))]=https://downloads.sourceforge.net/$subpath
+					sites[${#sites[@]}]=https://downloads.sourceforge.net/$subpath
 				done
 			elif [ ${url:0:4} == "@AVM" ]; then
 				subpath=${url/@AVM\//}
-				sites[(( num_sites++ ))]=https://download.avm.de/fritzbox/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/fritzwlan/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/fritzpowerline/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/fritzdect/$subpath
-				sites[(( num_sites++ ))]=https://avm.de/$subpath
-				sites[(( num_sites++ ))]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
-				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P2/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1NL1/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/Smart24P1/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23NL1/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/GoFiber23/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/FCS23/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21NL1/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21/$subpath
-#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/WU22PSQ19/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/testfeld/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/archive/fritz.box/$subpath
-				sites[(( num_sites++ ))]=https://service.avm.de/downloads/LaborPlus/$subpath
-				sites[(( num_sites++ ))]=https://service.avm.de/downloads/downgrade/$subpath
-				sites[(( num_sites++ ))]=https://service.avm.de/downloads/zwischenupdate/$subpath
-				sites[(( num_sites++ ))]=https://service.avm.de/downloads/$subpath
-				sites[(( num_sites++ ))]=https://www.avm.de/de/Service/Service-Portale/$subpath
-#				sites[(( num_sites++ ))]=ftp://ftp.avm.de/fritzbox/$subpath
-#				sites[(( num_sites++ ))]=ftp://ftp.avm.de/$subpath
-#				sites[(( num_sites++ ))]=ftp://ftp.avm.de/archive/fritz.box/$subpath
+				sites[${#sites[@]}]=https://download.avm.de/fritzbox/$subpath
+				sites[${#sites[@]}]=https://download.avm.de/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/fritzwlan/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/fritzpowerline/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/fritzdect/$subpath
+				sites[${#sites[@]}]=https://avm.de/$subpath
+				sites[${#sites[@]}]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P2/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P1NL1/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P1/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/GoFiber23NL1/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/GoFiber23/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/FCS23/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/MOVE21NL1/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/MOVE21/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/WU22PSQ19/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/testfeld/$subpath
+				sites[${#sites[@]}]=https://download.avm.de/archive/fritz.box/$subpath
+				sites[${#sites[@]}]=https://service.avm.de/downloads/LaborPlus/$subpath
+				sites[${#sites[@]}]=https://service.avm.de/downloads/downgrade/$subpath
+				sites[${#sites[@]}]=https://service.avm.de/downloads/zwischenupdate/$subpath
+				sites[${#sites[@]}]=https://service.avm.de/downloads/$subpath
+				sites[${#sites[@]}]=https://www.avm.de/de/Service/Service-Portale/$subpath
+#				sites[${#sites[@]}]=ftp://ftp.avm.de/fritzbox/$subpath
+#				sites[${#sites[@]}]=ftp://ftp.avm.de/$subpath
+#				sites[${#sites[@]}]=ftp://ftp.avm.de/archive/fritz.box/$subpath
 			elif [ ${url:0:4} == "@GNU" ]; then
 				subpath=${url/@GNU\//}
-				sites[(( num_sites++ ))]=https://ftpmirror.gnu.org/$subpath # automatically chooses a nearby and up-to-date mirror
-				sites[(( num_sites++ ))]=https://ftp.gnu.org/gnu/$subpath
+				sites[${#sites[@]}]=https://ftpmirror.gnu.org/$subpath # automatically chooses a nearby and up-to-date mirror
+				sites[${#sites[@]}]=https://ftp.gnu.org/gnu/$subpath
 			elif [ ${url:0:7} == "@KERNEL" ]; then
 				subpath=${url/@KERNEL\//}
-				sites[(( num_sites++ ))]=https://cdn.kernel.org/pub/$subpath
-				sites[(( num_sites++ ))]=https://mirrors.kernel.org/pub/$subpath
-				sites[(( num_sites++ ))]=https://www.kernel.org/pub/$subpath
+				sites[${#sites[@]}]=https://cdn.kernel.org/pub/$subpath
+				sites[${#sites[@]}]=https://mirrors.kernel.org/pub/$subpath
+				sites[${#sites[@]}]=https://www.kernel.org/pub/$subpath
 			elif [ ${url:0:8} == "@TELEKOM" ]; then
 				subpath=${url/@TELEKOM\//}
-				sites[(( num_sites++ ))]=https://www.telekom.de/hilfe/downloads/$subpath
-				sites[(( num_sites++ ))]=http://www.telekom.de/dlp/eki/downloads/$subpath
-				sites[(( num_sites++ ))]=http://www.t-home.de/dlp/eki/downloads/$subpath
-				sites[(( num_sites++ ))]=http://hilfe.telekom.de/dlp/eki/downloads/$subpath
+				sites[${#sites[@]}]=https://www.telekom.de/hilfe/downloads/$subpath
+				sites[${#sites[@]}]=http://www.telekom.de/dlp/eki/downloads/$subpath
+				sites[${#sites[@]}]=http://www.t-home.de/dlp/eki/downloads/$subpath
+				sites[${#sites[@]}]=http://hilfe.telekom.de/dlp/eki/downloads/$subpath
 			elif [ ${url:0:4} == "@1u1" ]; then
 				subpath=${url/@1u1\//}
-				sites[(( num_sites++ ))]=http://acsfwdl.1und1.de/avm/$subpath
+				sites[${#sites[@]}]=http://acsfwdl.1und1.de/avm/$subpath
 			elif [ ${url:0:4} == "@EWE" ]; then
 				subpath=${url/@EWE\//}
-				sites[(( num_sites++ ))]=http://download.ewe.de/avm/$subpath
+				sites[${#sites[@]}]=http://download.ewe.de/avm/$subpath
 			elif [ ${url:0:6} == "@M-NET" ]; then
 				subpath=${url/@M-NET\//}
-				sites[(( num_sites++ ))]=http://www.m-net.de/fileadmin/downloads/Links/$subpath
+				sites[${#sites[@]}]=http://www.m-net.de/fileadmin/downloads/Links/$subpath
 			elif [ ${url:0:7} == "@APACHE" ]; then
 				subpath=${url/@APACHE\//}
-				sites[(( num_sites++ ))]=https://www.apache.org/dist/$subpath
-				sites[(( num_sites++ ))]=https://archive.apache.org/dist/$subpath
+				sites[${#sites[@]}]=https://www.apache.org/dist/$subpath
+				sites[${#sites[@]}]=https://archive.apache.org/dist/$subpath
 			elif [ ${url:0:6} == "@SAMBA" ]; then
 				subpath=${url/@SAMBA\//}
-				sites[(( num_sites++ ))]=https://download.samba.org/pub/$subpath
-				sites[(( num_sites++ ))]=https://www.samba.org/ftp/$subpath
-				sites[(( num_sites++ ))]=https://ftp.samba.org/pub/$subpath
+				sites[${#sites[@]}]=https://download.samba.org/pub/$subpath
+				sites[${#sites[@]}]=https://www.samba.org/ftp/$subpath
+				sites[${#sites[@]}]=https://ftp.samba.org/pub/$subpath
 			elif [ ${url:0:9} == "@SAVANNAH" ]; then
 				subpath=${url/@SAVANNAH\//}
-				sites[(( num_sites++ ))]=https://download.savannah.nongnu.org/releases/$subpath
-				sites[(( num_sites++ ))]=https://download.savannah.gnu.org/releases/$subpath
-				sites[(( num_sites++ ))]=https://ftpmirror.gnu.org/$subpath
-				sites[(( num_sites++ ))]=https://mirror.netcologne.de/savannah/$subpath
+				sites[${#sites[@]}]=https://download.savannah.nongnu.org/releases/$subpath
+				sites[${#sites[@]}]=https://download.savannah.gnu.org/releases/$subpath
+				sites[${#sites[@]}]=https://ftpmirror.gnu.org/$subpath
+				sites[${#sites[@]}]=https://mirror.netcologne.de/savannah/$subpath
 			else
-				sites[(( num_sites++ ))]=$url
+				sites[${#sites[@]}]=$url
 			fi
 		done
 	fi
 
-	mirrors_official=("${sites[@]}")
+	for retry in 1 2 3; do
+		mirrors_official+=("${sites[@]}")
+	done
 }
 
 # Add all mirrors to 'sites' array (if not invalid checksum (=repo only) and not an image)
 enumerate_mirrors_public() {
 	local sites
-	local num_sites=0
 	unset mirrors_public
 
 	# Get Freetz mirror sites in an array
@@ -393,17 +392,17 @@ enumerate_mirrors_public() {
 		) )
 	# The FREETZ_DL_SITES_NORND_FIRST count of mirrors always as first
 	for (( n=0; n < ${FREETZ_DL_SITES_NORND_FIRST}; n++ )); do
-		sites[(( num_sites++ ))]="${FREETZ_SITES[$n]}"
+		sites[${#sites[@]}]="${FREETZ_SITES[$n]}"
 	done
 	# Add mirrors in random order
 	for (( n=$(( ${FREETZ_DL_SITES_COUNT} - ${FREETZ_DL_SITES_NORND_LAST} - ${FREETZ_DL_SITES_NORND_FIRST} )); n > 0; n-- )); do
 		p=$(( ${FREETZ_DL_SITES_NORND_FIRST} + RANDOM % $n ))
-		sites[(( num_sites++ ))]="${FREETZ_SITES[$p]}"
+		sites[${#sites[@]}]="${FREETZ_SITES[$p]}"
 		FREETZ_SITES[$p]="${FREETZ_SITES[$(( ${FREETZ_DL_SITES_NORND_FIRST} + ${n} - 1 ))]}"
 	done
 	# The FREETZ_DL_SITES_NORND_LAST count of mirrors always as last
 	for (( n=$(( ${FREETZ_DL_SITES_COUNT} - ${FREETZ_DL_SITES_NORND_LAST} )); n < ${FREETZ_DL_SITES_COUNT}; n++ )); do
-		sites[(( num_sites++ ))]="${FREETZ_SITES[$n]}"
+		sites[${#sites[@]}]="${FREETZ_SITES[$n]}"
 	done
 
 	mirrors_public=("${sites[@]}")

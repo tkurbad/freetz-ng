@@ -36,13 +36,19 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-uuidd
 $(PKG)_CONFIGURE_OPTIONS += --disable-threads
 $(PKG)_CONFIGURE_OPTIONS += --disable-tls
 
+$(PKG)_CFLAGS := $(TOOLS_CFLAGS)
+$(PKG)_CFLAGS += -std=gnu17
+
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(E2FSPROGS_HOST_DIR) INFO=true all
+	$(TOOLS_SUBMAKE) -C $(E2FSPROGS_HOST_DIR) \
+		CFLAGS="$(E2FSPROGS_HOST_CFLAGS)" \
+		INFO=true \
+		all
 	touch $@
 
 $($(PKG)_E2FSCK_BINARY) $($(PKG)_DEBUGFS_BINARY) $($(PKG)_TUNE2FS_BINARY): $($(PKG)_DIR)/.compiled

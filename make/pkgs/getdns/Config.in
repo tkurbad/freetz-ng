@@ -1,9 +1,9 @@
 comment "getdns (not available, needs OpenSSL 1.0 or newer)"
-	depends on !FREETZ_OPENSSL_VERSION_1_MIN
+	depends on !FREETZ_OPENSSL_VERSION_10_MIN
 
 config FREETZ_PACKAGE_GETDNS
 	bool "getdns 1.7.3"
-	depends on FREETZ_OPENSSL_VERSION_1_MIN
+	depends on FREETZ_OPENSSL_VERSION_10_MIN
 	select FREETZ_LIB_libcrypto
 	select FREETZ_LIB_libcrypto_WITH_EC
 	select FREETZ_LIB_libssl

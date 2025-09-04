@@ -2,7 +2,7 @@ $(call PKG_INIT_LIB, 6.5)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=ncurses-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6
-$(PKG)_SITE:=@GNU/$(pkg)
+$(PKG)_SITE:=@GNU/$(pkg),https://invisible-island.net/archives/ncurses
 #
 ### WEBSITE:=https://invisible-island.net/ncurses/
 ### MANPAGE:=https://invisible-island.net/ncurses/announce.html
@@ -66,7 +66,7 @@ define $(PKG)_CUSTOM_UNPACK
 	$(TAR) xzf $(1) --strip-components=1 -C $($(PKG)_DIR)
 endef
 
-ifneq ($(strip $(DL_DIR)/$(NCURSESW_SOURCE)), $(strip $(DL_DIR)/$(NCURSES_HOST_SOURCE)))
+ifneq ($(strip $(DL_DIR)/$(NCURSESW_SOURCE)), $(strip $(DL_DIR)/$(NCURSES_SOURCE)))
 $(PKG_SOURCE_DOWNLOAD)
 endif
 $(PKG_UNPACKED)

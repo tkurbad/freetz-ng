@@ -6,7 +6,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[autoconf 2.72](autoconf-host.md)<a id='autoconf-host'></a>**<br>
 
-  * **[automake 1.17](automake-host.md)<a id='automake-host'></a>**<br>
+  * **[automake 1.18](automake-host.md)<a id='automake-host'></a>**<br>
 
   * **[avm-rle 1.0](avm-rle-host.md)<a id='avm-rle-host'></a>**<br>
 
@@ -16,9 +16,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### C
 
-  * **[ca-bundle 2025-02-25](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
+  * **[ca-bundle 2025-07-15](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
 
-  * **[cmake 3.31.6](cmake-host.md)<a id='cmake-host'></a>**<br>
+  * **[cmake 4.1.1](cmake-host.md)<a id='cmake-host'></a>**<br>
 
   * **[cpio 2.15](cpio-host.md)<a id='cpio-host'></a>**<br>
 
@@ -34,7 +34,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### F
 
-  * **[fakeroot 1.37](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
+  * **[fakeroot 1.37.1.2](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
 
   * **[fastjar 0.98](fastjar-host.md)<a id='fastjar-host'></a>**<br>
 
@@ -44,19 +44,19 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[genext2fs 1.5.0-3b99f4a4](genext2fs-host.md)<a id='genext2fs-host'></a>**<br>
 
-  * **[gmp 6.1.2](gmp-host.md)<a id='gmp-host'></a>**<br>
+  * **[gmp 6.3.0](gmp-host.md)<a id='gmp-host'></a>**<br>
 
-  * **[gperf 3.1](gperf-host.md)<a id='gperf-host'></a>**<br>
+  * **[gperf 3.2](gperf-host.md)<a id='gperf-host'></a>**<br>
 
 ### K
 
-  * **[kconfig 6.13](kconfig-host.md)<a id='kconfig-host'></a>**<br>
+  * **[kconfig 6.16](kconfig-host.md)<a id='kconfig-host'></a>**<br>
 
 ### L
 
   * **[libdtc 1.6.1](libdtc-host.md)<a id='libdtc-host'></a>**<br>
 
-  * **[libtool 2.4.7](libtool-host.md)<a id='libtool-host'></a>**<br>
+  * **[libtool 2.5.4](libtool-host.md)<a id='libtool-host'></a>**<br>
 
   * **[lzma1 465](lzma1-host.md)<a id='lzma1-host'></a>**<br>
 
@@ -66,11 +66,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### M
 
-  * **[m4 1.4.19](m4-host.md)<a id='m4-host'></a>**<br>
+  * **[m4 1.4.20](m4-host.md)<a id='m4-host'></a>**<br>
 
   * **[make 4.4.1](make-host.md)<a id='make-host'></a>**<br>
 
-  * **[meson 1.7.0](meson-host.md)<a id='meson-host'></a>**<br>
+  * **[meson 1.8.4](meson-host.md)<a id='meson-host'></a>**<br>
 
   * **[mklibs 0.1.45](mklibs-host.md)<a id='mklibs-host'></a>**<br>
 
@@ -80,23 +80,23 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### N
 
-  * **[ncftp 3.2.7](ncftp-host.md)<a id='ncftp-host'></a>**<br>
+  * **[ncftp 3.3.0](ncftp-host.md)<a id='ncftp-host'></a>**<br>
 
-  * **[ncurses 6.5](ncurses-host.md)<a id='ncurses-host'></a>**<br>
+  * **[ncurses 6.5-20250419](ncurses-host.md)<a id='ncurses-host'></a>**<br>
 
   * **[netkit-ftp 0.17-35](netkit-ftp-host.md)<a id='netkit-ftp-host'></a>**<br>
 
-  * **[ninja 1.12.1](ninja-host.md)<a id='ninja-host'></a>**<br>
+  * **[ninja 1.13.1](ninja-host.md)<a id='ninja-host'></a>**<br>
 
 ### O
 
-  * **[openssl 3.0.16](openssl-host.md)<a id='openssl-host'></a>**<br>
+  * **[openssl 3.5.2](openssl-host.md)<a id='openssl-host'></a>**<br>
 
 ### P
 
   * **[patchelf 0.14.5/0.15.0](patchelf-host.md)<a id='patchelf-host'></a>**<br>
 
-  * **[pkgconf 2.2.0](pkgconf-host.md)<a id='pkgconf-host'></a>**<br>
+  * **[pkgconf 2.5.1](pkgconf-host.md)<a id='pkgconf-host'></a>**<br>
 
   * **[prelink 20131005](prelink-host.md)<a id='prelink-host'></a>**<br>
 
@@ -104,9 +104,23 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[python2 2.7.18](python2-host.md)<a id='python2-host'></a>**<br>
 
-  * **[python3 3.12.9](python3-host.md)<a id='python3-host'></a>**<br>
+  * **[python2-pip 20.3.4](python2-pip-host.md)<a id='python2-pip-host'></a>**<br>
 
-  * **[python3-packaging 24.1](python3-packaging-host.md)<a id='python3-packaging-host'></a>**<br>
+  * **[python2-setuptools 44.1.1](python2-setuptools-host.md)<a id='python2-setuptools-host'></a>**<br>
+
+  * **[python3-attrs 25.3.0](python3-attrs-host.md)<a id='python3-attrs-host'></a>**<br>
+
+  * **[python3 3.13.7](python3-host.md)<a id='python3-host'></a>**<br>
+
+  * **[python3-jsonschema 4.24.0](python3-jsonschema-host.md)<a id='python3-jsonschema-host'></a>**<br>
+
+  * **[python3-packaging 25.0](python3-packaging-host.md)<a id='python3-packaging-host'></a>**<br>
+
+  * **[python3-pip 25.1.1](python3-pip-host.md)<a id='python3-pip-host'></a>**<br>
+
+  * **[python3-referencing 0.36.2](python3-referencing-host.md)<a id='python3-referencing-host'></a>**<br>
+
+  * **[python3-setuptools 80.9.0](python3-setuptools-host.md)<a id='python3-setuptools-host'></a>**<br>
 
 ### S
 
@@ -114,7 +128,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[sed 4.9](sed-host.md)<a id='sed-host'></a>**<br>
 
-  * **[sfk 1.9.8.2](sfk-host.md)<a id='sfk-host'></a>**<br>
+  * **[sfk 2.0.0.3](sfk-host.md)<a id='sfk-host'></a>**<br>
 
   * **[squashfs2 2.2-r2](squashfs2-host.md)<a id='squashfs2-host'></a>**<br>
 
@@ -130,11 +144,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[tichksum 1.0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
 
-  * **[tools 2025-03-06](tools-host.md)<a id='tools-host'></a>**<br>
+  * **[tools 2025-08-27](tools-host.md)<a id='tools-host'></a>**<br>
 
 ### U
 
-  * **[uboot 2025.01](uboot-host.md)<a id='uboot-host'></a>**<br>
+  * **[uboot 2025.04](uboot-host.md)<a id='uboot-host'></a>**<br>
 
   * **[uimg 871930d](uimg-host.md)<a id='uimg-host'></a>**<br>
 

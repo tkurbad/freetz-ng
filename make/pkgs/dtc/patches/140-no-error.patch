@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -21,7 +21,7 @@
+ WARNINGS = -Wall -Wpointer-arith -Wcast-qual -Wnested-externs -Wsign-compare \
+ 	-Wstrict-prototypes -Wmissing-prototypes -Wredundant-decls -Wshadow \
+ 	-Wsuggest-attribute=format -Wwrite-strings
+-CFLAGS = -g -Os $(SHAREDLIB_CFLAGS) -Werror $(WARNINGS) $(EXTRA_CFLAGS)
++CFLAGS = -g -Os $(SHAREDLIB_CFLAGS) $(WARNINGS) $(EXTRA_CFLAGS)
+ 
+ BISON = bison
+ LEX = flex

@@ -1,6 +1,6 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -3556,10 +3556,10 @@
+@@ -3570,10 +3570,10 @@
  info-am: $(INFO_DEPS)
  
  install-data-am: install-dist_amDATA install-dist_automake_acDATA \

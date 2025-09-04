@@ -23,3 +23,6 @@ WORKDIR /workspace
 ENV BUILD_USER=$BUILD_USER
 ADD entrypoint.sh /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+LABEL org.opencontainers.image.description="For internal use only!"
+LABEL org.opencontainers.image.source=https://github.com/Freetz-NG/freetz-ng/
+

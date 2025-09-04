@@ -8,14 +8,14 @@ $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib$(pkg).so.$($(
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libcrypto_WITH_EC
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_VERSION_1_MAX
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_VERSION_10_MAX
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 $(PKG)_DEPENDS_ON += openssl libpcap
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libcrypto_WITH_EC),--enable-ecdsa,--disable-ecdsa)
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_OPENSSL_VERSION_1_MAX),--enable-gost,--disable-gost)
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_OPENSSL_VERSION_1_MAX),--disable-dane-verify,--enable-dane-verify)
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_OPENSSL_VERSION_10_MAX),--enable-gost,--disable-gost)
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_OPENSSL_VERSION_10_MAX),--disable-dane-verify,--enable-dane-verify)
 $(PKG)_CONFIGURE_OPTIONS += --without-pyldns
 $(PKG)_CONFIGURE_OPTIONS += --disable-ldns-config
 $(PKG)_CONFIGURE_OPTIONS += --with-pcap=yes

@@ -1,12 +1,12 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libusb_1_WITH_ABANDON),1.0.23,1.0.27))
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libusb_1_WITH_ABANDON),1.0.23,1.0.29))
 $(PKG)_SHORT_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
-$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libusb_1_WITH_ABANDON),0.2.0,0.4.0)
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libusb_1_WITH_ABANDON),0.2.0,0.5.0)
 $(PKG)_SOURCE:=libusb-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH_ABANDON:=db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d
-$(PKG)_HASH_CURRENT:=ffaa41d741a8a3bee244ac8e54a72ea05bf2879663c098c82fc5757853441575
+$(PKG)_HASH_CURRENT:=5977fc950f8d1395ccea9bd48c06b3f808fd3c2c961b44b0c2e6e29fc3a70a85
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libusb_1_WITH_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/libusb/libusb/releases/download/v$($(PKG)_VERSION),@SF/libusb
-### VERSION:=1.0.23/1.0.27
+### VERSION:=1.0.23/1.0.29
 ### WEBSITE:=https://libusb.info/
 ### MANPAGE:=https://github.com/libusb/libusb/wiki
 ### CHANGES:=https://github.com/libusb/libusb/milestones

@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.1.42)
+$(call PKG_INIT_BIN, 1.1.43)
 $(PKG)_SOURCE:=libxslt-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=85ca62cac0d41fc77d3f6033da9df6fd73d20ea2fc18b0a3609ffb4110e1baeb
+$(PKG)_HASH:=5a3d6b383ca5afc235b171118e90f5ff6aa27e9fea3303065231a6d403f0183a
 $(PKG)_SITE:=https://download.gnome.org/sources/libxslt/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://xmlsoft.org/libxslt
 ### WEBSITE:=http://www.xmlsoft.org/libxslt/index.html
 ### MANPAGE:=https://gitlab.gnome.org/GNOME/libxslt/wikis/home
@@ -11,7 +11,7 @@ $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/$(pkg)$(if $(FREETZ_PACKAGE_XSLTPROC_ST
 $(PKG)_BINARY_TARGET_DIR := $($(PKG)_DEST_DIR)/usr/bin/$(pkg)
 
 $(PKG)_LIBNAMES_SHORT := libxslt libexslt
-$(PKG)_LIBVERSIONS := 1.1.42 0.8.23
+$(PKG)_LIBVERSIONS := 1.1.43 0.8.24
 $(PKG)_LIBNAMES_LONG :=  $(join $($(PKG)_LIBNAMES_SHORT:%=%.so.),$($(PKG)_LIBVERSIONS))
 $(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/%/.libs/),$($(PKG)_LIBNAMES_LONG))
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)

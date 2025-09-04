@@ -11,7 +11,7 @@
    if (fcntl(server_fd, F_SETFL, O_NONBLOCK) < 0)
 --- sysdep/unix/io.c
 +++ sysdep/unix/io.c
-@@ -1545,7 +1545,7 @@
+@@ -1745,7 +1745,7 @@
    ASSERT_DIE(strlen(name) < sizeof(sa.sun_path));
  
    sa.sun_family = AF_UNIX;

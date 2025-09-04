@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.4.63)
+$(call PKG_INIT_BIN, 2.4.65)
 $(PKG)_SOURCE:=httpd-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=88fc236ab99b2864b248de7d49a008ec2afd7551e64dce8b95f58f32f94c46ab
+$(PKG)_HASH:=58b8be97d9940ec17f7656c0c6b9f41b618aac468b894b534148e3296c53b8b3
 $(PKG)_SITE:=@APACHE/httpd
 ### WEBSITE:=https://httpd.apache.org/
 ### MANPAGE:=https://httpd.apache.org/docs/2.4/
@@ -20,7 +20,7 @@ ifeq ($(strip $(FREETZ_PACKAGE_APACHE2_DEFLATE)),y)
 $(PKG)_DEPENDS_ON += zlib
 endif
 ifeq ($(strip $(FREETZ_PACKAGE_APACHE2_SSL)),y)
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
 $(PKG)_DEPENDS_ON += openssl
 endif
 ifeq ($(strip $(FREETZ_PACKAGE_APACHE2_LIBXML)),y)

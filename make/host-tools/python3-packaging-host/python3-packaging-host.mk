@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 24.1)
+$(call TOOLS_INIT, 25.0)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=7b31090ae4ddd6c48a5ed10073a880e6e2612ce8ac2f81e34f42aaabefd1b81b
+$(PKG)_HASH:=15b6ba95eb12d8f99dcf215ea37cbea16812ef28358e8ef3d9344acb827acac1
 $(PKG)_SITE:=https://github.com/pypa/packaging/archive/refs/tags
 ### WEBSITE:=https://pypi.org/project/packaging/
 ### MANPAGE:=https://packaging.pypa.io/
@@ -12,14 +12,13 @@ $(PKG)_SITE:=https://github.com/pypa/packaging/archive/refs/tags
 $(PKG)_DEPENDS_ON+=python3-host
 
 $(PKG)_DIRECTORY:=$($(PKG)_DIR)/src/packaging
-$(PKG)_TARGET_DIRECTORY:=$(HOST_TOOLS_DIR)/usr/lib/python$(call GET_MAJOR_VERSION,$(PYTHON3_HOST_VERSION))/site-packages/packaging
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 
 $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.unpacked
-	cp -fa $(PYTHON3_PACKAGING_HOST_DIRECTORY) $(dir $(PYTHON3_PACKAGING_HOST_TARGET_DIRECTORY))
+	cp -fa $(PYTHON3_PACKAGING_HOST_DIRECTORY) $(PYTHON3_HOST_SITE_PACKAGES)/
 	@touch $@
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
@@ -28,8 +27,9 @@ $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 $(pkg)-clean:
 
 $(pkg)-dirclean:
+	$(RM) -r $(PYTHON3_PACKAGING_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) -r $(PYTHON3_PACKAGING_HOST_TARGET_DIRECTORY)
+	$(RM) -r $(PYTHON3_HOST_SITE_PACKAGES)/packaging/
 
 $(TOOLS_FINISH)

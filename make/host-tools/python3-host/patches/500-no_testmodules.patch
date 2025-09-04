@@ -1,0 +1,11 @@
+--- Makefile.pre.in
++++ Makefile.pre.in
+@@ -2490,7 +2490,7 @@
+ 
+ COMPILEALL_OPTS=-j0
+ 
+-TEST_MODULES=@TEST_MODULES@
++TEST_MODULES=no
+ 
+ .PHONY: libinstall
+ libinstall:	all $(srcdir)/Modules/xxmodule.c

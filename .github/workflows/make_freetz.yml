@@ -9,6 +9,10 @@ on:
     - cron: '00 15 * * 6'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   build:
     container:
@@ -17,6 +21,7 @@ jobs:
       image: ghcr.io/freetz-ng/firmware
 #   strategy:
 #     fail-fast: false
+#     max-parallel: 16
 #     matrix:
 #       fritz: [ "" ]
     runs-on: ubuntu-latest
@@ -94,7 +99,7 @@ jobs:
           echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config
           wget -q "${{ secrets.ACTIONS_CUSTOM }}cfg" -O cfg 2>/dev/null && mv cfg .config || rm -f cfg
           grep -q '^FREETZ_TYPE_' .config || echo 'FREETZ_TYPE_7530_W6_V1=y'                          >> .config
-          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo 'FREETZ_TYPE_FIRMWARE_08_0X_LABOR=y'       >> .config
+          grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo 'FREETZ_TYPE_FIRMWARE_08_0X=y'             >> .config
           echo "################################################################" && du .config && wc -l .config
 
       - name: addon

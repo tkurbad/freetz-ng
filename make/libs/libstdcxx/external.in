@@ -1,5 +1,5 @@
-config EXTERNAL_FREETZ_LIB_libstdc__
-	depends on EXTERNAL_ENABLED && FREETZ_LIB_libstdc__
+config EXTERNAL_FREETZ_LIB_libstdcxx
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libstdcxx
 	bool "libstdc++"
 	default n
 	help

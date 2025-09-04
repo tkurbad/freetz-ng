@@ -5,3 +5,14 @@ config FREETZ_LIB_libpixman_1
 		Pixman is a low-level software library for pixel manipulation, providing
 		features such as image compositing and trapezoid rasterization.
 
+if FREETZ_LIB_libpixman_1
+
+	config FREETZ_LIB_libpixman_1_WITH_LIBPNG
+		bool "build with libpng support"
+		select FREETZ_LIB_libpng16
+		default n
+		help
+			This option enables libpng support.
+
+endif # FREETZ_LIB_libpixman_1
+

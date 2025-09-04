@@ -17,7 +17,7 @@ $(PKG)_TARGET_SCRIPT:=$($(PKG)_DESTDIR)/mklibs
 $(PKG)_READELF_BINARY:=$($(PKG)_DIR)/src/mklibs-readelf/mklibs-readelf
 $(PKG)_READELF_TARGET_BINARY:=$($(PKG)_DESTDIR)/mklibs-readelf
 
-$(PKG)_CONFIGURE_PRE_CMDS += autoreconf -i;
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/
 

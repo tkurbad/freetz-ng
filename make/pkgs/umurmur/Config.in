@@ -1,5 +1,6 @@
 config FREETZ_PACKAGE_UMURMUR
-	bool "uMurmur 0.2.20/0.3.0"
+	bool "uMurmur 0.2.20/0.3.1"
+	depends on FREETZ_TARGET_IPV6_SUPPORT
 	select FREETZ_LIB_libconfig
 	select FREETZ_LIB_libprotobuf_c
 	default n
@@ -27,7 +28,7 @@ if FREETZ_PACKAGE_UMURMUR
 				Needs Openssl 1.x or mbedTLS v2.x
 
 		config FREETZ_PACKAGE_UMURMUR_VERSION_CURRENT
-			bool "0.3.0"
+			bool "0.3.1"
 			help
 				Needs Openssl 3.x or mbedTLS v3.x
 

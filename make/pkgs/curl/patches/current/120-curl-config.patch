@@ -1,0 +1,30 @@
+--- curl-config.in
++++ curl-config.in
+@@ -29,6 +29,7 @@
+ # Used in 'libdir'
+ # shellcheck disable=SC2034
+ exec_prefix="@exec_prefix@"
++libdir=@libdir@
+ # shellcheck disable=SC2034
+ includedir="@includedir@"
+ 
+@@ -149,8 +150,8 @@
+     ;;
+ 
+   --libs)
+-    if test "X@libdir@" != 'X/usr/lib' -a "X@libdir@" != 'X/usr/lib64'; then
+-      curllibdir="-L@libdir@ "
++    if test "X${libdir}" != 'X/usr/lib' -a "X${libdir}" != 'X/usr/lib64'; then
++      curllibdir="-L${libdir} "
+     else
+       curllibdir=''
+     fi
+@@ -167,7 +168,7 @@
+ 
+   --static-libs)
+     if test 'X@ENABLE_STATIC@' != 'Xno'; then
+-      echo "@libdir@/libcurl.@libext@ @LIBCURL_PC_LDFLAGS_PRIVATE@ @LIBCURL_PC_LIBS_PRIVATE@"
++      echo "${libdir}/libcurl.@libext@ @LIBCURL_PC_LDFLAGS_PRIVATE@ @LIBCURL_PC_LIBS_PRIVATE@"
+     else
+       echo 'curl was built with static libraries disabled' >&2
+       exit 1

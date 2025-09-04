@@ -13,8 +13,16 @@ if EXTERNAL_FREETZ_PACKAGE_OPENSSH
 			externals the following file(s):
 			 /usr/sbin/sshd
 
+	config EXTERNAL_FREETZ_PACKAGE_OPENSSH_sshd_auth
+		bool "OpenSSH server user authentication (sshd-auth)"
+		depends on FREETZ_PACKAGE_OPENSSH_sshd_auth
+		default n
+		help
+			externals the following file(s):
+			 /usr/lib/sshd-auth
+
 	config EXTERNAL_FREETZ_PACKAGE_OPENSSH_sshd_session
-		bool "OpenSSH server per-session (sshd-session)"
+		bool "OpenSSH server connection handler (sshd-session)"
 		depends on FREETZ_PACKAGE_OPENSSH_sshd_session
 		default n
 		help

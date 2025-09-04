@@ -269,6 +269,18 @@ menu "Additional informations"
 			is very small (2-3 kByte).
 
 	# TODO: invert logic
+	config FREETZ_REMOVE_FLASH_INFO
+		bool "Remove Flash-Info page"
+		default n
+		help
+			Flash-Info is a special status page for compact presentation of important
+			information about MTDs, UBI and filesystems.
+
+			If you do not have enough space in your image, you can remove Flash-Info
+			from your image. But usualy it is not necessary: The size of Flash-Info cgi
+			is very small (2-3 kByte).
+
+	# TODO: invert logic
 	config FREETZ_REMOVE_FREETZ_INFO
 		bool "Remove FREETZ-Info page"
 		default n

@@ -1,8 +1,8 @@
 config FREETZ_LIB_libcrypto
 	bool "OpenSSL cryptographic library (libcrypto.so)"
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs && FREETZ_OPENSSL_VERSION_2_MIN
-	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_3_MIN
+	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs && FREETZ_OPENSSL_VERSION_11_MIN
+	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_30_MIN
 	default n
 	help
 		crypto - OpenSSL cryptographic library
@@ -23,7 +23,7 @@ config FREETZ_LIB_libssl
 	bool "OpenSSL SSL/TLS library (libssl.so)"
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libcrypto
-	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_3_MIN
+	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_30_MIN
 	default n
 	help
 		SSL - OpenSSL SSL/TLS library
@@ -34,14 +34,16 @@ config FREETZ_LIB_libssl
 
 choice
 	prompt "OpenSSL version"
-	default FREETZ_OPENSSL_VERSION_3
-	default FREETZ_OPENSSL_VERSION_2
-	default FREETZ_OPENSSL_VERSION_1
+	default FREETZ_OPENSSL_VERSION_35
+	default FREETZ_OPENSSL_VERSION_30
+	default FREETZ_OPENSSL_VERSION_11
+	default FREETZ_OPENSSL_VERSION_10
+	default FREETZ_OPENSSL_VERSION_09
 	help
 		Version 0.9.8:
 		 - Supported until 2015-12-31, Long Term Support (LTS) version
 		 - NOT supported by the OpenSSL development team anymore
-		 - could be used (with some limitations) as a replacement for AVM's OpenSSL library
+		 - Could be used (with some limitations) as a replacement for AVM's OpenSSL library
 
 		Version 1.0.2:
 		 - Supported until 2019-12-31, Long Term Support (LTS) version
@@ -54,44 +56,64 @@ choice
 		Version 3.0:
 		 - Supported until 2026-09-07, Long Term Support (LTS) version
 
+		Version 3.5:
+		 - Supported until 2030-04-08, Long Term Support (LTS) version
+
 		See https://www.openssl.org/policies/releasestrat.html
 
-	config FREETZ_OPENSSL_VERSION_0
+	config FREETZ_OPENSSL_VERSION_09
 		bool "0.9.8 - DEPRECATED"
-		depends on FREETZ_AVM_HAS_OPENSSL_VERSION_0
+		depends on FREETZ_AVM_HAS_OPENSSL_VERSION_09
 
-	config FREETZ_OPENSSL_VERSION_1
+	config FREETZ_OPENSSL_VERSION_10
 		bool "1.0.2 - DEPRECATED"
 		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
-	config FREETZ_OPENSSL_VERSION_2
+	config FREETZ_OPENSSL_VERSION_11
 		bool "1.1.1 - DEPRECATED"
 		depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29
 
-	config FREETZ_OPENSSL_VERSION_3
+	config FREETZ_OPENSSL_VERSION_30
 		bool "3.0"
 		depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29 && FREETZ_TARGET_GCC_4_8_MIN
+
+	config FREETZ_OPENSSL_VERSION_35
+		bool "3.5"
+		depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29 && FREETZ_TARGET_GCC_8_MIN
 
 endchoice # "OpenSSL version"
 
 
 menu "OpenSSL configuration"
 
+	config FREETZ_OPENSSL_SHORT_VERSION
+		string
+		default "0.9"   if FREETZ_OPENSSL_VERSION_09
+		default "1.0"   if FREETZ_OPENSSL_VERSION_10
+		default "1.1"   if FREETZ_OPENSSL_VERSION_11
+		default "3.0"   if FREETZ_OPENSSL_VERSION_30
+		default "3.5"   if FREETZ_OPENSSL_VERSION_35
+
 	config FREETZ_OPENSSL_SHLIB_VERSION
 		string
-		default "0.9.8" if FREETZ_OPENSSL_VERSION_0
-		default "1.0.0" if FREETZ_OPENSSL_VERSION_1
-		default "1.1"   if FREETZ_OPENSSL_VERSION_2
-		default "3"     if FREETZ_OPENSSL_VERSION_3
+		default "0.9.8" if FREETZ_OPENSSL_VERSION_09
+		default "1.0.0" if FREETZ_OPENSSL_VERSION_10
+		default "1.1"   if FREETZ_OPENSSL_VERSION_11
+		default "3"     if FREETZ_OPENSSL_VERSION_30
+		default "3"     if FREETZ_OPENSSL_VERSION_35
 
 	config FREETZ_OPENSSL_LIBCRYPTO_EXTRA_LIBS
 		string
-		default "-ldl -pthread -latomic -lz"  if FREETZ_OPENSSL_VERSION_3_MIN && FREETZ_LIB_libcrypto_WITH_ZLIB
-		default "-ldl -pthread -latomic"      if FREETZ_OPENSSL_VERSION_3_MIN
-		default "-ldl -pthread -lz"           if FREETZ_OPENSSL_VERSION_2_MIN && FREETZ_LIB_libcrypto_WITH_ZLIB
-		default "-ldl -pthread"               if FREETZ_OPENSSL_VERSION_2_MIN
-		default "-ldl -lz"                    if FREETZ_OPENSSL_VERSION_1_MAX && FREETZ_LIB_libcrypto_WITH_ZLIB
-		default "-ldl"                        if FREETZ_OPENSSL_VERSION_1_MAX
+		default "-ldl -pthread -latomic -lz"  if FREETZ_OPENSSL_VERSION_35 &&  FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -pthread -latomic"      if FREETZ_OPENSSL_VERSION_35 && !FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -pthread -latomic -lz"  if FREETZ_OPENSSL_VERSION_30 &&  FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -pthread -latomic"      if FREETZ_OPENSSL_VERSION_30 && !FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -pthread -lz"           if FREETZ_OPENSSL_VERSION_11 &&  FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -pthread"               if FREETZ_OPENSSL_VERSION_11 && !FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -lz"                    if FREETZ_OPENSSL_VERSION_10 &&  FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl"                        if FREETZ_OPENSSL_VERSION_10 && !FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl -lz"                    if FREETZ_OPENSSL_VERSION_09 &&  FREETZ_LIB_libcrypto_WITH_ZLIB
+		default "-ldl"                        if FREETZ_OPENSSL_VERSION_09 && !FREETZ_LIB_libcrypto_WITH_ZLIB
 
 	config FREETZ_LIB_libcrypto_WITH_EC
 		bool "Support elliptic curve cryptography"
@@ -118,7 +140,7 @@ menu "OpenSSL configuration"
 
 	config FREETZ_LIB_libcrypto_WITH_ZLIB
 		bool "Build with zlib support"
-		depends on !FREETZ_OPENSSL_VERSION_0
+		depends on !FREETZ_OPENSSL_VERSION_09
 		select FREETZ_LIB_libz
 		default n
 
@@ -139,33 +161,51 @@ menu "OpenSSL configuration"
 endmenu # "OpenSSL configuration"
 
 
-config FREETZ_OPENSSL_VERSION_1_MIN
+config FREETZ_OPENSSL_VERSION_10_MIN
 	def_bool y
 	depends on \
-		FREETZ_OPENSSL_VERSION_1 || \
-		FREETZ_OPENSSL_VERSION_2_MIN
+		FREETZ_OPENSSL_VERSION_10 || \
+		FREETZ_OPENSSL_VERSION_11_MIN
 
-config FREETZ_OPENSSL_VERSION_2_MIN
+config FREETZ_OPENSSL_VERSION_11_MIN
 	def_bool y
 	depends on \
-		FREETZ_OPENSSL_VERSION_2 || \
-		FREETZ_OPENSSL_VERSION_3_MIN
+		FREETZ_OPENSSL_VERSION_11 || \
+		FREETZ_OPENSSL_VERSION_30_MIN
 
-config FREETZ_OPENSSL_VERSION_3_MIN
+config FREETZ_OPENSSL_VERSION_30_MIN
 	def_bool y
 	depends on \
-		FREETZ_OPENSSL_VERSION_3
+		FREETZ_OPENSSL_VERSION_30 || \
+		FREETZ_OPENSSL_VERSION_35_MIN
 
-
-config FREETZ_OPENSSL_VERSION_1_MAX
+config FREETZ_OPENSSL_VERSION_35_MIN
 	def_bool y
 	depends on \
-		FREETZ_OPENSSL_VERSION_1 || \
-		FREETZ_OPENSSL_VERSION_0
+		FREETZ_OPENSSL_VERSION_35
 
-config FREETZ_OPENSSL_VERSION_2_MAX
+
+config FREETZ_OPENSSL_VERSION_10_MAX
 	def_bool y
 	depends on \
-		FREETZ_OPENSSL_VERSION_2 || \
-		FREETZ_OPENSSL_VERSION_1_MAX
+		FREETZ_OPENSSL_VERSION_10 || \
+		FREETZ_OPENSSL_VERSION_09
+
+config FREETZ_OPENSSL_VERSION_11_MAX
+	def_bool y
+	depends on \
+		FREETZ_OPENSSL_VERSION_11 || \
+		FREETZ_OPENSSL_VERSION_10_MAX
+
+config FREETZ_OPENSSL_VERSION_30_MAX
+	def_bool y
+	depends on \
+		FREETZ_OPENSSL_VERSION_30 || \
+		FREETZ_OPENSSL_VERSION_11_MAX
+
+config FREETZ_OPENSSL_VERSION_35_MAX
+	def_bool y
+	depends on \
+		FREETZ_OPENSSL_VERSION_35 || \
+		FREETZ_OPENSSL_VERSION_30_MAX
 

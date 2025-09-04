@@ -1,6 +1,6 @@
 --- src/network.c
 +++ src/network.c
-@@ -415,10 +415,6 @@
+@@ -417,10 +417,6 @@
  
  	host = host_token->ptr;
  	if ((use_ipv6 && (*host == '\0' || *host == ':')) || (host[0] == '[' && host[1] == ']')) {

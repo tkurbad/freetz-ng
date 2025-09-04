@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 1.17)
+$(call TOOLS_INIT, 1.18)
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=8920c1fc411e13b90bf704ef9db6f29d540e76d232cb3b2c9f4dc4cc599bd990
+$(PKG)_HASH:=5bdccca96b007a7e344c24204b9b9ac12ecd17f5971931a9063bdee4887f4aaf
 $(PKG)_SITE:=@GNU/$(pkg_short)
 ### WEBSITE:=https://www.gnu.org/software/automake/
 ### MANPAGE:=https://www.gnu.org/software/automake/manual/automake.html

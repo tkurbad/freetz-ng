@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,9.9p2))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,10.0p1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=200ebe147f6cb3f101fd0cdf9e02442af7ddca298dffd9f456878e7ccac676e8
-$(PKG)_HASH_CURRENT:=91aadb603e08cc285eddf965e1199d02585fa94d994d6cae5b41e1721e215673
+$(PKG)_HASH_CURRENT:=021a2e709a0edf4250b1256bd5a9e500411a90dddabea830ed59cef90eb9d85c
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),ABANDON,CURRENT))
-$(PKG)_SITE:=https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable,ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable
+$(PKG)_SITE:=https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable,$(PKG)_SITE:=https://mirror.planetunix.net/pub/OpenBSD/OpenSSH/portable
 ### WEBSITE:=https://www.openssh.com/
 ### MANPAGE:=https://www.openssh.com/manual.html
 ### CHANGES:=https://www.openssh.com/releasenotes.html
@@ -12,7 +12,7 @@ $(PKG)_SITE:=https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable,ftp://ftp.open
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),abandon,current)
 
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
 
 $(PKG)_BIN_BINARIES             := ssh scp ssh-add ssh-agent ssh-keygen ssh-keysign ssh-keyscan sftp
 $(PKG)_BIN_BINARIES_INCLUDED    := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BIN_BINARIES))
@@ -24,7 +24,7 @@ $(PKG)_SBIN_BINARIES_INCLUDED   := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_SBIN_
 $(PKG)_SBIN_BINARIES_BUILD_DIR  := $(addprefix $($(PKG)_DIR)/,$($(PKG)_SBIN_BINARIES))
 $(PKG)_SBIN_BINARIES_TARGET_DIR := $(addprefix $($(PKG)_DEST_DIR)/usr/sbin/,$($(PKG)_SBIN_BINARIES))
 
-$(PKG)_LIB_BINARIES             := sftp-server $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),,sshd-session)
+$(PKG)_LIB_BINARIES             := sftp-server $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),,sshd-auth sshd-session)
 $(PKG)_LIB_BINARIES_INCLUDED    := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_LIB_BINARIES))
 $(PKG)_LIB_BINARIES_BUILD_DIR   := $(addprefix $($(PKG)_DIR)/,$($(PKG)_LIB_BINARIES))
 $(PKG)_LIB_BINARIES_TARGET_DIR  := $(addprefix $($(PKG)_DEST_DIR)/usr/lib/,$($(PKG)_LIB_BINARIES))
@@ -36,7 +36,7 @@ $(PKG)_DEPENDS_ON += zlib
 # dependency as some types from it are used throughout the OpenSSH code
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO),--without-openssl)
 $(PKG)_DEPENDS_ON += openssl
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENSSH_STATIC

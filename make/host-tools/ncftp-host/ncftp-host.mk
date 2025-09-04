@@ -1,10 +1,10 @@
-$(call TOOLS_INIT, 3.2.7)
-$(PKG)_SOURCE:=ncftp-$($(PKG)_VERSION)-src.tar.xz
-$(PKG)_HASH:=d41c5c4d6614a8eae2ed4e4d7ada6b6d3afcc9fb65a4ed9b8711344bef24f7e8
+$(call TOOLS_INIT, 3.3.0)
+$(PKG)_SOURCE:=ncftp-$($(PKG)_VERSION)-src.tar.gz
+$(PKG)_HASH:=7920f884c2adafc82c8e41c46d6f3d22698785c7b3f56f5677a8d5c866396386
 $(PKG)_SITE:=https://www.ncftp.com/downloads/ncftp,https://www.ncftp.com/public_ftp/ncftp/older_versions,https://www.ncftp.com/public_ftp/ncftp
 ### WEBSITE:=https://www.ncftp.com/ncftp/
 ### MANPAGE:=https://www.ncftp.com/ncftp/doc/faq.html
-### CHANGES:=https://www.ncftp.com/ncftp/doc/changelog.html
+### CHANGES:=https://www.ncftp.com/download/
 ### SUPPORT:=fda77
 
 $(PKG)_BINARIES_ALL := ncftp ncftpput  ncftpget ncftpls  ncftpbatch

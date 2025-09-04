@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 2.0.21)
+$(call PKG_INIT_BIN, 2.0.22)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=7ad5e84caeb8d2bb6ed0c04614b2a7042def961af82d87f688ba33db857b899d
-$(PKG)_SITE:=https://mosquitto.org/files/source
+$(PKG)_HASH:=2f752589ef7db40260b633fbdb536e9a04b446a315138d64a7ff3c14e2de6b68
+$(PKG)_SITE:=https://mosquitto.org/files/source,https://ftp.fau.de/gentoo/distfiles/95
 ### WEBSITE:=https://www.mosquitto.org/
 ### MANPAGE:=https://www.mosquitto.org/documentation/
 ### CHANGES:=https://mosquitto.org/blog/
@@ -43,9 +43,12 @@ $(PKG)_MAKE_OPTIONS += WITH_CJSON=no
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_MOSQUITTO_WITH_UUID),e2fsprogs)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_MOSQUITTO_WITH_SSL),openssl)
 
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_MOSQUITTO_WITH_UUID
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_MOSQUITTO_WITH_SSL
-$(PKG)_REBUILD_SUBOPTS += $(if $(FREETZ_PACKAGE_MOSQUITTO_WITH_SSL),FREETZ_OPENSSL_SHLIB_VERSION)
+ifeq ($(strip $(FREETZ_PACKAGE_MOSQUITTO_WITH_SSL)),y)
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
+endif
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_MOSQUITTO_WITH_UUID
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)

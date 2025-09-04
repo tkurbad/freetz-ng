@@ -22,7 +22,7 @@
  #else
 --- lib/resource.h
 +++ lib/resource.h
-@@ -130,6 +130,7 @@
+@@ -133,6 +133,7 @@
    dmalloc_free(__FILE__, __LINE__, (ptr), DMALLOC_FUNC_FREE)
  
  #else

@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 1.12.1)
+$(call TOOLS_INIT, 1.13.1)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=821bdff48a3f683bc4bb3b6f0b5fe7b2d647cf65d52aeb63328c91a6c6df285a
+$(PKG)_HASH:=f0055ad0369bf2e372955ba55128d000cfcc21777057806015b45e4accbebf23
 $(PKG)_SITE:=https://github.com/ninja-build/ninja/archive/refs/tags
 ### WEBSITE:=https://ninja-build.org/
 ### MANPAGE:=https://github.com/ninja-build/ninja/wiki
@@ -22,7 +22,8 @@ $(TOOLS_UNPACKED)
 $($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 	$(TOOLS_SUBCMAKE) \
 		-B $(NINJA_HOST_BUILD_DIR) \
-		-S $(NINJA_HOST_DIR)
+		-S $(NINJA_HOST_DIR) \
+		-DBUILD_TESTING=OFF
 	@touch $@
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured

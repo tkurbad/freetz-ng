@@ -2,7 +2,7 @@ $(call PKG_INIT_LIB, 1.3.1)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=38ef96b8dfe510d42707d9c781877914792541133e1870841463bfa73f883e32
-$(PKG)_SITE:=https://www.zlib.net
+$(PKG)_SITE:=https://www.zlib.net,https://github.com/madler/zlib/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://www.zlib.net/
 ### MANPAGE:=https://www.zlib.net/manual.html
 ### CHANGES:=https://www.zlib.net/

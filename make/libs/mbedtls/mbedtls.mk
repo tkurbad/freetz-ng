@@ -1,16 +1,21 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_MBEDTLS_VERSION_ABANDON),2.7.19,2.28.9))
-$(PKG)_SOURCE:=mbedtls-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH_ABANDON:=3da12b1cebe1a25da8365d5349f67db514aefcaa75e26082d7cb2fa3ce9608aa
-$(PKG)_HASH_CURRENT:=53231b898f908dde38879bf27a29ddf670dee252dec37681f2c1f83588c0c40e
-$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_MBEDTLS_VERSION_ABANDON),ABANDON,CURRENT))
-$(PKG)_SITE:=https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
-### VERSION:=2.7.19/2.28.9
+$(call PKG_INIT_LIB, $(if $(FREETZ_MBEDTLS_VERSION_207),2.7.19,$(if $(FREETZ_MBEDTLS_VERSION_228),2.28.10,3.6.4)))
+$(PKG)_SOURCE_2.7  :=mbedtls-$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE_2.28 :=mbedtls-$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE_3.6  :=mbedtls-$($(PKG)_VERSION).tar.bz2
+$(PKG)_SOURCE:=$($(PKG)_SOURCE_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
+$(PKG)_HASH_2.7  :=3da12b1cebe1a25da8365d5349f67db514aefcaa75e26082d7cb2fa3ce9608aa
+$(PKG)_HASH_2.28 :=c785ddf2ad66976ab429c36dffd4a021491e40f04fe493cfc39d6ed9153bc246
+$(PKG)_HASH_3.6  :=ec35b18a6c593cf98c3e30db8b98ff93e8940a8c4e690e66b41dfc011d678110
+$(PKG)_HASH:=$($(PKG)_HASH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
+$(PKG)_SITE:=https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-$($(PKG)_VERSION),https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
+### VERSION:=2.7.19/2.28.10/3.6.4
 ### WEBSITE:=https://www.trustedfirmware.org/projects/mbed-tls/
 ### MANPAGE:=https://mbed-tls.readthedocs.io/en/latest/
 ### CHANGES:=https://github.com/Mbed-TLS/mbedtls/releases
 ### CVSREPO:=https://github.com/Mbed-TLS/mbedtls
+### SUPPORT:=fda77
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_MBEDTLS_VERSION_ABANDON),abandon,current)
+$(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 
 $(PKG)_LIBNAMES_SHORT      := crypto tls x509
 
@@ -36,8 +41,13 @@ $(PKG)_FEATURES_TO_DISABLE += MBEDTLS_XTEA_C
 $(PKG)_FEATURES_TO_DISABLE += $(if $(FREETZ_LIB_libmbedcrypto_WITH_BLOWFISH),,MBEDTLS_BLOWFISH_C)
 $(PKG)_FEATURES_TO_DISABLE += $(if $(FREETZ_LIB_libmbedcrypto_WITH_GENRSA),,MBEDTLS_GENPRIME)
 
+$(PKG)_CONFIGH_2.7  :=config.h
+$(PKG)_CONFIGH_2.28 :=config.h
+$(PKG)_CONFIGH_3.6  :=mbedtls_config.h
+$(PKG)_CONFIGH:=include/mbedtls/$($(PKG)_CONFIGH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
+
 # Don't use -D/-U to define/undefine required symbols, patch config.h instead. The installed headers must contain properly defined symbols.
-$(PKG)_PATCH_POST_CMDS += $(SED) -ri $(foreach f,$(MBEDTLS_FEATURES_TO_DISABLE),-e 's|^([ \t]*$(_hash)define[ \t]+$(f)[ \t]*)$$$$|/* \1 */|') include/mbedtls/config.h;
+$(PKG)_PATCH_POST_CMDS += $(SED) -ri $(foreach f,$(MBEDTLS_FEATURES_TO_DISABLE),-e 's|^([ \t]*$(_hash)define[ \t]+$(f)[ \t]*)$$$$|/* \1 */|') $($(PKG)_CONFIGH)
 
 
 $(PKG_SOURCE_DOWNLOAD)

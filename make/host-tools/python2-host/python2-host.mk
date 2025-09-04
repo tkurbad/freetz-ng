@@ -8,8 +8,12 @@ $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### CVSREPO:=https://github.com/python/cpython
 ### SUPPORT:=fda77
 
+$(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+$(PKG)_MAJOR_VERSION_1:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
+$(PKG)_SITE_PACKAGES:=$(HOST_TOOLS_DIR)/usr/lib/python$($(PKG)_MAJOR_VERSION)/site-packages
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
-$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$($(PKG)_MAJOR_VERSION)
 
 # python quirk: CFLAGS and OPT flags passed here are then used while cross-compiling -> use some target neutral flags
 $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
@@ -19,7 +23,10 @@ $(PKG)_CONFIGURE_OPTIONS += --host=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --target=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/usr
 #
+#
 
+$(PKG)_CFLAGS := $(TOOLS_CFLAGS)
+$(PKG)_CFLAGS += -std=gnu17
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
@@ -29,6 +36,7 @@ $(TOOLS_CONFIGURED_CONFIGURE)
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	(PATH=$(TARGET_PATH); \
 		$(TOOLS_SUBMAKE) -C $(PYTHON2_HOST_DIR) \
+		CFLAGS="$(PYTHON2_HOST_CFLAGS)" \
 		all Parser/pgen )
 	@touch -c $@
 

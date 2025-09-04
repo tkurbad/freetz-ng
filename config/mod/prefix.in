@@ -47,6 +47,7 @@ config FREETZ_TYPE_PREFIX
 	default "5491"              if FREETZ_TYPE_5491
 	default "5530"              if FREETZ_TYPE_5530
 	default "5590"              if FREETZ_TYPE_5590
+	default "5690"              if FREETZ_TYPE_5690_NIX
 	default "5690_Pro"          if FREETZ_TYPE_5690_PRO
 	default "6000"              if FREETZ_TYPE_6000
 	default "6430"              if FREETZ_TYPE_6430
@@ -62,8 +63,8 @@ config FREETZ_TYPE_PREFIX
 	default "6820_v3"           if FREETZ_TYPE_6820_V3
 	default "6820_v4"           if FREETZ_TYPE_6820_V4
 	default "6840"              if FREETZ_TYPE_6840
-	default "6850_4G"           if FREETZ_TYPE_6850_V1
-	default "6850_5G"           if FREETZ_TYPE_6850_V2
+	default "6850_4G"           if FREETZ_TYPE_6850_4G
+	default "6850_5G"           if FREETZ_TYPE_6850_5G
 	default "6860"              if FREETZ_TYPE_6860
 	default "6842"              if FREETZ_TYPE_6842
 	default "6890"              if FREETZ_TYPE_6890

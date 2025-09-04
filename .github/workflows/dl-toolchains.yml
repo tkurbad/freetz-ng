@@ -1,0 +1,156 @@
+name: dl-toolchains
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/dl-toolchains.yml'
+      - 'tools/dl-toolchains_*'
+      - 'config/mod/dl-toolchain.in'
+#     - 'make/toolchain/'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+
+  matrizifizieren:
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/generate
+      image: ghcr.io/freetz-ng/generate
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.parse.outputs.matrix }}
+
+    steps:
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+
+      - name: parse
+        id: parse
+        run: |
+          sed -rn 's/.* && dltc "(.*)".*/\1/p' tools/dl-toolchains_make | \
+          while read -r line; do \
+          name="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*).*/\1 - \2/g')"; \
+          tcs="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*)(.*)/_\1 _FIRMWARE_\2\3/g')"; \
+          echo -n "$matrix{name:\"$name\",tcs:\"$tcs\"},"; done | \
+          sed 's/^/matrix=\[/;s/$/\]/' >> $GITHUB_OUTPUT
+
+      - name: vars
+        run: |
+          echo "################################################################"
+          echo "matrix=${{ steps.parse.outputs.matrix }}" | sed 's/\[{/\[\n{/;s/},{/},\n{/g;s/},\]/},\n\]/'
+
+  build:
+    container:
+#     image: ubuntu:20.04
+#     image: freetzng/dl-packs
+      image: ghcr.io/freetz-ng/dl-packs
+    needs: matrizifizieren
+    strategy:
+      max-parallel: 16
+      fail-fast: false
+      matrix:
+        fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
+    name: "${{ matrix.fritz.name }}"
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: args
+        id: args
+        run: |
+          export ARGS="$(for x in ${{ matrix.fritz.tcs }}; do echo -n "$x " | sed 's/^_/FREETZ_TYPE_/'; done)"
+          echo "args='$ARGS'" >> $GITHUB_OUTPUT
+          echo "################################################################" && bash -c "echo ARGS='$ARGS'"
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           locales bash \
+#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           perl libstring-crc32-perl ruby ruby1.9 gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev \
+#           gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl \
+#           uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler openssl build-essential libelf-dev
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          umask 0022
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+
+      - name: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            dl/*
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: ${{ github.workflow }}
+
+      - name: version
+        id: version
+        run: |
+          export VERSION="r$(tools/freetz_revision short)"
+          [ -n "$VERSION" ] && echo "version=$VERSION" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo VERSION=$VERSION"
+
+      - name: generate
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir -p dl/ 2>/dev/null || true
+          useradd freetz -s $(which bash) -d $(pwd) -M && chown freetz . -R
+          su freetz -c "umask 0022 && tools/dl-toolchains_make $ACTIONS_VERSION ${{ steps.args.outputs.args }}"
+
+      - name: result
+        env:
+          ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          echo "################################################################"
+          su freetz -c "umask 0022 && tools/dl-toolchains_eval $ACTIONS_VERSION all | grep -v '"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"'"
+          ls -al dl/*-shared-glibc.tar.lzma && du -sh dl/*-shared-glibc.tar.lzma
+
+#     - name: cleanup
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         ACTIONS_VERSION: ${{ steps.version.outputs.version }}
+#       run: |
+#         git config --global --add safe.directory $GITHUB_WORKSPACE
+#         git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
+#         for x in $(git tag | grep -v "_$ACTIONS_VERSION$" | grep 'dl-toolchains_'); do git tag -d $x && git push --delete origin $x || true; done
+
+      - name: release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: dl-toolchains_${{ steps.version.outputs.version }}
+          name: dl-toolchains-${{ steps.version.outputs.version }}
+          body: These files are internally used!
+          prerelease: true
+          allowUpdates: true
+          removeArtifacts: false
+          artifacts: "dl/*-freetz-${{ steps.version.outputs.version }}-shared-glibc.tar.lzma"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: true
+          artifactErrorsFailBuild: true
+          draft: true
+
+

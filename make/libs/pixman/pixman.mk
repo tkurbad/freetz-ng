@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 0.43.4)
+$(call PKG_INIT_LIB, 0.46.4)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=pixman-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=a0624db90180c7ddb79fc7a9151093dc37c646d8c38d3f232f767cf64b85a226
+$(PKG)_HASH:=d09c44ebc3bd5bee7021c79f922fe8fb2fb57f7320f55e97ff9914d2346a591c
 $(PKG)_SITE:=https://www.cairographics.org/releases/
 ### WEBSITE:=http://www.pixman.org/
 ### CHANGES:=https://www.cairographics.org/releases/
@@ -15,6 +15,15 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME_LONG)
 
 $(PKG)_DEPENDS_ON += meson-host
 
+ifeq ($(strip $(FREETZ_LIB_libpixman_1_WITH_LIBPNG)),y)
+$(PKG)_DEPENDS_ON += libpng
+$(PKG)_CONFIGURE_OPTIONS += -D libpng=enabled
+else
+$(PKG)_CONFIGURE_OPTIONS += -D libpng=disabled
+endif
+
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libpixman_1_WITH_LIBPNG
+
 $(PKG)_CONFIGURE_OPTIONS += -D gnu-inline-asm=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D tls=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D loongson-mmi=disabled
@@ -22,17 +31,14 @@ $(PKG)_CONFIGURE_OPTIONS += -D vmx=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D demos=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D gtk=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D tests=disabled
-$(PKG)_CONFIGURE_OPTIONS += -D libpng=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D openmp=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D gnuplot=false
-$(PKG)_CONFIGURE_OPTIONS += -D iwmmxt2=false
 $(PKG)_CONFIGURE_OPTIONS += -D timers=false
 $(PKG)_CONFIGURE_OPTIONS += -D mmx=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D sse2=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D ssse3=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D mips-dspr2=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D arm-simd=disabled
-$(PKG)_CONFIGURE_OPTIONS += -D iwmmxt=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D neon=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D a64-neon=disabled
 

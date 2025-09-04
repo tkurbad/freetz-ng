@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.4.2)
+$(call PKG_INIT_BIN, 1.5.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).src.tar.gz
-$(PKG)_HASH:=4bba16c2b496963a9b939336c0abcc8d488664492080ae43a86da18cf4ce94f2
+$(PKG)_HASH:=6540716a1a3b2b9711635108da14b26baea488881d4a682121c0bddbba6b74cb
 $(PKG)_SITE:=@SF/bvi
 ### WEBSITE:=https://bvi.sourceforge.net/
 ### MANPAGE:=https://bvi.sourceforge.net/quick.html

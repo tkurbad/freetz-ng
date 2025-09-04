@@ -182,7 +182,7 @@ choice
 	config FREETZ_TYPE_4050
 		depends on FREETZ_SERIES_5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_MAPLE
-		bool "4050 - UNTESTED"
+		bool "4050"
 
 	config FREETZ_TYPE_4060
 		depends on FREETZ_SERIES_6
@@ -252,6 +252,11 @@ choice
 		depends on FREETZ_SERIES_5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCAARMv8
 		bool "5590"
+
+	config FREETZ_TYPE_5690_NIX
+		depends on FREETZ_SERIES_6
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_MIAMI
+		bool "5690 - UNTESTED"
 
 	config FREETZ_TYPE_5690_PRO
 		depends on FREETZ_SERIES_6
@@ -336,15 +341,15 @@ choice
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR934x
 		bool "6842 - UNTESTED"
 
-	config FREETZ_TYPE_6850_V1
+	config FREETZ_TYPE_6850_4G
 		depends on FREETZ_SERIES_5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
 		bool "6850 4G"
 
-	config FREETZ_TYPE_6850_V2
+	config FREETZ_TYPE_6850_5G
 		depends on FREETZ_SERIES_5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
-		bool "6850 5G - UNTESTED"
+		bool "6850 5G"
 
 	config FREETZ_TYPE_6860
 		depends on FREETZ_SERIES_6
@@ -802,35 +807,10 @@ choice
 		select FREETZ_AVM_VERSION_07_5X
 		depends on FREETZ_AVM_HAS_FIRMWARE_07_5X
 
-
-	config FREETZ_TYPE_FIRMWARE_08_0X_INHAUS
-		bool "FRITZ!OS 07.90 Inhaus - UNTESTED"
-		select FREETZ_AVM_VERSION_08_0X
-		select FREETZ_TYPE_FIRMWARE_DETECT_LATEST if FREETZ_AVM_HAS_FIRMWARE_08_0X_LABOR
-		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X_INHAUS && FREETZ_SHOW_EXPERT
-		help
-			Enable this to use an AVM Inhaus firmware as base for modding.
-
-	config FREETZ_TYPE_FIRMWARE_08_0X_LABOR
-		bool "FRITZ!OS 08.00 Labor - UNTESTED"
-		select FREETZ_AVM_VERSION_08_0X
-		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X_LABOR && FREETZ_SHOW_EXPERT
-		help
-			Enable this to use an AVM Labor firmware as base for modding.
-			For more details see <http://www.avm.de/Labor/>.
-
 	config FREETZ_TYPE_FIRMWARE_08_0X
 		bool "FRITZ!OS 08.00+"
 		select FREETZ_AVM_VERSION_08_0X
 		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X
-
-	config FREETZ_TYPE_FIRMWARE_08_0X_PLUS
-		bool "FRITZ!OS 08.00+ Plus"
-		select FREETZ_AVM_VERSION_08_0X
-		depends on FREETZ_AVM_HAS_FIRMWARE_08_0X_PLUS && FREETZ_SHOW_EXPERT
-		help
-			Enable this to use an AVM Plus firmware as base for modding.
-			These contains fixes for buggy "stable" releases.
 
 
 	config FREETZ_TYPE_FIRMWARE_08_2X_INHAUS
@@ -850,7 +830,7 @@ choice
 			For more details see <http://www.avm.de/Labor/>.
 
 	config FREETZ_TYPE_FIRMWARE_08_2X
-		bool "FRITZ!OS 08.20+"
+		bool "FRITZ!OS 08.20+ - UNTESTED"
 		select FREETZ_AVM_VERSION_08_2X
 		depends on FREETZ_AVM_HAS_FIRMWARE_08_2X
 
@@ -924,28 +904,24 @@ config FREETZ_AVM_HAS_FIRMWARE_LABOR
 	bool
 	default y
 	depends on \
-		FREETZ_AVM_HAS_FIRMWARE_08_0X_LABOR || \
 		FREETZ_AVM_HAS_FIRMWARE_08_2X_LABOR
 
 config FREETZ_TYPE_FIRMWARE_INHAUS
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_FIRMWARE_08_0X_INHAUS || \
 		FREETZ_TYPE_FIRMWARE_08_2X_INHAUS
 
 config FREETZ_TYPE_FIRMWARE_LABOR
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_FIRMWARE_08_0X_LABOR || \
 		FREETZ_TYPE_FIRMWARE_08_2X_LABOR
 
 config FREETZ_TYPE_FIRMWARE_PLUS
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_FIRMWARE_08_0X_PLUS || \
 		FREETZ_TYPE_FIRMWARE_08_2X_PLUS
 
 ###
@@ -985,13 +961,12 @@ config FREETZ_TYPE_FIRMWARE_UNTESTED
 		FREETZ_TYPE_1240_W5 || \
 		FREETZ_TYPE_1260_V2 || \
 		FREETZ_TYPE_3000_W6 || \
-		FREETZ_TYPE_4050 || \
 		FREETZ_TYPE_4690 || \
+		FREETZ_TYPE_5690_NIX || \
 		FREETZ_TYPE_6670 || \
 		FREETZ_TYPE_6810 || \
 		FREETZ_TYPE_6820_V3 || \
 		FREETZ_TYPE_6842 || \
-		FREETZ_TYPE_6850_V2 || \
 		FREETZ_TYPE_6860 || \
 		FREETZ_TYPE_7520_V2 || \
 		FREETZ_TYPE_7530_W6_V2 || \
@@ -1352,7 +1327,7 @@ config FREETZ_TYPE_6820
 
 config FREETZ_TYPE_6850
 	bool
-	depends on FREETZ_TYPE_6850_V1 || FREETZ_TYPE_6850_V2
+	depends on FREETZ_TYPE_6850_4G || FREETZ_TYPE_6850_5G
 	default y
 
 config FREETZ_TYPE_7270

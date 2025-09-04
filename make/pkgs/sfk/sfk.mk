@@ -1,10 +1,12 @@
-$(call PKG_INIT_BIN, 1.9.8)
+$(call PKG_INIT_BIN, 2.0.0.3)
+$(PKG)_SOURCE_DOWNLOAD_NAME:=$(pkg)-$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),3).tar.gz
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=051e6b81d9da348f19de906b6696882978d8b2c360b01d5447c5d4664aefe40c
+$(PKG)_HASH:=b7e2e3848e3126dcee916056bff5f8340acae9158f3610049de2cde999ccca63
 $(PKG)_SITE:=@SF/swissfileknife
-### VERSION:=1.9.8.2
-### WEBSITE:=http://stahlworks.com/dev/swiss-file-knife.html
-### CHANGES:=http://stahlworks.com/dev/?tool=sfkver
+### WEBSITE:=https://www.stahlworks.com/sfk
+### MANPAGE:=https://www.stahlworks.com/dev/swiss-file-knife.html
+### CHANGES:=https://sourceforge.net/p/swissfileknife/news/
+### CVSREPO:=https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/
 ### SUPPORT:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/sfk
@@ -14,6 +16,7 @@ $(PKG)_DEPENDS_ON += $(STDCXXLIB)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_STDCXXLIB
 
 $(PKG)_EXTRA_CXXFLAGS  += -ffunction-sections -fdata-sections
+$(PKG)_EXTRA_CXXFLAGS  += -w
 $(PKG)_EXTRA_LDFLAGS   += -Wl,--gc-sections
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_SFK_STATIC

@@ -1,15 +1,18 @@
-$(call TOOLS_INIT, 1.9.8)
-$(PKG)_SOURCE:=sfk-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=051e6b81d9da348f19de906b6696882978d8b2c360b01d5447c5d4664aefe40c
+$(call TOOLS_INIT, 2.0.0.3)
+$(PKG)_SOURCE_DOWNLOAD_NAME:=$(pkg_short)-$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),3).tar.gz
+$(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=b7e2e3848e3126dcee916056bff5f8340acae9158f3610049de2cde999ccca63
 $(PKG)_SITE:=@SF/swissfileknife
-### VERSION:=1.9.8.2
 ### WEBSITE:=https://www.stahlworks.com/sfk
-### MANPAGE:=https://stahlworks.com/dev/swiss-file-knife.html
+### MANPAGE:=https://www.stahlworks.com/dev/swiss-file-knife.html
 ### CHANGES:=https://sourceforge.net/p/swissfileknife/news/
 ### CVSREPO:=https://sourceforge.net/projects/swissfileknife/files/1-swissfileknife/
 ### SUPPORT:=fda77
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)
+
+$(PKG)_CXXFLAGS := $(TOOLS_CFLAGS)
+$(PKG)_CXXFLAGS += -w
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
@@ -17,7 +20,9 @@ $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/sfk: $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(SFK_HOST_DIR) all
+	$(TOOLS_SUBMAKE) -C $(SFK_HOST_DIR) \
+		CXXFLAGS="$(SFK_HOST_CXXFLAGS)" \
+		all
 
 $(TOOLS_DIR)/sfk: $($(PKG)_DIR)/sfk
 	$(INSTALL_FILE)

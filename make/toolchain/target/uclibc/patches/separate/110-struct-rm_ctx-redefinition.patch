@@ -1,0 +1,16 @@
+--- include/fenv.h
++++ include/fenv.h
+@@ -134,11 +134,13 @@
+ /* Rounding mode context.  This allows functions to set/restore rounding mode
+    only when the desired rounding mode is different from the current rounding
+    mode.  */
++#if !defined HAVE_FENV_H || !defined HAVE_FESETROUND || !defined HAVE_FEUPDATEENV
+ struct rm_ctx
+ {
+   fenv_t env;
+   bool updated_status;
+ };
++#endif
+ 
+ __END_DECLS
+ 

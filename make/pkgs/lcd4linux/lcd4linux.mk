@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 3fce054efff9b6eba70414ea76246ee479780ff0)
+$(call PKG_INIT_BIN, eadf4603)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=ac1f8c6a3823cf603b36d31ef435ea80948e730e94ee3a1142422669e532394b
+$(PKG)_HASH:=d2501eb81e15c5733bd49b6b0b41cde8db079725f2c55f450b816f63ecc73576
 $(PKG)_SITE:=git@https://github.com/TangoCash/lcd4linux.git
 ### MANPAGE:=https://wiki.vuplus-support.org/index.php?title=LCD4Linux
 ### CHANGES:=https://github.com/TangoCash/lcd4linux/commits/master/
@@ -18,7 +18,7 @@ $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
 $(PKG)_CONFIGURE_OPTIONS += --with-x=no
-$(PKG)_CONFIGURE_OPTIONS += --with-drivers=all,!LCDLinux,!LUIse,!RouterBoard,!serdisplib,!st2205,!VNC,!X11,!HD44780,!LPH7508,!M50530,!T6963,!Noritake,!T6963,!Sample
+$(PKG)_CONFIGURE_OPTIONS += --with-drivers=all,!LCDLinux,!LUIse,!RouterBoard,!serdisplib,!st2205,!VNC,!X11,!HD44780,!LPH7508,!M50530,!T6963,!Noritake,!T6963,!Sample,!G15
 $(PKG)_CONFIGURE_OPTIONS += --with-plugins=all,!dbus,!gps,!mpd,!mpris_dbus,!mysql,!netinfo,!qnaplog,!raspi,!wireless
 
 #$(PKG)_CONFIGURE_POST_CMDS += $(SED) -i "s,.*AM_V_CCLD.*.\(.\).lcd4linux_LDADD.*,& \1(EXTRA_LIBS)," Makefile;

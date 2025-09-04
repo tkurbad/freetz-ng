@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 2.4.7)
+$(call TOOLS_INIT, 2.5.4)
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=4f7f217f057ce655ff22559ad221a0fd8ef84ad1fc5fcb6990cecc333aa1635d
+$(PKG)_HASH:=f81f5860666b0bc7d84baddefa60d1cb9fa6fceb2398cc3baca6afaa60266675
 $(PKG)_SITE:=@GNU/$(pkg_short)
 ### WEBSITE:=https://www.gnu.org/software/libtool/
 ### MANPAGE:=https://www.gnu.org/software/libtool/manual/

@@ -9,6 +9,10 @@ $(PKG)_TOOLS:=mksquashfs unsquashfs
 $(PKG)_TOOLS_BUILD_DIR:=$($(PKG)_TOOLS:%=$($(PKG)_BUILD_DIR)/%-multi)
 $(PKG)_TOOLS_TARGET_DIR:=$($(PKG)_TOOLS:%=$(TOOLS_DIR)/%3-multi)
 
+$(PKG)_CFLAGS := $(TOOLS_CFLAGS)
+$(PKG)_CFLAGS += -fcommon
+$(PKG)_CFLAGS += -std=gnu17
+
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
@@ -18,7 +22,7 @@ $($(PKG)_TOOLS_BUILD_DIR): $($(PKG)_DIR)/.unpacked $(LZMA1_HOST_DIR)/liblzma1.a
 	$(TOOLS_SUBMAKE) -C $(SQUASHFS3_HOST_BUILD_DIR) \
 		CC="$(TOOLS_CC)" \
 		CXX="$(TOOLS_CXX)" \
-		CFLAGS="$(TOOLS_CFLAGS) -fcommon" \
+		CFLAGS="$(SQUASHFS3_HOST_CFLAGS)" \
 		LDFLAGS="$(TOOLS_LDFLAGS)" \
 		LZMA1_SUPPORT=1 \
 		LZMA_LIBNAME=lzma1 \

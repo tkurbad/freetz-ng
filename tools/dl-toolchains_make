@@ -69,7 +69,7 @@ FREETZ_USER_LEVEL_DEVELOPER=y
 FREETZ_TOOLCHAIN_CCACHE=y
 FREETZ_HOSTTOOLS_DOWNLOAD=y
 FREETZ_VERBOSITY_LEVEL_0=y
-FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/raw/master"
+FREETZ_DL_SITE_USER="http://192.168.1.104/mirror https://github.com/Freetz-NG/dl-mirror/raw/master"
 EOF
 }
 
@@ -119,6 +119,7 @@ esac
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7581        FREETZ_TYPE_FIRMWARE_07_1X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_08_2X_LABOR"  # SEPARATE
 
 #ARM
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_4040        FREETZ_TYPE_FIRMWARE_07_0X"

@@ -1,5 +1,6 @@
 config FREETZ_LIB_libharfbuzz
 	bool "HarfBuzz (libharfbuzz.so)"
+	depends on FREETZ_TARGET_GCC_4_8_MIN
 	select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 	select FREETZ_LIB_libfreetype
 	default n

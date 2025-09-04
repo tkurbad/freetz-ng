@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# uClibc-ng 1.0.51 C Library Configuration
+# uClibc-ng 1.0.54 C Library Configuration
 #
 # TARGET_aarch64 is not set
 # TARGET_alpha is not set
@@ -83,6 +83,8 @@ LDSO_PRELOAD_ENV_SUPPORT=y
 # LDSO_PRELOAD_FILE_SUPPORT is not set
 # LDSO_STANDALONE_SUPPORT is not set
 # LDSO_PRELINK_SUPPORT is not set
+ARCH_VDSO_SUPPORT=y
+# VDSO_SUPPORT is not set
 # UCLIBC_STATIC_LDCONFIG is not set
 LDSO_RUNPATH=y
 # LDSO_RUNPATH_OF_EXECUTABLE is not set

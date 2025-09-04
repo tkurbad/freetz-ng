@@ -1,10 +1,10 @@
-$(call PKG_INIT_BIN, 2.1.4)
+$(call PKG_INIT_BIN, 2.2.4)
 $(PKG)_SOURCE:=$(pkg)-v$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=c9d76a627839b5f779e21dd49c40762918f47b46197418b3715ec0c52e3c5cb7
+$(PKG)_HASH:=696edac467111d0c1353a4ff32ed8dfa33bc914036644c69a7b9506b7ee49115
 $(PKG)_SITE:=https://www.rutschle.net/tech/sslh
 ### WEBSITE:=https://www.rutschle.net/tech/sslh/README.html
 ### MANPAGE:=https://www.rutschle.net/tech/sslh/doc/config
-### CHANGES:=https://www.rutschle.net/tech/sslh/download.html
+### CHANGES:=https://github.com/yrutschle/sslh/tags
 ### CVSREPO:=https://github.com/yrutschle/sslh
 ### SUPPORT:=fda77
 

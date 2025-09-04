@@ -49,7 +49,7 @@ $($(PKG)_DIR)/.installed: $($(PKG)_TARGET_BINARY)
 
 define $(PKG)_FIXHARDCODED
 	@for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(WGET_HOST_TARGET_BINARY) ;\
+	$(PATCHELF) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(WGET_HOST_TARGET_BINARY) ;\
 	done ;
 endef
 

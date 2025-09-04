@@ -25,7 +25,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-pcap=linux
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --disable-bluetooth
-ifeq ($(FREETZ_LIB_libpcap_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_LIB_libpcap_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-can
 $(PKG)_CONFIGURE_OPTIONS += --disable-yydebug
 $(PKG)_CONFIGURE_OPTIONS += --with-build-cc="$(HOSTCC)"

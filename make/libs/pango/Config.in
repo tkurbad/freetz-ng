@@ -1,4 +1,5 @@
 menu "pango"
+	depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_LIB_libpango_1
 		bool "Pango (libpango-1.0.so)"

@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),1.0.3,3.4.0))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),1.0.3,3.4.1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.$(if $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),gz,xz)
 $(PKG)_HASH_ABANDON:=055c57927f75847fdc222b5258b079a9542811a9dcf5421c615c7e17f55d1829
-$(PKG)_HASH_CURRENT:=feaabd2d31ca27c09c367a3b1b547ea9f96105fc41f4dfa799e2f49daad5de29
+$(PKG)_HASH_CURRENT:=904f7d4580fc11cffc7e0f06895a4789e0c1c054435752c151e812fead9f6220
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/htop-dev/htop/releases/download/$($(PKG)_VERSION),https://hisham.hm/htop/releases/$($(PKG)_VERSION)
 ### WEBSITE:=https://htop.dev/
@@ -13,13 +13,16 @@ $(PKG)_SITE:=https://github.com/htop-dev/htop/releases/download/$($(PKG)_VERSION
 $(PKG)_BINARY:=$($(PKG)_DIR)/htop
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/htop
 
+ifeq ($(strip $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON)),y)
+$(PKG)_DEPENDS_ON += python2-host
+endif
 $(PKG)_DEPENDS_ON += ncurses
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_HTOP_VERSION_ABANDON
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),abandon,current)
 
-ifeq ($(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_ENV += ac_cv_file__proc_stat=yes
 $(PKG)_CONFIGURE_ENV += ac_cv_file__proc_meminfo=yes
 

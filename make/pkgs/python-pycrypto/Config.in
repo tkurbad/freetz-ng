@@ -1,10 +1,18 @@
 config FREETZ_PACKAGE_PYTHON_PYCRYPTO
-	bool "pycrypto 2.6.1 - DEPRECATED"
+	bool "PyCrypto 2.7a1 - DEPRECATED"
 	depends on FREETZ_PACKAGE_PYTHON
+	depends on !FREETZ_PACKAGE_PYTHON_PYCRYPTODOME
 	select FREETZ_LIB_libpython2 if !FREETZ_PACKAGE_PYTHON_STATIC
 	select FREETZ_LIB_libgmp
 	default n
 	help
 		A collection of both secure hash functions (such as MD5 and SHA),
 		and various encryption algorithms (AES, DES, IDEA, RSA, ElGamal, etc.).
+
+if FREETZ_PACKAGE_PYTHON_PYCRYPTO
+
+	comment "PyCrypto 2.x is unmaintained, obsolete, and contains"
+	comment "security vulnerabilities - use PyCryptodome instead!"
+
+endif # FREETZ_PACKAGE_PYTHON_PYCRYPTO
 

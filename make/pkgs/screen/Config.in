@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_SCREEN
-	bool "Screen 4.9.1/5.0.0"
+	bool "Screen 4.9.1/5.0.1"
 	select FREETZ_LIB_libncurses
 	select FREETZ_LIB_libutil if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	default n
@@ -32,14 +32,13 @@ if FREETZ_PACKAGE_SCREEN
 
 	choice
 		prompt "Version"
-			default FREETZ_PACKAGE_SCREEN_VERSION_CURRENT
+			default FREETZ_PACKAGE_SCREEN_VERSION_ABANDON
 
 		config FREETZ_PACKAGE_SCREEN_VERSION_ABANDON
 			bool "4.9.1"
-			depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 		config FREETZ_PACKAGE_SCREEN_VERSION_CURRENT
-			bool "5.0.0"
+			bool "5.0.1"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	endchoice

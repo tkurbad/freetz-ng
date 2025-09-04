@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_GIT
-	bool "Git 2.48.1"
+	bool "Git 2.26.2/2.50.1"
 	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libcurl
@@ -14,6 +14,20 @@ config FREETZ_PACKAGE_GIT
 		and full access to internals.
 
 if FREETZ_PACKAGE_GIT
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_GIT_VERSION_CURRENT
+
+		config FREETZ_PACKAGE_GIT_VERSION_ABANDON
+			bool "2.26.2"
+			depends on !FREETZ_SEPARATE_AVM_UCLIBC
+
+		config FREETZ_PACKAGE_GIT_VERSION_CURRENT
+			bool "2.50.1"
+			depends on FREETZ_SEPARATE_AVM_UCLIBC
+
+	endchoice
 
 	config FREETZ_PACKAGE_GIT_REMOVE_WEBIF
 		bool "remove webinterface"

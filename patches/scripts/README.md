@@ -20,6 +20,7 @@
 
 ### fixes
  - 090-var_install_fixes.sh         - all
+ - 095-homelua_symlink_fixes.sh     - FREETZ_AVM_VERSION_08_2X_MIN
  - 196-storage_fixes.sh             - all
  - 219-fix_busybox_syntax_7530AX.sh - 7530_W6 FREETZ_AVM_VERSION_07_2X_MAX
  - 220-fix_chronyd_7570.sh          - 7570

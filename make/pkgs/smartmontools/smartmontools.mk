@@ -1,10 +1,10 @@
-$(call PKG_INIT_BIN, 7.4)
+$(call PKG_INIT_BIN, 7.5)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=e9a61f641ff96ca95319edfb17948cd297d0cd3342736b2c49c99d4716fb993d
+$(PKG)_HASH:=690b83ca331378da9ea0d9d61008c4b22dde391387b9bbad7f29387f2595f76e
 $(PKG)_SITE:=@SF/smartmontools
 ### WEBSITE:=https://www.smartmontools.org/
 ### MANPAGE:=https://www.smartmontools.org/wiki/TocDoc
-### CHANGES:=https://www.smartmontools.org/browser/trunk/smartmontools/NEWS
+### CHANGES:=https://github.com/smartmontools/smartmontools/releases
 ### CVSREPO:=https://www.smartmontools.org/timeline
 ### SUPPORT:=fda77
 

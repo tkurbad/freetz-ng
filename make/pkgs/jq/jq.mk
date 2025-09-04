@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.7.1)
+$(call PKG_INIT_BIN, 1.8.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=478c9ca129fd2e3443fe27314b455e211e0d8c60bc8ff7df703873deeee580c2
+$(PKG)_HASH:=2be64e7129cecb11d5906290eba10af694fb9e3e7f9fc208a311dc33ca837eb0
 $(PKG)_SITE:=https://github.com/jqlang/jq/releases/download/jq-$($(PKG)_VERSION)
 ### WEBSITE:=https://jqlang.github.io/jq/
 ### MANPAGE:=https://jqlang.github.io/jq/manual/

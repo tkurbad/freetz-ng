@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 3.31.6)
+$(call TOOLS_INIT, 4.1.1)
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=653427f0f5014750aafff22727fb2aa60c6c732ca91808cfb78ce22ddd9e55f0
+$(PKG)_HASH:=b29f6f19733aa224b7763507a108a427ed48c688e1faf22b29c44e1c30549282
 $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://cmake.org/
 ### MANPAGE:=https://cmake.org/cmake/help/latest/
@@ -29,8 +29,8 @@ $(PKG)_CONFIGURE_OPTIONS += --
 $(PKG)_CONFIGURE_OPTIONS += -DCMAKE_USE_OPENSSL=ON
 $(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_ROOT_DIR="$(OPENSSL_HOST_INSTALLDIR)"
 $(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_INCLUDE_DIR="$(OPENSSL_HOST_INSTALLDIR)/include"
-$(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_CRYPTO_LIBRARY="$(OPENSSL_HOST_INSTALLDIR)/lib/libcrypto.so.3"
-$(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_SSL_LIBRARY="$(OPENSSL_HOST_INSTALLDIR)/lib/libssl.so.3"
+$(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_CRYPTO_LIBRARY="$(OPENSSL_HOST_INSTALLDIR)/lib/libcrypto.so.$(OPENSSL_HOST_LIB_VERSION)"
+$(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_SSL_LIBRARY="$(OPENSSL_HOST_INSTALLDIR)/lib/libssl.so.$(OPENSSL_HOST_LIB_VERSION)"
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
@@ -51,7 +51,7 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 define $(PKG)_FIXHARDCODED
 	@for binfile in $(CMAKE_HOST_BINARIES); do \
 	for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(CMAKE_HOST_DESTDIR)/bin/$${binfile} ;\
+	$(PATCHELF) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(CMAKE_HOST_DESTDIR)/bin/$${binfile} ;\
 	done ;\
 	done ;
 endef

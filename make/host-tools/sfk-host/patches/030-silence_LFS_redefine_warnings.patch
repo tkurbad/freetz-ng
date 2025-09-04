@@ -1,7 +1,7 @@
 --- sfkbase.hpp
 +++ sfkbase.hpp
-@@ -7,9 +7,15 @@
- // ========== core includes and operating system abstraction ==========
+@@ -4,9 +4,15 @@
+ #include "sfkconf.hpp"
  
  // enable LFS esp. on linux:
 +#ifndef _LARGEFILE_SOURCE
@@ -13,6 +13,6 @@
 +#ifndef _FILE_OFFSET_BITS
  #define _FILE_OFFSET_BITS 64
 +#endif
+ #define SFK_V2
  
  #ifdef _WIN32
-  #define WINFULL

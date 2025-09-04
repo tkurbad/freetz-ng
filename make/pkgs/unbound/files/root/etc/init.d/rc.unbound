@@ -60,7 +60,12 @@ case $1 in
 
 		modlib_add_user_and_group nobody
 		modlib_defaults $DAEMON_CFGFILE
-		[ ! -s "/tmp/flash/$DAEMON/root.key" ] && echo '. IN DS 20326 8 2 E06D44B80B8F1D39A95C0B0D7C65D08458E880409BBC683457104237C7F8EC8D' > /tmp/flash/$DAEMON/root.key
+		if [ ! -s "/tmp/flash/$DAEMON/root.key" ]; then
+			(
+				echo '. IN DS 20326 8 2 E06D44B80B8F1D39A95C0B0D7C65D08458E880409BBC683457104237C7F8EC8D'  # since 2017-02-02
+				echo '. IN DS 38696 8 2 683D2D0ACB8C9B712A1948B27F741219298D0A450D612C483AF444A4C0FB2B16'  # since 2024-07-18
+			) > /tmp/flash/$DAEMON/root.key
+		fi
 		[ ! -e "/tmp/flash/$DAEMON/root.hints" ] && touch /tmp/flash/$DAEMON/root.hints
 		chown -R nobody:nobody /tmp/flash/$DAEMON
 

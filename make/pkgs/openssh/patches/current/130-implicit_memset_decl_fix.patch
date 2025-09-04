@@ -1,6 +1,6 @@
 --- includes.h
 +++ includes.h
-@@ -53,6 +53,9 @@
+@@ -56,6 +56,9 @@
  /*
   *-*-nto-qnx needs these headers for strcasecmp and LASTLOG_FILE respectively
   */

@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_FFMPEG
-	bool "FFmpeg 5.1.4 - DEPRECATED"
+	bool "FFmpeg 5.1.4/7.1.1"
 	default n
 	depends on !FREETZ_TARGET_UCLIBC_0_9_28 && !FREETZ_TARGET_UCLIBC_0_9_29
 	help
@@ -7,6 +7,21 @@ menuconfig FREETZ_PACKAGE_FFMPEG
 		convert and stream audio and video.
 
 if FREETZ_PACKAGE_FFMPEG
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_FFMPEG_VERSION_CURRENT
+
+		config FREETZ_PACKAGE_FFMPEG_VERSION_ABANDON
+			bool "5.1.4"
+
+		config FREETZ_PACKAGE_FFMPEG_VERSION_CURRENT
+			bool "7.1.1"
+			depends on !FREETZ_TARGET_GCC_4_MAX
+			depends on !FREETZ_PACKAGE_MEDIATOMB
+			depends on !FREETZ_PACKAGE_MINIDLNA
+
+	endchoice
 
 	config FREETZ_PACKAGE_FFMPEG_ffmpeg
 		bool "Include ffmpeg"
@@ -51,8 +66,8 @@ if FREETZ_PACKAGE_FFMPEG
 
 			config FREETZ_PACKAGE_FFMPEG_SSL_OPENSSL
 				bool "OpenSSL"
-				depends on !FREETZ_OPENSSL_VERSION_1
-				select FREETZ_PACKAGE_FFMPEG_NONFREE if FREETZ_OPENSSL_VERSION_2
+				depends on !FREETZ_OPENSSL_VERSION_10
+				select FREETZ_PACKAGE_FFMPEG_NONFREE if FREETZ_OPENSSL_VERSION_11
 
 			config FREETZ_PACKAGE_FFMPEG_SSL_MBEDTLS
 				bool "MbedTLS"

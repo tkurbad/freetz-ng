@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),1.2.30,1.9.0))
-$(PKG)_LIB_VERSION:=$(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),2.0.15,8.3.0)
+$(call PKG_INIT_BIN, $(if $(FREETZ_LIB_librrd_WITH_VERSION_ABANDON),1.2.30,1.9.0))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_librrd_WITH_VERSION_ABANDON),2.0.15,8.3.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=3190efea410a6dd035799717948b2df09910f608d72d23ee81adad4cd0184ae9
 $(PKG)_HASH_CURRENT:=5e65385e51f4a7c4b42aa09566396c20e7e1a0a30c272d569ed029a81656e56b
-$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),ABANDON,CURRENT))
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_librrd_WITH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/oetiker/rrdtool-1.x/releases/download/v$($(PKG)_VERSION),https://oss.oetiker.ch/rrdtool/pub/archive
 ### WEBSITE:=https://www.rrdtool.org
 ### MANPAGE:=https://oss.oetiker.ch/rrdtool/doc
@@ -11,7 +11,7 @@ $(PKG)_SITE:=https://github.com/oetiker/rrdtool-1.x/releases/download/v$($(PKG)_
 ### CVSREPO:=https://github.com/oetiker/rrdtool-1.x
 ### SUPPORT:=fda77
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),abandon,current)
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_librrd_WITH_VERSION_ABANDON),abandon,current)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/rrdtool
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/rrdtool-freetz
@@ -24,7 +24,7 @@ $(PKG)_LIBS_BUILD_DIR:=$($(PKG)_LIBS_SELECTED:%=$($(PKG)_DIR)/src/.libs/%)
 $(PKG)_LIBS_STAGING_DIR:=$($(PKG)_LIBS_SELECTED:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
 $(PKG)_LIBS_TARGET_DIR:=$($(PKG)_LIBS_SELECTED:%=$($(PKG)_TARGET_LIBDIR)/%)
 
-ifeq ($(FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_LIB_librrd_WITH_VERSION_ABANDON)),y)
 $(PKG)_DEPENDS_ON += libpng freetype libart_lgpl zlib
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)

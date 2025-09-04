@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_BVI
-	bool "bvi/bmore 1.4.2 (binary only)"
+	bool "bvi 1.5.0 (binary only)"
 	default n
 	select FREETZ_LIB_libncurses
 	select FREETZ_PACKAGE_BVI_bvi if !FREETZ_PACKAGE_BVI_bmore

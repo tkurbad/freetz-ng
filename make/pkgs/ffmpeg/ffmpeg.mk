@@ -1,6 +1,8 @@
-$(call PKG_INIT_BIN, 5.1.4)
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_FFMPEG_VERSION_ABANDON),5.1.4,7.1.1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=54383bb890a1cd62580e9f1eaa8081203196ed53bde9e98fb6b0004423f49063
+$(PKG)_HASH_ABANDON:=54383bb890a1cd62580e9f1eaa8081203196ed53bde9e98fb6b0004423f49063
+$(PKG)_HASH_CURRENT:=733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_FFMPEG_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://www.ffmpeg.org/releases
 ### WEBSITE:=https://www.ffmpeg.org/
 ### MANPAGE:=https://www.ffmpeg.org/documentation.html
@@ -11,14 +13,22 @@ $(PKG)_DEPENDS_ON += zlib
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_FFMPEG_DECODER_libopenjpeg),openjpeg)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_FFMPEG_LZMA),xz)
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_FFMPEG_VERSION_ABANDON),abandon,current)
+
 $(PKG)_BINARIES_ALL        := ffmpeg ffprobe
 $(PKG)_BINARIES            := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))
 $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/bin/%)
 
 $(PKG)_LIBNAMES_SHORT      := avcodec avdevice avfilter avformat avutil postproc swresample swscale
+
+ifeq ($(strip $(FREETZ_PACKAGE_FFMPEG_VERSION_ABANDON)),y)
 $(PKG)_LIBVERSIONS_MAJOR   := 59      59       8        59       57     56       4          6
 $(PKG)_LIBVERSIONS_MINOR   := 37.100  7.100    44.100   27.100   28.100 6.100    7.100      7.100
+else
+$(PKG)_LIBVERSIONS_MAJOR   := 61      61       10       61       59     58       5          8
+$(PKG)_LIBVERSIONS_MINOR   := 19.101  3.100    4.100    7.100    39.100 3.100    3.100      3.100
+endif
 
 $(PKG)_LIBNAMES_LONG_MAJOR := $(join $($(PKG)_LIBNAMES_SHORT:%=lib%.so.),$($(PKG)_LIBVERSIONS_MAJOR))
 $(PKG)_LIBNAMES_LONG       := $(join $($(PKG)_LIBNAMES_LONG_MAJOR:%=%.),$($(PKG)_LIBVERSIONS_MINOR))
@@ -33,6 +43,7 @@ $(PKG)_DEMUXERS  := ac3 avi flv h264 image2 matroska mjpeg mov mp3 mpegps mpegts
 $(PKG)_PARSERS   := aac ac3 h264 mjpeg mpegaudio mpegvideo mpeg4video
 $(PKG)_PROTOCOLS := file http https pipe rtp tcp udp
 
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_FFMPEG_VERSION_ABANDON
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_FFMPEG_ffmpeg
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_FFMPEG_ffprobe
@@ -87,7 +98,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-stripping
 $(PKG)_CONFIGURE_OPTIONS += --enable-zlib
 
 ifeq ($(strip $(FREETZ_PACKAGE_FFMPEG_SSL_OPENSSL)),y)
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
 $(PKG)_DEPENDS_ON += openssl
 $(PKG)_CONFIGURE_OPTIONS += --enable-openssl
 endif

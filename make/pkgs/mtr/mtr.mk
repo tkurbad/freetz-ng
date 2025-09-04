@@ -29,7 +29,7 @@ $(PKG)_CONFIGURE_ENV += ac_cv_lib_cap_cap_set_proc=no
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --disable-static
-ifeq ($(FREETZ_PACKAGE_MTR_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_PACKAGE_MTR_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_OPTIONS += --with-ncurses
 #$(PKG)_CONFIGURE_OPTIONS += --with-ipinfo
 #$(PKG)_CONFIGURE_OPTIONS += --without-libasan

@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_LIB_liblua_WITH_VERSION_ABANDON),5.1.5,5.4.7))
+$(call PKG_INIT_BIN, $(if $(FREETZ_LIB_liblua_WITH_VERSION_ABANDON),5.1.5,5.4.8))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=2640fc56a795f29d28ef15e13c34a47e223960b0240e8cb0a82d9b0738695333
-$(PKG)_HASH_CURRENT:=9fbf5e28ef86c69858f6d3d34eccc32e911c1a28b4120ff3e84aaa70cfbf1e30
+$(PKG)_HASH_CURRENT:=4f18ddae154e793e46eeab727c59ef1c0c0c2b744e7b94219710d76f530629ae
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_liblua_WITH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://www.lua.org/ftp
 ### WEBSITE:=https://www.lua.org
@@ -25,7 +25,7 @@ $(PKG)_LIB_TARGET_BINARY:=$($(PKG)_TARGET_LIBDIR)/$($(PKG)_LIBNAME)
 $(PKG)_MAKE_TARGET := linux
 
 ifeq ($(strip $(FREETZ_PACKAGE_LUA_READLINE)),y)
-ifeq ($(FREETZ_LIB_liblua_WITH_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_LIB_liblua_WITH_VERSION_ABANDON)),y)
 $(PKG)_DEPENDS_ON += ncurses readline
 else
 $(PKG)_DEPENDS_ON += readline

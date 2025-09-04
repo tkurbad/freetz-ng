@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.0.20210914)
+$(call PKG_INIT_BIN, 1.0.20250521)
 $(PKG)_SOURCE:=wireguard-tools-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=97ff31489217bb265b7ae850d3d0f335ab07d2652ba1feec88b734bc96bd05ac
+$(PKG)_HASH:=b6f2628b85b1b23cc06517ec9c74f82d52c4cdbd020f3dd2f00c972a1782950e
 $(PKG)_SITE:=https://git.zx2c4.com/wireguard-tools/snapshot
 ### WEBSITE:=https://www.wireguard.com/
 ### MANPAGE:=https://www.wireguard.com/quickstart/
@@ -20,6 +20,7 @@ $(PKG)_DEPENDS_ON += kernel
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_KERNEL_VERSION
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
@@ -36,6 +37,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(WIREGUARD_DIR)/src clean

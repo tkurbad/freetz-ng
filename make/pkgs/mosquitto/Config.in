@@ -1,6 +1,7 @@
 config FREETZ_PACKAGE_MOSQUITTO
-	bool "Mosquitto 2.0.21"
+	bool "Mosquitto 2.0.22"
 	default n
+	depends on FREETZ_TARGET_IPV6_SUPPORT
 	select FREETZ_PACKAGE_MOSQUITTO_BROKER if (!FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB && !FREETZ_PACKAGE_MOSQUITTO_PASSWD)
 	help
 		Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements
@@ -46,11 +47,11 @@ if FREETZ_PACKAGE_MOSQUITTO
 			Adds the mosquitto request/response messaging client to the image
 
 	comment "passwd binary not available, needs OpenSSL 1.0 or newer"
-		depends on !FREETZ_OPENSSL_VERSION_1_MIN
+		depends on !FREETZ_OPENSSL_VERSION_10_MIN
 
 	config FREETZ_PACKAGE_MOSQUITTO_PASSWD
 		bool "include passwd binary"
-		depends on FREETZ_OPENSSL_VERSION_1_MIN
+		depends on FREETZ_OPENSSL_VERSION_10_MIN
 		select FREETZ_PACKAGE_MOSQUITTO_WITH_SSL
 		default n
 		help
@@ -65,11 +66,11 @@ if FREETZ_PACKAGE_MOSQUITTO
 			Build using libuuid for clientid generation.
 
 	comment "SSL support not available, needs OpenSSL 1.0 or newer"
-		depends on !FREETZ_OPENSSL_VERSION_1_MIN
+		depends on !FREETZ_OPENSSL_VERSION_10_MIN
 
 	config FREETZ_PACKAGE_MOSQUITTO_WITH_SSL
 		bool "build with SSL support"
-		depends on FREETZ_OPENSSL_VERSION_1_MIN
+		depends on FREETZ_OPENSSL_VERSION_10_MIN
 		select FREETZ_LIB_libcrypto
 		select FREETZ_LIB_libcrypto_WITH_EC
 		select FREETZ_LIB_libssl

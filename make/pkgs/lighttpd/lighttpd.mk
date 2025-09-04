@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, 1.4.77)
+$(call PKG_INIT_BIN, 1.4.81)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=acafabdbfa2267d8b6452d03d85fdd2a66525f3f05a36a79b6645c017f1562ce
+$(PKG)_HASH:=d7d42c3fd2fd94b63c915aa7d18f4da3cac5937ddba33e909f81cf50842a5840
 $(PKG)_SITE:=https://download.lighttpd.net/lighttpd/releases-1.4.x
 ### WEBSITE:=https://www.lighttpd.net/
-### MANPAGE:=https://redmine.lighttpd.net/projects/lighttpd/wiki
+### MANPAGE:=https://wiki.lighttpd.net/
 ### CHANGES:=https://www.lighttpd.net/releases/
 ### CVSREPO:=https://git.lighttpd.net/lighttpd/lighttpd1.4.git
 ### SUPPORT:=fda77
@@ -84,7 +84,7 @@ $(PKG)_CONFIGURE_OPTIONS += --without-lua
 endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_LIGHTTPD_MOD_OPENSSL)),y)
-$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
+$(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
 $(PKG)_DEPENDS_ON += openssl
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl
 $(PKG)_CONFIGURE_OPTIONS += --with-openssl-libs="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib"

@@ -1,7 +1,7 @@
 USBIDS_GIT_REPOSITORY:=https://github.com/usbids/usbids.git
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_USBIDS_VERSION_LATEST), $(call git-get-latest-revision,$(USBIDS_GIT_REPOSITORY),),c70eea490a))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_USBIDS_VERSION_LATEST), $(call git-get-latest-revision,$(USBIDS_GIT_REPOSITORY),),635738b64e))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=ca5073cfb5a24d99dd9f300adc71681305b5e92638e5ee55db9ec54492f9e8c6
+$(PKG)_HASH:=e2e06acfeceeb9e3dee7b817902a29665561c139e3968519d92033c0940fb15d
 $(PKG)_SITE:=git@$($(PKG)_GIT_REPOSITORY)
 ### WEBSITE:=http://www.linux-usb.org/usb-ids.html
 ### CHANGES:=https://github.com/usbids/usbids/commits/master

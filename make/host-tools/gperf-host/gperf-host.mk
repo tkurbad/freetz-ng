@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 3.1)
+$(call TOOLS_INIT, 3.2)
 $(PKG)_SOURCE:=gperf-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=588546b945bba4b70b6a3a616e80b4ab466e3f33024a352fc2198112cdbb3ae2
+$(PKG)_HASH:=e0ddadebb396906a3e3e4cac2f697c8d6ab92dffa5d365a5bc23c7d41d30ef62
 $(PKG)_SITE:=https://ftp.gnu.org/pub/gnu/gperf/
 ### WEBSITE:=https://www.gnu.org/software/gperf/
 ### MANPAGE:=https://linux.die.net/man/1/gperf

@@ -18,35 +18,38 @@
  
  dist_noinst_SCRIPTS = autogen.sh
  all: config.h
---- sfkbase.hpp
-+++ sfkbase.hpp
-@@ -321,6 +321,7 @@
- #define WITH_CASE_XNN
- #define SFKDEEPZIP   // sfk175
+--- sfkconf.hpp
++++ sfkconf.hpp
+@@ -59,7 +59,7 @@
+    #define sfk_prog     1
+    #define sfk_file_net 1
+    #define sfk_file_zip 1
+-   #define sfk_zip      1
++   #define sfk_zip      0
+ #endif
  
-+#define SFKNOPACK
- #ifndef SFKNOPACK
-  #define SFKPACK     // sfk191
-  #define SFKOFFICE   // sfk194
---- sfk.cpp
-+++ sfk.cpp
-@@ -46972,6 +46972,7 @@
+ #ifndef sfk_file_walk
+--- sfkext.cpp
++++ sfkext.cpp
+@@ -49315,6 +49315,7 @@
        bDone = 1;
     }
  
 +   #ifdef SFKPACK
-    if (!strcmp(pszCmd, "testcrc"))
+    if (!strcmp(pszCmd, "testcrc")) // internal
     {
        int n = 100;
-@@ -46982,6 +46983,7 @@
+@@ -49325,6 +49326,7 @@
        delete [] buf;
        bDone = 1;
     }
 +   #endif // SFKPACK
  
-    if (!strcmp(pszCmd, "testabs"))
+    if (!strcmp(pszCmd, "testabs")) // internal
     {
-@@ -47489,7 +47491,9 @@
+--- sfk.cpp
++++ sfk.cpp
+@@ -46678,7 +46678,9 @@
        cs.precachezip = 1;
        #endif // VFILEBASE
  

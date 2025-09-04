@@ -18,6 +18,11 @@ if [ "$MOD_SHOW_BOX_INFO" = yes -a -r "/usr/lib/cgi-bin/mod/box_info.cgi" ]; the
 	modreg status mod "$(lang de:"AVM-Info" en:"AVM info")" box_info
 fi
 
+[ "$mode" = reload ] && modunreg status mod flash_info
+if [ "$MOD_SHOW_FLASH_INFO" = yes -a -r "/usr/lib/cgi-bin/mod/flash_info.cgi" ]; then
+	modreg status mod "$(lang de:"Flashspeicher" en:"Flash storage")" flash_info
+fi
+
 [ "$mode" = reload ] && modunreg status mod info
 if [ "$MOD_SHOW_FREETZ_INFO" = yes -a -r "/usr/lib/cgi-bin/mod/info.cgi" ]; then
 	modreg status mod "$(lang de:"Mod-Info" en:"Mod info")" info

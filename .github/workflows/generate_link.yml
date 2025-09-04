@@ -7,6 +7,10 @@ on:
       - 'docs/CHANGELOG.md'
 # workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   build:
     container:
@@ -47,6 +51,8 @@ jobs:
           TYPE=""
           for x in make libs host-tools; do [ -e docs/$x/$PKG.md ] && TYPE=$x; done
           [ -z "$TYPE" ] && echo -n 'Waiting ' && for x in $(seq 60); do echo -n '.' && sleep 1; done && echo ' done.' && git pull
+          for x in make libs host-tools; do [ -e docs/$x/$PKG.md ] && TYPE=$x; done
+          [ -z "$TYPE" ] && PKG=$PKG-host
           for x in make libs host-tools; do [ -e docs/$x/$PKG.md ] && TYPE=$x; done
           [ -z "$TYPE" ] && echo "No page." && exit
           LINK="https://freetz-ng.github.io/freetz-ng/$TYPE/#$PKG"

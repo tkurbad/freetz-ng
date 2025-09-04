@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_CURL
-	bool "Curl 8.12.1 (binary only)"
+	bool "Curl 8.12.1/8.15.0 (binary only)"
 	default n
 	select FREETZ_LIB_libcurl if ! FREETZ_PACKAGE_CURL_STATIC
 	help
@@ -11,6 +11,19 @@ config FREETZ_PACKAGE_CURL
 		busload of other useful tricks.
 
 if FREETZ_PACKAGE_CURL
+
+	choice
+		prompt "Version"
+
+		config FREETZ_PACKAGE_CURL_VERSION_ABANDON
+			bool "8.12.1"
+			depends on FREETZ_LIB_libcurl_WITH_VERSION_ABANDON
+
+		config FREETZ_PACKAGE_CURL_VERSION_CURRENT
+			bool "8.15.0"
+			depends on FREETZ_LIB_libcurl_WITH_VERSION_CURRENT
+
+	endchoice
 
 	config FREETZ_PACKAGE_CURL_SELECT_SSL
 		bool "Select SSL support"

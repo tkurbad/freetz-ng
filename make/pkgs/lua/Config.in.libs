@@ -11,11 +11,11 @@ if FREETZ_LIB_liblua
 			default FREETZ_LIB_liblua_WITH_VERSION_CURRENT
 
 		config FREETZ_LIB_liblua_WITH_VERSION_ABANDON
-			bool "5.1.5"
+			bool "5.1"
 #			depends on !FREETZ_TARGET_GCC_5_MIN
 
 		config FREETZ_LIB_liblua_WITH_VERSION_CURRENT
-			bool "5.4.4"
+			bool "5.4"
 			depends on FREETZ_TARGET_GCC_5_MIN
 
 	endchoice

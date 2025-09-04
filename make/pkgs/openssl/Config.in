@@ -1,8 +1,8 @@
 config FREETZ_PACKAGE_OPENSSL
-	bool "OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.16 (binary only)"
+	bool "OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.17/3.5.2 (binary only)"
 	default n
 	select FREETZ_LIB_libdl              if !FREETZ_PACKAGE_OPENSSL_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libpthread         if !FREETZ_PACKAGE_OPENSSL_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs && FREETZ_OPENSSL_VERSION_2_MIN
+	select FREETZ_LIB_libpthread         if !FREETZ_PACKAGE_OPENSSL_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs && FREETZ_OPENSSL_VERSION_11_MIN
 	select FREETZ_LIB_libcrypto          if !FREETZ_PACKAGE_OPENSSL_STATIC
 	select FREETZ_LIB_libssl             if !FREETZ_PACKAGE_OPENSSL_STATIC
 	help
@@ -13,27 +13,31 @@ if FREETZ_PACKAGE_OPENSSL
 	choice
 		prompt "Version"
 
-		config FREETZ_PACKAGE_OPENSSL_VERSION_0
+		config FREETZ_PACKAGE_OPENSSL_VERSION_09
 			bool "0.9.8 - DEPRECATED"
-			depends on FREETZ_OPENSSL_VERSION_0
+			depends on FREETZ_OPENSSL_VERSION_09
 
-		config FREETZ_PACKAGE_OPENSSL_VERSION_1
+		config FREETZ_PACKAGE_OPENSSL_VERSION_10
 			bool "1.0.2 - DEPRECATED"
-			depends on FREETZ_OPENSSL_VERSION_1
+			depends on FREETZ_OPENSSL_VERSION_10
 
-		config FREETZ_PACKAGE_OPENSSL_VERSION_2
+		config FREETZ_PACKAGE_OPENSSL_VERSION_11
 			bool "1.1.1 - DEPRECATED"
-			depends on FREETZ_OPENSSL_VERSION_2
+			depends on FREETZ_OPENSSL_VERSION_11
 
-		config FREETZ_PACKAGE_OPENSSL_VERSION_3
+		config FREETZ_PACKAGE_OPENSSL_VERSION_30
 			bool "3.0"
-			depends on FREETZ_OPENSSL_VERSION_3
+			depends on FREETZ_OPENSSL_VERSION_30
+
+		config FREETZ_PACKAGE_OPENSSL_VERSION_35
+			bool "3.5 - EXPERIMENTAL"
+			depends on FREETZ_OPENSSL_VERSION_35
 
 	endchoice
 
 	config FREETZ_PACKAGE_OPENSSL_TRACE
 		bool "With trace output support"
-		depends on FREETZ_OPENSSL_VERSION_1_MIN
+		depends on FREETZ_OPENSSL_VERSION_10_MIN
 		default n
 		help
 			Build OpenSSL binary with SSL trace support.

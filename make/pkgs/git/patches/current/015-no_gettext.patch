@@ -1,0 +1,19 @@
+--- configure
++++ configure
+@@ -6282,6 +6282,8 @@
+ 
+ config_appended_defs="$config_appended_defs${newline}LIBC_CONTAINS_LIBINTL=${LIBC_CONTAINS_LIBINTL}"
+ 
++NO_GETTEXT=YesPlease
++if false; then
+ #
+ # Define NO_GETTEXT if you don't want Git output to be translated.
+ # A translated Git requires GNU libintl or another gettext implementation
+@@ -6293,6 +6295,7 @@
+   e) NO_GETTEXT=YesPlease ;;
+ esac
+ fi
++fi
+ 
+ 
+ config_appended_defs="$config_appended_defs${newline}NO_GETTEXT=${NO_GETTEXT}"

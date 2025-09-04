@@ -4,7 +4,7 @@ $(PKG)_HASH:=16216bd0877170dfcc64157085ba9013610b12b082548c7c9542cc0103198951
 $(PKG)_SITE:=https://github.com/$(pkg)/$(pkg)/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://tmux.github.io
 ### MANPAGE:=http://man.openbsd.org/OpenBSD-current/man1/tmux.1
-### CHANGES:=https://github.com/tmux/tmux/blob/master/CHANGES
+### CHANGES:=https://github.com/tmux/tmux/releases
 ### CVSREPO:=https://github.com/tmux/tmux
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/tmux

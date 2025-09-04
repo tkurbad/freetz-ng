@@ -1,10 +1,10 @@
-# Lighttpd 1.4.77
- - Homepage: [https://www.lighttpd.net/](https://www.lighttpd.net/)
- - Manpage: [https://redmine.lighttpd.net/projects/lighttpd/wiki](https://redmine.lighttpd.net/projects/lighttpd/wiki)
- - Changelog: [https://www.lighttpd.net/releases/](https://www.lighttpd.net/releases/)
- - Repository: [https://git.lighttpd.net/lighttpd/lighttpd1.4.git](https://git.lighttpd.net/lighttpd/lighttpd1.4.git)
- - Package: [master/make/pkgs/lighttpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lighttpd/)
- - Maintainer: [@fda77](https://github.com/fda77)
+# Lighttpd 1.4.81
+  - Homepage: [https://www.lighttpd.net/](https://www.lighttpd.net/)
+  - Manpage: [https://wiki.lighttpd.net/](https://wiki.lighttpd.net/)
+  - Changelog: [https://www.lighttpd.net/releases/](https://www.lighttpd.net/releases/)
+  - Repository: [https://git.lighttpd.net/lighttpd/lighttpd1.4.git](https://git.lighttpd.net/lighttpd/lighttpd1.4.git)
+  - Package: [master/make/pkgs/lighttpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lighttpd/)
+  - Maintainer: [@fda77](https://github.com/fda77)
 
 Mit diesem Paket ist es möglich, den lighttpd Webserver zu erstellen.
 

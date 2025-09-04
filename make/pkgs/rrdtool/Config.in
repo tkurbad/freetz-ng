@@ -2,9 +2,9 @@ config FREETZ_PACKAGE_RRDTOOL
 	bool "RRDtool 1.2.30/1.9.0 (binary only)"
 	select FREETZ_LIB_librrd
 	select FREETZ_LIB_libm                                 if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libz                                 if FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON
-	select FREETZ_PACKAGE_DEJAVU_FONTS_TTF                 if FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT
-	select FREETZ_PACKAGE_DEJAVU_FONTS_TTF_DejaVuSansMono  if FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT
+	select FREETZ_LIB_libz                                 if FREETZ_LIB_librrd_WITH_VERSION_ABANDON
+	select FREETZ_PACKAGE_DEJAVU_FONTS_TTF                 if FREETZ_LIB_librrd_WITH_VERSION_CURRENT
+	select FREETZ_PACKAGE_DEJAVU_FONTS_TTF_DejaVuSansMono  if FREETZ_LIB_librrd_WITH_VERSION_CURRENT
 	default n
 	help
 		RRDtool is the OpenSource industry standard, high
@@ -17,16 +17,16 @@ if FREETZ_PACKAGE_RRDTOOL
 
 	choice
 		prompt "Version"
-			default FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON
 
 		config FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON
 			bool "1.2.30"
+			depends on FREETZ_LIB_librrd_WITH_VERSION_ABANDON
 			help
 				This version needs about 0,7MB (including all libs).
 
 		config FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT
 			bool "1.9.0"
-			depends on FREETZ_SEPARATE_AVM_UCLIBC
+			depends on FREETZ_LIB_librrd_WITH_VERSION_CURRENT
 			help
 				This version needs about 3,7MB (including all libs).
 

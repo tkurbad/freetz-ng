@@ -1,9 +1,9 @@
 comment "Tor (not available, needs OpenSSL 1.0 or newer)"
-	depends on !FREETZ_OPENSSL_VERSION_1_MIN
+	depends on !FREETZ_OPENSSL_VERSION_10_MIN
 
 config FREETZ_PACKAGE_TOR
-	bool "Tor 0.4.8.14"
-	depends on FREETZ_OPENSSL_VERSION_1_MIN
+	bool "Tor 0.4.8.17"
+	depends on FREETZ_OPENSSL_VERSION_10_MIN
 	select FREETZ_LIB_libm               if !FREETZ_PACKAGE_TOR_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libevent           if !FREETZ_PACKAGE_TOR_STATIC
 	select FREETZ_LIB_libcrypto          if !FREETZ_PACKAGE_TOR_STATIC
@@ -33,8 +33,15 @@ if FREETZ_PACKAGE_TOR
 			This includes the GeoIP database for IPv6.
 			Needs about 180 KB (compressed).
 
+	config FREETZ_PACKAGE_TOR_RELAY
+		bool "With Relay module"
+		default n
+		help
+			Build tor binary with module relay and module dirauth.
+
 	config FREETZ_PACKAGE_TOR_STATIC
 		bool "Link statically"
+		depends on FREETZ_OPENSSL_VERSION_10
 		default n
 		help
 			Build tor binary with statically linked libraries.

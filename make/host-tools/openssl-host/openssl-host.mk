@@ -1,6 +1,7 @@
-$(call TOOLS_INIT, 3.0.16)
+$(call TOOLS_INIT, 3.5.2)
+$(PKG)_LIB_VERSION:=3
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=57e03c50feab5d31b152af2b764f10379aecd8ee92f16c985983ce4a99f7ef86
+$(PKG)_HASH:=c53a47e5e441c930c3928cf7bf6fb00e5d129b630e0aa873b08258656e7345ec
 $(PKG)_SITE:=https://www.openssl.org/source,https://github.com/openssl/openssl/releases/download/openssl-$($(PKG)_VERSION)
 ### WEBSITE:=https://www.openssl.org/source/
 ### MANPAGE:=https://www.openssl.org/docs/
@@ -33,15 +34,15 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(OPENSSL_HOST_DIR) install_sw
 	@[ -d $(OPENSSL_HOST_INSTALLDIR)/lib ] || ln -sf lib64 $(OPENSSL_HOST_INSTALLDIR)/lib
 	@mkdir -p $(OPENSSL_HOST_DESTDIR)/
-	cp -a $(OPENSSL_HOST_DIR)/{libcrypto,libssl}.so.3 $(OPENSSL_HOST_DESTDIR)/
+	cp -a $(OPENSSL_HOST_DIR)/{libcrypto,libssl}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/
 	cp -a $(OPENSSL_HOST_DIR)/apps/openssl $(OPENSSL_HOST_TARGET_BINARY)
 	$(call OPENSSL_HOST_FIXHARDCODED)
 	@touch $@
 
 define $(PKG)_FIXHARDCODED
-	@$(PATCHELF) --replace-needed $(1)libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libcrypto.so.3 $(OPENSSL_HOST_DESTDIR)/libssl.so.3
+	@$(PATCHELF) --replace-needed $(1)libcrypto.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/libcrypto.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/libssl.so.$(OPENSSL_HOST_LIB_VERSION)
 	@for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $(1)$${libfile}.so.3 $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.3 $(OPENSSL_HOST_TARGET_BINARY) ;\
+	$(PATCHELF) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_TARGET_BINARY) ;\
 	done ;
 endef
 
@@ -59,6 +60,6 @@ $(pkg)-dirclean:
 	$(RM) -r $(OPENSSL_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) $(OPENSSL_HOST_DESTDIR)/{libcrypto,libssl}.so.3 $(OPENSSL_HOST_TARGET_BINARY)
+	$(RM) $(OPENSSL_HOST_DESTDIR)/{libcrypto,libssl}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_TARGET_BINARY)
 
 $(TOOLS_FINISH)

@@ -6,7 +6,7 @@ $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_TCPDUMP_VERSION_ABANDON),ABANDO
 $(PKG)_SITE:=https://www.tcpdump.org/release
 ### WEBSITE:=https://www.tcpdump.org
 ### MANPAGE:=https://www.tcpdump.org/manpages/tcpdump.1.html
-### CHANGES:=https://git.tcpdump.org/tcpdump/blob/HEAD:/CHANGES
+### CHANGES:=https://github.com/the-tcpdump-group/tcpdump/blob/master/CHANGES
 ### CVSREPO:=https://github.com/the-tcpdump-group/tcpdump
 ### SUPPORT:=fda77
 
@@ -28,7 +28,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_TCPDUMP_MINI
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 
 $(PKG)_CONFIGURE_ENV += ac_cv_path_PCAP_CONFIG=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/pcap-config
-ifeq ($(FREETZ_PACKAGE_TCPDUMP_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_PACKAGE_TCPDUMP_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_ENV += td_cv_buggygetaddrinfo="no"
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 else

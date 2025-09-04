@@ -22,3 +22,21 @@ config FREETZ_LIB_libhistory
 		lines, to recall and perhaps reedit those lines, and perform csh-like
 		history expansion on previous commands.
 
+if FREETZ_LIB_libreadline
+
+	choice
+		prompt "Version"
+			default FREETZ_LIB_libreadline_VERSION_CURRENT
+
+		config FREETZ_LIB_libreadline_VERSION_ABANDON
+			bool "6.3"
+			depends on FREETZ_KERNEL_VERSION_2_MAX
+
+		config FREETZ_LIB_libreadline_VERSION_CURRENT
+			bool "8.3"
+			depends on !FREETZ_KERNEL_VERSION_2_MAX
+
+	endchoice
+
+endif # FREETZ_LIB_libreadline
+

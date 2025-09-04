@@ -1,6 +1,5 @@
 config FREETZ_PACKAGE_UNRAR
-	bool "UnRAR 6.1.7/7.1.5 (binary only)"
-	select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
+	bool "UnRAR 6.1.7/7.1.8 (binary only)"
 	select FREETZ_LIB_STDCXXLIB if ! FREETZ_PACKAGE_UNRAR_STATIC
 	default n
 	help
@@ -17,8 +16,9 @@ if FREETZ_PACKAGE_UNRAR
 			depends on FREETZ_TARGET_GCC_5_MAX
 
 		config FREETZ_PACKAGE_UNRAR_VERSION_CURRENT
-			bool "7.1.5"
+			bool "7.1.8"
 			depends on !FREETZ_TARGET_GCC_5_MAX
+			select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 
 	endchoice
 

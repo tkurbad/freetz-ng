@@ -2,7 +2,7 @@ $(call PKG_INIT_LIB, 6.5)
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=136d91bc269a9a5785e5f9e980bc76ab57428f604ce3e5a5a90cebc767971cc6
-$(PKG)_SITE:=@GNU/$(pkg)
+$(PKG)_SITE:=@GNU/$(pkg),https://invisible-island.net/archives/ncurses
 # run make/libs/ncurses/generate.sh after bump
 ### WEBSITE:=https://invisible-island.net/ncurses/
 ### MANPAGE:=https://invisible-island.net/ncurses/announce.html
