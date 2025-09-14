@@ -1,10 +1,11 @@
-$(call PKG_INIT_BIN, 2.0.0)
+$(call PKG_INIT_BIN, 2.0.1)
+$(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=52f25811f00dfe714e0bcf122358ee0ad74e25db3ad230d5a4196e7a62633f27
-$(PKG)_SITE:=https://www.vervest.org/htp/archive/c
+$(PKG)_HASH:=4c771fe3fc5c4ab5f9393dd501bdc51e4c067297cf304ad1e74e1965ac1c066f
+$(PKG)_SITE:=https://github.com/twekkel/htpdate/archive/refs/tags,https://www.vervest.org/htp/archive/c
 ### WEBSITE:=https://www.vervest.org/htp/
 ### MANPAGE:=https://www.vervest.org/htp/?FAQ
-### CHANGES:=https://github.com/twekkel/htpdate/blob/master/Changelog
+### CHANGES:=https://github.com/twekkel/htpdate/releases
 ### CVSREPO:=https://github.com/twekkel/htpdate
 ### SUPPORT:=fda77
 

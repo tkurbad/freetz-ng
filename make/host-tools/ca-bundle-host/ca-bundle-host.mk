@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 2025-07-15)
+$(call TOOLS_INIT, 2025-09-09)
 $(PKG)_SOURCE:=cacert-$($(PKG)_VERSION).pem
-$(PKG)_HASH:=7430e90ee0cdca2d0f02b1ece46fbf255d5d0408111f009638e3b892d6ca089c
-$(PKG)_SITE:=https://www.curl.se/ca,https://curl.haxx.se/ca
+$(PKG)_HASH:=f290e6acaf904a4121424ca3ebdd70652780707e28e8af999221786b86bb1975
+$(PKG)_SITE:=https://curl.se/ca,https://www.curl.se/ca,https://curl.haxx.se/ca
 ### WEBSITE:=https://www.curl.se/ca
 ### SUPPORT:=fda77
 

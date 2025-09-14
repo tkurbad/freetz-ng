@@ -56,7 +56,7 @@ Latest changes
 
   - Host tools:
     * automake 1.18
-    * ca-bundle 2025-08-12
+    * ca-bundle 2025-09-09
     * cmake 4.1.1
     * dtc 1.7.2
     * fakeroot 1.37.1.2
@@ -89,6 +89,8 @@ Latest changes
   - AVM sources:
     * 3000 ax  8.02 - 4.4.271
     * 6591     8.20 - 5.15.179
+    * 5530     8.20 - 4.9.337
+    * 7530 ax  8.20 - 4.19.183
     * 7590 ac  8.20 - 4.9.337
 
   - Patches:
@@ -101,7 +103,7 @@ Latest changes
     * Atop 2.11.1
     * BIND 9.11.37/9.20.11
     * bvi 1.5.0
-    * CA-bundle 2025-07-15
+    * CA-bundle 2025-09-09
     * Curl 8.12.1/8.15.0
     * Dante 1.4.4
     * dehydrated 0.7.2
@@ -113,6 +115,7 @@ Latest changes
     * Git 2.50.1
     * HAProxy 2.6.22
     * htop 1.0.3/3.4.1
+    * htpdate 2.0.1
     * ImageMagick 7.1.0-62/7.1.2-2
     * iptables 1.4.11.1/1.4.21/1.6.2/1.8.11
     * jq 1.8.1
@@ -157,7 +160,7 @@ Latest changes
     * expat 2.7.1
     * gettext 0.24
     * gmp 6.3.0
-    * harfbuzz 11.4.4
+    * harfbuzz 11.4.5
     * libcap 2.49/2.75
     * libdeflate 1.24
     * libffi 3.5.2

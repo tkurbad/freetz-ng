@@ -307,8 +307,9 @@ enumerate_mirrors_official() {
 #				sites[${#sites[@]}]=https://download.avm.de/fritzwlan/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/fritzpowerline/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/fritzdect/$subpath
-				sites[${#sites[@]}]=https://avm.de/$subpath
-				sites[${#sites[@]}]=https://avm.de/fileadmin/user_upload/DE/Labor/Download
+				sites[${#sites[@]}]=https://fritz.com/$subpath
+				sites[${#sites[@]}]=https://fritz.com/fileadmin/user_upload/DE/Labor/Download
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P2NL1/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P2/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P1FCS/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/Smart24P1NL1/$subpath
@@ -325,7 +326,7 @@ enumerate_mirrors_official() {
 				sites[${#sites[@]}]=https://service.avm.de/downloads/downgrade/$subpath
 				sites[${#sites[@]}]=https://service.avm.de/downloads/zwischenupdate/$subpath
 				sites[${#sites[@]}]=https://service.avm.de/downloads/$subpath
-				sites[${#sites[@]}]=https://www.avm.de/de/Service/Service-Portale/$subpath
+				sites[${#sites[@]}]=https://fritz.com/de/Service/Service-Portale/$subpath
 #				sites[${#sites[@]}]=ftp://ftp.avm.de/fritzbox/$subpath
 #				sites[${#sites[@]}]=ftp://ftp.avm.de/$subpath
 #				sites[${#sites[@]}]=ftp://ftp.avm.de/archive/fritz.box/$subpath

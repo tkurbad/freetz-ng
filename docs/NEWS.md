@@ -1,5 +1,13 @@
 # Neuigkeiten
 
+  * __[2025-09-11](#2025-09-11)__<a id='2025-09-11'></a><br>
+    *Trommelwirbel* Die Kernel-.config aus dem 7530ax 8.20 Quellcodekonglomerat scheint zu 100% die wirklich<br>
+    von AVM genutzte zu sein! Durch autofix bzw oldconfig werden keine neue oder unbekannte Optionen erkannt.<br>
+    Zu den ganzen Kernel der 8.10-Labor fehlen nach wie vor die Sourcen von AVM.<br>
+    - [Sourcecode von AVM anfordern](https://github.com/orgs/Freetz-NG/discussions/134)<br>
+    - [osp.avm.de/](https://osp.avm.de)<br>
+    - [freetz-ng.github.io/freetz-ng/osp/](https://freetz-ng.github.io/freetz-ng/osp/)<br>
+
   * __[2025-08-07](#2025-08-07)__<a id='2025-08-07'></a><br>
     Neue "Sicherheitsinfos zu Updates" auf avm.de wurden heute veröffentlicht.<br>
     Sie tragen das "Veröffentlichungsdatum" "31.01.2024", "16.09.2024" und "09.01.2025".<br>

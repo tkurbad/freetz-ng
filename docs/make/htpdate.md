@@ -1,7 +1,7 @@
-# htpdate 2.0.0
+# htpdate 2.0.1
   - Homepage: [https://www.vervest.org/htp/](https://www.vervest.org/htp/)
   - Manpage: [https://www.vervest.org/htp/?FAQ](https://www.vervest.org/htp/?FAQ)
-  - Changelog: [https://github.com/twekkel/htpdate/blob/master/Changelog](https://github.com/twekkel/htpdate/blob/master/Changelog)
+  - Changelog: [https://github.com/twekkel/htpdate/releases](https://github.com/twekkel/htpdate/releases)
   - Repository: [https://github.com/twekkel/htpdate](https://github.com/twekkel/htpdate)
   - Package: [master/make/pkgs/htpdate/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/htpdate/)
   - Maintainer: [@fda77](https://github.com/fda77)

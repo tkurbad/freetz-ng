@@ -46,10 +46,13 @@ EOF
 
 if [ -d /proc/sys/net/ipv6 ] || find /lib/modules/*-*/kernel/net/ipv6 -maxdepth 1 -name ipv6.ko >/dev/null 2>&1; then
 	cgi_print_checkbox_p "ipv6_support" "$LIGHTTPD_IPV6_SUPPORT" \
-	  "$(lang de:"Aktiviere IPv6 Unterst&uuml;tzung" en:"Enable IPv6 support")"
+	  "$(lang de:"Aktiviere zus&auml;tzliche IPv6 Unterst&uuml;tzung" en:"Enable additional IPv6 support")"
 fi
 
-dirs=$LIGHTTPD_DOCROOT
+cgi_print_checkbox_p "validation" "$LIGHTTPD_VALIDATION" \
+  "$(lang de:"Konfiguartion vor dem Starten pr&uuml;fen" en:"Validate configuration before start")"
+
+dirs=${LIGHTTPD_DOCROOT%/}
 [ "$LIGHTTPD_CHROOT" = "yes" ] && dirs="$dirs/websites"
 [ "$LIGHTTPD_VIRTHOST" = "yes" ] && dirs="$dirs/default</li><li>$dirs/$LIGHTTPD_VIRTHOSTTYPE"
 dirs="<ul><li>$dirs</li></ul>"
