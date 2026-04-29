@@ -3,7 +3,7 @@
 
 --- configure.ac
 +++ configure.ac
-@@ -472,7 +472,7 @@
+@@ -473,7 +473,7 @@
  	unistd.h libgen.h stropts.h \
  	syslog.h pwd.h grp.h termios.h \
  	sys/sockio.h sys/uio.h linux/sockios.h \

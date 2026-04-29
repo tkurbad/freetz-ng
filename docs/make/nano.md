@@ -1,10 +1,10 @@
-# Nano 8.6 (binary only)
+# Nano 9.0 (binary only)
   - Homepage: [https://www.nano-editor.org/](https://www.nano-editor.org/)
   - Manpage: [https://www.nano-editor.org/docs.php](https://www.nano-editor.org/docs.php)
-  - Changelog: [https://www.nano-editor.org/dist/v8/NEWS](https://www.nano-editor.org/dist/v8/NEWS)
+  - Changelog: [https://www.nano-editor.org/dist/v9/NEWS](https://www.nano-editor.org/dist/v9/NEWS)
   - Repository: [https://git.savannah.gnu.org/cgit/nano.git/](https://git.savannah.gnu.org/cgit/nano.git/)
   - Package: [master/make/pkgs/nano/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nano/)
-  - Maintainer: [@fda77](https://github.com/fda77)
+  - Steward: [@fda77](https://github.com/fda77)
 
 **Nano** ist ein kleiner Texteditor für die Konsole, der aber im
 Gegensatz zu (n)vi eine Bedienung wie ein normaler Editor (z.B. der

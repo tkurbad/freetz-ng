@@ -6,7 +6,7 @@ $(PKG)_SITE:=@GNU/wget
 ### MANPAGE:=https://www.gnu.org/software/wget/manual/
 ### CHANGES:=https://git.savannah.gnu.org/cgit/wget.git/tree/NEWS
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/wget.git/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/wget
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/wget
@@ -49,7 +49,7 @@ $($(PKG)_DIR)/.installed: $($(PKG)_TARGET_BINARY)
 
 define $(PKG)_FIXHARDCODED
 	@for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(WGET_HOST_TARGET_BINARY) ;\
+	$(PATCHELF_HOST) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(WGET_HOST_TARGET_BINARY) ;\
 	done ;
 endef
 

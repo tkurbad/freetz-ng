@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# packs toolchains to dl/*freetz-VERSION-shared-glibc.tar.lzma in 20-25min each
+# packs toolchains to dl/*freetz-VERSION-shared-glibc.tar.lzma in 20-35min each, all ~15h
 #Arg $1: <VERSION>
 #Arg $2: <new|old|all|FREETZ_TYPE_...>
 
@@ -7,6 +7,8 @@ VERSION="$(tools/freetz_revision short)"
 VERSION="${1:-r${VERSION%-*}}"
 [ "$1" == "own" ] && VERSION="rLOCAL"
 SUFFIX="freetz-${VERSION}-shared-glibc"
+
+[ -z "$FREETZ_DLTOKEN" ] && echo "Missing DLTOKEN" && exit 1
 
 #
 # required kernel compiler versions:
@@ -64,21 +66,23 @@ local i
 for i in "$@"; do echo "$i=y"; done
 cat << EOF
 FREETZ_SERIES_ALL=y
-FREETZ_BUILD_TOOLCHAIN=y
 FREETZ_USER_LEVEL_DEVELOPER=y
+FREETZ_BUILD_TOOLCHAIN=y
 FREETZ_TOOLCHAIN_CCACHE=y
 FREETZ_HOSTTOOLS_DOWNLOAD=y
 FREETZ_VERBOSITY_LEVEL_0=y
-FREETZ_DL_SITE_USER="http://192.168.1.104/mirror https://github.com/Freetz-NG/dl-mirror/raw/master"
+FREETZ_DL_IMAGE_AT_LAST=y
+FREETZ_DL_SITE_USER="http://192.168.1.104/mirror https://github.com/Freetz-NG/dl-mirror/releases/download/dl"
+# FREETZ_STRIP_UCLIBC is not set
 EOF
 }
 
 dltc() {
 	local options="$(echo $* | sed 's/  */ /g')"
 	echo "Building toolchains for ${options// /, }"
+	make distclean >/dev/null
+	make kconfig-host-conf >/dev/null
 	miniconfig $options > .config
-	make distclean
-	make kconfig-host-conf
 	make olddefconfig
 	cp -a .config tc-${options// /_}.conf
 	make KTV=${SUFFIX} TTV=${SUFFIX} toolchain 2>&1 | tee tc-${options// /_}.make
@@ -119,13 +123,18 @@ esac
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7581        FREETZ_TYPE_FIRMWARE_07_1X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_08_2X_LABOR"  # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_08_2X"        # SEPARATE
+
+#AARCH64
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_5690_XGS    FREETZ_TYPE_FIRMWARE_08_2X"        # SEPARATE
 
 #ARM
+[ "$old" == "old" ] && dltc "FREETZ_TYPE_6360        FREETZ_TYPE_FIRMWARE_06_5X"
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_4040        FREETZ_TYPE_FIRMWARE_07_0X"
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_1200_W5     FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_7690        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_5590        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_1700        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
 
 #X86
 [ "$old" == "old" ] && dltc "FREETZ_TYPE_6490        FREETZ_TYPE_FIRMWARE_06_8X"
@@ -135,8 +144,8 @@ esac
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6591        FREETZ_TYPE_FIRMWARE_07_0X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6660        FREETZ_TYPE_FIRMWARE_07_1X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6660        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6670        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6690        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
+[ "$new" == "new" ] && dltc "FREETZ_TYPE_6670        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6670        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
 
 

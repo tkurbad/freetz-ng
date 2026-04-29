@@ -1,0 +1,14 @@
+
+# https://www.openembedded.org/pipermail/openembedded-core/2014-November/099122.html
+# https://github.com/SCons/scons/wiki/ImportingEnvironmentSettings
+
+--- SConstruct
++++ SConstruct
+@@ -166,6 +166,7 @@
+ env = Environment(variables=opts,
+                   tools=('default', 'textfile',),
+                   CPPPATH=['.', ],
++                  ENV = os.environ,
+                   )
+ 
+ env.Append(BUILDERS = {

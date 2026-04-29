@@ -35,9 +35,9 @@ if [ $sidType = 2 ]; then
 	l 'Firmware ermoeglicht Verwaltung mehrerer Telefonbuecher, jeder Eintrag bis zu 9 Rufnummern'
 	bookType=5
 elif [ -f "$Rlink/html/login_sid.xml" ] && grep -q "EditPhonebook" "$Rlink/html/de/home/fonbuch.frm" 2>/dev/null; then
-	# ER: die Log-Meldung unten ist etwas verwirrend. Auf einer 7170.04.88 (als Beipsiel) gibt es keine Möglichkeit
-	# _mehrere_ Telefonbücher über Web-If zu verwalten. Das Format, in dem das eine Telefonbuch gespeichert wird,
-	# ist jedoch gleich dem Format der Firmwares mit der Unterstützung für mehrere Telefonbücher.
+	# ER: die Log-Meldung unten ist etwas verwirrend. Auf einer 7170.04.88 (als Beispiel) gibt es keine Moeglichkeit
+	# _mehrere_ Telefonbuecher ueber Web-If zu verwalten. Das Format, in dem das eine Telefonbuch gespeichert wird,
+	# ist jedoch gleich dem Format der Firmwares mit der Unterstuetzung fuer mehrere Telefonbuecher.
 	l 'Firmware ermoeglicht Verwaltung mehrerer Telefonbuecher'
 	bookType=4
 else

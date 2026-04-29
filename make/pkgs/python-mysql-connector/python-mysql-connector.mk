@@ -12,7 +12,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.configured
-	$(call Build/PyMod/PKG, PYTHON_MYSQL_CONNECTOR, , )
+	$(call Build/PyMod2/PKG, PYTHON_MYSQL_CONNECTOR, , )
 	touch -c $@
 
 $(pkg):

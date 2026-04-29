@@ -22,14 +22,14 @@ for dir in $(find "$INPWD" -maxdepth 1 -mindepth 1 -type d | sort); do
 	while [ "0$(awk 'END{print NR}' "$MDPWD/$tool.md" 2>/dev/null)" -lt 2 ]; do echo >> "$MDPWD/$tool.md"; done
 	sed "1c# $itm" -i "$MDPWD/$tool.md"
 
-	sed "/^  - Maintainer: .*$/d" -i "$MDPWD/$tool.md"
-	lnk="$(sed -n "s/^### SUPPORT:= *//p" $dir/*.mk)"
+	sed "/^  - Steward: .*$/d" -i "$MDPWD/$tool.md"
+	lnk="$(sed -n "s/^### STEWARD:= *//p" $dir/*.mk)"
 	case "$lnk" in
 		X)	lnk="" ;;
 		"")	lnk="-" ;;
 		*)	[ "$lnk" != "${lnk/:\/\//}" ] && lnk="\[$lnk\]($lnk)" || lnk="\[@$lnk\](https://github.com/$lnk)" ;; #"
 	esac
-	[ -n "$lnk" ] && sed "2i\  - Maintainer: $lnk" -i "$MDPWD/$tool.md"
+	[ -n "$lnk" ] && sed "2i\  - Steward: $lnk" -i "$MDPWD/$tool.md"
 
 	lnk="https://github.com/Freetz-NG/freetz-ng/tree/master/make/host-tools/$tool/"
 	sed "/^  - Host-Tool: \[.*)$/d" -i "$MDPWD/$tool.md"
@@ -42,4 +42,5 @@ for dir in $(find "$INPWD" -maxdepth 1 -mindepth 1 -type d | sort); do
 	done
 
 done >> "$MDPWD/README.md"
+exit 0
 

@@ -1,7 +1,11 @@
-CCACHE_VERSION:=4.11.3
+CCACHE_VERSION:=4.13.5
 CCACHE_SOURCE:=ccache-$(CCACHE_VERSION).tar.xz
-CCACHE_HASH:=d5a340e199977b7b1e89c0add794132c977fdc2ecc7ca5451e03d43627a1b1be
+CCACHE_HASH:=7a8945f4ac7d4bb79c0055cd3db7857a6934c2b7ab3d80bb11a0f5271e36fd94
 CCACHE_SITE:=https://github.com/ccache/ccache/releases/download/v$(CCACHE_VERSION)
+### WEBSITE:=https://ccache.dev/
+### MANPAGE:=https://ccache.dev/documentation.html
+### CHANGES:=https://ccache.dev/releasenotes.html
+### CVSREPO:=https://github.com/ccache/ccache
 
 CCACHE_DIR:=$(TARGET_TOOLCHAIN_DIR)/ccache-$(CCACHE_VERSION)
 CCACHE_MAKE_DIR:=$(MAKE_DIR)/toolchain/target/ccache
@@ -34,8 +38,8 @@ $(CCACHE_DIR)/.configured: $(CCACHE_DIR)/.unpacked
 	(cd $(CCACHE_DIR); $(RM) CMakeCache.txt; \
 		CC="$(TOOLCHAIN_HOSTCC)" \
 		CXX="$(TOOLCHAIN_HOSTCXX)" \
-		CFLAGS="$(TOOLCHAIN_HOST_TARGET_CFLAGS)" \
-		CXXFLAGS="$(TOOLCHAIN_HOST_TARGET_CFLAGS)" \
+		CFLAGS="$(TOOLCHAIN_HOST_CFLAGS)" \
+		CXXFLAGS="$(TOOLCHAIN_HOST_CFLAGS)" \
 		$(CMAKE) . \
 		-DCMAKE_C_COMPILER_TARGET=$(GNU_HOST_NAME) \
 		-DCMAKE_CXX_COMPILER_TARGET=$(GNU_HOST_NAME) \

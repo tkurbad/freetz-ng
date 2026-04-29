@@ -5,7 +5,10 @@ DAEMON=stunnel
 
 config() {
 	modlib_config
-	[ -r "/tmp/flash/stunnel/svcs" ] && cat /tmp/flash/stunnel/svcs >> $DAEMON_CONFIG
+	if [ -r "/tmp/flash/stunnel/svcs" ]; then
+		grep -q '#EXCLUSIVE#' "/tmp/flash/stunnel/svcs" && APPEND='' || APPEND='-a'
+		cat /tmp/flash/stunnel/svcs | tee $APPEND $DAEMON_CONFIG >/dev/null
+	fi
 }
 
 start() {

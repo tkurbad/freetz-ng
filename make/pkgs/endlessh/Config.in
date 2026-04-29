@@ -1,6 +1,7 @@
 config FREETZ_PACKAGE_ENDLESSH
-	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	bool "endlessh 1.0"
+	depends on FREETZ_TARGET_IPV6_SUPPORT
+	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	default n
 	help
 		Endlessh is an SSH tarpit that very slowly sends an endless, 

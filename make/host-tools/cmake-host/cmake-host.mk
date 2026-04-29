@@ -1,13 +1,13 @@
-$(call TOOLS_INIT, 4.1.1)
+$(call TOOLS_INIT, 4.3.2)
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=b29f6f19733aa224b7763507a108a427ed48c688e1faf22b29c44e1c30549282
+$(PKG)_HASH:=b0231eb39b3c3cabdc568c619df78208a7bd95ea10c9b2236d61218bac1b367d
 $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://cmake.org/
 ### MANPAGE:=https://cmake.org/cmake/help/latest/
 ### CHANGES:=https://github.com/Kitware/CMake/releases
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DEPENDS_ON+=patchelf-host
 $(PKG)_DEPENDS_ON+=openssl-host
@@ -51,7 +51,7 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 define $(PKG)_FIXHARDCODED
 	@for binfile in $(CMAKE_HOST_BINARIES); do \
 	for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(CMAKE_HOST_DESTDIR)/bin/$${binfile} ;\
+	$(PATCHELF_HOST) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(CMAKE_HOST_DESTDIR)/bin/$${binfile} ;\
 	done ;\
 	done ;
 endef

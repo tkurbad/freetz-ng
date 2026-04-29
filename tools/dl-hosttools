@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# packs host-tools to dl/tools-VERSION.tar.xz in ~5min
+# packs host-tools to dl/tools-VERSION.tar.xz in ~45min
 #Arg $1: <VERSION>
 
 MYPWD="$(dirname $(realpath $0))"
@@ -11,9 +11,10 @@ local i
 for i in "$@"; do echo "$i=y"; done
 cat << EOF
 FREETZ_USER_LEVEL_EXPERT=y
+FREETZ_DL_IMAGE_AT_LAST=y
 # FREETZ_HOSTTOOLS_DOWNLOAD is not set
 FREETZ_VERBOSITY_LEVEL_0=y
-FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/raw/master"
+FREETZ_DL_SITE_USER="http://192.168.1.104/mirror https://github.com/Freetz-NG/dl-mirror/releases/download/dl"
 EOF
 }
 

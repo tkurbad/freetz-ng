@@ -127,12 +127,8 @@ if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
 			echo 'server.modules += ( "mod_redirect" )'
 			echo '$HTTP["scheme"] == "http" {'
 			[ "$LIGHTTPD_SSLPORT" != "443" ] && REDIRECT_PORT_SUFFIX=":$LIGHTTPD_SSLPORT" || REDIRECT_PORT_SUFFIX=""
-			if ! [ "$LIGHTTPD_PORT" == "80" ]; then
-				echo '$HTTP["host"] =~ "^([^:]+)(?:\:[0-9]+)?$" {'
-				echo 'url.redirect = ( "" => "https://%1'"${REDIRECT_PORT_SUFFIX}"'${url.path}${qsa}" )'
-			else
-				echo 'url.redirect = ( "" => "https://${url.authority}'"${REDIRECT_PORT_SUFFIX}"'${url.path}${qsa}")'
-			fi
+			# https://redmine.lighttpd.net/projects/lighttpd/wiki/HowToRedirectHttpToHttps
+			echo 'url.redirect = ( "" => "https://${url.authority.noport}'"${REDIRECT_PORT_SUFFIX}"'${url.path}${qsa}")'
 			if [ -n "$virtsrv" ]; then
 				virthost_conf "$virtsrv"
 				echo 'else { url.redirect = () }'

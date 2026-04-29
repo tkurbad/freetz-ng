@@ -12,8 +12,9 @@ config FREETZ_AVM_PROP_HWREV
 	string
 	default "156"
 
-config FREETZ_AVM_HAS_SIGNATURE
-	def_bool y
+config FREETZ_AVM_PROP_PRODUKT
+	string
+	default "Fritz_Box_7390"
 
 config FREETZ_AVM_HAS_BRANDING_avme
 	def_bool y
@@ -43,6 +44,9 @@ config FREETZ_AVM_HAS_PLUGIN_WEBCM_INTERPRETER
 	def_bool y
 
 config FREETZ_AVM_HAS_PLUGIN_WLAN
+	def_bool y
+
+config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
 
 config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
@@ -200,6 +204,9 @@ config FREETZ_AVM_PROP_LIBC_UCLIBC
 	def_bool y
 
 config FREETZ_AVM_PROP_UCLIBC_0_9_33
+	def_bool y
+
+config FREETZ_AVM_PROP_UCLIBC_NPTL
 	def_bool y
 
 endif

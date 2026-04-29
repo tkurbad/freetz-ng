@@ -1,10 +1,12 @@
-$(call PKG_INIT_BIN,1.0)
+$(call PKG_INIT_BIN, 1.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=b3e03d7342f2b8f33644f66388f484cdfead45cabed7a9a93f8be50f8bc91a42
 $(PKG)_SITE:=https://github.com/skeeto/$(pkg)/releases/download/$($(PKG)_VERSION)
+### WEBSITE:=https://github.com/skeeto/endlessh
+### MANPAGE:=https://github.com/skeeto/endlessh?tab=readme-ov-file
 ### CHANGES:=https://github.com/skeeto/endlessh/releases
 ### CVSREPO:=https://github.com/skeeto/endlessh.git
-### SUPPORT:=pfichtner
+### STEWARD:=pfichtner
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/endlessh
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/endlessh

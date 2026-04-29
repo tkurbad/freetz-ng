@@ -1,0 +1,186 @@
+name: make_tester
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/make_tester.yml'
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "URL of .tar, .tgz, .tbz or .config, empty for URL in secrets.ACTIONS_TESTER"
+        required: false
+        default: ""
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    permissions:
+      packages: read
+      contents: read
+    container:
+      image: ghcr.io/freetz-ng/internal/firmware
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
+      options: --user 1001:1001
+#   strategy:
+#     fail-fast: false
+#     max-parallel: 1
+#     matrix:
+#       fritz: [ "" ]
+    runs-on: ubuntu-24.04
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+
+    steps:
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           locales \
+#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
+#           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
+#           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+#     - name: sleep
+#       run: |
+#         SLEEP="$((1 + $(od -A n -t d -N 2 /dev/urandom | tr -d ' ') % 9))"
+#         echo "Sleeping $SLEEP seconds ..."
+#         sleep $SLEEP
+
+#     - name: myips
+#       run: |
+#         echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
+##        echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
+##        echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE
+          git checkout $GITHUB_REF_NAME
+
+      - name: cache
+        uses: actions/cache@v5
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/linux-*.tar.xz
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: make_cache-${{ github.run_id }}
+          restore-keys: make_cache
+
+      - name: download
+        run: |
+          truncate -s0                                                                                  .config
+          echo -n
+          URL="$(echo '${{ github.event.inputs.url }}' | sed 's/^ *//;s/ *$//')"
+          [ -z "$URL" ] && URL="${{ secrets.ACTIONS_TESTER }}"
+          echo -n "Downloading file '${URL##*/}': "
+          case "${URL##*.}" in \
+          '')                                                                       echo Skip ;; \
+          tar) wget -q "$URL" -O - 2>/dev/null | tar x  2>/dev/null && echo Done || echo Fail ;; \
+          tgz) wget -q "$URL" -O - 2>/dev/null | tar xz 2>/dev/null && echo Done || echo Fail ;; \
+          tbz) wget -q "$URL" -O - 2>/dev/null | tar xj 2>/dev/null && echo Done || echo Fail ;; \
+          *)   wget -q "$URL" -O - 2>/dev/null > .config            && echo Done || echo Fail ;; \
+          esac
+          echo -n
+          sed '/FREETZ_SERIES_/d'                                                                     -i .config
+          echo 'FREETZ_SERIES_ALL=y'                                                                  >> .config
+          sed '/FREETZ_TOOLCHAIN_CCACHE/d'                                                            -i .config
+          echo '# FREETZ_TOOLCHAIN_CCACHE is not set'                                                 >> .config
+          sed '/FREETZ_USER_LEVEL_/d'                                                                 -i .config
+          echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
+          sed '/FREETZ_DL_IMAGE_AT_LAST/d'                                                            -i .config
+          echo '# FREETZ_DL_IMAGE_AT_LAST is not set'                                                 >> .config
+          sed '/FREETZ_REAL_DEVELOPER_ONLY__DLIMG/d'                                                  -i .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
+          sed '/FREETZ_REAL_DEVELOPER_ONLY__TCURL/d'                                                  -i .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
+          sed '/FREETZ_DOWNLOAD_TOOLCHAIN/d'                                                          -i .config
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
+          sed '/FREETZ_HOSTTOOLS_DOWNLOAD/d'                                                          -i .config
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
+          sed '/FREETZ_VERBOSITY_FWMOD_/d'                                                            -i .config
+          echo 'FREETZ_VERBOSITY_FWMOD_2=y'                                                           >> .config
+          sed '/FREETZ_VERBOSITY_LEVEL/d'                                                             -i .config
+          echo 'FREETZ_VERBOSITY_LEVEL_0=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
+          sed '/FREETZ_SIZEINFO_COMPRESSED/d'                                                         -i .config
+          echo 'FREETZ_SIZEINFO_COMPRESSED=y'                                                         >> .config
+          sed '/FREETZ_SIZEINFO_UNCOMPRESSED/d'                                                       -i .config
+          echo 'FREETZ_SIZEINFO_UNCOMPRESSED=y'                                                       >> .config
+          sed '/FREETZ_JLEVEL/d'                                                                      -i .config
+          echo 'FREETZ_JLEVEL=0'                                                                      >> .config
+          sed '/FREETZ_CHECK_CHANGED/d'                                                               -i .config
+          echo '# FREETZ_CHECK_CHANGED is not set'                                                    >> .config
+          sed '/FREETZ_MODULES_TEST/d'                                                                -i .config
+          echo '# FREETZ_MODULES_TEST is not set'                                                     >> .config
+          echo "##########################################################" && echo -n "Lines=" && wc -l .config
+
+      - name: generate
+        env:
+          FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
+        run: |
+          make && rm -f images/latest.image
+#     - name: progress
+#       run: |
+#         tools/make_progress_monitor.sh --no-legend
+      - name: result
+        run: |
+          echo "##########################################################"
+          ls -l images/
+          sha256sum images/*
+
+      - name: vars
+        id: vars
+        run: |
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          LAST="$(ls images/*.image | sed 's,.*/,,;s,\.image$,,')"
+          NAME="$(ls images/*.image | sed 's,.*/,,;s,_[0-9].*,,')"
+          [ -n "$LINK" ] && echo "link=$LINK" >> $GITHUB_OUTPUT
+          [ -n "$LAST" ] && echo "last=$LAST" >> $GITHUB_OUTPUT
+          [ -n "$NAME" ] && echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "##########################################################"
+          echo "LINK=$LINK"
+          echo "LAST=$LAST"
+          echo "NAME=$NAME"
+          test -n "$NAME"
+      - name: artifact
+        id: artifact
+        uses: actions/upload-artifact@v7
+        if: github.repository != 'freetz-ng/freetz-ng'
+        with:
+          name: ${{ steps.vars.outputs.last }}
+          path: images/
+          if-no-files-found: warn
+          retention-days: 1
+          archive: false
+          overwrite: true
+          include-hidden-files: false
+      - name: link
+        if: github.repository != 'freetz-ng/freetz-ng'
+        run: |
+          echo "##########################################################"
+          FILE="${{ steps.vars.outputs.last }}"
+          ARTI="${{ steps.artifact.outputs.artifact-url }}"
+          echo "Firmware := $FILE"
+          echo "Artifact := $ARTI"
+
+

@@ -54,8 +54,8 @@ else
 fi
 if [ -r /proc/cpuinfo ]; then
 	cpu_family=$(sed -ne '/\(system type\|Hardware\)/ s/.*: //p' /proc/cpuinfo | sed 's/ .*//;s/Ikanos/IKS/')
-	cpu_model=$(sed -ne '/\(cpu model\|model name\)/ s/.*: //p' /proc/cpuinfo | head -n1)
-	cpu_cores=$(grep $'^processor\t*:' /proc/cpuinfo | wc -l)
+	cpu_model=$(sed -ne '/\(cpu model\|Processor\|model name\)/ s/.*: //p' /proc/cpuinfo | head -n1)
+	cpu_cores=$(grep $'^processor\t*:' /proc/cpuinfo | wc -l | grep -v '^0$')
 	cpu_bogom="$(sed -ne '/BogoMIPS/ s/.*: //p' /proc/cpuinfo)"
 	cpu_bogom="$(echo $cpu_bogom | sed 's! ! / !g')"
 
@@ -101,7 +101,7 @@ reboot_status="$(cat /proc/sys/urlader/reboot_status 2>/dev/null)"
 if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies ]; then
 	_CPU_FQZ="$(sed 's!...[ $]! MHz !g;s! *$!!;;s!MHz !MHz, !g' /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies)"
 elif [ -e /proc/clocks ]; then
-	_PCLOCKS="$(sed 's/ [ ]*/ /g;s/^Clocks: //;s/^[A-Z0-9 ]*Clock: //;s/\([A-Za-z0-9]*\):[ ]*\([0-9,.]*\)[ ]*\([a-zA-Z]*\) */<dt>\1<\/dt><dd>\2 \3<\/dd>/g;' /proc/clocks 2>/dev/null)"
+	_PCLOCKS="$(sed 's/ [ ]*/ /g;s/^Clocks: //;s/^[/A-Z0-9 ]*Clock: //;s/\([A-Za-z0-9]*\):[ ]*\([0-9,.]*\)[ ]*\([a-zA-Z]*\) */<dt>\1<\/dt><dd>\2 \3<\/dd>/g;' /proc/clocks 2>/dev/null)"
 else
 	_CPU_FRQ="$(sed -n 's/^cpufrequency\t//p' /proc/sys/urlader/environment | awk '{ printf "%.0f", $1 /1000/1000 }')"
 	_SYS_FRQ="$(sed -n 's/^sysfrequency\t//p' /proc/sys/urlader/environment | awk '{ printf "%.0f", $1 /1000/1000 }')"

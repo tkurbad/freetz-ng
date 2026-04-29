@@ -20,3 +20,4 @@ if [ "$EXTERNAL_FREETZ_PACKAGE_AUTOFS" == "y" ]; then
 	done
 
 fi
+

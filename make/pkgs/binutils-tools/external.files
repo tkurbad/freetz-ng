@@ -1,0 +1,18 @@
+if [ "$EXTERNAL_FREETZ_PACKAGE_BINUTILS_TOOLS" == "y" ] ; then
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_ADDR2LINE" == "y" ]  && EXTERNAL_FILES+=" /usr/bin/addr2line"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_AR" == "y" ]         && EXTERNAL_FILES+=" /usr/bin/ar"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_NM" == "y" ]         && EXTERNAL_FILES+=" /usr/bin/nm"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_OBJCOPY" == "y" ]    && EXTERNAL_FILES+=" /usr/bin/objcopy"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_OBJDUMP" == "y" ]    && EXTERNAL_FILES+=" /usr/bin/objdump"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_RANLIB" == "y" ]     && EXTERNAL_FILES+=" /usr/bin/ranlib"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_READELF" == "y" ]    && EXTERNAL_FILES+=" /usr/bin/readelf"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_SIZE" == "y" ]       && EXTERNAL_FILES+=" /usr/bin/size"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_STRINGS" == "y" ]    && EXTERNAL_FILES+=" /usr/bin/strings"
+	[ "$FREETZ_PACKAGE_BINUTILS_TOOLS_STRIP" == "y" ]      && EXTERNAL_FILES+=" /usr/bin/strip"
+fi
+[ "$EXTERNAL_FREETZ_LIB_libbfd"                       == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libbfd-2.46.0.20260210.so"
+[ "$EXTERNAL_FREETZ_LIB_libctf"                       == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libctf.so.0.0.0"
+[ "$EXTERNAL_FREETZ_LIB_libctf_nobfd"                 == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libctf-nobfd.so.0.0.0"
+[ "$EXTERNAL_FREETZ_LIB_libopcodes"                   == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libopcodes-2.46.0.20260210.so"
+[ "$EXTERNAL_FREETZ_LIB_libsframe"                    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libsframe.so.3.0.0"
+

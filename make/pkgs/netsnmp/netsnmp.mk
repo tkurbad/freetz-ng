@@ -1,13 +1,13 @@
-$(call PKG_INIT_BIN, 5.9.4)
-$(PKG)_LIB_VERISON:=40.2.1
+$(call PKG_INIT_BIN, 5.9.5.2)
+$(PKG)_LIB_VERISON:=45.0.0
 $(PKG)_SOURCE:=net-snmp-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=8b4de01391e74e3c7014beb43961a2d6d6fa03acc34280b9585f4930745b0544
+$(PKG)_HASH:=16707719f833184a4b72835dac359ae188123b06b5e42817c00790d7dc1384bf
 $(PKG)_SITE:=@SF/net-snmp
 ### WEBSITE:=http://www.net-snmp.org/
 ### MANPAGE:=http://www.net-snmp.org/docs/man/
 ### CHANGES:=http://www.net-snmp.org/download.html
 ### CVSREPO:=https://github.com/net-snmp/net-snmp
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/agent/.libs/snmpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/snmpd
@@ -99,6 +99,8 @@ NETSNMP_TRANSPORTS_EXCLUDED:=TCP TCPIPv6 Unix
 ifeq ($(strip $(FREETZ_TARGET_IPV6_SUPPORT)),y)
 NETSNMP_TRANSPORTS_INCLUDED+=UDPIPv6
 $(PKG)_CONFIGURE_OPTIONS += --enable-ipv6
+else
+$(PKG)_CONFIGURE_OPTIONS += --disable-ipv6
 endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_NETSNMP_WITH_OPENSSL)),y)
@@ -148,6 +150,12 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-embedded-perl
 $(PKG)_CONFIGURE_OPTIONS += --without-perl-modules
 $(PKG)_CONFIGURE_OPTIONS += --without-pcre
 
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
+$(PKG)_CFLAGS += -Wno-declaration-after-statement
+
+$(PKG)_LDFLAGS := $(TARGET_LDFLAGS)
+$(PKG)_LDFLAGS += -ldl
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -155,7 +163,9 @@ $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY) $($(PKG)_LIBS_BUILD_DIR) $($(PKG)_APPS_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE1) -C $(NETSNMP_DIR) \
-		LDFLAGS="$(TARGET_LDFLAGS) -ldl"
+		CFLAGS="$(NETSNMP_CFLAGS)" \
+		LDFLAGS="$(NETSNMP_LDFLAGS)" \
+		all
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)

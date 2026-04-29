@@ -6,8 +6,9 @@ INPWD="$MDPWD/../../make/pkgs"
 PKGS=$(
 for dir in avm $(find "$INPWD" -maxdepth 1 -mindepth 1 -type d); do
 	pkg="${dir##*/}"
-	echo "$pkg" | grep -qE "^(busybox|libs|linux)$" && continue
+	echo "$pkg" | grep -qE "^(busybox|linux)$" && continue
 	cat="$(sed -n 's/^$(PKG)_CATEGORY *:= *//p' $dir/$pkg.mk 2>/dev/null)"
+	[ "${#cat}" == "1" ] && cat="000Packages"
 	echo "${cat:-000Packages}##$pkg"
 done | sort )
 
@@ -31,14 +32,14 @@ echo "$PKGS" | sed 's/##.*//g' | uniq | while read cat; do
 			while [ "$(awk 'END{print NR}' "$MDPWD/$pkg.md")" -lt 2 ]; do echo >> "$MDPWD/$pkg.md"; done
 			sed "1c# $dsc" -i "$MDPWD/$pkg.md"
 
-			sed "/^  - Maintainer: .*$/d" -i "$MDPWD/$pkg.md"
-			lnk="$(sed -n "s/^### SUPPORT:= *//p" "$INPWD/$pkg/$pkg.mk")"
+			sed "/^  - Steward: .*$/d" -i "$MDPWD/$pkg.md"
+			lnk="$(sed -n "s/^### STEWARD:= *//p" "$INPWD/$pkg/$pkg.mk")"
 			case "$lnk" in
 				X)	lnk="" ;;
 				"")	lnk="-" ;;
 				*)	[ "$lnk" != "${lnk/:\/\//}" ] && lnk="\[$lnk\]($lnk)" || lnk="\[@$lnk\](https://github.com/$lnk)" ;; #"
 			esac
-			[ -n "$lnk" ] && sed "2i\  - Maintainer: $lnk" -i "$MDPWD/$pkg.md"
+			[ -n "$lnk" ] && sed "2i\  - Steward: $lnk" -i "$MDPWD/$pkg.md"
 
 			lnk="https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/$pkg/"
 			sed "/^  - Package: \[.*)$/d" -i "$MDPWD/$pkg.md"
@@ -71,4 +72,5 @@ echo "$PKGS" | sed 's/##.*//g' | uniq | while read cat; do
 	done
 done >> "$INPWD/README.md"
 grep -v '^     - ' "$INPWD/README.md" | sed 's,](../../docs/make/,](,g' > "$MDPWD/README.md"
+exit 0
 

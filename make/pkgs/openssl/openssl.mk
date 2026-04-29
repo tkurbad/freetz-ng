@@ -1,11 +1,11 @@
-$(call PKG_INIT_BIN,$(if $(FREETZ_OPENSSL_VERSION_09),0.9.8zh,$(if $(FREETZ_OPENSSL_VERSION_10),1.0.2u,$(if $(FREETZ_OPENSSL_VERSION_11),1.1.1w,$(if $(FREETZ_OPENSSL_VERSION_30),3.0.17,3.5.2)))))
+$(call PKG_INIT_BIN,$(if $(FREETZ_OPENSSL_VERSION_09),0.9.8zh,$(if $(FREETZ_OPENSSL_VERSION_10),1.0.2u,$(if $(FREETZ_OPENSSL_VERSION_11),1.1.1w,$(if $(FREETZ_OPENSSL_VERSION_30),3.0.20,3.5.6)))))
 $(PKG)_LIB_VERSION:=$(call qstrip,$(FREETZ_OPENSSL_SHLIB_VERSION))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_0.9:=f1d9f3ed1b85a82ecf80d0e2d389e1fda3fca9a4dba0bf07adbf231e1a5e2fd6
 $(PKG)_HASH_1.0:=ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16
 $(PKG)_HASH_1.1:=cf3098950cb4d853ad95c0841f1f9c6d3dc102dccfcacd521d93925208b76ac8
-$(PKG)_HASH_3.0:=dfdd77e4ea1b57ff3a6dbde6b0bdc3f31db5ac99e7fdd4eaf9e1fbb6ec2db8ce
-$(PKG)_HASH_3.5:=c53a47e5e441c930c3928cf7bf6fb00e5d129b630e0aa873b08258656e7345ec
+$(PKG)_HASH_3.0:=c80a01dfc70ece4dc21168932c37739042d404d46ccc81a5986dd75314ecda6f
+$(PKG)_HASH_3.5:=deae7c80cba99c4b4f940ecadb3c3338b13cb77418409238e57d7f31f2a3b736
 $(PKG)_HASH:=$($(PKG)_HASH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)))
 $(PKG)_SITE_SUFFIX_0.9:=/old/0.9.x
 $(PKG)_SITE_SUFFIX_1.0:=/old/1.0.2
@@ -14,7 +14,7 @@ $(PKG)_SITE:=https://www.openssl.org/source$($(PKG)_SITE_SUFFIX_$(call GET_MAJOR
 ### MANPAGE:=https://www.openssl.org/docs/
 ### CHANGES:=https://www.openssl.org/news/changelog.html
 ### CVSREPO:=https://github.com/openssl/openssl
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 
@@ -96,7 +96,7 @@ $($(PKG)_BINARY_BUILD_DIR) $($(PKG)_LIBS_BUILD_DIR): $($(PKG)_DIR)/.configured
 #	Remove installed libs also from freetz' packages dir to ensure
 #	that it doesn't contain files from previous builds (0.9.8 to/from 1.0.x switch).
 	$(MAKE) openssl-clean-staging openssl-uninstall $(SILENT)
-	$(SUBMAKE1) $(OPENSSL_MAKE_FLAGS) depend
+	$(SUBMAKE) $(OPENSSL_MAKE_FLAGS) depend
 	$(SUBMAKE) $(OPENSSL_MAKE_FLAGS) all
 
 $($(PKG)_LIBS_STAGING_DIR): $($(PKG)_LIBS_BUILD_DIR)

@@ -23,7 +23,7 @@ ifneq ($($(PKG)_BUILD_PREREQ),)
 		echo -e \
 			"ERROR: The following command(s) required for building '$(pkg)' are missing on your system:" \
 			`echo $$$$MISSING_PREREQ | sed -e 's| |, |g'`; \
-		echo "See https://freetz-ng.github.io/freetz-ng/PREREQUISITES for installation hints"; \
+		echo "See https://freetz-ng.github.io/freetz-ng/prerequisites for installation hints"; \
 		if [ -n "$(strip $($(PKG)_BUILD_PREREQ_HINT))" ]; then \
 			echo "$($(PKG)_BUILD_PREREQ_HINT)"; \
 		fi; \
@@ -229,6 +229,7 @@ $($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.build-prereq-checked $($(PKG)_DIR)/.un
 		-e 's!%FREETZ_TARGET_MESON_FAMILY%!$(call qstrip,$(FREETZ_TARGET_MESON_FAMILY))!' \
 		-e 's!%FREETZ_TARGET_MESON_CPU%!$(call qstrip,$(FREETZ_TARGET_MESON_CPU))!' \
 		-e 's!%FREETZ_TARGET_MESON_ENDIAN%!$(call qstrip,$(FREETZ_TARGET_MESON_ENDIAN))!' \
+		-e 's!%FREETZ_TARGET_MESON_ENDIAN_UPPER%!$(call qstrip,$(FREETZ_TARGET_MESON_ENDIAN_UPPER))!' \
 		\
 		-e "s!%TARGET_CFLAGS%!$(foreach X,$(TARGET_CFLAGS) $($(PKG)_EXTRA_CFLAGS),'$(X)',)!g" \
 		-e "s!%TARGET_LDFLAGS%!$(foreach X,$(TARGET_LDFLAGS) $($(PKG)_EXTRA_LDFLAGS),'$(X)',)!g" \

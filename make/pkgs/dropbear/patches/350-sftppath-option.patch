@@ -1,6 +1,6 @@
 --- src/runopts.h
 +++ src/runopts.h
-@@ -64,6 +64,10 @@
+@@ -65,6 +65,10 @@
  
  typedef struct svr_runopts {
  
@@ -13,7 +13,7 @@
  	int forkbg;
 --- src/svr-chansession.c
 +++ src/svr-chansession.c
-@@ -684,7 +684,7 @@
+@@ -688,7 +688,7 @@
  			if ((cmdlen == 4) && strncmp(chansess->cmd, "sftp", 4) == 0) {
  				char *expand_path = expand_homedir_path(SFTPSERVER_PATH);
  				m_free(chansess->cmd);
@@ -67,7 +67,7 @@
  				case 'F':
  					svr_opts.forkbg = 0;
  					break;
-@@ -396,6 +411,12 @@
+@@ -409,6 +424,12 @@
  		svr_opts.portcount = 1;
  	}
  

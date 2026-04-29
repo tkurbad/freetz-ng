@@ -3,5 +3,5 @@
   - Changelog: [https://github.com/libpcp/pcp/commits/master/](https://github.com/libpcp/pcp/commits/master/)
   - Repository: [https://github.com/libpcp/pcp/](https://github.com/libpcp/pcp/)
   - Package: [master/make/pkgs/pcp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pcp/)
-  - Maintainer: [@fda77](https://github.com/fda77)
+  - Steward: [@fda77](https://github.com/fda77)
 

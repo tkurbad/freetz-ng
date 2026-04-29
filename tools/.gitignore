@@ -45,6 +45,7 @@
 /ninja
 /openssl
 /patchelf
+/patchelf-target
 /sed
 /sfk
 /sha1sum

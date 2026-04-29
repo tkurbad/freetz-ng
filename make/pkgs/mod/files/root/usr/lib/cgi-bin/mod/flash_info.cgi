@@ -16,8 +16,14 @@ mlen 69 '='
 grep ^mtd /proc/mtd | while read a b c d; do
 x="$(mlen 9 ' ' $((0x$b/1024)) )";
 y="$((0x$b*1000/1024/1024))";
-r="$(mlen 3 '0' ${y:0-3} )";
-l="${y::-3}";
+
+#r="$(mlen 3 '0' ${y:0-3} )";
+r="$(echo "$y" | sed -rn 's/.*(...)$/\1/p')";
+r="$(mlen 3 '0' ${r:-$y} )";
+
+#l="${y::-3}";
+l="$(echo "$y" | sed -n 's/...$//p')";
+
 l="$(mlen 5 ' ' ${l:-0} )";
 echo "$a   $b  $x KB  ${l:-x},${r:-0} MB   ${d//\"/}";
 done

@@ -188,7 +188,7 @@ Installation](http://wiki.ip-phone-forum.de/skript:freetz_und_speed-to-fritz)
 
 ### Notwendige Pakete
 
-* Siehe: [PREREQUISITES](../../PREREQUISITES.md)
+* Siehe: [PREREQUISITES](../../prerequisites/README.md)
 
 Für das Erstellen der Firmware kann auch Knoppix verwendet werden, wozu
 keine Linux-Installation erforderlich ist. Wichtig ist, dass zum
@@ -293,15 +293,15 @@ Hier wird zusätzlich folgendes benötigt:
 
 ### Installation der benötigten Pakete (Ubuntu)
 
-* Verschoben: [PREREQUISITES](../../PREREQUISITES.md#ubuntu)
+* Verschoben: [PREREQUISITES](../../prerequisites/README.md#ubuntu)
 
 ### Installation der benötigten Pakete (Fedora)
 
-* Verschoben: [PREREQUISITES](../../PREREQUISITES.md#fedora)
+* Verschoben: [PREREQUISITES](../../prerequisites/README.md#fedora)
 
 ### Installierte Distribution ermitteln
 
-* Verschoben: [PREREQUISITES](../../PREREQUISITES.md#distribution-ermitteln)
+* Verschoben: [PREREQUISITES](../../prerequisites/README.md#distribution-ermitteln)
 
 ### Erstellung & Installation
 

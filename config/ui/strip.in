@@ -1,6 +1,14 @@
 menu "Strip options"
 	visible if FREETZ_SHOW_EXPERT
 
+	config FREETZ_STRIP_UCLIBC
+		bool "Strip uClibc(-ng) libraries"
+		default y
+		help
+			This option strips uClibc(-ng) files like ld-uClibc.so,
+			libuClibc.so and libthread_db.so.
+			This saves about 200kb for uClibc-ng.
+
 	config FREETZ_STRIP_BINARIES
 		bool "Strip leftover unstripped binaries/libraries"
 		default y

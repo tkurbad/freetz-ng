@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 0.24)
-$(PKG)_LIB_VERSION:=8.4.3
+$(call PKG_INIT_LIB, 1.0)
+$(PKG)_LIB_VERSION:=8.4.6
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=e1620d518b26d7d3b16ac570e5018206e8b0d725fb65c02d048397718b5cf318
+$(PKG)_HASH:=71132a3fb71e68245b8f2ac4e9e97137d3e5c02f415636eb508ae607bc01add7
 $(PKG)_SITE:=@GNU/$(pkg)
 ### WEBSITE:=https://www.gnu.org/software/gettext/
 ### MANPAGE:=https://www.gnu.org/software/gettext/manual/index.html

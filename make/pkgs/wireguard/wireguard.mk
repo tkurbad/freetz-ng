@@ -1,12 +1,12 @@
-$(call PKG_INIT_BIN, 1.0.20250521)
+$(call PKG_INIT_BIN, 1.0.20260223)
 $(PKG)_SOURCE:=wireguard-tools-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=b6f2628b85b1b23cc06517ec9c74f82d52c4cdbd020f3dd2f00c972a1782950e
+$(PKG)_HASH:=af459827b80bfd31b83b08077f4b5843acb7d18ad9a33a2ef532d3090f291fbf
 $(PKG)_SITE:=https://git.zx2c4.com/wireguard-tools/snapshot
 ### WEBSITE:=https://www.wireguard.com/
 ### MANPAGE:=https://www.wireguard.com/quickstart/
 ### CHANGES:=https://git.zx2c4.com/wireguard-tools/log/
 ### CVSREPO:=https://git.zx2c4.com/wireguard-tools/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/wg
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/wg

@@ -1,14 +1,14 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_GIT_VERSION_ABANDON),2.26.2,2.50.1))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_GIT_VERSION_ABANDON),2.26.2,2.53.0))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=6d65132471df9e531807cb2746f8be317e22a343b9385bbe11c9ce7f0d2fc848
-$(PKG)_HASH_CURRENT:=7e3e6c36decbd8f1eedd14d42db6674be03671c2204864befa2a41756c5c8fc4
+$(PKG)_HASH_CURRENT:=5818bd7d80b061bbbdfec8a433d609dc8818a05991f731ffc4a561e2ca18c653
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_GIT_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=@KERNEL/software/scm/git
 ### WEBSITE:=https://www.git-scm.com/
 ### MANPAGE:=https://www.git-scm.com/docs
-### CHANGES:=https://github.com/git/git/tree/master/Documentation/RelNotes
+### CHANGES:=https://github.com/git/git/tags
 ### CVSREPO:=https://github.com/git/git
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 # files to be moved from /usr/lib/git-core to /usr/bin
 $(PKG)_FILES_TO_MOVE := git-daemon

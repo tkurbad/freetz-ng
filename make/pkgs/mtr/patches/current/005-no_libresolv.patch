@@ -1,6 +1,6 @@
 --- configure.ac
 +++ configure.ac
-@@ -155,16 +155,6 @@
+@@ -182,16 +182,6 @@
  AC_CHECK_FUNC([gethostbyname], [],
    [AC_CHECK_LIB([nsl], [gethostbyname], [], [AC_MSG_ERROR([No nameservice library found])])])
  

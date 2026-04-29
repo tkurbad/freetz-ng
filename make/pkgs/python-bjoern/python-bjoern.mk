@@ -14,7 +14,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.configured
-	$(call Build/PyMod/PKG, PYTHON_BJOERN)
+	$(call Build/PyMod2/PKG, PYTHON_BJOERN)
 
 $(pkg):
 

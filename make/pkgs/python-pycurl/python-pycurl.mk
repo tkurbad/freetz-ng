@@ -21,7 +21,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.configured
-	$(call Build/PyMod/PKG, PYTHON_PYCURL, --curl-config=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/curl-config $(if $(FREETZ_LIB_libcurl_WITH_OPENSSL),--with-ssl))
+	$(call Build/PyMod2/PKG, PYTHON_PYCURL, --curl-config=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/curl-config $(if $(FREETZ_LIB_libcurl_WITH_OPENSSL),--with-ssl))
 
 $(pkg):
 

@@ -1,5 +1,5 @@
 $(call PKG_INIT_BIN, 1.0)
-### SUPPORT:=X
+### STEWARD:=X
 
 $(PKG)_STARTLEVEL=14
 

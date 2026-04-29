@@ -18,3 +18,4 @@ EXTERNAL_FILES+=" /usr/bin/collectd /usr/share/collectd/types.db /usr/share/coll
 [ "$FREETZ_PACKAGE_COLLECTD_PLUGIN_rrdtool" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/collectd/rrdtool.so"
 [ "$FREETZ_PACKAGE_COLLECTD_PLUGIN_syslog" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/collectd/syslog.so"
 [ "$FREETZ_PACKAGE_COLLECTD_PLUGIN_uptime" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/collectd/uptime.so"
+

@@ -1,5 +1,4 @@
 $(call PKG_INIT_BIN, 2.7.18)
-$(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=Python-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
@@ -8,7 +7,12 @@ $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 ### CHANGES:=https://www.python.org/downloads/
 ### CVSREPO:=https://github.com/python/cpython
 
+$(PKG)_DEPENDS_ON+=patchelf-target-host
+
 $(PKG)_LOCAL_INSTALL_DIR:=$($(PKG)_DIR)/_install
+
+$(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+$(PKG)_MAJOR_VERSION_1:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
 
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/python$($(PKG)_MAJOR_VERSION).bin
 $(PKG)_LIB_PYTHON_TARGET_DIR:=$($(PKG)_TARGET_LIBDIR)/libpython$($(PKG)_MAJOR_VERSION).so.1.0
@@ -29,9 +33,9 @@ $(PKG)_MODULES_ALL := \
 $(PKG)_MODULES_SELECTED := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_MODULES_ALL),MOD)
 $(PKG)_MODULES_EXCLUDED := $(filter-out $($(PKG)_MODULES_SELECTED),$($(PKG)_MODULES_ALL))
 
-$(PKG)_EXCLUDED_FILES   := $(call newline2space,$(foreach mod,$($(PKG)_MODULES_EXCLUDED),$(PyMod/$(mod)/files)))
-$(PKG)_UNNECESSARY_DIRS := $(if $(FREETZ_PACKAGE_PYTHON_COMPRESS_PYC),$(call newline2space,$(Python/unnecessary-if-compression-enabled/dirs)))
-$(PKG)_UNNECESSARY_DIRS += $(call newline2space,$(foreach mod,$($(PKG)_MODULES_EXCLUDED),$(PyMod/$(mod)/dirs)))
+$(PKG)_EXCLUDED_FILES   := $(call newline2space,$(foreach mod,$($(PKG)_MODULES_EXCLUDED),$(PyMod2/$(mod)/files)))
+$(PKG)_UNNECESSARY_DIRS := $(if $(FREETZ_PACKAGE_PYTHON_COMPRESS_PYC),$(call newline2space,$(Python2/unnecessary-if-compression-enabled/dirs)))
+$(PKG)_UNNECESSARY_DIRS += $(call newline2space,$(foreach mod,$($(PKG)_MODULES_EXCLUDED),$(PyMod2/$(mod)/dirs)))
 
 $(PKG)_DEPENDS_ON += python2-host expat libffi zlib
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_PYTHON_MOD_BSDDB),db)
@@ -103,11 +107,11 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 		install
 	(cd $(FREETZ_BASE_DIR)/$(PYTHON_LOCAL_INSTALL_DIR); \
 		chmod -R u+w usr; \
-		$(RM) -r $(call newline2space,$(Python/unnecessary/files)); \
+		$(RM) -r $(call newline2space,$(Python2/unnecessary/files)); \
 		\
 		find usr/lib/python$(PYTHON_MAJOR_VERSION)/ -name "*.pyo" -delete; \
 		\
-		[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" == "y" ] && $(PATCHELF) --set-interpreter /usr/lib/freetz/ld-uClibc.so.1 usr/bin/python$(PYTHON_MAJOR_VERSION); \
+		[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" != "y" ] || $(PATCHELF_TARGET) --set-interpreter $(FREETZ_LIBRARY_DIR)/ld-uClibc.so.1 usr/bin/python$(PYTHON_MAJOR_VERSION); \
 		\
 		$(TARGET_STRIP) \
 			usr/bin/python$(PYTHON_MAJOR_VERSION) \
@@ -132,7 +136,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.installed
 	(cd $(PYTHON_DEST_DIR); \
 		echo -n > usr/lib/python$(PYTHON_MAJOR_VERSION)/config/Makefile; \
 		find usr/include/python$(PYTHON_MAJOR_VERSION)/ -name "*.h" \! -name "pyconfig.h" \! -name "Python.h" -delete; \
-		$(RM) -r $(call newline2space,$(Python/development/files)); \
+		$(RM) -r $(call newline2space,$(Python2/development/files)); \
 	); \
 	touch -c $@
 

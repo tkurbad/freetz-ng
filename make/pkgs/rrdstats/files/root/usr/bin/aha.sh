@@ -12,6 +12,9 @@ NAME=/tmp/flash/rrdstats/smarthome.alias
 KIND=/tmp/flash/rrdstats/smarthome.kinds
 
 
+AUNI="$(printf '\xC3\xA4')"
+OUNI="$(printf '\xC3\xB6')"
+
 LOCK_PRE="/tmp/.smarthome.lock."
 LOCK_ICK="${LOCK_PRE}$$"
 dellock() {
@@ -128,15 +131,15 @@ raw_out() {
 
 	min_len && echo "SRQ PONM LKJI HGFE DCBA "
 	min_len && echo "||| |||| |||| |||| |||| "
-	min_len && echo "||| |||| |||| |||| |||+- Bit  0/A: HANFUN Gerät"
+	min_len && echo "||| |||| |||| |||| |||+- Bit  0/A: HANFUN Ger${AUNI}t"
 	min_len && echo "||| |||| |||| |||| ||+-- Bit  1/B: ?Unused"
 	min_len && echo "||| |||| |||| |||| |+--- Bit  2/C: Lampe"
 	min_len && echo "||| |||| |||| |||| +---- Bit  3/D: ?Action"
 	min_len && echo "||| |||| |||| ||||      "
 	min_len && echo "||| |||| |||| |||+------ Bit  4/E: Alarmsensor"
 	min_len && echo "||| |||| |||| ||+------- Bit  5/F: Taster"
-	min_len && echo "||| |||| |||| |+-------- Bit  6/G: Heizkörperregler"
-	min_len && echo "||| |||| |||| +--------- Bit  7/H: Energiemessgerät"
+	min_len && echo "||| |||| |||| |+-------- Bit  6/G: Heizk${OUNI}rperregler"
+	min_len && echo "||| |||| |||| +--------- Bit  7/H: Energiemessger${AUNI}t"
 	min_len && echo "||| |||| ||||           "
 	min_len && echo "||| |||| |||+----------- Bit  8/I: Temperatursensor"
 	min_len && echo "||| |||| ||+------------ Bit  9/J: Schaltsteckdose"

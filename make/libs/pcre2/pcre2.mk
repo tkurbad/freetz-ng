@@ -1,8 +1,8 @@
-$(call PKG_INIT_LIB, 10.46)
-$(PKG)_LIB_VERSION:=0.14.0
-$(PKG)_POSIX_LIB_VERSION:=3.0.6
+$(call PKG_INIT_LIB, 10.47)
+$(PKG)_LIB_VERSION:=0.15.0
+$(PKG)_POSIX_LIB_VERSION:=3.0.7
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=15fbc5aba6beee0b17aecb04602ae39432393aba1ebd8e39b7cabf7db883299f
+$(PKG)_HASH:=47fe8c99461250d42f89e6e8fdaeba9da057855d06eb7fc08d9ca03fd08d7bc7
 $(PKG)_SITE:=https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$($(PKG)_VERSION)
 ### WEBSITE:=https://www.pcre.org/
 ### MANPAGE:=https://www.pcre.org/current/doc/html/
@@ -19,12 +19,15 @@ $(PKG)_POSIX_BINARY:=$($(PKG)_DIR)/.libs/$($(PKG)_POSIX_LIBNAME)
 $(PKG)_POSIX_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_POSIX_LIBNAME)
 $(PKG)_POSIX_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_POSIX_LIBNAME)
 
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libpcre2_WITH_JIT
+
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --enable-pcre2-8
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2-16
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2-32
 $(PKG)_CONFIGURE_OPTIONS += --enable-unicode
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libpcre2_WITH_JIT),--enable-jit,--disable-jit)
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2test-libreadline
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2test-libedit
 $(PKG)_CONFIGURE_OPTIONS += --disable-pcre2grep-libz

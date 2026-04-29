@@ -1,0 +1,59 @@
+name: github_zensical
+
+on:
+  workflow_run:
+    workflows: [ postcommit_docs,postcommit_stats,avm_ftp,avm_osp,avm_juis,avm_juis-recache ]
+    types:
+      - completed
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/github_zensical.yml'
+      - '.github/zensical/*'
+      - 'docs/extra.css'
+      - 'docs/*.md'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    env:
+      ZENSICAL_REQUIREMENTS_FILE: .github/zensical/requirements.txt
+      ZENSICAL_CONFIG_FILE: .github/zensical/zensical.toml
+      ZENSICAL_INPUT_PATH: .github/zensical/site
+    permissions:
+      contents: read
+    runs-on: ubuntu-slim
+    if: ${{ github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install dependencies
+        run: pip install -r "${{ env.ZENSICAL_REQUIREMENTS_FILE }}"
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+      - name: Build with Zensical
+        run: zensical build --config-file "${{ env.ZENSICAL_CONFIG_FILE }}"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: "${{ env.ZENSICAL_INPUT_PATH }}"
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-slim
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+

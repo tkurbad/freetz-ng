@@ -1,8 +1,11 @@
-$(call PKG_INIT_LIB, 2.7.1)
-$(PKG)_LIB_VERSION:=1.10.2
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libexpat_VERSION_ABANDON),2.7.5,2.8.0))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libexpat_VERSION_ABANDON),1.11.3,1.12.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=354552544b8f99012e5062f7d570ec77f14b412a3ff5c7d8d0dae62c0d217c30
+$(PKG)_HASH_ABANDON:=1032dfef4ff17f70464827daa28369b20f6584d108bc36f17ab1676e1edd2f91
+$(PKG)_HASH_CURRENT:=a37bfae0aa9775bd8521ebd85dc456d486f0ff31138f6c91fd902ea732624542
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libexpat_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=@SF/expat,https://github.com/libexpat/libexpat/releases/download/R_$(subst .,_,$($(PKG)_VERSION))
+### VERSION:=2.7.5/2.8.0
 ### WEBSITE:=https://libexpat.github.io/
 ### MANPAGE:=https://libexpat.github.io/doc/
 ### CHANGES:=https://github.com/libexpat/libexpat/blob/master/expat/Changes
@@ -12,11 +15,22 @@ $(PKG)_BINARY:=$($(PKG)_DIR)/lib/.libs/libexpat.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libexpat.so.$($(PKG)_LIB_VERSION)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libexpat.so.$($(PKG)_LIB_VERSION)
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libexpat_VERSION_ABANDON),abandon,current)
+
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --without-xmlwf
 $(PKG)_CONFIGURE_OPTIONS += --without-examples
 $(PKG)_CONFIGURE_OPTIONS += --without-tests
+$(PKG)_CONFIGURE_OPTIONS += --without-docbook
+#$(PKG)_CONFIGURE_OPTIONS += --without-arc4random
+#$(PKG)_CONFIGURE_OPTIONS += --without-arc4random-buf
+#$(PKG)_CONFIGURE_OPTIONS += --without-getentropy
+#$(PKG)_CONFIGURE_OPTIONS += --without-getrandom
+#$(PKG)_CONFIGURE_OPTIONS += --without-sys-getrandom
+
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
+$(PKG)_CFLAGS += -DXML_POOR_ENTROPY
 
 
 $(PKG_SOURCE_DOWNLOAD)
@@ -24,7 +38,8 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(EXPAT_DIR)
+	$(SUBMAKE) -C $(EXPAT_DIR) \
+		CFLAGS="$(EXPAT_CFLAGS)"
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 	$(SUBMAKE) -C $(EXPAT_DIR) \

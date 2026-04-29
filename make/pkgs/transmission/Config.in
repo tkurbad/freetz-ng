@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_TRANSMISSION
-	bool "Transmission 3.00/4.0.6 (binary only)"
+	bool "Transmission 3.00/4.1.1 (binary only)"
 	default n
 	#
 	select FREETZ_LIB_libcurl    if !FREETZ_PACKAGE_TRANSMISSION_STATIC
@@ -22,7 +22,7 @@ if FREETZ_PACKAGE_TRANSMISSION
 			bool "3.00"
 
 		config FREETZ_PACKAGE_TRANSMISSION_VERSION_CURRENT
-			bool "4.0.6"
+			bool "4.1.1"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 			select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 			select FREETZ_LIB_STDCXXLIB                 if !FREETZ_PACKAGE_TRANSMISSION_STATIC
@@ -53,11 +53,16 @@ if FREETZ_PACKAGE_TRANSMISSION
 			select FREETZ_LIB_libcrypto_WITH_RC4
 
 		config FREETZ_PACKAGE_TRANSMISSION_WITH_MBEDTLS
-			bool "mbed TLS"
+			bool "MbedTLS"
 			depends on FREETZ_LIB_libcurl_WITH_MBEDTLS
 			select FREETZ_LIB_libmbedcrypto      if !FREETZ_PACKAGE_TRANSMISSION_STATIC
 
 	endchoice
+
+	comment "WARNING: Transmission v3 does not work with OpenSSL newer than 1.1.1"
+		depends on FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON && FREETZ_PACKAGE_TRANSMISSION_WITH_OPENSSL && !FREETZ_OPENSSL_VERSION_11_MAX
+	comment "WARNING: Transmission v4 does not work with MbedTLS older than 3.2.0"
+		depends on FREETZ_PACKAGE_TRANSMISSION_VERSION_CURRENT && FREETZ_PACKAGE_TRANSMISSION_WITH_MBEDTLS && !FREETZ_MBEDTLS_VERSION_306_MIN
 
 	config FREETZ_PACKAGE_TRANSMISSION_CLIENT
 		bool "Transmission client"

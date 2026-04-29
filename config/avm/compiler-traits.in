@@ -24,8 +24,15 @@ config FREETZ_GCC_ABI
 config FREETZ_GCC_ARCH
 	string
 	#
+	default "armv6zk" if \
+		FREETZ_TARGET_BITS_32 && FREETZ_CPU_MODEL_ARM_ARM11
+	#
 	default "armv7-a" if \
-		FREETZ_CPU_MODEL_ARM_cortex
+		FREETZ_TARGET_BITS_32 && FREETZ_CPU_MODEL_ARM_cortex
+	#
+	default "armv8-a" if \
+		FREETZ_TARGET_BITS_64 && FREETZ_CPU_MODEL_ARM
+	# This may be optimized later: https://gcc.gnu.org/onlinedocs/gcc/AArch64-Options.html
 	#
 	# 4KEc CPUs are mips32r2, so the correct value is actually mips32r2
 	# s. https://github.com/gcc-mirror/gcc/blob/gcc-8_1_0-release/gcc/config/mips/mips-cpus.def#L107
@@ -49,17 +56,24 @@ config FREETZ_GCC_ARCH
 # -mcpu=%, -mtune=%
 config FREETZ_GCC_CPU
 	string
+	default "cortex-a73" if \
+		FREETZ_TARGET_BITS_64 && FREETZ_CPU_MODEL_ARM
+	# Change this after exact cpu is known / avm had time to release sources
 	#
 	# There are currently only 2 devices with A73 and they are the only one with kernel 5.4
 	#
+	default "arm1176jz-s" if \
+		FFREETZ_TARGET_BITS_32 && REETZ_CPU_MODEL_ARM_arm11_arm1176
 	default "cortex-a73" if \
-		FREETZ_CPU_MODEL_ARM_cortex_a73
+		FREETZ_TARGET_BITS_32 && FREETZ_CPU_MODEL_ARM_cortex_a73
 #	default "cortex-a53" if \
-#		FREETZ_CPU_MODEL_ARM_cortex_a53 && FREETZ_BUILD_TOOLCHAIN
+#		FREETZ_TARGET_BITS_32 && FREETZ_CPU_MODEL_ARM_cortex_a53 && FREETZ_BUILD_TOOLCHAIN
 #	default "cortex-a9" if \
-#		FREETZ_CPU_MODEL_ARM_cortex_a9 && FREETZ_BUILD_TOOLCHAIN
+#		FREETZ_TARGET_BITS_32 && FREETZ_CPU_MODEL_ARM_cortex_a9 && FREETZ_BUILD_TOOLCHAIN
+	default "cortex-a7" if \
+		FREETZ_TARGET_BITS_32 && FREETZ_CPU_MODEL_ARM_cortex_a7 && FREETZ_BUILD_TOOLCHAIN
 	default "cortex-a9" if \
-		FREETZ_CPU_MODEL_ARM_cortex
+		FREETZ_TARGET_BITS_32 && FREETZ_CPU_MODEL_ARM_cortex
 	#
 	# TODO: the correct value is "4kec", which would result in mips32r2 binaries instead of mips32
 	#
@@ -100,17 +114,18 @@ config FREETZ_GCC_CPU
 # -mfpu=%
 config FREETZ_GCC_FPU
 	string
-	default "neon"     if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex
+	default "neon"     if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex && !FREETZ_SYSTEM_TYPE_BCM63138
 
 # -mfloat-abi=% (ARM) / -m%-float (MIPS)
 config FREETZ_GCC_FLOAT_ABI
 	string
-	default "softfp"   if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex    && !FREETZ_SYSTEM_TYPE_BCM63138
-	default "soft"     if FREETZ_TARGET_ARCH_MIPS || \
-		             (FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex_a9 &&  FREETZ_SYSTEM_TYPE_BCM63138)
+	default "softfp"   if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex && !FREETZ_SYSTEM_TYPE_BCM63138
+	default "soft"     if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex &&  FREETZ_SYSTEM_TYPE_BCM63138
+	default "soft"     if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_arm11
+	default "soft"     if FREETZ_TARGET_ARCH_MIPS
 
 # -mmode=%
 config FREETZ_GCC_MODE
 	string
-	default "arm"      if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM_cortex
+	default "arm"      if FREETZ_TARGET_ARCH_ARM  && FREETZ_CPU_MODEL_ARM
 

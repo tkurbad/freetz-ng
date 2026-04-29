@@ -12,6 +12,7 @@ $(PKG)_LIBRARY_BUILD_DIR:=$($(PKG)_DIR)/.libs/$($(PKG)_LIBNAME)
 $(PKG)_LIBRARY_STAGING_DIR:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME)
 $(PKG)_LIBRARY_TARGET_DIR:=$($(PKG)_TARGET_LIBDIR)/$($(PKG)_LIBNAME)
 
+$(PKG)_DEPENDS_ON += config-host
 $(PKG)_DEPENDS_ON += wget-host
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
@@ -22,6 +23,9 @@ $(PKG)_CONFIGURE_OPTIONS += --without-file
 $(PKG)_CONFIGURE_OPTIONS += --without-perl
 
 $(PKG)_CONFIGURE_ENV += ac_cv_va_copy=C99
+
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -47,6 +51,7 @@ $($(PKG)_LIBRARY_TARGET_DIR): $($(PKG)_LIBRARY_STAGING_DIR)
 $(pkg): $($(PKG)_LIBRARY_STAGING_DIR)
 
 $(pkg)-precompiled: $($(PKG)_BINARY_TARGET_DIR) $($(PKG)_LIBRARY_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(JS_DIR) clean

@@ -4,6 +4,6 @@
   - Changelog: [https://git.busybox.net/uClibc++/log/](https://git.busybox.net/uClibc++/log/)
   - Repository: [https://git.busybox.net/uClibc++/](https://git.busybox.net/uClibc++/)
   - Library: [master/make/libs/uclibcxx/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/libs/uclibcxx/)
-  - Maintainer: -
+  - Steward: -
 
 An implementation of the Standard C++ Library optimized for embedded systems.

@@ -16,7 +16,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
-	$(call Build/PyMod/PKG, PYTHON_PYCRYPTODOME, , )
+	$(call Build/PyMod2/PKG, PYTHON_PYCRYPTODOME, , )
 	@touch $@
 
 $(pkg):

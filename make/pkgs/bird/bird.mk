@@ -8,7 +8,7 @@ $(PKG)_SITE:=https://bird.network.cz/download,https://bird.network.cz/download/1
 ### MANPAGE:=https://gitlab.nic.cz/labs/bird/wikis/home
 ### CHANGES:=https://bird.network.cz/?o_news
 ### CVSREPO:=https://gitlab.nic.cz/labs/bird
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_STARTLEVEL=82
 

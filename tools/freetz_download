@@ -25,10 +25,15 @@ FREETZ_DL_SITE_0="https://freetz-ng.root.sx"
 FREETZ_DL_SITE_1="https://freetz.magenbrot.net"
 FREETZ_DL_SITE_2="http://freetz.3dfxatwork.de"
 FREETZ_DL_SITE_3="https://freetz.wirsind.info"
-FREETZ_DL_SITE_4="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"
+FREETZ_DL_SITE_4="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"
 FREETZ_DL_SITES_COUNT=5
 FREETZ_DL_SITES_NORND_FIRST=1
 FREETZ_DL_SITES_NORND_LAST=1
+
+WGET="wget"
+WVER="$(${WGET} --version | head -n1 | sed -r 's/.* ([\.0-9]*) .*/\1/')"
+HASH="$(tools/freetz_revision repo | tr -d '\n' | md5sum  | cut -f1 -d ' ')"
+userAgent="${WGET^}/${WVER} (${HASH})"
 
 helpmsg() {
 cat << 'EOF'
@@ -52,17 +57,54 @@ Debugging: just set DEBUG=1, like this:
 EOF
 }
 
+# Downloads a firmware asset from release
+# env: $FREETZ_DLTOKEN with read access
+# $1: url of release tag
+# $2: file name of release
+# $3: destination file (if different from $2)
+do_assets() {
+	local DLT="${FREETZ_DLTOKEN}"
+	local TAG="${1%/}"
+	local ASS="$(echo "${TAG}" | sed -r 's,(/releases/)tags/.*,\1assets,g')"
+	local SRC="${2##*/}"
+	local DST="${3:-${2}}"
+	echo 1>&11
+	[ -z "${DLT}" ] && echo "No DLTOKEN" 1>&11 && return 1
+	[ -z "${TAG}" ] && echo "No tag url" 1>&11 && return 1
+	[ -e "${DST}" ] && echo "File already exists" 1>&11 && return 1
+
+	local ASSETS="$(curl -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2026-03-10"  "${TAG}" 2>&12)"
+	[ -z "${ASSETS}" ] && echo "Download failed - No ASSETS" 1>&11 && return 1
+	local ASSID="$(echo "${ASSETS}" | grep -B7 "\"${SRC}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
+	[ -z "${ASSID}" ] && echo "Download failed - No ASSID" 1>&11 && return 1
+	echo "Found ASSID:=${ASSID}" 1>&11
+
+	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"${DST}\""; rm \"${DST\" 2>/dev/null; exit 1' TERM INT
+	curl -Lo "${DST}"    -H "Accept: application/octet-stream"     -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2026-03-10"  "${ASS}/${ASSID}" 1>&11 2>&12
+	curl_result=$?
+	[ "$opt_trap_delete" == y ] && trap - TERM INT
+
+	if [ "$curl_result" != "0" ]; then
+		echo "Download failed - \"${SRC}\"  ->  error code $curl_result" 1>&11
+		rm -f "$outFile"
+		return $curl_result
+	fi
+	echo "Download succeeded - \"${SRC}\"  ->  saved to folder \"${3%/*}\"" 1>&11
+}
+
 do_download() {
 	# $1 = target directory, $2 = download URL without file, $3 = (remote) file name
 	local outFile="${1%%/}/${opt_out_file:-$3}"
 	local fullURL="${2%%/}/$3"
-	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"$outFile\""; rm "$outFile" 2>/dev/null; exit 1' TERM INT
 	echo 1>&11
+
+	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"$outFile\""; rm "$outFile" 2>/dev/null; exit 1' TERM INT
 	[ "$DEBUG" == "1" ] && echo \
-	"wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll '${fullURL}' -O '${outFile}' 1>&11 2>&12"
-	 wget $WGET_INSECURE_HTTPS -nd -t3 --timeout=20 --progress=bar:force:noscroll "${fullURL}" -O "${outFile}" 1>&11 2>&12
+	"${WGET} $WGET_INSECURE_HTTPS --no-directories --tries=2 --timeout=3 --progress=bar:force:noscroll --user-agent='${userAgent}' '${fullURL}' --output-document='${outFile}' 1>&11 2>&12"
+	 ${WGET} $WGET_INSECURE_HTTPS --no-directories --tries=2 --timeout=3 --progress=bar:force:noscroll --user-agent="${userAgent}" "${fullURL}" --output-document="${outFile}" 1>&11 2>&12
 	wget_result=$?
 	[ "$opt_trap_delete" == y ] && trap - TERM INT
+
 	if [ "$wget_result" != "0" ]; then
 		if [ -e "/usr/share/ca-certificates/mozilla/DST_Root_CA_X3.crt" ]; then
 			# https://letsencrypt.org/docs/dst-root-ca-x3-expiration-september-2021/
@@ -81,8 +123,8 @@ do_check() {
 	local mode wget_output wget_result
 	for mode in --spider --output-document=/dev/null; do
 		[ "$DEBUG" == "1" ] && \
-		echo         "LC_ALL=C wget -t3 --timeout=20 -S $mode '$1' 2>&1"
-		wget_output=$(LC_ALL=C wget -t3 --timeout=20 -S $mode "$1" 2>&1)
+		echo         "LC_ALL=C wget --tries=2 --timeout=3 --server-response $mode '$1' 2>&1"
+		wget_output=$(LC_ALL=C wget --tries=2 --timeout=3 --server-response $mode "$1" 2>&1)
 		wget_result=$?
 		if [ "$wget_result" != "0" ]; then
 			# workaround wget spider-mode bug (false negative): known to happen with all sites
@@ -285,6 +327,7 @@ enumerate_mirrors_official() {
 		URLs="${URLs//\&/%26}"
 
 		for url in $(eval echo "{${URLs},}"); do # wrap URLs with curly-braces to apply brace-expansion
+			subpath="${url#*/}"
 			if [ ${url:0:7} == "@MIRROR" ]; then
 				if [ "${#url}" -le 8 ]; then
 					: # file is only on mirrors
@@ -296,12 +339,11 @@ enumerate_mirrors_official() {
 				fi
 			elif [ ${url:0:3} == "@SF" ]; then
 				# give sourceforge a few more tries, because it redirects to different mirrors
-				subpath=${url/@SF\//}
 				for (( n=0; n < 5; n++ )); do
 					sites[${#sites[@]}]=https://downloads.sourceforge.net/$subpath
 				done
 			elif [ ${url:0:4} == "@AVM" ]; then
-				subpath=${url/@AVM\//}
+				sites[${#sites[@]}]=@DLTOKEN/https://api.github.com/repos/Freetz-NG/internal/releases/tags/firmwares
 				sites[${#sites[@]}]=https://download.avm.de/fritzbox/$subpath
 				sites[${#sites[@]}]=https://download.avm.de/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/fritzwlan/$subpath
@@ -317,10 +359,12 @@ enumerate_mirrors_official() {
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/GoFiber23NL1/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/GoFiber23/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/FCS23/$subpath
+#				sites[${#sites[@]}]=https://download.avm.de/inhaus/MOVE21NL3WU25/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/MOVE21NL1/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/MOVE21/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/inhaus/WU22PSQ19/$subpath
 #				sites[${#sites[@]}]=https://download.avm.de/testfeld/$subpath
+				sites[${#sites[@]}]=https://download.avm.de/firmware/jz149773-dtag
 				sites[${#sites[@]}]=https://download.avm.de/archive/fritz.box/$subpath
 				sites[${#sites[@]}]=https://service.avm.de/downloads/LaborPlus/$subpath
 				sites[${#sites[@]}]=https://service.avm.de/downloads/downgrade/$subpath
@@ -331,40 +375,37 @@ enumerate_mirrors_official() {
 #				sites[${#sites[@]}]=ftp://ftp.avm.de/$subpath
 #				sites[${#sites[@]}]=ftp://ftp.avm.de/archive/fritz.box/$subpath
 			elif [ ${url:0:4} == "@GNU" ]; then
-				subpath=${url/@GNU\//}
 				sites[${#sites[@]}]=https://ftpmirror.gnu.org/$subpath # automatically chooses a nearby and up-to-date mirror
 				sites[${#sites[@]}]=https://ftp.gnu.org/gnu/$subpath
+			elif [ ${url:0:7} == "@DEBIAN" ]; then
+				subpath="debian/pool/main/${subpath:0:1}/$subpath"
+				sites[${#sites[@]}]=https://deb.debian.org/$subpath # automatically chooses a nearby and up-to-date mirror
+				sites[${#sites[@]}]=https://ftp.debian.org/$subpath
+				sites[${#sites[@]}]=https://ftp.de.debian.org/$subpath
+				sites[${#sites[@]}]=https://ftp2.de.debian.org/$subpath
 			elif [ ${url:0:7} == "@KERNEL" ]; then
-				subpath=${url/@KERNEL\//}
 				sites[${#sites[@]}]=https://cdn.kernel.org/pub/$subpath
 				sites[${#sites[@]}]=https://mirrors.kernel.org/pub/$subpath
 				sites[${#sites[@]}]=https://www.kernel.org/pub/$subpath
 			elif [ ${url:0:8} == "@TELEKOM" ]; then
-				subpath=${url/@TELEKOM\//}
 				sites[${#sites[@]}]=https://www.telekom.de/hilfe/downloads/$subpath
 				sites[${#sites[@]}]=http://www.telekom.de/dlp/eki/downloads/$subpath
 				sites[${#sites[@]}]=http://www.t-home.de/dlp/eki/downloads/$subpath
 				sites[${#sites[@]}]=http://hilfe.telekom.de/dlp/eki/downloads/$subpath
 			elif [ ${url:0:4} == "@1u1" ]; then
-				subpath=${url/@1u1\//}
 				sites[${#sites[@]}]=http://acsfwdl.1und1.de/avm/$subpath
 			elif [ ${url:0:4} == "@EWE" ]; then
-				subpath=${url/@EWE\//}
 				sites[${#sites[@]}]=http://download.ewe.de/avm/$subpath
 			elif [ ${url:0:6} == "@M-NET" ]; then
-				subpath=${url/@M-NET\//}
 				sites[${#sites[@]}]=http://www.m-net.de/fileadmin/downloads/Links/$subpath
 			elif [ ${url:0:7} == "@APACHE" ]; then
-				subpath=${url/@APACHE\//}
 				sites[${#sites[@]}]=https://www.apache.org/dist/$subpath
 				sites[${#sites[@]}]=https://archive.apache.org/dist/$subpath
 			elif [ ${url:0:6} == "@SAMBA" ]; then
-				subpath=${url/@SAMBA\//}
 				sites[${#sites[@]}]=https://download.samba.org/pub/$subpath
 				sites[${#sites[@]}]=https://www.samba.org/ftp/$subpath
 				sites[${#sites[@]}]=https://ftp.samba.org/pub/$subpath
 			elif [ ${url:0:9} == "@SAVANNAH" ]; then
-				subpath=${url/@SAVANNAH\//}
 				sites[${#sites[@]}]=https://download.savannah.nongnu.org/releases/$subpath
 				sites[${#sites[@]}]=https://download.savannah.gnu.org/releases/$subpath
 				sites[${#sites[@]}]=https://ftpmirror.gnu.org/$subpath
@@ -445,9 +486,10 @@ for i in ${sites[@]}; do
 			continue
 		fi
 	else
-		do_download "$DL_DIR" "$i" "$DL_FILE"
-		if [ "$?" != "0" ]; then
-			continue
+		if [ "$i" == "${i#@DLTOKEN/}" ]; then
+			do_download "$DL_DIR" "$i" "$DL_FILE" || continue
+		else
+			[ -n "${FREETZ_DLTOKEN}" ] && do_assets "${i#*/}" "$DL_FILE" "$DL_DIR/${opt_out_file:-$DL_FILE}" || continue
 		fi
 
 		local DL_DNF="$DL_DIR/${opt_out_file:-$DL_FILE}"

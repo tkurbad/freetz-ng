@@ -15,7 +15,8 @@ analyze() {
 		[ "${PART/_HW0/}"  != "$PART" ] && continue # other CPU
 		[ "${PART/HW273/}" != "$PART" ] && continue # also 5590
 		TYPE="$($FTDIR/fdtget $FILE /images/$PART 'type')"
-		[ "$TYPE" == "flat_dt"  ] && continue
+		[ "$TYPE" == "flat_dt" ] && continue
+		[ "$TYPE" != "${TYPE%,urlader}" ] && continue
 		if   [ "$TYPE" == "filesystem" -o "$TYPE" == "ramdisk" ]; then
 			FPART="$COUNT"; FTYPE="$TYPE"; FNAME="$PART"; XARGS="$($FTDIR/fdtget $FILE /images/$PART 'avm,kernel-args' 2>/dev/null)"
 		elif [ "$TYPE" == "kernel"     -o "$TYPE" == "avm,fit" ]; then

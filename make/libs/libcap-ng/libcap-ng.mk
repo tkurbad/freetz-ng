@@ -1,10 +1,11 @@
-$(call PKG_INIT_LIB, 0.8.5)
+$(call PKG_INIT_LIB, 0.9.3)
 $(PKG)_LIB_VERSION:=0.0.0
+$(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=3ba5294d1cbdfa98afaacfbc00b6af9ed2b83e8a21817185dfd844cc8c7ac6ff
-$(PKG)_SITE:=https://people.redhat.com/sgrubb/libcap-ng
-### WEBSITE:=https://people.redhat.com/sgrubb/libcap-ng/
-### CHANGES:=https://people.redhat.com/sgrubb/libcap-ng/ChangeLog
+$(PKG)_HASH:=fe11ebbb55904763b3532f19069f13ec319042634620180a03bd4653d301563e
+$(PKG)_SITE:=https://github.com/stevegrubb/libcap-ng/archive/refs/tags
+### WEBSITE:=https://github.com/stevegrubb/libcap-ng
+### CHANGES:=https://github.com/stevegrubb/libcap-ng/releases
 ### CVSREPO:=https://github.com/stevegrubb/libcap-ng
 
 $(PKG)_LIBNAMES_SHORT   := libcap-ng $(if $(FREETZ_KERNEL_VERSION_4_4_MIN),libdrop_ambient)
@@ -22,8 +23,6 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/
 $(PKG)_CONFIGURE_OPTIONS += --without-capability_header
-$(PKG)_CONFIGURE_OPTIONS += --without-debug
-$(PKG)_CONFIGURE_OPTIONS += --without-python
 $(PKG)_CONFIGURE_OPTIONS += --without-python3
 
 

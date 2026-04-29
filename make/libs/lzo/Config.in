@@ -1,5 +1,6 @@
 config FREETZ_LIB_liblzo2
 	bool "LZO (liblzo2.so)"
+	depends on FREETZ_TARGET_BITS_32
 	default n
 	help
 		LZO is a portable lossless data compression library written in ANSI C.

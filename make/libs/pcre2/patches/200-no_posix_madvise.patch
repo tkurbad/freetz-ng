@@ -1,0 +1,20 @@
+--- deps/sljit/sljit_src/sljitUtils.c
++++ deps/sljit/sljit_src/sljitUtils.c
+@@ -295,7 +295,7 @@
+ 
+ SLJIT_API_FUNC_ATTRIBUTE sljit_u8 *SLJIT_FUNC sljit_stack_resize(struct sljit_stack *stack, sljit_u8 *new_start)
+ {
+-#if defined _WIN32 || defined(POSIX_MADV_DONTNEED)
++#if defined _WIN32 || ( defined(POSIX_MADV_DONTNEED) && defined(__NR_madvise) )
+ 	sljit_uw aligned_old_start;
+ 	sljit_uw aligned_new_start;
+ 	sljit_uw page_align;
+@@ -319,7 +319,7 @@
+ 				return NULL;
+ 		}
+ 	}
+-#elif defined(POSIX_MADV_DONTNEED)
++#elif ( defined(POSIX_MADV_DONTNEED) && defined(__NR_madvise) )
+ 	if (stack->start < new_start) {
+ 		page_align = get_page_alignment();
+ 

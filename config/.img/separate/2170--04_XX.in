@@ -12,6 +12,10 @@ config FREETZ_AVM_PROP_HWREV
 	string
 	default "119"
 
+config FREETZ_AVM_PROP_PRODUKT
+	string
+	default "Fritz_Box_2170"
+
 config FREETZ_AVM_HAS_BRANDING_avm
 	def_bool y
 

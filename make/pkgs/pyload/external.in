@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_PACKAGE_PYLOAD
 	default n
 	help
 		externals the following file(s):
-		 /opt/pyLoad/ (recursive)
+		 /opt/pyLoad/
 

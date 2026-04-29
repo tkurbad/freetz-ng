@@ -1,7 +1,33 @@
 config FREETZ_PACKAGE_LDD
-	bool "ldd 0.1 (binary only) - DEPRECATED"
+	bool "ldd 0.1/1.0.57 (binary only)"
 	default n
 	help
 		ldd prints the shared libraries required by each program or shared
 		library specified on the command line.
+
+if FREETZ_PACKAGE_LDD
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_LDD_VERSION_CURRENT
+
+		config FREETZ_PACKAGE_LDD_VERSION_ABANDON
+			bool "0.1"
+			depends on !FREETZ_SEPARATE_AVM_UCLIBC
+			help
+				Old version of ldd from uClibc 0.9.x era.
+				For old devices with ancient uClibc version
+				0.9.28 + 0.9.29 or gcc < 4.x toolchains.
+
+		config FREETZ_PACKAGE_LDD_VERSION_CURRENT
+			bool "1.0.57"
+			depends on  FREETZ_SEPARATE_AVM_UCLIBC
+			help
+				New version of ldd from uClibc-ng with support
+				for 28+ architectures and improved MIPS. Requires
+				uClibc >= 0.9.32 or uClibc-ng and gcc >= 4.x.
+
+	endchoice
+
+endif # FREETZ_PACKAGE_LDD
 

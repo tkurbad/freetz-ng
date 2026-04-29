@@ -1,6 +1,6 @@
 --- src/runopts.h
 +++ src/runopts.h
-@@ -99,6 +99,9 @@
+@@ -100,6 +100,9 @@
  	gid_t restrict_group_gid;
  #endif
  
@@ -28,7 +28,7 @@
  #ifdef HAVE_GETGROUPLIST
  	svr_opts.restrict_group = NULL;
  	svr_opts.restrict_group_gid = 0;
-@@ -293,6 +295,9 @@
+@@ -302,6 +304,9 @@
  				case 'w':
  					svr_opts.norootlogin = 1;
  					break;

@@ -1,10 +1,10 @@
-config FREETZ_LIB_libcurl
+menuconfig FREETZ_LIB_libcurl
 	bool "libcurl (libcurl.so)"
 	default n
 	help
 		A client-side URL transfer library.
 
-if FREETZ_LIB_libcurl
+if FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
 
 	choice
 		prompt "Version"
@@ -15,47 +15,56 @@ if FREETZ_LIB_libcurl
 			depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 		config FREETZ_LIB_libcurl_WITH_VERSION_CURRENT
-			bool "8.15.0"
+			bool "8.19.0"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	endchoice
 
-endif # FREETZ_LIB_libcurl
+	config FREETZ_LIB_libcurl_WITH_SSL
+		bool "build with SSL support"
+		default y
+		help
+			This option enables SSL support in curl.
 
-config FREETZ_LIB_libcurl_WITH_SSL
-	bool "build with SSL support" if FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
-	default y                     if FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
-	help
-		This option enables SSL support in curl.
+	if FREETZ_LIB_libcurl_WITH_SSL
+		choice
+			prompt "SSL library"
+			default FREETZ_LIB_libcurl_WITH_OPENSSL
 
-choice
-	depends on FREETZ_LIB_libcurl_WITH_SSL
-	prompt "SSL library"
-	default FREETZ_LIB_libcurl_WITH_OPENSSL
+			config FREETZ_LIB_libcurl_WITH_OPENSSL
+				bool "OpenSSL"
+				select FREETZ_LIB_libcrypto
+				select FREETZ_LIB_libssl
 
-	config FREETZ_LIB_libcurl_WITH_OPENSSL
-		bool "OpenSSL"
-		select FREETZ_LIB_libcrypto
-		select FREETZ_LIB_libssl
+			config FREETZ_LIB_libcurl_WITH_MBEDTLS
+				bool "MbedTLS"
+				select FREETZ_LIB_libmbedcrypto
+				select FREETZ_LIB_libmbedtls
+				select FREETZ_LIB_libmbedx509
 
-	config FREETZ_LIB_libcurl_WITH_MBEDTLS
-		bool "mbed TLS"
-		select FREETZ_LIB_libmbedcrypto
-		select FREETZ_LIB_libmbedtls
-		select FREETZ_LIB_libmbedx509
-endchoice
+		endchoice
+	endif # FREETZ_LIB_libcurl_WITH_SSL
 
-config FREETZ_LIB_libcurl_WITH_SFTP
-	bool "build with sftp support" if FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
-	select FREETZ_LIB_libssh2
-	default n
-	help
-		This option enables sftp support in curl.
+	comment "WARNING: Before version 8.16 MbedTLS v2 is required"
+		depends on FREETZ_LIB_libcurl_WITH_VERSION_ABANDON && FREETZ_LIB_libcurl_WITH_MBEDTLS &&  FREETZ_MBEDTLS_VERSION_306_MIN
+	comment "WARNING: Since version 8.16 MbedTLS v3 is required"
+		depends on FREETZ_LIB_libcurl_WITH_VERSION_CURRENT && FREETZ_LIB_libcurl_WITH_MBEDTLS && !FREETZ_MBEDTLS_VERSION_306_MIN
+	comment "WARNING: Since version 8.18 OpenSSL v3 is required"
+		depends on FREETZ_LIB_libcurl_WITH_VERSION_CURRENT && FREETZ_LIB_libcurl_WITH_OPENSSL && !FREETZ_OPENSSL_VERSION_30_MIN
 
-config FREETZ_LIB_libcurl_WITH_ZLIB
-	bool "build with zlib support" if FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
-	select FREETZ_LIB_libz
-	default n
-	help
-		This option enables zlib support in curl.
+	config FREETZ_LIB_libcurl_WITH_SFTP
+		bool "build with sftp support"
+		select FREETZ_LIB_libssh2
+		default n
+		help
+			This option enables sftp support in curl.
+
+	config FREETZ_LIB_libcurl_WITH_ZLIB
+		bool "build with zlib support"
+		select FREETZ_LIB_libz
+		default n
+		help
+			This option enables zlib support in curl.
+
+endif # FREETZ_LIB_libcurl || FREETZ_PACKAGE_CURL
 

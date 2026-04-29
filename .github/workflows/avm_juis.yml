@@ -16,12 +16,17 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      packages: read
+      contents: write
     container:
-#     image: ubuntu:20.04
-#     image: freetzng/generate
-      image: ghcr.io/freetz-ng/generate
-    runs-on: ubuntu-latest
-#   if: github.repository == 'freetz-ng/freetz-ng'
+      image: ghcr.io/freetz-ng/internal/generate
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
+      options: --user 1001:1001
+    runs-on: ubuntu-24.04
+    if: ${{ github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch' }}
 
     steps:
 
@@ -47,17 +52,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          umask 0022
           git config --global --add safe.directory $GITHUB_WORKSPACE
-          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE
+          git checkout $GITHUB_REF_NAME
 
-      - name: cache_load
-        uses: actions/cache/restore@v4
+      - name: cache
+        uses: actions/cache@v5
         if: always()
         with:
-          path: |
-            /tmp/.freetz-juis
-          key: ${{ github.workflow }}
+          path: /tmp/.freetz-juis
+          key: ${{ steps.key.outputs.key }}-${{ github.run_id }}
+          restore-keys: ${{ steps.key.outputs.key }}
 
       - name: generate
         run: |
@@ -83,20 +88,19 @@ jobs:
           git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
           git push origin $GITHUB_REF_NAME
 
-      - name: cache_clear
-        env:
-          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
-          CACHE_KEY: ${{ steps.key.outputs.key }}
-        run: |
-          ASSETS="$(curl -s  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches")"
-          ASSID="$(echo "$ASSETS" | grep -B7 "\"key\": *\"${CACHE_KEY}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
-          curl -sL -X DELETE -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/${{ github.repository }}/actions/caches/$ASSID" && echo "Deleted ASSID=${ASSID:-null} ..." || true
-      - name: cache_save
-        uses: actions/cache/save@v4
-        if: always()
-        with:
-          path: |
-            /tmp/.freetz-juis
-          key: ${{ steps.key.outputs.key }}
+#     - name: cache_clear
+#       env:
+#         ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+#         CACHE_KEY: ${{ steps.key.outputs.key }}
+#       run: |
+#         ASSETS="$(curl -s  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2026-03-10"  "https://api.github.com/repos/${{ github.repository }}/actions/caches")"
+#         ASSID="$(echo "$ASSETS" | grep -B7 "\"key\": *\"${CACHE_KEY}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
+#         curl -sL -X DELETE -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2026-03-10"  "https://api.github.com/repos/${{ github.repository }}/actions/caches/$ASSID" && echo "Deleted ASSID=${ASSID:-null} ..." || true
+#     - name: cache_save
+#       uses: actions/cache/save@v4
+#       if: always()
+#       with:
+#         path: /tmp/.freetz-juis
+#         key: ${{ steps.key.outputs.key }}
 
 

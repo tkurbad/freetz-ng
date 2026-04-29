@@ -12,3 +12,4 @@
 [ "$EXTERNAL_FREETZ_LIB_libg7221codec"       == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libg7221codec.so.2"
 [ "$EXTERNAL_FREETZ_LIB_libilbccodec"        == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libilbccodec.so.2"
 [ "$EXTERNAL_FREETZ_LIB_libmilenage"         == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmilenage.so.2"
+

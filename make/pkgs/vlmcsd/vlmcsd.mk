@@ -5,7 +5,7 @@ $(PKG)_HASH:=f73b801d56ec7f5e06a306bfb0a6e22b531617ca
 $(PKG)_SITE:=https://github.com/Wind4/vlmcsd/archive/refs/tags/
 ### CHANGES:=https://github.com/Wind4/vlmcsd/releases
 ### CVSREPO:=https://github.com/Wind4/vlmcsd
-### SUPPORT:=manfred-mueller
+### STEWARD:=manfred-mueller
 
 $(PKG)_BINARIES_ALL := vlmcs vlmcsd
 $(PKG)_BINARIES := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))

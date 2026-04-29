@@ -1,0 +1,8 @@
+config EXTERNAL_FREETZ_PACKAGE_INFOZIP
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_INFOZIP
+	bool "Info-ZIP"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/zip
+

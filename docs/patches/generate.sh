@@ -43,4 +43,5 @@ echo "$SYMS" | sed 's/##.*//g' | uniq | while read cat; do
 
 	done
 done >> "$MDPWD/README.md"
+exit 0
 

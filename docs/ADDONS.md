@@ -8,23 +8,24 @@ mehr richtig funktioniert.
 
 ### Vielfältige aus Foren bekannte Fehler
 Diese Liste erhebt keinen Anspruch auf Vollständigkeit oder Korrektheit
- - Das Freetz-Webinterface funktioniert überhaupt nicht mehr
- - Crond funktioniert nicht mehr
- - Die Onlinehilfe funktionieren nicht mehr
- - Es werden Datein von Freetz überschrieben
- - Ein Watchdog löst ohne Grund Reboots aus, bis hin zum Bootloop
- - Cron wird missbraucht um endlos externe STUN/VoIP Server zu hammern
- - Es werden fehlerhafte Binaries gestartet die Crashes verursachen
- - Binaries werden auch gerne mit UPX gepackt und verursachen ebenfalls Crashes
- - Es werden alberne Standardwert in der Config gesetzt die Segfaults verursachen
- - Manche Einstellungen werden doppelt gespeichert
- - Andere Einstellungen dagegen werden gar nicht mehr gespeichert
- - Es ist nicht mehr möglich ein Einstellungsbackup wiederherzustellen
- - Benutzer werden gelöscht
- - Planloses setzen von Systemvariablen verursachen Segfaults von AVM Binaries
- - Überflüssiges ständiges Speichern ins Flash lässt den Speicher schneller altern
- - Die rc.custom wird verändert und durch Flashen eines sauberen Images nicht bereinigt
- - ...
+
+  - Das Freetz-Webinterface funktioniert überhaupt nicht mehr
+  - Crond funktioniert nicht mehr
+  - Die Onlinehilfe funktionieren nicht mehr
+  - Es werden Datein von Freetz überschrieben
+  - Ein Watchdog löst ohne Grund Reboots aus, bis hin zum Bootloop
+  - Cron wird missbraucht um endlos externe STUN/VoIP Server zu hammern
+  - Es werden fehlerhafte Binaries gestartet die Crashes verursachen
+  - Binaries werden auch gerne mit UPX gepackt und verursachen ebenfalls Crashes
+  - Es werden alberne Standardwert in der Config gesetzt die Segfaults verursachen
+  - Manche Einstellungen werden doppelt gespeichert
+  - Andere Einstellungen dagegen werden gar nicht mehr gespeichert
+  - Es ist nicht mehr möglich ein Einstellungsbackup wiederherzustellen
+  - Benutzer werden gelöscht
+  - Planloses setzen von Systemvariablen verursachen Segfaults von AVM Binaries
+  - Überflüssiges ständiges Speichern ins Flash lässt den Speicher schneller altern
+  - Die rc.custom wird verändert und durch Flashen eines sauberen Images nicht bereinigt
+  - ...
 
 ### Steigerung der Unzulänglichkeit
 Dies alles betrifft ausdrücklich auch Sammys l-matic Script da dort nicht nur diese mangelhaften DEB-Addons<br>

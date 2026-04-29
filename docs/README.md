@@ -6,10 +6,11 @@ Talk about everything around Freetz-NG at [DISCUSSIONS](https://github.com/Freet
 Check list of supported devices and [FIRMWARES](FIRMWARES.md).<br>
 Read [CHANGELOG](CHANGELOG.md) for all improvements and additions.<br>
 For download and quickstart instructions go to [README](https://github.com/Freetz-NG/freetz-ng/blob/master/README.md#readme).<br>
-These [PREREQUISITES](PREREQUISITES) are mandatory to build an image.<br>
+These [PREREQUISITES](prerequisites/README.md) are mandatory to build an image.<br>
 How to [INSTALL](INSTALL.md) a firmware image to the device.<br>
 Things you could do to [SUPPORT](SUPPORT.md) Freetz-NG.<br>
-Why the [ADDONS](ADDONS.md) of the "Digitale Elite" are not supported here.
+Why the [ADDONS](ADDONS.md) of the "Digitale Elite" are not supported here.<br>
+Show current [STATS](stats/README.md) of Freetz-NG.<br>
 
 ### Listings
 [Packages](make/README.md)<br>

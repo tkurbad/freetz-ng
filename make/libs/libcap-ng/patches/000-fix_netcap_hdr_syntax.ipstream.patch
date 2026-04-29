@@ -1,0 +1,23 @@
+From a81468fa8b224a3fb9f948f58d4bff5c7ca1538f Mon Sep 17 00:00:00 2001
+From: fda77 <fda77@users.noreply.github.com>
+Date: Sun, 19 Apr 2026 00:25:58 +0200
+Subject: [PATCH] configure.ac: a tab is not okay on all systems, eg Ubuntu 20
+
+---
+ configure.ac | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index efcd01a..987a4f6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -161,8 +161,7 @@ AC_CHECK_HEADERS(sys/xattr.h, [], [
+ 	AC_CHECK_HEADERS(attr/xattr.h, [], [AC_MSG_WARN(attr/xattr.h not found, disabling file system capabilities.)])
+ 	])
+ AC_CHECK_HEADERS(linux/securebits.h, [], [])
+-AC_CHECK_HEADERS(linux/inet_diag.h linux/netlink.h linux/sock_diag.h
+-	linux/vm_sockets.h, [], [])
++AC_CHECK_HEADERS(linux/inet_diag.h linux/netlink.h linux/sock_diag.h linux/vm_sockets.h, [], [])
+ AC_CHECK_HEADERS(linux/vm_sockets_diag.h, [], [])
+ AC_CHECK_HEADERS(pthread.h,
+ 	[AC_SEARCH_LIBS(pthread_atfork, pthread)],

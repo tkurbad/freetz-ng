@@ -7,7 +7,7 @@ $(PKG)_SITE:=git@https://bitbucket.org/fesc2000/uimg-tool.git
 ### MANPAGE:=https://bitbucket.org/fesc2000/uimg-tool/src/master/README.md
 ### CHANGES:=https://bitbucket.org/fesc2000/uimg-tool/commits/
 ### CVSREPO:=https://bitbucket.org/fesc2000/uimg-tool/src/master/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 
 $(TOOLS_SOURCE_DOWNLOAD)

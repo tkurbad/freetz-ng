@@ -4,9 +4,9 @@ if [ "$EXTERNAL_FREETZ_PACKAGE_IPTABLES" == "y" ]; then
 		EXTERNAL_FILES+=" /usr/sbin/xtables-multi"
 	elif [ "$FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL3" == "y" ]; then
 		EXTERNAL_FILES+=" /usr/sbin/xtables-multi"
-	elif [ "FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL4" == "y" ]; then
+	elif [ "$FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL4" == "y" ]; then
 		EXTERNAL_FILES+=" /usr/sbin/xtables-multi"
-	else
+	elif [ "$FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL5" == "y" ]; then
 		EXTERNAL_FILES+=" /usr/sbin/xtables-legacy-multi"
 	fi
 
@@ -15,9 +15,9 @@ if [ "$EXTERNAL_FREETZ_PACKAGE_IPTABLES" == "y" ]; then
 			LIBS="libip4tc.so.0.0.0 libxtables.so.6.0.0 $([ "$FREETZ_TARGET_IPV6_SUPPORT" == y ] && echo libip6tc.so.0.0.0)"
 		elif [ "$FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL3" == "y" ]; then
 			LIBS="libip4tc.so.0.1.0 libxtables.so.10.0.0                                                 libip6tc.so.0.1.0"
-		elif [ "FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL4" == "y" ]; then
+		elif [ "$FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL4" == "y" ]; then
 			LIBS="libip4tc.so.0.1.0 libxtables.so.12.0.0                                                 libip6tc.so.0.1.0"
-		else
+		elif [ "$FREETZ_PACKAGE_IPTABLES_VERSION_KERNEL5" == "y" ]; then
 			LIBS="libip4tc.so.2.0.0 libxtables.so.12.7.0                                                 libip6tc.so.2.0.0"
 		fi
 		for lib in $LIBS; do

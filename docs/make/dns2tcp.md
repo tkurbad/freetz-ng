@@ -1,6 +1,6 @@
 # dns2tcp 0.5.2 - DEPRECATED
   - Package: [master/make/pkgs/dns2tcp/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/dns2tcp/)
-  - Maintainer: -
+  - Steward: -
 
 **Dns2tcp** wurde entwickelt, um TCP Connections über DNS Traffic zu
 "tunneln". Die Datenkapselung erfolgt bereits auf dem TCP Level,

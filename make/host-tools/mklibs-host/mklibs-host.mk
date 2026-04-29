@@ -1,12 +1,12 @@
 $(call TOOLS_INIT, 0.1.45)
 $(PKG)_SOURCE:=mklibs_$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=dd92a904b3942566f713fe536cd77dd1a5cfc62243c0e0bc6bb5d866e37422f3
-$(PKG)_SITE:=http://deb.debian.org/debian/pool/main/m/mklibs
+$(PKG)_SITE:=@DEBIAN/mklibs
 ### WEBSITE:=https://packages.debian.org/sid/mklibs
 ### MANPAGE:=https://manpages.debian.org/unstable/mklibs/mklibs.1.html
 ### CHANGES:=https://salsa.debian.org/installer-team/mklibs/blob/master/debian/changelog
 ### CVSREPO:=https://github.com/openwrt/openwrt/tree/master/tools/mklibs
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DEPENDS_ON+=python3-host
 

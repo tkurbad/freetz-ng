@@ -1,6 +1,6 @@
 --- Configurations/unix-Makefile.tmpl
 +++ Configurations/unix-Makefile.tmpl
-@@ -463,7 +463,7 @@
+@@ -475,7 +475,7 @@
                            '$(CNF_CPPFLAGS)', '$(CPPFLAGS)') -}
  BIN_CFLAGS={- join(' ', $target{bin_cflags} || (),
                          @{$config{bin_cflags}},

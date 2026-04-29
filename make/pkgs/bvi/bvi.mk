@@ -5,7 +5,7 @@ $(PKG)_SITE:=@SF/bvi
 ### WEBSITE:=https://bvi.sourceforge.net/
 ### MANPAGE:=https://bvi.sourceforge.net/quick.html
 ### CHANGES:=https://bvi.sourceforge.net/download.html
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DEPENDS_ON += ncurses
 

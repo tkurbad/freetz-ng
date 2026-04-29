@@ -18,14 +18,15 @@ cpp_link_args     = [%TARGET_LDFLAGS%]
 [properties]
 needs_exe_wrapper = true
 pkg_config_libdir = '%PKGCONFIG%'
+longdouble_format = 'IEEE_DOUBLE_%FREETZ_TARGET_MESON_ENDIAN_UPPER%'
 
 [binaries]
 ar                = arch + '-ar'
 as                = arch + '-as'
 c                 = arch + '-gcc'
 cc                = arch + '-gcc'
-cpp               = arch + '-g++'
-cxx               = arch + '-g++'
+cpp               = arch + '-g++-wrapper'
+cxx               = arch + '-g++-wrapper'
 ld                = arch + '-ld'
 ldconfig          = arch + '-ldconfig'
 nm                = arch + '-nm'

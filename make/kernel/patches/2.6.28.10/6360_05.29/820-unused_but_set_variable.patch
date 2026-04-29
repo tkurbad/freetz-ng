@@ -1,0 +1,10 @@
+--- linux-2.6.28/scripts/kconfig/Makefile
++++ linux-2.6.28/scripts/kconfig/Makefile
+@@ -99,6 +99,7 @@
+ HOST_LOADLIBES   = $(shell $(CONFIG_SHELL) $(check-lxdialog) -ldflags $(HOSTCC))
+ 
+ HOST_EXTRACFLAGS += -DLOCALE
++HOST_EXTRACFLAGS += -Wno-unused-but-set-variable
+ 
+ 
+ # ===========================================================================

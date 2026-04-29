@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+MYOWN="$(realpath $0)"
+TOOLS="$(dirname $(dirname $MYOWN))"
+
+file="$TOOLS/build/usr/bin/file"
+[ -x "$file" ] && exec "$file" -m "$TOOLS/build/usr/share/misc/magic.mgc" "$@"
+
+file="$(which -a 'file' | grep -v "^$MYOWN$" | head -n1)"
+[ -x "$file" ] && exec "$file" "$@"
+
+echo "Miserable failure, no 'file' binary!" >&2
+exit 1
+

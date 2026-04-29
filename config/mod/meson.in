@@ -1,19 +1,28 @@
 
 config FREETZ_TARGET_MESON_FAMILY
 	string
-	default "arm"    if FREETZ_TARGET_ARCH_ARM
-	default "mips"   if FREETZ_TARGET_ARCH_MIPS
-	default "x86"    if FREETZ_TARGET_ARCH_X86
+	default "aarch64"  if FREETZ_TARGET_ARCH_AARCH64
+	default "arm"      if FREETZ_TARGET_ARCH_ARM
+	default "mips"     if FREETZ_TARGET_ARCH_MIPS
+	default "x86"      if FREETZ_TARGET_ARCH_X86
 
 config FREETZ_TARGET_MESON_CPU
 	string
-	default "arm"    if FREETZ_TARGET_ARCH_ARM
-	default "mips"   if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE
-	default "mipsel" if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE
-	default "i686"   if FREETZ_TARGET_ARCH_X86
+	default "aarch64"     if FREETZ_TARGET_ARCH_AARCH64 && FREETZ_TARGET_ARCH_LE
+	default "aarch64_be"  if FREETZ_TARGET_ARCH_AARCH64 && FREETZ_TARGET_ARCH_BE
+	default "arm"         if FREETZ_TARGET_ARCH_ARM     && FREETZ_TARGET_ARCH_LE
+	default "armeb"       if FREETZ_TARGET_ARCH_ARM     && FREETZ_TARGET_ARCH_BE
+	default "mipsel"      if FREETZ_TARGET_ARCH_MIPS    && FREETZ_TARGET_ARCH_LE
+	default "mips"        if FREETZ_TARGET_ARCH_MIPS    && FREETZ_TARGET_ARCH_BE
+	default "i686"        if FREETZ_TARGET_ARCH_X86
 
 config FREETZ_TARGET_MESON_ENDIAN
 	string
-	default "little" if FREETZ_TARGET_ARCH_LE
-	default "big"    if FREETZ_TARGET_ARCH_BE
+	default "little"      if FREETZ_TARGET_ARCH_LE
+	default "big"         if FREETZ_TARGET_ARCH_BE
+
+config FREETZ_TARGET_MESON_ENDIAN_UPPER
+	string
+	default "LE"          if FREETZ_TARGET_ARCH_LE
+	default "BE"          if FREETZ_TARGET_ARCH_BE
 

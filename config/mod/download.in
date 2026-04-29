@@ -20,6 +20,15 @@ menu "Download options"
 			For archive files it is not needed anymore to
 			define FREETZ_DL_SOURCE and FREETZ_DL_SOURCE_HASH
 
+	config FREETZ_DL_IMAGE_AT_LAST
+		bool "Download firmware .image at last" if FREETZ_SHOW_EXPERT
+		default n
+		help
+			By default the firmware .image is downloaded very early during make
+			to be sure the file is still available.
+			If this is selected, the file is downloaded just before executing fwmod.
+			Then on "make PKG-precompiled" no fwmod and thus no download is needed.
+
 	config FREETZ_DL_VCS_REPO_FIRST
 		bool "Search first on repository for VCS downloads" if FREETZ_SHOW_EXPERT
 		default y
@@ -28,16 +37,16 @@ menu "Download options"
 			itself and then download by the mirrors.
 			If not enabled, the mirrors are used at first.
 
-	config FREETZ_DL_VCS_FROM_MIRRORS
-		bool "Search on mirror sites for VCS files" if FREETZ_SHOW_EXPERT
-		depends on FREETZ_DL_VCS_REPO_FIRST
-		default y
-		help
-			Some downloads are by VCS repositories. Every time you download, the hash
-			of the file changes. Due to this, no hash is deposited within Freetz and
-			the download could not be verified.
-			If you do not want to search the download mirrors for such files, disable
-			this option.
+		config FREETZ_DL_VCS_FROM_MIRRORS
+			bool "Search on mirror sites for VCS files" if FREETZ_SHOW_EXPERT
+			depends on FREETZ_DL_VCS_REPO_FIRST
+			default y
+			help
+				Some downloads are by VCS repositories. Every time you download, the hash
+				of the file changes. Due to this, no hash is deposited within Freetz and
+				the download could not be verified.
+				If you do not want to search the download mirrors for such files, disable
+				this option.
 
 	source "config/mod/dl-toolchain.in"
 	source "config/mod/dl-kernel.in"

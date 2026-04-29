@@ -6,7 +6,7 @@ $(PKG)_SITE:=https://github.com/dehydrated-io/dehydrated/releases/download/v$($(
 ### MANPAGE:=https://github.com/dehydrated-io/dehydrated/wiki
 ### CHANGES:=https://github.com/dehydrated-io/dehydrated/releases
 ### CVSREPO:=https://github.com/dehydrated-io/dehydrated/commits/master
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/dehydrated
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/dehydrated

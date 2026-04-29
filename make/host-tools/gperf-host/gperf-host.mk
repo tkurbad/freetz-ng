@@ -1,12 +1,12 @@
-$(call TOOLS_INIT, 3.2)
+$(call TOOLS_INIT, 3.3)
 $(PKG)_SOURCE:=gperf-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=e0ddadebb396906a3e3e4cac2f697c8d6ab92dffa5d365a5bc23c7d41d30ef62
+$(PKG)_HASH:=fd87e0aba7e43ae054837afd6cd4db03a3f2693deb3619085e6ed9d8d9604ad8
 $(PKG)_SITE:=https://ftp.gnu.org/pub/gnu/gperf/
 ### WEBSITE:=https://www.gnu.org/software/gperf/
 ### MANPAGE:=https://linux.die.net/man/1/gperf
 ### CHANGES:=http://savannah.gnu.org/projects/gperf/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=gperf.git
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/gperf
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/gperf

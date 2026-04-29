@@ -10,7 +10,7 @@ $(PKG)_SITE:=@GNU/$(pkg)
 ### MANPAGE:=https://tiswww.case.edu/php/chet/readline/readline.html
 ### CHANGES:=https://tiswww.case.edu/php/chet/readline/NEWS
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/readline.git/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_$(PKG)_BINARY:=$($(PKG)_DIR)/shlib/libreadline.so.$($(PKG)_LIB_VERSION)
 $(PKG)_HISTORY_BINARY:=$($(PKG)_DIR)/shlib/libhistory.so.$($(PKG)_LIB_VERSION)

@@ -1,0 +1,106 @@
+menuconfig FREETZ_PACKAGE_BINUTILS_TOOLS
+	bool "Binutils 2.46.0 (binary only)"
+	depends on !(FREETZ_AVM_PROP_ARCH_ARM && FREETZ_AVM_PROP_ARCH_BE)  # doesnt walk, dont know why
+	default n
+	select FREETZ_LIB_libsframe
+	select FREETZ_PACKAGE_BINUTILS_TOOLS_READELF if \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_ADDR2LINE && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_AR && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_NM && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_OBJCOPY && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_OBJDUMP && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_RANLIB && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_SIZE && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_STRINGS && \
+		!FREETZ_PACKAGE_BINUTILS_TOOLS_STRIP
+	help
+		Collection of essential tools for analyzing and
+		manipulating ELF binaries.
+		Size of all binaries and libraries: ~1.5MB (uncompressed: ~4.5MB)
+
+if FREETZ_PACKAGE_BINUTILS_TOOLS
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_ADDR2LINE
+		bool "addr2line - Convert addresses to file names and line numbers"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Converts addresses into file names and line numbers. Useful for debugging
+			crash dumps and understanding stack traces.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_AR
+		bool "ar - Create, modify, and extract from archives"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Maintains groups of files as a single archive file. Commonly used
+			for creating static libraries (.a files).
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_NM
+		bool "nm - List symbols from object files"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Lists symbols from object files, useful for debugging and understanding
+			which symbols are exported or required by a binary.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_OBJCOPY
+		bool "objcopy - Copy and translate object files"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Copies and translates object files. Can be used to convert between
+			different object file formats or modify sections.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_OBJDUMP
+		bool "objdump - Display information from object files"
+		select FREETZ_LIB_libbfd
+		select FREETZ_LIB_libopcodes
+		select FREETZ_LIB_libctf
+		default n
+		help
+			Displays information from object files, including disassembly,
+			section headers, and symbol tables.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_RANLIB
+		bool "ranlib - Generate index to archive contents"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Generates an index to the contents of an archive and stores it in the archive.
+			Used with static libraries created by 'ar'.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_READELF
+		bool "readelf - Display information about ELF files"
+		select FREETZ_LIB_libctf_nobfd
+		default n
+		help
+			Displays detailed information about ELF (Executable and Linkable Format) files,
+			including headers, sections, symbols, and more.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_SIZE
+		bool "size - Display section sizes in binary files"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Displays the sizes of sections inside binary files. Useful for understanding
+			memory usage and optimizing binary size.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_STRINGS
+		bool "strings - Print printable character strings"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Prints sequences of printable characters from files. Very useful for
+			analyzing binaries and finding hardcoded strings.
+
+	config FREETZ_PACKAGE_BINUTILS_TOOLS_STRIP
+		bool "strip - Remove symbols from object files"
+		select FREETZ_LIB_libbfd
+		default y
+		help
+			Removes debugging symbols and other unnecessary information from object files,
+			reducing their size. Note: BusyBox already provides a 'strip' command.
+
+endif # FREETZ_PACKAGE_BINUTILS_TOOLS
+

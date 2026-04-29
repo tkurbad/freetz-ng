@@ -11,4 +11,5 @@ for file in $MYPWD/*.???; do
 	magick "$MYPWD/$src" -resize x333 "$MYPWD/$dst"
 	chmod -x "$MYPWD/$src" "$MYPWD/$dst"
 done
+exit 0
 

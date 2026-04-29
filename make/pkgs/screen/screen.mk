@@ -8,7 +8,7 @@ $(PKG)_SITE:=@GNU/$(pkg)
 ### MANPAGE:=https://www.gnu.org/software/screen/manual/
 ### CHANGES:=https://git.savannah.gnu.org/cgit/screen.git/refs/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/screen.git
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_SCREEN_VERSION_ABANDON),abandon,current)
 

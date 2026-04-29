@@ -1,0 +1,232 @@
+name: make_precompiled
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'make/pkgs/**'
+      - 'make/libs/**'
+      - '!.github/**'
+  push:
+    branches: [ master ]
+    paths:
+      - '.github/workflows/make_precompiled.yml'
+      - 'make/pkgs/**'
+      - 'make/libs/**'
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: "FREETZ_PACKAGE or FREETZ_LIB"
+        required: true
+        default: "dropbear"
+
+#concurrency:
+# group: ${{ github.workflow }}${{ github.event.pull_request.number && '-' }}${{ github.event.pull_request.number || '' }}
+# cancel-in-progress: ${{ github.event_name == 'pull_request' && true || false }}
+
+jobs:
+
+  matrizifizieren:
+    permissions:
+      packages: read
+      contents: read
+    container:
+      image: ghcr.io/freetz-ng/internal/generate
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
+      options: --user 1001:1001
+    runs-on: ubuntu-24.04
+    if: github.repository == 'freetz-ng/freetz-ng' || github.event_name == 'workflow_dispatch'
+
+    outputs:
+      gitsha: ${{ steps.parse.outputs.gitsha }}
+      matrix: ${{ steps.parse.outputs.matrix }}
+
+    steps:
+
+      - uses: ahmadnassri/action-workflow-queue@v1
+        with:
+          timeout: "18000000"
+          delay: "10000"
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REF_NAME: ${{ github.event.pull_request.head.ref || github.ref_name }}
+          REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
+          git checkout $REF_NAME
+
+      - name: parse
+        id: parse
+        run: |
+          pkg="$(echo "${{ github.event.inputs.bump }}" | sed 's/ //g')"
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then \
+            BASE_SHA="${{ github.event.pull_request.base.sha }}"; \
+            HEAD_SHA="${{ github.event.pull_request.head.sha }}~1"; \
+          else \
+            BASE_SHA="${{ github.sha }}~1"; \
+            HEAD_SHA="${{ github.sha }}"; \
+          fi
+          BASE_SHA="$(git rev-parse $BASE_SHA)"
+          HEAD_SHA="$(git rev-parse $HEAD_SHA)"
+          echo "gitsha=\"$HEAD_SHA\"" >> $GITHUB_OUTPUT
+          [ -z "$pkg" ] && pkg="$(git log --format=%s "$BASE_SHA..$HEAD_SHA" | head -n1 | sed -nr 's/^(add|bump|fix|test) ([^ ,:]*).*/\2/pI')"
+          [ ! -d make/pkgs/$pkg ] && [ ! -d make/libs/$pkg ] && pkg=""
+          [ -z "$pkg" ] && pkg="$(git diff --name-only "$BASE_SHA..$HEAD_SHA" | sed -nr 's#^make/(pkgs|libs)/([^/]+)/.*#\2#p' | head -n1)"
+          [ -z "$pkg" ] && pkg="$(git log --format=%s "$BASE_SHA..$HEAD_SHA" | head -n1 | sed -nr 's/^(add|bump|fix|test) ([^ ,:]*).*/\2/pI')"
+          [ -z "$pkg" ] && echo "No add, bump, fix or test." && echo 'matrix=["skip"]' >> $GITHUB_OUTPUT && exit
+          sed -rn 's/.* && dltc "(.*)".*/\1/p' tools/dl-toolchains_make | \
+          while read -r line; do \
+            name="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*).*/\1 - \2/g')"; \
+            tcs="$(echo "$line" | sed -r 's/^FREETZ_TYPE_([^ ]*) *FREETZ_TYPE_FIRMWARE_([^ ]*)(.*)/_\1 _FIRMWARE_\2\3/g')"; \
+            echo -n "$matrix{pkg:\"$pkg\",name:\"$name\",tcs:\"$tcs\"},"; \
+          done | sed 's/^/matrix=\[/;s/$/\]/' >> $GITHUB_OUTPUT
+
+      - name: vars
+        run: |
+          echo "##########################################################"
+          echo "gitsha=${{ steps.parse.outputs.gitsha }}"
+          echo "matrix=${{ steps.parse.outputs.matrix }}" | sed 's/\[{/\[\n{/;s/},{/},\n{/g;s/},\]/},\n\]/'
+
+  build:
+    permissions:
+      packages: read
+      contents: read
+    container:
+      image: ghcr.io/freetz-ng/internal/firmware
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
+      options: --user 1001:1001
+    needs: matrizifizieren
+    strategy:
+      max-parallel: 18
+      fail-fast: false
+      matrix:
+        fritz: ${{ fromJson(needs.matrizifizieren.outputs.matrix) }}
+    name: "${{ matrix.fritz.pkg }} - ${{ matrix.fritz.name }}"
+    runs-on: ubuntu-24.04
+
+    steps:
+
+#     - name: update
+#       run: apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+#
+#     - name: install
+#       run: |
+#         DEBIAN_FRONTEND=noninteractive apt-get -y install \
+#           locales \
+#           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
+#           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
+#           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
+#
+#     - name: locale
+#       run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
+
+#     - name: sleep
+#       run: |
+#         SLEEP="$((1 + $(od -A n -t d -N 2 /dev/urandom | tr -d ' ') % 9))"
+#         echo "Sleeping $SLEEP seconds ..."
+#         sleep $SLEEP
+
+#     - name: myips
+#       run: |
+#         echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
+##        echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
+##        echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+
+      - name: clone
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REF_NAME: ${{ fromJson(needs.matrizifizieren.outputs.gitsha) }}
+          REPOSITORY: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$REPOSITORY.git $GITHUB_WORKSPACE
+          git checkout $REF_NAME
+
+      - name: cache_load
+        uses: actions/cache/restore@v5
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/linux-*.tar.xz
+            !dl/*-freetz-*-shared-glibc.tar.lzma
+          key: make_cache
+          restore-keys: make_cache
+
+      - name: config
+        run: |
+          TCS="${{ matrix.fritz.tcs }}"
+          truncate -s0 .config
+          echo 'FREETZ_MODULES_OWN=""'                                                                >> .config
+          for x in  UDEVMOUNT                               ; do echo "# FREETZ_PATCH_$x is not set"  >> .config; done
+          for x in  dummy loop usbserial                   ; do echo "# FREETZ_MODULE_$x is not set"  >> .config; done
+          for x in  DROPBEAR                              ; do echo "# FREETZ_PACKAGE_$x is not set"  >> .config; done
+          for x in  LDD                                   ; do echo "# FREETZ_PACKAGE_$x is not set"  >> .config; done
+          for x in  COMPRESSED  UNCOMPRESSED                        ; do echo "FREETZ_SIZEINFO_$x=y"  >> .config; done
+          echo '# FREETZ_TOOLCHAIN_CCACHE is not set'                                                 >> .config
+          echo 'FREETZ_VERBOSITY_FWMOD_2=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL_0=y'                                                           >> .config
+          echo 'FREETZ_VERBOSITY_LEVEL=0'                                                             >> .config
+          echo 'FREETZ_SERIES_ALL=y'                                                                  >> .config
+          echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
+          echo 'FREETZ_DL_IMAGE_AT_LAST=y'                                                            >> .config
+          echo '# FREETZ_MODULES_TEST is not set'                                                     >> .config
+          echo 'FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"'    >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
+          echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
+          for x in $TCS; do echo "$x=y" | sed 's/^_/FREETZ_TYPE_/'; done                              >> .config
+          echo "##########################################################" && echo -n "Lines=" && wc -l .config
+
+      - name: generate
+        env:
+          FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
+        id: generate
+        if: matrix.fritz != 'skip'
+        run: |
+          pkg="${{ matrix.fritz.pkg }}"
+          pkg="$(echo "$pkg" | tr '[:upper:]' '[:lower:]')"
+          PKG="$(echo "$pkg" | tr '[:lower:]' '[:upper:]' | sed 's/-/_/g')"
+          echo "pkg=$pkg" >> $GITHUB_OUTPUT
+          TYPE=""
+          for x in pkgs libs; do [ -d make/$x/$pkg ] && TYPE=$x; done
+          [ -z "$TYPE" ] && echo "No directory." && exit
+          [ "$TYPE" = "pkgs" ] && sed "/[^ ]FREETZ_PACKAGE_${PKG}[ =]/d"                                                                              -i .config
+          [ "$TYPE" = "pkgs" ] && echo     "FREETZ_PACKAGE_$PKG=y"                                                                                    >> .config
+          [ "$TYPE" = "pkgs" ] && sed "/[^ ]FREETZ_LIB_lib${pkg}[ =]/d"                                                                               -i .config
+          [ "$TYPE" = "pkgs" ] && echo     "FREETZ_LIB_lib$pkg=y"                                                                                     >> .config
+          [ "$TYPE" = "libs" ] && for x in $(sed -n 's/^[\tmenu]*config FREETZ_LIB_//p' make/libs/$pkg/Config.in); do sed "/[^ ]FREETZ_LIB_$x[ =]/d"  -i .config; done
+          [ "$TYPE" = "libs" ] && for x in $(sed -n 's/^[\tmenu]*config FREETZ_LIB_//p' make/libs/$pkg/Config.in); do echo     "FREETZ_LIB_$x=y"      >> .config; done
+          echo "##########################################################" && bash -c "echo pkg=$pkg" && bash -c "echo PKG=$PKG"
+          make olddefconfig
+          BAD=y
+          [ "$TYPE" = "pkgs" ] && grep -q "^FREETZ_PACKAGE_$PKG=y" .config && BAD=n
+          [ "$TYPE" = "libs" ] && for x in $(sed -n 's/^[\tmenu]*config FREETZ_LIB_//p' make/libs/$pkg/Config.in); do grep -q "^FREETZ_LIB_$x=y" .config && BAD=n ; done
+          echo "bad=$BAD" >> $GITHUB_OUTPUT
+          [ "$BAD" = "y" ] && echo "Could not enable precompiled" && exit
+          [ "$BAD" = "n" ] && make ${pkg}-precompiled
+
+      - name: result
+        if: steps.generate.outputs.bad == 'n'
+        run: |
+          pkg="$(echo ${{ steps.generate.outputs.pkg }} | sed 's/lib//')"
+          p="$(find packages/target-*/${pkg}-*/root/                      ! -type d 2>/dev/null || true)"
+          l="$(find packages/target-*/root/usr/lib/freetz/ -name "*${pkg}*" -type f 2>/dev/null || true)"
+          echo "##########################################################"
+          [ -z "$p$l" ] && echo "No binary output found." && exit
+          [ -n "$p$l" ] && ls -al $p $l
+
+

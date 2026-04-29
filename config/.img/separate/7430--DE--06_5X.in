@@ -12,10 +12,14 @@ config FREETZ_AVM_PROP_HWREV
 	string
 	default "218"
 
-config FREETZ_AVM_HAS_SIGNATURE
-	def_bool y
+config FREETZ_AVM_PROP_PRODUKT
+	string
+	default "Fritz_Box_HW218"
 
 config FREETZ_AVM_HAS_BRANDING_avm
+	def_bool y
+
+config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
 
 config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
@@ -115,6 +119,12 @@ config FREETZ_AVM_HAS_DSLD
 config FREETZ_AVM_HAS_VPN
 	def_bool y
 
+config FREETZ_AVM_HAS_HOSTAPD
+	def_bool y
+
+config FREETZ_AVM_HAS_HOSTAPD_VERSION_2_0
+	def_bool y
+
 config FREETZ_AVM_HAS_DTRACE
 	def_bool y
 
@@ -188,6 +198,9 @@ config FREETZ_AVM_PROP_UCLIBC_0_9_33
 	def_bool y
 
 config FREETZ_AVM_PROP_UCLIBC_XLOCALE
+	def_bool y
+
+config FREETZ_AVM_PROP_UCLIBC_NPTL
 	def_bool y
 
 endif

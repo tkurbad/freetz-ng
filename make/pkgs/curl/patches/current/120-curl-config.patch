@@ -12,9 +12,9 @@
      ;;
  
    --libs)
--    if test "X@libdir@" != 'X/usr/lib' -a "X@libdir@" != 'X/usr/lib64'; then
+-    if test "@libdir@" != '/usr/lib' && test "@libdir@" != '/usr/lib64'; then
 -      curllibdir="-L@libdir@ "
-+    if test "X${libdir}" != 'X/usr/lib' -a "X${libdir}" != 'X/usr/lib64'; then
++    if test "${libdir}" != '/usr/lib' && test "${libdir}" != '/usr/lib64'; then
 +      curllibdir="-L${libdir} "
      else
        curllibdir=''
@@ -22,7 +22,7 @@
 @@ -167,7 +168,7 @@
  
    --static-libs)
-     if test 'X@ENABLE_STATIC@' != 'Xno'; then
+     if test '@ENABLE_STATIC@' != 'no'; then
 -      echo "@libdir@/libcurl.@libext@ @LIBCURL_PC_LDFLAGS_PRIVATE@ @LIBCURL_PC_LIBS_PRIVATE@"
 +      echo "${libdir}/libcurl.@libext@ @LIBCURL_PC_LDFLAGS_PRIVATE@ @LIBCURL_PC_LIBS_PRIVATE@"
      else

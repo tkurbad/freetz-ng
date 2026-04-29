@@ -12,7 +12,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.configured
-	$(call Build/PyMod/PKG, PYTHON_PYRRD)
+	$(call Build/PyMod2/PKG, PYTHON_PYRRD)
 	(cd $(dir $@); $(RM) -r backend/tests testing tests)
 	touch -c $@
 

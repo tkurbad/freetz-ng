@@ -4,7 +4,7 @@
   - Changelog: [https://github.com/lsof-org/lsof/releases](https://github.com/lsof-org/lsof/releases)
   - Repository: [https://github.com/lsof-org/lsof](https://github.com/lsof-org/lsof)
   - Package: [master/make/pkgs/lsof/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lsof/)
-  - Maintainer: -
+  - Steward: -
 
 Mit `lsof` lässt sich feststellen, welche Dateien wo und von wem gerade
 geöffnet sind. Dies kann sehr hilfreich sein, wenn man z.B. ein

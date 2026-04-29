@@ -65,6 +65,7 @@ ORANGE_D=#CC7016
 BLACK=#000000
 GREY=#7F7F7F
 MAXIM=#ADF235
+AUNI="$(printf '\xC3\xA4')"
 AUML="$(echo -e '\344')"
 GRD="$(echo -en '\260')"
 NOCACHE="?nocache=$(date -Iseconds | sed 's/T/_/g;s/+.*$//g;s/:/-/g')"
@@ -72,7 +73,9 @@ _NICE=$(which nice)
 [ "$RRDSTATS_DARKMODE" != "yes" ] \
   && DEFAULT_COLORS="-c SHADEA#cccccc -c SHADEB#7f7f7f  -c BACK#ffffff -c CANVAS#eeeeee80" \
   || DEFAULT_COLORS="-c SHADEA#181818 -c SHADEB#555555  -c BACK#333333 -c CANVAS#222222  -c FONT#DDDDDD  -c GRID#AAAAAA77 -c MGRID#AAAAAA77  -c AXIS#00000000 -c ARROW#00000000  -c FRAME#111111"
+if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT" == "y" ]; then
 [ "$RRDSTATS_SHOWFRAME" != "yes" ] && DEFAULT_COLORS="$DEFAULT_COLORS --border 0"
+fi
 [ "$RRDSTATS_TOBITAG" != "yes" ] && GRAPHARGS="$GRAPHARGS --disable-rrdtool-tag"
 
 len15() {
@@ -1024,12 +1027,12 @@ generate_graph() {
 			kind=${1#aha_}
 			DECMAL=1
 			case $kind in
-				pdev|watt|sein|blnd)	DNAME="Leistung";        DESCR="Watt"; RANGE="-l 0" ;;
-				volt)			DNAME="Spannung";        DESCR="Volt"; RANGE="-l 215 -u 245" ;;
-				kilo)			DNAME="Energie";         DESCR="Wh"; DECMAL=3 ;;
-				grad)			DNAME="Temperatur";      DESCR="${GRAD}C" ;;
-				curr)			DNAME="Stromstärke";     DESCR="Ampere"; RANGE="-l 0 -u 1"; DECMAL=2 ;;
-				fact)			DNAME="Leistungsfaktor"; DESCR="Wirkfaktor"; RANGE="-l 0 -u 1"; DECMAL=3 ;;
+				pdev|watt|sein|blnd)	DNAME="Leistung";           DESCR="Watt"; RANGE="-l 0" ;;
+				volt)			DNAME="Spannung";           DESCR="Volt"; RANGE="-l 215 -u 245" ;;
+				kilo)			DNAME="Energie";            DESCR="Wh"; DECMAL=3 ;;
+				grad)			DNAME="Temperatur";         DESCR="${GRAD}C" ;;
+				curr)			DNAME="Stromst${AUNI}rke";  DESCR="Ampere"; RANGE="-l 0 -u 1"; DECMAL=2 ;;
+				fact)			DNAME="Leistungsfaktor";    DESCR="Wirkfaktor"; RANGE="-l 0 -u 1"; DECMAL=3 ;;
 			esac
 
 			_SENSOR_GEN=""

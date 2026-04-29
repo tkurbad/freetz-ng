@@ -8,7 +8,7 @@ $(PKG)_SITE:=https://distfiles.macports.org/py-pip,https://files.pythonhosted.or
 ### MANPAGE:=https://pip.pypa.io/
 ### CHANGES:=https://pypi.org/project/pip/#history
 ### CVSREPO:=https://github.com/pypa/pip
-### SUPPORT:=X
+### STEWARD:=X
 
 $(PKG)_DEPENDS_ON+=python2-host
 

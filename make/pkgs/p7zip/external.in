@@ -5,5 +5,5 @@ config EXTERNAL_FREETZ_PACKAGE_P7ZIP
 	help
 		externals the following file(s):
 		 /usr/bin/7z
-		 /usr/lib/p7zip/
+		 ${FREETZ_LIBRARY_DIR}/p7zip/
 

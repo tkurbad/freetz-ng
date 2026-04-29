@@ -5,7 +5,7 @@ $(PKG)_HASH:=be81ef08baa2516ecda76a77adf7def7bc3227eeb578b9a33b45f7b41dc064e6
 $(PKG)_SITE:=@APACHE/serf
 ### WEBSITE:=https://serf.apache.org/
 ### MANPAGE:=https://serf.apache.org/abi/timeline/serf/index.html
-### CHANGES:=https://svn.apache.org/viewvc/serf/trunk/CHANGES?view=markup
+### CHANGES:=https://serf.apache.org/download
 ### CVSREPO:=https://svn.apache.org/viewvc/serf/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/libserf-1.so.$($(PKG)_LIB_VERSION)

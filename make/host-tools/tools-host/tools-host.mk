@@ -1,8 +1,8 @@
-$(call TOOLS_INIT, 2025-08-27)
+$(call TOOLS_INIT, 2026-04-24)
 $(PKG)_SOURCE:=tools-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=38173f845c59022ba99816166f29e3c93d5d67bcb190b465f1e94c62f3fa057f
-$(PKG)_SITE:=@MIRROR/
-### SUPPORT:=fda77
+$(PKG)_HASH:=1d8a937ccb7d5d394ec2dd84e23080b03aae1f329e05e482007bc5dc603e5539
+$(PKG)_SITE:=@DLTOKEN/https://api.github.com/repos/Freetz-NG/internal/releases/tags/host-tools
+### STEWARD:=fda77
 
 $(PKG)_DEPENDS_ON:=kconfig-host
 

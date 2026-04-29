@@ -8,6 +8,8 @@ PBIG="$PARENT/config/.kos/Config.in"
 PROP="$PARENT/$PDIR"
 CINTMP="$PROP/Config.in"
 SYMS="
+ MODVERSIONS
+
  SWAP
 
  MTD_BLOCK2MTD

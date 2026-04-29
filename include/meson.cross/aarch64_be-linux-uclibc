@@ -1,0 +1,10 @@
+
+[constants]
+arch              = 'aarch64_be-linux-uclibc'
+
+[target_machine]
+system            = 'linux'
+cpu_family        = 'aarch64_be'
+cpu               = 'arm'
+endian            = 'big'
+

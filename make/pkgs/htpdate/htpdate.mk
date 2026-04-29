@@ -7,7 +7,7 @@ $(PKG)_SITE:=https://github.com/twekkel/htpdate/archive/refs/tags,https://www.ve
 ### MANPAGE:=https://www.vervest.org/htp/?FAQ
 ### CHANGES:=https://github.com/twekkel/htpdate/releases
 ### CVSREPO:=https://github.com/twekkel/htpdate
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARIES:=$(pkg)
 $(PKG)_BINARIES_BUILD_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)

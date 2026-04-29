@@ -1,14 +1,14 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_TINC_VERSION_1_1),1.1pre18,1.0.36))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_TINC_VERSION_1_1),1.1pre18,1.0.37))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH_1.0.36  :=40f73bb3facc480effe0e771442a706ff0488edea7a5f2505d4ccb2aa8163108
 $(PKG)_HASH_1.1pre18:=2757ddc62cf64b411f569db2fa85c25ec846c0db110023f6befb33691f078986
+$(PKG)_HASH_1.0.37  :=f63b7e21c32c4c637576d85f36bdd28ea678b5aa17fad02427645dea30e52ac7
 $(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_VERSION))
 $(PKG)_SITE:=https://www.tinc-vpn.org/packages
 ### WEBSITE:=https://www.tinc-vpn.org/
 ### MANPAGE:=https://www.tinc-vpn.org/docs/
-### CHANGES:=https://www.tinc-vpn.org/news/
+### CHANGES:=http://www.tinc-vpn.org/news/
 ### CVSREPO:=https://www.tinc-vpn.org/git/browse?p=tinc
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_TINC_VERSION_1_1),1.1,1.0)
 

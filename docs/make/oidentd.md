@@ -4,5 +4,5 @@
   - Changelog: [https://github.com/janikrabe/oidentd/blob/master/NEWS](https://github.com/janikrabe/oidentd/blob/master/NEWS)
   - Repository: [https://github.com/janikrabe/oidentd/](https://github.com/janikrabe/oidentd/)
   - Package: [master/make/pkgs/oidentd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/oidentd/)
-  - Maintainer: -
+  - Steward: -
 

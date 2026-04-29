@@ -1,6 +1,6 @@
 --- scripts/kconfig/mconf.c
 +++ scripts/kconfig/mconf.c
-@@ -495,7 +495,7 @@
+@@ -496,7 +496,7 @@
  			case P_COMMENT:
  				if (prompt) {
  					child_count++;
@@ -11,7 +11,7 @@
  				}
 --- scripts/kconfig/menu.c
 +++ scripts/kconfig/menu.c
-@@ -181,11 +181,13 @@
+@@ -191,11 +191,13 @@
  {
  	struct property *prop = menu_add_prop(type, NULL, dep);
  

@@ -2,7 +2,7 @@ $(call PKG_INIT_LIB, 1.02.27)
 $(PKG)_LIB_VERSION:=1.02
 $(PKG)_SOURCE:=devmapper_$($(PKG)_VERSION).orig.tar.gz
 $(PKG)_HASH:=df062f70a57ca98294ee69f8ebe25fc49b7f27752f3add4620692fece369a25a
-$(PKG)_SITE:=http://ftp.debian.org/debian/pool/main/d/devmapper
+$(PKG)_SITE:=@DEBIAN/devmapper
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/lib/ioctl/libdevmapper.so
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libdevmapper.so.$($(PKG)_LIB_VERSION)

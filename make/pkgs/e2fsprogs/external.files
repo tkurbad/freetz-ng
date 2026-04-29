@@ -24,3 +24,4 @@
 [ "$EXTERNAL_FREETZ_LIB_libext2fs"  == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libext2fs.so.2.4"
 [ "$EXTERNAL_FREETZ_LIB_libss"      == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libss.so.2.0"
 [ "$EXTERNAL_FREETZ_LIB_libuuid"    == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libuuid.so.1.2"
+

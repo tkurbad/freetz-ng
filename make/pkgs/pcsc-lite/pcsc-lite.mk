@@ -9,7 +9,7 @@ $(PKG)_SITE:=https://pcsclite.apdu.fr/files
 ### MANPAGE:=https://salsa.debian.org/rousseau/PCSC/blob/master/README
 ### CHANGES:=https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
 ### CVSREPO:=https://salsa.debian.org/rousseau/PCSC
-### SUPPORT:=MasterRoCcO
+### STEWARD:=MasterRoCcO
 
 $(PKG)_STARTLEVEL=90
 

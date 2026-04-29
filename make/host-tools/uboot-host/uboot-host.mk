@@ -1,11 +1,11 @@
-$(call TOOLS_INIT, 2025.04)
+$(call TOOLS_INIT, 2026.01)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=v$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=d60836f86e69adecbade967ca8a0944911c2916a2f85855f2e678fc5698c1014
+$(PKG)_SOURCE:=u-boot-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=03bb43c58d2343ee48dd191e0f181f0108425b179d84519add3a977071c3f654
 $(PKG)_SITE:=https://github.com/u-boot/u-boot/archive/refs/tags
 ### CHANGES:=https://github.com/u-boot/u-boot/tags
 ### CVSREPO:=https://github.com/u-boot/u-boot
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/fit
 
@@ -43,7 +43,7 @@ $($(PKG)_DIR)/.installed: $($(PKG)_BINARIES_TARGET_DIR)
 define $(PKG)_FIXHARDCODED
 	@for binfile in $(UBOOT_HOST_BINARIES_TARGET_DIR); do \
 	for libfile in libcrypto libssl; do \
-	$(PATCHELF) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $${binfile} ;\
+	$(PATCHELF_HOST) --replace-needed $(1)$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $(OPENSSL_HOST_DESTDIR)/$${libfile}.so.$(OPENSSL_HOST_LIB_VERSION) $${binfile} ;\
 	done ;\
 	done ;
 endef
@@ -62,7 +62,6 @@ $(pkg)-dirclean:
 	$(RM) -r $(UBOOT_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) \
-		$(UBOOT_HOST_BINARIES_TARGET_DIR)
+	$(RM) $(UBOOT_HOST_BINARIES_TARGET_DIR)
 
 $(TOOLS_FINISH)

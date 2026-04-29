@@ -11,7 +11,7 @@
  install-dvi: install-dvi-am
 --- libxslt/Makefile.in
 +++ libxslt/Makefile.in
-@@ -855,7 +855,7 @@
+@@ -856,7 +856,7 @@
  
  info-am:
  

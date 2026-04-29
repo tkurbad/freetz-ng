@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+exec "grep" -E "$@"
+exit $?  # this will never be reached
+

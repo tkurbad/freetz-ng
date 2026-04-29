@@ -25,7 +25,23 @@ config FREETZ_PACKAGE_AUTOFS
 		reliability, and much faster operation in the common case (everything
 		already mounted).
 
-if FREETZ_PACKAGE_AUTOFS && FREETZ_REPLACE_MODULE_AVAILABLE
+if FREETZ_PACKAGE_AUTOFS
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_AUTOFS_CURRENT
+
+		config FREETZ_PACKAGE_AUTOFS_ABANDON
+			bool "5.0.5"
+			depends on  FREETZ_KERNEL_VERSION_2_MAX
+
+		config FREETZ_PACKAGE_AUTOFS_CURRENT
+			bool "5.1.9"
+			depends on !FREETZ_KERNEL_VERSION_2_MAX
+
+	endchoice
+
+if FREETZ_REPLACE_MODULE_AVAILABLE
 
 	config FREETZ_PACKAGE_AUTOFS_NFS
 		bool "select nfs module"
@@ -71,6 +87,8 @@ if FREETZ_PACKAGE_AUTOFS && FREETZ_REPLACE_MODULE_AVAILABLE
 		default n
 		help
 			Select this if you want to mount SSH-shares.
+
+endif # FREETZ_REPLACE_MODULE_AVAILABLE
 
 endif # FREETZ_PACKAGE_AUTOFS
 

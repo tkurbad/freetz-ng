@@ -1,6 +1,6 @@
 --- src/liblzma/Makefile.in
 +++ src/liblzma/Makefile.in
-@@ -701,7 +701,7 @@
+@@ -696,7 +696,7 @@
  CCASDEPMODE = @CCASDEPMODE@
  CCASFLAGS = @CCASFLAGS@
  CCDEPMODE = @CCDEPMODE@

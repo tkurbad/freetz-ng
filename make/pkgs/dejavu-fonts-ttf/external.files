@@ -1,1 +1,2 @@
-[ "$EXTERNAL_FREETZ_PACKAGE_DEJAVU_FONTS_TTF" == "y" ] && EXTERNAL_FILES+=" /usr/share/fonts/dejavu-sans-fonts"
+[ "$EXTERNAL_FREETZ_PACKAGE_DEJAVU_FONTS_TTF" == "y" ] && EXTERNAL_FILES+=" /usr/share/fonts/dejavu-sans-fonts/"
+

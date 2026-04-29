@@ -1,0 +1,53 @@
+config FREETZ_PACKAGE_HOSTAPD_CLI
+	bool "hostapd_cli 2.7/2.10/2.11 (binary only) - DEVELOPER"
+	depends on FREETZ_SHOW_DEVELOPER
+	depends on FREETZ_AVM_HAS_HOSTAPD
+	default n
+	help
+		Command line client for hostapd control interface.
+		Useful to send BSS Transition Management (802.11v) and
+		Neighbor Report (802.11k) commands to the running daemon.
+		See https://github.com/Freetz-NG/freetz-ng/discussions/1295
+
+if FREETZ_PACKAGE_HOSTAPD_CLI
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_HOSTAPD_CLI_VERSION_2_11
+
+		config FREETZ_PACKAGE_HOSTAPD_CLI_VERSION_2_7
+			bool "2.7"
+			depends on \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_0_5_9 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_0 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_10 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_5 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_7
+
+		config FREETZ_PACKAGE_HOSTAPD_CLI_VERSION_2_10
+			bool "2.10"
+			depends on \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_8 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_9 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_10
+
+		config FREETZ_PACKAGE_HOSTAPD_CLI_VERSION_2_11
+			bool "2.11"
+			depends on !( \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_0_5_9 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_0 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_10 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_5 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_7 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_8 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_9 || \
+				FREETZ_AVM_HAS_HOSTAPD_VERSION_2_10 \
+				)
+
+	endchoice
+
+	comment "WARNING: The device uses a different version of hostapd"
+		depends on FREETZ_PACKAGE_HOSTAPD_CLI_VERSION_2_11 && !FREETZ_AVM_HAS_HOSTAPD_VERSION_2_11
+
+endif # FREETZ_PACKAGE_HOSTAPD_CLI
+

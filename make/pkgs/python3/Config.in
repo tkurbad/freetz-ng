@@ -1,6 +1,5 @@
 config FREETZ_PACKAGE_PYTHON3
-	bool "Python 3.13.7 - DEVELOPER"
-	depends on FREETZ_SHOW_DEVELOPER
+	bool "Python 3.14.3 - EXPERIMENTAL"
 	depends on FREETZ_SEPARATE_AVM_UCLIBC
 	select FREETZ_LIB_libpython3  if !FREETZ_PACKAGE_PYTHON3_STATIC
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -43,10 +42,10 @@ if FREETZ_PACKAGE_PYTHON3
 		depends on FREETZ_PACKAGE_PYTHON3_PYC
 		default y
 		help
-			Causes all *.pyc files usually residing in /usr/lib/python3.13
-			to be compressed into one large file, /usr/lib/python313.zip.
+			Causes all *.pyc files usually residing in /usr/lib/python3.14
+			to be compressed into one large file, /usr/lib/python314.zip.
 			Thereafter, only *.so files and some small text data are left in
-			/usr/lib/python3.13, while Python will (efficiently) read all
+			/usr/lib/python3.14, while Python will (efficiently) read all
 			*.pyc files from the zip archive.
 			Leaving this option enabled saves you about 50% of space at
 			virtually no cost.
@@ -330,19 +329,7 @@ if FREETZ_PACKAGE_PYTHON3
 	endmenu
 
 #	menu "3rd-party modules"
-#		source "make/pkgs/python-bjoern/Config.in"
-#		source "make/pkgs/python-cffi/Config.in"
-#		source "make/pkgs/python-cheetah/Config.in"
-#		source "make/pkgs/python-imaging-library/Config.in"
-#		source "make/pkgs/python-mechanize/Config.in"
-#		source "make/pkgs/python-mysql-connector/Config.in"
-#		source "make/pkgs/python-pycrypto/Config.in"
-#		source "make/pkgs/python-pycryptodome/Config.in"
-#		source "make/pkgs/python-pycurl/Config.in"
-#		source "make/pkgs/python-pyopenssl/Config.in"
-#		source "make/pkgs/python-pyrrd/Config.in"
-#		source "make/pkgs/python-pyserial/Config.in"
-#		source "make/pkgs/python-yenc/Config.in"
+#		source "make/pkgs/python3-.../Config.in"
 #	endmenu
 
 endif # FREETZ_PACKAGE_PYTHON3

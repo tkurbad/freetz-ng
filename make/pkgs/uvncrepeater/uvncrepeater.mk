@@ -5,7 +5,7 @@ $(PKG)_SITE:=https://web.archive.org/web/20151001044013/http://koti.mbnet.fi/jtk
 ### WEBSITE:=https://uvnc.com/products/ultravnc-repeater.html
 ### MANPAGE:=https://uvnc.com/docs/ultravnc-repeater.html
 ### CHANGES:=https://web.archive.org/web/20151001044013/http://koti.mbnet.fi/jtko/uvncrepeater/
-### SUPPORT:=manfred-mueller
+### STEWARD:=manfred-mueller
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/repeater
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/uvncrepeater

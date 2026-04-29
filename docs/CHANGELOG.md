@@ -4,6 +4,8 @@ Latest changes
 
   - Freetz-NG
     * [devel](#devel)
+    * [ng26020](#ng26020)
+    * [ng25090](#ng25090)
     * [ng25030](#ng25030)
     * [ng24080](#ng24080)
     * [ng24040](#ng24040)
@@ -31,49 +33,271 @@ Latest changes
     * [Freetz-1.0.1](#freetz-101)
     * [Freetz-1.0](#freetz-10)
 
-  - DS 2.6
+  - DS26-Mod
     * [ds26-15.2](#ds26-152)
     * [ds26-15.1](#ds26-151)
     * [ds26-15.0](#ds26-150)
     * [ds26-14.4](#ds26-144)
     * [ds26-14.3](#ds26-143)
+    * [ds26-14.2](#ds26-142)
+    * [ds26-14.1-p2](#ds26-141-p2)
+    * [ds26-14.1-p1](#ds26-141-p1)
+    * [ds26-14.1](#ds26-141)
+    * [ds26-14.0](#ds26-140)
 
-  - DS 2.4
-    * [ds-0.2.9_26-14.2](#ds-029_26-142)
-    * [ds-0.2.9_26-14.1-p2](#ds-029_26-141-p2)
-    * [ds-0.2.9_26-14.1-p1](#ds-029_26-141-p1)
-    * [ds-0.2.9_26-14.1](#ds-029_26-141)
-    * [ds-0.2.9_26-14.0](#ds-029_26-140)
+  - DS-Mod
+    * [ds-0.2.9](#ds-029)
+    * [ds-0.2.8](#ds-028)
+    * [ds-0.2.7](#ds-027)
+    * [ds-0.2.6](#ds-026)
+    * [ds-0.2.5](#ds-025)
+    * [ds-0.2.4](#ds-024)
+    * [ds-0.2.3](#ds-023)
+    * [ds-0.2.2](#ds-022)
+    * [ds-0.2.1](#ds-021)
+    * [ds-0.2](#ds-02)
+    * [ds-0.1.1](#ds-011)
+    * [ds-0.1](#ds-01)
 
 <br>
 
 ### devel
 
   - Build system:
+    * ccache 4.13.5
+    * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.57
+
+  - Host tools:
+    * autoconf 2.73
+    * ca-bundle 2026-03-19
+    * cmake 4.3.2
+    * dos2unix 7.5.5
+    * file 5.47
+    * kconfig 7.0
+    * meson 1.11.1
+    * openssl 3.5.6
+    * pseudo 1.9.5
+    * python3 3.14.4
+
+  - AVM sources:
+
+  - Scripts:
+    * zensical_httpserver.sh - run local zensical http server to develop docs
+
+  - Patches:
+    * Still are some patches not yet adapted for Fritzos 8.2x
+
+  - Packages:
+    * Atop 2.12.1
+    * Bftpd 6.6
+    * BIND 9.11.37/9.20.22
+    * Binutils 2.46.0
+    * CA-bundle 2026-03-19
+    * Curl 8.12.1/8.19.0
+    * Git 2.26.2/2.53.0
+    * htop 1.0.3/3.5.0
+    * ImageMagick 7.1.0-62/7.1.2-21
+    * iPerf3 3.3/3.21
+    * LCD4linux 63fffafb
+    * Iptables 1.4.11.1/1.4.21/1.6.2/1.8.13
+    * ldd 0.1/1.0.57
+    * Minicom 2.11.1
+    * Nano 9.0
+    * Nmap 4.76/5.51/7.99
+    * OpenSSH 9.3p2/10.3p1
+    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.20/3.5.6
+    * OpenVPN 2.4.12/2.5.11/2.6.20/2.7.3
+    * procps-ng 4.0.6
+    * Python 3.14.3
+    * sslh 2.2.4/2.3.1
+    * Stunnel 5.78
+    * SQLite 3.40.1/3.53.0
+    * tinc 1.0.37/1.1pre18
+    * Tinyproxy 1.11.3
+    * Tor 0.4.8.23
+    * Tree 1.8.0/2.3.2
+    * UnRAR 6.1.7/7.2.5
+    * Virtualip-NG 1.0
+    * wireguard-tools 1.0.20260223
+    * Whois 5.6.6
+    * xsltproc 1.1.45
+    * XZ 5.8.3
+
+  - Libraries:
+    * expat 2.7.5/2.8.0
+    * file 5.47
+    * FreeType 2.14.3
+    * gettext 1.0
+    * GLib2 2.32.4/2.88.0
+    * harfbuzz 14.2.0
+    * libcap 2.49/2.78
+    * libcap-ng 0.9.3
+    * libexif 0.6.26
+    * libmaxminddb 1.13.3
+    * libpng 1.6.58
+    * libuv 1.44.2/1.52.1
+    * libxml2 2.15.3
+    * MbedTLS 2.7.19/2.28.10/3.6.6
+    * neon 0.30.2/0.37.0
+    * pango 1.57.1
+
+  - Firmware updates:
+    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng26020
+
+  - Build system:
+    * binutils (kernel) 2.18/2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1/2.42/2.45.1
+    * binutils (target) 2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1/2.43.1/2.45.1
+    * ccache 4.12.3
+    * dl-toolchains r27868
+    * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.56
+    * new architecture: aarch64
+    * new architecture: aarch64_eb
+    * new architecture: armeb
+
+  - Host tools:
+    * automake 1.18.1
+    * ca-bundle 2025-12-02
+    * config a2287c3
+    * cmake 4.2.3
+    * dos2unix 7.5.4
+    * fakeroot 1.37.2
+    * file 5.46
+    * gperf 3.3
+    * kconfig 6.19
+    * m4 1.4.21
+    * meson 1.10.1
+    * ncurses 6.6
+    * ninja 1.13.2
+    * openssl 3.5.5
+    * patchelf 0.14.5/0.18.0-b49de1b33
+    * patchelf-target 0.14.5/0.15.0
+    * pseudo 1.9.2
+    * python3 3.14.2
+    * python3-attrs 25.4.0
+    * python3-jsonschema 4.25.1
+    * python3-pip 25.3
+    * python3-referencing 0.37.0
+    * tools 2026-02-24
+    * uboot 2026.01
+
+  - AVM sources:
+    * 600      8.20 - 4.4.271
+    * 1240 AX  8.20 - 5.4.213
+    * 2400     8.20 - 4.4.271
+    * 3000 AX  8.20 - 5.4.213
+    * 5590     8.20 - 5.4.213
+    * 5690 XGS 8.20 - 5.4.293
+    * 6000     8.20 - 5.4.213
+    * 6850 5G  8.20 - 4.4.271
+    * 6860 5G  8.20 - 5.4.213
+    * 4050     8.21 - 5.4.213
+    * 4690     8.21 - 5.4.213
+    * 7510     8.20 - 5.4.213
+    * 7530     8.20 - 4.4.271
+    * 7690     8.20 - 5.4.213
+    * Gateway  8.20 - 5.4.213
+
+  - Scripts:
+    * make_progress_monitor.sh - monitor cross-compilation progress for make
+    * ssh_firmware_update.py - utility for upgrading firmware and external over SSH
+
+  - Patches:
+    * Various Fritzos 8.2 related changes
+
+  - Packages:
+    * ACME.sh 3.1.2
+    * Apache2 2.4.66
+    * BIND 9.11.37/9.20.17
+    * Binutils 2.45.1
+    * Bzip2 1.0.8
+    * CA-bundle 2025-12-02
+    * cpulimit 0.2
+    * Curl 8.12.1/8.18.0
+    * Dnsmasq 2.80/2.92
+    * Dropbear 2025.89
+    * file 5.46
+    * hostapd_cli 2.7/2.10/2.11
+    * ImageMagick 7.1.0-62/7.1.2-12
+    * Info-ZIP 3.0
+    * iPerf3 3.3/3.20
+    * ldd 0.1/1.0.56
+    * Make 4.2.1/4.4.1
+    * MTR 0.80/0.96
+    * Nano 8.7.1
+    * Net-SNMP 5.9.5.2
+    * Nmap 4.76/5.51/7.98
+    * OpenSSH 9.3p2/10.2p1
+    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.19/3.5.5
+    * OpenVPN 2.4.12/2.5.11/2.6.19
+    * PatchELF 0.18.0
+    * Privoxy 4.1.0
+    * procps-ng 4.0.5
+    * pyLoad 0.4.x
+    * Python 3.14.2
+    * socat 1.8.1.1
+    * sslh 2.2.4/2.3.0
+    * strace 4.9/5.0/6.19
+    * Stunnel 5.77
+    * tcpdump 4.1.1/4.99.6
+    * tmux 3.6a
+    * Tor 0.4.8.22
+    * Transmission 3.00/4.1.1
+    * Unbound 1.24.2
+    * UnRAR 6.1.7/7.2.1
+    * Vim 9.2.0000
+    * Whois 5.6.5
+
+  - Libraries:
+    * expat 2.7.4
+    * harfbuzz 12.3.2
+    * libcap 2.49/2.77
+    * libdeflate 1.25
+    * libpcap 1.1.1/1.10.6
+    * libpng 1.6.55
+    * liburcu 0.15.6
+    * libxml2 2.15.1
+    * libyaml 0.2.5
+    * MbedTLS 2.7.19/2.28.10/3.6.5
+    * ncurses 6.6
+    * ncursesw 6.6
+    * openjp2 2.5.4
+    * pcre2 10.47
+    * zlib 1.3.2
+
+  - Firmware updates:
+    * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng26020/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+
+### ng25090
+
+  - Build system:
+    * binutils (kernel) 2.18/2.22/2.23.2/2.24/2.25.1/2.26.1/2.31.1/2.36.1/2.42
     * Ccache 4.11.3
-    * gcc (target) 4.6.4/4.7.4/4.8.5/4.9.4/5.5.0/8.3.0/8.4.0/9.3.0/13.4.0/14.3.0/15.2.0
-    * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.54
+    * gcc (kernel) 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/8.4.0/9.3.0/9.4.0/10.5.0
+    * gcc (target) 4.6.4/4.7.4/4.8.5/4.9.4/5.5.0/8.3.0/8.4.0/9.3.0/9.4.0/13.4.0/14.3.0/15.2.0
+    * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.55
 
   - Host tools:
     * automake 1.18
     * ca-bundle 2025-09-09
-    * cmake 4.1.1
+    * cmake 4.1.2
     * dtc 1.7.2
     * fakeroot 1.37.1.2
     * gmp 6.3.0
     * gperf 3.2
     * iPerf3 3.3/3.19.1
-    * kconfig 6.16
+    * kconfig 6.17
     * libtool 2.5.4
     * m4 1.4.20
-    * meson 1.8.4
+    * meson 1.9.1
     * ninja 1.13.1
     * ncftp 3.3.0
     * ncurses 6.5-20250419
-    * openssl 3.5.2
+    * openssl 3.5.4
     * pkgconf 2.5.1
-    * precompiled host-tools 2025-08-27
-    * precompiled toolchains r26458
+    * precompiled host-tools 2025-09-30
+    * precompiled toolchains r26741
     * python 3.13.7
     * python2-pip 20.3.4
     * python2-setuptools 44.1.1
@@ -87,7 +311,11 @@ Latest changes
     * u-boot 2025.04
 
   - AVM sources:
+    * 1200 ac  8.20 - 4.4.271
+    * 1700     8.06 - 4.19.294
+    * 2700     8.06 - 4.19.294
     * 3000 ax  8.02 - 4.4.271
+    * 6360     5.29 - 2.6.28.10
     * 6591     8.20 - 5.15.179
     * 5530     8.20 - 4.9.337
     * 7530 ax  8.20 - 4.19.183
@@ -104,7 +332,7 @@ Latest changes
     * BIND 9.11.37/9.20.11
     * bvi 1.5.0
     * CA-bundle 2025-09-09
-    * Curl 8.12.1/8.15.0
+    * Curl 8.12.1/8.16.0
     * Dante 1.4.4
     * dehydrated 0.7.2
     * Dnsmasq 2.80/2.91
@@ -120,16 +348,16 @@ Latest changes
     * iptables 1.4.11.1/1.4.21/1.6.2/1.8.11
     * jq 1.8.1
     * LCD4linux eadf4603
-    * Lighttpd 1.4.81
+    * Lighttpd 1.4.82
     * Lua 5.1.5/5.4.8
     * mc (Midnight Commander) 4.8.31/4.8.33
     * Minicom 2.10
     * Mosquitto 2.0.22
-    * Nano 8.6
+    * Nano 8.7
     * NcFTP 3.3.0
     * Nmap 4.76/5.51/7.97
     * OpenSSH 9.3p2/10.0p1
-    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.17/3.5.2
+    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.18/3.5.4
     * OpenVPN 2.4.12/2.5.11/2.6.14
     * Privoxy 4.0.0
     * Python 3.13.7
@@ -141,14 +369,14 @@ Latest changes
     * Smartmontools 7.5
     * socat 1.8.0.3
     * sslh 2.2.4
-    * strace 4.9/5.0/6.16
+    * strace 4.9/5.0/6.17
     * Stunnel 5.75
     * Sudo 1.9.17p2
     * tcpdump 4.1.1/4.99.4
-    * Tor 0.4.8.17
+    * Tor 0.4.8.18
     * uMurmur 0.2.20/0.3.1
-    * Unbound 1.23.1
-    * UnRAR 6.1.7/7.1.8
+    * Unbound 1.24.0
+    * UnRAR 6.1.7/7.1.10
     * usb.ids 635738b64e
     * Vim 9.1.1275
     * Whois 5.6.4
@@ -157,10 +385,11 @@ Latest changes
 
   - Libraries:
     * cairo 1.18.4
-    * expat 2.7.1
+    * expat 2.7.3
+    * FreeType 2.14.1
     * gettext 0.24
     * gmp 6.3.0
-    * harfbuzz 11.4.5
+    * harfbuzz 11.5.0
     * libcap 2.49/2.75
     * libdeflate 1.24
     * libffi 3.5.2
@@ -170,7 +399,7 @@ Latest changes
     * libuv 1.44.2/1.51.0
     * libpng 1.6.50
     * liburcu 0.15.3
-    * libxml2 2.14.5
+    * libxml2 2.15.0
     * mbedTLS 2.7.19/2.28.10/3.6.4
     * nettle 3.10.2
     * pango 1.56.3
@@ -179,7 +408,7 @@ Latest changes
     * readline 6.3-p8/8.3
 
   - Firmware updates:
-    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+    * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng25090/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng25030
 
@@ -290,7 +519,7 @@ Latest changes
     * libdeflate 1.23
     * libexif 0.6.25
     * libffi 3.4.7
-    * libmaxminddb-1.12.2
+    * libmaxminddb 1.12.2
     * libnettle 3.10.1
     * libpng 1.6.46
     * libssh2 1.11.1
@@ -370,7 +599,7 @@ Latest changes
     * OpenSSH 9.3p2/9.8p1
     * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.14
     * OpenVPN 2.4.12/2.5.11/2.6.13
-    * PCP client 1c783fb 
+    * PCP client 1c783fb
     * PCSC-lite 1.9.5/2.1.0
     * psl 0.21.5
     * socat 1.8.0.0
@@ -2792,7 +3021,6 @@ See svn log for more details.
     * OpenSSL: build with zlib-dynamic
     * tools/depmod.pl: dos2unix line feeds
 
-
 ### ds26-15.1
 
 - Build system:
@@ -2947,7 +3175,6 @@ See svn log for more details.
         + Put fstab patch in own file, should be the same for all boxes
     * Tor / libevent: disable epoll support in libevent due to unresolved
       problems. This fixes recently reported Tor segfaults.
-
 
 ### ds26-15.0
 
@@ -3263,7 +3490,6 @@ See svn log for more details.
       several package README files, but I do not care, because this is plain
       cosmetics. (kriegaex: And Daniel deserves credits anyway, anywhere.)
 
-
 ### ds26-14.4
 
 - Busybox patch for 'ash' shell: When a remote client (e.g. ssh) was killed,
@@ -3287,10 +3513,10 @@ See svn log for more details.
 - Ntfs3g: bump version to 1.417
 - Fix typo in make/avm-gpl/avm-gpl.mk
 - Minor menuconfig improvements:
-  * Don't show open source package selection, always usedefault (currently
-    04.30 for 7141, 04.29 for all other supported boxes)
-  * Rename "firmware type" to "hardware type"
-  * Rename "firmware version" to "firmware language"
+    * Don't show open source package selection, always usedefault (currently
+      04.30 for 7141, 04.29 for all other supported boxes)
+    * Rename "firmware type" to "hardware type"
+    * Rename "firmware version" to "firmware language"
 - Kernel build: do not use /sbin/depmod while cross-compiling
 - Integrate new AVM open source package (7141-04.30)
 - Bftpd: bump version to 1.8 and update download site
@@ -3298,14 +3524,14 @@ See svn log for more details.
   the precompiled uClibc, the manual build never got fired.
 - Update Speedport W701V to firmware version 33.04.26
 - Improved menuconfig tool adopted from buildroot2:
-  * Comprehensive online help
-  * Options' help texts also show dependency information:
-    + Which condition(s) does an option depend on?
-    + By which other option(s) was an option selected?
-    + Which other options does an option select?
-    + Where is an option defined (file name + line no.)?
-  * Seach mode: wildcard search for option names via "/" hotkey.
-    By the way: search mode also has online help.
+    * Comprehensive online help
+    * Options' help texts also show dependency information:
+        + Which condition(s) does an option depend on?
+        + By which other option(s) was an option selected?
+        + Which other options does an option select?
+        + Where is an option defined (file name + line no.)?
+    * Seach mode: wildcard search for option names via "/" hotkey.
+      By the way: search mode also has online help.
 - Added download mirror #3 to Config.in
 - tools/make/busybox-tools.mk: activate download target on demand to avoid
   collision with identical target for regular busybox on one hand and to
@@ -3317,34 +3543,34 @@ See svn log for more details.
 ### ds26-14.3
 
 - Cross-cutting changes in ds-mod-specific package download:
-  * New shell script tools/ds_download provides a uniform way to download
-    ds-mod-specific packages such as application and add-on packages as well
-    as precompiled toolchains. The script first checks a predefined list of
-    download servers (mirrors) and only uses an optionally provided "original"
-    server as fallback, which is important for new package versions not
-    available on mirrors yet.
-  * New variable DL_TOOL in Makefile points to tools/ds_download
-  * List of download sites (mirrors) can be edited in menuconfig (Advanced
-    options -> DS-Mod package download sites). Currently there are five slots
-    for download servers, two of which have default values. Two others are
-    reserved for later use and #5 is freely editable by users. This enables
-    users to set up their private mirrors on their own LAN or WAN servers.
-  * *.mk files loading mod-specific packages have all been made "mirror-aware",
-    i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
-    all former primary download sites have been preserved as fallback servers.
+    * New shell script tools/ds_download provides a uniform way to download
+      ds-mod-specific packages such as application and add-on packages as well
+      as precompiled toolchains. The script first checks a predefined list of
+      download servers (mirrors) and only uses an optionally provided "original"
+      server as fallback, which is important for new package versions not
+      available on mirrors yet.
+    * New variable DL_TOOL in Makefile points to tools/ds_download
+    * List of download sites (mirrors) can be edited in menuconfig (Advanced
+      options -> DS-Mod package download sites). Currently there are five slots
+      for download servers, two of which have default values. Two others are
+      reserved for later use and #5 is freely editable by users. This enables
+      users to set up their private mirrors on their own LAN or WAN servers.
+    * *.mk files loading mod-specific packages have all been made "mirror-aware",
+      i.e. they all call DL_TOOL with the appropriate parameters. Specifically,
+      all former primary download sites have been preserved as fallback servers.
 - Major menuconfig restructuring. For example (there is more):
-  * Iptables' shared libs and kernel modules are dependent on a top level
-    setting and can be deselected as  whole groups.
-  * JamVM + classpath + ffi-sable can now be found in one place and are also
-    interdependent.
-  * Sub-menus in packages section
-  * Major case first letters in package names
-  * More and improved menu descriptions
-  * Removed redundant library descriptions for iptables and classpath stuff by
-    putting them in groups (see above).
-  * Some changes in include structure ('source' commands in Config.in files),
-    e.g. several libs' descriptions are now closer to their required top level
-    applications.
+    * Iptables' shared libs and kernel modules are dependent on a top level
+      setting and can be deselected as  whole groups.
+    * JamVM + classpath + ffi-sable can now be found in one place and are also
+      interdependent.
+    * Sub-menus in packages section
+    * Major case first letters in package names
+    * More and improved menu descriptions
+    * Removed redundant library descriptions for iptables and classpath stuff by
+      putting them in groups (see above).
+    * Some changes in include structure ('source' commands in Config.in files),
+      e.g. several libs' descriptions are now closer to their required top level
+      applications.
 - Fix firmware build: iptables binary was always included in image, even if not
   selected in menuconfig.
 - Fix syslogd ring buffer size parameter leading to "Starting syslogd...failed";
@@ -3371,7 +3597,7 @@ See svn log for more details.
 - Suppress tar "lone zero block" warning when unpacking certain firmware images
 - Don't be so restrictive on addon-names (e.g. openvpn-2.1.offline)
 
-### ds-0.2.9_26-14.2
+### ds26-14.2
 
 - Fix fakeroot problems with chown (operation not permitted) on systems with
   newer glibc + coreutils combinations using *at(). The version has been
@@ -3409,12 +3635,12 @@ See svn log for more details.
 - Delete some unnecessary files
 - Forgot to add patches for gdb 6.3 and 6.4
 
-### ds-0.2.9_26-14.1-p2
+### ds26-14.1-p2
 
 - add ubik2_boot_0, ubik2_boot_last to device.table (should fix 7050 Image)
 - chmod +x for 250-orangebox.sh
 
-### ds-0.2.9_26-14.1-p1
+### ds26-14.1-p1
 
 - hide depmod output
 - fixed gdb-dirclean target
@@ -3428,7 +3654,7 @@ See svn log for more details.
 - add printk.patch for labors
 - libraries are also having dependencies...
 
-### ds-0.2.9_26-14.1
+### ds26-14.1
 
 - fixed jamvm patch (100-fix-trace.patch)
 - fixed typo in deco.mk
@@ -3445,7 +3671,7 @@ See svn log for more details.
 - add/remove patches for (non-working) uClibc-0.9.28.3/1
 - fix 7170 Labor patches
 
-### ds-0.2.9_26-14.0
+### ds26-14.0
 
 - fix precompiled toolchain download URL in toolchain/make/download-toolchain.mk
 - add forgotten cpmaccfg in make/Config.in
@@ -3561,6 +3787,196 @@ See svn log for more details.
 - added unionfs
 - added libreadline
 - initial checkin
+
+### ds-0.2.9
+
+- fixed favicons
+- busybox upgraded to 1.2.1
+    * added applets losetup and swaponoff
+
+### ds-0.2.8
+
+- Connmark patches for better ipp2p handling
+  (thank you Ghost for the hint
+  -> new ds-mod kernel version iln6)
+- Integrated liblzo (thanks to knox)
+- Upgrade to openssl 0.9.8b
+- Third-phone-patch for 300ip is broken
+  (can somebody fix it?)
+
+NOTE:
+  a-ch and en firmwares for fon and fon_wlan are not
+  supported until they are upgraded to version *.04.12.
+  Supporting two versions of the fon firmware would add
+  to much complexity which has to be removed after
+  upgrade anyways.
+
+Upgraded packages:
+
+- callmonitor 1.5
+
+### ds-0.2.7
+
+- New try for ip_conntrack fix ;) Early module loading
+- Updated Enrik's recover scripts
+- Replaced dumpsquashfs by unsquashfs from squashfs CVS
+  (thanks to Oliver!)
+
+Upgraded packages:
+
+- callmonitor 1.4
+- openvpn 2.1_beta14 ds0.2
+
+### ds-0.2.6
+
+Upgraded packages:
+
+- callmonitor 1.1
+- firewall-cgi 0.5.1
+- openvpn 2.0.6 ds0.1
+
+### ds-0.2.5
+
+Now everything that should be fixed with ds-0.2.4 is
+really fixed.
+
+New features:
+
+- Speed up target toolchain using ccache
+- New motd screen with ds-mod logo
+- Removed bz2 from busybox for size reasons
+- Introduced new make target 'libs', that builds all
+  selected shared libraries
+
+New packages:
+
+- samba 2.0.10 ds0.1
+- screen 4.0.2 ds0.1
+
+New testing packages (binary only):
+
+- openvpn 2.0.6
+- transmission 0.5
+
+Upgraded packages:
+
+- callmonitor 1.0
+
+### ds-0.2.4
+
+Fixed modcgi to allow package names like bftpd-zlib and
+dropbear-sshd (update: still not completely fixed)
+
+### ds-0.2.3
+
+ds-mod now supports multiple languages (currently
+de - deutsch & en - english) and supports the
+international versions of the original firmwares.
+
+New features:
+
+- Added a new HOWTOs
+- Support for 7140
+- ipp2p netfilter
+
+Upgraded packages:
+
+- bftpd 1.3 ds0.5
+- callmonitor 0.8
+- dnsmasq 2.26 ds0.5
+- dropbear 0.48.1 ds0.5
+- firewall-cgi 0.5
+- wol-cgi 0.5
+
+### ds-0.2.2
+
+Added support for current beta firmwares. BE AWARE
+that these modded betas are TOTALLY UNTESTED. They
+just compile ;)
+
+### ds-0.2.1
+
+Fixed cygwin support (failed to compile mconf)
+
+### ds-0.2
+
+New make targets:
+
+- make toolchain        (build cross-compilers)
+- make tools            (build the tools)
+- make recover          (does not supported cygwin and 7170/3070)
+
+New features:
+
+- Support for cygwin
+- Support for hidden root boxes (e.g. Fon 5012, ...)
+- Support for 8mb boxes (e.g. Fon WLAN 7170)
+- Support for "300IP as Fon"
+- Individual config and patches per box type
+- Fixed find-squashfs (64-bit host)
+- Fixed DNS server bug in ATA mode without DHCP
+- Upgraded busybox to version 1.1.0 (fixes -z/-j issue)
+- Replacement for uClibc
+- Support for NFS mount
+- busybox now makes use of built-in echo to speed up things
+  (thanks to buehmann)
+- dumpsquashfs-lzma
+
+New packages:
+
+- checkmaild ds0.2
+- firewall-cgi 0.3
+- vpnc 0.3.3 ds0.3
+- wol-cgi 0.1.3
+
+Upgraded packages:
+
+- bftpd 1.2 ds 0.1
+- callmonitor 0.7
+- dnsmasq 2.26 ds0.1
+- dropbear 0.48.1 ds0.1
+- syslogd-cgi 0.2
+- telefon 0.3
+
+New package format: A package's file `./foo.bar` moved
+to `./root/foo.bar`. Documentation is proposed to be in
+`./docs/<lang>/`.
+
+A lot of minor changes.
+
+### ds-0.1.1
+
+Fixed a bug which made the box freeze during boot
+when dsmod was not configured (clean installation or
+after moduninstall). The bug is still in the busybox
+tar, but is avoided in the mod-scripts.
+
+### ds-0.1
+
+First version which is somehow worth to call a release.
+
+Additional make targets:
+
+- make precompiled      - re-compile all target binaries
+- make sources          - download all source packages
+
+Features:
+
+- kernel (based on 883)
+    * iptables
+    * lzma support
+    * contiguous squashfs
+- iptables 1.3.3
+- busybox 1.1.0-pre1
+    * crond
+    * ether-wake
+- bftpd 1.0.24 ds0.1
+- callmonitor ds0.4
+- dnsmasq 2.24 ds0.1
+- dropbear 0.47 ds0.1
+- syslogd-cgi 0.1
+- webinterface
+- downgrade mod
 
 ```
 

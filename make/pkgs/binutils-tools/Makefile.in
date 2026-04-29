@@ -1,0 +1,16 @@
+ifneq (,$(strip $(filter y,$(FREETZ_LIB_libbfd))))
+LIBS+=libbfd
+endif
+ifneq (,$(strip $(filter y,$(FREETZ_LIB_libctf))))
+LIBS+=libctf
+endif
+ifneq (,$(strip $(filter y,$(FREETZ_LIB_libctf_nobfd))))
+LIBS+=libctf-nobfd
+endif
+ifneq (,$(strip $(filter y,$(FREETZ_LIB_libopcodes))))
+LIBS+=libopcodes
+endif
+ifneq (,$(strip $(filter y,$(FREETZ_LIB_libsframe))))
+LIBS+=libsframe
+endif
+

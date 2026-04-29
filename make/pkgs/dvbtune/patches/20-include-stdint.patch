@@ -1,0 +1,10 @@
+--- dvbtune.c
++++ dvbtune.c
+@@ -45,6 +45,7 @@
+ #include <sys/poll.h>
+ #include <fcntl.h>
+ #include <unistd.h>
++#include <stdint.h>
+ 
+ // DVB includes:
+ #ifdef NEWSTRUCT

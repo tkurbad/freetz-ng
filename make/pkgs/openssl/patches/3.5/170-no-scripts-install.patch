@@ -1,6 +1,6 @@
 --- Configurations/unix-Makefile.tmpl
 +++ Configurations/unix-Makefile.tmpl
-@@ -696,28 +696,6 @@
+@@ -708,28 +708,6 @@
  	@$(PERL) $(SRCDIR)/util/mkdir-p.pl "$(DESTDIR)$(OPENSSLDIR)/certs"
  	@$(PERL) $(SRCDIR)/util/mkdir-p.pl "$(DESTDIR)$(OPENSSLDIR)/private"
  	@$(PERL) $(SRCDIR)/util/mkdir-p.pl "$(DESTDIR)$(OPENSSLDIR)/misc"

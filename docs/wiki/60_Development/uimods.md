@@ -42,7 +42,7 @@ doupdate_require_auth=1
 
 ### Alle Variablen
 Listet alle Module mit allen Keys und den gesetzten Werten auf.
-Dieser Befehlt braucht gut 1 Minute und speichert die Ausgabe zusätzlich in `uimods.txt`.
+Dieser Befehl braucht gut 1 Minute und speichert die Ausgabe zusätzlich in `uimods.txt`.
 
 ```
 for x in $(ctlmgr_ctl u | sed '1,2d'); do echo; ctlmgr_ctl u $x; done | tee uimods.txt

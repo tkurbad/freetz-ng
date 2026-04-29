@@ -1,13 +1,15 @@
 #! /usr/bin/env bash
 # shows hashes of toolchains in dl/*freetz-VERSION-shared-glibc.tar.lzma
 #Arg $1: <VERSION>
-#Arg $2: <new|old|all|gen>
+#Arg $2: <new|old|all|gen|stats>
 
-DLTCIN='config/mod/dl-toolchain.in'
 VERSION="$(tools/freetz_revision short)"
 VERSION="${1:-r${VERSION%-*}}"
 [ "$1" == "own" ] && VERSION="rLOCAL"
 SUFFIX="freetz-${VERSION}-shared-glibc"
+
+DLTCIN='config/mod/dl-toolchain.in'
+echo "Update FREETZ_TARGET_UCLIBC_* in $DLTCIN!"
 
 rm -f out.{raw,kernel,target}
 make kconfig-host-conf &>/dev/null
@@ -26,17 +28,18 @@ evalconfig() {
 }
 
 case "$2" in
-	g|gen)		ver="gen" ;; # 2024: About 11ooo iterations, 7h!
-	a|all|"")	ver=""    ;;
-	o|old)		ver="old" ;;
-	n|new)		ver="new" ;;
-	*)		ver="new" ;;
+	s|stats)	ver="stats" ;;
+	g|gen)		ver="gen"   ;; # 2024: About 11ooo iterations, 7h!
+	a|all|"")	ver=""      ;;
+	o|old)		ver="old"   ;;
+	n|new)		ver="new"   ;;
+	*)		ver="new"   ;;
 esac
 
 #r
-if [ "$ver" != "gen" ]; then
-#	sed -nr "s/^#?.*$ver.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
-	sed -nr   "s/^.*$ver.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
+if [ "${ver}" != "gen" ]; then
+#	sed -nr "s/^#?.*${ver/stats}.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
+	sed -nr   "s/^.*${ver/stats}.* && dltc \"(.*)\".*/\1/p" $(dirname $(readlink -f $0))/dl-toolchains_make | while read evalopts; do evalconfig $evalopts; done
 else
 	FRITZBOX="$(cat config/ui/firmware.in | grep -A9999 '^### Hardware type' | grep -B9999 '^endchoice # "Hardware type"' | sed -rn 's/\t*config (FREETZ_TYPE_)/\1/p')"
 	FIRMWARE="$(sed -rn 's/^\tconfig (FREETZ_TYPE_FIRMWARE_[X_0-9]{5}).*/\1/p' config/ui/firmware.in)"
@@ -67,23 +70,31 @@ echo -n "default \"${SK%% *}\"    " >> out.kernel
 echo -n "default \"${ST%% *}\"    " >> out.target
 
 case "${line%%_*}" in
-	mipsel)  ARCH="MIPS" ;;
-	mips)    ARCH="MIPS" ;;
-	arm)     ARCH="ARM " ;;
-	i686)    ARCH="X86 " ;;
+	aarch64)    ARCH="AARCH64" ;;
+	aarch64_be) ARCH="AARCH64" ;;
+	arm)        ARCH="ARM    " ;;
+	armeb)      ARCH="ARM    " ;;
+	mips)       ARCH="MIPS   " ;;
+	mipsel)     ARCH="MIPS   " ;;
+	i686)       ARCH="X86    " ;;
 esac
 echo -n "if FREETZ_TARGET_ARCH_$ARCH" | tee -a out.kernel >> out.target
 
 case "${line%%_*}" in
-	mipsel)  ENDI="&& FREETZ_TARGET_ARCH_LE" ;;
-	mips)    ENDI="&& FREETZ_TARGET_ARCH_BE" ;;
-	*)       ENDI="                        " ;;
+	aarch64)    ENDI="&& FREETZ_TARGET_ARCH_LE" ;;
+	aarch64_be) ENDI="&& FREETZ_TARGET_ARCH_BE" ;;
+	arm)        ENDI="&& FREETZ_TARGET_ARCH_LE" ;;
+	armeb)      ENDI="&& FREETZ_TARGET_ARCH_BE" ;;
+	mips)       ENDI="&& FREETZ_TARGET_ARCH_BE" ;;
+	mipsel)     ENDI="&& FREETZ_TARGET_ARCH_LE" ;;
+	*)          ENDI="                        " ;;
 esac
 echo -n " $ENDI" | tee -a out.kernel >> out.target
 
 case "${linek#*gcc-}" in
 #	3*|4*)    GCCK="$(echo $linek | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
 #	5*|8*|9*) GCCK="$(echo $linek | sed -nr 's/.*gcc-(.).*/\1  /p')" ;;
+	1*)       GCCK="$(echo $linek | sed -nr 's/.*gcc-(..)\.(.).*/\1_\2/p')" ;;
 	*)        GCCK="$(echo $linek | sed -nr 's/.*gcc-(.)\.(.).*/\1_\2/p')" ;;
 esac
 echo -n " && FREETZ_KERNEL_GCC_$GCCK" >> out.kernel
@@ -103,8 +114,8 @@ KERN="$(echo $line | sed -n 's/.*kernel-//p')"
 [ -z "$KERN" ] && KERN=2
 echo -n " && FREETZ_KERNEL_VERSION_${KERN//./_}" >> out.target
 
-echo $linek | sed -nr 's/.*_gcc-[0-9.]*-bcm.*/ \&\& FREETZ_SYSTEM_TYPE_BCM63138/p' >> out.kernel
-echo $linet | sed -nr 's/.*_gcc-[0-9.]*-bcm.*/ \&\& FREETZ_SYSTEM_TYPE_BCM63138/p' >> out.target
+echo $linek | sed -nr 's/.*_gcc-[0-9\.]*-bcm.*/ \&\& FREETZ_SYSTEM_TYPE_BCM63138/p' >> out.kernel
+echo $linet | sed -nr 's/.*_gcc-[0-9\.]*-bcm.*/ \&\& FREETZ_SYSTEM_TYPE_BCM63138/p' >> out.target
 
 echo | tee -a out.kernel >> out.target
 done
@@ -120,9 +131,12 @@ cat out.target | grep -v '^#' | grep -iv gcc.3 | sort -u -k4 | grep '^dl/' -v
 echo -e "\n# files:\n"
 cat out.target | grep -v '^#' | grep -iv gcc.3 | sort -u | grep '^dl/'
 
+#s
+[ "${ver}" == "stats" ] && exit 0
+
 #u
 grep -h '^default' out.{kernel,target} | while read x; do sed -i "s/.* if ${x##* if }$/\t${x//&/\\&}/" $DLTCIN; done
-[ "$VERSION" != "rLOCAL" ] && sed -ri "s/default \"r(.){5}\"$/default \"$VERSION\"/g" $DLTCIN && ln -f $DLTCIN
+[ "$VERSION" != "rLOCAL" ] && sed -ri "s/default \"r(.){5}\"$/default \"$VERSION\"/g" $DLTCIN  # && ln -f $DLTCIN
 
 #c
 rm -f out.{raw,kernel,target}

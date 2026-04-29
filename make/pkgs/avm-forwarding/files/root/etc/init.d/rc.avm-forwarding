@@ -27,7 +27,7 @@ config() {
 	FIRSTRULE=$(grep "$FIND" /var/flash/ar7.cfg)
 	# der Vorspann ist alles bis zum "
 	HEADER=$(echo "$FIRSTRULE" | sed 's/".*".*//')
-	# ... die weiteren Zeilen sind entsprechend eingerückt, also alle Zeichen in Leerzeichen umwandeln
+	# ... die weiteren Zeilen sind entsprechend eingerueckt, also alle Zeichen in Leerzeichen umwandeln
 	SPACES=${HEADER//?/ }
 
 }
@@ -48,7 +48,7 @@ save() {
 	if grep -q "*gui*" /mod/etc/conf/avm-forwarding.cfg ; then
 		echo "$(sed -e "s/\*gui\*//g" $CONFIG)" > $CONFIG
 		echo -n "Saving new forwarding rules ... "
-		# Zusammenbau eins "kompletten" Stings aus den Regeln für die ar7.cfg
+		# Zusammenbau eins "kompletten" Stings aus den Regeln fuer die ar7.cfg
 		SECTION=$(echo "$HEADER\"$AVM_FORWARDING_RULES\";" | tr '\n' ',' | sed 's/,[ ]*$/\n/' | sed "s/,/\", \\\n$SPACES\"/g")
 
 		# Sonderfall es gibt nur eine Regel, dann diese Zeile ersetzen ...

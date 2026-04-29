@@ -16,7 +16,7 @@ if FREETZ_LIB_libneon
 			depends on FREETZ_KERNEL_VERSION_2_MAX
 
 		config FREETZ_LIB_libneon_VERSION_CURRENT
-			bool "0.32.5"
+			bool "0.37.0"
 			depends on !FREETZ_KERNEL_VERSION_2_MAX
 
 	endchoice

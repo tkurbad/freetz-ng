@@ -17,7 +17,7 @@ HOST_PYTHON_BIN:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/hostpython
 
 # $(1) => statements to be executed before calling host-python
 # $(2) => parameters to be passed to host-python
-define HostPython
+define HostPython2
 	( \
 		export PYTHONHOME="$(HOST_TOOLS_DIR)/usr"; \
 		export PYTHON_INCDIR="$(PYTHON_STAGING_INC_DIR)"; \
@@ -25,6 +25,9 @@ define HostPython
 		export PYTHONPATH="$(PYTHON_STAGING_LIB_DIR):$(TARGET_TOOLCHAIN_STAGING_DIR)/$(PYTHON_SITE_PKG_DIR)"; \
 		export PYTHONOPTIMIZE=""; \
 		export PYTHONDONTWRITEBYTECODE="x"; \
+		export CFLAGS="$(TARGET_CFLAGS) -I$(PYTHON_STAGING_INC_DIR)"; \
+		export CPPFLAGS="$(TARGET_CFLAGS) -I$(PYTHON_STAGING_INC_DIR)"; \
+		export LDFLAGS="$(TARGET_LDFLAGS) -L$(PYTHON_STAGING_LIB_DIR)"; \
 		$(1) \
 		$(HOST_PYTHON_BIN) $(2); \
 	)
@@ -34,14 +37,15 @@ endef
 # $(2) => additional arguments to setup.py
 # $(3) => additional variables
 # $(4) => dir to look for .so files to be stripped
-define Build/PyMod/Generic
-	$(call HostPython, \
+define Build/PyMod2/Generic
+	$(call HostPython2, \
 		cd $(strip $(1)); \
 		$(TARGET_CONFIGURE_ENV) \
 		$(FREETZ_LD_RUN_PATH) \
 		$(3) \
 		, \
 		./setup.py $(2) \
+		$(SILENT) \
 	)
 	$(if $(strip $(4)),find $(strip $(4)) -type f -name "*.so" -exec $(TARGET_STRIP) \{\} \+)
 endef
@@ -49,8 +53,8 @@ endef
 # $(1) => PKG value
 # $(2) => additional arguments to setup.py
 # $(3) => additional variables
-define Build/PyMod/PKG
-	$(call Build/PyMod/Generic, \
+define Build/PyMod2/PKG
+	$(call Build/PyMod2/Generic, \
 		$($(strip $(1))_DIR), \
 		install --prefix=/usr --root=$(abspath $($(strip $(1))_DEST_DIR)) \
 		$(2), \

@@ -12,5 +12,5 @@ config EXTERNAL_FREETZ_PACKAGE_NZBGET_WEBUI
 	default y
 	help
 		externals the following file(s):
-		 /usr/share/nzbget/ (recursive)
+		 /usr/share/nzbget/
 

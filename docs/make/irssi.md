@@ -1,6 +1,6 @@
 # Irssi 0.8.15 - DEPRECATED
   - Package: [master/make/pkgs/irssi/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/irssi/)
-  - Maintainer: -
+  - Steward: -
 
 **[irssi](http://www.irssi.org/)** ist ein
 Konsolen-[IRC-Client](http://de.wikipedia.org/wiki/IRC-Client)

@@ -1,20 +1,20 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_KERNEL_VERSION_2_MAX),5.0.5,5.1.9))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_AUTOFS_ABANDON),5.0.5,5.1.9))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=9cdfb2433524ba798e9aebeb3a613931627aa4ba579466985599295e05c20205
 $(PKG)_HASH_CURRENT:=87e6af6a03794b9462ea519781e50e7d23b5f7c92cd59e1142c85d2493b3c24b
-$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_KERNEL_VERSION_2_MAX),ABANDON,CURRENT))
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_AUTOFS_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=@KERNEL/linux/daemons/$(pkg)/v5
 ### WEBSITE:=https://docs.kernel.org/filesystems/autofs.html
 ### MANPAGE:=https://github.com/torvalds/linux/blob/master/Documentation/filesystems/autofs-mount-control.rst
 ### CHANGES:=https://mirrors.edge.kernel.org/pub/linux/daemons/autofs/v5/
 ### CVSREPO:=https://github.com/torvalds/linux/tree/master/fs/autofs
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_STARTLEVEL=50
 
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc),,libtirpc)
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_KERNEL_VERSION_2_MAX),abandon,current)
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_AUTOFS_ABANDON),abandon,current)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/daemon/automount
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/automount
@@ -22,7 +22,7 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/automount
 $(PKG)_LIBRARY:=$($(PKG)_DIR)/lib/libautofs.so
 $(PKG)_TARGET_LIBRARY:=$($(PKG)_DEST_LIBDIR)/libautofs.so
 
-ifneq ($(FREETZ_KERNEL_VERSION_2_MAX),y)
+ifneq ($(FREETZ_PACKAGE_AUTOFS_ABANDON),y)
 $(PKG)_CONFIGURE_ENV += ac_cv_path_UMOUNT=/bin/umount
 $(PKG)_CONFIGURE_ENV += ac_cv_path_MOUNT=/bin/mount
 $(PKG)_CONFIGURE_ENV += ac_cv_path_MOUNT_NFS=
@@ -55,10 +55,10 @@ ifneq ($(strip $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc)),y)
 $(PKG)_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/tirpc
 endif
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_UCLIBC_SUPPORTS_rpc
-$(PKG)_REBUILD_SUBOPTS += FREETZ_KERNEL_VERSION_2_MAX
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_AUTOFS_ABANDON
 
 $(PKG)_MODULES := \
-	$(if $(FREETZ_KERNEL_VERSION_2_MAX),,lookup_dir.so) \
+	$(if $(FREETZ_PACKAGE_AUTOFS_ABANDON),,lookup_dir.so) \
 	lookup_file.so \
 	lookup_hosts.so \
 	lookup_multi.so \
@@ -70,7 +70,7 @@ $(PKG)_MODULES := \
 	mount_changer.so \
 	mount_generic.so \
 	mount_nfs.so \
-	$(if $(FREETZ_KERNEL_VERSION_2_MAX),,parse_amd.so) \
+	$(if $(FREETZ_PACKAGE_AUTOFS_ABANDON),,parse_amd.so) \
 	parse_sun.so
 $(PKG)_MODULES_BUILD_DIR := $($(PKG)_MODULES:%=$($(PKG)_DIR)/modules/%)
 $(PKG)_MODULES_TARGET_DIR := $($(PKG)_MODULES:%=$($(PKG)_DEST_LIBDIR)/autofs/%)
@@ -78,7 +78,7 @@ $(PKG)_MODULES_TARGET_DIR := $($(PKG)_MODULES:%=$($(PKG)_DEST_LIBDIR)/autofs/%)
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
-ifeq ($(FREETZ_KERNEL_VERSION_2_MAX),y)
+ifeq ($(FREETZ_PACKAGE_AUTOFS_ABANDON),y)
 $(PKG_CONFIGURED_NOP)
 else
 $(PKG_CONFIGURED_CONFIGURE)
@@ -103,7 +103,7 @@ $($(PKG)_MODULES_TARGET_DIR): $($(PKG)_DEST_LIBDIR)/autofs/%: $($(PKG)_DIR)/modu
 
 $(pkg):
 
-$(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $(if $(FREETZ_KERNEL_VERSION_2_MAX),,$($(PKG)_TARGET_LIBRARY)) $($(PKG)_MODULES_TARGET_DIR)
+$(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $(if $(FREETZ_PACKAGE_AUTOFS_ABANDON),,$($(PKG)_TARGET_LIBRARY)) $($(PKG)_MODULES_TARGET_DIR)
 
 
 $(pkg)-clean:

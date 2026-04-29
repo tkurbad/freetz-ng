@@ -1,10 +1,10 @@
-# Stunnel 5.75
+# Stunnel 5.78
   - Homepage: [https://www.stunnel.org/](https://www.stunnel.org/)
   - Manpage: [https://www.stunnel.org/static/stunnel.html](https://www.stunnel.org/static/stunnel.html)
   - Changelog: [https://www.stunnel.org/NEWS.html](https://www.stunnel.org/NEWS.html)
   - Repository: [https://github.com/mtrojnar/stunnel](https://github.com/mtrojnar/stunnel)
   - Package: [master/make/pkgs/stunnel/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/stunnel/)
-  - Maintainer: [@fda77](https://github.com/fda77)
+  - Steward: [@fda77](https://github.com/fda77)
 
 [![Stunnel Webinterface](../screenshots/202_md.png)](../screenshots/202.png)
 
@@ -25,42 +25,60 @@ Homepage](http://www.stunnel.org/examples/).
 
 ### Konfiguration
 
-1.  Erzeugen der Keys auf dem PC (unter Linux):
+1. Erzeugen der Keys auf dem PC (unter Linux):
+   <pre><code>
+   openssl genrsa 1024 > host.key
+   openssl req -new -x509 -nodes -sha1 -days 365 -key host.key > host.cert
+   </code></pre>
 
-    ``` 
-    openssl genrsa 1024 > host.key
-    openssl req -new -x509 -nodes -sha1 -days 365 -key host.key > host.cert
-    ```
+2. Das Zertifikat und den Schlüssel im Webinterface unter Einstellungen
+   → Stunnel: "Certificate Chain" (host.cert) und "Private Key"
+   (host.key) einfügen.
 
-2.  Das Zertifikat und den Schlüssel im Webinterface unter Einstellungen
-    → Stunnel: "Certificate Chain" (host.cert) und "Private Key"
-    (host.key) einfügen.
+3. Die gewünschten Services hinzufügen.
+   Die Angabe des Pfads zum Zertifikat und zum Schlüssel sind optional.
+   Ohne ausdrückliche Angabe wird das Zertifikat
+   `/tmp/flash/stunnel/certs.pem` und der Schlüssel
+   `/tmp/flash/stunnel/key.pem` verwendet, welche vom Webinterface aus
+   verwaltet werden (Punkt 2).
+   Zum Beispiel:
+   <pre><code>
+   [freetz https Web-Interface]
+   client = no
+   cert = /tmp/flash/stunnel/certs.pem
+   key = /tmp/flash/stunnel/key.pem
+   accept = 4433
+   connect = 81
+   </code></pre>
 
-<!-- -->
+4. Zugriff (intern) über
+   [https://fritz.box:4433](https://fritz.box:4433).
+   Für den externen Zugriff muss noch eine Port-Freigabe eingetragen
+   werden.
 
-3.  Die gewünschten Services hinzufügen. Zum Beispiel:
+### Erweitert
 
-    ``` 
-    [freetz https Web-Interface]
-    client = no
-    cert = /tmp/flash/stunnel/certs.pem
-    key = /tmp/flash/stunnel/key.pem
-    accept = 4433
-    connect = 81
-    ```
+Die Standardeinstellungen von Freetz können mit der Zeile `#EXCLUSIVE#` deaktiviert werden.
+Dies ermöglicht, globale Einstellungen außerhalb der `[<section>]` vorzunehmen.
+Zum Beispiel:
+<pre><code>
+   #EXCLUSIVE#
 
-    Die Angabe des Pfads zum Zertifikat und zum Schlüssel sind optional.
-    Ohne ausdrückliche Angabe wird das Zertifikat
-    */tmp/flash/stunnel/certs.pem* und der Schlüssel
-    */tmp/flash/stunnel/key.pem* verwendet, welche vom Webinterface aus
-    verwaltet werden (Punkt 2).
+   TIMEOUTclose = 0
+   verifyChain = yes
+   CAfile = /tmp/flash/stunnel/certs.pem
+   cert = /tmp/flash/stunnel/key.pem
+   options = SINGLE_ECDH_USE
+   options = SINGLE_DH_USE
 
-<!-- -->
+   [freetz https Web-Interface]
+   accept = 4433
+   connect = 81
 
-4.  Zugriff (intern) über
-    [https://fritz.box:4433](https://fritz.box:4433).
-    Für den externen Zugriff muss noch eine Port-Freigabe eingetragen
-    werden.
+   [avm https Web-Interface]
+   accept = 4434
+   connect = 80
+</code></pre>
 
 ### Weiterführende Links
 

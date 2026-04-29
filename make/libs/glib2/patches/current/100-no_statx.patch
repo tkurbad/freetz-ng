@@ -1,0 +1,12 @@
+--- meson.build
++++ meson.build
+@@ -500,9 +500,6 @@
+     return statx (AT_FDCWD, "/", AT_SYMLINK_NOFOLLOW, STATX_BASIC_STATS | STATX_BTIME, &stat_buf);
+   }
+   '''
+-if host_system != 'android' and cc.compiles(statx_code, name : 'statx() test')
+-  glib_conf.set('HAVE_STATX', 1)
+-endif
+ 
+ if glib_conf.has('HAVE_LOCALE_H')
+   if cc.has_header_symbol('locale.h', 'LC_MESSAGES')

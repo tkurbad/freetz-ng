@@ -10,3 +10,22 @@ config FREETZ_LIB_libexpat
 		document being parsed. A start tag is an example of the kind of
 		structures for which you may register handlers.
 
+
+if FREETZ_LIB_libexpat
+
+	choice
+		prompt "Version"
+			default FREETZ_LIB_libexpat_VERSION_CURRENT
+
+		config FREETZ_LIB_libexpat_VERSION_ABANDON
+			bool "2.7.5"
+			depends on FREETZ_TARGET_GCC_5_MAX
+
+		config FREETZ_LIB_libexpat_VERSION_CURRENT
+			bool "2.8.0"
+			depends on !FREETZ_TARGET_GCC_5_MAX
+
+	endchoice
+
+endif # FREETZ_LIB_libexpat
+

@@ -2,7 +2,9 @@ $(call PKG_INIT_LIB, 2.10)
 $(PKG)_LIB_VERSION:=2.0.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=c0f892943208266f9b6543b3ae308fab6284c5c90e627931446fb49b4221a072
-$(PKG)_SITE:=http://www.oberhumer.com/opensource/lzo/download
+$(PKG)_SITE:=https://www.oberhumer.com/opensource/lzo/download
+### WEBSITE:=https://www.oberhumer.com/opensource/lzo/
+### CHANGES:=https://www.oberhumer.com/opensource/lzo/download/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/liblzo2.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/liblzo2.so.$($(PKG)_LIB_VERSION)
@@ -11,6 +13,7 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/liblzo2.so.$($(PKG)_LIB_VERSION)
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --disable-asm
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -32,6 +35,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LZO_DIR) clean

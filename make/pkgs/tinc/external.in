@@ -1,6 +1,6 @@
 config EXTERNAL_FREETZ_PACKAGE_TINC
 	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_TINC
-	bool "Tinc"
+	bool "tinc"
 	default n
 	help
 		externals the following file(s):

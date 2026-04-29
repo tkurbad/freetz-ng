@@ -8,6 +8,7 @@ for files in \
   lib/libikeossl*.so* \
   usr/share/ctlmgr/libvpnstat.so \
   usr/www/all/internet/vpn.lua \
+  usr/www/all/internet/vpn/ \
   $(find ${FILESYSTEM_MOD_DIR} -iwholename "*usr/www/*/html/*vpn*" -printf "%P\n") \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$files"
@@ -18,6 +19,11 @@ for files in $(grep -rsl '<? setvariable var:showVpn 1 ?>' ${HTML_SPEC_MOD_DIR})
 	echo2 "patching $files"
 	modsed 's/<? setvariable var:showVpn 1 ?>//' "$files"
 done
+
+# patcht Internet > Freigaben > VPN (IPSec)
+htmltab_remove "/js3/views/internet/access/access.html" "/access/vpn"
+# patcht Internet > Freigaben > VPN (WireGuard)
+htmltab_remove "/js3/views/internet/access/access.html" "/access/wireguard"
 
 # patcht System > FRITZ!Box-Benutzer > edit > Berechtigungen > VPN
 file="${HTML_LANG_MOD_DIR}/system/boxuser_edit.lua"

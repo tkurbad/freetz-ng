@@ -5,6 +5,10 @@ _hash:=\#
 _bang:=!
 _dollar:=$$
 
+define _hash
+#
+endef
+
 define _newline
 
 

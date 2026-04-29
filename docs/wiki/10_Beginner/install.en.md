@@ -176,7 +176,7 @@ development `/trunk` if you wish.
 
 ### Notwendige Pakete
 
-* Siehe [PREREQUISITES](../../PREREQUISITES.md)
+* Siehe [PREREQUISITES](../../prerequisites/README.md)
 
 Für das Erstellen der Firmware kann auch Knoppix verwendet werden, wozu
 keine Linux-Installation erforderlich ist. Wichtig ist, dass zum
@@ -277,7 +277,7 @@ Hier wird zusätzlich folgendes benötigt:
 
 ### Installation der benötigten Pakete
 
-* Verschoben: [PREREQUISITES](../../PREREQUISITES.md)
+* Verschoben: [PREREQUISITES](../../prerequisites/README.md)
 
 ### Erstellung & Installation
 

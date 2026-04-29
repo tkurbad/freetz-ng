@@ -7,3 +7,4 @@ if [ "$EXTERNAL_FREETZ_PACKAGE_NMAP" == "y" ]; then
 	[ "$FREETZ_PACKAGE_NMAP_ncat" == "y" ] && EXTERNAL_FILES+=" /usr/bin/ncat"
 	[ "$FREETZ_PACKAGE_NMAP_nping" == "y" ] && EXTERNAL_FILES+=" /usr/bin/nping"
 fi
+

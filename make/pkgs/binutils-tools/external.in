@@ -1,0 +1,17 @@
+config EXTERNAL_FREETZ_PACKAGE_BINUTILS_TOOLS
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_BINUTILS_TOOLS
+	bool "binutils-tools"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/addr2line
+		 /usr/bin/ar
+		 /usr/bin/nm
+		 /usr/bin/objcopy
+		 /usr/bin/objdump
+		 /usr/bin/ranlib
+		 /usr/bin/readelf
+		 /usr/bin/size
+		 /usr/bin/strings
+		 /usr/bin/strip
+

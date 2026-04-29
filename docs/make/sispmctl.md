@@ -1,6 +1,6 @@
 # sispmctl 3.1 - DEPRECATED
   - Package: [master/make/pkgs/sispmctl/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/sispmctl/)
-  - Maintainer: -
+  - Steward: -
 
 **[sispmctl](http://sispmctl.sourceforge.net/)**
 ermöglicht das Schalten von 230V-Steckdosen über den USB-Anschluss der

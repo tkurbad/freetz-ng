@@ -1,7 +1,7 @@
 $(call PKG_INIT_BIN,20040226)
 $(PKG)_SOURCE:=br2684ctl_$($(PKG)_VERSION).orig.tar.gz
 $(PKG)_HASH:=9ea24c3b843349c5defd6060c569554ae626b065e96ad577714dc9172bfbff88
-$(PKG)_SITE:=http://ftp.debian.org/debian/pool/main/b/br2684ctl
+$(PKG)_SITE:=@DEBIAN/br2684ctl
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/br2684ctl
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/sbin/br2684ctl

@@ -1,5 +1,5 @@
 config EXTERNAL_FREETZ_PACKAGE_IMAGEMAGICK
-	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_IMAGEMAGICK
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_IMAGEMAGICK && EXTERNAL_SUBDIRS
 	bool "ImageMagick"
 	default n
 	help
@@ -7,5 +7,5 @@ config EXTERNAL_FREETZ_PACKAGE_IMAGEMAGICK
 		 /usr/bin/magick
 		 ${FREETZ_LIBRARY_DIR}/libMagickCore-7-Q16.so.10.*.*
 		 ${FREETZ_LIBRARY_DIR}/libMagickWand-7-Q16.so.10.*.*
-		 /etc/ImageMagick-7
+		 /etc/ImageMagick-7/
 

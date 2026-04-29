@@ -11,7 +11,7 @@ $(PKG)_SITE:=https://github.com/umurmur/umurmur/archive/refs/tags
 ### MANPAGE:=https://github.com/umurmur/umurmur/wiki
 ### CHANGES:=https://github.com/umurmur/umurmur/releases
 ### CVSREPO:=https://github.com/umurmur/umurmur
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/$(pkg)d
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/$(pkg)d

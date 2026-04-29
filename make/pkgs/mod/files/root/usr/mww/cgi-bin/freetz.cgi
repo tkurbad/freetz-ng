@@ -6,7 +6,11 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 cgi --id=freetz
 
-# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'Er4twXz\nMcBane87\nTobjasR\nL3P3\nhermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|github-actions\[bot\]|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' 
+false && \
+  (svn log --quiet | grep '^r' | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'Er4twXz\nMcBane87\nTobjasR\nL3P3\nhermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') \
+  | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|github-actions\[bot\]|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' \
+  | sed -r 's/([äöüÄÜÖ])/\&\1uml\;/g;y/äöüÄÖÜ/aouAOU/;s/\ß/\&szlig\;/g'
+
 cgi_begin "$(lang de:"&Uuml;ber" en:"About")"
 cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <center>
@@ -21,6 +25,7 @@ asmcc
 berndy2001
 Bodenseematze
 BojanSofronievski
+BoxenLuther
 buehmann
 BugReporter-ilKY
 cawidtu
@@ -63,7 +68,7 @@ JBBgameich
 Jens
 jer194
 johnbock
-JörgBerkel
+J&ouml;rgBerkel
 kamasudo
 kriegaex
 L3P3
@@ -78,6 +83,7 @@ markuschen
 MartenRingwelski
 martinkoehler
 Maurits
+MaxBuchholz
 MaxMuster
 maz
 McBane87
@@ -88,6 +94,7 @@ mickey
 mike
 milahu
 MilanHauth
+M.Koehler
 mrtnmtth
 Oliver
 openfnord
@@ -106,7 +113,7 @@ sf3978
 sfritz2
 smischke
 stblassitude
-SvenLübke
+SvenL&uuml;bke
 telsch
 thiloms
 TobjasR

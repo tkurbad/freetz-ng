@@ -3,14 +3,14 @@ $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH_1.27.2:=9d4be516b61e6480f156b11eb42577a13529f75d3383850bb75c50c285de63df
 $(PKG)_HASH_1.37.0:=3311dff32e746499f4df0d5df04d7eb396382d7e108bb9250e7b519b837043a4
 $(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_VERSION))
-$(PKG)_SITE:=https://www.busybox.net/downloads
+$(PKG)_SITE:=https://www.busybox.net/downloads,https://busybox.net/downloads/snapshots
 # run make/busybox/generate.sh after bump
 ### VERSION:=1.27.2/1.37.0
 ### WEBSITE:=https://www.busybox.net/
 ### MANPAGE:=https://www.busybox.net/downloads/BusyBox.html
 ### CHANGES:=https://www.busybox.net/news.html
 ### CVSREPO:=https://git.busybox.net/busybox/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_MAKE_DIR:=$(MAKE_DIR)/busybox
 
@@ -48,7 +48,7 @@ $(PKG_UNPACKED)
 
 $($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 	@cat $(TOPDIR)/.config \
-		| sed -nr 's!^(# )*(FREETZ_BUSYBOX___V[0-9]{3}_)([^_].*)!\1CONFIG_\3!p' \
+		| sed -nr 's!^(# )*(FREETZ_BUSYBOX___V[0-9]{3,8}_)([^_].*)!\1CONFIG_\3!p' \
 		> $(BUSYBOX_DIR)/.config ;\
 	for bbsym in $$(sed -rn 's/^depends_on ([^ ]+) .*/\1/p' "$(BUSYBOX_MAKE_DIR)/generate.sh"); do \
 		if ! grep -qE "(# )?CONFIG_$$bbsym[= ]" "$(BUSYBOX_DIR)/.config"; then \

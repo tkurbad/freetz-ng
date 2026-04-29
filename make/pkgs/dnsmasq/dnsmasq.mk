@@ -1,14 +1,14 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_DNSMASQ_VERSION_ABANDON),2.80,2.91))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_DNSMASQ_VERSION_ABANDON),2.80,2.92))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=cdaba2785e92665cf090646cba6f94812760b9d7d8c8d0cfb07ac819377a63bb
-$(PKG)_HASH_CURRENT:=f622682848b33677adb2b6ad08264618a2ae0a01da486a93fd8cd91186b3d153
+$(PKG)_HASH_CURRENT:=4bf50c2c1018f9fbc26037df51b90ecea0cb73d46162846763b92df0d6c3a458
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_DNSMASQ_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://thekelleys.org.uk/dnsmasq
 ### WEBSITE:=https://thekelleys.org.uk/dnsmasq/doc.html
 ### MANPAGE:=https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html
 ### CHANGES:=https://thekelleys.org.uk/dnsmasq/CHANGELOG
 ### CVSREPO:=https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_STARTLEVEL=40 # multid-wrapper may start it earlier!
 

@@ -15,11 +15,16 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      packages: read
+      contents: write
     container:
-#     image: ubuntu:20.04
-#     image: freetzng/generate
-      image: ghcr.io/freetz-ng/generate
-    runs-on: ubuntu-latest
+      image: ghcr.io/freetz-ng/internal/generate
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.FREETZ_DLTOKEN || secrets.GITHUB_TOKEN }}
+      options: --user 1001:1001
+    runs-on: ubuntu-24.04
     if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
@@ -39,9 +44,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          umask 0022
           git config --global --add safe.directory $GITHUB_WORKSPACE
-          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+          git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE
+          git checkout $GITHUB_REF_NAME
 
       - name: generate
         run: |

@@ -6,7 +6,7 @@ $(PKG)_SITE:=@SF/smartmontools
 ### MANPAGE:=https://www.smartmontools.org/wiki/TocDoc
 ### CHANGES:=https://github.com/smartmontools/smartmontools/releases
 ### CVSREPO:=https://www.smartmontools.org/timeline
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARIES := smartctl
 $(PKG)_BINARIES_BUILD_DIR := $(addprefix $($(PKG)_DIR)/,$($(PKG)_BINARIES))

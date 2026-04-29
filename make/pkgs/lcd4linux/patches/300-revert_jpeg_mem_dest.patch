@@ -9,7 +9,7 @@
  #include "drv_generic_graphic.h"
 -#include "jpeg_mem_dest.h"
  
- #define FILLSIZE 16384 // 16kB
+ #define PADSIZE 0x10000 // 64kB
  #define HEADERSIZE 12
 --- jpeg_mem_dest.h
 +++ jpeg_mem_dest.h

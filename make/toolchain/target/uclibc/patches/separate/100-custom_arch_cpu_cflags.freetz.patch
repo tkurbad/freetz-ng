@@ -1,6 +1,6 @@
 --- Rules.mak
 +++ Rules.mak
-@@ -404,6 +404,7 @@
+@@ -401,6 +401,7 @@
  
  ifeq ($(TARGET_ARCH),mips)
  	OPTIMIZATION+=-mno-split-addresses

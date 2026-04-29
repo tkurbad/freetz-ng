@@ -45,10 +45,10 @@ Variables:
 	Buildtype	1 (1000 for --down)	Common values: "1"=retail, "1001"=labor, "1000"=inhaus
 	Serial		[random]		Example: "123456789ABC"
 	Nonce		[random]		Example: "123456789aBcDeEfGhIjkL=="
-	Flag		[shuffle]		If you do not want to set a flag use "empty", for docsis devices "cable_retail" is added.
+	Flag		[shuffle]		If you do not want to set a flag use "empty", separate multiple by a space, for docsis devices "cable_retail" is added.
 	UserAgent	[shuffle]		Values: "Box", "TestClient" or "BoxInternetCheck"
-	Provider	[shuffle]		Use "empty" if you want no value
-	ProviderName	[empty]			This is not added if not set
+	Provider	[shuffle]		Examples: "tonline", "vodafone2_vdsl", "vodafone2_adsl", "1und1", "otwored", "empty" (if you want no value)
+	ProviderName	[shuffle]		Examples: "Telekom", "Vodafone", "1&1 Telecom GmbH", "o2", "empty" (if you want no value), "notset" (don't add variable)
 	ManualRequest	[shuffle]		Values: "true" or "false"
 	UpdateConfig	[shuffle]		Values: "1" or "3"
 	DHW (dect)	[mandatory]		The MHW code of the device, eg "06.08" for Dect 302
@@ -62,13 +62,14 @@ Examples:
 	env - tools/juis_check --down                                                        HW=267                                 -i -s -d
 	env - tools/juis_check        Version=154.07.39-90000 Name=FRITZ\!Box 7590           HW=226  Buildtype=1001    Annex=B      -i -s -d
 	env - tools/juis_check        Version=252.07.20       Name=FRITZ\!Box 6660 Cable     HW=252  Flag=cable_retail Annex=Kabel  -i -s -d
+	env - tools/juis_check        Version=113.07.60       Provider=tonline               HW=185  OEM=avm Lang=de Country=049    -i -s -d
 	env - tools/juis_check        Version=29.04.87                                       HW=94                                  -i -s -d
 	env - tools/juis_check        Version=67                                             HW=137                                 -i -s -d
 	env - tools/juis_check                                                               HW=156                                 -i -s -d
 	env - tools/juis_check                                                               HW=259                                 -i -s -d
 	for x in $(seq 150 300); do                            env - tools/juis_check        HW=$x                                  -a; done
 	for x in $(seq 200 300); do                            env - tools/juis_check        HW=$x   Buildtype=1001                 -a; done
-	for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; env - tools/juis_check --dect HW=259  DHW=${x::-1}.0${x:2}           -a; done
+	for x in $(seq  10 139); do [ ${#x} != 3 ] && x="0$x"; env - tools/juis_check --dect HW=259  DHW=${x::-1}.0${x:2}           -a; done
 	Or just: tools/juis m  # f
 
 EOX
@@ -84,7 +85,6 @@ main() {
 	local zwsp="$(printf '\342\200\212')"
 	#soap='SOAPAction: "http://jason.avm.de/updatecheck/BoxFirmwareUpdateCheck"'
 
-
 	[ -z "$Nonce" ] && Nonce="$(dd if=/dev/urandom bs=16 count=1 2>/dev/null | base64)"
 
 	[ -z "$UserAgent" ] && UserAgent="$(echo 'Box TestClient BoxInternetCheck' | sed 's/ /\n/g' | shuf | head -n1)"
@@ -93,8 +93,11 @@ main() {
 
 	[ -z "$UpdateConfig" ] && UpdateConfig="$(echo '1 3' | sed 's/ /\n/g' | shuf | head -n1)"
 
-	[ -z "$Provider" ] && Provider="$(echo 'null oma_ipclient oma_lan vodafone2_vdsl' | sed 's/ /\n/g' | shuf | head -n1 | grep -v '^null$')"
+	[ -z "$Provider" ] && Provider="$(echo 'null oma_ipclient oma_lan tonline vodafone2_vdsl vodafone2_adsl 1und1 otwored' | sed 's/ /\n/g' | shuf | head -n1 | grep -v '^null$')"
 	[ "$Provider" == "empty" ] && Provider=''
+
+	[ -z "$ProviderName" ] && ProviderName="$(echo 'null Telekom Vodafone o2' | sed 's/ /\n/g' | shuf | head -n1 | grep -v '^null$')"
+	[ "$ProviderName" == "empty" ] && ProviderName=''
 
 	[ -z "$Serial" ] && while [ "${#Serial}" != "12" ]; do Serial="$(hexdump -n6 -e '/1 "%02X"' /dev/urandom | sed 's/[^0-9A-F]//g')"; done
 
@@ -173,11 +176,11 @@ main() {
 
 	#old: /Jason/UpdateCheck
 	sdir='/Jason/UpdateInfoService'
-	Envelope='xmlns:e="http://juis.avm.de/updateinfo" xmlns:q="http://juis.avm.de/request">'
+	Envelope='xmlns:e="http://juis.avm.de/updateinfo" xmlns:q="http://juis.avm.de/request"'
 
 	if [ "$CHK" == "BoxMessageCheck" ]; then
 		sdir='/Jason/MessageInfoService'
-		Envelope='xmlns:e="http://juis.avm.de/messageinfo" xmlns:q="http://juis.avm.de/request" xmlns:s="http://juis.avm.de/response">'
+		Envelope='xmlns:e="http://juis.avm.de/messageinfo" xmlns:q="http://juis.avm.de/request" xmlns:s="http://juis.avm.de/response"'
 	fi
 	
 	url="$host$sdir"
@@ -202,7 +205,7 @@ main() {
 <q:Lang>$Lang</q:Lang></e:DeviceInfo>"
 	fi
 
-if [ -n "$ProviderName" ]; then
+if [ "$ProviderName" != "notset" ]; then
 ProviderName="
 <q:ProviderName>$ProviderName</q:ProviderName>"
 fi
@@ -214,12 +217,12 @@ fi
 		[ -n "$docsis" ] && Flag="$Flag cable_retail"
 		[ -z "${Flag// /}" ] && Flag='empty'
 	fi
-for x in ${Flag//null/}; do flags="<q:Flag>${x/empty/}</q:Flag>
-$flags"; done
+for x in ${Flag//null/}; do flags="$flags
+<q:Flag>${x/empty/}</q:Flag>"; done
 flags="$(echo "$flags" | grep -v '^$')"
 
 body=$(cat << EOX
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" $Envelope
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" $Envelope>
 <soap:Header/>
 <soap:Body>
 <e:$CHK>
@@ -261,7 +264,19 @@ EOX
 	[ "$DEV" == 'i' -o "$DEV" == 'a' ] && cache='/dev/null'
 
 	if [ "$SSL" == 'y' ]; then
-		resp="$(curl -s -X POST -H "${type}" ${soap:+-H $soap} -d "${body}" "https://${url}" --cacert "${avmca}" \
+#		resp="$(curl -v -s \
+		resp="$(curl -s \
+		  --http1.0 -X POST \
+		  -H "User-Agent:" \
+		  -H "Accept:" \
+		  -H "Host: ${url%%/*}" \
+		  -H "Connection: close" \
+		  -H "Content-Length: ${#body}" \
+		  -H "Content-Type: ${type}" \
+		  ${soap:+-H "$soap"} \
+		  -d "${body}" \
+		  "https://${url}" \
+		  --cacert "${avmca}" \
 		  | tee $cache | sed 's,><,>\n<,g' | sed 's,</.*,,g;s/.*>$//g')"
 	else
 		resp="$(echo -e "${post}" | nc ${url%%/*} 80 2>/dev/null \
@@ -271,15 +286,15 @@ EOX
 
 	case "$DEV" in
 		a)
-			URL="$(echo "$resp" | sed -n "s/^<ns3:DownloadURL>//p")"
+			URL="$(echo "$resp" | sed -n 's/^<ns3:DownloadURL>//p')"
 			[ -n "$URL" ] && ( [ "$CHK" == "DeviceFirmwareUpdateCheck" ] && echo "$DHW=$URL" || echo "$HW=$URL" )
 			;;
 		i)
-			URL="$(echo "$resp" | sed -n "s/^<ns3:DownloadURL>//p")"
+			URL="$(echo "$resp" | sed -n 's/^<ns3:DownloadURL>//p')"
 			[ -n "$URL" ] && echo "URL=$URL"
 			;;
 		s)
-			VER="$(echo "$resp" | sed -n "s/^<ns3:Version>//p")"
+			VER="$(echo "$resp" | sed -n 's/^<ns3:Version>//p')"
 			[ -n "$VER" -a "$VER" != "$Version" ] && echo "Found newer version: $VER" 1>&2 || echo "No newer version found." 1>&2
 			;;
 		*)
@@ -305,7 +320,7 @@ CHK='BoxFirmwareUpdateCheck'
 args() {
 	[ "${#*}" == '0' ] && help
 	local DEVA DEVI DEVS DEVD
-	for x in $*; do
+	for x in "$@"; do
 		l="${x%=*}"
 		r="${x#*=}"
 		[ "$x" == '-a' ] && DEVA='x'
@@ -320,7 +335,7 @@ args() {
 		[ "$x" == '--plain' ] && SSL='n'
 		[ "$x" == '--https' ] && SSL='y'
 		[ "$x" == "$l" ] && continue
-		eval $l="$r"
+		eval $l='"$r"'
 	done
 	[ -n "$DEVA" ] && DEV='a'
 	[ -n "$DEVI" ] && DEV='i'

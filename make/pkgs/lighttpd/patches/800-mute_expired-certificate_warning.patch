@@ -1,6 +1,6 @@
 --- src/mod_mbedtls.c
 +++ src/mod_mbedtls.c
-@@ -1239,10 +1239,6 @@
+@@ -1244,10 +1244,6 @@
          mod_mbedtls_kp_free(kp);
          return NULL;
      }

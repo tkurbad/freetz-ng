@@ -99,7 +99,8 @@ CHECK_PREREQ_TOOL:=$(TOOLS_DIR)/prerequisites
 GENERATE_IN_TOOL:=$(TOOLS_DIR)/genin
 TAR:=$(TOOLS_DIR)/tar-gnu
 SED:=sed
-PATCHELF:=patchelf
+PATCHELF_HOST:=patchelf
+PATCHELF_TARGET:=patchelf-target
 PYTHON3=python3
 MESON=meson
 CMAKE=cmake
@@ -154,7 +155,7 @@ $(error Your make ($(MAKE_VERSION)) is too old. Go get at least 3.82)
 endif
 
 # Current user == root? -> Error
-ifeq ($(shell echo $$UID),0)
+ifeq ($(shell echo "$${UID}"),0)
 $(error Running makefile as root is prohibited! Please build Freetz as normal user)
 endif
 
@@ -191,7 +192,7 @@ endif
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 ifneq ($(NO_PREREQ_CHECK),y)
 ifneq (OK,$(shell $(CHECK_PREREQ_TOOL) check >&2 && echo OK))
-$(error Some prerequisites are missing! Install the missing packages with 'tools/prerequisites install' or check https://freetz-ng.github.io/freetz-ng/PREREQUISITES for hints. See '.prerequisites' for why)
+$(error Some prerequisites are missing! Install the missing packages with 'tools/prerequisites install' or check https://freetz-ng.github.io/freetz-ng/prerequisites for hints. See '.prerequisites' for why)
 endif
 endif
 endif
@@ -224,26 +225,41 @@ ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 ifeq ($(shell uname -r | grep -q -i 'Microsoft' && echo y),y)
 ifeq ($(FREETZ_TOOLCHAIN_CCACHE),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_TOOLCHAIN_CCACHE=.*/\# FREETZ_TOOLCHAIN_CCACHE is not set/' -i $(TOPDIR)/.config)
-$(info You are running WSL, ccache automatically disabled.)
+$(warning You are running WSL, ccache automatically disabled.)
 endif
 endif
 # check cpu for aarch64
 ifeq ($(shell uname -m),aarch64)
 ifeq ($(FREETZ_AVM_KERNEL_CONFIG_AREA_KNOWN),y)
 DLCHG:=y
-$(info You have an aarch64 CPU+OS and so you can not compile and run 32-bit code, required by yf-akcarea-host which is used for this avm device.)
+$(warning You have an aarch64 CPU+OS and so you can not compile and run 32-bit code, required by yf-akcarea-host which is used for this avm device.)
 endif
+endif
+# check gcc for ccache
+ifeq ($(FREETZ_TOOLCHAIN_CCACHE),y)
+ifneq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
+ifneq ($(shell test "$(shell gcc -dumpversion)" -ge 10 && echo y),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_TOOLCHAIN_CCACHE=.*/\# FREETZ_TOOLCHAIN_CCACHE is not set/' -i $(TOPDIR)/.config)
+$(warning You have installed gcc older than version 10, ccache automatically disabled.)
+endif
+endif
+endif
+# check ubuntu for uutils' coreutils
+ifeq ($(shell ls --version | grep -q uutils && echo y),y)
+DLCHG:=y
+$(warning You have buggy uutils-coreutils installed. Please remove it!)
+$(warning To uninstall run: apt remove --allow-remove-essential coreutils-from-uutils)
 endif
 # check cpu for x86_64
 ifneq ($(shell uname -m),x86_64)
 ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
-$(info You have no x86_64 CPU, precompiled (download) toolchains automatically disabled.)
+$(warning You have no x86_64 CPU, precompiled (download) toolchains automatically disabled.)
 endif
 ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/\# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
-$(info You have no x86_64 CPU, precompiled (download) host-tools automatically disabled.)
+$(warning You have no x86_64 CPU, precompiled (download) host-tools automatically disabled.)
 endif
 endif
 # check cpu for AVX2
@@ -251,11 +267,11 @@ ifneq ($(shell grep -q ' avx2 ' /proc/cpuinfo && echo y),y)
 ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
-$(info You have no CPU with AVX2 support, precompiled (download) toolchains automatically disabled.)
+$(warning You have no CPU with AVX2 support, precompiled (download) toolchains automatically disabled.)
 endif
 ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/\# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
-$(info You have no CPU with AVX2 support, precompiled (download) host-tools automatically disabled.)
+$(warning You have no CPU with AVX2 support, precompiled (download) host-tools automatically disabled.)
 endif
 endif
 # check debian for <11
@@ -263,27 +279,27 @@ ifeq ($([ "$(sed 's/\..*//' /etc/debian_version 2>/dev/null)" -lt 11 ] 2>/dev/nu
 ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)
-$(info Debian version before 11-bullseye are too old, precompiled (download) toolchains automatically disabled.)
+$(warning Debian version before 11-bullseye are too old, precompiled (download) toolchains automatically disabled.)
 endif
 ifeq ($(FREETZ_HOSTTOOLS_DOWNLOAD),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_HOSTTOOLS_DOWNLOAD=.*/\# FREETZ_HOSTTOOLS_DOWNLOAD is not set/' -i $(TOPDIR)/.config)
-$(info Debian version before 11-bullseye are too old, precompiled (download) host-tools automatically disabled.)
+$(warning Debian version before 11-bullseye are too old, precompiled (download) host-tools automatically disabled.)
 endif
 endif
 # compat 2020/08: change FEATURE_CROND_DIR: /var/spool/cron -> /mod/var/spool/cron
 ifeq ($(shell sed -n 's/^FREETZ_BUSYBOX___V..._FEATURE_CROND_DIR=//p' $(TOPDIR)/.config 2>/dev/null),"/var/spool/cron")
 DLCHG:=$(shell echo 'y' ; sed 's/^\(FREETZ_BUSYBOX___V..._FEATURE_CROND_DIR\)=.*/\1=\"\/mod\/var\/spool\/cron\"/' -i $(TOPDIR)/.config)
-$(info BusyBox FEATURE_CROND_DIR automatically changed.)
+$(warning BusyBox FEATURE_CROND_DIR automatically changed.)
 endif
 # compat 2021/04: change LAST_SYSTEM_ID: 999 -> 899
 ifeq ($(shell sed -n 's/^FREETZ_BUSYBOX___V..._LAST_SYSTEM_ID=//p' $(TOPDIR)/.config 2>/dev/null),999)
 DLCHG:=$(shell echo 'y' ; sed 's/^\(FREETZ_BUSYBOX___V..._LAST_SYSTEM_ID\)=.*/\1=899/' -i $(TOPDIR)/.config)
-$(info BusyBox LAST_SYSTEM_ID automatically changed.)
+$(warning BusyBox LAST_SYSTEM_ID automatically changed.)
 endif
 # compat 2022/04: remove orphan yourfritz link in tools
 ifeq ($(shell test -L $(TOPDIR)/tools/yf && echo y),y)
 DLCHG:=$(shell echo 'y' ; rm -f $(TOPDIR)/tools/yf $(TOPDIR)/source/host-tools/yf-*/.installed)
-$(info Orphan link automatically removed.)
+$(warning Orphan link automatically removed.)
 endif
 #
 $(if $(DLCHG),$(error Please re-run))
@@ -363,7 +379,11 @@ distclean: $(TOOLS_DISTCLEAN) common-distclean
 
 else
 
-step: image world tools firmware
+ifneq ($(strip $(FREETZ_DL_IMAGE_AT_LAST)),y)
+step: image  world tools firmware
+else
+step:        world tools firmware  image
+endif
 
 -include .config.cmd
 
@@ -490,7 +510,7 @@ $(filter $(TOOLS_BUILD_LOCAL),$(TOOLS)): % : %-precompiled
 
 $(patsubst %,%-autofix,$(TOOLS)): %-autofix : %-dirclean
 	$(MAKE) AUTO_FIX_PATCHES=y $*-unpacked
-$(patsubst %,%-recompile,$(TOOLS)): %-recompile : %-dirclean %-precompiled
+$(patsubst %,%-recompile,$(TOOLS)): %-recompile : %-distclean %-precompiled
 
 $(patsubst %,%-fixhardcoded,$(TOOLS)): %-fixhardcoded : 
 
@@ -648,7 +668,7 @@ common-cacheclean:
 	[ ! -x .fwmod_custom ] || ./.fwmod_custom clean
 	./fwmod_custom clean
 	$(RM) make/pkgs/Config.in.generated make/pkgs/external.in.generated
-	$(RM) .config.compressed .config.old  .config.*.tmp
+	$(RM) .config.compressed .config.old .config.*.tmp
 	$(RM) .packages .exclude-release-tmp $(CONFIG_IN_CACHE)
 	$(RM) $(DL_FW_DIR)/*.detected.image $(DL_FW_DIR)/*.detected.image.url
 	$(RM) -r $(BUILD_DIR)

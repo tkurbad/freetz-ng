@@ -1,0 +1,11 @@
+--- avm/config-brcm6764-1700_08.06
++++ freetz/config-brcm6764-1700_08.06
+@@ -4,7 +4,7 @@
+ #
+ 
+ #
+-# Compiler: arm-buildroot-linux-gnueabi-gcc.br_real (Buildroot -g162062dc) 10.5.0
++# Compiler: arm-unknown-linux-gnueabi-gcc (GCC) 10.5.0
+ #
+ CONFIG_CC_IS_GCC=y
+ CONFIG_GCC_VERSION=100500

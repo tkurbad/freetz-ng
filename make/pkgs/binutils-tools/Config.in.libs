@@ -1,0 +1,39 @@
+menu "binutils"
+#	visible if FALSE
+	depends on FREETZ_PACKAGE_BINUTILS_TOOLS
+
+	config FREETZ_LIB_libbfd
+		bool "libbfd (libbfd.so)"
+		depends on \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_ADDR2LINE || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_AR || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_NM || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_OBJCOPY || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_OBJDUMP || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_RANLIB || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_SIZE || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_STRINGS || \
+			FREETZ_PACKAGE_BINUTILS_TOOLS_STRIP
+		default n
+
+	config FREETZ_LIB_libctf
+		bool "libctf (libctf.so)"
+		depends on FREETZ_PACKAGE_BINUTILS_TOOLS_OBJDUMP
+		default n
+
+	config FREETZ_LIB_libctf_nobfd
+		bool "libctf-nobfd (libctf-nobfd.so)"
+		depends on FREETZ_PACKAGE_BINUTILS_TOOLS_READELF
+		default n
+
+	config FREETZ_LIB_libopcodes
+		bool "libopcodes (libopcodes.so)"
+		depends on FREETZ_PACKAGE_BINUTILS_TOOLS_OBJDUMP
+		default n
+
+	config FREETZ_LIB_libsframe
+		bool "libsframe (libsframe.so)"
+		default n
+
+endmenu
+

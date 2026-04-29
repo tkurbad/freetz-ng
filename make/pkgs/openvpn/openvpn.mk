@@ -1,16 +1,17 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.11,2.6.14)))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.11,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_26),2.6.20,2.7.3))))
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_24:=66952d9c95490e5875f04c9f8fa313b5e816d1b7b4d6cda3fb2ff749ad405dee
 $(PKG)_HASH_25:=7e2672119bd4639819d560f332a8b9b7e28f562425c77899f36d419fe4265f56
-$(PKG)_HASH_26:=9eb6a6618352f9e7b771a9d38ae1631b5edfeed6d40233e243e602ddf2195e7a
+$(PKG)_HASH_26:=952ecee5b911a5353c0a6d40af62a7076c6dea1481ef204ce6d3f10481531315
+$(PKG)_HASH_27:=24f54cb0759330762f1140b874c07c8542c6a08b13457d8570dafd387d49397a
 $(PKG)_HASH:=$($(PKG)_HASH_$(subst .,,$($(PKG)_MAJOR_VERSION)))
 $(PKG)_SITE:=https://swupdate.openvpn.net/community/releases,https://build.openvpn.net/downloads/releases
 ### WEBSITE:=https://openvpn.net/community-downloads/
 ### MANPAGE:=https://community.openvpn.net/openvpn/wiki
 ### CHANGES:=https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst
 ### CVSREPO:=https://github.com/OpenVPN/openvpn
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$($(PKG)_MAJOR_VERSION)
 ifeq ($(strip $(FREETZ_PACKAGE_OPENVPN_WITH_TRAFFIC_OBFUSCATION)),y)
@@ -26,11 +27,14 @@ $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_OPENVPN_OPENSSL),openssl)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_OPENVPN_MBEDTLS),mbedtls)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_LZO),lzo)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_LZ4),lz4)
-$(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_26),libcap-ng)
+ifneq ($(filter y, $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_24)) $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_25)) ),y)
+$(PKG)_DEPENDS_ON += libcap-ng
+endif
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENVPN_VERSION_24
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENVPN_VERSION_25
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENVPN_VERSION_26
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENVPN_VERSION_27
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENVPN_OPENSSL
 $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHORT_VERSION
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_OPENVPN_MBEDTLS
@@ -54,7 +58,7 @@ $(PKG)_CONFIGURE_ENV += ac_cv_func_strsep=no
 $(PKG)_CONFIGURE_ENV += ac_cv_func_poll=no
 endif
 
-ifneq ($(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_26)),y)
+ifeq ($(filter y, $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_24)) $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_25)) ),y)
 $(PKG)_CONFIGURE_ENV += ac_cv_path_IFCONFIG=/sbin/ifconfig
 $(PKG)_CONFIGURE_ENV += ac_cv_path_IPROUTE=/sbin/ip
 $(PKG)_CONFIGURE_ENV += ac_cv_path_ROUTE=/sbin/route
@@ -70,6 +74,9 @@ endif
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_ADD_EXTRA_FLAGS,(C|LD)FLAGS|LIBS)
 
 $(PKG)_EXTRA_CFLAGS  += -ffunction-sections -fdata-sections
+ifneq ($(filter y, $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_24)) $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_25)) $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_26)) ),y)
+$(PKG)_EXTRA_CFLAGS  += -D_STRUCT_TIMESPEC
+endif
 $(PKG)_EXTRA_LDFLAGS += -Wl,--gc-sections
 $(PKG)_EXTRA_LDFLAGS += $(if $(FREETZ_PACKAGE_OPENVPN_STATIC),-all-static)
 
@@ -77,7 +84,9 @@ $(PKG)_CONFIGURE_OPTIONS += --sysconfdir=/mod/etc/openvpn
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_LZO),--enable-lzo,--disable-lzo)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_LZ4),--enable-lz4,--disable-lz4)
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
+ifeq ($(filter y, $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_24)) $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_25)) $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_26)) ),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-multihome
+endif
 $(PKG)_CONFIGURE_OPTIONS += --disable-plugins
 $(PKG)_CONFIGURE_OPTIONS += --disable-port-share
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_MGMNT),--enable-management,--disable-management)
@@ -86,7 +95,7 @@ $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_OPENSSL),--with-crypto
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_MBEDTLS),--with-crypto-library=mbedtls)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_USE_IPROUTE),--enable-iproute2)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_ENABLE_SMALL),--enable-small,--disable-small)
-ifeq ($(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_26)),y)
+ifneq ($(filter y, $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_24)) $(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_25)) ),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-dco
 endif
 

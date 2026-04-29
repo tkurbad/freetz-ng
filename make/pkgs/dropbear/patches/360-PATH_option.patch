@@ -9,7 +9,7 @@
  #endif
 --- src/runopts.h
 +++ src/runopts.h
-@@ -143,6 +143,7 @@
+@@ -144,6 +144,7 @@
  
  	int pass_on_env;
  
@@ -19,7 +19,7 @@
  extern svr_runopts svr_opts;
 --- src/svr-chansession.c
 +++ src/svr-chansession.c
-@@ -1011,11 +1011,7 @@
+@@ -997,11 +997,7 @@
  	addnewvar("LOGNAME", ses.authstate.pw_name);
  	addnewvar("HOME", ses.authstate.pw_dir);
  	addnewvar("SHELL", get_user_shell());
@@ -59,7 +59,7 @@
  #if DROPBEAR_SVR_LOCALANYFWD
  	svr_opts.nolocaltcp = 0;
  #endif
-@@ -296,6 +300,9 @@
+@@ -302,6 +306,9 @@
  				case 'P':
  					next = &svr_opts.pidfile;
  					break;
@@ -69,7 +69,7 @@
  #ifdef SO_BINDTODEVICE
  				case 'l':
  					next = &svr_opts.interface;
-@@ -417,6 +424,10 @@
+@@ -430,6 +437,10 @@
  	}
  #endif
  

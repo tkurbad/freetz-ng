@@ -8,10 +8,22 @@ config FREETZ_LIB_libxml2
 	help
 		XML toolkit from the GNOME project
 
+if FREETZ_LIB_libxml2
+
 	config FREETZ_LIB_libxml2_WITH_HTML
-		bool "build libxml2 with html support" if FREETZ_LIB_libxml2
+		bool "Build with HTML parser"
 		default n
 		help
 			Adds html parsing capability to libxml2. This increases the size of
-			libxml2 by 120kB. Html parsing is required to build libxslt.
+			libxml2 by 121kB. Html parsing is required to build libxslt.
+
+	config FREETZ_LIB_libxml2_WITH_RELAXNG
+		bool "Build with RELAX NG support"
+		default n
+		help
+			Enables RELAX NG schema validation support.
+			RELAX NG is an alternative to XML Schema for validating XML documents.
+			This increases the size of libxml2 by 96kB.
+
+endif # FREETZ_LIB_libxml2
 

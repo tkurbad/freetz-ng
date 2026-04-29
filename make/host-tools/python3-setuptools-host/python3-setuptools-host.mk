@@ -8,7 +8,7 @@ $(PKG)_SITE:=https://distfiles.macports.org/py-setuptools,https://files.pythonho
 ### MANPAGE:=https://setuptools.pypa.io/
 ### CHANGES:=https://pypi.org/project/setuptools/#history
 ### CVSREPO:=https://github.com/pypa/setuptools
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DEPENDS_ON+=python3-pip-host
 

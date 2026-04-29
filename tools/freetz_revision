@@ -1,9 +1,16 @@
 #! /usr/bin/env bash
 # shows current svn-revision+git-hash and more
-#Arg $1: <fwmod|short|make|ticks>
+#Arg $1: <fwmod|short|make|ticks|repo>
 DIR="$(readlink -f ${0%/*}/..)"
 
-if [ "$1" != "${1#t}" ]; then
+if [ "${1}" != "${1#r}" ]; then
+	[ -d $DIR/.svn ] && REPO="$(svn info --show-item repos-root-url)"
+	[ -e $DIR/.git ] && REPO="$(git config --get remote.origin.url)"
+	echo "${REPO,,}" | sed 's,.*/,,;s/\.git$//'
+	exit
+fi
+
+if [ "${1}" != "${1#t}" ]; then
 	TICKS="0"
 	[ -d $DIR/.svn ] && TICKS="$(svn info --show-item last-changed-date)"
 	[ -e $DIR/.git ] && TICKS="$(git log -1 --pretty=%ct)"

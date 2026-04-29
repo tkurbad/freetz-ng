@@ -5,3 +5,4 @@
 [ "$EXTERNAL_FREETZ_PACKAGE_TRANSMISSION_EDIT" == "y" ] && EXTERNAL_FILES+=" /usr/bin/transmission-edit"
 [ "$EXTERNAL_FREETZ_PACKAGE_TRANSMISSION_SHOW" == "y" ] && EXTERNAL_FILES+=" /usr/bin/transmission-show"
 [ "$EXTERNAL_FREETZ_PACKAGE_TRANSMISSION_WEBINTERFACE" == "y" ] && EXTERNAL_FILES+=" /usr/share/transmission-web-home"
+

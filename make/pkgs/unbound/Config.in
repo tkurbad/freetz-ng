@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_UNBOUND
-	bool "Unbound 1.23.1"
+	bool "Unbound 1.24.2"
 	depends on FREETZ_KERNEL_VERSION_2_6_39_MIN
 	select FREETZ_LIB_libssl
 	select FREETZ_LIB_libcrypto

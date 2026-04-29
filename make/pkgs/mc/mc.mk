@@ -8,7 +8,7 @@ $(PKG)_SITE:=http://ftp.midnight-commander.org,ftp://ftp.midnight-commander.org/
 ### MANPAGE:=http://midnight-commander.org/wiki/doc
 ### CHANGES:=https://github.com/MidnightCommander/mc/blob/master/doc/NEWS
 ### CVSREPO:=https://github.com/MidnightCommander/mc
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_MC_VERSION_ABANDON),abandon,current)
 

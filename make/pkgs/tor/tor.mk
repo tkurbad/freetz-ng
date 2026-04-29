@@ -1,12 +1,12 @@
-$(call PKG_INIT_BIN, 0.4.8.17)
+$(call PKG_INIT_BIN, 0.4.8.23)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=79b4725e1d4b887b9e68fd09b0d2243777d5ce3cd471e538583bcf6f9d8cdb56
+$(PKG)_HASH:=325cb8afba31e6e7109a4c6636b97df7bf206535c1f8e500be4e741ec40b367c
 $(PKG)_SITE:=https://www.torproject.org/dist
 ### WEBSITE:=https://www.torproject.org/download/tor/
 ### MANPAGE:=https://trac.torproject.org/projects/tor/wiki/
 ### CHANGES:=https://gitlab.torproject.org/tpo/core/tor/tags
 ### CVSREPO:=https://gitweb.torproject.org/tor.git/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/app/tor
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/tor

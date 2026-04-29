@@ -1,0 +1,38 @@
+--- usr/www/all/internet/spectrum.js
++++ usr/www/all/internet/spectrum.js
+@@ -9,7 +9,7 @@
+ import{compare}from"/utils/general.js";
+ const lib={};
+ let active=false;
+-let showMinMax=false;
++let showMinMax=true;
+ let defChartChannelLinePatternsSVG;
+ let snrData={};
+ function renderSNR(container,
+@@ -389,8 +389,8 @@
+ html2.div({class:"formular"},
+ html2.div(html2.a({class:"textlink nocancel",
+ id:"uiToggleMinMax"},
+-"{?557:386?}")),
++"{?557:61?}")),
+-html2.div(html2.a({class:"hide",
++html2.div(html2.a({class:"textlink",
+ id:"uiMinMaxReset"},
+ "{?557:66?}"))));
+ return page;
+@@ -617,13 +617,13 @@
+ pilotTones={};
+ detectedRfiValues={};
+ gResetMinMax=false;
+-showMinMax=false;
++showMinMax=true;
+ };
+ lib.deinit=function(){newval.deinit();
+ snrData={};
+ bitsData={};
+ powerActData={};
+-showMinMax=false;
++showMinMax=true;
+ gResetMinMax=false;
+ active=false;
+ };

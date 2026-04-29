@@ -1,6 +1,6 @@
 --- third-party/miniupnp/miniupnpc/src/minissdpc.c
 +++ third-party/miniupnp/miniupnpc/src/minissdpc.c
-@@ -725,6 +725,7 @@
+@@ -729,6 +729,7 @@
  	{
  		if(ipv6) {
  #if !defined(_WIN32)
@@ -8,7 +8,7 @@
  			/* according to MSDN, if_nametoindex() is supported since
  			 * MS Windows Vista and MS Windows Server 2008.
  			 * http://msdn.microsoft.com/en-us/library/bb408409%28v=vs.85%29.aspx */
-@@ -740,6 +741,7 @@
+@@ -744,6 +745,7 @@
  			{
  				PRINT_SOCKET_ERROR("setsockopt IPV6_MULTICAST_IF");
  			}

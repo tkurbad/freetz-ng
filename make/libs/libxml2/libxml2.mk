@@ -1,13 +1,13 @@
-$(call PKG_INIT_LIB, 2.14.5)
-$(PKG)_LIB_VERSION:=16.0.5
+$(call PKG_INIT_LIB, 2.15.3)
+$(PKG)_LIB_VERSION:=16.1.3
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=03d006f3537616833c16c53addcdc32a0eb20e55443cba4038307e3fa7d8d44b
+$(PKG)_HASH:=78262a6e7ac170d6528ebfe2efccdf220191a5af6a6cd61ea4a9a9a5042c7a07
 $(PKG)_SITE:=https://download.gnome.org/sources/libxml2/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=http://www.xmlsoft.org
 ### MANPAGE:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home#html-documentation
 ### CHANGES:=https://gitlab.gnome.org/GNOME/libxml2/-/releases
 ### CVSREPO:=https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_LIBNAME:=$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_BINARY:=$($(PKG)_DIR)/.libs/$($(PKG)_LIBNAME)
@@ -15,6 +15,7 @@ $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME)
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libxml2_WITH_HTML
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libxml2_WITH_RELAXNG
 
 ifeq ($(strip $(FREETZ_TARGET_UCLIBC_0_9_28)),y)
 $(PKG)_DEPENDS_ON += iconv
@@ -36,27 +37,27 @@ $(PKG)_CONFIGURE_OPTIONS += --with-threads=yes
 $(PKG)_CONFIGURE_OPTIONS += --with-zlib="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 $(PKG)_CONFIGURE_OPTIONS += --with-readline=no
 
-$(PKG)_CONFIGURE_OPTIONS += --with-minimum=yes
-$(PKG)_CONFIGURE_OPTIONS += --with-http=yes
-$(PKG)_CONFIGURE_OPTIONS += --with-c14n=yes
-$(PKG)_CONFIGURE_OPTIONS += --with-catalog=no
-$(PKG)_CONFIGURE_OPTIONS += --with-html=$(if $(FREETZ_LIB_libxml2_WITH_HTML),yes,no)
-$(PKG)_CONFIGURE_OPTIONS += --with-legacy=no		#deprecated APIs for compatibility
-$(PKG)_CONFIGURE_OPTIONS += --with-lzma=no
-$(PKG)_CONFIGURE_OPTIONS += --with-output=yes		#serialization support
-$(PKG)_CONFIGURE_OPTIONS += --with-pattern=yes		#xmlPattern selection interface
-$(PKG)_CONFIGURE_OPTIONS += --with-push=yes		#PUSH parser interfaces
-$(PKG)_CONFIGURE_OPTIONS += --with-reader=yes		#xmlReader parsing interface
-$(PKG)_CONFIGURE_OPTIONS += --with-regexps=yes		#Regular Expressions support
-$(PKG)_CONFIGURE_OPTIONS += --with-sax1=yes		#old SAX1 interface
-$(PKG)_CONFIGURE_OPTIONS += --with-schemas=yes		#Relax-NG and Schemas support
-$(PKG)_CONFIGURE_OPTIONS += --with-schematron=no	#Schematron support
-$(PKG)_CONFIGURE_OPTIONS += --with-valid=yes		#DTD validation support
-$(PKG)_CONFIGURE_OPTIONS += --with-writer=yes		#xmlWriter saving interface
-$(PKG)_CONFIGURE_OPTIONS += --with-xinclude=yes		#XInclude support
-$(PKG)_CONFIGURE_OPTIONS += --with-xpath=yes		#XPATH support
-$(PKG)_CONFIGURE_OPTIONS += --with-xptr=yes		#XPointer support
-$(PKG)_CONFIGURE_OPTIONS += --with-modules=no		#dynamic modules support, note: this requires libdl
+$(PKG)_CONFIGURE_OPTIONS += --with-minimum=yes							# build a minimally sized library
+$(PKG)_CONFIGURE_OPTIONS += --with-http=yes							# ABI compatibility for removed HTTP support
+$(PKG)_CONFIGURE_OPTIONS += --with-c14n=yes							# Canonical XML 1.0 support
+$(PKG)_CONFIGURE_OPTIONS += --with-catalog=no							# XML Catalogs support
+$(PKG)_CONFIGURE_OPTIONS += --with-html=$(if $(FREETZ_LIB_libxml2_WITH_HTML),yes,no)		# HTML parser
+$(PKG)_CONFIGURE_OPTIONS += --with-legacy=no							# deprecated APIs for compatibility
+$(PKG)_CONFIGURE_OPTIONS += --with-output=yes							# serialization support
+$(PKG)_CONFIGURE_OPTIONS += --with-pattern=yes							# xmlPattern selection interface
+$(PKG)_CONFIGURE_OPTIONS += --with-push=yes							# PUSH parser interfaces
+$(PKG)_CONFIGURE_OPTIONS += --with-reader=yes							# xmlReader parsing interface
+$(PKG)_CONFIGURE_OPTIONS += --with-regexps=yes							# Regular Expressions support
+$(PKG)_CONFIGURE_OPTIONS += --with-sax1=yes							# old SAX1 interface
+$(PKG)_CONFIGURE_OPTIONS += --with-relaxng=$(if $(FREETZ_LIB_libxml2_WITH_RELAXNG),yes,no)	# RELAX NG support
+$(PKG)_CONFIGURE_OPTIONS += --with-schemas=yes							# Relax-NG and Schemas support
+$(PKG)_CONFIGURE_OPTIONS += --with-schematron=no						# Schematron support
+$(PKG)_CONFIGURE_OPTIONS += --with-valid=yes							# DTD validation support
+$(PKG)_CONFIGURE_OPTIONS += --with-writer=yes							# xmlWriter saving interface
+$(PKG)_CONFIGURE_OPTIONS += --with-xinclude=yes							# XInclude support
+$(PKG)_CONFIGURE_OPTIONS += --with-xpath=yes							# XPATH support
+$(PKG)_CONFIGURE_OPTIONS += --with-xptr=yes							# XPointer support
+$(PKG)_CONFIGURE_OPTIONS += --with-modules=no							# dynamic modules support, note: this requires libdl
 
 $(PKG)_CFLAGS := $(TARGET_CFLAGS)
 $(PKG)_CFLAGS += -Wno-int-conversion

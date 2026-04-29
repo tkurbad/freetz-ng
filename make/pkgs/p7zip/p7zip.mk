@@ -8,12 +8,15 @@ $(PKG)_SITE:=@SF/$(pkg)
 
 $(PKG)_BINARY := $($(PKG)_DIR)/bin/7z
 $(PKG)_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/bin/7z
+$(PKG)_LIB_PREFIX := $(FREETZ_RPATH)/p7zip
 $(PKG)_LIB := 7z.so
 $(PKG)_LIB_DIR := $($(PKG)_LIB:%=$($(PKG)_DIR)/bin/%)
-$(PKG)_LIB_TARGET_DIR := $($(PKG)_LIB:%=$($(PKG)_DEST_DIR)/usr/lib/p7zip/%)
+$(PKG)_LIB_TARGET_DIR := $($(PKG)_LIB:%=$($(PKG)_DEST_DIR)$($(PKG)_LIB_PREFIX)/%)
 $(PKG)_CODECS := Rar.so
 $(PKG)_CODECS_DIR := $($(PKG)_CODECS:%=$($(PKG)_DIR)/bin/Codecs/%)
-$(PKG)_CODECS_TARGET_DIR := $($(PKG)_CODECS:%=$($(PKG)_DEST_DIR)/usr/lib/p7zip/Codecs/%)
+$(PKG)_CODECS_TARGET_DIR := $($(PKG)_CODECS:%=$($(PKG)_DEST_DIR)$($(PKG)_LIB_PREFIX)/Codecs/%)
+
+$(PKG)_PATCH_POST_CMDS += $(SED) -i 's,FREETZ_LIB_PREFIX,$($(PKG)_LIB_PREFIX),' CPP/7zip/UI/Common/LoadCodecs.cpp;
 
 
 $(PKG_SOURCE_DOWNLOAD)
@@ -21,12 +24,13 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
 
 $($(PKG)_BINARY) $($(PKG)_LIB_DIR) $($(PKG)_CODECS_DIR): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(P7ZIP_DIR) DEST_HOME="$(abspath $($(PKG)_DEST_DIR))" \
-	CC="$(TARGET_CC)" \
-	CXX="$(TARGET_CXX)" \
-	CC_SHARED="$(FPIC) -DPIC" \
-	LINK_SHARED="$(FPIC) -DPIC -shared" \
-	7z
+	$(SUBMAKE) -C $(P7ZIP_DIR) \
+		DEST_HOME="$(abspath $($(PKG)_DEST_DIR))" \
+		CC="$(TARGET_CC)" \
+		CXX="$(TARGET_CXX)" \
+		CC_SHARED="$(FPIC) -DPIC" \
+		LINK_SHARED="$(FPIC) -DPIC -shared" \
+		7z
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)

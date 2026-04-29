@@ -23,6 +23,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.unpacked
 		--symlink-scons \
 		--no-install-man \
 		$(SILENT)
+	@touch $@
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 

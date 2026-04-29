@@ -9,7 +9,7 @@ $(PKG)_SITE:=https://github.com/oetiker/rrdtool-1.x/releases/download/v$($(PKG)_
 ### MANPAGE:=https://oss.oetiker.ch/rrdtool/doc
 ### CHANGES:=https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES
 ### CVSREPO:=https://github.com/oetiker/rrdtool-1.x
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_librrd_WITH_VERSION_ABANDON),abandon,current)
 
@@ -25,9 +25,12 @@ $(PKG)_LIBS_STAGING_DIR:=$($(PKG)_LIBS_SELECTED:%=$(TARGET_TOOLCHAIN_STAGING_DIR
 $(PKG)_LIBS_TARGET_DIR:=$($(PKG)_LIBS_SELECTED:%=$($(PKG)_TARGET_LIBDIR)/%)
 
 ifeq ($(strip $(FREETZ_LIB_librrd_WITH_VERSION_ABANDON)),y)
+$(PKG)_DEPENDS_ON += config-host
 $(PKG)_DEPENDS_ON += libpng freetype libart_lgpl zlib
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
+
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./)
 
 $(PKG)_CONFIGURE_ENV += ac_cv_func_setpgrp_void=yes
 $(PKG)_CONFIGURE_ENV += rd_cv_ieee_works=yes

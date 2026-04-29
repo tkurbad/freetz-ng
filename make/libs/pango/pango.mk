@@ -1,9 +1,8 @@
-$(call PKG_INIT_LIB, 1.56.3)
-## Version 1.56.4 requires GLib 2.82
-$(PKG)_LIB_VERSION:=0.5600.3
+$(call PKG_INIT_LIB, 1.57.1)
+$(PKG)_LIB_VERSION:=0.5701.0
 $(PKG)_MAJOR_VERSION:=1.0
 $(PKG)_SOURCE:=pango-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=2606252bc25cd8d24e1b7f7e92c3a272b37acd6734347b73b47a482834ba2491
+$(PKG)_HASH:=e65d6d117080dc3aeeb7d8b4b3b518f7383aa2e6cfce23117c623cd624764c2f
 $(PKG)_SITE:=https://download.gnome.org/sources/pango/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### WEBSITE:=https://www.pango.org/
 ### MANPAGE:=https://docs.gtk.org/Pango/
@@ -26,7 +25,6 @@ $(PKG)_CONFIGURE_OPTIONS += -D cairo=enabled
 $(PKG)_CONFIGURE_OPTIONS += -D documentation=false
 $(PKG)_CONFIGURE_OPTIONS += -D fontconfig=enabled
 $(PKG)_CONFIGURE_OPTIONS += -D freetype=enabled
-$(PKG)_CONFIGURE_OPTIONS += -D gtk_doc=false
 $(PKG)_CONFIGURE_OPTIONS += -D introspection=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D libthai=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D sysprof=disabled

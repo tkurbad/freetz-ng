@@ -6,7 +6,7 @@ $(PKG)_SITE:=https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic
 ### WEBSITE:=https://www.freedesktop.org/wiki/Software/fontconfig/
 ### CHANGES:=https://gitlab.freedesktop.org/fontconfig/fontconfig/tags
 ### CVSREPO:=https://gitlab.freedesktop.org/fontconfig/fontconfig
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARIES:=fonts.conf
 $(PKG)_BINARIES_BUILD_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)

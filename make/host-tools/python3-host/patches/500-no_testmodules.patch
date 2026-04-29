@@ -1,6 +1,6 @@
 --- Makefile.pre.in
 +++ Makefile.pre.in
-@@ -2490,7 +2490,7 @@
+@@ -2731,7 +2731,7 @@
  
  COMPILEALL_OPTS=-j0
  

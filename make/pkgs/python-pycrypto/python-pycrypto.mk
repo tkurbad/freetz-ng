@@ -6,7 +6,6 @@ $(PKG)_SITE:=https://www.pycrypto.org/pub/dlitz/crypto/pycrypto/,https://ftp.dli
 ### MANPAGE:=https://www.pycrypto.org/doc/
 ### CHANGES:=https://github.com/pycrypto/pycrypto/tags
 ### CVSREPO:=https://github.com/pycrypto/pycrypto
-### SUPPORT:=X
 
 $(PKG)_DEPENDS_ON += python gmp
 $(PKG)_DEPENDS_ON += python2-host
@@ -19,7 +18,7 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
-	$(call Build/PyMod/PKG, PYTHON_PYCRYPTO, , TARGET_ARCH_BE="$(TARGET_ARCH_BE)")
+	$(call Build/PyMod2/PKG, PYTHON_PYCRYPTO, , TARGET_ARCH_BE="$(TARGET_ARCH_BE)")
 	@touch $@
 
 $(pkg):

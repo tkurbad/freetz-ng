@@ -16,6 +16,18 @@ supervisor_delete_service() {
 	supervisor_remove_dependency "${service}"
 }
 
+# replace file of supervisor service "$1.service" with a dummy & remove dependencies
+supervisor_replace_service() {
+	local service="${1%.service}.service"
+cat > "${FILESYSTEM_MOD_DIR}/lib/systemd/system/${service}" <<'EOX'
+[Unit]
+ExecStart=/bin/true
+Type=oneshot
+DefaultDependencies=no
+EOX
+	supervisor_remove_dependency "${service}"
+}
+
 
 # removes a div by id name in all cock pits (since fos8)
 cockpit_pruner() {
@@ -57,6 +69,18 @@ quickstart_remove() {
 	done
 }
 
+#htmltab_remove <file> <href>
+#removes a html-tab with destination href in file
+htmltab_remove() {
+	local file="$HTML_LANG_MOD_DIR$1"
+	local HREF="href=\\\"#${2//\//\\\/}\\\""
+	local TAG="a"
+	local TAG_S="<$TAG "
+	local TAG_E="<\/$TAG>"
+	[ -e "$file" ] || return
+	modsed '/'"$TAG_S"'/{:x;N;/'"$TAG_E"'/!bx};/'"$HREF"'/d' "$file"
+}
+
 #modern_remove <menu-item>
 #removes liks within menu_data.lua (left menu, responsive)
 modern_remove() {
@@ -76,7 +100,7 @@ menulua_remove() {
 		# the  ["show"] line is either one or two lines before
 		modsed -r \
 		  "$((${matchLine}-2)),$((${matchLine}-1))"' {
-		      s!^(\["show"\] = ).+,$!\1false,!
+		      s/^( *\["show"\] = ).+,$/\1false,/
 		  }' \
 		  "$file"
 	else
@@ -622,7 +646,7 @@ addTrailingSlash() {
 #
 # Dependencies: readlink, realpath, bash (uses bash specific functions).
 #
-symlinks-abs2rel() {
+symlinks_abs2rel() {
 	local USAGE="$(
 		echo -e "Usage:\t${FUNCNAME} [-v|-verbose] [-r|-recursive] TARGET_FS_ROOT DIR [MASK], where"
 		echo -e "\t\tTARGET_FS_ROOT is the directory pointing to the root directory of the target filesystem"
@@ -784,6 +808,12 @@ byte_to_mb() {
 	echo $(($1)) | awk '{ printf "%.1f MB", $1 /1024/1024 }'
 }
 
+# $1 - first number (or mathematical expression)
+# $2 - second number (or mathematical expression)
+numbers_to_perc() {
+	echo $(($1)) $(($2)) | awk '{ printf "%.1f %", $2 / $1 * 100 }'
+}
+
 # $1 - tarball filename
 is_valid_tarball() {
 	# integrity check by listing the content
@@ -838,7 +868,7 @@ image_details() {
 		[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/^HW=[0-9]* OEM=all _PRODUKT_NAME=(FRITZ!Box|Speedport|Sinus|Eumex)#//p' "${FILESYSTEM_DIR}"/etc/init.d/rc.init | head -n1 | sed 's/#//g;s/Annex.//;s/WLAN/-&/g;s/^-[A-Z]*//g;s/^$/FritzBox/g')" # symbolic name in /etc/init.d/rc.init
 		[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/^HW=[0-9]* OEM=all _PRODUKT_NAME=([0-9A-Z\#]{4,6}).*/\1/p' "${FILESYSTEM_DIR}"/etc/init.d/rc.init)" # 4-digits in /etc/init.d/rc.init
 	fi
-	[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/export CONFIG_PRODUKT_NAME=.*(Repeater|Powerline|Smart) (.*)"/\2/p' "${FILESYSTEM_DIR}"/etc/init.d/rc.conf)" # Repeater like 'DVB-C'
+	[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/export CONFIG_PRODUKT_NAME=.*(Repeater|Powerline|Smart) (.*)"/\2/p' "${FILESYSTEM_DIR}"/etc/init.d/rc.conf | head -n1 | sed 's/\///g')" # Repeater like 'DVB-C'
 	[ -z "${AVM_FW_PRODUCT}" ] && warn "Failed to determine AVM_FW_PRODUCT, even though this is a cosmetic bug only please report it to the Freetz developers and provide your .config"
 	AVM_FW_PRODUCT="${AVM_FW_PRODUCT%% Edition*}"
 	AVM_FW_PRODUCT="${AVM_FW_PRODUCT% }"
@@ -870,7 +900,7 @@ image_details() {
 	[ "$FREETZ_TYPE_LANG_IT" == "y" ]                                                            && AVM_FM_REGION='ITA'
 	[ "$FREETZ_TYPE_LANG_A_CH" == "y" ]                                                          && AVM_FM_REGION='ACH'
 	#
-	SOURCE_IMAGE_DETAILS="${AVM_FW_PRODUCT/ /-}${AVM_FW_LANGUAGE} ${AVM_FW_MAJOR}.${AVM_FW_VERSION}${AVM_FW_LABOR} rev${AVM_FW_REVISION} {${AVM_FM_REGION}}${AVM_FW_CYCLE}${AVM_FW_TYPE} <${AVM_FW_DATE}>"
+	SOURCE_IMAGE_DETAILS="${AVM_FW_PRODUCT// /-}${AVM_FW_LANGUAGE} ${AVM_FW_MAJOR}.${AVM_FW_VERSION}${AVM_FW_LABOR} rev${AVM_FW_REVISION} {${AVM_FM_REGION}}${AVM_FW_CYCLE}${AVM_FW_TYPE} <${AVM_FW_DATE}>"
 }
 
 #

@@ -1,6 +1,6 @@
 $(call PKG_INIT_BIN, 5.6.40)
-$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH_5.6.40:=1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace2656d1c
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz
+$(PKG)_HASH_5.6.40:=X
 $(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_VERSION))
 $(PKG)_SITE:=http://de.php.net/distributions,http://de2.php.net/distributions
 

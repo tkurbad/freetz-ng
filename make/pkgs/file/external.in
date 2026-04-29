@@ -1,0 +1,9 @@
+config EXTERNAL_FREETZ_PACKAGE_FILE
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_FILE
+	bool "file"
+	default n
+	help
+		externals the following file(s):
+		 /usr/bin/file
+		 /usr/share/misc/magic.mgc
+

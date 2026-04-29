@@ -1,0 +1,10 @@
+--- avm/config-qca956x-2400_08.20
++++ freetz/config-qca956x-2400_08.20
+@@ -1574,7 +1574,6 @@
+ CONFIG_TFFS_PANIC_LOG=y
+ CONFIG_TFFS_PANIC_LOG_ID=96
+ CONFIG_TFFS_USER_LOG=y
+-# CONFIG_TFFS_DEBUGFS is not set
+ CONFIG_TTY=y
+ # CONFIG_VT is not set
+ CONFIG_UNIX98_PTYS=y

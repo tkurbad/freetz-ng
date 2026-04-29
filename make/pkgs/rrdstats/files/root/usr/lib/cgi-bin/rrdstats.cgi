@@ -141,10 +141,18 @@ $(lang de:"Graphen immer neu generieren (not lazy)" en:"Always generate new grap
 <input id="tt" type="checkbox" name="tobitag" value="yes"$tobitag_chk>
 <label for="tt">$(lang de:"Zeige den Namen des Autors von rrdtool auf allen Graphen" en:"Show the name of the author of rrdtool on all graphs")</label></p>
 <p>
+EOF
+
+if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT" == "y" ]; then
+cat << EOF
 <input type="hidden" name="showframe" value="no">
 <input id="sf" type="checkbox" name="showframe" value="yes"$showframe_chk>
 <label for="sf">$(lang de:"Zeichne einen Rahmen um die Graphen" en:"Draw a frame around the graphs")</label></p>
 <p>
+EOF
+fi
+
+cat << EOF
 <input type="hidden" name="darkmode" value="no">
 <input id="dm" type="checkbox" name="darkmode" value="yes"$darkmode_chk>
 <label for="dm">$(lang de:"Aktiviere Dark-Mode f&uuml;r die Graphen" en:"Enable dark-mode for the graphs")</label></p>

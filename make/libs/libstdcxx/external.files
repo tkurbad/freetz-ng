@@ -1,1 +1,2 @@
 [ "$EXTERNAL_FREETZ_LIB_libstdcxx" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libstdc++.so.${FREETZ_GNULIBSTDCXX_VERSION}"
+

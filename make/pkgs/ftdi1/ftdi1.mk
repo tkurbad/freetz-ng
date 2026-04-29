@@ -7,7 +7,7 @@ $(PKG)_SITE:=https://www.intra2net.com/en/developer/libftdi/download
 ### MANPAGE:=https://www.intra2net.com/en/developer/libftdi/documentation/
 ### CHANGES:=https://www.intra2net.com/en/developer/libftdi/index.php
 ### CVSREPO:=http://developer.intra2net.com/git/?p=libftdi
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/ftdi_eeprom/ftdi_eeprom
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/ftdi_eeprom
@@ -64,7 +64,7 @@ $($(PKG)_LIB_TARGET_BINARY): $($(PKG)_LIB_STAGING_BINARY)
 
 $(pkg): $($(PKG)_LIB_STAGING_BINARY)
 
-$(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_LIB_TARGET_BINARY)
+$(pkg)-precompiled: $(if $(FREETZ_PACKAGE_FTDI1),$($(PKG)_TARGET_BINARY)) $($(PKG)_LIB_TARGET_BINARY)
 
 
 $(pkg)-clean:

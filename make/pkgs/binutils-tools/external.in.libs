@@ -1,0 +1,40 @@
+config EXTERNAL_FREETZ_LIB_libbfd
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libbfd
+	bool "libbfd"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libbfd-2.46.0.20260210.so
+
+config EXTERNAL_FREETZ_LIB_libctf
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libctf
+	bool "libctf"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libctf.so.0.0.0
+
+config EXTERNAL_FREETZ_LIB_libctf_nobfd
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libctf_nobfd
+	bool "libctf-nobfd"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libctf-nobfd.so.0.0.0
+
+config EXTERNAL_FREETZ_LIB_libopcodes
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libopcodes
+	bool "libopcodes"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libopcodes-2.46.0.20260210.so
+
+config EXTERNAL_FREETZ_LIB_libsframe
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libsframe
+	bool "libsframe"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libsframe.so.3.0.0
+

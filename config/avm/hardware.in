@@ -53,8 +53,10 @@ config FREETZ_SYSTEM_TYPE_AR934x
 	default y
 	depends on \
 		FREETZ_TYPE_0300 || \
+		FREETZ_TYPE_0310_V2 || \
 		FREETZ_TYPE_0540 || \
 		FREETZ_TYPE_0546 || \
+		FREETZ_TYPE_1160 || \
 		FREETZ_TYPE_1240_W5 || \
 		FREETZ_TYPE_6810 || \
 		FREETZ_TYPE_6842
@@ -72,6 +74,18 @@ config FREETZ_SYSTEM_TYPE_BCM63138
 	depends on \
 		FREETZ_TYPE_7581 || \
 		FREETZ_TYPE_7582
+
+config FREETZ_SYSTEM_TYPE_BRCM6764
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_1700
+
+config FREETZ_SYSTEM_TYPE_BRCM6766
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_2700
 
 config FREETZ_SYSTEM_TYPE_BRCMA9
 	bool
@@ -120,18 +134,27 @@ config FREETZ_SYSTEM_TYPE_IPQ40xx
 		FREETZ_TYPE_1260 || \
 		FREETZ_TYPE_3000_W5 || \
 		FREETZ_TYPE_4040 || \
-		FREETZ_TYPE_6850_4G || \
+		FREETZ_TYPE_6850_4G_V1 || \
+		FREETZ_TYPE_6850_4G_V2 || \
 		FREETZ_TYPE_6850_5G || \
 		FREETZ_TYPE_7520_V1 || \
 		FREETZ_TYPE_7520_V2 || \
 		FREETZ_TYPE_7530_W5
 
+config FREETZ_SYSTEM_TYPE_AIROHA01
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_5690_XGS
+
 config FREETZ_SYSTEM_TYPE_MAPLE
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_1200_W6 || \
+		FREETZ_TYPE_1200_W6_V1 || \
+		FREETZ_TYPE_1200_W6_V2 || \
 		FREETZ_TYPE_1240_W6 || \
+		FREETZ_TYPE_1610 || \
 		FREETZ_TYPE_3000_W6 || \
 		FREETZ_TYPE_4050 || \
 		FREETZ_TYPE_6860 || \
@@ -143,8 +166,19 @@ config FREETZ_SYSTEM_TYPE_MIAMI
 	bool
 	default y
 	depends on \
+		FREETZ_TYPE_4630 || \
 		FREETZ_TYPE_5690_NIX || \
+		FREETZ_TYPE_7632 || \
 		FREETZ_TYPE_7690
+
+config FREETZ_SYSTEM_TYPE_PUMA5
+	bool
+	default y
+	depends on \
+		FREETZ_TYPE_6320_V1 || \
+		FREETZ_TYPE_6320_V2 || \
+		FREETZ_TYPE_6340 || \
+		FREETZ_TYPE_6360
 
 config FREETZ_SYSTEM_TYPE_PUMA6_X86
 	bool
@@ -179,15 +213,18 @@ config FREETZ_SYSTEM_TYPE_QCA955x
 	bool
 	default y
 	depends on \
+		FREETZ_TYPE_0310_V1 || \
+		FREETZ_TYPE_0450 || \
 		FREETZ_TYPE_1750 || \
 		FREETZ_TYPE_1759 || \
-		FREETZ_TYPE_0450 || \
 		FREETZ_TYPE_6820
 
 config FREETZ_SYSTEM_TYPE_QCA956x
 	bool
 	default y
 	depends on \
+		FREETZ_TYPE_0600_V1 || \
+		FREETZ_TYPE_0600_V2 || \
 		FREETZ_TYPE_2400_W5 || \
 		FREETZ_TYPE_4020
 
@@ -203,6 +240,7 @@ config FREETZ_SYSTEM_TYPE_UR8
 	bool
 	default y
 	depends on \
+		FREETZ_TYPE_WRNG || \
 		FREETZ_TYPE_3270 || \
 		FREETZ_TYPE_7240 || \
 		FREETZ_TYPE_7270 || \
@@ -240,12 +278,16 @@ config FREETZ_SYSTEM_TYPE
 	default "ar934x"        if FREETZ_SYSTEM_TYPE_AR934x
 	default "ar10"          if FREETZ_SYSTEM_TYPE_AR10
 	default "bcm63138"      if FREETZ_SYSTEM_TYPE_BCM63138
+	default "brcm6764"      if FREETZ_SYSTEM_TYPE_BRCM6764
+	default "brcm6766"      if FREETZ_SYSTEM_TYPE_BRCM6766
 	default "brcma9"        if FREETZ_SYSTEM_TYPE_BRCMA9
+	default "airoha01"      if FREETZ_SYSTEM_TYPE_AIROHA01
 	default "grx5"          if FREETZ_SYSTEM_TYPE_GRX5
 	default "iks"           if FREETZ_SYSTEM_TYPE_IKS
 	default "ipq40xx"       if FREETZ_SYSTEM_TYPE_IPQ40xx
 	default "maple"         if FREETZ_SYSTEM_TYPE_MAPLE
 	default "miami"         if FREETZ_SYSTEM_TYPE_MIAMI
+	default "puma5"         if FREETZ_SYSTEM_TYPE_PUMA5
 	default "puma6"         if FREETZ_SYSTEM_TYPE_PUMA6
 	default "puma7"         if FREETZ_SYSTEM_TYPE_PUMA7
 	default "qca955x"       if FREETZ_SYSTEM_TYPE_QCA955x
@@ -263,13 +305,40 @@ config FREETZ_SYSTEM_TYPE_CORE_SUFFIX
 
 # cpu model (the same variable name as in /proc/cpuinfo)
 
+config FREETZ_CPU_MODEL_ARM
+	bool
+	default y
+	depends on \
+		FREETZ_CPU_MODEL_ARM_arm11 || \
+		FREETZ_CPU_MODEL_ARM_cortex
+
+config FREETZ_CPU_MODEL_ARM_arm11
+	bool
+	default y
+	depends on \
+		FREETZ_CPU_MODEL_ARM_arm11_arm1176
+
+config FREETZ_CPU_MODEL_ARM_arm11_arm1176
+	bool
+	default y
+	depends on \
+		FREETZ_SYSTEM_TYPE_PUMA5
+
 config FREETZ_CPU_MODEL_ARM_cortex
 	bool
 	default y
 	depends on \
+		FREETZ_CPU_MODEL_ARM_cortex_a7 || \
 		FREETZ_CPU_MODEL_ARM_cortex_a9 || \
 		FREETZ_CPU_MODEL_ARM_cortex_a53 || \
 		FREETZ_CPU_MODEL_ARM_cortex_a73
+
+config FREETZ_CPU_MODEL_ARM_cortex_a7
+	bool
+	default y
+	depends on \
+		FREETZ_SYSTEM_TYPE_BRCM6764 || \
+		FREETZ_SYSTEM_TYPE_BRCM6766
 
 config FREETZ_CPU_MODEL_ARM_cortex_a9
 	bool
@@ -283,6 +352,7 @@ config FREETZ_CPU_MODEL_ARM_cortex_a53
 	bool
 	default y
 	depends on \
+		FREETZ_SYSTEM_TYPE_AIROHA01 || \
 		FREETZ_SYSTEM_TYPE_MAPLE || \
 		FREETZ_SYSTEM_TYPE_MIAMI || \
 		FREETZ_SYSTEM_TYPE_QCAARMv8

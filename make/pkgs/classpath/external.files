@@ -8,3 +8,4 @@ if [ "$EXTERNAL_FREETZ_PACKAGE_CLASSPATH" == "y" ]; then
 		EXTERNAL_FILES+=" /usr/share/classpath/glibj.zip"
 	fi
 fi
+

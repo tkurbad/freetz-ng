@@ -1,9 +1,9 @@
-$(call PKG_INIT_BIN, 2025-09-09)
+$(call PKG_INIT_BIN, 2026-03-19)
 $(PKG)_SOURCE:=cacert-$($(PKG)_VERSION).pem
-$(PKG)_HASH:=f290e6acaf904a4121424ca3ebdd70652780707e28e8af999221786b86bb1975
+$(PKG)_HASH:=b6e66569cc3d438dd5abe514d0df50005d570bfc96c14dca8f768d020cb96171
 $(PKG)_SITE:=https://curl.se/ca,https://www.curl.se/ca,https://curl.haxx.se/ca
 ### WEBSITE:=https://www.curl.se/ca
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/cacert.pem
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/etc/ssl/certs/ca-bundle.crt

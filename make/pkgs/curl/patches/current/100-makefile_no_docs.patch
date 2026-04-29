@@ -1,17 +1,17 @@
 --- Makefile.am
 +++ Makefile.am
-@@ -87,8 +87,8 @@
+@@ -71,8 +71,8 @@
  
  bin_SCRIPTS = curl-config
  
 -SUBDIRS = lib docs src scripts
--DIST_SUBDIRS = $(SUBDIRS) tests packages include docs
+-DIST_SUBDIRS = $(SUBDIRS) tests projects include docs
 +SUBDIRS = lib      src scripts
-+DIST_SUBDIRS = $(SUBDIRS)       packages include
++DIST_SUBDIRS = $(SUBDIRS)       projects include
  
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
-@@ -189,14 +189,11 @@
+@@ -147,14 +147,11 @@
  else
  install-data-hook:
  	(cd include && $(MAKE) install)
@@ -28,18 +28,18 @@
  	@echo "generating a fresh ca-bundle.crt"
 --- Makefile.in
 +++ Makefile.in
-@@ -500,8 +500,8 @@
- 
+@@ -488,8 +488,8 @@
+ EXTRA_DIST = CHANGES.md COPYING RELEASE-NOTES Dockerfile .clang-tidy.yml .editorconfig $(CMAKE_DIST)
  DISTCLEANFILES = buildinfo.txt
  bin_SCRIPTS = curl-config
 -SUBDIRS = lib docs src scripts
--DIST_SUBDIRS = $(SUBDIRS) tests packages include docs
+-DIST_SUBDIRS = $(SUBDIRS) tests projects include docs
 +SUBDIRS = lib      src scripts
-+DIST_SUBDIRS = $(SUBDIRS)       packages include
++DIST_SUBDIRS = $(SUBDIRS)       projects include
  pkgconfigdir = $(libdir)/pkgconfig
  pkgconfig_DATA = libcurl.pc
  all: all-recursive
-@@ -1140,13 +1140,10 @@
+@@ -1102,13 +1102,10 @@
  @BUILD_DOCS_TRUE@	(cd docs/libcurl && $(MAKE) install)
  @BUILD_DOCS_FALSE@install-data-hook:
  @BUILD_DOCS_FALSE@	(cd include && $(MAKE) install)

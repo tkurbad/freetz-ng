@@ -27,3 +27,5 @@ sed -rn 's/^### (\[.*\]\()(.*)/\1wiki\/\2<br>/p' "$MYPWD/README.md"
 grep WikiEND "$MYPWD/../README.md" -A99 -B1
 ) > "$MYPWD/../README_md"
 mv "$MYPWD/../README_md" "$MYPWD/../README.md"
+exit 0
+

@@ -4,8 +4,24 @@ KERNEL_PATCHES_DIR:=$(KERNEL_MAKE_DIR)/patches/$(KERNEL_VERSION)$(SYSTEM_TYPE_CO
 KERNEL_DEPENDS_ON += lzma1-host
 KERNEL_DEPENDS_ON += lzma2eva-host
 
-KERNEL_IMAGE:=vmlinux.eva_pad
-KERNEL_IMAGE_BUILD_SUBDIR:=$(if $(FREETZ_KERNEL_VERSION_3_10_MIN),/arch/$(KERNEL_ARCH)/boot)
+ifeq ($(strip $(FREETZ_KERNEL_VERSION_2)),y)
+KERNEL_MAKE_TARGET:=vmlinux.eva_pad
+KERNEL_IMAGE_FILE:=vmlinux.eva_pad
+else
+ifeq ($(strip $(FREETZ_KERNEL_VERSION_3)),y)
+KERNEL_MAKE_TARGET:=vmlinux.eva_pad
+KERNEL_IMAGE_FILE:=arch/$(KERNEL_ARCH)/boot/vmlinux.eva_pad
+else
+ifeq ($(strip $(FREETZ_KERNEL_VERSION_4)),y)
+#TODO!
+KERNEL_MAKE_TARGET:=vmlinux.eva_pad
+KERNEL_IMAGE_FILE:=arch/$(KERNEL_ARCH)/boot/vmlinux.eva_pad
+else
+KERNEL_MAKE_TARGET:=vmlinux.lzma
+KERNEL_IMAGE_FILE:=vmlinux.lzma
+endif
+endif
+endif
 KERNEL_TARGET_BINARY:=kernel-$(KERNEL_ID).bin
 KERNEL_CONFIG_FILE:=$(KERNEL_MAKE_DIR)/configs/freetz/config-$(KERNEL_ID)
 
@@ -72,10 +88,20 @@ endif
 		echo "#fixing ncurses detection bug" $(SILENT); \
 		$(SED) 's/^main()/int &/' -i $(KERNEL_SOURCE_DIR)/scripts/kconfig/lxdialog/check-lxdialog.sh; \
 	fi;
-	@echo "#kernel version specific patches: $(KERNEL_PATCHES_DIR)" $(SILENT)
-	@$(call APPLY_PATCHES,$(KERNEL_PATCHES_DIR),$(KERNEL_DIR))
-	@echo "#firmware version specific patches: $(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID)" $(SILENT)
-	@$(call APPLY_PATCHES,$(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID),$(KERNEL_DIR))
+	@if [ -e "$(KERNEL_SOURCE_DIR)/scripts/unifdef.c" ]; then \
+		echo "#fixing constexpr keyword" $(SILENT); \
+		$(SED) 's/constexpr/constexpression/g' -i $(KERNEL_SOURCE_DIR)/scripts/unifdef.c; \
+	fi;
+	@echo "#fixing hardcoded depmod path" $(SILENT); \
+	find $(KERNEL_SOURCE_DIR)/ -name Makefile | while read -r file; do \
+		grep -q '/sbin/depmod' "$${file}" || continue; \
+		echo "# - $${file}" $(SILENT); \
+		$(SED) 's,/sbin/depmod,depmod,g' -i "$${file}"; \
+	done;
+	@echo "#applying patches" $(SILENT)
+	@echo "##kernel version specific patches dir: $(KERNEL_PATCHES_DIR)" $(SILENT)
+	@echo "##firmware version specific patches dir: $(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID)" $(SILENT)
+	@$(call APPLY_PATCHES,$(KERNEL_PATCHES_DIR) $(KERNEL_PATCHES_DIR)/$(AVM_SOURCE_ID),$(KERNEL_DIR))
 	@echo "#additional generic fixes" $(SILENT)
 	@for i in $(KERNEL_LINKING_FILES); do \
 		f="$${i%%,*}"; symlink_location="$${i##*,}"; \
@@ -231,20 +257,20 @@ endif
 
 kernel-autofix: kernel-dirclean
 	$(MAKE) AUTO_FIX_PATCHES=y $(KERNEL_DIR)/.configured
-kernel-recompile: kernel-dirclean kernel-precompiled
+kernel-recompile: kernel-distclean kernel-precompiled
 .PHONY: kernel-autofix kernel-recompile
 
-$(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE): $(KERNEL_DIR)/.prepared $(KERNEL_BUILD_DEPENDENCIES) | $(KERNEL_DEPENDS_ON)
+$(KERNEL_SOURCE_DIR)/$(KERNEL_IMAGE_FILE): $(KERNEL_DIR)/.prepared $(KERNEL_BUILD_DEPENDENCIES) | $(KERNEL_DEPENDS_ON)
 	$(call _ECHO,image,$(KERNEL_ECHO_TYPE))
-	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) $(KERNEL_IMAGE)
+	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) $(KERNEL_MAKE_TARGET)
 	touch -c $@
 
-$(KERNEL_TARGET_DIR)/$(KERNEL_TARGET_BINARY): $(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE) | $(KERNEL_TARGET_DIR)
-	cp $(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE) $(KERNEL_TARGET_DIR)/$(KERNEL_TARGET_BINARY)
+$(KERNEL_TARGET_DIR)/$(KERNEL_TARGET_BINARY): $(KERNEL_SOURCE_DIR)/$(KERNEL_IMAGE_FILE) | $(KERNEL_TARGET_DIR)
+	cp $(KERNEL_SOURCE_DIR)/$(KERNEL_IMAGE_FILE) $(KERNEL_TARGET_DIR)/$(KERNEL_TARGET_BINARY)
 	cp $(KERNEL_SOURCE_DIR)/System.map $(KERNEL_TARGET_DIR)/System-$(KERNEL_ID).map
 	touch -c $@
 
-$(KERNEL_DIR)/.modules-$(SYSTEM_TYPE)$(SYSTEM_TYPE_CORE_SUFFIX): $(KERNEL_SOURCE_DIR)$(KERNEL_IMAGE_BUILD_SUBDIR)/$(KERNEL_IMAGE)
+$(KERNEL_DIR)/.modules-$(SYSTEM_TYPE)$(SYSTEM_TYPE_CORE_SUFFIX): $(KERNEL_SOURCE_DIR)/$(KERNEL_IMAGE_FILE)
 	@$(call _ECHO,modules,$(KERNEL_ECHO_TYPE))
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) modules
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) modules_install

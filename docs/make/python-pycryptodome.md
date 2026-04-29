@@ -4,5 +4,5 @@
   - Changelog: [https://www.pycryptodome.org/src/changelog](https://www.pycryptodome.org/src/changelog)
   - Repository: [https://github.com/Legrandin/pycryptodome/](https://github.com/Legrandin/pycryptodome/)
   - Package: [master/make/pkgs/python-pycryptodome/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/python-pycryptodome/)
-  - Maintainer: -
+  - Steward: -
 

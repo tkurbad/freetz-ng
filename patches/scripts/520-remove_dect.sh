@@ -7,7 +7,7 @@ for files in \
   usr/bin/dect_manager \
   usr/share/ctlmgr/libdect.so \
   etc/avm_firmware_public_key3 \
-  $(find ${FILESYSTEM_MOD_DIR} -iwholename "*usr/www/*dect*" -printf "%P\n") \
+  $(find ${FILESYSTEM_MOD_DIR} -iwholename "*usr/www/*dect*" -a ! -path "*/js3/data/*" -printf "%P\n") \
   ; do
 	rm_files "${FILESYSTEM_MOD_DIR}/$files"
 done

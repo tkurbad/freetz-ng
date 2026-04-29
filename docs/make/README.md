@@ -5,10 +5,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### A
 
-  * **[ACME.sh 3.1.1](acme.md)<a id='acme'></a>**<br>
+  * **[ACME.sh 3.1.2](acme.md)<a id='acme'></a>**<br>
     A pure Unix shell script implementing ACME client protocol.
 
-  * **[Apache2 2.4.65 (binary only)](apache2.md)<a id='apache2'></a>**<br>
+  * **[Apache2 2.4.66 (binary only)](apache2.md)<a id='apache2'></a>**<br>
     The Apache httpd server
 
   * **<u>asterisk-chan-capi: chan_capi: ISDN API 2.0 module for asterisk - DEPRECATED</u><a id='asterisk-chan-capi'></a>**<br>
@@ -23,7 +23,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>asterisk-gui: #Asterisk GUI 2.1.0-rc1 - DEPRECATED</u><a id='asterisk-gui'></a>**<br>
     Asterisk GUI is a framework for the creation of graphical interfaces for configuring Asterisk. Please read https://wiki.asterisk.org/wiki/display/AST/Asterisk+GUI for configuration instructions.
 
-  * **[Atop 2.11.1 (binary only) - DEPRECATED](atop.md)<a id='atop'></a>**<br>
+  * **[Atop 2.12.1 (binary only)](atop.md)<a id='atop'></a>**<br>
     The program atop is an interactive monitor to view the load on a Linux system. It shows the occupation of the most critical hardware resources (from a performance point of view) on system level, i.e. cpu, memory, disk and network.
 
   * **[AutoFS 5.0.5/5.1.9](autofs.md)<a id='autofs'></a>**<br>
@@ -42,13 +42,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[bash 3.2.57 (binary only) - DEPRECATED](bash.md)<a id='bash'></a>**<br>
     Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. Bash also incorporates useful features from the Korn and C shells (ksh and csh).(roundabout 540K minimal and 840K full featured)
 
-  * **[Bftpd 6.2](bftpd.md)<a id='bftpd'></a>**<br>
+  * **[Bftpd 6.6](bftpd.md)<a id='bftpd'></a>**<br>
     Small FTP Server
 
   * **<u>bfusb: AVM BlueFRITZ! USB stick support (binary only)</u><a id='bfusb'></a>**<br>
     This package adds support for the AVM BlueFRITZ! USB stick.
 
-  * **[BIND 9.11.37/9.20.11](bind.md)<a id='bind'></a>**<br>
+  * **[BIND 9.11.37/9.20.22](bind.md)<a id='bind'></a>**<br>
     BIND is a suite of software for interacting with the Domain Name System (DNS). The name BIND stands for "Berkeley Internet Name Daemon".
 
   * **[Bip 0.9.2 - DEPRECATED](bip.md)<a id='bip'></a>**<br>
@@ -72,9 +72,12 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[bvi 1.5.0 (binary only)](bvi.md)<a id='bvi'></a>**<br>
     A hex editor/viewer for binary files
 
+  * **[Bzip2 1.0.8 (binary only)](bzip2.md)<a id='bzip2'></a>**<br>
+    bzip2 is a freely available, patent free, high-quality data compressor. It typically compresses files to within 10% to 15% of the best available techniques (the PPM family of statistical compressors), whilst being around twice as fast at compression and six times faster at decompression.
+
 ### C
 
-  * **[CA-bundle 2025-09-09](ca-bundle.md)<a id='ca-bundle'></a>**<br>
+  * **[CA-bundle 2026-03-19](ca-bundle.md)<a id='ca-bundle'></a>**<br>
     The Mozilla CA certificate store in PEM format, see https://www.curl.se/docs/caextract.html Size of uncompressed file is about 250 KB.
 
   * **[Callmonitor 1.20.9-git](callmonitor.md)<a id='callmonitor'></a>**<br>
@@ -104,13 +107,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Cpmaccfg 0.6 (binary only)](cpmaccfg.md)<a id='cpmaccfg'></a>**<br>
     With a patched kernel and this tool it is possible to configure the ADM6996L switch (at least FB 7170, maybe other FBs with 4 LAN ports work too) to support VLANs and/or to split the LAN ports into different subnets. It is also possible to view or set each ports power configuration and to disable auto media detection and to force a given media type for each port (10/100 Mbit, Half-/Full-Duplex). Some features are only available when Replace Kernel is selected. Since version 0.6 cpmaccfg detects the tantos switches used i.e. in F!B 7270. However, since there is not enough documentation (freely) available yet, it is not yet possible to configure this chipset.
 
+  * **[cpulimit 0.2 - DEPRECATED](cpulimit.md)<a id='cpulimit'></a>**<br>
+    cpulimit is a tool which limits the CPU usage of a process (expressed in percentage, not in CPU time). It is useful to control batch jobs, when you don't want them to eat too many CPU cycles. The goal is to prevent a process from running for more than a specified time ratio. It does not change the nice value or other scheduling priority settings, but the real CPU usage. Also, it is able to adapt itself to the overall system load, dynamically and quickly. The control of the used CPU amount is done sending SIGSTOP and SIGCONT POSIX signals to processes. All the children processes and threads of the specified process will share the same percentage of CPU.
+
   * **<u>cryptsetup 1.7.5 (binary only) - DEPRECATED</u><a id='cryptsetup'></a>**<br>
     cryptsetup is used to conveniently setup dm-crypt managed block devices under Linux. Hint: Don't forget to insmod all selected modules.
 
   * **[Ctorrent dnh3.3.2 (binary only) - DEPRECATED](ctorrent.md)<a id='ctorrent'></a>**<br>
     CTorrent is a BitTorrent client written in the C programming language, known to be a very robust and mature programming language, which produces fast and optimized application.
 
-  * **[Curl 8.12.1/8.15.0 (binary only)](curl.md)<a id='curl'></a>**<br>
+  * **[Curl 8.12.1/8.19.0 (binary only)](curl.md)<a id='curl'></a>**<br>
     Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 
   * **<u>CurlFtpFS 0.9.2 - DEPRECATED</u><a id='curlftpfs'></a>**<br>
@@ -148,13 +154,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[dns2tcp 0.5.2 - DEPRECATED](dns2tcp.md)<a id='dns2tcp'></a>**<br>
     Dns2tcp is a network tool designed to relay TCP connections through DNS traffic. Encapsulation is done on the TCP level, thus no specific driver is needed (i.e: TUN/TAP).
 
-  * **[Dnsmasq 2.80/2.91](dnsmasq.md)<a id='dnsmasq'></a>**<br>
+  * **[Dnsmasq 2.80/2.92](dnsmasq.md)<a id='dnsmasq'></a>**<br>
     Combined DHCP, DNS and TFTP server.
 
   * **<u>dosfstools 3.0.28 (binary only) - DEPRECATED</u><a id='dosfstools'></a>**<br>
     utilities to create, check and label MS-DOS FAT filesystems
 
-  * **[Dropbear 2025.88](dropbear.md)<a id='dropbear'></a>**<br>
+  * **[Dropbear 2025.89](dropbear.md)<a id='dropbear'></a>**<br>
     Dropbear SSH server and client Dropbear is a relatively small SSH 2 server and client. It runs on a variety of POSIX-based platforms. Dropbear is open source software, distributed under a MIT-style license. Dropbear is particularly useful for "embedded"-type Linux (or other Unix) systems, such as wireless routers. Features - A small memory footprint suitable for memory-constrained environments - Dropbear can compile to a 110kB statically linked binary with uClibc on x86 (only minimal options selected) - Dropbear server implements X11 forwarding, and authentication-agent forwarding for OpenSSH clients - Can run from inetd or standalone - Compatible with OpenSSH ~/.ssh/authorized_keys public key authentication - The server, client, keygen, and key converter can be compiled into a single binary (a la busybox) - Features can easily be disabled when compiling to save space TCP forwarding support
 
   * **[dtach 0.9 (binary only)](dtach.md)<a id='dtach'></a>**<br>
@@ -220,13 +226,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Ghostscript fonts 8.11 (binary only) - DEPRECATED</u><a id='ghostscript-fonts'></a>**<br>
     This package provides the Ghostscript fonts.
 
-  * **[Git 2.26.2/2.50.1](git.md)<a id='git'></a>**<br>
+  * **[Git 2.26.2/2.53.0](git.md)<a id='git'></a>**<br>
     Git is a fast, scalable, distributed revision control system with an unusually rich command set that provides both high-level operations and full access to internals.
 
   * **<u>gntpsend 0.3.2-git (binary only) - DEPRECATED</u><a id='gntpsend'></a>**<br>
     Growl is a notification system for the Mac OS X. Applications can use Growl to display small notifications about events which the user deems important, in a consistent manner. This package provides a tool 'gntp-send' which allows to send notifications to Growl.
 
-  * **<u>GNU Make 4.2.1 (binary only) - DEPRECATED</u><a id='gnu-make'></a>**<br>
+  * **<u>gnu-make: Make 4.2.1/4.4.1 (binary only)</u><a id='gnu-make'></a>**<br>
     Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files.
 
   * **[GnuTLS 3.7.8 (binary only) - DEPRECATED](gnutls.md)<a id='gnutls'></a>**<br>
@@ -255,10 +261,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[hol: Halt-On-Lan 1.0 - DEPRECATED](hol.md)<a id='hol'></a>**<br>
     Halt-On-Lan is a package to run predefined actions on a remote host: shutdown, reboot, logoff, lock For successfull action poweroff.exe from http://users.telenet.be/jbosman/poweroff/poweroff.htm or similar compatible script or binary must be installed and run as service on the remote host. Moreover, in case of requested interaction this service should understand the syntax of poweroff.exe
 
+  * **[hostapd_cli 2.7/2.10/2.11 (binary only) - DEVELOPER](hostapd_cli.md)<a id='hostapd-cli'></a>**<br>
+    Command line client for hostapd control interface. Useful to send BSS Transition Management (802.11v) and Neighbor Report (802.11k) commands to the running daemon. See https://github.com/Freetz-NG/freetz-ng/discussions/1295
+
   * **<u>html2text 1.3.2a (binary only) - DEPRECATED</u><a id='html2text'></a>**<br>
     html2text is a command line utility, written in C++, that converts HTML documents into plain text.
 
-  * **[htop 1.0.3/3.4.1 (binary only)](htop.md)<a id='htop'></a>**<br>
+  * **[htop 1.0.3/3.5.0 (binary only)](htop.md)<a id='htop'></a>**<br>
     htop is a more powerful alternative to top, using ncurses.
 
   * **[htpdate 2.0.1](htpdate.md)<a id='htpdate'></a>**<br>
@@ -284,7 +293,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[IGMPproxy 0.4](igmpproxy.md)<a id='igmpproxy'></a>**<br>
     IGMPproxy is a simple dynamic Multicast Routing Daemon using only IGMP signalling. It's intended for simple forwarding of Multicast traffic between networks.
 
-  * **[ImageMagick 7.1.0-62/7.1.2-2 (binary only)](imagemagick.md)<a id='imagemagick'></a>**<br>
+  * **[ImageMagick 7.1.0-62/7.1.2-21 (binary only)](imagemagick.md)<a id='imagemagick'></a>**<br>
     ImageMagick is a robust collection of tools and libraries to read, write, and manipulate an image in many image formats, including popular formats like TIFF, JPEG, PNG, PDF, PhotoCD, and GIF. With ImageMagick, you can create images dynamically, making it suitable for Web applications. You can also resize, rotate, sharpen, color-reduce, or add special effects to an image and save your completed work in many different image formats. Image processing operations are available from the command line as well as through C, C++, and PERL-based programming interfaces.
 
   * **[Inadyn-mt 02.28.10 - DEPRECATED](inadyn-mt.md)<a id='inadyn-mt'></a>**<br>
@@ -296,10 +305,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Inetd 1.0](inetd.md)<a id='inetd'></a>**<br>
     'Virtual' inetd package. Provides configuration framework for inetd. Requires a compatible inetd binary. (at the moment, only busybox inetd is supported)
 
+  * **[infozip: Info-ZIP 3.0 (binary only) - DEPRECATED](infozip.md)<a id='infozip'></a>**<br>
+    Info-ZIP's purpose is to provide free, portable, high-quality versions of the Zip compressor-archiver utilities that are compatible with the the DOS-based PKZIP by PKWARE, Inc.
+
   * **[iodine 0.7.0 - DEPRECATED](iodine.md)<a id='iodine'></a>**<br>
     iodine lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed.
 
-  * **[iPerf3 3.3/3.19.1 (binary only)](iperf.md)<a id='iperf'></a>**<br>
+  * **[iPerf3 3.3/3.21 (binary only)](iperf.md)<a id='iperf'></a>**<br>
     iPerf3 is a tool for active measurements of the maximum achievable bandwidth on IP networks. It supports tuning of various parameters related to timing, buffers and protocols (TCP, UDP, SCTP with IPv4 and IPv6). For each test it reports the bandwidth, loss, and other parameters. S. https://github.com/esnet/iperf for more details.
 
   * **<u>IPsec-tools 0.7.2 - DEPRECATED</u><a id='ipsec-tools'></a>**<br>
@@ -337,13 +349,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### L
 
-  * **[LCD4linux eadf4603](lcd4linux.md)<a id='lcd4linux'></a>**<br>
+  * **[LCD4linux 63fffafb](lcd4linux.md)<a id='lcd4linux'></a>**<br>
     LCD4Linux is a small program that grabs information from the kernel and some subsystems and displays it on an external liquid crystal display.
 
   * **<u>lftp 4.8.4 (binary only) - DEPRECATED</u><a id='lftp'></a>**<br>
     LFTP is sophisticated file transfer program with command line interface. It supports FTP, HTTP, FISH, SFTP, HTTPS and FTPS protocols. GNU Readline library is used for input.
 
-  * **[Lighttpd 1.4.81](lighttpd.md)<a id='lighttpd'></a>**<br>
+  * **[Lighttpd 1.4.82](lighttpd.md)<a id='lighttpd'></a>**<br>
     Security, speed, compliance, and flexibility -- all of these describe lighttpd (pron. lighty) which is rapidly redefining efficiency of a webserver; as it is designed and optimized for high performance environments. With a small memory footprint compared to other web-servers, effective management of the cpu-load, and advanced feature set (FastCGI, SCGI, Auth, Output-Compression, URL-Rewriting and many more) lighttpd is the perfect solution for every server that is suffering load problems. In case you want to configure virtual hosts, you may want to consider the package onlinechanged-cgi which allows you to configure multiple DynDNS entries for your box.
 
   * **[Lua 5.1.5/5.4.8 (binary only)](lua.md)<a id='lua'></a>**<br>
@@ -369,7 +381,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[microperl 5.10.1 (binary only) - DEPRECATED](microperl.md)<a id='microperl'></a>**<br>
     Perl without operating-specific functions such as readdir.
 
-  * **[Minicom 2.10 (binary only)](minicom.md)<a id='minicom'></a>**<br>
+  * **[Minicom 2.11.1 (binary only)](minicom.md)<a id='minicom'></a>**<br>
     Minicom is a menu driven communications program. It emulates ANSI and VT102 terminals. It has a dialing directory and auto zmodem download. NOTE: Minicom will expect its configurations in "/var/tmp/flash/minicom/" which has to be created before the first run of the binary by "mkdir -p  /var/tmp/flash/minicom/". To save this and after any change of minicom's configurations you will have to write it to flash with "modsave".
 
   * **[minidlna 1.3.3](minidlna.md)<a id='minidlna'></a>**<br>
@@ -387,10 +399,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[module-init-tools 3.12 (binary only) - DEPRECATED](module-init-tools.md)<a id='module-init-tools'></a>**<br>
     The module-init-tools (m-i-t) package provides many of the utilities needed by Linux systems for managing loadable Linux Kernel Modules. This includes depmod, insmod, rmmod, modprobe and tools like modinfo.
 
-  * **[Mosquitto 2.0.22](mosquitto.md)<a id='mosquitto'></a>**<br>
+  * **[Mosquitto 2.0.22 - DEPRECATED](mosquitto.md)<a id='mosquitto'></a>**<br>
     Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. MQTT provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for "Internet of Things" messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers like the Arduino.
 
-  * **[MTR 0.80/0.95 (binary only)](mtr.md)<a id='mtr'></a>**<br>
+  * **[MTR 0.80/0.96 (binary only)](mtr.md)<a id='mtr'></a>**<br>
     MTR combines the functionality of the 'traceroute' and 'ping' programs in a single network diagnostic tool.
 
 ### N
@@ -398,7 +410,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[nagios 2.11 (binary only) - DEPRECATED](nagios.md)<a id='nagios'></a>**<br>
     Nagios is an Open Source host, service and network monitoring program.
 
-  * **[Nano 8.6 (binary only)](nano.md)<a id='nano'></a>**<br>
+  * **[Nano 9.0 (binary only)](nano.md)<a id='nano'></a>**<br>
     GNU GPL'd Pico clone with more functionality. GNU nano is a small and friendly text editor. Besides basic text editing, nano offers many extra features like an interactive search and replace, go to line and column number, auto-indentation, feature toggles and filename tab completion. The original goal for nano was a complete bug-for-bug compatible emulation of Pico, but nano's current goal is to be as compatible as possible while offering a superset of Pico's functionality. IMPORTANT NOTES: 1.) Selecting any option besides "Tiny binary" will make the nano binary bigger. The range is somewhere between 142 KB and 249 KB, depending on the options chosen. 2.) Please also be aware of the fact that changing any feature options results in an automatic rebuild of the package - just in case you were wondering. 3.) Note that UTF8 support and spell checking is disabled by default.
 
   * **<u>nc6 1.0 (binary only) - DEPRECATED</u><a id='nc6'></a>**<br>
@@ -419,7 +431,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Netpbm-tools 10.35.85 (binary only) - DEPRECATED</u><a id='netpbm'></a>**<br>
     Provides the following tools from netpbm-suite: bmptopnm, giftopnm, jpegtopnm, pngtopnm, pnmtojpeg, pnmtopng
 
-  * **[netsnmp: Net-SNMP 5.9.4](netsnmp.md)<a id='netsnmp'></a>**<br>
+  * **[netsnmp: Net-SNMP 5.9.5.2](netsnmp.md)<a id='netsnmp'></a>**<br>
     SNMP (Simple Network Management Protocol) daemon. SNMP is a widely used protocol for monitoring the health and welfare of network equipment (eg. routers), computer equipment and even devices like UPSs. Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3.
 
   * **<u>nfsroot: NFS-root 1.0 - DEPRECATED</u><a id='nfsroot'></a>**<br>
@@ -431,7 +443,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>ngircd 22 - DEPRECATED</u><a id='ngircd'></a>**<br>
     ngIRCd is an Open Source server for the Internet Relay Chat (IRC), which is developed and published under the terms of the GNU General Public Licence (URL: http://www.gnu.org/licenses/gpl.html). ngIRCd means "next generation IRC daemon", it's written from scratch and not deduced from the "grandfather of IRC daemons", the daemon of the IRCNet. For documentation see: http://ngircd.barton.de/documentation.php.de
 
-  * **[Nmap 4.76/5.51/7.97 (binary only)](nmap.md)<a id='nmap'></a>**<br>
+  * **[Nmap 4.76/5.51/7.99 (binary only)](nmap.md)<a id='nmap'></a>**<br>
     Nmap ("Network Mapper") is a free and open source (license) utility for network exploration or security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime. Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics. It was designed to rapidly scan large networks, but works fine against single hosts. Nmap runs on all major computer operating systems, and both console and graphical versions are available.
 
   * **<u>noip 2.1.9-1 (binary only) - DEPRECATED</u><a id='noip'></a>**<br>
@@ -460,13 +472,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Openntpd 3.9p1 - DEPRECATED](openntpd.md)<a id='openntpd'></a>**<br>
     OpenNTPD is a FREE, easy to use implementation of the Network Time Protocol. This package automatically removes AVM'S chronyd if necessary.
 
-  * **[OpenSSH 9.3p2/10.0p1](openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 9.3p2/10.3p1](openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
-  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.17/3.5.2 (binary only)](openssl.md)<a id='openssl'></a>**<br>
+  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.20/3.5.6 (binary only)](openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
-  * **[OpenVPN 2.4.12/2.5.11/2.6.14](openvpn.md)<a id='openvpn'></a>**<br>
+  * **[OpenVPN 2.4.12/2.5.11/2.6.20/2.7.3](openvpn.md)<a id='openvpn'></a>**<br>
     VPN Server
 
   * **[owfs 2.7p32 (binary only) - DEPRECATED](owfs.md)<a id='owfs'></a>**<br>
@@ -485,6 +497,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **<u>phonebook-tools: Phone book tools 1.0</u><a id='phonebook-tools'></a>**<br>
     A set of tools for reading and converting Fritz!Box phone book to such (easy parseable) formats like: - .csv (comma-separated values), or - .tsv (tab-separated values).
+
+  * **[PHP5 5.6.40 (binary only) - DEPRECATED](php5.md)<a id='php5'></a>**<br>
+    PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
 
   * **[Pingtunnel 0.72 - DEPRECATED](pingtunnel.md)<a id='pingtunnel'></a>**<br>
     Ptunnel is an application that allows you to reliably tunnel TCP connections to a remote host using ICMP echo request and reply packets, commonly known as ping requests and replies. At first glance, this might seem like a rather useless thing to do, but it can actually come in handy in some cases.
@@ -507,8 +522,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>privatekeypassword 0.7-git</u><a id='privatekeypassword'></a>**<br>
     Reveals the password for AVM's private key file (/var/flash/websrv_ssl_key.pem), makes it possible to reuse it for other packages.
 
-  * **[Privoxy 4.0.0](privoxy.md)<a id='privoxy'></a>**<br>
+  * **[Privoxy 4.1.0](privoxy.md)<a id='privoxy'></a>**<br>
     Privoxy is a web proxy with advanced filtering capabilities for protecting privacy, modifying web page data, managing cookies, controlling access, and removing ads, banners, pop-ups and other obnoxious Internet junk. It can also be used together with Tor Proxy to forward HTTP traffic to Tor as described in the Tor documentation. Open http://config.privoxy.org/show-status for details.
+
+  * **[procps-ng 4.0.6 (binaries only)](procps-ng.md)<a id='procps-ng'></a>**<br>
+    procps-ng - /proc filesystem utilities This package provides the full versions of procps utilities with the suffix "-ng" to avoid conflicts with BusyBox versions.
 
   * **[ProxyChains-NG 4.17](proxychains-ng.md)<a id='proxychains-ng'></a>**<br>
     A preloader which hooks calls to sockets in dynamically linked programs and redirects it through one or more socks/http proxies, tor is also supported. Usage: proxychains4 telnet mail.example.com 25
@@ -516,13 +534,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[psl 0.21.5 (binary only)](psl.md)<a id='psl'></a>**<br>
     Public Suffix List library functions This includes psl binary and public_suffix_list.dat
 
-  * **[pyLoad 0.4.20/78162d75](pyload.md)<a id='pyload'></a>**<br>
+  * **[pyLoad 0.4.x - DEPRECATED](pyload.md)<a id='pyload'></a>**<br>
     pyLoad is a fast, lightweight and full featured download manager for many One-Click-Hoster, container formats like DLC, video sites or just plain http/ftp links.
 
   * **[Python 2.7.18 - DEPRECATED](python.md)<a id='python'></a>**<br>
     Python is a remarkably powerful dynamic programming language that is used in a wide variety of application domains. CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on your choice of modules) of uncompressed data to your image. In most cases, it should therefore be externalized.
 
-  * **[python3: Python 3.13.7 - DEVELOPER](python3.md)<a id='python3'></a>**<br>
+  * **[python3: Python 3.14.3 - EXPERIMENTAL](python3.md)<a id='python3'></a>**<br>
     Python is a remarkably powerful dynamic programming language that is used in a wide variety of application domains. CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on your choice of modules) of uncompressed data to your image. In most cases, it should therefore be externalized.
 
   * **<u>python-bjoern: bjoern 1.3.4 - DEPRECATED</u><a id='python-bjoern'></a>**<br>
@@ -637,13 +655,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>smusbutil 1.1 (binary only)</u><a id='smusbutil'></a>**<br>
     Linux software for setting up the frequency and resetpolarity on WB Electronics ftdi devices. This utility is written and maintained by Carsten Sprung. WB Electronics does not currently provide official support for Linux, please contact the author directly for any support issues.
 
-  * **[socat 1.8.0.3 (binary only)](socat.md)<a id='socat'></a>**<br>
+  * **[socat 1.8.1.1 (binary only)](socat.md)<a id='socat'></a>**<br>
     socat is an extended netcat-like utility
 
   * **<u>spawn-fcgi 1.6.3 (binary only) - DEPRECATED</u><a id='spawn-fcgi'></a>**<br>
     Spawns FastCGI processes
 
-  * **[SQLite 3.40.1/3.47.1 (binary only) - DEPRECATED](sqlite.md)<a id='sqlite'></a>**<br>
+  * **[SQLite 3.40.1/3.53.0 (binary only)](sqlite.md)<a id='sqlite'></a>**<br>
     SQLite is a small C library that implements a self-contained, embeddable, zero-configuration SQL database engine.
 
   * **<u>squashfs3: squashfs-tools 3.4</u><a id='squashfs3'></a>**<br>
@@ -658,13 +676,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>sshfs-fuse 2.4 (binary only) - DEPRECATED</u><a id='sshfs-fuse'></a>**<br>
     This is a filesystem client based on the SSH File Transfer Protocol. Since most SSH servers already support this protocol it is very easy to set up: i.e. on the server side there's nothing to do. On the client side mounting the filesystem is as easy as logging into the server with ssh.
 
-  * **[sslh 2.2.4](sslh.md)<a id='sslh'></a>**<br>
+  * **[sslh 2.2.4/2.3.1](sslh.md)<a id='sslh'></a>**<br>
     sslh accepts HTTPS, SSH and OpenVPN connections on the same port. This makes it possible to connect to an SSH server or an OpenVPN on port 443 (e.g. from inside a corporate firewall, which almost never block port 443) while still serving HTTPS on that port.
 
   * **[Streamripper 1.64.6 - DEPRECATED](streamripper.md)<a id='streamripper'></a>**<br>
     Streamripper records mp3 and ogg streams. For shoutcast style streams it finds the "meta data" or track separation data, and uses that as a marker for where the track should be separated.
 
-  * **[Stunnel 5.75](stunnel.md)<a id='stunnel'></a>**<br>
+  * **[Stunnel 5.78](stunnel.md)<a id='stunnel'></a>**<br>
     Stunnel universal SSL proxy
 
   * **[Subversion 1.9.12/1.14.5](subversion.md)<a id='subversion'></a>**<br>
@@ -687,7 +705,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### T
 
-  * **[tcpdump 4.1.1/4.99.5 (binary only)](tcpdump.md)<a id='tcpdump'></a>**<br>
+  * **[tcpdump 4.1.1/4.99.6 (binary only)](tcpdump.md)<a id='tcpdump'></a>**<br>
     Network monitoring and data acquisition tool
 
   * **<u>tcpproxy 2.0.0-beta15 (binary only) - DEPRECATED</u><a id='tcpproxy'></a>**<br>
@@ -704,22 +722,22 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>TIFF utils 4.0.7 (binary only) - DEPRECATED</u><a id='tiff'></a>**<br>
     Various utilities to manupulate/convert images to/from TIFF format.
 
-  * **[Tinc 1.0.36/1.1pre18](tinc.md)<a id='tinc'></a>**<br>
+  * **[tinc 1.0.37/1.1pre18](tinc.md)<a id='tinc'></a>**<br>
     Tinc is a Virtual Private Network (VPN) daemon that uses tunneling and encryption to create a secure private network between hosts on the Internet.
 
-  * **[Tinyproxy 1.11.2](tinyproxy.md)<a id='tinyproxy'></a>**<br>
+  * **[Tinyproxy 1.11.3](tinyproxy.md)<a id='tinyproxy'></a>**<br>
     Tinyproxy is a lightweight HTTP and HTTPS proxy.
 
-  * **[tmux 3.5a (binary only)](tmux.md)<a id='tmux'></a>**<br>
+  * **[tmux 3.6a (binary only)](tmux.md)<a id='tmux'></a>**<br>
     tmux, a BSD-licensed alternative to GNU screen. Uses ncurses.
 
-  * **[Tor 0.4.8.17](tor.md)<a id='tor'></a>**<br>
+  * **[Tor 0.4.8.23](tor.md)<a id='tor'></a>**<br>
     The Onion Router Anonymous Internet communication system.
 
-  * **[Transmission 3.00/4.0.6 (binary only)](transmission.md)<a id='transmission'></a>**<br>
+  * **[Transmission 3.00/4.1.1 (binary only)](transmission.md)<a id='transmission'></a>**<br>
     If needed, remember to change the base directory as well as the installation directory on the webif.
 
-  * **[Tree 1.8.0/2.2.1 (binary only)](tree.md)<a id='tree'></a>**<br>
+  * **[Tree 1.8.0/2.3.2 (binary only)](tree.md)<a id='tree'></a>**<br>
     Tree is a recursive directory listing program that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.
 
   * **[trickle 1.07 (binary only) - DEPRECATED](trickle.md)<a id='trickle'></a>**<br>
@@ -733,13 +751,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[uMurmur 0.2.20/0.3.1](umurmur.md)<a id='umurmur'></a>**<br>
     umurmur is a minimalistic Mumble server primarily targeted to run on routers using less resources. It targets to fill the needs of a pretty small group of users communicating, which in part originates from the other goal of working well on a small system with a limited CPU and limited amount of disk space. It also aims to minimize writing to the disk since these kinds of systems usually only has a flash memory for disk. umurmur supports a subset of the features of Murmur. https://github.com/umurmur/umurmur
 
-  * **[Unbound 1.23.1](unbound.md)<a id='unbound'></a>**<br>
+  * **[Unbound 1.24.2](unbound.md)<a id='unbound'></a>**<br>
     Unbound is designed as a set of modular components, so that also DNSSEC (secure DNS) validation and stub-resolvers (that do not run as a server, but are linked into an application) are easily possible.
 
   * **[UNFS3 0.9.23 - DEPRECATED](unfs3.md)<a id='unfs3'></a>**<br>
     Userspace NFS v3 Server.
 
-  * **[UnRAR 6.1.7/7.1.8 (binary only)](unrar.md)<a id='unrar'></a>**<br>
+  * **[UnRAR 6.1.7/7.2.5 (binary only)](unrar.md)<a id='unrar'></a>**<br>
     Unarchiver for .rar files
 
   * **[usbids: usb.ids 635738b64e](usbids.md)<a id='usbids'></a>**<br>
@@ -753,8 +771,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### V
 
-  * **[Vim 9.1.1275 (binary only)](vim.md)<a id='vim'></a>**<br>
+  * **[Vim 9.2.0000 (binary only)](vim.md)<a id='vim'></a>**<br>
     An improved version of VI
+
+  * **[Virtualip-NG - EXPERIMENTAL](virtualip-ng.md)<a id='virtualip-ng'></a>**<br>
+    Creates one or more virtual IPv4/IPv6 addresses on selected interfaces. This package is a maintained NG variant derived from the former virtualip-cgi module and provides a web configuration page for interface, IP/netmask-or-prefix entries, autostart and timing controls. See docs/make/virtualip-ng.md for more hints.
 
   * **[VLMCSD svn1113](vlmcsd.md)<a id='vlmcsd'></a>**<br>
     vlmcsd is a fully Microsoft compatible KMS server hat provides product activation services to clients. It is designed to run on POSIX compatible operating systens. Only requirements are a basic C library with a BSD-style sockets API and either fork(2) or pthreads(7). That allows it to run on most embedded systems like routers, NASes, etc.
@@ -776,10 +797,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Wget 1.25.0 (binary only)](wget.md)<a id='wget'></a>**<br>
     GNU Wget is a free software package for retrieving files using HTTP, HTTPS and FTP, the most widely-used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals, etc.
 
-  * **[Whois 5.6.4 (binary only)](whois.md)<a id='whois'></a>**<br>
+  * **[Whois 5.6.6 (binary only)](whois.md)<a id='whois'></a>**<br>
     Whois - client for the whois directory service.
 
-  * **[wireguard-tools 1.0.20250521](wireguard.md)<a id='wireguard'></a>**<br>
+  * **[wireguard-tools 1.0.20260223](wireguard.md)<a id='wireguard'></a>**<br>
     WireGuard is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPSec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it plans to be cross-platform and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.
 
   * **[wireguard-linux-compat 1.0.20220627](wireguard-linux-compat.md)<a id='wireguard-linux-compat'></a>**<br>
@@ -802,21 +823,27 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Xrelayd 0.2.1pre2 - DEPRECATED](xrelayd.md)<a id='xrelayd'></a>**<br>
     SSL tunnel based on PolarSSL. Xrelayd is a stripped down version of stunnel based on PolarSSL library. Essentially, this package makes your router's websrv or httpd SSL-enabled, offering you the option of remote configuration via WWW or secure remote use of features like Rudi-Shell.
 
-  * **[xsltproc 1.1.43 (binary only)](xsltproc.md)<a id='xsltproc'></a>**<br>
+  * **[xsltproc 1.1.45 (binary only)](xsltproc.md)<a id='xsltproc'></a>**<br>
     xsltproc is a command line tool for applying XSLT stylesheets to XML documents. It is part of libxslt, the XSLT C library for GNOME. While it was developed as part of the GNOME project, it can operate independently of the GNOME desktop.
 
-  * **[XZ 5.6.4 (binary only)](xz.md)<a id='xz'></a>**<br>
+  * **[XZ 5.8.3 (binary only)](xz.md)<a id='xz'></a>**<br>
     XZ is the successor to the Lempel-Ziv/Markov-chain Algorithm compression format, which provides memory-hungry but powerful compression (often better than bzip2) and fast, easy decompression. This package provides the command line tools for working with XZ compression. They can also handle the older LZMA format, and if invoked via appropriate symlinks will emulate the behavior of the commands in the lzma package.
 
 # Debug helpers
 
-  * **<u>gdb GNU debugger 6.8/7.9.1 (binary only) - DEPRECATED</u><a id='gdb'></a>**<br>
+  * **[binutils-tools: Binutils 2.46.0 (binary only)](binutils-tools.md)<a id='binutils-tools'></a>**<br>
+    Collection of essential tools for analyzing and manipulating ELF binaries. Size of all binaries and libraries: ~1.5MB (uncompressed: ~4.5MB)
+
+  * **[file 5.47 (binary only)](file.md)<a id='file'></a>**<br>
+    file - determine file type The file command is used to identify a particular file according to the type of data contained by the file. File can identify many different file types, including ELF binaries, system libraries, RPM packages, and many different graphics formats. This utility is essential for analyzing binaries and file formats on the target system, especially useful for debugging cross-compilation issues.
+
+  * **<u>gdb 6.8/7.9.1 (binary only) - DEPRECATED</u><a id='gdb'></a>**<br>
     Select the version of gdb you wish to use.
 
   * **[inotify-tools 3.14 (binary only) - DEPRECATED](inotify-tools.md)<a id='inotify-tools'></a>**<br>
     inotify-tools - watch file and directory access inotify-tools is a C library and a set of command-line programs for Linux providing a simple interface to inotify. These programs can be used to monitor and act upon filesystem events. The programs are written in C and have no dependencies other than a Linux kernel supporting inotify. inotifywait This command simply blocks for inotify events, making it appropriate for use in shell scripts. It can watch any set of files and directories, and can recursively watch entire directory trees. inotifywatch inotifywatch collects filesystem usage statistics and outputs counts of each inotify event. Please read https://freetz.github.io/wiki/packages/inotify_tools for further details. Improper usage can lead to reboots.
 
-  * **[ldd 0.1 (binary only) - DEPRECATED](ldd.md)<a id='ldd'></a>**<br>
+  * **[ldd 0.1/1.0.57 (binary only)](ldd.md)<a id='ldd'></a>**<br>
     ldd prints the shared libraries required by each program or shared library specified on the command line.
 
   * **[lsof 4.89 (binary only) - DEPRECATED](lsof.md)<a id='lsof'></a>**<br>
@@ -828,11 +855,14 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Nano Shell 0.1 (binary only) - DEPRECATED](nano-shell.md)<a id='nano-shell'></a>**<br>
     Remotely execute arbitrary shell commands via URLs This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
 
+  * **[PatchELF 0.18.0 (binary only)](patchelf.md)<a id='patchelf'></a>**<br>
+    Modifies existing ELF executables and libraries. Can change the interpreter, RPATH, and other ELF metadata. Useful for modifying binaries to use different dynamic linker paths or library search paths (RPATH/RUNPATH).
+
   * **[pciutils 3.1.7 (binary only) - DEPRECATED](pciutils.md)<a id='pciutils'></a>**<br>
     The PCI Utilities are a collection of programs for inspecting and manipulating configuration of PCI devices, all based on a common portable library libpci which offers access to the PCI configuration space on a variety of operating systems. lspci displays detailed information about all PCI buses and devices in the system. setpci allows reading from and writing to PCI device configuration registers. For example, you can adjust the latency timers with it.
 
-  * **[strace 4.9/5.0/6.16 (binary only)](strace.md)<a id='strace'></a>**<br>
-    strace - trace system calls and signals strace is a system call tracer, i.e. a debugging tool which prints out a trace of all the system calls made by a another process/program.
+  * **[strace 4.9/5.0/6.19 (binary only)](strace.md)<a id='strace'></a>**<br>
+    strace - trace system calls and signals strace is a system call tracer, i.e. a debugging tool which prints out a trace of all the system calls made by another process/program.
 
   * **<u>target-tester - DEVELOPER</u><a id='target-tester'></a>**<br>
     This package is intended to be used by freetz' developers only. It allows to compile and run configure-tests which need to be run on target in a less complicated way (compared to completely manual one). Note: Simply modify target-tester.c or replace it with code taken from configure script.
@@ -862,7 +892,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[hp-utils 0.3.2 - DEPRECATED](hp-utils.md)<a id='hp-utils'></a>**<br>
     hp-utils is a collection of utility programs for HP printers. It's meant to be used on systems, which are unable to run the corresponding programs provided by HPLIP, e.g. because they only have limited memory and/or cpu power. hp-utils is primarily focused towards embedded systems, particularly towards the FRITZ!Box, a family of DSL routers produced by AVM.
 
-  * **[Iptables 1.4.11.1/1.4.21/1.6.2/1.8.11 (binary only)](iptables.md)<a id='iptables'></a>**<br>
+  * **[Iptables 1.4.11.1/1.4.21/1.6.2/1.8.13 (binary only)](iptables.md)<a id='iptables'></a>**<br>
     Netfilter/iptables Netfilter is the set of hooks within the Linux kernel for intercepting and manipulating network packets. The best-known component on top of netfilter is the firewall which filters packets, but the hooks are also used by a component which performs network address translation, and by another which provides ipchains backwards compatibility. These components are usually Loadable Kernel Modules. iptables is the name of the user space tool by which administrators create rules for the packet filtering and NAT modules. While technically iptables is merely the tool which controls the packet filtering and NAT components within the kernel, the name iptables is often used to refer to the entire infrastructure, including netfilter, connection tracking and NAT, as well as the tool itself. iptables is a standard part of all modern Linux distributions.
 
   * **[mini_fo 0.3 - DEPRECATED](mini_fo.md)<a id='mini-fo'></a>**<br>

@@ -1,11 +1,11 @@
---- libtransmission/session-settings.h
-+++ libtransmission/session-settings.h
-@@ -53,7 +53,7 @@
-     V(TR_KEY_ratio_limit, ratio_limit, double, 2.0, "") \
-     V(TR_KEY_ratio_limit_enabled, ratio_limit_enabled, bool, false, "") \
-     V(TR_KEY_rename_partial_files, is_incomplete_file_naming_enabled, bool, false, "") \
--    V(TR_KEY_scrape_paused_torrents_enabled, should_scrape_paused_torrents, bool, true, "") \
-+    V(TR_KEY_scrape_paused_torrents_enabled, should_scrape_paused_torrents, bool, false, "") \
-     V(TR_KEY_script_torrent_added_enabled, script_torrent_added_enabled, bool, false, "") \
-     V(TR_KEY_script_torrent_added_filename, script_torrent_added_filename, std::string, "", "") \
-     V(TR_KEY_script_torrent_done_enabled, script_torrent_done_enabled, bool, false, "") \
+--- libtransmission/session.h
++++ libtransmission/session.h
+@@ -438,7 +438,7 @@
+         bool seed_queue_enabled = false;
+         bool sequential_download = false;
+         bool should_delete_source_torrents = false;
+-        bool should_scrape_paused_torrents = true;
++        bool should_scrape_paused_torrents = false;
+         bool should_start_added_torrents = true;
+         bool speed_limit_down_enabled = false;
+         bool speed_limit_up_enabled = false;

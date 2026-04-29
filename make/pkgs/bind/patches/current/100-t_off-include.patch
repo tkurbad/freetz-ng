@@ -6,5 +6,5 @@
  #include <stdio.h>
 +#include <sys/types.h>
  #include <syslog.h> /* XXXDCL NT */
+ #include <unistd.h>
  
- #include <isc/formatcheck.h>

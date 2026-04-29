@@ -1810,6 +1810,7 @@ config FREETZ_REPLACE_DTRACE
 config FREETZ_REPLACE_ONLINECHANGED
 	bool "Replace onlinechanged - EXPERIMENTAL"
 	depends on FREETZ_SHOW_EXPERT
+	depends on !FREETZ_AVM_HAS_SVCTL
 	default n
 	help
 		AVM's built-in onlinechanged is not reliably called on some DSL boxes for

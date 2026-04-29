@@ -4,9 +4,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### A
 
-  * **[autoconf 2.72](autoconf-host.md)<a id='autoconf-host'></a>**<br>
+  * **[autoconf 2.73](autoconf-host.md)<a id='autoconf-host'></a>**<br>
 
-  * **[automake 1.18](automake-host.md)<a id='automake-host'></a>**<br>
+  * **[automake 1.18.1](automake-host.md)<a id='automake-host'></a>**<br>
 
   * **[avm-rle 1.0](avm-rle-host.md)<a id='avm-rle-host'></a>**<br>
 
@@ -16,15 +16,17 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### C
 
-  * **[ca-bundle 2025-09-09](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
+  * **[ca-bundle 2026-03-19](ca-bundle-host.md)<a id='ca-bundle-host'></a>**<br>
 
-  * **[cmake 4.1.1](cmake-host.md)<a id='cmake-host'></a>**<br>
+  * **[cmake 4.3.2](cmake-host.md)<a id='cmake-host'></a>**<br>
+
+  * **[config a2287c3041a3f2a204eb942e09c015eab00dc7dd](config-host.md)<a id='config-host'></a>**<br>
 
   * **[cpio 2.15](cpio-host.md)<a id='cpio-host'></a>**<br>
 
 ### D
 
-  * **[dos2unix 7.5.2](dos2unix-host.md)<a id='dos2unix-host'></a>**<br>
+  * **[dos2unix 7.5.5](dos2unix-host.md)<a id='dos2unix-host'></a>**<br>
 
   * **[dtc 1.7.2](dtc-host.md)<a id='dtc-host'></a>**<br>
 
@@ -34,9 +36,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### F
 
-  * **[fakeroot 1.37.1.2](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
+  * **[fakeroot 1.37.2](fakeroot-host.md)<a id='fakeroot-host'></a>**<br>
 
   * **[fastjar 0.98](fastjar-host.md)<a id='fastjar-host'></a>**<br>
+
+  * **[file 5.47](file-host.md)<a id='file-host'></a>**<br>
 
   * **[find-squashfs 1.0](find-squashfs-host.md)<a id='find-squashfs-host'></a>**<br>
 
@@ -46,11 +50,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[gmp 6.3.0](gmp-host.md)<a id='gmp-host'></a>**<br>
 
-  * **[gperf 3.2](gperf-host.md)<a id='gperf-host'></a>**<br>
+  * **[gperf 3.3](gperf-host.md)<a id='gperf-host'></a>**<br>
 
 ### K
 
-  * **[kconfig 6.16](kconfig-host.md)<a id='kconfig-host'></a>**<br>
+  * **[kconfig 7.0](kconfig-host.md)<a id='kconfig-host'></a>**<br>
 
 ### L
 
@@ -62,15 +66,15 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[lzma2eva 1.0](lzma2eva-host.md)<a id='lzma2eva-host'></a>**<br>
 
-  * **[lzma2 5.6.4](lzma2-host.md)<a id='lzma2-host'></a>**<br>
+  * **[lzma2 5.8.3](lzma2-host.md)<a id='lzma2-host'></a>**<br>
 
 ### M
 
-  * **[m4 1.4.20](m4-host.md)<a id='m4-host'></a>**<br>
+  * **[m4 1.4.21](m4-host.md)<a id='m4-host'></a>**<br>
 
   * **[make 4.4.1](make-host.md)<a id='make-host'></a>**<br>
 
-  * **[meson 1.8.4](meson-host.md)<a id='meson-host'></a>**<br>
+  * **[meson 1.11.1](meson-host.md)<a id='meson-host'></a>**<br>
 
   * **[mklibs 0.1.45](mklibs-host.md)<a id='mklibs-host'></a>**<br>
 
@@ -82,25 +86,27 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[ncftp 3.3.0](ncftp-host.md)<a id='ncftp-host'></a>**<br>
 
-  * **[ncurses 6.5-20250419](ncurses-host.md)<a id='ncurses-host'></a>**<br>
+  * **[ncurses 6.6](ncurses-host.md)<a id='ncurses-host'></a>**<br>
 
   * **[netkit-ftp 0.17-35](netkit-ftp-host.md)<a id='netkit-ftp-host'></a>**<br>
 
-  * **[ninja 1.13.1](ninja-host.md)<a id='ninja-host'></a>**<br>
+  * **[ninja 1.13.2](ninja-host.md)<a id='ninja-host'></a>**<br>
 
 ### O
 
-  * **[openssl 3.5.2](openssl-host.md)<a id='openssl-host'></a>**<br>
+  * **[openssl 3.5.6](openssl-host.md)<a id='openssl-host'></a>**<br>
 
 ### P
 
-  * **[patchelf 0.14.5/0.15.0](patchelf-host.md)<a id='patchelf-host'></a>**<br>
+  * **[patchelf 0.14.5/0.18.0-b49de1b33](patchelf-host.md)<a id='patchelf-host'></a>**<br>
+
+  * **[patchelf-target 0.14.5/0.15.0](patchelf-target-host.md)<a id='patchelf-target-host'></a>**<br>
 
   * **[pkgconf 2.5.1](pkgconf-host.md)<a id='pkgconf-host'></a>**<br>
 
   * **[prelink 20131005](prelink-host.md)<a id='prelink-host'></a>**<br>
 
-  * **[pseudo 1.9.0 oe-core cc1f616](pseudo-host.md)<a id='pseudo-host'></a>**<br>
+  * **[pseudo 1.9.5](pseudo-host.md)<a id='pseudo-host'></a>**<br>
 
   * **[python2 2.7.18](python2-host.md)<a id='python2-host'></a>**<br>
 
@@ -108,17 +114,17 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[python2-setuptools 44.1.1](python2-setuptools-host.md)<a id='python2-setuptools-host'></a>**<br>
 
-  * **[python3-attrs 25.3.0](python3-attrs-host.md)<a id='python3-attrs-host'></a>**<br>
+  * **[python3-attrs 25.4.0](python3-attrs-host.md)<a id='python3-attrs-host'></a>**<br>
 
-  * **[python3 3.13.7](python3-host.md)<a id='python3-host'></a>**<br>
+  * **[python3 3.14.4](python3-host.md)<a id='python3-host'></a>**<br>
 
-  * **[python3-jsonschema 4.24.0](python3-jsonschema-host.md)<a id='python3-jsonschema-host'></a>**<br>
+  * **[python3-jsonschema 4.25.1](python3-jsonschema-host.md)<a id='python3-jsonschema-host'></a>**<br>
 
   * **[python3-packaging 25.0](python3-packaging-host.md)<a id='python3-packaging-host'></a>**<br>
 
-  * **[python3-pip 25.1.1](python3-pip-host.md)<a id='python3-pip-host'></a>**<br>
+  * **[python3-pip 25.3](python3-pip-host.md)<a id='python3-pip-host'></a>**<br>
 
-  * **[python3-referencing 0.36.2](python3-referencing-host.md)<a id='python3-referencing-host'></a>**<br>
+  * **[python3-referencing 0.37.0](python3-referencing-host.md)<a id='python3-referencing-host'></a>**<br>
 
   * **[python3-setuptools 80.9.0](python3-setuptools-host.md)<a id='python3-setuptools-host'></a>**<br>
 
@@ -144,11 +150,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[tichksum 1.0](tichksum-host.md)<a id='tichksum-host'></a>**<br>
 
-  * **[tools 2025-08-27](tools-host.md)<a id='tools-host'></a>**<br>
+  * **[tools 2026-04-24](tools-host.md)<a id='tools-host'></a>**<br>
 
 ### U
 
-  * **[uboot 2025.04](uboot-host.md)<a id='uboot-host'></a>**<br>
+  * **[uboot 2026.01](uboot-host.md)<a id='uboot-host'></a>**<br>
 
   * **[uimg 871930d](uimg-host.md)<a id='uimg-host'></a>**<br>
 

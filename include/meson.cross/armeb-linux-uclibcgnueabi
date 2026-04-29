@@ -1,0 +1,10 @@
+
+[constants]
+arch              = 'armeb-linux-uclibcgnueabi'
+
+[target_machine]
+system            = 'linux'
+cpu_family        = 'arm'
+cpu               = 'armeb'
+endian            = 'big'
+

@@ -13,3 +13,4 @@ if [ "$EXTERNAL_FREETZ_PACKAGE_SABLEVM_SDK" == "y" ]; then
 		/usr/share/sablevm-classpath/resources.jar \
 	"
 fi
+

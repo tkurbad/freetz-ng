@@ -1,13 +1,13 @@
-$(call TOOLS_INIT, 25.3.0)
+$(call TOOLS_INIT, 25.4.0)
 $(PKG)_SOURCE_DOWNLOAD_NAME:=$($(PKG)_VERSION).tar.gz
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=1116ff6fff7a79c8de6115e38532daa2507dfffeabd6bbc364d1d441fb14d00f
+$(PKG)_HASH:=2bff06c2afd09911e10e8ab8126ae0eeb3d13b7fed5db66bf7e021682cc2d9f0
 $(PKG)_SITE:=https://github.com/python-attrs/attrs/archive/refs/tags
 ### WEBSITE:=https://pypi.org/project/attrs/
 ### MANPAGE:=https://www.attrs.org/
 ### CHANGES:=https://github.com/python-attrs/attrs/releases
 ### CVSREPO:=https://github.com/python-attrs/attrs
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DEPENDS_ON+=python3-host
 

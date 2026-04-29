@@ -4,7 +4,7 @@ SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
 TOOLS="$PARENT/tools"
 CACHE="/tmp/.freetz-juis"
-CRAP_FILTER="5382169925"
+CRAP_FILTER="5382169925|4040-07.59"
 
 
 #crc32
@@ -40,21 +40,24 @@ cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; d
 #cat fos-xxx | while read -s x; do sed "/\/${x##*/}$/d" -i fos-lab fos-inh; done
 
 
+#dect
+seq="$((for x in $(seq 1 13); do seq ${x}01 ${x}05; done; seq 606 615) | sort -n)"
+
 #dect-rel
 echo -e '\n### Dect-Release ###############################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";
+for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x                             -a; done | tee dect-rel
 #dect-lab
 echo -e '\n### Dect-Labor #################################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
+for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.08.00-115000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
+for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.07.50-100000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1000  Version=$m  -a; done | tee dect-lab -a
 #dect-inh
 echo -e '\n### Dect-Inhaus ################################################'
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.08.00-115000"
+for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.08.00-115000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh
-for x in $(seq  10 109); do [ ${#x} != 3 ] && x="0$x"; x="${x::-1}.0${x:2}";             m="226.07.50-100000"
+for x in $seq; do [ ${#x} != 4 ] && x="0$x"; x="${x::-2}.${x:2}";                        m="226.07.50-100000"
                              env - $TOOLS/juis_check --dect HW=154 DHW=$x Buildtype=1001  Version=$m  -a; done | tee dect-inh -a
 #dect-sub
 cat dect-rel | while read -s x; do sed "/\/${x##*/}$/d" -i dect-lab dect-inh; done
@@ -65,10 +68,10 @@ cat dect-lab | while read -s x; do sed "/\/${x##*/}$/d" -i          dect-inh; do
 echo -e '\n### BPjM #######################################################'
                              env - $TOOLS/juis_check --bpjm HW=259                                    -a       | tee bpjm
 [ ! -s bpjm ] || curl -sS "$(sed -n 's/.*=//p' bpjm)" -o bpjm.out
-read="$(head -c4 bpjm.out | $XXD -p)"
-calc="$($CRC32 <( tail -c +$((1 + 4)) bpjm.out ))"
-[ "$read" != "${calc%% *}" ] && comp="mismatch $read/$calc" || comp="$read"
-sed -i "s/.*=/$comp=/" bpjm
+read="$(head -c4 bpjm.out 2>/dev/null | $XXD -p)"
+calc="$($CRC32 <( tail -c +$((1 + 4)) bpjm.out 2>/dev/null))"
+[ "$read" != "${calc%% *}" ] && comp="mismatch $read/${calc%% *}" || comp="$read"
+sed -i "s#.*=#$comp=#" bpjm
 
 
 #cache
@@ -119,4 +122,5 @@ echo -e '\n### BPjM'         ; cat bpjm     | while read -s x; do echo "  - CRC 
 
 #tmp
 rm -f fos-xxx fos-rel fos-dwn fos-lab fos-inh  dect-rel dect-lab dect-inh  bpjm bpjm.out
+exit 0
 

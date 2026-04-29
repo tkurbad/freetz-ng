@@ -6,7 +6,7 @@ $(PKG)_SITE:=http://www.jedsoft.org/releases/slang
 ### WEBSITE:=https://www.jedsoft.org/slang/
 ### MANPAGE:=https://www.jedsoft.org/slang/docs.html
 ### CHANGES:=https://www.jedsoft.org/releases/slang/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/elfobjs/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib$(pkg).so.$($(PKG)_LIB_VERSION)

@@ -1,0 +1,11 @@
+--- CPP/7zip/UI/Common/LoadCodecs.cpp
++++ CPP/7zip/UI/Common/LoadCodecs.cpp
+@@ -214,7 +214,7 @@
+ 
+ static FString GetBaseFolderPrefixFromRegistry()
+ {
+-  FString moduleFolderPrefix = NDLL::GetModuleDirPrefix();
++  FString moduleFolderPrefix = FTEXT("FREETZ_LIB_PREFIX/");
+   #ifdef _WIN32
+   if (!NFind::DoesFileExist(moduleFolderPrefix + kMainDll) &&
+       !NFind::DoesDirExist(moduleFolderPrefix + kCodecsFolderName) &&

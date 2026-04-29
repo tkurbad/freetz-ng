@@ -1,32 +1,33 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),2.32.4,2.81.2))
-$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),0.3200.4,0.8102.0)
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),2.32.4,2.88.0))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),0.3200.4,0.8800.0)
 $(PKG)_MAJOR_VERSION:=2.0
 $(PKG)_SOURCE:=glib-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=a5d742a4fda22fb6975a8c0cfcd2499dd1c809b8afd4ef709bda4d11b167fae2
-$(PKG)_HASH_CURRENT:=ce84b241b84750a3d42c78c456976fac57f2d2726a110f2ba059c052a4349d1c
+$(PKG)_HASH_CURRENT:=3546251ccbb3744d4bc4eb48354540e1f6200846572bab68e3a2b7b2b64dfd07
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://download.gnome.org/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://ftp.gnome.org/pub/gnome/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
-### VERSION:=2.32.4/2.81.2
+### VERSION:=2.32.4/2.88.0
 ### WEBSITE:=https://www.gnu.org/software/libc/
 ### MANPAGE:=https://docs.gtk.org/glib/
 ### CHANGES:=https://gitlab.gnome.org/GNOME/glib/blob/main/NEWS
 ### CVSREPO:=https://gitlab.gnome.org/GNOME/glib
 
-$(PKG)_LIBNAMES_SHORT := glib gobject gmodule gthread gio
+$(PKG)_LIBNAMES_SHORT := glib gio gobject gmodule gthread $(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),,girepository)
 $(PKG)_LIBNAMES_LONG := $($(PKG)_LIBNAMES_SHORT:%=lib%-$($(PKG)_MAJOR_VERSION).so.$($(PKG)_LIB_VERSION))
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
 $(PKG)_LIBS_TARGET_DIR := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_TARGET_DIR)/%)
 $(PKG)_PKGCONFIGS_SHORT := $($(PKG)_LIBNAMES_SHORT) gmodule-no-export gmodule-export gio-unix
 
 $(PKG)_DEPENDS_ON += wget-host
+$(PKG)_DEPENDS_ON += libffi zlib
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),abandon,current)
+
 ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
 $(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/%/.libs/),$($(PKG)_LIBNAMES_LONG))
-$(PKG)_DEPENDS_ON += pcre libffi zlib
-
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),abandon,current)
+$(PKG)_DEPENDS_ON += pcre
 
 # NB: glib2 does require iconv-functions, see glib/gconvert.c
 # The configure option "--with-libiconv=no" means
@@ -72,7 +73,8 @@ $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 else
 $(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/builddir/%/),$($(PKG)_LIBNAMES_LONG))
-$(PKG)_DEPENDS_ON += python3-host python3-packaging-host meson-host pcre2 libffi gettext zlib
+$(PKG)_DEPENDS_ON += python3-host python3-packaging-host meson-host
+$(PKG)_DEPENDS_ON += pcre2 gettext
 
 #$(PKG)_CONFIGURE_OPTIONS += -D iconv=libc
 $(PKG)_CONFIGURE_OPTIONS += -D selinux=disabled

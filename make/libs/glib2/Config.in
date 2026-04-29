@@ -10,31 +10,12 @@ config FREETZ_LIB_libglib_2
 		GLib is a library containing many useful C routines for things such as
 		trees, hashes, and lists.
 
-if FREETZ_LIB_libglib_2
-
-	choice
-		prompt "Version"
-			default FREETZ_LIB_libglib_2_VERSION_CURRENT
-
-		config FREETZ_LIB_libglib_2_VERSION_ABANDON
-			bool "2.32.4"
-			depends on !FREETZ_SEPARATE_AVM_UCLIBC
-
-		config FREETZ_LIB_libglib_2_VERSION_CURRENT
-			bool "2.81.2"
-			depends on FREETZ_SEPARATE_AVM_UCLIBC
-
-	endchoice
-
-endif # FREETZ_LIB_libglib_2
-
 config FREETZ_LIB_libgio_2
 	bool "GLib2 libgio (libgio-2.0.so)"
 	select FREETZ_LIB_libglib_2
 	select FREETZ_LIB_libgmodule_2
 	select FREETZ_LIB_libgobject_2
-	select FREETZ_LIB_libgthread_2  if !FREETZ_SEPARATE_AVM_UCLIBC
-#	select FREETZ_LIB_libgthread_2  if FREETZ_LIB_libglib_2_VERSION_ABANDON  <- 'recursive' dependency
+	select FREETZ_LIB_libgthread_2  if FREETZ_LIB_libglib_2_VERSION_ABANDON
 	select FREETZ_LIB_libintl       if FREETZ_LIB_libglib_2_VERSION_CURRENT
 	select FREETZ_LIB_libz
 	default n
@@ -63,4 +44,29 @@ config FREETZ_LIB_libgthread_2
 	default n
 	help
 		If your application uses Glib2 threads, select this library.
+
+config FREETZ_LIB_libgirepository_2
+	bool "GLib2 libgirepository (libgirepository-2.0.so)"
+	depends on FREETZ_LIB_libglib_2_VERSION_CURRENT
+	select FREETZ_LIB_libglib_2
+	select FREETZ_LIB_libgmodule_2
+	select FREETZ_LIB_libgobject_2
+	select FREETZ_LIB_libffi
+	default n
+	help
+		If your application uses Glib2 repository, select this library.
+
+choice
+	prompt "Glib2 version"
+		default FREETZ_LIB_libglib_2_VERSION_CURRENT
+
+	config FREETZ_LIB_libglib_2_VERSION_ABANDON
+		bool "2.32.4"
+		depends on !FREETZ_SEPARATE_AVM_UCLIBC
+
+	config FREETZ_LIB_libglib_2_VERSION_CURRENT
+		bool "2.88.0"
+		depends on FREETZ_SEPARATE_AVM_UCLIBC
+
+endchoice
 

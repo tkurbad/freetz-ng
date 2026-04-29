@@ -5,7 +5,7 @@ $(PKG)_SITE:=git@https://github.com/libpcp/pcp.git
 ### MANPAGE:=https://github.com/libpcp/pcp/tree/master/pcp_app#readme
 ### CHANGES:=https://github.com/libpcp/pcp/commits/master/
 ### CVSREPO:=https://github.com/libpcp/pcp/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/pcp_app/pcp
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/pcp

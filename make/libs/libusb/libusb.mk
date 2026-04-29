@@ -9,6 +9,8 @@ $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libusb_0_WITH_COMPAT),compat,legacy
 $(PKG)_SITE:=$(if $(FREETZ_LIB_libusb_0_WITH_COMPAT),https://github.com/libusb/libusb-compat-0.1/releases/download/v$($(PKG)_VERSION),@SF/$(pkg))
 ### VERSION:=0.1.8/0.1.12
 
+$(PKG)_DEPENDS_ON+=config-host
+
 $(PKG)_DIR:=$($(PKG)_SOURCE_DIR)/$($(PKG)_DIR_COMPONENT)
 
 $(PKG)_CONDITIONAL_PATCHES+=$(pkg)$(if $(FREETZ_LIB_libusb_0_WITH_COMPAT),-compat)
@@ -24,6 +26,8 @@ $(PKG)_DEPENDS_ON += $(if $(FREETZ_LIB_libusb_0_WITH_COMPAT),libusb1)
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(if $(FREETZ_LIB_libusb_0_WITH_COMPAT),./bootstrap.sh;)
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./)
+
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static

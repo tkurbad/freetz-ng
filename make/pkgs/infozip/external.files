@@ -1,0 +1,2 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_INFOZIP" == "y" ] && EXTERNAL_FILES+=" /usr/bin/zip"
+

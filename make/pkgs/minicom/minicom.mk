@@ -1,12 +1,12 @@
-$(call PKG_INIT_BIN, 2.10)
+$(call PKG_INIT_BIN, 2.11.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=90e7ce2856b3eaaa3f452354d17981c49d32c426a255b6f0d3063a227c101538
+$(PKG)_HASH:=87cf0da91af0531357cd61b8e1906b907edd2c9ef82f9ae74c277e1893d0f98c
 $(PKG)_SITE:=https://salsa.debian.org/minicom-team/minicom/-/archive/$($(PKG)_VERSION)
 ### WEBSITE:=https://salsa.debian.org/minicom-team/minicom
 ### MANPAGE:=https://linux.die.net/man/1/minicom
 ### CHANGES:=https://salsa.debian.org/minicom-team/minicom/-/releases
 ### CVSREPO:=https://salsa.debian.org/minicom-team/minicom/-/commits/master/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/minicom
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/minicom

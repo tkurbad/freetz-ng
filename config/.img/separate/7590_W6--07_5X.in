@@ -12,8 +12,9 @@ config FREETZ_AVM_PROP_HWREV
 	string
 	default "259"
 
-config FREETZ_AVM_HAS_SIGNATURE
-	def_bool y
+config FREETZ_AVM_PROP_PRODUKT
+	string
+	default "Fritz_Box_HW259"
 
 config FREETZ_AVM_PROP_ALL_REGIONS
 	def_bool y
@@ -52,6 +53,9 @@ config FREETZ_AVM_HAS_LANGUAGE_nl
 	def_bool y
 
 config FREETZ_AVM_HAS_LANGUAGE_pl
+	def_bool y
+
+config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
 
 config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
@@ -167,6 +171,12 @@ config FREETZ_AVM_HAS_AVMCOUNTERD
 	def_bool y
 
 config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
+
+config FREETZ_AVM_HAS_HOSTAPD
+	def_bool y
+
+config FREETZ_AVM_HAS_HOSTAPD_VERSION_2_10
 	def_bool y
 
 config FREETZ_AVM_HAS_DTRACE

@@ -1,17 +1,19 @@
 [ "$FREETZ_MODIFY_DSL_SPECTRUM" == "y" ] || return 0
 echo1 "patching dsl spectrum"
 
-if [ "$FREETZ_AVM_VERSION_08_0X_MIN" == "y" ] ; then
-	decrip_file -force "${HTML_LANG_MOD_DIR}/internet/spectrum.js"
+[ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ] && decrip_file -force "${HTML_LANG_MOD_DIR}/internet/spectrum.js"
+
+if [ "$FREETZ_AVM_VERSION_08_2X_MIN" == "y" ]; then
+	PVER="08_2X"
+elif [ "$FREETZ_AVM_VERSION_08_0X_MIN" == "y" ]; then
 	PVER="08_0X"
-elif [ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ] ; then
-	decrip_file -force "${HTML_LANG_MOD_DIR}/internet/spectrum.js"
+elif [ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ]; then
 	PVER="07_5X"
-elif [ "$FREETZ_AVM_VERSION_07_0X_MIN" == "y" ] ; then
+elif [ "$FREETZ_AVM_VERSION_07_0X_MIN" == "y" ]; then
 	PVER="07_0X"
-elif [ "$FREETZ_AVM_VERSION_06_8X_MIN" == "y" ] ; then
+elif [ "$FREETZ_AVM_VERSION_06_8X_MIN" == "y" ]; then
 	PVER="06_8X"
-elif [ "$FREETZ_AVM_VERSION_06_5X_MIN" == "y" ] ; then
+elif [ "$FREETZ_AVM_VERSION_06_5X_MIN" == "y" ]; then
 	PVER="06_5X"
 fi
 

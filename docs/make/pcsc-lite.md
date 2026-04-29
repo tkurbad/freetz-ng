@@ -4,5 +4,5 @@
   - Changelog: [https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog](https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog)
   - Repository: [https://salsa.debian.org/rousseau/PCSC](https://salsa.debian.org/rousseau/PCSC)
   - Package: [master/make/pkgs/pcsc-lite/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/pcsc-lite/)
-  - Maintainer: [@MasterRoCcO](https://github.com/MasterRoCcO)
+  - Steward: [@MasterRoCcO](https://github.com/MasterRoCcO)
 

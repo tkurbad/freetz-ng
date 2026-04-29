@@ -39,7 +39,7 @@ get_kernel_version() {
 	local DIR="${1:-.}"
 	local CFG="$(sed -n 's/.*KCONFIG_CONFIG = //p' $DIR/linux*/.kernelvariables 2>/dev/null)"
 	[ -n "$CFG" ] && CFG="$DIR/linux*/$CFG" || CFG="$DIR/linux*/.config"
-	grep -E 'Kernel Configuration|Linux kernel version' $CFG 2>/dev/null | grep -v '^$' | head -n1 | sed 's/x86//' | sed 's/[^0-9\.]//g' | sed 's/^$/UNKNOWN/g'
+	grep -E 'Kernel Configuration|Linux kernel version' $CFG 2>/dev/null | grep -v '^$' | head -n1 | sed 's/x86//;s/arm64//' | sed 's/[^0-9\.]//g' | sed 's/^$/UNKNOWN/g'
 }
 
 # creates vanilla patch 4 avm
@@ -148,13 +148,13 @@ cat <<'EOX'
         vanilla4avm - creates avmdiff file from vanilla kernel 4 avm sources
         generate_vanilla - initial used to create avmdiff from tiny kernel pack files
 
-        Add kernel source, create avmdiff (example: 7590 FOS 08.00):
+        Add kernel source, create avmdiff (example: 7590 FOS 08.20):
         Unpack avm sources
         #
         mkdir -p ~/vanilla
         rm -rf ~/vanilla/avm
         ln -sf $(realpath sources/kernel) ~/vanilla/avm
-        ~/freetz-ng/tools/vanilla.sh vanilla4avm "" "" "7590_08.00"  # generate avm-diff
+        ~/freetz-ng/tools/vanilla.sh vanilla4avm "" "" "7590_08.20"  # generate avm-diff
         #
         ge ~/freetz-ng/config/mod/dl-kernel.in  # add hash
         ls ~/vanilla/pxz/*.patch.xz  # upload file

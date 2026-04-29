@@ -8,7 +8,10 @@ $(PKG)_STARTLEVEL=60
 $(PKG)_BINARY:=$($(PKG)_DIR)/ntpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/ntpd
 
+$(PKG)_DEPENDS_ON += config-host
 $(PKG)_DEPENDS_ON += wget-host
+
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./)
 
 $(PKG)_CONFIGURE_ENV += ac_cv_have_decl_asprintf=yes
 $(PKG)_CONFIGURE_ENV += ac_cv_func_setresuid=yes

@@ -12,8 +12,9 @@ config FREETZ_AVM_PROP_HWREV
 	string
 	default "171"
 
-config FREETZ_AVM_HAS_SIGNATURE
-	def_bool y
+config FREETZ_AVM_PROP_PRODUKT
+	string
+	default "Fritz_Box_7340"
 
 config FREETZ_AVM_HAS_BRANDING_avme
 	def_bool y
@@ -34,6 +35,9 @@ config FREETZ_AVM_HAS_LANGUAGE_fr
 	def_bool y
 
 config FREETZ_AVM_HAS_LANGUAGE_it
+	def_bool y
+
+config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
 
 config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
@@ -116,6 +120,12 @@ config FREETZ_AVM_HAS_DSLD
 	def_bool y
 
 config FREETZ_AVM_HAS_VPN
+	def_bool y
+
+config FREETZ_AVM_HAS_HOSTAPD
+	def_bool y
+
+config FREETZ_AVM_HAS_HOSTAPD_VERSION_0_5_9
 	def_bool y
 
 config FREETZ_AVM_HAS_DTRACE

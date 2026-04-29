@@ -1,12 +1,12 @@
-$(call TOOLS_INIT, 2.72)
+$(call TOOLS_INIT, 2.73)
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=ba885c1319578d6c94d46e9b0dceb4014caafe2490e437a0dbca3f270a223f5a
+$(PKG)_HASH:=9fd672b1c8425fac2fa67fa0477b990987268b90ff36d5f016dae57be0d6b52e
 $(PKG)_SITE:=@GNU/$(pkg_short)
 ### WEBSITE:=https://www.gnu.org/software/autoconf/
 ### MANPAGE:=https://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/
 ### CHANGES:=https://ftp.gnu.org/gnu/autoconf/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=autoconf.git
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DEPENDS_ON+=m4-host
 

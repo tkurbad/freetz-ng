@@ -1,13 +1,13 @@
-$(call TOOLS_INIT, 1.37.1.2)
+$(call TOOLS_INIT, 1.37.2)
 $(PKG)_SOURCE:=fakeroot_$($(PKG)_VERSION).orig.tar.gz
-$(PKG)_HASH:=959496928c8a676ec8377f665ff6a19a707bfad693325f9cc4a4126642f53224
-$(PKG)_SITE:=https://ftp.debian.org/debian/pool/main/f/fakeroot
+$(PKG)_HASH:=0eea60fbe89771b88fcf415c8f2f0a6ccfe9edebbcf3ba5dc0212718d98884db
+$(PKG)_SITE:=@DEBIAN/fakeroot
 ### WEBSITE:=https://wiki.debian.org/FakeRoot
 ### MANPAGE:=https://man.archlinux.org/man/fakeroot.1.en
 ### TRACKER:=https://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=fakeroot;dist=unstable
 ### CHANGES:=https://launchpad.net/debian/+source/fakeroot/+changelog
 ### CVSREPO:=https://github.com/openwrt/openwrt/tree/master/tools/fakeroot/patches
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 

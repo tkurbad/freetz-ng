@@ -5,7 +5,7 @@ $(PKG)_SITE:=git_sparse@https://github.com/PeterPawn/YourFritz.git,fit_tools
 ### VERSION:=0.2 24011d3
 ### CHANGES:=https://github.com/PeterPawn/YourFritz/commits/fit_tools/
 ### CVSREPO:=https://github.com/PeterPawn/YourFritz/tree/fit_tools/fit_tools
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_DESTDIR             := $(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 

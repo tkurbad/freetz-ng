@@ -1,6 +1,6 @@
 --- Configurations/unix-Makefile.tmpl
 +++ Configurations/unix-Makefile.tmpl
-@@ -234,54 +234,54 @@
+@@ -246,54 +246,54 @@
                                 && $unified_info{attributes}->{scripts}->{$_}->{misc} }
                          @{$unified_info{scripts}}))
  -}

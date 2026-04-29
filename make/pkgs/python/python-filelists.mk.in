@@ -1,4 +1,4 @@
-define Python/unnecessary/files
+define Python2/unnecessary/files
 usr/bin/2to3
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib2to3
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/future_builtins.so
@@ -30,13 +30,13 @@ usr/lib/python$(PYTHON_MAJOR_VERSION)/wsgiref.egg-info
 usr/share
 endef
 
-define Python/development/files
+define Python2/development/files
 usr/bin/python*-config
 usr/lib/pkgconfig
 usr/lib/libpython$(PYTHON_MAJOR_VERSION).a
 endef
 
-define Python/unnecessary-if-compression-enabled/dirs
+define Python2/unnecessary-if-compression-enabled/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/compiler
 usr/lib/python$(PYTHON_MAJOR_VERSION)/distutils
 usr/lib/python$(PYTHON_MAJOR_VERSION)/distutils/command
@@ -53,63 +53,63 @@ usr/lib/python$(PYTHON_MAJOR_VERSION)/xml/parsers
 usr/lib/python$(PYTHON_MAJOR_VERSION)/xml/sax
 endef
 
-define PyMod/audiodev/files
+define PyMod2/audiodev/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/linuxaudiodev.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/ossaudiodev.so
 endef
 
-define PyMod/audioop/files
+define PyMod2/audioop/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/audioop.so
 endef
 
-define PyMod/bsddb/dirs
+define PyMod2/bsddb/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/bsddb
 endef
-define PyMod/bsddb/files
+define PyMod2/bsddb/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/bsddb/*.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/dbhash.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/dbm.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_bsddb.so
 endef
 
-define PyMod/cmath/files
+define PyMod2/cmath/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/cmath.so
 endef
 
-define PyMod/cprofile/files
+define PyMod2/cprofile/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_lsprof.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/cProfile.py*
 endef
 
-define PyMod/csv/files
+define PyMod2/csv/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_csv.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/csv.py*
 endef
 
-define PyMod/crypt/files
+define PyMod2/crypt/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/crypt.so
 endef
 
-define PyMod/ctypes/dirs
+define PyMod2/ctypes/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ctypes
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ctypes/macholib
 endef
-define PyMod/ctypes/files
+define PyMod2/ctypes/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_ctypes.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ctypes/*.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ctypes/macholib/*.py*
 endef
 
-define PyMod/curses/dirs
+define PyMod2/curses/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/curses
 endef
-define PyMod/curses/files
+define PyMod2/curses/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/curses/*.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_curses.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_curses_panel.so
 endef
 
-define PyMod/eastern_codecs/files
+define PyMod2/eastern_codecs/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_codecs_*.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_multibytecodec.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/encodings/big5.py*
@@ -131,87 +131,87 @@ usr/lib/python$(PYTHON_MAJOR_VERSION)/encodings/johab.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/encodings/shift_jis*.py*
 endef
 
-define PyMod/elementtree/dirs
+define PyMod2/elementtree/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/xml/etree
 endef
-define PyMod/elementtree/files
+define PyMod2/elementtree/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_elementtree.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/xml/etree/*.py*
 endef
 
-define PyMod/ensurepip/dirs
+define PyMod2/ensurepip/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ensurepip
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ensurepip/_bundled
 endef
-define PyMod/ensurepip/files
+define PyMod2/ensurepip/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ensurepip/*.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/ensurepip/_bundled/*.whl
 endef
 
-define PyMod/grp/files
+define PyMod2/grp/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/grp.so
 endef
 
-define PyMod/hotshot/dirs
+define PyMod2/hotshot/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/hotshot
 endef
-define PyMod/hotshot/files
+define PyMod2/hotshot/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_hotshot.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/hotshot/*.py*
 endef
 
-define PyMod/json/dirs
+define PyMod2/json/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/json
 endef
-define PyMod/json/files
+define PyMod2/json/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_json.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/json/*.py*
 endef
 
-define PyMod/multiprocessing/dirs
+define PyMod2/multiprocessing/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/multiprocessing
 usr/lib/python$(PYTHON_MAJOR_VERSION)/multiprocessing/dummy
 endef
-define PyMod/multiprocessing/files
+define PyMod2/multiprocessing/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_multiprocessing.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/multiprocessing/*.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/multiprocessing/dummy/*.py*
 endef
 
-define PyMod/mmap/files
+define PyMod2/mmap/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/mmap.so
 endef
 
-define PyMod/readline/files
+define PyMod2/readline/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/readline.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/rlcompleter.py*
 endef
 
-define PyMod/spwd/files
+define PyMod2/spwd/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/spwd.so
 endef
 
-define PyMod/sqlite/dirs
+define PyMod2/sqlite/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/sqlite3
 endef
-define PyMod/sqlite/files
+define PyMod2/sqlite/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_sqlite3.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/sqlite3/*.py*
 endef
 
-define PyMod/ssl/files
+define PyMod2/ssl/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_ssl.so
 endef
 
-define PyMod/syslog/files
+define PyMod2/syslog/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/syslog.so
 endef
 
-define PyMod/termios/files
+define PyMod2/termios/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/termios.so
 endef
 
-define PyMod/test/dirs
+define PyMod2/test/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/test
 usr/lib/python$(PYTHON_MAJOR_VERSION)/test/cjkencodings
 usr/lib/python$(PYTHON_MAJOR_VERSION)/test/data
@@ -228,7 +228,7 @@ usr/lib/python$(PYTHON_MAJOR_VERSION)/email/test/data
 usr/lib/python$(PYTHON_MAJOR_VERSION)/json/tests
 usr/lib/python$(PYTHON_MAJOR_VERSION)/sqlite3/test
 endef
-define PyMod/test/files
+define PyMod2/test/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_ctypes_test.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/_testcapi.so
 usr/lib/python$(PYTHON_MAJOR_VERSION)/test/*
@@ -248,20 +248,20 @@ usr/lib/python$(PYTHON_MAJOR_VERSION)/json/tests/*.py*
 usr/lib/python$(PYTHON_MAJOR_VERSION)/sqlite3/test/*.py*
 endef
 
-define PyMod/unicodedata/files
+define PyMod2/unicodedata/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/lib-dynload/unicodedata.so
 endef
 
-define PyMod/unittest/dirs
+define PyMod2/unittest/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/unittest
 endef
-define PyMod/unittest/files
+define PyMod2/unittest/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/unittest/*.py*
 endef
 
-define PyMod/wsgiref/dirs
+define PyMod2/wsgiref/dirs
 usr/lib/python$(PYTHON_MAJOR_VERSION)/wsgiref
 endef
-define PyMod/wsgiref/files
+define PyMod2/wsgiref/files
 usr/lib/python$(PYTHON_MAJOR_VERSION)/wsgiref/*.py*
 endef

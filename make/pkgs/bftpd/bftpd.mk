@@ -1,12 +1,12 @@
-$(call PKG_INIT_BIN, 6.2)
+$(call PKG_INIT_BIN, 6.6)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=959185b1457a2cd8e404d52957d51879d56dd72b75a93049528af11ade00a6c2
+$(PKG)_HASH:=a867ba93a608cccb60944e1fae00e52b463f416b09235f87a31c023b296ac12e
 $(PKG)_SITE:=@SF/bftpd
 ### WEBSITE:=https://bftpd.sourceforge.net/
 ### MANPAGE:=https://bftpd.sourceforge.net/documents.html
 ### CHANGES:=https://bftpd.sourceforge.net/downloads/CHANGELOG
 ### CVSREPO:=https://sourceforge.net/projects/bftpd/
-### SUPPORT:=fda77
+### STEWARD:=fda77
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/bftpd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/bftpd
