@@ -1,17 +1,18 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),3400100,3530000))
-$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),0.8.6,3.53.0)
+$(call PKG_INIT_BIN, $(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),3400100,3530400))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),0.8.6,3.53.4)
 $(PKG)_SOURCE:=$(pkg)-autoconf-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=2c5dea207fa508d765af1ef620b637dcb06572afa6f01f0815bd5bbf864b33d9
-$(PKG)_HASH_CURRENT:=851e9b38192fe2ceaa65e0baa665e7fa06230c3d9bd1a6a9662d02380d73365a
+$(PKG)_HASH_CURRENT:=0e9483900e92cd5de8fd48d16bf9200145a61f7fd5be542a5ac81d8a9516eb9c
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE_ABANDON:=https://www.sqlite.org/2022
 $(PKG)_SITE_CURRENT:=https://www.sqlite.org/2026
 $(PKG)_SITE:=$($(PKG)_SITE_$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),ABANDON,CURRENT))
-### VERSION:=3.40.1/3.53.0
+### VERSION:=3.40.1/3.53.4
 ### WEBSITE:=https://www.sqlite.org
 ### MANPAGE:=https://www.sqlite.org/docs.html
 ### CHANGES:=https://www.sqlite.org/changes.html
 ### CVSREPO:=https://www.sqlite.org/src/timeline
+### STEWARD:=fda77
 
 ifeq ($(strip $(FREETZ_PACKAGE_SQLITE_WITH_READLINE)),y)
 $(PKG)_DEPENDS_ON += readline
@@ -22,7 +23,7 @@ $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),a
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),.libs/)sqlite3
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/sqlite3
 
-$(PKG)_LIB_BINARY:=$($(PKG)_DIR)/$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),.libs/)libsqlite3.so.$($(PKG)_LIB_VERSION)
+$(PKG)_LIB_BINARY:=$($(PKG)_DIR)/$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),.libs/)libsqlite3.so$(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),.$($(PKG)_LIB_VERSION))
 $(PKG)_LIB_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libsqlite3.so.$($(PKG)_LIB_VERSION)
 $(PKG)_LIB_TARGET_BINARY:=$($(PKG)_TARGET_LIBDIR)/libsqlite3.so.$($(PKG)_LIB_VERSION)
 
@@ -30,6 +31,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
+$(PKG)_CONFIGURE_OPTIONS += --disable-rpath
 $(PKG)_CONFIGURE_OPTIONS += --disable-editline
 $(PKG)_CONFIGURE_OPTIONS += --disable-static-shell
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libsqlite3_WITH_VERSION_ABANDON),,--disable-threadsafe)

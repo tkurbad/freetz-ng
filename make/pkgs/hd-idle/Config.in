@@ -1,6 +1,7 @@
 config FREETZ_PACKAGE_HD_IDLE
 	bool "hd-idle 0.99 - DEPRECATED"
 	default n
+	select FREETZ_REMOVE_HD_IDLE if FREETZ_AVM_HAS_HD_IDLE
 	depends on FREETZ_AVM_HAS_USB_HOST
 	help
 		Another idle-daemon for attached hard drives if sg3utils doesn't

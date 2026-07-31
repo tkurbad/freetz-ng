@@ -1,4 +1,4 @@
-# mini-snmpd 1.6 (binary only)
+# mini-snmpd 1.7/2.0 (binary only)
   - Homepage: [https://troglobit.com/projects/mini-snmpd/](https://troglobit.com/projects/mini-snmpd/)
   - Manpage: [https://ftp.troglobit.com/mini-snmpd/mini-snmpd.html](https://ftp.troglobit.com/mini-snmpd/mini-snmpd.html)
   - Changelog: [https://github.com/troglobit/mini-snmpd/releases](https://github.com/troglobit/mini-snmpd/releases)

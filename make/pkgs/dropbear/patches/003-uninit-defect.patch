@@ -27,7 +27,7 @@ From: Erik Hovland <erik@hovland.org>
  	 * 256/6 = 42.66 => 43 base64 chars. OpenSSH discards
 --- src/svr-main.c
 +++ src/svr-main.c
-@@ -143,6 +143,7 @@
+@@ -148,6 +148,7 @@
  	(void)argv;
  	(void)multipath;
  

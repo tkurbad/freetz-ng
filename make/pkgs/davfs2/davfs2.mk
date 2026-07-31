@@ -1,13 +1,13 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON),1.5.2,1.7.0))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON),1.5.2,1.7.3))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=be34a19ab57a6ea77ecb82083e9e4c1882e12b2de64257de567ad5ee7a17b358
-$(PKG)_HASH_CURRENT:=251db75a27380cca1330b1b971700c5e5dcc0c90e5a47622285f0140edfe3a2f
+$(PKG)_HASH_CURRENT:=a5368161eb5055651d7e5e8180c1606da95e78c941b6bb8a9286df7923cfcba9
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_DAVFS2_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=@SAVANNAH/davfs2
 ### WEBSITE:=https://savannah.nongnu.org/projects/davfs2
 ### MANPAGE:=https://linux.die.net/man/5/davfs2.conf
-### CHANGES:=https://git.savannah.nongnu.org/cgit/davfs2.git/refs/
-### CVSREPO:=https://git.savannah.nongnu.org/cgit/davfs2.git/
+### CHANGES:=https://github.com/alisarctl/davfs2/releases
+### CVSREPO:=https://github.com/alisarctl/davfs2
 ### STEWARD:=fda77
 
 $(PKG)_STARTLEVEL=50

@@ -4,5 +4,5 @@ default
 { en }
 files
 {
-        etc/default.php/php_config.def
+	etc/default.php/php_config.def
 }

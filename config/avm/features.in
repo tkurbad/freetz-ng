@@ -16,7 +16,8 @@ config FREETZ_TYPE_CABLE
 		FREETZ_TYPE_6591 || \
 		FREETZ_TYPE_6660 || \
 		FREETZ_TYPE_6670 || \
-		FREETZ_TYPE_6690
+		FREETZ_TYPE_6690_NIX || \
+		FREETZ_TYPE_6690_PRO
 
 config FREETZ_TYPE_DSL
 	bool
@@ -80,10 +81,12 @@ config FREETZ_TYPE_CELL
 	depends on \
 		FREETZ_TYPE_6810 || \
 		FREETZ_TYPE_6820 || \
+		FREETZ_TYPE_6825 || \
 		FREETZ_TYPE_6840 || \
 		FREETZ_TYPE_6850_4G_V1 || \
 		FREETZ_TYPE_6850_4G_V2 || \
-		FREETZ_TYPE_6850_5G || \
+		FREETZ_TYPE_6850_5G_V1 || \
+		FREETZ_TYPE_6850_5G_V2 || \
 		FREETZ_TYPE_6860 || \
 		FREETZ_TYPE_6842 || \
 		FREETZ_TYPE_6890
@@ -180,35 +183,40 @@ config FREETZ_AVM_HAS_KERNEL_CONFIG_AREA
 
 config FREETZ_AVM_HAS_FIT_SIZE
 	int
-	default 42 if FREETZ_TYPE_1200_W6_V1
-	default 999 if FREETZ_TYPE_1200_W6_V2
-	default 42 if FREETZ_TYPE_1240_W6
-	default 999 if FREETZ_TYPE_1610
-	default 999 if FREETZ_TYPE_1700
-	default 999 if FREETZ_TYPE_2700
-	default 42 if FREETZ_TYPE_3000_W6
-	default 42 if FREETZ_TYPE_4050
-	default 80 if FREETZ_TYPE_4060
-	default 999 if FREETZ_TYPE_4630
-	default 999 if FREETZ_TYPE_4690
-	default 42 if FREETZ_TYPE_5530
-	default 80 if FREETZ_TYPE_5590
-	default 999 if FREETZ_TYPE_5690_NIX
-	default 80 if FREETZ_TYPE_5690_PRO
-	default 999 if FREETZ_TYPE_5690_XGS
-	default 80 if FREETZ_TYPE_6000
-	default 999 if FREETZ_TYPE_6860
-	default 42 if FREETZ_TYPE_7510
-	default 42 if FREETZ_TYPE_7530_W6_V1
-	default 42 if FREETZ_TYPE_7530_W6_V2
-	default 999 if FREETZ_TYPE_7632
-	default 80 if FREETZ_TYPE_7682
-	default 80 if FREETZ_TYPE_7690
-	default 42 if FREETZ_TYPE_GATE
+	default 42   if FREETZ_TYPE_1200_W6_V1
+	default 999  if FREETZ_TYPE_1200_W6_V2
+	default 42   if FREETZ_TYPE_1240_W6
+	default 999  if FREETZ_TYPE_1610
+	default 999  if FREETZ_TYPE_1700
+	default 999  if FREETZ_TYPE_2700
+	default 42   if FREETZ_TYPE_3000_W6
+	default 42   if FREETZ_TYPE_4050
+	default 80   if FREETZ_TYPE_4060
+	default 999  if FREETZ_TYPE_4630
+	default 999  if FREETZ_TYPE_4690
+	default 42   if FREETZ_TYPE_5530
+	default 80   if FREETZ_TYPE_5590
+	default 999  if FREETZ_TYPE_5690_NIX
+	default 80   if FREETZ_TYPE_5690_PRO
+	default 999  if FREETZ_TYPE_5690_XGS
+	default 80   if FREETZ_TYPE_6000
+	default 999  if FREETZ_TYPE_6825
+	default 999  if FREETZ_TYPE_6850_5G_V2
+	default 999  if FREETZ_TYPE_6860
+	default 42   if FREETZ_TYPE_7510
+	default 42   if FREETZ_TYPE_7530_W6_V1
+	default 42   if FREETZ_TYPE_7530_W6_V2
+	default 999  if FREETZ_TYPE_7620
+	default 999  if FREETZ_TYPE_7630
+	default 999  if FREETZ_TYPE_7632
+	default 80   if FREETZ_TYPE_7682
+	default 80   if FREETZ_TYPE_7690
+	default 42   if FREETZ_TYPE_GATE
 	default 0
 	depends on FREETZ_AVM_HAS_FWLAYOUT_5
 	help
 		The maximum size (in MB) of the filesystem inside a fit-image.
+		TODO: 999 = unknown
 
 
 

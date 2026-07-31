@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,10.3p1))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),9.3p2,10.4p1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=200ebe147f6cb3f101fd0cdf9e02442af7ddca298dffd9f456878e7ccac676e8
-$(PKG)_HASH_CURRENT:=56682a36bb92dcf4b4f016fd8ec8e74059b79a8de25c15d670d731e7d18e45f4
+$(PKG)_HASH_CURRENT:=ef6026dd2aea8d56059638d5d3262902c892ceba9f88395835e0d06d3fb63238
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_OPENSSH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable,$(PKG)_SITE:=https://mirror.planetunix.net/pub/OpenBSD/OpenSSH/portable
 ### WEBSITE:=https://www.openssh.com/
@@ -56,6 +56,10 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-wtmpx
 $(PKG)_CONFIGURE_OPTIONS += --without-bsd-auth
 $(PKG)_CONFIGURE_OPTIONS += --without-kerberos5
 $(PKG)_CONFIGURE_OPTIONS += --without-pie
+
+ifneq ($(strip $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON)),y)
+$(PKG)_CONFIGURE_OPTIONS += --with-sandbox=no
+endif
 
 $(PKG)_EXTRA_CFLAGS  += -ffunction-sections -fdata-sections
 $(PKG)_EXTRA_CFLAGS  += $(if $(FREETZ_TARGET_GCC_4_MAX),-std=c99)

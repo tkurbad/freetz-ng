@@ -59,11 +59,11 @@
   - [Benutzerverwaltung](50_Security/user_management.md)
 
 ### [Development](60_Development/README.md)
-  - [Freetz-NG Package Development Guide [EN]](60_Development/coding_guide.en.md)
   - [Eigene Programme kompilieren](60_Development/compile_own_progs.md)
   - [Cross-Compiler / Toolchain erstellen](60_Development/create_cross-compiler_toolchain.md)
   - [Device Table](60_Development/device_table.md)
   - [Freetz Build-Prozeß](60_Development/freetz_make.md)
+  - [Hodgepodge: Development [EN]](60_Development/hodgepodge_development.en.md)
   - [List of kernel sources [EN]](60_Development/kernel_sources.en.md)
   - [Menükonfiguration pflegen](60_Development/menuconfig.md)
   - [Package Developing - Advanced Topics [EN]](60_Development/package_development_advanced.en.md)
@@ -89,5 +89,4 @@
   - [Freetz in Presse und Web](70_Various/FreetzPress.md)
   - [Downloads](70_Various/FreetzRelease.md)
   - [Produktname und Historisches](70_Various/origin_and_history.md)
-  - [ssh_firmware_update.py [EN]](70_Various/ssh_firmware_update.en.md)
 

@@ -36,10 +36,12 @@ on:
           - "07_5X"
           - "08_0X"
           - "08_2X"
+          - "08_5X"
 
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
+  queue: max
 
 jobs:
 
@@ -123,7 +125,7 @@ jobs:
 #         DEBIAN_FRONTEND=noninteractive apt-get -y install \
 #           locales \
 #           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
-#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo gettext pkg-config ecj \
 #           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
 #           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
 #           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
@@ -137,11 +139,11 @@ jobs:
 #         echo "Sleeping $SLEEP seconds ..."
 #         sleep $SLEEP
 
-#     - name: myips
-#       run: |
-#         echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
-##        echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
-##        echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+      - name: myips
+        run: |
+          echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
+#         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
+#         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
       - name: clone
         env:
@@ -153,7 +155,7 @@ jobs:
           git checkout $REF_NAME
 
       - name: cache_load
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         if: always()
         with:
           path: |
@@ -186,9 +188,11 @@ jobs:
           echo 'FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"'    >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
-          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
+          echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'                                               >> .config ||
           echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
-          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
+          echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config ||
           echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
           grep -q '^FREETZ_TYPE_' .config || echo "FREETZ_TYPE_$BOX=y"                                >> .config
           grep -q '^FREETZ_TYPE_FIRMWARE_' .config || echo "FREETZ_TYPE_FIRMWARE_$FOS=y"              >> .config

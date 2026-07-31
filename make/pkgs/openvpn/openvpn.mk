@@ -1,15 +1,15 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.11,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_26),2.6.20,2.7.3))))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_24),2.4.12,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_25),2.5.11,$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_26),2.6.21,2.7.5))))
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_24:=66952d9c95490e5875f04c9f8fa313b5e816d1b7b4d6cda3fb2ff749ad405dee
 $(PKG)_HASH_25:=7e2672119bd4639819d560f332a8b9b7e28f562425c77899f36d419fe4265f56
-$(PKG)_HASH_26:=952ecee5b911a5353c0a6d40af62a7076c6dea1481ef204ce6d3f10481531315
-$(PKG)_HASH_27:=24f54cb0759330762f1140b874c07c8542c6a08b13457d8570dafd387d49397a
+$(PKG)_HASH_26:=24cb6185e544a47323d6798b03d39f2367d96f227bee9cd1543e8ed528319b17
+$(PKG)_HASH_27:=c6864b3c7d4e059c7d6ce22d1b5fa646c8b379a06af872eeb9792b6083a44ac4
 $(PKG)_HASH:=$($(PKG)_HASH_$(subst .,,$($(PKG)_MAJOR_VERSION)))
 $(PKG)_SITE:=https://swupdate.openvpn.net/community/releases,https://build.openvpn.net/downloads/releases
 ### WEBSITE:=https://openvpn.net/community-downloads/
 ### MANPAGE:=https://community.openvpn.net/openvpn/wiki
-### CHANGES:=https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst
+### CHANGES:=https://github.com/OpenVPN/openvpn/blob/release/2.7/Changes.rst
 ### CVSREPO:=https://github.com/OpenVPN/openvpn
 ### STEWARD:=fda77
 

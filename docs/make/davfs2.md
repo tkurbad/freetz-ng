@@ -1,8 +1,8 @@
-# davfs 1.5.2/1.7.0
+# davfs2 1.5.2/1.7.3
   - Homepage: [https://savannah.nongnu.org/projects/davfs2](https://savannah.nongnu.org/projects/davfs2)
   - Manpage: [https://linux.die.net/man/5/davfs2.conf](https://linux.die.net/man/5/davfs2.conf)
-  - Changelog: [https://git.savannah.nongnu.org/cgit/davfs2.git/refs/](https://git.savannah.nongnu.org/cgit/davfs2.git/refs/)
-  - Repository: [https://git.savannah.nongnu.org/cgit/davfs2.git/](https://git.savannah.nongnu.org/cgit/davfs2.git/)
+  - Changelog: [https://github.com/alisarctl/davfs2/releases](https://github.com/alisarctl/davfs2/releases)
+  - Repository: [https://github.com/alisarctl/davfs2](https://github.com/alisarctl/davfs2)
   - Package: [master/make/pkgs/davfs2/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/davfs2/)
   - Steward: [@fda77](https://github.com/fda77)
 

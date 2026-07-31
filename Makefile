@@ -565,10 +565,10 @@ recover:
 	fi
 
 xconfig: config-cache kconfig-host-qconf
-	@$(CONFIG)/qconf $(CONFIG_IN_CACHE)
+	@srctree=$(CONFIG) $(CONFIG)/qconf $(CONFIG_IN_CACHE)
 
 gconfig: config-cache kconfig-host-gconf
-	@$(CONFIG)/gconf $(CONFIG_IN_CACHE)
+	@srctree=$(CONFIG) $(CONFIG)/gconf $(CONFIG_IN_CACHE)
 
 nconfig: config-cache kconfig-host-nconf
 	@$(CONFIG)/nconf $(CONFIG_IN_CACHE)
@@ -680,7 +680,7 @@ common-dirclean: common-clean $(if $(FREETZ_HAVE_DOT_CONFIG),kernel-dirclean)
 	$(RM) -r $(if $(FREETZ_HAVE_DOT_CONFIG),$(PACKAGES_DIR) $(SOURCE_DIR) $(TARGET_TOOLCHAIN_DIR),$(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT))
 
 common-distclean: common-dirclean
-	$(RM)    .config.cmd .tmpconfig.h *.log
+	$(RM)    .config.cmd .tmpconfig.h .build.log *.log
 	$(RM) -r $(INCLUDE_DIR)/config
 	$(RM) -r $(FW_IMAGES_DIR)
 	$(RM) -r $(KERNEL_TARGET_DIR)

@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_RADVD_VERSION_ABANDON),1.9.3,2.20))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_RADVD_VERSION_ABANDON),1.9.3,2.21))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.$(if $(FREETZ_PACKAGE_RADVD_VERSION_ABANDON),gz,xz)
 $(PKG)_HASH_ABANDON:=054fbd9c9823e04663b2a79966b8a061b65e6c508150dc225afcce242cbb2cd7
-$(PKG)_HASH_CURRENT:=25d2960fb977ac35c45a8d85b71db22ed8af325db7dbf4a562fb03eab2848dcd
+$(PKG)_HASH_CURRENT:=91df2ed7faca0716bbd726a17d6467ed92fcb2b6e45b57d9e619f9686ab99e1b
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_RADVD_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://radvd.litech.org/dist,https://github.com/radvd-project/radvd/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://radvd.litech.org/

@@ -15,6 +15,7 @@ on:
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
+  queue: single
 
 jobs:
   build:
@@ -45,7 +46,7 @@ jobs:
 #         DEBIAN_FRONTEND=noninteractive apt-get -y install \
 #           locales \
 #           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
-#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo gettext pkg-config ecj \
 #           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
 #           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
 #           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
@@ -74,7 +75,7 @@ jobs:
           git checkout $GITHUB_REF_NAME
 
       - name: cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         if: always()
         with:
           path: |
@@ -112,10 +113,12 @@ jobs:
           sed '/FREETZ_REAL_DEVELOPER_ONLY__TCURL/d'                                                  -i .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
           sed '/FREETZ_DOWNLOAD_TOOLCHAIN/d'                                                          -i .config
-          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
+          echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'                                               >> .config ||
           echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
           sed '/FREETZ_HOSTTOOLS_DOWNLOAD/d'                                                          -i .config
-          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
+          echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config ||
           echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
           sed '/FREETZ_VERBOSITY_FWMOD_/d'                                                            -i .config
           echo 'FREETZ_VERBOSITY_FWMOD_2=y'                                                           >> .config
@@ -139,9 +142,6 @@ jobs:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
         run: |
           make && rm -f images/latest.image
-#     - name: progress
-#       run: |
-#         tools/make_progress_monitor.sh --no-legend
       - name: result
         run: |
           echo "##########################################################"

@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 # packs toolchains to dl/*freetz-VERSION-shared-glibc.tar.lzma in 20-35min each, all ~15h
 #Arg $1: <VERSION>
-#Arg $2: <new|old|all|FREETZ_TYPE_...>
+#Arg $2: <aall|a1|a2|a3|a4|a5|a6|mipsel|mips|x86|arm|armeb|aarch64>
+#Arg $3: <all|new|old|FREETZ_TYPE_...>
 
 VERSION="$(tools/freetz_revision short)"
 VERSION="${1:-r${VERSION%-*}}"
@@ -92,6 +93,17 @@ dltc() {
 }
 
 case "$2" in
+	aa|aall|"")	shift ; a1="a1" a2="a2" a3="a3" a4="a4" a5="a5" a6="a6"  ;;
+	a1|mipsel)	shift ; a1="a1" a2=""   a3=""   a4=""   a5=""   a6=""    ;;
+	a2|mips)	shift ; a1=""   a2="a2" a3=""   a4=""   a5=""   a6=""    ;;
+	a3|x86)		shift ; a1=""   a2=""   a3="a3" a4=""   a5=""   a6=""    ;;
+	a4|arm)		shift ; a1=""   a2=""   a3=""   a4="a4" a5=""   a6=""    ;;
+	a5|armeb)	shift ; a1=""   a2=""   a3=""   a4=""   a5="a5" a6=""    ;;
+	a6|aarch64)	shift ; a1=""   a2=""   a3=""   a4=""   a5=""   a6="a6"  ;;
+	*)		        a1="a1" a2="a2" a3="a3" a4="a4" a5="a5" a6="a6"  ;;
+esac
+
+case "$2" in
 	a|all|"")	old="old" new="new"       ;;
 	o|old)		old="old" new=""          ;;
 	n|new)		old=""    new="new"       ;;
@@ -99,54 +111,58 @@ case "$2" in
 esac
 
 
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_WLAN        FREETZ_TYPE_FIRMWARE_04_XX"
+#MIPSEL
+[ "$old" == "old" ] && [ "$a1" == "a1" ] && dltc "FREETZ_TYPE_WLAN        FREETZ_TYPE_FIRMWARE_04_XX"
 
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7270_V1     FREETZ_TYPE_FIRMWARE_04_XX  FREETZ_TARGET_IPV6_SUPPORT"
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7270_V3     FREETZ_TYPE_FIRMWARE_06_0X"
+[ "$old" == "old" ] && [ "$a1" == "a1" ] && dltc "FREETZ_TYPE_7270_V1     FREETZ_TYPE_FIRMWARE_04_XX  FREETZ_TARGET_IPV6_SUPPORT"
+[ "$old" == "old" ] && [ "$a1" == "a1" ] && dltc "FREETZ_TYPE_7270_V3     FREETZ_TYPE_FIRMWARE_06_0X"
 
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7390        FREETZ_TYPE_FIRMWARE_05_2X"
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7390        FREETZ_TYPE_FIRMWARE_06_0X"
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7390        FREETZ_TYPE_FIRMWARE_06_2X"
+#MIPS
+[ "$old" == "old" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7390        FREETZ_TYPE_FIRMWARE_05_2X"
+[ "$old" == "old" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7390        FREETZ_TYPE_FIRMWARE_06_0X"
+[ "$old" == "old" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7390        FREETZ_TYPE_FIRMWARE_06_2X"
 
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7490        FREETZ_TYPE_FIRMWARE_06_5X"
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7490        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$old" == "old" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7490        FREETZ_TYPE_FIRMWARE_06_5X"
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7490        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
 
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7580        FREETZ_TYPE_FIRMWARE_06_8X"
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_7590_W5     FREETZ_TYPE_FIRMWARE_07_0X"
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7590_W5     FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7590_W5     FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
+[ "$old" == "old" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7580        FREETZ_TYPE_FIRMWARE_06_8X"
+[ "$old" == "old" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7590_W5     FREETZ_TYPE_FIRMWARE_07_0X"
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7590_W5     FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7590_W5     FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
 
 
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_1750        FREETZ_TYPE_FIRMWARE_07_0X"
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_1750        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$old" == "old" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_1750        FREETZ_TYPE_FIRMWARE_07_0X"
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_1750        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
 
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7581        FREETZ_TYPE_FIRMWARE_07_1X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_08_2X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7581        FREETZ_TYPE_FIRMWARE_07_1X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a2" == "a2" ] && dltc "FREETZ_TYPE_7530_W6_V1  FREETZ_TYPE_FIRMWARE_08_2X"        # SEPARATE
 
 #AARCH64
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_5690_XGS    FREETZ_TYPE_FIRMWARE_08_2X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a6" == "a6" ] && dltc "FREETZ_TYPE_5690_XGS    FREETZ_TYPE_FIRMWARE_08_2X"        # SEPARATE
+
+#ARMEB
+[ "$old" == "old" ] && [ "$a5" == "a5" ] && dltc "FREETZ_TYPE_6360        FREETZ_TYPE_FIRMWARE_06_5X"
 
 #ARM
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_6360        FREETZ_TYPE_FIRMWARE_06_5X"
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_4040        FREETZ_TYPE_FIRMWARE_07_0X"
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_1200_W5     FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_7690        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_5590        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_1700        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
+[ "$old" == "old" ] && [ "$a4" == "a4" ] && dltc "FREETZ_TYPE_4040        FREETZ_TYPE_FIRMWARE_07_0X"
+[ "$new" == "new" ] && [ "$a4" == "a4" ] && dltc "FREETZ_TYPE_1200_W5     FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a4" == "a4" ] && dltc "FREETZ_TYPE_7690        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a4" == "a4" ] && dltc "FREETZ_TYPE_5590        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a4" == "a4" ] && dltc "FREETZ_TYPE_1700        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
 
 #X86
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_6490        FREETZ_TYPE_FIRMWARE_06_8X"
-[ "$old" == "old" ] && dltc "FREETZ_TYPE_6590        FREETZ_TYPE_FIRMWARE_07_0X"
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6590        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$old" == "old" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6490        FREETZ_TYPE_FIRMWARE_06_8X"
+[ "$old" == "old" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6590        FREETZ_TYPE_FIRMWARE_07_0X"
+[ "$new" == "new" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6590        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
 
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6591        FREETZ_TYPE_FIRMWARE_07_0X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6660        FREETZ_TYPE_FIRMWARE_07_1X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6660        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6690        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6670        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6670        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6591        FREETZ_TYPE_FIRMWARE_07_0X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6660        FREETZ_TYPE_FIRMWARE_07_1X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6660        FREETZ_TYPE_FIRMWARE_07_2X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6690_NIX    FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6670        FREETZ_TYPE_FIRMWARE_07_5X"        # SEPARATE
+[ "$new" == "new" ] && [ "$a3" == "a3" ] && dltc "FREETZ_TYPE_6670        FREETZ_TYPE_FIRMWARE_08_0X"        # SEPARATE
 
 
 exit 0

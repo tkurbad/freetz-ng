@@ -52,6 +52,9 @@ config FREETZ_AVM_HAS_LANGUAGE_nl
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
 
+config FREETZ_AVM_HAS_LANGUAGE_sl
+	def_bool y
+
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
 
@@ -129,6 +132,9 @@ config FREETZ_AVM_HAS_DMESG_FILE
 	def_bool y
 
 config FREETZ_AVM_HAS_UDEV
+	def_bool y
+
+config FREETZ_AVM_HAS_HD_IDLE
 	def_bool y
 
 config FREETZ_AVM_HAS_TC

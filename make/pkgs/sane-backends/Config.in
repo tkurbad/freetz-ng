@@ -4,7 +4,7 @@ menuconfig FREETZ_PACKAGE_SANE_BACKENDS
 	select FREETZ_PACKAGE_SANE_BACKENDS_BACKEND_dll
 	select FREETZ_LIB_libm        if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libusb_1
+	select FREETZ_LIB_libusb1
 	default n
 	help
 		SANE - Scanner support

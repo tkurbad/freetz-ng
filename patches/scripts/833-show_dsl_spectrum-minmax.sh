@@ -3,7 +3,9 @@ echo1 "patching dsl spectrum"
 
 [ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ] && decrip_file -force "${HTML_LANG_MOD_DIR}/internet/spectrum.js"
 
-if [ "$FREETZ_AVM_VERSION_08_2X_MIN" == "y" ]; then
+if [ "$FREETZ_AVM_VERSION_08_5X_MIN" == "y" ]; then
+	PVER="08_5X"
+elif [ "$FREETZ_AVM_VERSION_08_2X_MIN" == "y" ]; then
 	PVER="08_2X"
 elif [ "$FREETZ_AVM_VERSION_08_0X_MIN" == "y" ]; then
 	PVER="08_0X"

@@ -1,6 +1,3 @@
-
-source "make/libs/ncurses/Config.in.terminfo"
-
 config FREETZ_LIB_libncurses
 	bool "ncurses (libncurses.so)"
 	select FREETZ_SHARE_terminfo
@@ -20,30 +17,30 @@ config FREETZ_LIB_libncurses
 
 if FREETZ_LIB_libncurses
 
-config FREETZ_LIB_libform
-	bool "libform (libform.so)"
-	default n
-	help
-		The form library is a curses extension that supports easy programming of
-		on-screen forms for data entry and program control.
+	config FREETZ_LIB_libform
+		bool "libform (libform.so)"
+		default n
+		help
+			The form library is a curses extension that supports easy programming of
+			on-screen forms for data entry and program control.
 
-config FREETZ_LIB_libmenu
-	bool "libmenu (libmenu.so)"
-	default n
-	help
-		The menu library is a curses extension that supports easy programming of
-		menu hierarchies with a uniform but flexible interface.
+	config FREETZ_LIB_libmenu
+		bool "libmenu (libmenu.so)"
+		default n
+		help
+			The menu library is a curses extension that supports easy programming of
+			menu hierarchies with a uniform but flexible interface.
 
-config FREETZ_LIB_libpanel
-	bool "libpanel (libpanel.so)"
-	default n
-	help
-		The ncurses library by itself provides good support for screen displays
-		in which the windows are tiled (non-overlapping).
-		When your interface design is such that windows may dive deeper into
-		the visibility stack or pop to the top at runtime, the resulting book-
-		keeping can be tedious and difficult to get right. Hence the panels
-		library.
+	config FREETZ_LIB_libpanel
+		bool "libpanel (libpanel.so)"
+		default n
+		help
+			The ncurses library by itself provides good support for screen displays
+			in which the windows are tiled (non-overlapping).
+			When your interface design is such that windows may dive deeper into
+			the visibility stack or pop to the top at runtime, the resulting book-
+			keeping can be tedious and difficult to get right. Hence the panels
+			library.
 
 endif # FREETZ_LIB_libncurses
 

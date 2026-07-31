@@ -486,6 +486,11 @@ config FREETZ_REMOVE_LANGUAGE_pl
 	depends on FREETZ_REMOVE_LANGUAGE && FREETZ_AVM_HAS_LANGUAGE_pl
 	default y
 
+config FREETZ_REMOVE_LANGUAGE_sl
+	bool "sl"
+	depends on FREETZ_REMOVE_LANGUAGE && FREETZ_AVM_HAS_LANGUAGE_sl
+	default y
+
 
 config FREETZ_REMOVE_BRANDING
 	bool "Remove brandings"
@@ -735,6 +740,15 @@ config FREETZ_REMOVE_LSOF
 	help
 		Remove /bin/lsof binary.
 		This saves about 48 KB compressed space in kernel.image.
+
+config FREETZ_REMOVE_HD_IDLE
+	bool "Remove hd-idle"
+	depends on FREETZ_AVM_HAS_HD_IDLE
+	default n
+	help
+		Remove hd-idle binary (about 9-66 kB uncompressed).
+		The hd-idle binary is only usefull if you use a HDD.
+		A SSD or USB stick does not need hd-idle.
 
 config FREETZ_REMOVE_SOCAT
 	bool "Remove socat"
@@ -1384,7 +1398,7 @@ config FREETZ_MODIFY_DSL_SETTINGS
 
 config FREETZ_MODIFY_COUNTER
 	bool "Extend online counter"
-	depends on !FREETZ_TYPE_EXTENDER && FREETZ_AVM_VERSION_06_5X_MIN && !FREETZ_REMOVE_DSLD
+	depends on !FREETZ_TYPE_EXTENDER && FREETZ_AVM_VERSION_06_5X_MIN && !FREETZ_REMOVE_DSLD && FREETZ_AVM_VERSION_08_2X_MAX
 	default n
 	help
 		Converts counter hours to days and traffic MB to GB.

@@ -1,0 +1,12 @@
+--- gettext-runtime/intl/gnulib-lib/getlocalename_l-unsafe.c
++++ gettext-runtime/intl/gnulib-lib/getlocalename_l-unsafe.c
+@@ -480,6 +480,9 @@
+            nl_langinfo_l (_NL_LOCALE_NAME (category), locale).  */
+         name = locale->__names[category];
+       return (struct string_with_storage) { name, STORAGE_OBJECT };
++#elif defined __UCLIBC__
++      /* uClibc has no nl_langinfo_l(). */
++      return (struct string_with_storage) { "C", STORAGE_INDEFINITE };
+ #elif defined __linux__ && HAVE_LANGINFO_H && defined NL_LOCALE_NAME
+       /* musl libc */
+       const char *name = nl_langinfo_l (NL_LOCALE_NAME (category), locale);

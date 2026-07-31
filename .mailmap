@@ -1,0 +1,64 @@
+# git log --use-mailmap --pretty='%aN <%aE>' | sort -u
+# git log --use-mailmap --format='%aN <%aE>' | sort -n | uniq -c
+# git log --use-mailmap --format='%aN <%aE>' | sort    | uniq -c | sort -nr
+# git shortlog -sne HEAD
+
+
+fda77 <fda77@users.noreply.github.com> cuma <fda77@users.noreply.github.com>
+fda77 <fda77@users.noreply.github.com> cuma <cuma@freetz.org>
+
+Eugene Rudoy <er13@users.noreply.github.com> Gene Rudoy <gene@freetz.org>
+Eugene Rudoy <er13@users.noreply.github.com> Eugene Rudoy <gene.devel@gmail.com>
+
+github-actions[bot] <github-actions[bot]@users.noreply.github.com> github-actions <github-actions@github.com>
+
+Whoopie <whoopie79@gmx.net> Whoopie <whoopie79@gmx-topmail.de>
+
+Alexander Kriegisch <Alexander@Kriegisch.name> Alexander Kriegisch <kriegaex@freetz.org>
+
+harryboo <jens.gutsche@gmx.de> Jens <jens.gutsche@gmx.de>
+
+flosch-dev <47741987+flosch-dev@users.noreply.github.com> Florian Schilling <flosch.devel@gmail.com>
+
+f-666 <32643484+f-666@users.noreply.github.com> f-666 <f-666@users.noreply.github.com>
+f-666 <32643484+f-666@users.noreply.github.com> f666 <>
+f-666 <32643484+f-666@users.noreply.github.com> f-666 <>
+
+Peter Fichtner <1958485+pfichtner@users.noreply.github.com> Peter Fichtner (pfichtner) <pfichtner@users.noreply.github.com>
+Peter Fichtner <1958485+pfichtner@users.noreply.github.com> Peter Fichtner (pfichtner) <github.07.fichtner@0sg.net>
+Peter Fichtner <1958485+pfichtner@users.noreply.github.com> Peter Fichtner <github.07.fichtner@0sg.net>
+
+Ircama <Ircama@users.noreply.github.com> Ircama <Ircama>
+
+PeterPawn <PeterPawn@users.noreply.github.com> YourFritz <PeterPawn@users.noreply.github.com>
+PeterPawn <PeterPawn@users.noreply.github.com> YourFritz <git@yourfritz.de>
+PeterPawn <PeterPawn@users.noreply.github.com> PeterPawn <git@yourfritz.de>
+
+WileC <WileC@users.noreply.github.com> WileC <djwilec@d-jay.de>
+
+PrinzVonBillAir <PrinzVonBillAir@users.noreply.github.com> PrinzVonBillAir <prinzvonbillair@gmail.com>
+
+uwes-ufo <112473593+uwes-ufo@users.noreply.github.com> uwes-ufo <uwes-ufo@t-online.de>
+uwes-ufo <112473593+uwes-ufo@users.noreply.github.com> ufo <uwes-ufo@t-online.de>
+
+BoxenLuther <234063570+BoxenLuther@users.noreply.github.com> BoxenLuther <BoxenLuther@users.noreply.github.com>
+
+leggewie <leggewie@users.noreply.github.com> Rolf Leggewie <foss@rolf.leggewie.biz>
+leggewie <leggewie@users.noreply.github.com> Rolf Leggewie <foss@leggewie.org>
+
+Manfred Mueller <mueller@w3coach.de> Manfred Mueller <mail@manfred-mueller.org>
+
+sfritz2 <72443983+sfritz2@users.noreply.github.com> sfritz <sfritz@freetz-linux>
+
+telsch <45108518+telsch@users.noreply.github.com> telsch <telsch@gmx.de>
+
+Sven Lübke <sven.luebke@mikrosol.de> Sven Luebke <svenoliver.luebke@elektrobit.com>
+
+Sebastian Ertz <sebastian.ertz@gmx.de> Sebastian Ertz <sebastian.ertz@tk-ertz.de>
+
+id1508 <id1508-github@yahoo.com> id1508 <id1508@none.de>
+id1508 <id1508-github@yahoo.com> idealist1508 <id1508-github@yahoo.com>
+
+milahu <milahu@gmail.com> Milan Hauth <milahu@gmail.com>
+
+

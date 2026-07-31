@@ -1,10 +1,10 @@
 --- src/mod_mbedtls.c
 +++ src/mod_mbedtls.c
-@@ -1244,10 +1244,6 @@
+@@ -1311,10 +1311,6 @@
          mod_mbedtls_kp_free(kp);
          return NULL;
      }
--    else if (!mod_mbedtls_cert_is_active(&kp->crt)) {
+-    else if (!mod_mbedtls_cert_is_active(&kp->crt) && log_epoch_secs > 300) {
 -        log_error(srv->errh, __FILE__, __LINE__,
 -          "MTLS: inactive/expired X509 certificate '%s'", pemfile->ptr);
 -    }
@@ -13,12 +13,13 @@
                        && !mod_mbedtls_crt_is_self_issued(&kp->crt));
 --- src/mod_gnutls.c
 +++ src/mod_gnutls.c
-@@ -625,11 +625,6 @@
+@@ -664,12 +664,6 @@
          mod_gnutls_free_config_crts(d);
          return NULL;
      }
 -    else if (
--      !mod_gnutls_cert_is_active(((gnutls_x509_crt_t *)(void *)d->data)[0])) {
+-      !mod_gnutls_cert_is_active(((gnutls_x509_crt_t *)(void *)d->data)[0])
+-      && log_epoch_secs > 300) {
 -        log_error(errh, __FILE__, __LINE__,
 -          "GnuTLS: inactive/expired X509 certificate '%s'", fn);
 -    }
@@ -27,11 +28,11 @@
  }
 --- src/mod_openssl.c
 +++ src/mod_openssl.c
-@@ -2346,10 +2346,6 @@
+@@ -2467,10 +2467,6 @@
          X509_free(x);
          x = NULL;
      }
--    else if (!mod_openssl_cert_is_active(x)) {
+-    else if (!mod_openssl_cert_is_active(x) && log_epoch_secs > 300) {
 -        log_error(errh, __FILE__, __LINE__,
 -          "SSL: inactive/expired X509 certificate '%s'", file);
 -    }

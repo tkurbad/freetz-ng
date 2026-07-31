@@ -1,0 +1,18 @@
+config FREETZ_PACKAGE_IPTABLES_NG
+	bool "Iptables-NG - EXPERIMENTAL"
+	depends on FREETZ_TARGET_IPV6_SUPPORT
+	depends on FREETZ_PACKAGE_IPTABLES
+	select FREETZ_REMOVE_DSLD if FREETZ_AVM_HAS_DSLD
+	select FREETZ_PACKAGE_IPTABLES_SAVE_RESTORE
+	default n
+	help
+		Advanced iptables/ip6tables management page with dynamic table
+		and module capability detection, plus save/restore controls.
+
+		Runtime status (started/stopped) is independent from startup mode
+		(automatic/manual). Startup mode only controls boot behavior.
+
+		See docs/make/iptables-ng.md for more hints.
+
+		This package forces removing of dsld if available!
+

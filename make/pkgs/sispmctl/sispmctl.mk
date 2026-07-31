@@ -6,16 +6,20 @@ $(PKG)_SITE:=@SF/sispmctl
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/sispmctl
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/sispmctl
 
-$(PKG)_DEPENDS_ON += libusb
+$(PKG)_DEPENDS_ON += config-host
+$(PKG)_DEPENDS_ON += libusb0
+
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./admin)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_SISPMCTL_WEB),--with-webdir=/usr/share/sispmctl,--enable-webless)
 
-$(PKG)_REBUILD_SUBOPTS += $(LIBUSB_REBUILD_SUBOPTS)
+$(PKG)_REBUILD_SUBOPTS += $(LIBUSB0_REBUILD_SUBOPTS)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_SISPMCTL_WEB
 
 $(PKG)_EXCLUDED += $(if $(FREETZ_SISPMCTL_CGI),,usr/lib/cgi-bin/sispmctl.cgi etc/init.d/rc.sispmctl etc/default.sispmctl/sispmctl.cfg etc/default.sispmctl)
 $(PKG)_EXCLUDED += $(if $(FREETZ_SISPMCTL_WEB),,usr/share/sispmctl-web1 usr/share/sispmctl)
 $(PKG)_EXCLUDED += $(if $(FREETZ_SISPMCTL_SKIN2),,usr/share/sispmctl-web2)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -35,6 +39,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(SISPMCTL_DIR) clean

@@ -78,9 +78,10 @@ quit
 
 	local count=0
 	while true; do
-		[ $count -gt 5 ] && echo "Timeout while receiving environment!!!!!!!!!!!!!!!!!!" && break
+		[ $count -gt 5 ] && echo "   Timeout waiting while receiving environment!" && break
 		let count++
 		sleep 1
+		[ -s "$tmpenv" ] || continue  # no environment yet
 		grep -q "^ProductID" "$tmpenv" || continue  # exists for all devices and is mandatory!
 		grep -q "^226 " "$tmpout" && sleep 1 && break  # "Transfer complete"
 		grep -q "^221 " "$tmpout" && sleep 1 && break  # "Thank you for using the FTP service on ADAM2"
@@ -88,6 +89,8 @@ quit
 	kill $log_pid >/dev/null 2>&1  # cant get (simply) correct ftp/ppid in pipe if using tee
 	kill $ftp_pid >/dev/null 2>&1  # this is needed as the FTP client freezes at the end of the file transfer
 	wait $ftp_pid
+
+	[ ! -s "$tmpenv" ] && echo -e "\nNo environement file received, abort." && exit 1
 
 	LANG=C dos2unix --force "$tmpenv" 2>&1 | grep -v ' converting file ' >&2  # error, warn and info of dos2unix go all to stderr °_°
 }

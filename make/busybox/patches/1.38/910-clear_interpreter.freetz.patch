@@ -1,0 +1,10 @@
+--- networking/httpd.c
++++ networking/httpd.c
+@@ -2618,6 +2618,7 @@
+ 		else if (urlp[-1] == '/') {
+ 			/* It's a dir URL and there is no index.html */
+ 			/* Is there cgi-bin/index.cgi? */
++			IF_FEATURE_HTTPD_CONFIG_WITH_SCRIPT_INTERPR(script_i = NULL;)
+ 			if (access("/cgi-bin/index.cgi"+1, X_OK) != 0)
+ 				send_headers_and_exit(HTTP_NOT_FOUND); /* no */
+ 			cgi_type = CGI_INDEX;

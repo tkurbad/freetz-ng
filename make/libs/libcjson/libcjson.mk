@@ -1,0 +1,71 @@
+$(call PKG_INIT_LIB, 1.7.19)
+$(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
+$(PKG)_SOURCE:=cJSON-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH:=7fa616e3046edfa7a28a32d5f9eacfd23f92900fe1f8ccd988c1662f30454562
+$(PKG)_SITE:=https://github.com/DaveGamble/cJSON/archive/refs/tags/v$($(PKG)_VERSION)
+### WEBSITE:=https://github.com/DaveGamble/cJSON
+### MANPAGE:=https://github.com/DaveGamble/cJSON/blob/master/README.md
+### CHANGES:=https://github.com/DaveGamble/cJSON/releases
+### CVSREPO:=https://github.com/DaveGamble/cJSON/commits/master/
+
+$(PKG)_LIBNAME=libcjson.so.$($(PKG)_LIB_VERSION)
+$(PKG)_BINARY:=$($(PKG)_DIR)/$($(PKG)_LIBNAME)
+$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME)
+$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME)
+
+$(PKG)_DEPENDS_ON += cmake-host
+
+$(PKG)_CONFIGURE_OPTIONS += -DCMAKE_INSTALL_PREFIX="/"
+$(PKG)_CONFIGURE_OPTIONS += -DCMAKE_SKIP_INSTALL_RPATH=NO
+$(PKG)_CONFIGURE_OPTIONS += -DCMAKE_SKIP_RPATH=NO
+
+$(PKG)_CONFIGURE_OPTIONS += -DBUILD_SHARED_LIBS=On
+$(PKG)_CONFIGURE_OPTIONS += -DBUILD_SHARED_AND_STATIC_LIBS=On
+
+$(PKG)_CONFIGURE_OPTIONS += -DENABLE_CJSON_TEST=Off
+$(PKG)_CONFIGURE_OPTIONS += -DENABLE_SANITIZERS=Off
+$(PKG)_CONFIGURE_OPTIONS += -DENABLE_SAFE_STACK=Off
+$(PKG)_CONFIGURE_OPTIONS += -DENABLE_FUZZING=Off
+
+$(PKG)_CONFIGURE_OPTIONS += -DENABLE_CJSON_UTILS=Off
+$(PKG)_CONFIGURE_OPTIONS += -DENABLE_LOCALES=Off
+$(PKG)_CONFIGURE_OPTIONS += -DENABLE_CUSTOM_COMPILER_FLAGS=Off
+
+
+$(PKG_SOURCE_DOWNLOAD)
+$(PKG_UNPACKED)
+$(PKG_CONFIGURED_CMAKE)
+
+$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
+	$(SUBMAKE) -C $(LIBCJSON_DIR)
+#cmake	cd $(LIBCJSON_DIR) && cmake -LA .
+
+$($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
+	$(SUBMAKE) -C $(LIBCJSON_DIR) \
+		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		install
+	$(PKG_FIX_LIBTOOL_LA) \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/pkgconfig/libcjson.pc
+	@touch -c $@
+
+$($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
+	$(INSTALL_LIBRARY_STRIP)
+
+$(pkg): $($(PKG)_STAGING_BINARY)
+
+$(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
+
+$(pkg)-clean:
+	-$(SUBMAKE) -C $(LIBCJSON_DIR) clean
+	$(RM) -r \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcjson.* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcjson_utils.* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/cjson/ \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libcjson.pc \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/cmake/cJSON/
+
+$(pkg)-uninstall:
+	$(RM) $(LIBCJSON_TARGET_DIR)/libcjson.so* $(LIBCJSON_TARGET_DIR)/libcjson_utils.so*
+
+$(PKG_FINISH)

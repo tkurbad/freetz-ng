@@ -1,11 +1,11 @@
 --- Makefile
 +++ Makefile
-@@ -21,7 +21,7 @@
- WARNINGS = -Wall -Wpointer-arith -Wcast-qual -Wnested-externs -Wsign-compare \
- 	-Wstrict-prototypes -Wmissing-prototypes -Wredundant-decls -Wshadow \
- 	-Wsuggest-attribute=format -Wwrite-strings
+@@ -28,7 +28,7 @@
+ ifeq ($(shell $(CC) --version | grep -q gcc && echo gcc),gcc)
+ WARNINGS += -Wsuggest-attribute=format
+ endif
 -CFLAGS = -g -Os $(SHAREDLIB_CFLAGS) -Werror $(WARNINGS) $(EXTRA_CFLAGS)
-+CFLAGS = -g -Os $(SHAREDLIB_CFLAGS) $(WARNINGS) $(EXTRA_CFLAGS)
++CFLAGS = -g -Os $(SHAREDLIB_CFLAGS)         $(WARNINGS) $(EXTRA_CFLAGS)
  
  BISON = bison
  LEX = flex

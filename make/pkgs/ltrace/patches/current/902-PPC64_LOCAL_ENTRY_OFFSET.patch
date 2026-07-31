@@ -1,0 +1,13 @@
+--- ltrace-elf.c
++++ ltrace-elf.c
+@@ -1016,7 +1016,9 @@
+ 			(uintptr_t)(sym.st_value + lte->bias);
+ 		arch_addr_t naddr;
+ 
+-		addr += PPC64_LOCAL_ENTRY_OFFSET(sym.st_other);
++		#ifdef PPC64_LOCAL_ENTRY_OFFSET
++			addr += PPC64_LOCAL_ENTRY_OFFSET(sym.st_other);
++		#endif
+ 
+ 		/* On arches that support OPD, the value of typical
+ 		 * function symbol will be a pointer to .opd, but some

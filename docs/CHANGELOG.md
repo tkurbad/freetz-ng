@@ -64,58 +64,96 @@ Latest changes
 ### devel
 
   - Build system:
-    * ccache 4.13.5
-    * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.57
+    * ccache 4.13.6
+    * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.58
 
   - Host tools:
+    * busybox 1.38.0
     * autoconf 2.73
-    * ca-bundle 2026-03-19
-    * cmake 4.3.2
+    * ca-bundle 2026-05-14
+    * cmake 4.3.4
     * dos2unix 7.5.5
+    * dtc 1.8.1
+    * fakeroot 2.0
     * file 5.47
-    * kconfig 7.0
-    * meson 1.11.1
-    * openssl 3.5.6
-    * pseudo 1.9.5
-    * python3 3.14.4
+    * kconfig 7.1
+    * meson 1.11.2
+    * openssl 3.5.7
+    * patch 2.8
+    * pseudo 1.9.8
+    * python3 3.14.6
+    * python3-attrs 26.1.0
+    * python3-jsonschema 4.26.0
+    * python3-packaging 26.2
+    * python3-pip 26.1.1
+    * python3-setuptools 82.0.1
+    * sed 4.10
+    * uboot 2026.04
+    * util-linux 2.42
 
   - AVM sources:
+    * 5690 XGS 8.25 - 5.4.293
 
   - Scripts:
     * zensical_httpserver.sh - run local zensical http server to develop docs
 
   - Patches:
-    * Still are some patches not yet adapted for Fritzos 8.2x
+    * New Patch: Remove hd-idle binary
+    * Various Fritzos 8.5 related changes
+    * Still are some patches not yet adapted for Fritzos 8.2x + 8.5x
 
   - Packages:
-    * Atop 2.12.1
+    * ACME.sh 3.1.4
+    * Apache2 2.4.68
+    * Atop 2.13.0
     * Bftpd 6.6
-    * BIND 9.11.37/9.20.22
+    * BIND 9.11.37/9.20.24
     * Binutils 2.46.0
-    * CA-bundle 2026-03-19
-    * Curl 8.12.1/8.19.0
+    * BusyBox 1.27.2/1.38.0
+    * CA-bundle 2026-05-14
+    * Curl 8.12.1/8.21.0
+    * davfs2 1.5.2/1.7.3
+    * Dnsmasq 2.80/2.93
+    * Dropbear 2026.94
+    * dtc 1.8.1
     * Git 2.26.2/2.53.0
-    * htop 1.0.3/3.5.0
-    * ImageMagick 7.1.0-62/7.1.2-21
+    * HAProxy 2.6.29
+    * htop 1.0.3/3.5.2
+    * htpdate 2.0.2
+    * ImageMagick 7.1.0-62/7.1.2-27
     * iPerf3 3.3/3.21
+    * jq 1.8.2
+    * juis_bearer 1.0
+    * juis_check 1.4
     * LCD4linux 63fffafb
     * Iptables 1.4.11.1/1.4.21/1.6.2/1.8.13
-    * ldd 0.1/1.0.57
+    * ldd 0.1/1.0.58
+    * Lighttpd 1.4.85
+    * ltrace 0.7.3-git/0.8.1
+    * mini-snmpd 1.7/2.0
     * Minicom 2.11.1
-    * Nano 9.0
+    * Mosquitto 2.0.22/2.1.2
+    * Nano 9.1
     * Nmap 4.76/5.51/7.99
-    * OpenSSH 9.3p2/10.3p1
-    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.20/3.5.6
-    * OpenVPN 2.4.12/2.5.11/2.6.20/2.7.3
+    * OpenSSH 9.3p2/10.4p1
+    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.21/3.5.7
+    * OpenVPN 2.4.12/2.5.11/2.6.21/2.7.5
+    * PHP 5.6.40/8.2.33/8.3.33/8.4.24/8.5.9
     * procps-ng 4.0.6
     * Python 3.14.3
+    * RRDtool 1.2.30/1.10.3
+    * radvd 1.9.3/2.21
+    * rsync 3.4.1/3.4.4
     * sslh 2.2.4/2.3.1
-    * Stunnel 5.78
-    * SQLite 3.40.1/3.53.0
+    * Stunnel 5.79
+    * SQLite 3.40.1/3.53.4
     * tinc 1.0.37/1.1pre18
     * Tinyproxy 1.11.3
-    * Tor 0.4.8.23
+    * tmux 3.7b
+    * Tor 0.4.8.25
+    * Transmission 3.00/4.1.3
     * Tree 1.8.0/2.3.2
+    * Unbound 1.25.2
     * UnRAR 6.1.7/7.2.5
     * Virtualip-NG 1.0
     * wireguard-tools 1.0.20260223
@@ -124,22 +162,28 @@ Latest changes
     * XZ 5.8.3
 
   - Libraries:
-    * expat 2.7.5/2.8.0
+    * expat 2.7.5/2.8.2
     * file 5.47
     * FreeType 2.14.3
     * gettext 1.0
     * GLib2 2.32.4/2.88.0
-    * harfbuzz 14.2.0
+    * harfbuzz 14.2.1
     * libcap 2.49/2.78
     * libcap-ng 0.9.3
+    * libcjson 1.7.19
+    * libevent 2.1.13
     * libexif 0.6.26
+    * libffi 3.7.1
     * libmaxminddb 1.13.3
     * libpng 1.6.58
+    * libusb(-compat) 0.1.12/0.1.9
+    * libusb1 1.0.23/1.0.30
     * libuv 1.44.2/1.52.1
     * libxml2 2.15.3
-    * MbedTLS 2.7.19/2.28.10/3.6.6
+    * libzip 1.11.4
+    * MbedTLS 2.7.19/2.28.10/3.6.7
     * neon 0.30.2/0.37.0
-    * pango 1.57.1
+    * pango 1.58.0
 
   - Firmware updates:
     * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
@@ -222,6 +266,7 @@ Latest changes
     * ImageMagick 7.1.0-62/7.1.2-12
     * Info-ZIP 3.0
     * iPerf3 3.3/3.20
+    * Iptables-NG 1.0
     * ldd 0.1/1.0.56
     * Make 4.2.1/4.4.1
     * MTR 0.80/0.96
@@ -254,6 +299,7 @@ Latest changes
     * harfbuzz 12.3.2
     * libcap 2.49/2.77
     * libdeflate 1.25
+    * libffi 3.6.0
     * libpcap 1.1.1/1.10.6
     * libpng 1.6.55
     * liburcu 0.15.6

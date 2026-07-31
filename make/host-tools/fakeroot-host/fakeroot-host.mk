@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 1.37.2)
+$(call TOOLS_INIT, 2.0)
 $(PKG)_SOURCE:=fakeroot_$($(PKG)_VERSION).orig.tar.gz
-$(PKG)_HASH:=0eea60fbe89771b88fcf415c8f2f0a6ccfe9edebbcf3ba5dc0212718d98884db
+$(PKG)_HASH:=562d951828887e5ccc31489248feae62f334a16c3d81fe6592f34016ffb02636
 $(PKG)_SITE:=@DEBIAN/fakeroot
 ### WEBSITE:=https://wiki.debian.org/FakeRoot
 ### MANPAGE:=https://man.archlinux.org/man/fakeroot.1.en
@@ -46,7 +46,7 @@ $($(PKG)_MAINARCH_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 		$(QUIET) \
 		$(SILENT) \
 	);
-	touch $@
+	touch -c $@
 $($(PKG)_TARGET_SCRIPT): $($(PKG)_MAINARCH_DIR)/.configured
 	$(TOOLS_SUBMAKE) -C $(FAKEROOT_HOST_MAINARCH_DIR) install
 	$(SED) -i 's,^FAKEROOT_PREFIX=.*,FAKEROOT_PREFIX="$$(readlink -f $$0 | sed "s!/bin/fakeroot\\$$!!")",'  $(FAKEROOT_HOST_TARGET_SCRIPT)
@@ -70,10 +70,10 @@ $($(PKG)_BIARCH_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 		$(QUIET) \
 		$(SILENT) \
 	);
-	touch $@
+	touch -c $@
 $($(PKG)_TARGET_BIARCH_LIB): $($(PKG)_BIARCH_DIR)/.configured
 	$(TOOLS_SUBMAKE) -C $(FAKEROOT_HOST_BIARCH_DIR) libdir="$(FAKEROOT_HOST_BIARCH_LD_PRELOAD_PATH)" install-libLTLIBRARIES
-	touch $@
+	touch -c $@
 
 $(pkg)-fixhardcoded:
 	-@$(SED) -i "s!$(TOOLS_HARDCODED_DIR)!$(FAKEROOT_HOST_DESTDIR)!g" \

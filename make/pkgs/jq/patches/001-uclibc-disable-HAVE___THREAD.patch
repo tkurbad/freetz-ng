@@ -1,0 +1,11 @@
+--- configure
++++ configure
+@@ -21150,7 +21150,7 @@
+ _ACEOF
+ if ac_fn_c_try_link "$LINENO"
+ then :
+-  have___thread=yes
++  have___thread=no
+ fi
+ rm -f core conftest.err conftest.$ac_objext conftest.beam \
+     conftest$ac_exeext conftest.$ac_ext

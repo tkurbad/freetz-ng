@@ -1,6 +1,6 @@
 --- src/svr-main.c
 +++ src/svr-main.c
-@@ -159,6 +159,7 @@
+@@ -164,6 +164,7 @@
  	listensockcount = listensockets(listensocks, MAX_LISTEN_ADDR, &maxsock);
  	if (listensockcount == 0)
  	{

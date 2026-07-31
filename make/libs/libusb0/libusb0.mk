@@ -1,0 +1,68 @@
+$(call PKG_INIT_LIB,$(if $(FREETZ_LIB_libusb0_WITH_VERSION_ABANDON),0.1.12,0.1.9))
+$(PKG)_SHORT_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+$(PKG)_LIB_VERSION:=4.4.4
+$(PKG)_SOURCE:=$(if $(FREETZ_LIB_libusb0_WITH_VERSION_ABANDON),libusb,libusb-compat)-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH_ABANDON:=37f6f7d9de74196eb5fc0bbe0aea9b5c939de7f500acba3af6fd643f3b538b44
+$(PKG)_HASH_CURRENT:=b09aa33e943080352041ea3d5ac01fd90ea96e9337212865de0dda776886dbb9
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libusb0_WITH_VERSION_ABANDON),ABANDON,CURRENT))
+$(PKG)_SITE:=@SF/libusb,https://github.com/libusb/libusb-compat-0.1/releases/download/v$($(PKG)_VERSION)
+### VERSION:=0.1.12/0.1.9
+
+$(PKG)_BINARY:=$($(PKG)_DIR)/$(if $(FREETZ_LIB_libusb0_WITH_VERSION_ABANDON),,libusb/).libs/libusb-$($(PKG)_SHORT_VERSION).so.$($(PKG)_LIB_VERSION)
+$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libusb-$($(PKG)_SHORT_VERSION).so.$($(PKG)_LIB_VERSION)
+$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libusb-$($(PKG)_SHORT_VERSION).so.$($(PKG)_LIB_VERSION)
+
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libusb0_WITH_VERSION_ABANDON
+$(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libusb0_WITH_VERSION_CURRENT
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libusb0_WITH_VERSION_ABANDON),abandon,current)
+
+ifneq ($(strip $(FREETZ_LIB_libusb0_WITH_VERSION_ABANDON)),y)
+$(PKG)_DEPENDS_ON += libusb1
+else
+$(PKG)_DEPENDS_ON+=config-host
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./)
+endif
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
+
+$(PKG)_CONFIGURE_OPTIONS += --enable-shared
+$(PKG)_CONFIGURE_OPTIONS += --enable-static
+
+
+$(PKG_SOURCE_DOWNLOAD)
+$(PKG_UNPACKED)
+$(PKG_CONFIGURED_CONFIGURE)
+
+$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
+	$(SUBMAKE) -C $(LIBUSB0_DIR)
+
+$($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
+	$(SUBMAKE) -C $(LIBUSB0_DIR) \
+		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		install
+	$(PKG_FIX_LIBTOOL_LA) \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libusb.la \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libusb.pc \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/libusb-config
+
+$($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
+	$(INSTALL_LIBRARY_STRIP)
+
+$(pkg): $($(PKG)_STAGING_BINARY)
+
+$(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
+
+$(pkg)-clean:
+	-$(SUBMAKE) -C $(LIBUSB0_DIR) clean
+	$(RM) \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/bin/libusb-config \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/include/usb.h \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/libusb-$(LIBUSB0_SHORT_VERSION)* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/libusb.{a,la,so} \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/pkgconfig/libusb.pc
+
+$(pkg)-uninstall:
+	$(RM) $(LIBUSB0_TARGET_DIR)/libusb-$(LIBUSB0_SHORT_VERSION).so* $(LIBUSB0_TARGET_DIR)/libusb.so
+
+$(PKG_FINISH)

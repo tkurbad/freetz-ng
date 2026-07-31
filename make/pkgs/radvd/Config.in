@@ -2,7 +2,7 @@ comment "radvd (not available, needs IPv6 support of the kernel)"
 	depends on !FREETZ_TARGET_IPV6_SUPPORT
 
 menuconfig FREETZ_PACKAGE_RADVD
-	bool "radvd 1.9.3/2.20"
+	bool "radvd 1.9.3/2.21"
 	depends on FREETZ_TARGET_IPV6_SUPPORT
 	select FREETZ_BUSYBOX_IP
 	default n
@@ -16,13 +16,13 @@ if FREETZ_PACKAGE_RADVD
 			default FREETZ_PACKAGE_RADVD_VERSION_CURRENT
 
 		config FREETZ_PACKAGE_RADVD_VERSION_ABANDON
-			bool "1.x"
-			depends on FREETZ_KERNEL_VERSION_2_6_19_MAX
+			bool "1.9.3"
+			depends on FREETZ_KERNEL_VERSION_2_6_19_MAX || FREETZ_TARGET_UCLIBC_0
 			select FREETZ_LIB_libdaemon
 
 		config FREETZ_PACKAGE_RADVD_VERSION_CURRENT
-			bool "2.x"
-			depends on !FREETZ_KERNEL_VERSION_2_6_19_MAX
+			bool "2.21"
+			depends on !(FREETZ_KERNEL_VERSION_2_6_19_MAX || FREETZ_TARGET_UCLIBC_0)
 
 	endchoice
 

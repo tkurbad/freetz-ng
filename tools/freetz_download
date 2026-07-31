@@ -15,6 +15,7 @@
 CHECKSUM_ALGOS[32]="md5"
 CHECKSUM_ALGOS[40]="sha1"
 CHECKSUM_ALGOS[64]="sha256"
+CHECKSUM_ALGOS[96]="sha384"
 CHECKSUM_ALGOS[128]="sha512"
 
 FREETZ_BASE_DIR_FOUND="${FREETZ_BASE_DIR:-.}"
@@ -44,7 +45,7 @@ Usage: freetz_download (-?|--help) | [-d|--delete-on-trap] [-n|--no-append-serve
     download-dir  - target directory for download file
     filename      - download file name
     main-url      - url without filename for primary download
-    checksum      - file checksum (supported algorithms: md5, sha1, sha256, sha512)
+    checksum      - file checksum (supported algorithms: md5, sha1, sha256, sha384, sha512)
     -?, --help    - print this help text
 
 Examples:
@@ -73,13 +74,13 @@ do_assets() {
 	[ -z "${TAG}" ] && echo "No tag url" 1>&11 && return 1
 	[ -e "${DST}" ] && echo "File already exists" 1>&11 && return 1
 
+	[ "$opt_trap_delete" == y ] && trap '[ -f "${DST}" ] && echo "Deleting file: \"${DST}\"" && rm "${DST}" 2>/dev/null' TERM INT
 	local ASSETS="$(curl -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2026-03-10"  "${TAG}" 2>&12)"
 	[ -z "${ASSETS}" ] && echo "Download failed - No ASSETS" 1>&11 && return 1
 	local ASSID="$(echo "${ASSETS}" | grep -B7 "\"${SRC}\"" | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
 	[ -z "${ASSID}" ] && echo "Download failed - No ASSID" 1>&11 && return 1
 	echo "Found ASSID:=${ASSID}" 1>&11
 
-	[ "$opt_trap_delete" == y ] && trap 'echo "Deleting file: \"${DST}\""; rm \"${DST\" 2>/dev/null; exit 1' TERM INT
 	curl -Lo "${DST}"    -H "Accept: application/octet-stream"     -H "Authorization: Bearer ${DLT}"  -H "X-GitHub-Api-Version: 2026-03-10"  "${ASS}/${ASSID}" 1>&11 2>&12
 	curl_result=$?
 	[ "$opt_trap_delete" == y ] && trap - TERM INT
@@ -388,6 +389,7 @@ enumerate_mirrors_official() {
 				sites[${#sites[@]}]=https://mirrors.kernel.org/pub/$subpath
 				sites[${#sites[@]}]=https://www.kernel.org/pub/$subpath
 			elif [ ${url:0:8} == "@TELEKOM" ]; then
+				sites[${#sites[@]}]=@DLTOKEN/https://api.github.com/repos/Freetz-NG/internal/releases/tags/firmwares
 				sites[${#sites[@]}]=https://www.telekom.de/hilfe/downloads/$subpath
 				sites[${#sites[@]}]=http://www.telekom.de/dlp/eki/downloads/$subpath
 				sites[${#sites[@]}]=http://www.t-home.de/dlp/eki/downloads/$subpath

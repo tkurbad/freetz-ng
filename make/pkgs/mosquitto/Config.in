@@ -1,7 +1,8 @@
 config FREETZ_PACKAGE_MOSQUITTO
-	bool "Mosquitto 2.0.22 - DEPRECATED"
+	bool "Mosquitto 2.0.22/2.1.2"
 	default n
 	depends on FREETZ_TARGET_IPV6_SUPPORT
+	select FREETZ_LIB_libcjson if FREETZ_PACKAGE_MOSQUITTO_VERSION_CURRENT
 	select FREETZ_PACKAGE_MOSQUITTO_BROKER if (!FREETZ_PACKAGE_MOSQUITTO_CLIENT_PUB && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_RR && !FREETZ_PACKAGE_MOSQUITTO_CLIENT_SUB && !FREETZ_PACKAGE_MOSQUITTO_PASSWD)
 	help
 		Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements
@@ -11,6 +12,20 @@ config FREETZ_PACKAGE_MOSQUITTO
 		such as phones, embedded computers or microcontrollers like the Arduino.
 
 if FREETZ_PACKAGE_MOSQUITTO
+
+	choice
+		prompt "Version"
+			default FREETZ_PACKAGE_MOSQUITTO_VERSION_CURRENT
+
+		config FREETZ_PACKAGE_MOSQUITTO_VERSION_ABANDON
+			bool "2.0.22"
+			depends on !FREETZ_SEPARATE_AVM_UCLIBC
+
+		config FREETZ_PACKAGE_MOSQUITTO_VERSION_CURRENT
+			bool "2.1.2"
+			depends on FREETZ_SEPARATE_AVM_UCLIBC
+
+	endchoice
 
 	config FREETZ_PACKAGE_MOSQUITTO_BROKER
 		bool "include broker server"
@@ -56,14 +71,6 @@ if FREETZ_PACKAGE_MOSQUITTO
 		default n
 		help
 			Adds the mosquitto_passwd utility to the image
-
-	config FREETZ_PACKAGE_MOSQUITTO_WITH_UUID
-		bool "enable uuid support in mosquitto"
-		depends on FREETZ_PACKAGE_MOSQUITTO_CLIENTS
-		select FREETZ_LIB_libuuid
-		default y
-		help
-			Build using libuuid for clientid generation.
 
 	comment "SSL support not available, needs OpenSSL 1.0 or newer"
 		depends on !FREETZ_OPENSSL_VERSION_10_MIN

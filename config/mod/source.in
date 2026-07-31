@@ -41,6 +41,7 @@ config FREETZ_REPLACE_MODULE_AVAILABLE
 	depends on FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	depends on !FREETZ_TYPE_FIRMWARE_UNTESTED # nobody ever used this device
 	depends on !FREETZ_AVM_SOURCE_6360_05_29  # 05.2X-final 6360 (needs to be fixed, hardcoded paths, svn, ...)
+	depends on !FREETZ_AVM_SOURCE_7580_06_53  # 06.5X-final 7580 (needs to be fixed, opcode not supported on this processor)
 	depends on !FREETZ_AVM_SOURCE_7539_07_57  # 07_5X-final 7539 (corrupt)
 	help
 		Disable modules here if avm sources for a kernel version are outdated and incompatible for a newer fos or new device.

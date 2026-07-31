@@ -104,6 +104,9 @@ config FREETZ_AVM_HAS_UMTS
 config FREETZ_AVM_HAS_DMESG_LINK
 	def_bool y
 
+config FREETZ_AVM_HAS_HD_IDLE
+	def_bool y
+
 config FREETZ_AVM_HAS_TC
 	def_bool y
 

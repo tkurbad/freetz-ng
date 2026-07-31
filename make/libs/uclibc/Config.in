@@ -75,3 +75,38 @@ config FREETZ_LIB_libutil
 	help
 		A part of older uClibc.
 
+choice
+	prompt "Version" if FALSE
+		default FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_28 if FREETZ_TARGET_UCLIBC_0_9_28
+		default FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_29 if FREETZ_TARGET_UCLIBC_0_9_29
+		default FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_32 if FREETZ_TARGET_UCLIBC_0_9_32
+		default FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_33 if FREETZ_TARGET_UCLIBC_0_9_33
+		default FREETZ_LIB_ld_uClibc_WITH_VERSION_1_0_14 if FREETZ_TARGET_UCLIBC_1_0_14
+		default FREETZ_LIB_ld_uClibc_WITH_VERSION_1_0_58 if FREETZ_TARGET_UCLIBC_1_0_58
+
+	config FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_28
+		bool "uclibc-0.9.28"
+		depends on FREETZ_TARGET_UCLIBC_0_9_28
+
+	config FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_29
+		bool "uclibc-0.9.29"
+		depends on FREETZ_TARGET_UCLIBC_0_9_29
+
+	config FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_32
+		bool "uclibc-0.9.32.1"
+		depends on FREETZ_TARGET_UCLIBC_0_9_32
+
+	config FREETZ_LIB_ld_uClibc_WITH_VERSION_0_9_33
+		bool "uclibc-0.9.33.2"
+		depends on FREETZ_TARGET_UCLIBC_0_9_33
+
+	config FREETZ_LIB_ld_uClibc_WITH_VERSION_1_0_14
+		bool "uclibc-1.0.14"
+		depends on FREETZ_TARGET_UCLIBC_1_0_14
+
+	config FREETZ_LIB_ld_uClibc_WITH_VERSION_1_0_58
+		bool "uclibc-1.0.58"
+		depends on FREETZ_TARGET_UCLIBC_1_0_58
+
+endchoice
+

@@ -35,10 +35,12 @@ on:
           - "07_5X"
           - "08_0X"
           - "08_2X"
+          - "08_5X"
 
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
+  queue: max
 
 jobs:
   build:
@@ -64,7 +66,7 @@ jobs:
 #         DEBIAN_FRONTEND=noninteractive apt-get -y install \
 #           locales bash \
 #           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
-#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo gettext pkg-config ecj \
 #           perl libstring-crc32-perl ruby ruby1.9 gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 lib32ncurses5-dev \
 #           gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev netcat curl \
 #           uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler openssl build-essential libelf-dev
@@ -103,10 +105,11 @@ jobs:
         env:
           FREETZ_DLTOKEN: ${{ secrets.FREETZ_DLTOKEN }}
         run: |
-          echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                      >> .config
-          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
-          echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                        >> .config
-          echo 'FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"'  >> .config
+          echo 'FREETZ_USER_LEVEL_DEVELOPER=y'                                                        >> .config
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
+          echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config ||
+          echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
+          echo 'FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"'    >> .config
           make tools
 
       - name: generate

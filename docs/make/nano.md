@@ -1,4 +1,4 @@
-# Nano 9.0 (binary only)
+# Nano 9.1 (binary only)
   - Homepage: [https://www.nano-editor.org/](https://www.nano-editor.org/)
   - Manpage: [https://www.nano-editor.org/docs.php](https://www.nano-editor.org/docs.php)
   - Changelog: [https://www.nano-editor.org/dist/v9/NEWS](https://www.nano-editor.org/dist/v9/NEWS)

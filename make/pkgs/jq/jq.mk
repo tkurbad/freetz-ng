@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.8.1)
+$(call PKG_INIT_BIN, 1.8.2)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=2be64e7129cecb11d5906290eba10af694fb9e3e7f9fc208a311dc33ca837eb0
+$(PKG)_HASH:=71b8d6e8f5fe81f6c6d0d110e3892251f6ce76ed095abd315e26e6e1193af3af
 $(PKG)_SITE:=https://github.com/jqlang/jq/releases/download/jq-$($(PKG)_VERSION)
 ### WEBSITE:=https://jqlang.github.io/jq/
 ### MANPAGE:=https://jqlang.github.io/jq/manual/
@@ -34,7 +34,7 @@ endif
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
-$(PKG)_CONFIGURE_ENV += $(foreach opt,j0 j1 y0 y1,ac_cv_funclib_$(opt)=no)
+$(PKG)_CONFIGURE_ENV += $(foreach opt,j0 j1 y0 y1 getentropy,ac_cv_funclib_$(opt)=no)
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-silent-rules
 $(PKG)_CONFIGURE_OPTIONS += --disable-shared

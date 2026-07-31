@@ -212,23 +212,44 @@ menu "Additional informations"
 	config FREETZ_ADD_JUIS_CHECK
 		bool "Add juis_check"
 		depends on FREETZ_AVM_HAS_JUIS_SUPPORT
-		select FREETZ_BUSYBOX_BASE64
-		select FREETZ_BUSYBOX_HEXDUMP
-		select FREETZ_BUSYBOX_SHUF
 		select FREETZ_PACKAGE_JUIS_CHECK
 		default y if FREETZ_AVM_VERSION_07_0X_MIN
 		default n
 		help
 			Adds update check to webif, category 'system'.
 
+if FREETZ_ADD_JUIS_CHECK
+
 		config FREETZ_ADD_JUIS_CHECK__SSL
 			bool "Enable https"
-			depends on FREETZ_ADD_JUIS_CHECK
-			select FREETZ_PACKAGE_CURL
-			select FREETZ_PACKAGE_CURL_SELECT_SSL
+			select FREETZ_PACKAGE_JUIS_CHECK_WITH_SSL
 			default n
 			help
 				This selects curl and uses it for encrypted https connections.
+
+		config FREETZ_ADD_JUIS_CHECK__MTLS
+			bool "Add juis_bearer"
+			depends on FREETZ_AVM_HAS_AVM_PROM_CONFIG_BUILTIN
+			select FREETZ_ADD_JUIS_CHECK__SSL
+			select FREETZ_PACKAGE_JUIS_BEARER
+			default y if FREETZ_AVM_VERSION_08_0X_MIN
+			default n
+			help
+				Enables mTLS authentication to request a bearer token.
+				Since HWR 277 required for juis to get positive answers.
+				See https://github.com/orgs/Freetz-NG/discussions/1415
+
+			config FREETZ_ADD_JUIS_CHECK__DEBUG
+				bool "With debug tools"
+				depends on FREETZ_ADD_JUIS_CHECK__MTLS
+				select FREETZ_PACKAGE_JUIS_BEARER_WITH_DEBUG
+				default n
+				help
+					This selects jq and xxd which could be used for
+					 - kid handling
+					 - signature validation
+
+endif # FREETZ_ADD_JUIS_CHECK
 
 	config FREETZ_ADD_UIMODS
 		bool "Add FOS UI-Modules"

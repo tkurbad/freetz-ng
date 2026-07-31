@@ -1,5 +1,29 @@
 # Neuigkeiten
 
+### 2026-06-22
+Die Updateprüfung Juis benötigt mindestens für Geräte ab HWR277 zusätzlich eine Authorization mit einem Bearer-Token - ansonsten bleibt alles gleich.
+Ohne Token bekommt man eine gültige Antwort aber es wird kein Update gefunden!<br>
+Dieser Token kann von `dca.avm.de` abgerufen werden.
+Dazu wird mTLS verwendet bei dem man sich mit einem `avm_dev_cert` authorisieren muss.
+Es ist in einer `avmzertifikate` .tar-Datei im `/proc` zu finden.
+Es ist für jede Fritzbox individuell und enthält unter anderem die `HWRevision` und `MACA`,
+also um welche Fritzbox es sich handelt sowie die einzigartige MAC-Adresse der Fritzbox.
+Es ist von `AVM Device Production CA` signiert die wiederum von `AVM Device Manufacturer CA`signiert ist.
+Die `AVM Device Production CA` ist nicht immer die gleiche, vermutlich je HWR eine.<br>
+In der Juis-Anfrage muss die `Serial` diese 'MACA' sein und die `HW` diese 'HWRevision', ansonsten gibt es auch nie positive Antworten.<br>
+Man kann also mit Juis nur noch Updates für die eigenen Fritzboxen (HWRevision) finden.<br>
+Durch die eindeutige identifizierbarkeit der Anfrage mittels MAC-Adresse (MACA) öffnen sich AVM und dem Staat ganz fantastisch Möglichkeiten.
+So kann zum Beispiel einem einzelnen Gerät gezielt eine ganz persönlich "optimierte" Firmwareversionen verpasst werden.<br>
+<br>
+Im Freetz-Webif unter `System` nutzt die "Prüfung der Firmwareversion" diesen Mechanismus
+wenn im `menuconfig` die Option `Add juis_bearer` ausgewählt wurde, die unter anderem OpenSSL benötigt.<br>
+Das `juis_bearer` Script kann auf der Fritzbox dazu genutzt werden das `avmzertifikate` Zertifikat zu exportieren
+und auf dem Computer mit `tools/juis_bearer` zu importieren.<br>
+<br>
+Vielen Dank an [@LizenzFass78851](https://github.com/LizenzFass78851) für die Hilfe dabei!<br>
+
+  - Siehe [Discussions](https://github.com/orgs/Freetz-NG/discussions/1415)<br>
+
 ### 2026-02-26
 Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng26020` erstellt.<br>
 Ein Tag sollte wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>

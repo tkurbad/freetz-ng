@@ -5,10 +5,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### A
 
-  * **[ACME.sh 3.1.2](../../docs/make/acme.md)<a id='acme'></a>**<br>
+  * **[ACME.sh 3.1.4](../../docs/make/acme.md)<a id='acme'></a>**<br>
     A pure Unix shell script implementing ACME client protocol.
 
-  * **[Apache2 2.4.66 (binary only)](../../docs/make/apache2.md)<a id='apache2'></a>**<br>
+  * **[Apache2 2.4.68 (binary only)](../../docs/make/apache2.md)<a id='apache2'></a>**<br>
     The Apache httpd server
      - [apache.conf](../../docs/make/apache2.md#apacheconf)
      - [Passwortschutz mit .htaccess](../../docs/make/apache2.md#passwortschutz-mit-htaccess)
@@ -28,7 +28,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>asterisk-gui: #Asterisk GUI 2.1.0-rc1 - DEPRECATED</u><a id='asterisk-gui'></a>**<br>
     Asterisk GUI is a framework for the creation of graphical interfaces for configuring Asterisk. Please read https://wiki.asterisk.org/wiki/display/AST/Asterisk+GUI for configuration instructions.
 
-  * **[Atop 2.12.1 (binary only)](../../docs/make/atop.md)<a id='atop'></a>**<br>
+  * **[Atop 2.13.0 (binary only)](../../docs/make/atop.md)<a id='atop'></a>**<br>
     The program atop is an interactive monitor to view the load on a Linux system. It shows the occupation of the most critical hardware resources (from a performance point of view) on system level, i.e. cpu, memory, disk and network.
 
   * **[AutoFS 5.0.5/5.1.9](../../docs/make/autofs.md)<a id='autofs'></a>**<br>
@@ -63,7 +63,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>bfusb: AVM BlueFRITZ! USB stick support (binary only)</u><a id='bfusb'></a>**<br>
     This package adds support for the AVM BlueFRITZ! USB stick.
 
-  * **[BIND 9.11.37/9.20.22](../../docs/make/bind.md)<a id='bind'></a>**<br>
+  * **[BIND 9.11.37/9.20.24](../../docs/make/bind.md)<a id='bind'></a>**<br>
     BIND is a suite of software for interacting with the Domain Name System (DNS). The name BIND stands for "Berkeley Internet Name Daemon".
      - [named.conf](../../docs/make/bind.md#namedconf)
 
@@ -104,7 +104,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### C
 
-  * **[CA-bundle 2026-03-19](../../docs/make/ca-bundle.md)<a id='ca-bundle'></a>**<br>
+  * **[CA-bundle 2026-07-16](../../docs/make/ca-bundle.md)<a id='ca-bundle'></a>**<br>
     The Mozilla CA certificate store in PEM format, see https://www.curl.se/docs/caextract.html Size of uncompressed file is about 250 KB.
 
   * **[Callmonitor 1.20.9-git](../../docs/make/callmonitor.md)<a id='callmonitor'></a>**<br>
@@ -151,7 +151,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Ctorrent dnh3.3.2 (binary only) - DEPRECATED](../../docs/make/ctorrent.md)<a id='ctorrent'></a>**<br>
     CTorrent is a BitTorrent client written in the C programming language, known to be a very robust and mature programming language, which produces fast and optimized application.
 
-  * **[Curl 8.12.1/8.19.0 (binary only)](../../docs/make/curl.md)<a id='curl'></a>**<br>
+  * **[Curl 8.12.1/8.21.0 (binary only)](../../docs/make/curl.md)<a id='curl'></a>**<br>
     Curl is a command line tool for transferring files with URL syntax, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. Curl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and a busload of other useful tricks.
 
   * **<u>CurlFtpFS 0.9.2 - DEPRECATED</u><a id='curlftpfs'></a>**<br>
@@ -162,7 +162,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Dante 1.4.4](../../docs/make/dante.md)<a id='dante'></a>**<br>
     A free SOCKS server
 
-  * **[davfs2: davfs 1.5.2/1.7.0](../../docs/make/davfs2.md)<a id='davfs2'></a>**<br>
+  * **[davfs2 1.5.2/1.7.3](../../docs/make/davfs2.md)<a id='davfs2'></a>**<br>
     davfs is a Linux file system driver that allows you to mount a WebDAV server as a disk drive. WebDAV is an extension to HTTP/1.1 that allows remote collaborative authoring of Web resources, defined in RFC 4918.
      - [Einführung](../../docs/make/davfs2.md#einführung)
      - [Was ist WebDAV?](../../docs/make/davfs2.md#was-ist-webdav)
@@ -206,7 +206,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Dns2tcp is a network tool designed to relay TCP connections through DNS traffic. Encapsulation is done on the TCP level, thus no specific driver is needed (i.e: TUN/TAP).
      - [Using with FreeDNS](../../docs/make/dns2tcp.md#using-with-freedns)
 
-  * **[Dnsmasq 2.80/2.92](../../docs/make/dnsmasq.md)<a id='dnsmasq'></a>**<br>
+  * **[Dnsmasq 2.80/2.93](../../docs/make/dnsmasq.md)<a id='dnsmasq'></a>**<br>
     Combined DHCP, DNS and TFTP server.
      - [Installation](../../docs/make/dnsmasq.md#installation)
      - [Konfiguration](../../docs/make/dnsmasq.md#konfiguration)
@@ -227,7 +227,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>dosfstools 3.0.28 (binary only) - DEPRECATED</u><a id='dosfstools'></a>**<br>
     utilities to create, check and label MS-DOS FAT filesystems
 
-  * **[Dropbear 2025.89](../../docs/make/dropbear.md)<a id='dropbear'></a>**<br>
+  * **[Dropbear 2026.94](../../docs/make/dropbear.md)<a id='dropbear'></a>**<br>
     Dropbear SSH server and client Dropbear is a relatively small SSH 2 server and client. It runs on a variety of POSIX-based platforms. Dropbear is open source software, distributed under a MIT-style license. Dropbear is particularly useful for "embedded"-type Linux (or other Unix) systems, such as wireless routers. Features - A small memory footprint suitable for memory-constrained environments - Dropbear can compile to a 110kB statically linked binary with uClibc on x86 (only minimal options selected) - Dropbear server implements X11 forwarding, and authentication-agent forwarding for OpenSSH clients - Can run from inetd or standalone - Compatible with OpenSSH ~/.ssh/authorized_keys public key authentication - The server, client, keygen, and key converter can be compiled into a single binary (a la busybox) - Features can easily be disabled when compiling to save space TCP forwarding support
      - [Grundbegriffe](../../docs/make/dropbear.md#grundbegriffe)
      - [Web-Config](../../docs/make/dropbear.md#web-config)
@@ -248,7 +248,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     dtach is a tiny program that emulates the detach feature of screen, allowing you to run a program in an environment that is protected from the controlling terminal and attach to it later.
      - [Bedienung](../../docs/make/dtach.md#bedienung)
 
-  * **[dtc 1.7.2](../../docs/make/dtc.md)<a id='dtc'></a>**<br>
+  * **[dtc 1.8.1](../../docs/make/dtc.md)<a id='dtc'></a>**<br>
     Device  Tree  Compiler,  dtc, takes as input a device-tree in a given format and outputs a device-tree in another format for booting kernels on  embedded  systems.   Typically,  the input  format  is  "dts",  a  human readable source format, and creates a "dtb", or binary format as output.
 
   * **<u>dvbsnoop 1.4.50 (binary only) - DEPRECATED</u><a id='dvbsnoop'></a>**<br>
@@ -335,7 +335,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### H
 
-  * **[HAProxy 2.6.22 - DEPRECATED](../../docs/make/haproxy.md)<a id='haproxy'></a>**<br>
+  * **[HAProxy 2.6.29 - DEPRECATED](../../docs/make/haproxy.md)<a id='haproxy'></a>**<br>
     HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications.
 
   * **[Haserl 0.9.36 (binary only)](../../docs/make/haserl.md)<a id='haserl'></a>**<br>
@@ -357,10 +357,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>html2text 1.3.2a (binary only) - DEPRECATED</u><a id='html2text'></a>**<br>
     html2text is a command line utility, written in C++, that converts HTML documents into plain text.
 
-  * **[htop 1.0.3/3.5.0 (binary only)](../../docs/make/htop.md)<a id='htop'></a>**<br>
+  * **[htop 1.0.3/3.5.2 (binary only)](../../docs/make/htop.md)<a id='htop'></a>**<br>
     htop is a more powerful alternative to top, using ncurses.
 
-  * **[htpdate 2.0.1](../../docs/make/htpdate.md)<a id='htpdate'></a>**<br>
+  * **[htpdate 2.0.2](../../docs/make/htpdate.md)<a id='htpdate'></a>**<br>
     The HTTP Time Protocol (HTP) is used to synchronize a computer's time with web servers as reference time source. Htpdate will synchronize your computer's time by extracting timestamps from HTTP headers found in web server responses. Htpdate can be used as a daemon, to keep your computer synchronized. WWW: http://www.clevervest.com/htp/ Manpage: http://linux.die.net/man/8/htpdate This package automatically removes AVM'S chronyd if necessary.
 
   * **<u>httpry 0.1.8 - DEPRECATED</u><a id='httpry'></a>**<br>
@@ -383,7 +383,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[IGMPproxy 0.4](../../docs/make/igmpproxy.md)<a id='igmpproxy'></a>**<br>
     IGMPproxy is a simple dynamic Multicast Routing Daemon using only IGMP signalling. It's intended for simple forwarding of Multicast traffic between networks.
 
-  * **[ImageMagick 7.1.0-62/7.1.2-21 (binary only)](../../docs/make/imagemagick.md)<a id='imagemagick'></a>**<br>
+  * **[ImageMagick 7.1.0-62/7.1.2-27 (binary only)](../../docs/make/imagemagick.md)<a id='imagemagick'></a>**<br>
     ImageMagick is a robust collection of tools and libraries to read, write, and manipulate an image in many image formats, including popular formats like TIFF, JPEG, PNG, PDF, PhotoCD, and GIF. With ImageMagick, you can create images dynamically, making it suitable for Web applications. You can also resize, rotate, sharpen, color-reduce, or add special effects to an image and save your completed work in many different image formats. Image processing operations are available from the command line as well as through C, C++, and PERL-based programming interfaces.
 
   * **[Inadyn-mt 02.28.10 - DEPRECATED](../../docs/make/inadyn-mt.md)<a id='inadyn-mt'></a>**<br>
@@ -431,13 +431,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[JamVM 2.0.0 (binary only) - DEPRECATED](../../docs/make/jamvm.md)<a id='jamvm'></a>**<br>
     JamVM - extremely small Java VM JamVM 2.0.0 is the first release of JamVM with support for OpenJDK.  Although IcedTea already includes JamVM with OpenJDK support, this has been based on periodic snapshots of the development tree. This release supports OpenJDK 6, 7 and 8 (the latest).  With OpenJDK 7 and 8 this includes full support for JSR 292 (invokedynamic).  JamVM 2.0.0 with OpenJDK 8 also includes full support for Lambda expressions (JSR 335), type annotations (JSR 308) and method parameter reflection. In addition to OpenJDK support, JamVM 2.0.0 also includes many bug-fixes, performance improvements and improved compatibility (from running the OpenJDK jtreg tests).  The following is an edited list of the top ~100 commits (out of 300+) in date order (most recent first).  The list has been categorised into those affecting OpenJDK only, GNU Classpath only, and both OpenJDK and GNU Classpath (All).
 
-  * **[jq 1.8.1 (binary only)](../../docs/make/jq.md)<a id='jq'></a>**<br>
+  * **[jq 1.8.2 (binary only)](../../docs/make/jq.md)<a id='jq'></a>**<br>
     jq is a lightweight and flexible command-line JSON processor.
 
   * **<u>js OSSP 1.6.20070208 (binary only) - DEPRECATED</u><a id='js'></a>**<br>
     OSSP js is a stand-alone distribution of the JavaScript (JS) programming language reference implementation from Mozilla.
 
-  * **[juis_check 1.3](../../docs/make/juis_check.md)<a id='juis-check'></a>**<br>
+  * **<u>juis_bearer 1.0</u><a id='juis-bearer'></a>**<br>
+    This integrates the juis_bearer script from tools/ dir into the image. It is a bearer token handler of juis with avmzertifikate.
+
+  * **[juis_check 1.4](../../docs/make/juis_check.md)<a id='juis-check'></a>**<br>
     This integrates the juis_check script from tools/ dir into the image. It run 23 time faster (0,3sec vs 7sec) than other bloated implementations and needs only 4% of space (4kB vs 93kB).
 
 ### K
@@ -453,7 +456,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>lftp 4.8.4 (binary only) - DEPRECATED</u><a id='lftp'></a>**<br>
     LFTP is sophisticated file transfer program with command line interface. It supports FTP, HTTP, FISH, SFTP, HTTPS and FTPS protocols. GNU Readline library is used for input.
 
-  * **[Lighttpd 1.4.82](../../docs/make/lighttpd.md)<a id='lighttpd'></a>**<br>
+  * **[Lighttpd 1.4.85](../../docs/make/lighttpd.md)<a id='lighttpd'></a>**<br>
     Security, speed, compliance, and flexibility -- all of these describe lighttpd (pron. lighty) which is rapidly redefining efficiency of a webserver; as it is designed and optimized for high performance environments. With a small memory footprint compared to other web-servers, effective management of the cpu-load, and advanced feature set (FastCGI, SCGI, Auth, Output-Compression, URL-Rewriting and many more) lighttpd is the perfect solution for every server that is suffering load problems. In case you want to configure virtual hosts, you may want to consider the package onlinechanged-cgi which allows you to configure multiple DynDNS entries for your box.
      - [Einrichtung](../../docs/make/lighttpd.md#einrichtung)
      - [Perl](../../docs/make/lighttpd.md#perl)
@@ -494,7 +497,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[minisatip 1.0.4/1.3.6 (binary only) - DEPRECATED](../../docs/make/minisatip.md)<a id='minisatip'></a>**<br>
     Minisatip is a multi-threaded satip server version 1.2 that runs under Linux and it was tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards.
 
-  * **[mini-snmpd 1.6 (binary only)](../../docs/make/mini-snmpd.md)<a id='mini-snmpd'></a>**<br>
+  * **[mini-snmpd 1.7/2.0 (binary only)](../../docs/make/mini-snmpd.md)<a id='mini-snmpd'></a>**<br>
     This program is an SNMP server for "embedded systems". The advantage in comparison to other products is the low usage of system resources.
 
   * **[mod: Freetz(-MOD)](../../docs/make/mod.md)<a id='mod'></a>**<br>
@@ -516,7 +519,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[module-init-tools 3.12 (binary only) - DEPRECATED](../../docs/make/module-init-tools.md)<a id='module-init-tools'></a>**<br>
     The module-init-tools (m-i-t) package provides many of the utilities needed by Linux systems for managing loadable Linux Kernel Modules. This includes depmod, insmod, rmmod, modprobe and tools like modinfo.
 
-  * **[Mosquitto 2.0.22 - DEPRECATED](../../docs/make/mosquitto.md)<a id='mosquitto'></a>**<br>
+  * **[Mosquitto 2.0.22/2.1.2](../../docs/make/mosquitto.md)<a id='mosquitto'></a>**<br>
     Eclipse Mosquitto™ is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. MQTT provides a lightweight method of carrying out messaging using a publish/subscribe model. This makes it suitable for "Internet of Things" messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers like the Arduino.
 
   * **[MTR 0.80/0.96 (binary only)](../../docs/make/mtr.md)<a id='mtr'></a>**<br>
@@ -528,7 +531,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Nagios is an Open Source host, service and network monitoring program.
      - [Weiterführende Informationen](../../docs/make/nagios.md#weiterführende-informationen)
 
-  * **[Nano 9.0 (binary only)](../../docs/make/nano.md)<a id='nano'></a>**<br>
+  * **[Nano 9.1 (binary only)](../../docs/make/nano.md)<a id='nano'></a>**<br>
     GNU GPL'd Pico clone with more functionality. GNU nano is a small and friendly text editor. Besides basic text editing, nano offers many extra features like an interactive search and replace, go to line and column number, auto-indentation, feature toggles and filename tab completion. The original goal for nano was a complete bug-for-bug compatible emulation of Pico, but nano's current goal is to be as compatible as possible while offering a superset of Pico's functionality. IMPORTANT NOTES: 1.) Selecting any option besides "Tiny binary" will make the nano binary bigger. The range is somewhere between 142 KB and 249 KB, depending on the options chosen. 2.) Please also be aware of the fact that changing any feature options results in an automatic rebuild of the package - just in case you were wondering. 3.) Note that UTF8 support and spell checking is disabled by default.
 
   * **<u>nc6 1.0 (binary only) - DEPRECATED</u><a id='nc6'></a>**<br>
@@ -619,13 +622,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Fehlerbehebung](../../docs/make/openntpd.md#fehlerbehebung)
      - [Alternative](../../docs/make/openntpd.md#alternative)
 
-  * **[OpenSSH 9.3p2/10.3p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
+  * **[OpenSSH 9.3p2/10.4p1](../../docs/make/openssh.md)<a id='openssh'></a>**<br>
     OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
-  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.20/3.5.6 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
+  * **[OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.21/3.5.7 (binary only)](../../docs/make/openssl.md)<a id='openssl'></a>**<br>
     This package contains the OpenSSL command-line utility.
 
-  * **[OpenVPN 2.4.12/2.5.11/2.6.20/2.7.3](../../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
+  * **[OpenVPN 2.4.12/2.5.11/2.6.21/2.7.5](../../docs/make/openvpn.md)<a id='openvpn'></a>**<br>
     VPN Server
      - [Häufige Fragen / Howto](../../docs/make/openvpn.md#häufige-fragen--howto)
      - [Konfigurationsanleitung](../../docs/make/openvpn.md#konfigurationsanleitung)
@@ -639,9 +642,6 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Diskussion](../../docs/make/openvpn.md#diskussion)
      - [Neue, simple GUI (GUI2)](../../docs/make/openvpn.md#neue-simple-gui-gui2)
      - [Weitere Konfigs anlegen](../../docs/make/openvpn.md#weitere-konfigs-anlegen)
-
-  * **[owfs 2.7p32 (binary only) - DEPRECATED](../../docs/make/owfs.md)<a id='owfs'></a>**<br>
-    OWFS - 1-Wire Filesystem This package includes: - owserver for easy, world wide access to serial and USB 1-wire bus masters and attached devices - httpd and ftpd to control owserver over http or ftp - shellprograms like owdir, owwrite, owread, owpresent to control owserver via shell scripts
 
 ### P
 
@@ -657,9 +657,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>phonebook-tools: Phone book tools 1.0</u><a id='phonebook-tools'></a>**<br>
     A set of tools for reading and converting Fritz!Box phone book to such (easy parseable) formats like: - .csv (comma-separated values), or - .tsv (tab-separated values).
 
-  * **[PHP5 5.6.40 (binary only) - DEPRECATED](../../docs/make/php5.md)<a id='php5'></a>**<br>
+  * **[PHP 5.6.40/8.2.33/8.3.33/8.4.24/8.5.9 (binary only)](../../docs/make/php.md)<a id='php'></a>**<br>
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
-     - [Memory usage](../../docs/make/php5.md#memory-usage)
+     - [Memory usage](../../docs/make/php.md#memory-usage)
 
   * **[Pingtunnel 0.72 - DEPRECATED](../../docs/make/pingtunnel.md)<a id='pingtunnel'></a>**<br>
     Ptunnel is an application that allows you to reliably tunnel TCP connections to a remote host using ICMP echo request and reply packets, commonly known as ping requests and replies. At first glance, this might seem like a rather useless thing to do, but it can actually come in handy in some cases.
@@ -781,7 +781,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### R
 
-  * **[radvd 1.9.3/2.20](../../docs/make/radvd.md)<a id='radvd'></a>**<br>
+  * **[radvd 1.9.3/2.21](../../docs/make/radvd.md)<a id='radvd'></a>**<br>
     The "router advertisement daemon" (radvd) is used for host autoconfiguration in ipv6 networks.
      - [Request a subnet from SixXS](../../docs/make/radvd.md#request-a-subnet-from-sixxs)
      - [Creating a Feetz Image with Radvd](../../docs/make/radvd.md#creating-a-feetz-image-with-radvd)
@@ -799,12 +799,12 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[RPCBind 1.2.7 (binary only)](../../docs/make/rpcbind.md)<a id='rpcbind'></a>**<br>
     The rpcbind utility is a server that converts RPC program numbers into universal addresses.
 
-  * **[RRDtool 1.2.30/1.9.0 (binary only)](../../docs/make/rrdtool.md)<a id='rrdtool'></a>**<br>
+  * **[RRDtool 1.2.30/1.10.3 (binary only)](../../docs/make/rrdtool.md)<a id='rrdtool'></a>**<br>
     RRDtool is the OpenSource industry standard, high performance data logging and graphing system for time series data. Use it to write your custom monitoring shell scripts or create whole applications using its PHP bindings.
      - [Einleitung](../../docs/make/rrdtool.md#einleitung)
      - [RRDstats](../../docs/make/rrdtool.md#rrdstats)
 
-  * **[rsync 3.4.1](../../docs/make/rsync.md)<a id='rsync'></a>**<br>
+  * **[rsync 3.4.1/3.4.4](../../docs/make/rsync.md)<a id='rsync'></a>**<br>
     rsync is an open source utility that provides fast incremental file transfer.
 
   * **<u>RTMPDump 2.4-git (binary only) - DEPRECATED</u><a id='rtmpdump'></a>**<br>
@@ -884,7 +884,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>spawn-fcgi 1.6.3 (binary only) - DEPRECATED</u><a id='spawn-fcgi'></a>**<br>
     Spawns FastCGI processes
 
-  * **[SQLite 3.40.1/3.53.0 (binary only)](../../docs/make/sqlite.md)<a id='sqlite'></a>**<br>
+  * **[SQLite 3.40.1/3.53.4 (binary only)](../../docs/make/sqlite.md)<a id='sqlite'></a>**<br>
     SQLite is a small C library that implements a self-contained, embeddable, zero-configuration SQL database engine.
 
   * **<u>squashfs3: squashfs-tools 3.4</u><a id='squashfs3'></a>**<br>
@@ -906,7 +906,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Streamripper records mp3 and ogg streams. For shoutcast style streams it finds the "meta data" or track separation data, and uses that as a marker for where the track should be separated.
      - [Verwendete Bibliotheken](../../docs/make/streamripper.md#verwendete-bibliotheken)
 
-  * **[Stunnel 5.78](../../docs/make/stunnel.md)<a id='stunnel'></a>**<br>
+  * **[Stunnel 5.79](../../docs/make/stunnel.md)<a id='stunnel'></a>**<br>
     Stunnel universal SSL proxy
      - [Konfiguration](../../docs/make/stunnel.md#konfiguration)
      - [Erweitert](../../docs/make/stunnel.md#erweitert)
@@ -967,10 +967,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [URL blocking](../../docs/make/tinyproxy.md#url-blocking)
      - [Memory usage](../../docs/make/tinyproxy.md#memory-usage)
 
-  * **[tmux 3.6a (binary only)](../../docs/make/tmux.md)<a id='tmux'></a>**<br>
+  * **[tmux 3.7b (binary only)](../../docs/make/tmux.md)<a id='tmux'></a>**<br>
     tmux, a BSD-licensed alternative to GNU screen. Uses ncurses.
 
-  * **[Tor 0.4.8.23](../../docs/make/tor.md)<a id='tor'></a>**<br>
+  * **[Tor 0.4.8.25 - DEPRECATED](../../docs/make/tor.md)<a id='tor'></a>**<br>
     The Onion Router Anonymous Internet communication system.
      - [Tor als Proxy benutzen](../../docs/make/tor.md#tor-als-proxy-benutzen)
      - [Tor und Privoxy](../../docs/make/tor.md#tor-und-privoxy)
@@ -983,7 +983,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Abhängigkeiten](../../docs/make/tor.md#abhängigkeiten)
      - [Diskussion](../../docs/make/tor.md#diskussion)
 
-  * **[Transmission 3.00/4.1.1 (binary only)](../../docs/make/transmission.md)<a id='transmission'></a>**<br>
+  * **[Transmission 3.00/4.1.3 (binary only)](../../docs/make/transmission.md)<a id='transmission'></a>**<br>
     If needed, remember to change the base directory as well as the installation directory on the webif.
      - [Blocklist](../../docs/make/transmission.md#blocklist)
      - [Number of peers](../../docs/make/transmission.md#number-of-peers)
@@ -1007,7 +1007,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[uMurmur 0.2.20/0.3.1](../../docs/make/umurmur.md)<a id='umurmur'></a>**<br>
     umurmur is a minimalistic Mumble server primarily targeted to run on routers using less resources. It targets to fill the needs of a pretty small group of users communicating, which in part originates from the other goal of working well on a small system with a limited CPU and limited amount of disk space. It also aims to minimize writing to the disk since these kinds of systems usually only has a flash memory for disk. umurmur supports a subset of the features of Murmur. https://github.com/umurmur/umurmur
 
-  * **[Unbound 1.24.2](../../docs/make/unbound.md)<a id='unbound'></a>**<br>
+  * **[Unbound 1.25.2](../../docs/make/unbound.md)<a id='unbound'></a>**<br>
     Unbound is designed as a set of modular components, so that also DNSSEC (secure DNS) validation and stub-resolvers (that do not run as a server, but are linked into an application) are easily possible.
 
   * **[UNFS3 0.9.23 - DEPRECATED](../../docs/make/unfs3.md)<a id='unfs3'></a>**<br>
@@ -1136,14 +1136,15 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Log-Datei regelmäßig konsolidieren, um Platz zu sparen](../../docs/make/inotify-tools.md#log-datei-regelmäßig-konsolidieren-um-platz-zu-sparen)
      - [Schlußwort](../../docs/make/inotify-tools.md#schlußwort)
 
-  * **[ldd 0.1/1.0.57 (binary only)](../../docs/make/ldd.md)<a id='ldd'></a>**<br>
+  * **[ldd 0.1/1.0.58 (binary only)](../../docs/make/ldd.md)<a id='ldd'></a>**<br>
     ldd prints the shared libraries required by each program or shared library specified on the command line.
 
   * **[lsof 4.89 (binary only) - DEPRECATED](../../docs/make/lsof.md)<a id='lsof'></a>**<br>
     lsof (LiSt Open Files) The lsof tool lists information about files opened by processes.
 
-  * **[ltrace 0.7.3checkpoint1-git (binary only) - DEPRECATED](../../docs/make/ltrace.md)<a id='ltrace'></a>**<br>
+  * **[ltrace 0.7.3-git/0.8.1 (binary only)](../../docs/make/ltrace.md)<a id='ltrace'></a>**<br>
     ltrace - library call tracer ltrace is a debugging tool, similar to strace, but it traces library calls instead of system calls.
+     - [ctlmgr mit ltrace auf den Zahn fühlen](../../docs/make/ltrace.md#ctlmgr-mit-ltrace-auf-den-zahn-fühlen)
 
   * **[Nano Shell 0.1 (binary only) - DEPRECATED](../../docs/make/nano-shell.md)<a id='nano-shell'></a>**<br>
     Remotely execute arbitrary shell commands via URLs This tiny package enables both the AVM and Freetz web interfaces to execute user-specified commands and display their results and/or errors,
@@ -1211,9 +1212,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[MySQL 6.0.11-alpha - DEPRECATED](../../docs/make/mysql.md)<a id='mysql'></a>**<br>
     MySQL is a very fast, multi-threaded, multi-user and robust SQL (Structured Query Language) database server. Unstable, as this version is quite old, but runs well on Fritzbox. Do not expose this daemon to the internet!
 
-  * **[PHP 5.6.40 (binary only) - DEPRECATED](../../docs/make/php.md)<a id='php'></a>**<br>
-    PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
-     - [Memory usage](../../docs/make/php.md#memory-usage)
+  * **[owfs 2.7p32 (binary only) - DEPRECATED](../../docs/make/owfs.md)<a id='owfs'></a>**<br>
+    OWFS - 1-Wire Filesystem This package includes: - owserver for easy, world wide access to serial and USB 1-wire bus masters and attached devices - httpd and ftpd to control owserver over http or ftp - shellprograms like owdir, owwrite, owread, owpresent to control owserver via shell scripts
 
   * **[sane-backends: SANE 1.0.27 - DEPRECATED](../../docs/make/sane-backends.md)<a id='sane-backends'></a>**<br>
     SANE - Scanner support (initial Freetz package by Michael Denk, tehron @ http://www.ip-phone-forum.de/)
@@ -1295,6 +1295,16 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Download files from HTTP or FTP server during the boot process. This is particularly useful for binary packages which do not fit into the firmware image, but should be used on the box anyway. As long as they fit into the RAM disk this solution helps to automate the downloads and keeps them out of debug.cfg. by hermann72pb (ip-phone-forum.de) Support thread: http://www.ip-phone-forum.de/showthread.php?t=134934
 
   * **[Iptables-CGI - DEPRECATED](../../docs/make/iptables-cgi.md)<a id='iptables'></a>**<br>
+
+  * **[Iptables-NG - EXPERIMENTAL](../../docs/make/iptables-ng.md)<a id='iptables-ng'></a>**<br>
+    Advanced iptables/ip6tables management page with dynamic table and module capability detection, plus save/restore controls. Runtime status (started/stopped) is independent from startup mode (automatic/manual). Startup mode only controls boot behavior. See docs/make/iptables-ng.md for more hints. This package forces removing of dsld if available!
+     - [Warning](../../docs/make/iptables-ng.md#warning)
+     - [This package provides an advanced web interface for iptables/ip6tables](../../docs/make/iptables-ng.md#this-package-provides-an-advanced-web-interface-for-iptablesip6tables)
+     - [Behavior notes](../../docs/make/iptables-ng.md#behavior-notes)
+     - [Dependencies and constraints](../../docs/make/iptables-ng.md#dependencies-and-constraints)
+     - [Chain editor input](../../docs/make/iptables-ng.md#chain-editor-input)
+     - [My setup is for example like this](../../docs/make/iptables-ng.md#my-setup-is-for-example-like-this)
+     - [Other](../../docs/make/iptables-ng.md#other)
 
   * **[NFSD CGI](../../docs/make/nfsd-cgi.md)<a id='nfsd'></a>**<br>
     Configuration frontend to NFS-server If this does not work, enable replace-kernel!

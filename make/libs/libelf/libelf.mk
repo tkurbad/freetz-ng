@@ -8,8 +8,11 @@ $(PKG)_BINARY:=$($(PKG)_DIR)/lib/$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$(pkg).so.$($(PKG)_LIB_VERSION)
 
+$(PKG)_DEPENDS_ON += config-host
+
 # recreate configure with a version of autoconf greater than 2.13 (we assume it's installed on build system)
 $(PKG)_CONFIGURE_PRE_CMDS += autoconf --force;
+$(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_UPDATE_CONFIGS,./)
 
 $(PKG)_CONFIGURE_ENV += mr_cv_target_elf=yes
 $(PKG)_CONFIGURE_ENV += libelf_cv_working_memmove=yes
@@ -22,6 +25,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --enable-elf64=yes
 $(PKG)_CONFIGURE_OPTIONS += --enable-compat
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -43,6 +47,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBELF_DIR) clean

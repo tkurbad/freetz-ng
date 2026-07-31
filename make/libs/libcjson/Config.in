@@ -1,0 +1,6 @@
+config FREETZ_LIB_libcjson
+	bool "libcjson (libcjson.so)"
+	default n
+	help
+		Ultralightweight JSON parser in ANSI C.
+

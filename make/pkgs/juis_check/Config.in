@@ -1,10 +1,25 @@
 config FREETZ_PACKAGE_JUIS_CHECK
-	bool "juis_check 1.3"
+	bool "juis_check 1.4"
+	select FREETZ_BUSYBOX_BASE64
+	select FREETZ_BUSYBOX_HEXDUMP
 	select FREETZ_BUSYBOX_NC
 	select FREETZ_BUSYBOX_NC_110_COMPAT
+	select FREETZ_BUSYBOX_SHUF
 	default n
 	help
 		This integrates the juis_check script from tools/ dir into the image.
 		It run 23 time faster (0,3sec vs 7sec) than other bloated
 		implementations and needs only 4% of space (4kB vs 93kB).
+
+if FREETZ_PACKAGE_JUIS_CHECK
+
+	config FREETZ_PACKAGE_JUIS_CHECK_WITH_SSL
+		bool "Enable https"
+		select FREETZ_PACKAGE_CURL
+		select FREETZ_PACKAGE_CURL_SELECT_SSL
+		default n
+		help
+			This selects curl and uses it for encrypted https connections.
+
+endif # FREETZ_PACKAGE_JUIS_CHECK
 

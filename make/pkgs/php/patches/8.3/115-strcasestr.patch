@@ -1,0 +1,19 @@
+--- configure
++++ configure
+@@ -36483,6 +36483,8 @@
+     libmagic/readcdf.c libmagic/softmagic.c libmagic/der.c \
+     libmagic/buffer.c libmagic/is_csv.c"
+ 
++# strcasestr is avaliable in all versions of uClibc since 0.9.28, no need to check
++if false; then
+   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for strcasestr" >&5
+ printf %s "checking for strcasestr... " >&6; }
+   if test "$cross_compiling" = yes
+@@ -100983,6 +100985,7 @@
+      ;;
+ esac
+ fi
++fi
+ 
+ 
+ 

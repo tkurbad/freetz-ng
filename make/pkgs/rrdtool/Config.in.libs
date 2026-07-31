@@ -1,3 +1,16 @@
+choice
+	prompt "Version"
+		default FREETZ_LIB_librrd_WITH_VERSION_CURRENT
+
+	config FREETZ_LIB_librrd_WITH_VERSION_ABANDON
+		bool "1.2.30"
+
+	config FREETZ_LIB_librrd_WITH_VERSION_CURRENT
+		bool "1.10.3"
+		depends on FREETZ_SEPARATE_AVM_UCLIBC
+
+endchoice
+
 config FREETZ_LIB_librrd
 	bool "librrd (librrd.so)"
 	select FREETZ_LIB_libglib_2        if FREETZ_LIB_librrd_WITH_VERSION_CURRENT
@@ -17,23 +30,6 @@ config FREETZ_LIB_librrd
 	help
 		Library implementing most of the functionality of RRDTool.
 
-if FREETZ_LIB_librrd
-
-	choice
-		prompt "Version"
-			default FREETZ_LIB_librrd_WITH_VERSION_ABANDON
-
-		config FREETZ_LIB_librrd_WITH_VERSION_ABANDON
-			bool "1.2.30"
-
-		config FREETZ_LIB_librrd_WITH_VERSION_CURRENT
-			bool "1.9.0"
-			depends on FREETZ_SEPARATE_AVM_UCLIBC
-
-	endchoice
-
-endif # FREETZ_LIB_librrd
-
 config FREETZ_LIB_librrd_th
 	bool "librrd_th (librrd_th.so)"
 	depends on FREETZ_LIB_librrd_WITH_VERSION_ABANDON
@@ -46,5 +42,4 @@ config FREETZ_LIB_librrd_th
 	default n
 	help
 		Threaded version of librrd library.
-		This lib is only available with RRDtool version 1.2.
 

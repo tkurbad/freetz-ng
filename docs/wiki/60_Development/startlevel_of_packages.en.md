@@ -19,6 +19,7 @@ List of packages which do not use the default STARTLEVEL 99.
     - 20: virtualip-ng
  * Firewall
     - 25: iptables-cgi
+    - 25: iptables-ng
     - 25: nhipt
 
  * SSH

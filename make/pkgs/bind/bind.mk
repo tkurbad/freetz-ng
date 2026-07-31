@@ -1,10 +1,10 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),9.11.37,9.20.22))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),9.11.37,9.20.24))
 $(PKG)_LIB_VERSION:=$($(PKG)_VERSION)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),gz,xz)
 $(PKG)_HASH_ABANDON:=0d8efbe7ec166ada90e46add4267b7e7c934790cba9bd5af6b8380a4fbfb5aff
-$(PKG)_HASH_CURRENT:=cba92ff631b949655f475fe4b54290f6860fd0070d399f2279f6437c0d383ec6
+$(PKG)_HASH_CURRENT:=989fef1fc88ea59d04cd86f854dca5a4616a20a9968bcdde3c1a3668ab36be08
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),ABANDON,CURRENT))
-$(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.isc.org/isc/bind9/$($(PKG)_VERSION)
+$(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),https://ftp.isc.org/isc/bind9/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.isc.org/bind/
 ### MANPAGE:=https://bind9.readthedocs.io/en/
 ### CHANGES:=https://downloads.isc.org/isc/bind9/cur/9.20/

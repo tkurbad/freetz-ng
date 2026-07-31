@@ -1,10 +1,10 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),2.32.4,2.88.0))
-$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),0.3200.4,0.8800.0)
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),2.32.4,2.88.0))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),0.3200.4,0.8800.0)
 $(PKG)_MAJOR_VERSION:=2.0
 $(PKG)_SOURCE:=glib-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH_ABANDON:=a5d742a4fda22fb6975a8c0cfcd2499dd1c809b8afd4ef709bda4d11b167fae2
 $(PKG)_HASH_CURRENT:=3546251ccbb3744d4bc4eb48354540e1f6200846572bab68e3a2b7b2b64dfd07
-$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),ABANDON,CURRENT))
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://download.gnome.org/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://ftp.gnome.org/pub/gnome/sources/glib/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 ### VERSION:=2.32.4/2.88.0
 ### WEBSITE:=https://www.gnu.org/software/libc/
@@ -12,7 +12,7 @@ $(PKG)_SITE:=https://download.gnome.org/sources/glib/$(call GET_MAJOR_VERSION,$(
 ### CHANGES:=https://gitlab.gnome.org/GNOME/glib/blob/main/NEWS
 ### CVSREPO:=https://gitlab.gnome.org/GNOME/glib
 
-$(PKG)_LIBNAMES_SHORT := glib gio gobject gmodule gthread $(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),,girepository)
+$(PKG)_LIBNAMES_SHORT := glib gio gobject gmodule gthread $(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),,girepository)
 $(PKG)_LIBNAMES_LONG := $($(PKG)_LIBNAMES_SHORT:%=lib%-$($(PKG)_MAJOR_VERSION).so.$($(PKG)_LIB_VERSION))
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
 $(PKG)_LIBS_TARGET_DIR := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_TARGET_DIR)/%)
@@ -23,9 +23,9 @@ $(PKG)_DEPENDS_ON += libffi zlib
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),abandon,current)
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),abandon,current)
 
-ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON)),y)
 $(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/%/.libs/),$($(PKG)_LIBNAMES_LONG))
 $(PKG)_DEPENDS_ON += pcre
 
@@ -101,10 +101,10 @@ endif
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
-$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),$(PKG_CONFIGURED_CONFIGURE),$(PKG_CONFIGURED_MESON))
+$(if $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON),$(PKG_CONFIGURED_CONFIGURE),$(PKG_CONFIGURED_MESON))
 
 $($(PKG)_LIBS_BUILD_DIR): $($(PKG)_DIR)/.configured
-ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON)),y)
 	$(SUBMAKE) -C $(GLIB2_DIR) \
 		all
 else
@@ -113,7 +113,7 @@ else
 endif
 
 $($(PKG)_LIBS_STAGING_DIR): $($(PKG)_LIBS_BUILD_DIR)
-ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON)),y)
 	$(SUBMAKE) -C $(GLIB2_DIR) \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
@@ -137,7 +137,7 @@ $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR)
 
 
 $(pkg)-clean:
-ifeq ($(strip $(FREETZ_LIB_libglib_2_VERSION_ABANDON)),y)
+ifeq ($(strip $(FREETZ_LIB_libglib_2_WITH_VERSION_ABANDON)),y)
 	-$(SUBMAKE) -C $(GLIB2_DIR) clean
 else
 	-$(SUBNINJA) -C $(GLIB2_DIR)/builddir/ clean

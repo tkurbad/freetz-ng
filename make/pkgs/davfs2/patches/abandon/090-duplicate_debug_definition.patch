@@ -1,0 +1,245 @@
+--- src/dav_coda.c
++++ src/dav_coda.c
+@@ -96,8 +96,8 @@
+    Used to compute file numbers from node pointers. */
+ static size_t alignment;
+ 
+-/* Send debug messages to syslog if != 0. */
+-int debug;
++/* Send debag messages to syslog if != 0. */
++int debag;
+ 
+ 
+ /* Private function prototypes */
+@@ -157,8 +157,8 @@
+               dav_is_mounted_fn is_mounted, volatile int *keep_on_running,
+               int dbg)
+ {
+-    debug = dbg;
+-    if (debug)
++    debag = dbg;
++    if (debag)
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "coda kernel version 3");
+ 
+     buf = malloc(BUF_SIZE);
+@@ -221,7 +221,7 @@
+             len = coda_open_by_fd();
+             break;
+         case CODA_OPEN:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_OPEN:");
+             oh->result = ENOSYS;
+             len = sizeof(struct coda_out_hdr);
+@@ -231,7 +231,7 @@
+             last_tidy_cache = 0;
+             break;
+         case CODA_IOCTL:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_IOCTL:");
+             oh->result = ENOSYS;
+             len = sizeof(struct coda_out_hdr);
+@@ -254,7 +254,7 @@
+         case CODA_REMOVE: {
+             struct coda_remove_in *in = (struct coda_remove_in *) buf;
+             dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+-            if (debug) {
++            if (debag) {
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_REMOVE:");
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  p %p, %s", node,
+                        buf + in->name);
+@@ -263,7 +263,7 @@
+             len = sizeof(struct coda_out_hdr);
+             break; }
+         case CODA_LINK:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_LINK:");
+             oh->result = ENOSYS;
+             len = sizeof(struct coda_out_hdr);
+@@ -272,7 +272,7 @@
+             struct coda_rename_in *in = (struct coda_rename_in *) buf;
+             dav_node *src = *((dav_node **) &(in->sourceFid.opaque[2]));
+             dav_node *dst = *((dav_node **) &(in->destFid.opaque[2]));
+-            if (debug) {
++            if (debag) {
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_RENAME:");
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  sp %p, %s", src,
+                        buf + in->srcname);
+@@ -289,7 +289,7 @@
+         case CODA_RMDIR: {
+             struct coda_rmdir_in *in = (struct coda_rmdir_in *) buf;
+             dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+-            if (debug) {
++            if (debag) {
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_RMDIR:");
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  p %p, %s", node,
+                        buf + in->name);
+@@ -298,13 +298,13 @@
+             len = sizeof(struct coda_out_hdr);
+             break; }
+         case CODA_SYMLINK:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_SYMLINK:");
+             oh->result = ENOSYS;
+             len = sizeof(struct coda_out_hdr);
+             break;
+         case CODA_READLINK:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_READLINK:");
+             oh->result = ENOSYS;
+             len = sizeof(struct coda_out_hdr);
+@@ -312,7 +312,7 @@
+         case CODA_FSYNC: {
+             struct coda_fsync_in *in = (struct coda_fsync_in *) buf;
+             dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+-            if (debug) {
++            if (debag) {
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_FSYNC:");
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  n %p", node);
+             }
+@@ -320,13 +320,13 @@
+             len = sizeof(struct coda_out_hdr);
+             break; }
+         case CODA_VGET:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_VGET:");
+             oh->result = ENOSYS;
+             len = sizeof(struct coda_out_hdr);
+             break;
+         case CODA_OPEN_BY_PATH:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG),
+                        "CODA_OPEN_BY_PATH:");
+             oh->result = ENOSYS;
+@@ -338,7 +338,7 @@
+         case CODA_STORE: {
+             struct coda_store_in *in = (struct coda_store_in *) buf;
+             dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+-            if (debug) {
++            if (debag) {
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_STORE:");
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  n %p, f 0x%x",
+                        node, in->flags);
+@@ -351,7 +351,7 @@
+             last_tidy_cache = 0;
+             break;
+         default:
+-            if (debug)
++            if (debag)
+                 syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG),
+                        "UNKNOWN CODA CALL %u", ih->opcode);
+             oh->result = ENOSYS;
+@@ -359,7 +359,7 @@
+             break;
+         }
+ 
+-        if (debug)
++        if (debag)
+             syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "RET: %s",
+                    strerror(oh->result));
+ 
+@@ -404,7 +404,7 @@
+     struct coda_access_in *in = (struct coda_access_in *) buf;
+     dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+-    if (debug) {
++    if (debag) {
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_ACCESS:");
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  n %p, f %x",
+                node, in->flags);
+@@ -428,7 +428,7 @@
+     struct coda_close_in *in = (struct coda_close_in *) buf;
+     dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+-    if (debug) {
++    if (debag) {
+         if (ih->opcode == CODA_CLOSE) {
+             syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_CLOSE:");
+         } else {
+@@ -463,7 +463,7 @@
+     dav_node *parent = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+     struct coda_create_out *out = (struct coda_create_out *) buf;
+-    if (debug) {
++    if (debag) {
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_CREATE:");
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  p %p, m %o",
+                parent, in->mode);
+@@ -498,7 +498,7 @@
+     dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+     struct coda_getattr_out *out = (struct coda_getattr_out *) buf;
+-    if (debug) {
++    if (debag) {
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_GETATTR:");
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  n %p", node);
+     }
+@@ -522,7 +522,7 @@
+     dav_node *parent = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+     struct coda_lookup_out *out = (struct coda_lookup_out *) buf;
+-    if (debug) {
++    if (debag) {
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_LOOKUP:");
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  p %p, %s", parent,
+                buf + in->name);
+@@ -555,7 +555,7 @@
+     dav_node *parent = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+     struct coda_mkdir_out *out = (struct coda_mkdir_out *) buf;
+-    if (debug) {
++    if (debag) {
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_MKDIR:");
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  p %p, %s", parent,
+                buf + in->name);
+@@ -589,7 +589,7 @@
+     dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+     struct coda_open_by_fd_out *out = (struct coda_open_by_fd_out *) buf;
+-    if (debug) {
++    if (debag) {
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_OPEN_BY_FD:");
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  n %p, f %x", node,
+                in->flags);
+@@ -625,7 +625,7 @@
+     struct coda_in_hdr *ih = (struct coda_in_hdr *) buf;
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+     struct coda_root_out *out = (struct coda_root_out *) buf;
+-    if (debug)
++    if (debag)
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_ROOT:");
+ 
+     dav_node *node = NULL;
+@@ -653,7 +653,7 @@
+     struct coda_setattr_in *in = (struct coda_setattr_in *) buf;
+     dav_node *node = *((dav_node **) &(in->VFid.opaque[2]));
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+-    if (debug) {
++    if (debag) {
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_SETATTR:");
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  n %p, m %o", node,
+                in->attr.va_mode);
+@@ -685,7 +685,7 @@
+ {
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+     struct coda_statfs_out *out = (struct coda_statfs_out *) buf;
+-    if (debug)
++    if (debag)
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "CODA_STATFS:");
+ 
+     dav_stat *st = dav_statfs();
+@@ -712,7 +712,7 @@
+ coda_flush(int device)
+ {
+     struct coda_out_hdr *oh = (struct coda_out_hdr *) buf;
+-    if (debug)
++    if (debag)
+         syslog(LOG_MAKEPRI(LOG_DAEMON, LOG_DEBUG), "  CODA_FLUSH:");
+ 
+     oh->opcode = CODA_FLUSH;

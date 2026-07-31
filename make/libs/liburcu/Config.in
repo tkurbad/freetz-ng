@@ -1,5 +1,4 @@
-menu "liburcu"
-	depends on FREETZ_TARGET_GCC_4_8_MIN
+if FREETZ_TARGET_GCC_4_8_MIN
 
 	config FREETZ_LIB_liburcu
 		bool "liburcu (liburcu.so)"
@@ -39,5 +38,5 @@ menu "liburcu"
 		select FREETZ_LIB_liburcu_common
 		default n
 
-endmenu ### "liburcu"
+endif # FREETZ_TARGET_GCC_4_8_MIN
 

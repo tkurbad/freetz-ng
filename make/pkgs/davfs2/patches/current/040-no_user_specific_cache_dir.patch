@@ -1,6 +1,6 @@
 --- src/mount_davfs.c
 +++ src/mount_davfs.c
-@@ -1813,11 +1813,7 @@
+@@ -1885,11 +1885,7 @@
      args->header = NULL;
  
      args->sys_cache = ne_strdup(DAV_SYS_CACHE);

@@ -70,7 +70,7 @@ else
 		fi; \
 		if [ -z "$$$$DL_URL_FIRMWARE" ]; then \
 			echo -n "No cached value, asking avm for latest firmware ... "; \
-			DL_URL_FIRMWARE="$$$$(tools/juis $$(FREETZ_DL_JUIS_STRING))"; \
+			DL_URL_FIRMWARE="$$$$(tools/juis_detect $$(FREETZ_DL_JUIS_STRING))"; \
 			echo "$$$$DL_URL_FIRMWARE" > "$$(IMAGE$(1)).url"; \
 		fi; \
 		if [ -z "$$$$DL_URL_FIRMWARE" ]; then \

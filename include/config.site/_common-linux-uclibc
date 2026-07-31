@@ -88,6 +88,8 @@ ac_cv_file__usr_X11R6_lib=no
 # Linux system
 ac_cv_linux_vers="${FREETZ_KERNEL_VERSION_MAJOR}"
 ac_cv_CAN_USE_SYSCTL=no
+ac_cv_file__dev_zero=yes
+ac_cv_struct_rlimit=yes
 
 # Other
 

@@ -1,8 +1,0 @@
-languages
-{ de en }
-default
-{ en }
-files
-{
-        etc/default.php5/php5_config.def
-}

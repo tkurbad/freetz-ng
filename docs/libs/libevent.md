@@ -1,4 +1,4 @@
-# libevent (libevent.so) 2.1.12-stable
+# libevent (libevent.so) 2.1.13
   - Homepage: [https://libevent.org/](https://libevent.org/)
   - Manpage: [https://libevent.org/libevent-book/](https://libevent.org/libevent-book/)
   - Changelog: [https://github.com/libevent/libevent/releases](https://github.com/libevent/libevent/releases)

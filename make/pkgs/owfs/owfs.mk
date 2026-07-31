@@ -3,6 +3,8 @@ $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=f2c6bf195d9574aafedb9ba5eb1ae33f884ac70fa980098c0da377feb1efe53a
 $(PKG)_SITE:=@SF/owfs
 
+$(PKG)_CATEGORY:=Unstable
+
 # Library
 $(PKG)_SHORT_VERSION:=2.7
 $(PKG)_LIB_VERSION:=32.0.0
@@ -21,9 +23,9 @@ $(PKG)_BINARIES := $($(PKG)_BINARIES_ALL)
 $(PKG)_BINARIES_BUILD_DIR := $(join $(OWFS_BINARIES_SUBDIRS:%=$($(PKG)_DIR)/module/%/$(OWFS_BINARY_BUILD_SUBDIR)/),$(OWFS_BINARIES_ALL_PATH:%=%))
 $(PKG)_BINARIES_TARGET_DIR := $(OWFS_BINARIES:%=$($(PKG)_DEST_DIR)/usr/bin/%)
 
-$(PKG)_DEPENDS_ON += libusb fuse
+$(PKG)_DEPENDS_ON += libusb0 fuse
 
-$(PKG)_REBUILD_SUBOPTS += $(LIBUSB_REBUILD_SUBOPTS)
+$(PKG)_REBUILD_SUBOPTS += $(LIBUSB0_REBUILD_SUBOPTS)
 
 $(call REPLACE_LIBTOOL,,src/scripts/install,)
 # Note: Replacing libtool and specifying "--disable-shared" at the same time

@@ -1,6 +1,6 @@
 --- src/runopts.h
 +++ src/runopts.h
-@@ -65,6 +65,10 @@
+@@ -66,6 +66,10 @@
  
  typedef struct svr_runopts {
  
@@ -13,7 +13,7 @@
  	int forkbg;
 --- src/svr-chansession.c
 +++ src/svr-chansession.c
-@@ -688,7 +688,7 @@
+@@ -698,7 +698,7 @@
  			if ((cmdlen == 4) && strncmp(chansess->cmd, "sftp", 4) == 0) {
  				char *expand_path = expand_homedir_path(SFTPSERVER_PATH);
  				m_free(chansess->cmd);
@@ -35,7 +35,7 @@
  					"-F		Don't fork into background\n"
  					"-e		Pass on server process environment to child process\n"
  #ifdef DISABLE_SYSLOG
-@@ -135,6 +139,9 @@
+@@ -139,6 +143,9 @@
  #if DROPBEAR_ED25519
  					ED25519_PRIV_FILENAME,
  #endif
@@ -44,8 +44,8 @@
 +#endif
  					MAX_AUTH_TRIES,
  					DROPBEAR_MAX_PORTS, DROPBEAR_DEFPORT, DROPBEAR_PIDFILE,
- 					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT);
-@@ -158,6 +165,9 @@
+ 					DEFAULT_RECV_WINDOW, DEFAULT_KEEPALIVE, DEFAULT_IDLE_TIMEOUT,
+@@ -165,6 +172,9 @@
  
  
  	/* see printhelp() for options */
@@ -55,7 +55,7 @@
  	svr_opts.bannerfile = NULL;
  	svr_opts.banner = NULL;
  	svr_opts.forced_command = NULL;
-@@ -239,6 +249,11 @@
+@@ -247,6 +257,11 @@
  				case 'R':
  					svr_opts.delay_hostkey = 1;
  					break;
@@ -67,7 +67,7 @@
  				case 'F':
  					svr_opts.forkbg = 0;
  					break;
-@@ -409,6 +424,12 @@
+@@ -427,6 +442,12 @@
  		svr_opts.portcount = 1;
  	}
  

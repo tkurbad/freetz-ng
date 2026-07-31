@@ -33,7 +33,7 @@ case "$2" in
 	a|all|"")	ver=""      ;;
 	o|old)		ver="old"   ;;
 	n|new)		ver="new"   ;;
-	*)		ver="new"   ;;
+	*)		ver=""      ;;
 esac
 
 #r

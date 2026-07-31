@@ -1,5 +1,6 @@
 #!/bin/sh
 # For options.cfg: FREETZ_ADD_JUIS_CHECK__SSL need to be set to use https by default
+# For options.cfg: FREETZ_ADD_JUIS_CHECK__MTLS need to be set to use mtls by default
 
 echo "<h1>$(lang de:"Aktuelle Firmwareversion" en:"Latest firmware version")</h1>"
 
@@ -38,4 +39,5 @@ if [ -n "$LAST" ]; then
 fi
 
 stat_button juis_check "$(lang de:"Firmwareversion pr&uuml;fen" en:"Check firmware version")"
+[ -f /proc/avm/calib/avmzertifikate ] && grep -q "FREETZ_PACKAGE_JUIS_BEARER=y" /etc/.config && stat_button juis_bearer "$(lang de:"Token abrufen" en:"Request token")"
 

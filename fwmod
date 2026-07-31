@@ -1117,16 +1117,17 @@ if [ "$DO_MOD" -gt 0 ]; then
 				fi
 			fi
 
-			case "$bn" in
-				*xx)  fn="${bn//xx/++}" ;;
-				*)    fn="${bn//_/[-+._]}" ;;
-			esac
 			sizeinfo "$bn"
 			[ "$FREETZ_SEPARATE_AVM_UCLIBC" == "y" ] \
 			  && LIBPATHS="${FREETZ_LIBRARY_DIR#/} lib usr/lib usr/lib/xtables" \
 			  || LIBPATHS="lib usr/lib ${FREETZ_LIBRARY_DIR#/} usr/lib/xtables"
 			for dn in $LIBPATHS; do
-				files=$(shopt -s nullglob; echo ${TARGET_SPECIFIC_ROOT_DIR}/$dn/$fn[-.]*so*)
+				case "$bn" in
+					libusb0)	files=$(shopt -s nullglob; echo ${TARGET_SPECIFIC_ROOT_DIR}/$dn/{libusb.,libusb-0}*so*) ;;
+					libusb1)	files=$(shopt -s nullglob; echo ${TARGET_SPECIFIC_ROOT_DIR}/$dn/libusb-1*so*) ;;
+					*xx)		files=$(shopt -s nullglob; echo ${TARGET_SPECIFIC_ROOT_DIR}/$dn/${bn%xx}++[-.]*so*) ;;
+					*)		files=$(shopt -s nullglob; echo ${TARGET_SPECIFIC_ROOT_DIR}/$dn/${bn//_/[-+._]}[-.]*so*) ;;
+				esac
 				if [ -z "$files" ]; then
 					continue;
 				fi
@@ -1325,8 +1326,8 @@ if [ "$DO_MOD" -gt 0 ]; then
 			"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${ADDON_DIR}/${pkg}" . | \
 			  "$TAR_BBA" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 		elif [ "$(echo ${pkg^^}-corrupt | sed -r 's/([^.-_-]*).*/\LfLawed-\1-Addon/' | md5sum | sed 's/ .*//')" != "80d00cf16e1a48ec11801feed60a2be7" ]; then
-			"$TAR_BBA"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') -c -C "${ADDON_DIR}/${pkg}/root" . | \
-			  "$TAR_BBA" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+			"$TAR_GNU"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
+			  -c  --owner=0 --group=0 --numeric-owner  -C "${ADDON_DIR}/${pkg}/root" . | "$TAR_BBA" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
 			if [ -d "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
 				"$TAR_GNU" -c  --owner=0 --group=0 --numeric-owner  -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | \
@@ -1679,16 +1680,17 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 
 	# Vulnarability 2023-09-04 tr064cgi
-	# COMPAT: remove me when juis no longer spreads vulnerable firmware files
 	VUL_tr064cgi='fix'
 	strings "${FILESYSTEM_DIR}/lib/libwebsrv.so.2.0.0" 2>/dev/null | grep -q '^tr064cgi$' || VUL_tr064cgi='bug'
 	if [ -f "${FILESYSTEM_DIR}/lib/libcmapi.so.1.0.0" -a -x "${FILESYSTEM_DIR}/usr/www/cgi-bin/tr064cgi" ]; then
 	strings "${FILESYSTEM_DIR}/lib/libcmapi.so.1.0.0" | grep -q '^/cgi-bin/tr064cgi$' || VUL_tr064cgi='bug'
 	fi
 	[ "$FREETZ_AVM_VERSION_06_2X_MIN" == "y" ] || VUL_tr064cgi='old'
+	[ "$FREETZ_AVM_VERSION_08_0X_MIN" == "y" ] && VUL_tr064cgi='new'
 	case "$VUL_tr064cgi" in
 	#	old)	echo "This firmware is not yet vulnerable for tr064cgi-bug!" ;;
 	#	fix)	echo "This firmware is fixed for tr064cgi-bug vulnerability!" ;;
+	#	new)	echo "Should be fixed meanwhile ... maybe!" ;;
 		bug)
 			warn "============================================="
 			warn "This firmware is VULNERABLE for tr064cgi-bug!"

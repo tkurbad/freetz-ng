@@ -201,38 +201,51 @@ image() {
 		# get additional details
 		[ -e ./var/content ] && grep '^Releasecycle=' ./var/content >> "$nfo"
 
-		# remove TI checksum and concatenate kernel & filesystem images
-		for f in ${d}/kernel.image ${d}/filesystem.image; do
-			if [ -s "$f" ]; then
-				$FTOOLS/tichksum -r "$f" >/dev/null
-				dd if="$f" bs=256 conv=sync 2>/dev/null
+		# re-splitting only for single + ram
+		if [ "$FLV_DUAL" != "1" ] && [ "$FLV_UIMG" != "1" ] && [ "$FLV_FIT" != "1" ]; then
+
+			# remove TI checksum and concatenate kernel & filesystem images
+			for f in ${d}/kernel.image ${d}/filesystem.image; do
+				if [ -s "$f" ]; then
+					$FTOOLS/tichksum -r "$f" >/dev/null
+					dd if="$f" bs=256 conv=sync 2>/dev/null
+				fi
+			done > kf.image
+			mv ${d}/kernel.image kernel.raw
+			rm -f ${d}/filesystem.image
+
+			# strip NMI vector if any
+			($FTOOLS/remove-nmi-vector kf.image kf.image.no-nmi 2>&1 && mv kf.image.no-nmi kf.image 2>/dev/null) | grep "NMI vector v" >> "$nfo"
+
+			# and split them again... now at the right bounds (s. case 2 above)
+			$FTOOLS/find-squashfs kf.image 2>&1 | grep 'signature found' >> "$nfo"
+			rm -f kf.image
+
+			# get avm_kernel_config size
+			if [ "$nfo" != "/dev/null" ]; then
+				declare -a load_addrs
+				load_addrs=($($FTOOLS/unpack-kernel kernel.raw kernel.raw.unpacked 2>/dev/null | sed -nre 's,.*LoadAddress=(.+),\1,p'))
+				for file in kernel.raw.unpacked kernel.raw.unpacked.2ND; do
+					[ -e "$file" ] || continue
+					[ "$file" != "${file/2ND/}" ] && load_addr="${load_addrs[1]}" || load_addr="${load_addrs[0]}"
+					akc_size="$($FTOOLS/avm_kernel_config.extract -l $load_addr "$file" 2>/dev/null | wc -c)"
+					[ "$akc_size" != "0" ] && echo "avm_kernel_config${file#kernel.raw.unpacked} size is $(( $akc_size / 1024 )) KB" >> "$nfo"
+				done
+				rm -f kernel.raw.unpacked kernel.raw.unpacked.2ND
 			fi
-		done > kf.image
-		[ -s ${d}/filesystem.image ] && file ${d}/filesystem.image | grep -iqv 'Squashfs filesystem' && cat ${d}/filesystem.image | gunzip > kernelsquashfs.raw
-		mv ${d}/kernel.image kernel.raw
-		rm -f ${d}/filesystem.image
 
-		# strip NMI vector if any
-		($FTOOLS/remove-nmi-vector kf.image kf.image.no-nmi 2>&1 && mv kf.image.no-nmi kf.image 2>/dev/null) | grep "NMI vector v" >> "$nfo"
-
-		# and split them again... now at the right bounds (s. case 2 above)
-		$FTOOLS/find-squashfs kf.image 2>&1 | grep 'signature found' >> "$nfo"
+		else
+			mv ${d}/kernel.image kernel.raw
+			if [ -s ${d}/filesystem.image ] && file ${d}/filesystem.image | grep -iqv 'Squashfs filesystem'; then
+				cat ${d}/filesystem.image | gunzip > kernelsquashfs.raw  # cpio ?
+				echo "This is no squashfs" >> "$nfo"
+			else
+				$FTOOLS/find-squashfs ${d}/filesystem.image 2>&1 | grep 'signature found' >> "$nfo"
+			fi
+			rm -f ${d}/filesystem.image
+		fi
 		SIZE_K2="$(stat -c %s kernel.raw)"
 		SIZE_F2="$(stat -c %s kernelsquashfs.raw)"
-		rm -f kf.image
-
-		# get avm_kernel_config size
-		if [ "$nfo" != "/dev/null" ]; then
-			declare -a load_addrs
-			load_addrs=($($FTOOLS/unpack-kernel kernel.raw kernel.raw.unpacked 2>/dev/null | sed -nre 's,.*LoadAddress=(.+),\1,p'))
-			for file in kernel.raw.unpacked kernel.raw.unpacked.2ND; do
-				[ -e "$file" ] || continue
-				[ "$file" != "${file/2ND/}" ] && load_addr="${load_addrs[1]}" || load_addr="${load_addrs[0]}"
-				akc_size="$($FTOOLS/avm_kernel_config.extract -l $load_addr "$file" 2>/dev/null | wc -c)"
-				[ "$akc_size" != "0" ] && echo "avm_kernel_config${file#kernel.raw.unpacked} size is $(( $akc_size / 1024 )) KB" >> "$nfo"
-			done
-			rm -f kernel.raw.unpacked kernel.raw.unpacked.2ND
-		fi
 		rm -f kernel.raw
 
 		# detect firmware layout

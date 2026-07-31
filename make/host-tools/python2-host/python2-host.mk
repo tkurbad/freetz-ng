@@ -23,7 +23,6 @@ $(PKG)_CONFIGURE_OPTIONS += --host=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --target=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/usr
 #
-#
 
 $(PKG)_CFLAGS := $(TOOLS_CFLAGS)
 $(PKG)_CFLAGS += -std=gnu17

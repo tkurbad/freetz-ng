@@ -39,9 +39,10 @@ get_fw() {
 	(
 		table_head "Version" "Symbol"
 		cat "$file" | grep "prompt \"${area}\"" -m1 -A9999 | grep "^endchoice" -m1 -B9999 | sed 's/^[ \t]*//g' | grep -E "^(config|bool) " | while read -r line; do
+			echo "$line" | grep -Eiq "(inhaus|labor|plus)" && continue
 			[ "${line#config}"  != "$line" ] && echo "$line" | tr -d '\n'  | sed 's/^[^\t ]*[ \t]*/@ /g;s/$/ @ /g'
 			[ "${line#bool}"    != "$line" ] && echo "$line"               | sed 's/^[^\t ]*[ \t]*"//g;s/"/ @/g' && echo >> "$TMPFILE.fw.head"
-		done | sed 's/ - [^ ]*//g' | grep -Evi "(inhaus|labor|plus)"
+		done | sed 's/ - [^ ]*//g'
 	) > "$TMPFILE.fw.body"
 }
 
@@ -59,7 +60,7 @@ get_hr() {
 get_pd() {
 #	file="config/.img/separate/*.in"
 	(
-		table_head "Name" "Produkte"
+		table_head "Name" "Produkt"
 		"$PARENT/tools/layoutGens.sh" "produkt" | grep -v '^#' | sort -n | while read -r line; do
 			echo "$line" | sed -rn 's/(.*) - (.*)/@ \1 @ \2 @/p'
 			echo >> "$TMPFILE.pd.head"

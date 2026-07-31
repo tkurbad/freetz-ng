@@ -5,24 +5,8 @@ config FREETZ_LIB_libneon
 	help
 		neon is an HTTP and WebDAV client library, with a C language API.
 
-if FREETZ_LIB_libneon
-
-	choice
-		prompt "Version"
-			default FREETZ_LIB_libneon_VERSION_CURRENT
-
-		config FREETZ_LIB_libneon_VERSION_ABANDON
-			bool "0.30.2"
-			depends on FREETZ_KERNEL_VERSION_2_MAX
-
-		config FREETZ_LIB_libneon_VERSION_CURRENT
-			bool "0.37.0"
-			depends on !FREETZ_KERNEL_VERSION_2_MAX
-
-	endchoice
-
 	config FREETZ_LIB_libneon_WITH_SSL
-		bool "build with SSL support"
+		bool "build with SSL support" if FREETZ_LIB_libneon
 		select FREETZ_LIB_libcrypto
 		select FREETZ_LIB_libssl
 		default n
@@ -30,11 +14,23 @@ if FREETZ_LIB_libneon
 			This option enables SSL support for neon.
 
 	config FREETZ_LIB_libneon_WITH_ZLIB
-		bool "build with zlib support"
+		bool "build with zlib support" if FREETZ_LIB_libneon
 		select FREETZ_LIB_libz
 		default n
 		help
 			This option enables zlib support for neon.
 
-endif # FREETZ_LIB_libneon
+	choice
+		prompt "Version" if FALSE
+			default FREETZ_LIB_libneon_WITH_VERSION_CURRENT
+
+		config FREETZ_LIB_libneon_WITH_VERSION_ABANDON
+			bool "0.30.2"
+			depends on FREETZ_KERNEL_VERSION_2_MAX
+
+		config FREETZ_LIB_libneon_WITH_VERSION_CURRENT
+			bool "0.37.0"
+			depends on !FREETZ_KERNEL_VERSION_2_MAX
+
+	endchoice
 

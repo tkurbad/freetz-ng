@@ -1,6 +1,7 @@
-$(call TOOLS_INIT, 1.7.2)
+$(call TOOLS_INIT, 1.8.1)
+# no meson because of fitdump !
 $(PKG)_SOURCE:=dtc-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=92d8ca769805ae1f176204230438fe52808f4e1c7944053c9eec0e649b237539
+$(PKG)_HASH:=23526015a6f1550e0541a53fe7acea1b5a11e3697cdf3a3bdc076abc38f6045d
 $(PKG)_SITE:=@KERNEL/software/utils/dtc
 ### WEBSITE:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git
 ### CHANGES:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git/log/
@@ -20,7 +21,9 @@ $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_NOP)
 
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(DTC_HOST_DIR) $(DTC_HOST_BINARIES)
+	$(TOOLS_SUBMAKE) -C $(DTC_HOST_DIR) \
+		NO_PYTHON=1 \
+		$(DTC_HOST_BINARIES)
 
 $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_INSTALL_DIR)/%: $($(PKG)_DIR)/%
 	$(INSTALL_FILE)

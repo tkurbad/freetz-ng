@@ -11,12 +11,8 @@ config FREETZ_LIB_libunbound
 		tion from the DNS. The library performs public-key  validation  of  re-
 		sults with DNSSEC.
 
-if FREETZ_LIB_libunbound
-
 	config FREETZ_LIB_libunbound_WITH_EC
-		bool "Force elliptic curve support"
+		bool "Force elliptic curve support" if FREETZ_LIB_libunbound
 		select FREETZ_LIB_libcrypto_WITH_EC
-		default y
-
-endif # FREETZ_LIB_libunbound
+		default n
 

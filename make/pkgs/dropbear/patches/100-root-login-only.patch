@@ -1,6 +1,6 @@
 --- src/runopts.h
 +++ src/runopts.h
-@@ -100,6 +100,9 @@
+@@ -101,6 +101,9 @@
  	gid_t restrict_group_gid;
  #endif
  
@@ -20,7 +20,7 @@
  #ifdef HAVE_GETGROUPLIST
  					"-G		Restrict logins to members of specified group\n"
  #endif
-@@ -162,6 +163,7 @@
+@@ -169,6 +170,7 @@
  	svr_opts.forced_command = NULL;
  	svr_opts.forkbg = 1;
  	svr_opts.norootlogin = 0;
@@ -28,7 +28,7 @@
  #ifdef HAVE_GETGROUPLIST
  	svr_opts.restrict_group = NULL;
  	svr_opts.restrict_group_gid = 0;
-@@ -302,6 +304,9 @@
+@@ -314,6 +316,9 @@
  				case 'w':
  					svr_opts.norootlogin = 1;
  					break;
@@ -40,7 +40,7 @@
  					next = &svr_opts.restrict_group;
 --- src/svr-auth.c
 +++ src/svr-auth.c
-@@ -305,6 +305,14 @@
+@@ -303,6 +303,14 @@
  	}
  #endif /* HAVE_GETGROUPLIST */
  

@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 14.2.0)
-$(PKG)_LIB_VERSION:=0.61420.0
+$(call PKG_INIT_LIB, 14.2.1)
+$(PKG)_LIB_VERSION:=0.61421.0
 $(PKG)_SOURCE:=harfbuzz-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=94017020f96d025bb66ae91574e4cf334bcad23e8175a8a40565b3721bc2eaff
+$(PKG)_HASH:=a54a5d8e9380a41fbb762ce367bcbf7704792dfca0d93f1bbca86c5a57902e0e
 $(PKG)_SITE:=https://github.com/harfbuzz/harfbuzz/releases/download/$($(PKG)_VERSION)
 ### WEBSITE:=https://harfbuzz.github.io/
 ### MANPAGE:=https://github.com/harfbuzz/harfbuzz/wiki
@@ -20,7 +20,6 @@ $(PKG)_DEPENDS_ON += freetype
 $(PKG)_REBUILD_SUBOPTS += FREETZ_STDCXXLIB
 
 $(PKG)_CONFIGURE_OPTIONS += -D buildtype=release
-$(PKG)_CONFIGURE_OPTIONS += -D tests=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D benchmark=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D docs=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D doc_tests=false
@@ -32,14 +31,19 @@ $(PKG)_CONFIGURE_OPTIONS += -D directwrite=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D gdi=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D glib=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D gobject=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D gpu=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D gpu_demo=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D graphite=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D graphite2=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D icu=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D introspection=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D raster=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D subset=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D tests=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D utilities=disabled
 $(PKG)_CONFIGURE_OPTIONS += -D vector=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D wasm=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D zlib=disabled
 
 
 $(PKG_SOURCE_DOWNLOAD)

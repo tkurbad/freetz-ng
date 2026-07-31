@@ -20,9 +20,10 @@ on:
         required: true
         default: "dropbear"
 
-#concurrency:
-# group: ${{ github.workflow }}${{ github.event.pull_request.number && '-' }}${{ github.event.pull_request.number || '' }}
-# cancel-in-progress: ${{ github.event_name == 'pull_request' && true || false }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}-${{ github.run_attempt >= 2 && github.run_id || github.run_attempt }} 
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  queue: ${{ github.event_name != 'pull_request' && 'max' || 'single' }}
 
 jobs:
 
@@ -45,11 +46,6 @@ jobs:
 
     steps:
 
-      - uses: ahmadnassri/action-workflow-queue@v1
-        with:
-          timeout: "18000000"
-          delay: "10000"
-
       - name: clone
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -67,7 +63,7 @@ jobs:
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
           if [ "${{ github.event_name }}" = "pull_request" ]; then \
             BASE_SHA="${{ github.event.pull_request.base.sha }}"; \
-            HEAD_SHA="${{ github.event.pull_request.head.sha }}~1"; \
+            HEAD_SHA="${{ github.event.pull_request.head.sha }}"; \
           else \
             BASE_SHA="${{ github.sha }}~1"; \
             HEAD_SHA="${{ github.sha }}"; \
@@ -122,7 +118,7 @@ jobs:
 #         DEBIAN_FRONTEND=noninteractive apt-get -y install \
 #           locales \
 #           pv cpio rsync kmod imagemagick inkscape graphicsmagick subversion git bc unar wget sudo gcc g++ binutils autoconf automake \
-#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo tofrodos gettext pkg-config ecj \
+#           autopoint libtool-bin make bzip2 libncurses5-dev libreadline-dev zlib1g-dev flex bison patch texinfo gettext pkg-config ecj \
 #           perl libstring-crc32-perl ruby gawk libusb-dev unzip intltool libacl1-dev libcap-dev libc6-dev-i386 \
 #           lib32ncurses5-dev gcc-multilib bsdmainutils lib32stdc++6 libglib2.0-dev ccache cmake lib32z1-dev libsqlite3-dev sqlite3 libzstd-dev \
 #           netcat curl uuid-dev libssl-dev libgnutls28-dev u-boot-tools device-tree-compiler
@@ -136,11 +132,11 @@ jobs:
 #         echo "Sleeping $SLEEP seconds ..."
 #         sleep $SLEEP
 
-#     - name: myips
-#       run: |
-#         echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
-##        echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
-##        echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
+      - name: myips
+        run: |
+          echo -n "IP: " ; wget -q https://ipaddress.ai    -O - || echo none
+#         echo -n "V4: " ; wget -q https://ipaddress.ai -4 -O - || echo none
+#         echo -n "V6: " ; wget -q https://ipaddress.ai -6 -O - || echo none
 
       - name: clone
         env:
@@ -153,7 +149,7 @@ jobs:
           git checkout $REF_NAME
 
       - name: cache_load
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         if: always()
         with:
           path: |
@@ -184,9 +180,11 @@ jobs:
           echo 'FREETZ_DL_SITE_USER="https://github.com/Freetz-NG/dl-mirror/releases/download/dl"'    >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__DLIMG="${{ secrets.ACTIONS_IMAGE }}"'                     >> .config
           echo 'FREETZ_REAL_DEVELOPER_ONLY__TCURL="${{ secrets.ACTIONS_DLTCS }}"'                     >> .config
-          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
+          echo '# FREETZ_HOSTTOOLS_DOWNLOAD is not set'                                               >> .config ||
           echo 'FREETZ_HOSTTOOLS_DOWNLOAD=y'                                                          >> .config
-          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] || \
+          [ -z "${{ secrets.FREETZ_DLTOKEN }}" ] && \
+          echo '# FREETZ_DOWNLOAD_TOOLCHAIN is not set'                                               >> .config ||
           echo 'FREETZ_DOWNLOAD_TOOLCHAIN=y'                                                          >> .config
           for x in $TCS; do echo "$x=y" | sed 's/^_/FREETZ_TYPE_/'; done                              >> .config
           echo "##########################################################" && echo -n "Lines=" && wc -l .config

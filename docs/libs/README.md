@@ -33,7 +33,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### E
 
-  * **[expat: libexpat (libexpat.so) 2.7.5/2.8.0](expat.md)<a id='expat'></a>**<br>
+  * **[expat: libexpat (libexpat.so) 2.7.5/2.8.2](expat.md)<a id='expat'></a>**<br>
     This is Expat, a C library for parsing XML, written by James Clark. Expat is a stream-oriented XML parser. This means that you register handlers with the parser before starting the parse. These handlers are called when the parser discovers the associated structures in the document being parsed. A start tag is an example of the kind of structures for which you may register handlers.
 
 ### F
@@ -52,7 +52,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[gettext (libintl.so) 1.0](gettext.md)<a id='gettext'></a>**<br>
     GNU Internationalization library
 
-  * **[GLib2 libglib (libglib-2.0.so) 2.32.4/2.88.0](glib2.md)<a id='glib2'></a>**<br>
+  * **[glib2: libglib (libglib-2.0.so) 2.32.4/2.88.0](glib2.md)<a id='glib2'></a>**<br>
     GLib is a library containing many useful C routines for things such as trees, hashes, and lists.
 
   * **[gmp: GNU MP Bignum Library (libgmp.so) 6.3.0](gmp.md)<a id='gmp'></a>**<br>
@@ -63,7 +63,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### H
 
-  * **[HarfBuzz (libharfbuzz.so) 14.2.0](harfbuzz.md)<a id='harfbuzz'></a>**<br>
+  * **[HarfBuzz (libharfbuzz.so) 14.2.1](harfbuzz.md)<a id='harfbuzz'></a>**<br>
     HarfBuzz is a text shaping engine. It primarily supports OpenType, but also Apple Advanced Typography.
 
 ### I
@@ -107,6 +107,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libcap-ng (libcap-ng.so) 0.9.3](libcap-ng.md)<a id='libcap-ng'></a>**<br>
     The libcap-ng library should make programming with posix capabilities easier. The library has some utilities to help you analyse a system for apps that may have too much privileges.
 
+  * **[libcjson (libcjson.so) 1.7.19](libcjson.md)<a id='libcjson'></a>**<br>
+    Ultralightweight JSON parser in ANSI C.
+
   * **[libconfig (libconfig.so) 1.5](libconfig.md)<a id='libconfig'></a>**<br>
     Libconfig is a simple library for processing structured configuration files. Libconfig is very compact - just 46K for the stripped C shared library. This makes it well-suited for memory-constrained systems.
 
@@ -134,13 +137,13 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libev (libev.so) 4.33](libev.md)<a id='libev'></a>**<br>
     libev provides a full-featured and high-performance event loop that is loosely modelled after libevent. It includes relative timers, absolute timers with customized rescheduling, synchronous signals, process status change events, event watchers dealing with the event loop itself, file watchers, and even limited support for fork events. It uses a priority queue to manage timers and uses arrays as fundamental data structure. It has no artificial limitations on the number of watchers waiting for the same event.
 
-  * **[libevent (libevent.so) 2.1.12-stable](libevent.md)<a id='libevent'></a>**<br>
+  * **[libevent (libevent.so) 2.1.13](libevent.md)<a id='libevent'></a>**<br>
     libevent is an asynchronous event notification software library. The libevent API provides a mechanism to execute a callback function when a specific event occurs on a file descriptor or after a timeout has been reached. Furthermore, libevent also support callbacks due to signals or regular timeouts. libevent is meant to replace the event loop found in event-driven network servers. An application just needs to call event_dispatch() and then add or remove events dynamically without having to change the event loop.
 
   * **[libexif: EXIF library (libexif.so) 0.6.26](libexif.md)<a id='libexif'></a>**<br>
     libexif is a library for parsing, editing, and saving EXIF data.
 
-  * **[libffi (libffi.so) 3.5.2](libffi.md)<a id='libffi'></a>**<br>
+  * **[libffi (libffi.so) 3.7.1](libffi.md)<a id='libffi'></a>**<br>
     libffi is a library that really only provides the lowest, machine dependent layer of a fully featured foreign function interface. A layer must exist above libffi that handles type conversions for values passed between the two languages. ffi stands for Foreign Function Interface. A foreign function interface is the popular name for the interface that allows code written in one language to call code written in another language.
 
   * **[libftdi (libftdi.so) 0.20](libftdi.md)<a id='libftdi'></a>**<br>
@@ -224,10 +227,10 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[liburcu (liburcu.so) 0.15.6](liburcu.md)<a id='liburcu'></a>**<br>
     liburcu is a LGPLv2.1 userspace RCU (read-copy-update) library. This data synchronization library provides read-side access which scales linearly with the number of cores.
 
-  * **[libusb-0.1 (libusb-0.1.so) 0.1.8/0.1.12](libusb.md)<a id='libusb'></a>**<br>
+  * **[libusb0: libusb-0.1 (libusb-0.1.so) 0.1.12/0.1.9](libusb0.md)<a id='libusb0'></a>**<br>
     A library for accessing Linux USB devices (legacy API).
 
-  * **[libusb1: libusb-1.0 (libusb-1.0.so) 1.0.23/1.0.29](libusb1.md)<a id='libusb1'></a>**<br>
+  * **[libusb1: libusb-1.0 (libusb-1.0.so) 1.0.23/1.0.30](libusb1.md)<a id='libusb1'></a>**<br>
     A library for accessing Linux USB devices (current API).
 
   * **[libuv (libuv.so) 1.44.2/1.52.1](libuv.md)<a id='libuv'></a>**<br>
@@ -238,6 +241,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[libxml2 (libxml2.so) 2.15.3](libxml2.md)<a id='libxml2'></a>**<br>
     XML toolkit from the GNOME project
+
+  * **[libzip (libzip.so) 1.11.4](libzip.md)<a id='libzip'></a>**<br>
+    libzip is a C library for reading, creating, and modifying zip archives. It supports encryption, compression, and Zip64 extensions.
 
   * **[linux-atm (libatm.so) 2.5.2](linux-atm.md)<a id='linux-atm'></a>**<br>
     Libatm is a library for accessing the Linux ATM subsystem.
@@ -252,7 +258,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### M
 
-  * **[mbedtls: mbedCrypto (libmbedcrypto.so) 2.7.19/2.28.10/3.6.6](mbedtls.md)<a id='mbedtls'></a>**<br>
+  * **[mbedtls: mbedCrypto (libmbedcrypto.so) 2.7.19/2.28.10/3.6.7](mbedtls.md)<a id='mbedtls'></a>**<br>
     Enables support for the Blowfish block cipher.
 
   * **[mpc: GNU MPC Library (libmpc.so) 1.1.0](mpc.md)<a id='mpc'></a>**<br>
@@ -291,7 +297,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### P
 
-  * **[Pango (libpango-1.0.so) 1.57.1](pango.md)<a id='pango'></a>**<br>
+  * **[Pango (libpango-1.0.so) 1.58.0](pango.md)<a id='pango'></a>**<br>
     Pango is a library for layout and rendering of text, with an emphasis on internationalization. Pango can be used anywhere that text layout is needed; however, most of the work on Pango so far has been done using the GTK widget toolkit as a test platform. Pango forms the core of text and font handling for GTK.
 
   * **[pcre: libpcre (libpcre.so) - DEPRECATED 8.45](pcre.md)<a id='pcre'></a>**<br>
@@ -348,7 +354,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### U
 
-  * **[uClibc (ld-uClibc-x.y.z.so) 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.57](uclibc.md)<a id='uclibc'></a>**<br>
+  * **[uClibc (ld-uClibc-x.y.z.so) 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.58](uclibc.md)<a id='uclibc'></a>**<br>
     uClibc is a small C standard library intended for embedded Linux systems. uClibc was created to support uClinux, a version of Linux not requiring a memory management unit and thus suited for microcontrollers (hence the "uC" in the name - "u" is a replacement for the Greek character "miu" often used as an abbreviation for the prefix "micro"). uClibc is much smaller than GNU C Library (glibc), the C library normally used with Linux distributions. While glibc is intended to fully support all relevant C standards across a wide range of platforms, uClibc is specifically focused on embedded Linux. Features can be enabled or disabled according to space requirements.
 
   * **[uclibcxx: uClibc++ (libuClibc++.so.0.2.6) 6687fc9276fa52defaf8592f2001c19b826aec93](uclibcxx.md)<a id='uclibcxx'></a>**<br>

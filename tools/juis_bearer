@@ -1,0 +1,549 @@
+#! /usr/bin/env bash
+# bearer token handler of juis with avmzertifikate
+# by cuma, 2026
+
+MYPWD="$(dirname $(realpath $0))"
+[ -e '/etc/.freetz-ng-version' ] && BASE="/tmp" || BASE="$(dirname $MYPWD)"
+DATA="$BASE/.juis_bearer"
+CERT="$DATA/cert"
+PEMS="$DATA/pems"
+AUTH="$DATA/auth"
+KIDS="$DATA/kids"
+HWR=""
+
+PROC_ENV='/proc/sys/urlader/environment'
+PROC_CRT='/proc/avm/calib/avmzertifikate'
+URL_TOKEN='https://dca.avm.de/fritzos/authorization/v1/token'
+URL_JWKS='https://dca.avm.de/fritzos/authorization/v1/jwks'
+
+
+usage() {
+cat << EOX
+
+Usage: $0 [ import_tgz <tgz> | unpack_tgz <tgz|hwr> | get_token <tgz|hwr> | show_auth <tgz|hwr> ]
+Usage: $0 [ export_tgz <tgz|hwr> | check_avm <pem|der|tgz|hwr> | kids_update <tgz|hwr> | token_data <tgz|hwr> ]
+
+  first step (on a computer):
+	i|import_tgz	imports an avmzertifikate
+
+  automatic (by juis_check):
+	u|unpack_tgz	unpacks an avmzertifikate/hwr
+	g|get_token	gets token of avm avmzertifikate/hwr
+	s|show_auth	shows bearer from token of an avmzertifikate/hwr
+
+  first step (on a fritzbox):
+	e|export_tgz	shows a bas64 encoded avmzertifikate/hwr to import
+
+  manual (by user):
+	c|check_avm	checks an certificate/avmzertifikate/hwr without import
+	k|kids_update	updates key-ids of pub-keys with avmzertifikate/hwr
+	t|token_data	show data of a bearer token for an avmzertifikate/hwr
+
+  additional:
+	On a fritzbox and without tgz/hwr parameters 'avmzertifikate' are used.
+
+	To use on computer import: "base64 /proc/avm/calib/avmzertifikate"
+	After import, tools/juis_check uses it for this HWR.
+
+	This script needs openssl and curl for juis, optional jq and xxd to debug.
+
+EOX
+exit 1
+}
+
+unset unp
+function cleanup() {
+	local val=$?
+	[ -n "$unp" -a -d "$unp" ] && rm -rf "$unp";
+	exit $val
+}
+
+function errnex() {
+	echo -e "\nERROR: $*" >&2
+	exit 1
+}
+[ -x "$(command -v openssl)" ] || errnex "Command not found: openssl"
+
+function base64_pad() {
+	local x="$(cat)"
+	case $((${#x} % 4)) in
+		1)	;;
+		2)	echo -n "${x}==" ;;
+		3)	echo -n "${x}=" ;;
+		0)	echo -n "${x}" ;;
+	esac
+}
+
+function env_hwrevision() {
+	[ -f "$PROC_ENV" ] && grep '^HWRevision' "${PROC_ENV}" 2>/dev/null | sed 's/.*\t//'
+}
+
+# sets HWR variable for other, if not exists
+function import_tgz() {
+	local tgz="${1}"
+	local tfm="cat"
+
+	[ -z "$tgz" ] && [ -f "$PROC_CRT" ] && tgz="$PROC_CRT"
+	[ -z "$tgz" ] && [ -f "$PROC_ENV" ] && errnex "No embedded avmzertifikate found"
+
+	# hwr
+	[ -n "$tgz" ] && \
+	[ -f "$CERT/$tgz.tgz" ] && \
+	[ -s "$CERT/$tgz.tgz" ] && \
+	  HWR="$tgz" && 
+	  tgz="$CERT/$tgz.tgz"
+
+	[ -f "$tgz" ] || errnex "Source file does not exist: $tgz"
+
+	if [ -z "$HWR" ]; then
+		echo "Checking file: $tgz"
+		[ "$(head -c2 "$tgz" | base64 -w0)" == "H4s=" ] || tfm='base64 -d'
+
+		local DAT="$(cat "$tgz" | $tfm | tar xzOf - "avm_dev_cert.cer" | base64 -w0)"
+		local SAN="$(openssl x509 -inform DER -noout -in <(echo "$DAT" | base64 -d) -ext subjectAltName)"
+		# Example: DNS:MACA=ab:cd:ef:12:34:56, DNS:HWRevision=999, DNS:HWSubRevision=0, DNS:SecLevel=1
+		HWR="$(echo "$SAN" | sed -n 's/.*DNS:HWRevision=//p' | sed 's/, .*//')"
+		[ -z "$HWR" ] && errnex "Can not find HWRevision"
+	fi
+	echo "Found and using HWRevision: $HWR"
+
+	# overwrite
+	[ -f "$CERT/$HWR.tgz" ] && \
+	[ -s "$CERT/$HWR.tgz" ] && \
+	  echo "Skipping import, file already exists: $CERT/$HWR.tgz" && return 1
+
+	mkdir -p "$CERT"
+	chmod 700 "$CERT"
+	touch "$CERT/$HWR.tgz"
+	chmod 600 "$CERT/$HWR.tgz"
+
+	cat "$tgz" | $tfm > "$CERT/$HWR.tgz"
+	[ -f "$CERT/$HWR.tgz" ] && \
+	[ -s "$CERT/$HWR.tgz" ] || \
+	  errnex "Writing file failed: $CERT/$HWR.tgz"
+	echo "Saved to file: $CERT/$HWR.tgz"
+}
+
+# sets HWR variable for other, if not exists
+function unpack_tgz() {
+	local arg="${1}"
+
+	# hwr
+	HWR="${1:-$HWR}"
+	[ -z "$HWR" ] && HWR="$(env_hwrevision)"
+
+	# overwrite
+	[ -f "$PEMS/$HWR.pem" ] && [ -f "$PEMS/$HWR.key" ] && \
+	[ -s "$PEMS/$HWR.pem" ] && [ -s "$PEMS/$HWR.key" ] && \
+	  echo "Skipping unpack, file already exists: $PEMS/$HWR.{pem,key}" && return 1
+
+	# import
+	import_tgz "$arg"
+
+	# overwrite
+	[ -f "$PEMS/$HWR.pem" ] && [ -f "$PEMS/$HWR.key" ] && \
+	[ -s "$PEMS/$HWR.pem" ] && [ -s "$PEMS/$HWR.key" ] && \
+	  echo "Skipping unpack, file already exists: $PEMS/$HWR.{pem,key}" && return 1
+
+	# source
+	[ -f "$CERT/$HWR.tgz" ] && \
+	[ -s "$CERT/$HWR.tgz" ] || \
+	  errnex "Source avmzertifikate not found: $CERT/$HWR.tgz"
+	echo "Unpacking source: $CERT/$HWR.tgz"
+
+	# tempdir
+	trap cleanup EXIT SIGTERM SIGINT
+	unp="$(mktemp -d -t bearer_XXXXXX)"
+	[ -d "$unp" ] || errnex "Can not create temporary directory: $unp"
+	chmod 700 "$unp"
+
+	# unpacking
+	(
+		umask 177
+		tar --no-same-permissions -xzf "$CERT/$HWR.tgz" -C "$unp"
+	)
+	[ -f "$unp/avm_dev_key_prv.bin" ] && \
+	[ -s "$unp/avm_dev_key_prv.bin" ] || \
+	  errnex "Can not unpack avmzertifikate: $CERT/$HWR.tgz"
+	#openssl x509 -inform der -noout -in "$unp/avm_dev_cert.cer" -text
+
+#	# hardware
+#	local SAN="$(openssl x509 -inform der -noout -in "$unp/avm_dev_cert.cer" -ext subjectAltName)"
+#	HWR="$(echo "$SAN" | sed -n 's/.*DNS:HWRevision=//p' | sed 's/, .*//')"
+#	[ -n "$HWR" ] || errnex "Can not parse HWRevision: $HWR"
+#	echo "Found HWRevision: $HWR"
+
+	# transforming
+	openssl pkey -inform der -in "$unp/avm_dev_key_prv.bin" -out "$unp/avm_dev_key_prv.pem"
+	openssl x509 -inform der -in "$unp/avm_dev_cert.cer"    -out "$unp/avm_dev_cert.pem"
+	openssl x509 -inform der -in "$unp/avm_dev_man_ca.cer"  -out "$unp/avm_dev_man_ca.pem"
+	openssl x509 -inform der -in "$unp/avm_dev_prod_ca.cer" -out "$unp/avm_dev_prod_ca.pem"
+	rm -f "$unp/avm_dev_key_prv.bin" "$unp/avm_dev_cert.cer" "$unp/avm_dev_man_ca.cer" "$unp/avm_dev_prod_ca.cer"
+	[ -f "$unp/avm_dev_key_prv.pem" ] && [ -f "$unp/avm_dev_cert.pem" ] && [ -f "$unp/avm_dev_man_ca.pem" ] && [ -f "$unp/avm_dev_prod_ca.pem" ] && \
+	[ -s "$unp/avm_dev_key_prv.pem" ] && [ -s "$unp/avm_dev_cert.pem" ] && [ -s "$unp/avm_dev_man_ca.pem" ] && [ -s "$unp/avm_dev_prod_ca.pem" ] || \
+	  errnex "Can not transform certificates"
+
+	# permissions
+	mkdir -p "$PEMS"
+	chmod 700 "$PEMS"
+	touch "$PEMS/$HWR.pem" "$PEMS/$HWR.key"
+	chmod 600 "$PEMS/$HWR.pem" "$PEMS/$HWR.key"
+
+	# export
+	cat "$unp/avm_dev_key_prv.pem" > "$PEMS/$HWR.key"
+	cat "$unp/avm_dev_cert.pem" "$unp/avm_dev_prod_ca.pem" "$unp/avm_dev_man_ca.pem" > "$PEMS/$HWR.pem"
+	rm -f "$unp/avm_dev_cert.pem" "$unp/avm_dev_man_ca.pem" "$unp/avm_dev_prod_ca.pem"
+	[ -f "$PEMS/$HWR.key" ] && [ -f "$PEMS/$HWR.pem" ] && \
+	[ -s "$PEMS/$HWR.key" ] && [ -s "$PEMS/$HWR.pem" ] || \
+	  errnex "Can not write certificates to: $HWR"
+
+	echo "Created certificates: $PEMS/$HWR.{pem,key}"
+}
+
+# sets HWR variable for other, if not exists
+function get_token() {
+	local arg="${1}"
+	[ ! -x "$(command -v curl)" ] && errnex "Command not found: curl"
+
+	# hwr
+	HWR="${1:-$HWR}"
+	[ -z "$HWR" ] && HWR="$(env_hwrevision)"
+
+	# overwrite
+	local ticks_end="$(cat "$AUTH/$HWR" 2>/dev/null | sed 's/.*"access_token":"//g;s/".*//g' | cut -d. -f2 | base64_pad | base64 -d | sed 's/.*"exp"://;s/,.*//')"
+	local ticks_now="$(date +%s)"
+	local ticks_dif="$(( $ticks_end - $ticks_now ))"
+	[ "$ticks_dif" -ge 60 ] 2>/dev/null && echo "Token is still valid for $(( ticks_dif / 60 )) min: $AUTH/$HWR" && return 1
+
+	# unpack
+	unpack_tgz "$arg"
+
+	# overwrite
+	local ticks_end="$(cat "$AUTH/$HWR" 2>/dev/null | sed 's/.*"access_token":"//g;s/".*//g' | cut -d. -f2 | base64_pad | base64 -d | sed 's/.*"exp"://;s/,.*//')"
+	local ticks_now="$(date +%s)"
+	local ticks_dif="$(( $ticks_end - $ticks_now ))"
+	[ "$ticks_dif" -ge 60 ] 2>/dev/null && echo "Token is still valid for $(( ticks_dif / 60 )) min: $AUTH/$HWR" && return 1
+
+	# rootca
+	local rca
+	for x in "$MYPWD/avm-rootca.pem" "/etc/avm_root_ca.pem" "/etc/jasonii_root_ca.pem"; do
+		[ -f "$x" ] && [ -s "$x" ] && rca="$x" && break
+	done
+	[ -z "$rca" ] && errnex "AVM root-ca file not found: $MYPWD/avm-rootca.pem or /etc/avm_root_ca.pem or /etc/jasonii_root_ca.pem"
+
+	# permissions
+	mkdir -p "$AUTH"
+	chmod 700 "$AUTH"
+	touch "$AUTH/$HWR"
+	chmod 600 "$AUTH/$HWR"
+
+	# request
+	local client_id="$(openssl x509 -inform pem -noout -in "$PEMS/$HWR.pem" -subject | sed 's/.*CN=//;s/://g;s/[, ].*//')"
+	curl "$URL_TOKEN" \
+	  --silent \
+	  --request "POST" \
+	  --header "Content-Type: application/x-www-form-urlencoded" \
+	  --header "Connection: close" \
+	  --data "client_id=$client_id" \
+	  --cacert "$rca" \
+	  --cert "$PEMS/$HWR.pem" \
+	  --key "$PEMS/$HWR.key" \
+	  > "$AUTH/$HWR"
+	[ -f "$AUTH/$HWR" ] && \
+	[ -s "$AUTH/$HWR" ] || \
+	  errnex "Can not get token"
+
+	echo "Created token: $AUTH/$HWR"
+}
+
+function show_auth() {
+	local arg="${1}"
+
+	# hwr
+	HWR="${1:-$HWR}"
+	[ -z "$HWR" ] && HWR="$(env_hwrevision)"
+
+	#token
+	get_token "$arg" >/dev/null
+
+	# bearer
+	local TOKEN="$(cat "$AUTH/$HWR" | sed 's/.*"access_token":"//g;s/".*//g')"
+	local LOAD="$(echo "$TOKEN" | cut -d. -f2 | base64_pad)"
+	local MACA="$(echo "$LOAD" | base64 -d | sed 's/.*"client_id":"//;s/".*//')"
+
+	echo "$TOKEN.$MACA"
+}
+
+
+# independend
+function export_tgz() {
+	local arg="${1}"
+	local tfm="cat"
+	local tgz
+	local HWR
+
+	# tgz
+	if [ -z "$arg" ]; then
+		[ -z "$tgz" ] && [ -f "$PROC_CRT" ] && tgz="$PROC_CRT"
+		[ -z "$tgz" ] && [ -f "$PROC_ENV" ] && errnex "No embedded avmzertifikate found"
+		HWR="$(env_hwrevision)"
+	else
+		for x in "$arg" "$CERT/$arg.tgz"; do
+			[ -f "$x" ] && tgz="$x" && break
+		done
+	fi
+	[ -z "$tgz" ] && errnex "Source avmzertifikate not found"
+	[ -f "$tgz" ] || errnex "Source avmzertifikate not found: $arg or $CERT/$arg.tgz"
+	echo "Source file: $tgz"
+
+	# hwr
+	[ "$tgz" == "$CERT/$arg.tgz" ] && HWR="$arg"
+	if [ -z "$HWR" ]; then
+		echo "Checking file: $tgz"
+		[ "$(head -c2 "$tgz" | base64 -w0)" == "H4s=" ] || tfm='base64 -d'
+
+		local DAT="$(cat "$tgz" | $tfm | tar xzOf - "avm_dev_cert.cer" | base64 -w0)"
+		local SAN="$(openssl x509 -inform DER -noout -in <(echo "$DAT" | base64 -d) -ext subjectAltName)"
+		# Example: DNS:MACA=ab:cd:ef:12:34:56, DNS:HWRevision=999, DNS:HWSubRevision=0, DNS:SecLevel=1
+		HWR="$(echo "$SAN" | sed -n 's/.*DNS:HWRevision=//p' | sed 's/, .*//')"
+		[ -z "$HWR" ] && errnex "Can not find HWRevision"
+	fi
+	echo "Found HWRevision: $HWR"
+
+	cat "$tgz" | $tfm | base64 -w120 "$tgz"
+}
+
+# independend
+function check_avm() {
+	local arg="${1}"
+	local src
+	local DER
+
+	# src
+	if [ -z "$arg" ]; then
+		[ -z "$src" ] && [ -f "$PROC_CRT" ] && src="$PROC_CRT"
+		[ -z "$src" ] && [ -f "$PROC_ENV" ] && errnex "No embedded avmzertifikate found"
+	else
+		for x in "$arg" "$PEMS/$arg.pem" "$CERT/$arg"*.tgz; do
+			[ -f "$x" ] && src="$x" && break
+		done
+	fi
+	[ -z "$src" ] && errnex "Source avmzertifikate not found"
+	[ -f "$src" ] || errnex "Source avmzertifikate not found: $arg or $PEMS/$arg.pem or $CERT/$arg*.tgz"
+	echo "Source file: $src"
+
+	# tgz
+	if [ "$(head -c2 "$src" | base64 -w0)" == "H4s=" ]; then
+		DER="$(tar xzOf "$src" "avm_dev_cert.cer" | base64 -w0)"
+		[ -z "$DER" ] && errnex "Can not unpack avmzertifikate: $src"
+	fi
+
+	# pem
+	if grep -q 'BEGIN CERTIFICATE' "$src"; then
+		DER="$(openssl x509 -in "$src" -outform DER  | base64 -w0)"
+		[ -z "$DER" ] && errnex "Can not read pem certificatr: $src"
+	fi
+
+	#der
+	[ -z "$DER" ] && DER="$(cat "$src" | base64 -w0)"
+
+#	echo
+#	echo "Everything"
+#	openssl x509 -inform der -noout -in <(echo "$DER" | base64 -d) -text
+
+	echo
+	echo "Details"
+	openssl x509 -inform DER -noout -in <(echo "$DER" | base64 -d) -modulus -ext subjectAltName -serial -subject -issuer -startdate -enddate
+
+	echo
+	echo "subjectAltName"
+	local SAN="$(openssl x509 -inform DER -noout -in <(echo "$DER" | base64 -d) -ext subjectAltName)"
+	# Example: DNS:MACA=ab:cd:ef:12:34:56, DNS:HWRevision=999, DNS:HWSubRevision=0, DNS:SecLevel=1
+	for x in MACA HWRevision HWSubRevision SecLevel; do
+		echo -n "$x: "
+		echo "$SAN" | sed -n "s/.*DNS:$x=//p" | sed 's/, .*//'
+	done
+
+	echo
+}
+
+
+# sets HWR variable for other, if not exists
+function kids_update() {
+	local arg="${1}"
+	[ ! -x "$(command -v curl)" ] && errnex "Command not found: curl"
+
+	# hwr
+	HWR="${1:-$HWR}"
+	[ -z "$HWR" ] && HWR="$(env_hwrevision)"
+
+	# unpack
+	unpack_tgz "$arg" >/dev/null
+
+	echo
+	echo "Updating kids"
+	mkdir -p "$KIDS"
+
+	# rootca
+	local rca
+	for x in "$MYPWD/avm-rootca.pem" "/etc/avm_root_ca.pem" "/etc/jasonii_root_ca.pem"; do
+		[ -f "$x" ] && [ -s "$x" ] && rca="$x" && break
+	done
+	[ -z "$rca" ] && errnex "AVM root-ca file not found: $MYPWD/avm-rootca.pem or /etc/avm_root_ca.pem or /etc/jasonii_root_ca.pem"
+
+	# request
+	if [ -z "$(find "$KIDS" -name "jwks.json" -mmin -60)" ]; then
+		echo "Downloading jwks"
+		curl "$URL_JWKS" \
+		  --silent \
+		  --cacert "$rca" \
+		  --cert "$PEMS/$HWR.pem" \
+		  --key "$PEMS/$HWR.key" \
+		  > "$KIDS/jwks.json.tmp"
+		[ -f "$KIDS/jwks.json.tmp" ] && \
+		[ -s "$KIDS/jwks.json.tmp" ] || \
+		  errnex "Can not download jwks"
+		mv "$KIDS/jwks.json.tmp" "$KIDS/jwks.json"
+	fi
+
+	[ ! -x "$(command -v jq)" ] && echo "Command not found: jq" && exit 1
+	[ ! -x "$(command -v xxd)" ] && echo "Command not found: xxd" && exit 1
+
+	# certificates
+	echo "Parsing kids"
+	local JSON KID MD5 MOD EXP
+	jq -c '.keys[]' "$KIDS/jwks.json" | while read JSON; do
+		echo
+		KID="$(echo "$JSON" | jq -r '.kid')"
+
+		MD5="$(echo -n "$KID" | md5sum | sed 's/ .*//')"
+		[ -f "$KIDS/${MD5}.json" ] && [ -f "$KIDS/${MD5}.pem" ] && \
+		[ -s "$KIDS/${MD5}.json" ] && [ -s "$KIDS/${MD5}.pem" ] && \
+		  echo "Skipped, kid already exists: ${KID}" && continue
+
+		echo -e "Creating kid:\t${KID}" >&2  # for token_data
+		echo "$JSON" | jq > "$KIDS/${MD5}.json"
+
+		MOD="$(echo "$JSON" | jq -r '.n' | base64_pad | tr '_-' '/+' | base64 -d | xxd -p -c 100000 | tr -d '\n')"
+		EXP="$(echo "$JSON" | jq -r '.e' | base64_pad | tr '_-' '/+' | base64 -d | xxd -p -c 100000 | tr -d '\n')"
+
+openssl asn1parse -genconf <(
+cat <<EOF
+asn1=SEQUENCE:pub
+
+[pub]
+modulus=INTEGER:0x${MOD}
+publicExponent=INTEGER:0x${EXP}
+EOF
+) -inform PEM -out "$KIDS/${MD5}.der" >/dev/null
+
+		openssl pkey -pubin -inform DER -in "$KIDS/${MD5}.der" -out "$KIDS/${MD5}.pem"
+
+#		openssl pkey -pubin -in "$KIDS/${MD5}.pem" -text    -noout  # Komplett
+#		openssl rsa  -pubin -in "$KIDS/${MD5}.pem"  -modulus -noout  # Modulus
+		openssl pkey -pubin -in "$KIDS/${MD5}.pem" -outform DER | openssl dgst -sha256  # Fingerprint
+		openssl pkey -pubin -in "$KIDS/${MD5}.pem" -check   -noout  # Valid
+	done
+
+	echo
+	echo "Done"
+}
+
+# sets HWR variable for other, if not exists
+function token_data() {
+	local arg="${1}"
+	local rv="0"
+
+	# hwr
+	HWR="${1:-$HWR}"
+	[ -z "$HWR" ] && HWR="$(env_hwrevision)"
+
+	# bearer
+	[ -f "$AUTH/$HWR" ] && \
+	[ -s "$AUTH/$HWR" ] || \
+	  get_token "$arg"
+	local BEARER=""
+	echo "Parsing: $AUTH/$HWR"
+
+	[ ! -x "$(command -v jq)" ] && echo "Command not found: jq" && exit 1
+	local TOKEN="$(cat "$AUTH/$HWR" | sed 's/.*"access_token":"//g;s/".*//g')"
+
+	echo -e "\nFile:"
+	cat $AUTH/$HWR | jq
+
+	echo -e "\nHeader:"
+	local HEAD="$(echo "$TOKEN" | cut -d. -f1 | base64_pad)"
+	echo "$HEAD" | base64 -d | jq
+
+	echo -e "\nPayload:"
+	local LOAD="$(echo "$TOKEN" | cut -d. -f2 | base64_pad)"
+	echo "$LOAD" | base64 -d | jq
+
+
+	echo -e "\nDetails:"
+
+	echo -ne "  client_id\t"
+	echo "$LOAD" | base64 -d | jq -r '.client_id'
+	echo -ne "  hardware_id\t"
+	echo "$LOAD" | base64 -d | jq -r '.hardware_id'
+
+	echo -ne "  issued\t"
+	date -d @$(echo "$LOAD" | base64 -d | jq -r .iat)
+	echo -ne "  expire\t"
+	date -d @$(echo "$LOAD" | base64 -d | jq -r .exp)
+
+	echo -ne "  left\t\t"
+	local ticks_end="$(echo "$LOAD" | base64 -d | jq -r .exp)"
+	local ticks_now="$(date +%s)"
+	local ticks_dif="$(( $ticks_end - $ticks_now ))"
+	if [ "$ticks_dif" -ge 60 ] 2>/dev/null; then
+		echo "$(( ticks_dif / 60 )) min"
+	else
+		echo "EXPIRED"
+		rv="1"
+	fi
+
+
+	echo -e "\nSignature:"
+
+	echo -ne "  kid\t\t"
+	local KID="$(echo "$HEAD" | base64 -d | jq -r '.kid')"
+	echo "$KID"
+
+	echo -ne "  md5\t\t"
+	local MD5="$(echo -n "$KID" | md5sum | sed 's/ .*//')"
+	echo "$MD5"
+
+
+	local PUBKEY="$KIDS/$MD5.pem"
+	[ -f "$PUBKEY" ] && \
+	[ -s "$PUBKEY" ] || \
+	  kids_update "$arg" >/dev/null
+
+	echo -ne "  valid\t\t"
+	local BOTH="$(echo "$TOKEN" | cut -d. -f1,2)"
+	local SIGN="$(echo "$TOKEN" | cut -d. -f3 | base64_pad | tr '_-' '/+')"
+	openssl dgst -sha256 -verify "$PUBKEY" -signature  <(echo "$SIGN" | base64 -d) <(echo -n "$BOTH") 2>/dev/null
+	[ "$?" != "0" ] && rv="1"
+
+	echo
+	[ "$rv" == "0" ] && echo "Good" || echo "Bad!"
+	exit $rv
+}
+
+
+case "$1" in
+	i|import_tgz)	import_tgz  "$2" ;;
+	u|unpack_tgz)	unpack_tgz  "$2" ;;
+	g|get_token)	get_token   "$2" ;;
+	s|show_auth)	show_auth   "$2" ;;
+
+	e|export_tgz)	export_tgz  "$2" ;;
+	c|check_avm)	check_avm   "$2" ;;
+	k|kids_update)	kids_update "$2" ;;
+	t|token_data)	token_data "$2" ;;
+
+	*)		usage ;;
+esac
+
+exit 0

@@ -13,7 +13,7 @@ for dir in $(find "$INPWD" -maxdepth 1 -mindepth 1 -type d | sort); do
 
 	ver="$(sed -rn "s/^### VERSION:= *(.*)/ \1/p" $dir/*.mk 2>/dev/null)"
 	[ -z "$ver" ] && ver="$(sed -n 's/^\$(call PKG_INIT_LIB, *v*\(.*\))/ \1/p' $dir/*.mk 2>/dev/null)"
-	dsc="$(sed -rn 's/[ \t]*bool "(.*)"[ \t]*/\1/p' "$INPWD/$lib/Config.in" 2>/dev/null | head -n1)"
+	dsc="$(sed -rn 's/^[ \t][ \t]?bool "(.*)"[ \t]*/\1/p' "$INPWD/$lib/Config.in" 2>/dev/null | head -n1)"
 	[ -z "$dsc" ] && dsc="$lib" && echo "ignored: $lib" 1>&2
 	[ "$dsc" != "$(echo "$dsc" | sed "s/^$lib//I")" ] && itm="$dsc$ver" || itm="$lib: $dsc$ver"
 	anc="${lib//_/-}"

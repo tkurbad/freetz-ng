@@ -14,10 +14,10 @@ CRAP_FILTER="5382169925|4040-07.59"
 
 #rel
 echo -e '\n### FOS-Release ################################################'
-for x in $(seq 150 333); do  env - $TOOLS/juis_check        HW=$x                                     -a; done | tee fos-rel
+for x in $(seq 150 277); do  env - $TOOLS/juis_check        HW=$x                                     -a; done | tee fos-rel
 #dwn
 echo -e '\n### FOS-Downgrade ##############################################'
-for x in $(seq 150 333); do  env - $TOOLS/juis_check --down HW=$x                                     -a; done | tee fos-dwn
+for x in $(seq 150 277); do  env - $TOOLS/juis_check --down HW=$x                                     -a; done | tee fos-dwn
 #add
 cat fos-dwn fos-rel | sort -u > fos-xxx
 #( cat fos-rel ; cat fos-dwn | while read -s x; do grep -q "^${x%=*}=" fos-rel || echo $x; done ) | sort -u > fos-xxx
@@ -25,15 +25,15 @@ cat fos-dwn fos-rel | sort -u > fos-xxx
 
 #lab
 echo -e '\n### FOS-Labor ##################################################'
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
+for x in $(seq 222 277); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.90-111000"
+for x in $(seq 222 277); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.90-111000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab -a
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.08.00-115000"
+for x in $(seq 222 277); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.08.00-115000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1001  Version=$m  -a; done | tee fos-lab -a
 #inh
 echo -e '\n### FOS-Inhaus #################################################'
-for x in $(seq 222 333); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
+for x in $(seq 222 277); do  [ "$x" -lt 248 ] 2>/dev/null && m="$(( $x - 72 ))" || m=$x; m="$m.07.50-100000"
                              env - $TOOLS/juis_check        HW=$x         Buildtype=1000  Version=$m  -a; done | tee fos-inh
 #sub
 cat fos-xxx | while read -s x; do sed "/^${x//\//\\\/}$/d" -i fos-lab fos-inh; done

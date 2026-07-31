@@ -1,0 +1,465 @@
+
+  https://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_2.0-1.debian.tar.xz
+
+Adds support for compiling fakeroot under time64 flags, effectively
+making struct stat and stat64 time64 variants.
+
+On archs where time_t would natively be 32-bit, the glibc headers
+add assembler-level symbol aliases which prevent us from redefining
+the symbols _if_ the glibc headers are included. Moves our own symbol
+definitions into a new translation unit which does not use the glibc
+headers.
+
+Adds debug messages in a few helpful places.
+
+Probably not compatible with earlier glibc versions.
+
+You still cannot mix classic/LFS/t64 ABIs in one fakeroot session
+with this.
+
+--- Makefile.am
++++ Makefile.am
+@@ -11,7 +11,7 @@
+ libfakeroot_time64_la_CPPFLAGS = -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64
+ 
+ lib_LTLIBRARIES=libfakeroot.la
+-libfakeroot_la_SOURCES=libfakeroot.c statconv/glibc/linux/alpha/stats.h wrapdef.h  wrapstruct.h communicate.h
++libfakeroot_la_SOURCES=libfakeroot.c libfakeroot_time64_entry.c statconv/glibc/linux/alpha/stats.h wrapdef.h  wrapstruct.h communicate.h
+ libfakeroot_la_LDFLAGS=-release 0
+ if MACOSX
+ libfakeroot_la_DEPENDENCIES=wrapdef.h wrapstruct.h libfakeroot_time64.la libcommunicate.la libmacosx.la $(LTLIBOBJS)
+@@ -56,7 +56,7 @@
+ endif !MACOSX
+ wrapdef.h wrapstruct.h wraptmpf.h: wrapped.h
+ 
+-libfakeroot.lo:libfakeroot.c wrapdef.h wrapstruct.h wraptmpf.h
++libfakeroot.lo:libfakeroot.c libfakeroot_time64_entry.c wrapdef.h wrapstruct.h wraptmpf.h
+ 
+ libfakeroot_time64.c: wrapped.h
+ 
+--- libfakeroot.c
++++ libfakeroot.c
+@@ -2,6 +2,7 @@
+   Copyright © 1997, 1998, 1999, 2000, 2001  joost witteveen
+   Copyright © 2002-2020  Clint Adams
+   Copyright © 2012 Mikhail Gusarov
++  Copyright © 2024 Chris Hofstaedtler
+   Copyright © 2026 Janneke Nieuwenhuizen <janneke@gnu.org>
+ 
+     This program is free software: you can redistribute it and/or modify
+@@ -64,6 +65,7 @@
+ 
+ #include "config.h"
+ #include "communicate.h"
++#include "libfakeroot-internal.h"
+ 
+ #ifdef __APPLE__
+ /* The *xattr functions are currently disabled on __APPLE__ since the prototypes
+@@ -98,32 +100,39 @@
+ #define SEND_GET_XATTR64(a,b,c) send_get_xattr64(a,b)
+ #endif
+ 
+-#ifndef _STAT_VER
+- #if defined __linux__
+-  #if defined (__aarch64__)
+-   #define _STAT_VER 0
+-  #elif defined (__ia64__)
+-   #define _STAT_VER 1
+-  #elif defined (__powerpc__) && __WORDSIZE == 64
+-   #define _STAT_VER 1
+-  #elif defined (__riscv) && __riscv_xlen==64
+-   #define _STAT_VER 0
+-  #elif defined (__s390x__)
+-   #define _STAT_VER 1
+-  #elif defined (__x86_64__)
+-   #define _STAT_VER 1
+-  #else
+-   #define _STAT_VER 3
+-  #endif
+- #elif defined __GNU__
+-   #define _STAT_VER 0
+- #endif
+-#endif
+-
+ /*
+    These INT_* (which stands for internal) macros should always be used when
+    the fakeroot library owns the storage of the stat variable.
+ */
++
++#if _TIME_BITS == 64 && defined(TIME64_HACK)
++/* if fakeroot itself is compiled with time64, we need to call the time64 variants
++ * of the stat() API family. Otherwise struct stat(64) will be mismatched.
++ */
++#define INT_STRUCT_STAT struct stat64
++
++extern void send_get_stat64_time64(void *st
++#ifdef STUPID_ALPHA_HACK
++                                   , int ver
++#endif
++                                  );
++
++#ifdef STUPID_ALPHA_HACK
++#define SEND_GET_STAT64_TIME64(a,b) send_get_stat64_time64(a,b)
++#else
++#define SEND_GET_STAT64_TIME64(a,b) send_get_stat64_time64(a)
++#endif
++
++#define INT_NEXT_STAT(a,b) NEXT_STAT64_TIME64(_STAT_VER,a,b)
++#define INT_NEXT_LSTAT(a,b) NEXT_LSTAT64_TIME64(_STAT_VER,a,b)
++#define INT_NEXT_FSTAT(a,b) NEXT_FSTAT64_TIME64(_STAT_VER,a,b)
++#define INT_NEXT_FSTATAT(a,b,c,d) NEXT_FSTATAT64_TIME64(_STAT_VER,a,b,c,d)
++#define INT_SEND_STAT(a,b) SEND_STAT64(a,b,_STAT_VER)
++#define INT_SEND_GET_XATTR(a,b) SEND_GET_XATTR64(a,b,_STAT_VER)
++#define INT_SEND_GET_STAT(a,b) SEND_GET_STAT64_TIME64(a,b)
++
++#else
++
+ #ifdef STAT64_SUPPORT
+ #define INT_STRUCT_STAT struct stat64
+ #define INT_NEXT_STAT(a,b) NEXT_STAT64(_STAT_VER,a,b)
+@@ -143,6 +152,7 @@
+ #define INT_SEND_GET_XATTR(a,b) SEND_GET_XATTR(a,b,_STAT_VER)
+ #define INT_SEND_GET_STAT(a,b) SEND_GET_STAT(a,b)
+ #endif
++#endif /* !TIME64_HACK */
+ 
+ #include <sys/types.h>
+ #include <stdlib.h>
+@@ -221,7 +231,6 @@
+ #undef __lxstat64
+ #undef _FILE_OFFSET_BITS
+ 
+-
+ #ifndef AT_EMPTY_PATH
+ #define AT_EMPTY_PATH 0
+ #endif
+@@ -722,6 +731,12 @@
+ 
+ 
+   int r;
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "fstatat dir_fd %d path %s\n", dir_fd, path);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
++
+ 
+   r=NEXT_FSTATAT(ver, dir_fd, path, st, flags);
+   if(r)
+@@ -799,6 +814,11 @@
+ 
+ 
+   int r;
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "fstatat64 dir_fd %d path %s\n", dir_fd, path);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
+ 
+   r=NEXT_FSTATAT64(ver, dir_fd, path, st, flags);
+   if(r)
+@@ -903,6 +923,12 @@
+   INT_STRUCT_STAT st;
+   int r;
+ 
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "fchown fd %d owner %d group %d\n", fd, owner, group);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
++
+   r=INT_NEXT_FSTAT(fd, &st);
+   if(r)
+     return r;
+@@ -926,6 +952,14 @@
+ #ifdef HAVE_FCHOWNAT
+ int fchownat(int dir_fd, const char *path, uid_t owner, gid_t group, int flags) {
+   int r;
++
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "fchownat dirfd %d path %s owner %d group %d\n", dir_fd, path, owner, group);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
++
++
+   /* If AT_SYMLINK_NOFOLLOW is set in the fchownat call it should
+      be when we stat it. */
+   INT_STRUCT_STAT st;
+@@ -1097,6 +1131,12 @@
+ 			 const char *pathname,
+ 			 mode_t mode, dev_t XMKNOD_FRTH_ARG dev)
+ {
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "mknod path %s\n", pathname);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
++
+   INT_STRUCT_STAT st;
+   mode_t old_mask=umask(022);
+   int fd,r;
+@@ -1139,6 +1179,13 @@
+ 			     const char *pathname,
+ 			     mode_t mode, dev_t XMKNODAT_FIFTH_ARG dev)
+ {
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "mknodat dir_fd %d path %s\n", dir_fd, pathname);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
++
++
+   INT_STRUCT_STAT st;
+   mode_t old_mask=umask(022);
+   int fd,r;
+@@ -1421,61 +1468,6 @@
+ #if __GLIBC_PREREQ(2,33)
+ /* Glibc 2.33 exports symbols for these functions in the shared lib */
+ 
+-#ifndef NO_WRAP_LSTAT_SYMBOL
+-  /* glibc exports both lstat and __xstat */
+-  int lstat(const char *file_name, struct stat *statbuf) {
+-     return WRAP_LSTAT LSTAT_ARG(_STAT_VER, file_name, statbuf);
+-  }
+-#endif
+-
+-#ifndef NO_WRAP_STAT_SYMBOL
+-  /* glibc exports both stat and __xstat */
+-  int stat(const char *file_name, struct stat *st) {
+-     return WRAP_STAT STAT_ARG(_STAT_VER, file_name, st);
+-  }
+-#endif
+-#ifndef NO_WRAP_FSTAT_SYMBOL
+-  /* glibc exports both fstat and __fxstat */
+-  int fstat(int fd, struct stat *st) {
+-     return WRAP_FSTAT FSTAT_ARG(_STAT_VER, fd, st);
+-  }
+-#endif
+-
+-  #if defined(HAVE_FSTATAT) && !defined(NO_WRAP_FSTATAT_SYMBOL)
+-    /* glibc exports both fstatat and __fxstatat */
+-    int fstatat(int dir_fd, const char *path, struct stat *st, int flags) {
+-       return WRAP_FSTATAT FSTATAT_ARG(_STAT_VER, dir_fd, path, st, flags);
+-    }
+-  #endif
+-
+-  #ifdef STAT64_SUPPORT
+-    #ifndef NO_WRAP_LSTAT64_SYMBOL
+-    /* glibc exports both lstat64 and __xstat64 */
+-    int lstat64(const char *file_name, struct stat64 *st) {
+-       return WRAP_LSTAT64 LSTAT64_ARG(_STAT_VER, file_name, st);
+-    }
+-    #endif
+-    #ifndef NO_WRAP_STAT64_SYMBOL
+-    /* glibc exports both stat64 and __xstat64 */
+-    int stat64(const char *file_name, struct stat64 *st) {
+-       return WRAP_STAT64 STAT64_ARG(_STAT_VER, file_name, st);
+-    }
+-    #endif
+-    #ifndef NO_WRAP_FSTAT64_SYMBOL
+-    /* glibc exports both fstat64 and __fxstat64 */
+-    int fstat64(int fd, struct stat64 *st) {
+-       return WRAP_FSTAT64 FSTAT64_ARG(_STAT_VER, fd, st);
+-    }
+-    #endif
+-
+-    #if defined(HAVE_FSTATAT) && !defined(NO_WRAP_FSTATAT64_SYMBOL)
+-    /* glibc exports both fstatat64 and __fxstatat64 */
+-      int fstatat64(int dir_fd, const char *path, struct stat64 *st, int flags) {
+-	 return WRAP_FSTATAT64 FSTATAT64_ARG(_STAT_VER, dir_fd, path, st, flags);
+-      }
+-    #endif
+-  #endif
+-
+   #ifndef NO_WRAP_MKNOD_SYMBOL
+   /* glibc exports both mknod and __xmknod */
+   int mknod(const char *pathname, mode_t mode, dev_t dev) {
+@@ -2740,7 +2732,7 @@
+ 
+ #ifdef LIBFAKEROOT_DEBUGGING
+   if (fakeroot_debug) {
+-    fprintf(stderr, "statx fd %d\n", dirfd);
++    fprintf(stderr, "statx fd %d path %s\n", dirfd, path);
+   }
+ #endif /* LIBFAKEROOT_DEBUGGING */
+   r=INT_NEXT_FSTATAT(dirfd, path, &st, flags);
+--- libfakeroot_time64_entry.c
++++ libfakeroot_time64_entry.c
+@@ -0,0 +1,102 @@
++/*
++  Copyright © 1997, 1998, 1999, 2000, 2001  joost witteveen
++  Copyright © 2002-2020  Clint Adams
++  Copyright © 2012 Mikhail Gusarov
++  Copyright © 2024 Chris Hofstaedtler
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++*/
++
++#include "config.h"
++#include "fakerootconfig.h"
++#include "libfakeroot-internal.h"
++
++/*
++ glibc headers rename the asm symbol for lstat64, stat64, fstat64, fstatat64
++ on 32bit time_t platforms, _if_ -D_TIME_BITS=64 is set.
++ Unfortunately us redefining the functions then results in duplicate symbols
++ when assembling.
++
++ Solution: put these functions into its own .c, which does not include
++ <sys/stat.h>.
++*/
++#ifndef NO_WRAP_LSTAT_SYMBOL
++  extern int WRAP_LSTAT LSTAT_ARG(int ver, const char *file_name, void *statbuf);
++
++  /* glibc exports both lstat and __xstat */
++  int lstat(const char *file_name, void *statbuf) {
++     return WRAP_LSTAT LSTAT_ARG(_STAT_VER, file_name, statbuf);
++  }
++#endif
++
++#ifndef NO_WRAP_STAT_SYMBOL
++  extern int WRAP_STAT STAT_ARG(int ver, const char *file_name, void *st);
++
++  int r;
++  /* glibc exports both stat and __xstat */
++  int stat(const char *file_name, void *st) {
++     return WRAP_STAT STAT_ARG(_STAT_VER, file_name, st);
++  }
++#endif
++#ifndef NO_WRAP_FSTAT_SYMBOL
++  extern int WRAP_FSTAT FSTAT_ARG(int ver, int fd, void *st);
++
++  /* glibc exports both fstat and __fxstat */
++  int fstat(int fd, void *st) {
++     return WRAP_FSTAT FSTAT_ARG(_STAT_VER, fd, st);
++  }
++#endif
++
++  #if defined(HAVE_FSTATAT) && !defined(NO_WRAP_FSTATAT_SYMBOL)
++    extern int WRAP_FSTATAT FSTATAT_ARG(int ver, int dir_fd, const char *path, void *st, int flags);
++
++    /* glibc exports both fstatat and __fxstatat */
++    int fstatat(int dir_fd, const char *path, void *st, int flags) {
++       return WRAP_FSTATAT FSTATAT_ARG(_STAT_VER, dir_fd, path, st, flags);
++    }
++  #endif
++
++
++    #ifndef NO_WRAP_LSTAT64_SYMBOL
++    extern int WRAP_LSTAT64 LSTAT64_ARG (int ver, const char *file_name, void *st);
++
++    /* glibc exports both lstat64 and __xstat64 */
++    int lstat64(const char *file_name, void *st) {
++       return WRAP_LSTAT64 LSTAT64_ARG(_STAT_VER, file_name, st);
++    }
++    #endif
++    #ifndef NO_WRAP_STAT64_SYMBOL
++    extern int WRAP_STAT64 STAT64_ARG(int ver, const char *file_name, void *st);
++
++    /* glibc exports both stat64 and __xstat64 */
++    int stat64(const char *file_name, void *st) {
++       return WRAP_STAT64 STAT64_ARG(_STAT_VER, file_name, st);
++    }
++    #endif
++    #ifndef NO_WRAP_FSTAT64_SYMBOL
++    extern int WRAP_FSTAT64 FSTAT64_ARG(int ver, int fd, void *st);
++
++    /* glibc exports both fstat64 and __fxstat64 */
++    int fstat64(int fd, void *st) {
++       return WRAP_FSTAT64 FSTAT64_ARG(_STAT_VER, fd, st);
++    }
++    #endif
++
++    #if defined(HAVE_FSTATAT) && !defined(NO_WRAP_FSTATAT64_SYMBOL)
++    extern int WRAP_FSTATAT64 FSTATAT64_ARG(int ver, int dir_fd, const char *path, void *st, int flags);
++
++    /* glibc exports both fstatat64 and __fxstatat64 */
++      int fstatat64 (int dir_fd, const char *path, void *st, int flags) {
++	 return WRAP_FSTATAT64 FSTATAT64_ARG(_STAT_VER, dir_fd, path, st, flags);
++      }
++    #endif
++
+--- libfakeroot_time64.c
++++ libfakeroot_time64.c
+@@ -245,10 +245,23 @@
+ 
+   int r;
+ 
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "\nfstatat64[time64] dir_fd %d path %s\n", dir_fd, path);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
++
+   r=NEXT_FSTATAT64_TIME64(ver, dir_fd, path, st, flags);
+   if(r)
+     return -1;
+   SEND_GET_STAT64_TIME64(st,ver);
++
++#ifdef LIBFAKEROOT_DEBUGGING
++  if (fakeroot_debug) {
++    fprintf(stderr, "fstatat64[time64] dir_fd %d path %s returning uid %d\n", dir_fd, path, st->st_uid);
++  }
++#endif /* LIBFAKEROOT_DEBUGGING */
++
+   return 0;
+ }
+ 
+--- libfakeroot-internal.h
++++ libfakeroot-internal.h
+@@ -0,0 +1,45 @@
++/*
++  Copyright © 1997, 1998, 1999, 2000, 2001  joost witteveen
++  Copyright © 2002-2020  Clint Adams
++  Copyright © 2012 Mikhail Gusarov
++  Copyright © 2024 Chris Hofstaedtler
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++*/
++
++/*
++  This file needs to work without any glibc headers.
++*/
++
++#ifndef _STAT_VER
++ #if defined __linux__
++  #if defined (__aarch64__)
++   #define _STAT_VER 0
++  #elif defined (__ia64__)
++   #define _STAT_VER 1
++  #elif defined (__powerpc__) && __WORDSIZE == 64
++   #define _STAT_VER 1
++  #elif defined (__riscv) && __riscv_xlen==64
++   #define _STAT_VER 0
++  #elif defined (__s390x__)
++   #define _STAT_VER 1
++  #elif defined (__x86_64__)
++   #define _STAT_VER 1
++  #else
++   #define _STAT_VER 3
++  #endif
++ #elif defined __GNU__
++   #define _STAT_VER 0
++ #endif
++#endif
++
++

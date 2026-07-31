@@ -1,8 +1,8 @@
 --- Makefile
 +++ Makefile
-@@ -334,9 +334,6 @@
- TESTS_PYLIBFDT += maybe_pylibfdt
- endif
+@@ -282,9 +282,6 @@
+ TESTS_BIN += fdtdump
+ TESTS_BIN += fdtoverlay
  
 -ifneq ($(MAKECMDGOALS),libfdt)
 -include tests/Makefile.tests

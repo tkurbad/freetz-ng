@@ -1,6 +1,6 @@
 --- src/Makefile.in
 +++ src/Makefile.in
-@@ -330,8 +330,7 @@
+@@ -335,8 +335,7 @@
          kernel_interface.h mount_davfs.h webdav.h
  
  umount_davfs_SOURCES = umount_davfs.c defaults.h

@@ -136,10 +136,6 @@ choice
 		depends on FREETZ_AVM_PROP_KERNEL_4_4_271
 
 
-	config FREETZ_KERNEL_VERSION_4_9_161
-		bool "kernel-4.9.161"
-		depends on FREETZ_AVM_PROP_KERNEL_4_9_161
-
 	config FREETZ_KERNEL_VERSION_4_9_175
 		bool "kernel-4.9.175"
 		depends on FREETZ_AVM_PROP_KERNEL_4_9_175
@@ -152,17 +148,9 @@ choice
 		bool "kernel-4.9.199"
 		depends on FREETZ_AVM_PROP_KERNEL_4_9_199
 
-	config FREETZ_KERNEL_VERSION_4_9_218
-		bool "kernel-4.9.218"
-		depends on FREETZ_AVM_PROP_KERNEL_4_9_218
-
 	config FREETZ_KERNEL_VERSION_4_9_231
 		bool "kernel-4.9.231"
 		depends on FREETZ_AVM_PROP_KERNEL_4_9_231
-
-	config FREETZ_KERNEL_VERSION_4_9_240
-		bool "kernel-4.9.240"
-		depends on FREETZ_AVM_PROP_KERNEL_4_9_240
 
 	config FREETZ_KERNEL_VERSION_4_9_250
 		bool "kernel-4.9.250"
@@ -566,7 +554,7 @@ choice
 	default FREETZ_TARGET_UCLIBC_0_9_32 if FREETZ_AVM_UCLIBC_0_9_32
 	default FREETZ_TARGET_UCLIBC_0_9_33 if FREETZ_AVM_UCLIBC_0_9_33
 	default FREETZ_TARGET_UCLIBC_1_0_14 if FREETZ_AVM_UCLIBC_1_0_14
-	default FREETZ_TARGET_UCLIBC_1_0_57 if FREETZ_SEPARATE_AVM_UCLIBC
+	default FREETZ_TARGET_UCLIBC_1_0_58 if FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_TARGET_UCLIBC_0_9_28
 	bool "uclibc-0.9.28"
@@ -591,8 +579,8 @@ choice
 	bool "uclibc-1.0.14"
 	depends on FREETZ_AVM_UCLIBC_1_0_14
 
-	config FREETZ_TARGET_UCLIBC_1_0_57
-	bool "uclibc-1.0.57"
+	config FREETZ_TARGET_UCLIBC_1_0_58
+	bool "uclibc-1.0.58"
 	depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 endchoice
@@ -1214,7 +1202,7 @@ config FREETZ_TARGET_UCLIBC_0
 config FREETZ_TARGET_UCLIBC_1
 	bool
 	default y           if FREETZ_TARGET_UCLIBC_1_0_14
-	default y           if FREETZ_TARGET_UCLIBC_1_0_57
+	default y           if FREETZ_TARGET_UCLIBC_1_0_58
 	default n
 
 config FREETZ_TARGET_UCLIBC_VERSION
@@ -1224,7 +1212,7 @@ config FREETZ_TARGET_UCLIBC_VERSION
 	default "0.9.32.1"  if FREETZ_TARGET_UCLIBC_0_9_32
 	default "0.9.33.2"  if FREETZ_TARGET_UCLIBC_0_9_33
 	default "1.0.14"    if FREETZ_TARGET_UCLIBC_1_0_14
-	default "1.0.57"    if FREETZ_TARGET_UCLIBC_1_0_57
+	default "1.0.58"    if FREETZ_TARGET_UCLIBC_1_0_58
 
 config FREETZ_TARGET_UCLIBC_MAJOR_VERSION
 	string

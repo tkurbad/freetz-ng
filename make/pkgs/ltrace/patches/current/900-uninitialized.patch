@@ -1,0 +1,15 @@
+--- expr.c
++++ expr.c
+@@ -240,8 +240,12 @@
+ 			if (node->kind == EXPR_OP_CALL2
+ 			    && node->u.call.own_rhs
+ 			    && nrhs != NULL) {
++/* disable warning, nrhs is set due to previous fall-through */
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+ 				expr_destroy(nrhs);
+ 				free(nrhs);
++#pragma GCC diagnostic pop
+ 				return -1;
+ 			}
+ 		}

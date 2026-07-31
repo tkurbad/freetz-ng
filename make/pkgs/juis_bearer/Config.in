@@ -1,0 +1,26 @@
+config FREETZ_PACKAGE_JUIS_BEARER
+	bool "juis_bearer 1.0"
+	select FREETZ_BUSYBOX_BASE64
+	select FREETZ_PACKAGE_CURL
+	select FREETZ_PACKAGE_CURL_SELECT_SSL
+	select FREETZ_PACKAGE_OPENSSL
+	default n
+	help
+		This integrates the juis_bearer script from tools/ dir into the image.
+		It is a bearer token handler of juis with avmzertifikate.
+
+if FREETZ_PACKAGE_JUIS_BEARER
+
+	config FREETZ_PACKAGE_JUIS_BEARER_WITH_DEBUG
+		bool "Select debug tools"
+		select FREETZ_PACKAGE_JQ
+		select FREETZ_BUSYBOX_XXD
+		default n
+		help
+			Selects jq and xxd for:
+			 - kid handling
+			 - signature validation
+			Not needed for juis_check usage.
+
+endif # FREETZ_PACKAGE_JUIS_BEARER
+

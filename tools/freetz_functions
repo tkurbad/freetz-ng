@@ -499,7 +499,9 @@ modlang() {
 		fi
 		local dot_exclude="$(echo $FREETZ_BASE_DIR/$1 | sed 's/language$/exclude/')"
 		for i in $(modlangconf "files" "$conffile"); do
-			if [ -e "${i}" ]; then
+			  if [ -L "${i}" ]; then
+				continue  # sed destroys links !
+			elif [ -e "${i}" ]; then
 				modlangsubst "$lang" "${i}"
 			else
 				do_excluded=n
